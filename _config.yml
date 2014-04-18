@@ -12,11 +12,11 @@ owner:
   avatar:         bio-photo.jpg
   email:          me@dshevchenko.biz
   # Social networking links used in footer. Update and remove as you like.
-  twitter:        https://twitter.com/dshevchenko_biz
-  facebook:       https://www.facebook.com/dshevchenko.biz
-  github:         https://github.com/denisshevchenko/
+  twitter:        dshevchenko_biz
+  facebook:       dshevchenko.biz
+  github:         denisshevchenko
   stackexchange:  http://stackexchange.com/users/131381/denis-shevchenko
-  linkedin:       http://www.linkedin.com/pub/denis-shevchenko/20/355/57b
+  linkedin:       
   instagram:      
   flickr:         
   tumblr:         
