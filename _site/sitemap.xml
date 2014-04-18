@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://denisshevchenko.github.io/blog/</loc>
+        <loc>http://denisshevchenko.github.io/blog</loc>
     </url>
     
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//404.html</loc>
+        <loc>http://denisshevchenko.github.io/blog/404.html</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//about/</loc>
+        <loc>http://denisshevchenko.github.io/blog/about/</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//articles/</loc>
+        <loc>http://denisshevchenko.github.io/blog/articles/</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//feed.xml</loc>
+        <loc>http://denisshevchenko.github.io/blog/feed.xml</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//index.html</loc>
+        <loc>http://denisshevchenko.github.io/blog/index.html</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//search.json</loc>
+        <loc>http://denisshevchenko.github.io/blog/search.json</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//sitemap.xml</loc>
+        <loc>http://denisshevchenko.github.io/blog/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//tags/</loc>
+        <loc>http://denisshevchenko.github.io/blog/tags/</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//theme-setup/</loc>
+        <loc>http://denisshevchenko.github.io/blog/theme-setup/</loc>
     </url>
     
 
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//articles/code-highlighting-post/</loc>
+        <loc>http://denisshevchenko.github.io/blog/articles/2013/8/16/code-highlighting-post.html</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//articles/sample-link-post/</loc>
+        <loc>http://denisshevchenko.github.io/blog/articles/2013/8/12/sample-link-post.html</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//articles/video-post/</loc>
+        <loc>http://denisshevchenko.github.io/blog/articles/2013/6/25/video-post.html</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//articles/readability-feature-post/</loc>
+        <loc>http://denisshevchenko.github.io/blog/articles/2013/5/23/readability-feature-post.html</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//articles/sample-post-images/</loc>
+        <loc>http://denisshevchenko.github.io/blog/articles/2013/5/22/sample-post-images.html</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//articles/readability-post/</loc>
+        <loc>http://denisshevchenko.github.io/blog/articles/2012/5/22/readability-post.html</loc>
     </url>
     
     <url>
-        <loc>http://denisshevchenko.github.io/blog//articles/sample-post/</loc>
+        <loc>http://denisshevchenko.github.io/blog/articles/2011/3/10/sample-post.html</loc>
     </url>
     
 </urlset>

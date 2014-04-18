@@ -3,56 +3,56 @@
 		{
 		  "title"      : "Syntax Highlighting Post",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog//articles/code-highlighting-post/",
-		  "date"       : "Fri Aug 16 00:00:00 -0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/8/16/code-highlighting-post.html",
+		  "date"       : "Fri Aug 16 00:00:00 +0400 2013",
 		  "shortdate"  : "August 16, 2013"
 		} ,
 	
 		{
 		  "title"      : "Sample Link Post",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog//articles/sample-link-post/",
-		  "date"       : "Mon Aug 12 00:00:00 -0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/8/12/sample-link-post.html",
+		  "date"       : "Mon Aug 12 00:00:00 +0400 2013",
 		  "shortdate"  : "August 12, 2013"
 		} ,
 	
 		{
 		  "title"      : "A Post with a Video",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog//articles/video-post/",
-		  "date"       : "Tue Jun 25 00:00:00 -0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/6/25/video-post.html",
+		  "date"       : "Tue Jun 25 00:00:00 +0400 2013",
 		  "shortdate"  : "June 25, 2013"
 		} ,
 	
 		{
 		  "title"      : "Post with Large Feature Image and Text",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog//articles/readability-feature-post/",
-		  "date"       : "Thu May 23 00:00:00 -0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/5/23/readability-feature-post.html",
+		  "date"       : "Thu May 23 00:00:00 +0400 2013",
 		  "shortdate"  : "May 23, 2013"
 		} ,
 	
 		{
 		  "title"      : "A Post with Images",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog//articles/sample-post-images/",
-		  "date"       : "Wed May 22 00:00:00 -0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/5/22/sample-post-images.html",
+		  "date"       : "Wed May 22 00:00:00 +0400 2013",
 		  "shortdate"  : "May 22, 2013"
 		} ,
 	
 		{
 		  "title"      : "Testing Readability with a Bunch of Text",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog//articles/readability-post/",
-		  "date"       : "Tue May 22 00:00:00 -0400 2012",
+		  "url"        : "http://denisshevchenko.github.io/blog/articles/2012/5/22/readability-post.html",
+		  "date"       : "Tue May 22 00:00:00 +0400 2012",
 		  "shortdate"  : "May 22, 2012"
 		} ,
 	
 		{
 		  "title"      : "Sample Post",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog//articles/sample-post/",
-		  "date"       : "Thu Mar 10 00:00:00 -0500 2011",
+		  "url"        : "http://denisshevchenko.github.io/blog/articles/2011/3/10/sample-post.html",
+		  "date"       : "Thu Mar 10 00:00:00 +0400 2011",
 		  "shortdate"  : "March 10, 2011"
 		} 
 	
