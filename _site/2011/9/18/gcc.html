@@ -1,0 +1,317 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<title>GCC: два компилятора вместе &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="GCC: два компилятора вместе">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCC: два компилятора вместе">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2011/9/18/gcc.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2011/9/18/gcc.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Articles</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://mademistakes.com">Made Mistakes</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">GCC: два компилятора вместе</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span>
+        <span class="entry-date date published"><time datetime="2011-09-18T00:00:00+05:00"><i class="icon-calendar-empty"></i> September 18, 2011</time></span>
+        
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2011/9/18/gcc.html" rel="bookmark" title="GCC: два компилятора вместе"><i class="icon-link"></i> Permalink</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <!--break-->
+<p>Причины, подвигшие меня к установке <strong>g++ 4.6.0</strong>, просты: поддержка C++0x. Данная версия вышла 25 марта (любопытное совпадение: именно в этот день Комитетом по стандартизации был принят FDIS), и именно этой версией поддерживается наибольшее число возможностей нового языка.</p>
+
+<p>Но в моей системе (Debain Linux Squeeze), естественно, уже стоял компилятор версии 4.4.5. Значит, нужно ставить в параллель.<br /></p>
+<h3>Что нам понадобится?</h3>
+
+<p>Собственно, сам компилятор. Напомню, что GCC - это семейство компиляторов для разных языков. Но нас интересует только С++, поэтому скачиваем следующие пакеты:</p>
+
+<p>ftp://ftp.gnu.org/gnu/gcc/gcc-4.6.0/gcc-core-4.6.0.tar.bz2 - ядро компилятора.
+ftp://ftp.gnu.org/gnu/gcc/gcc-4.6.0/gcc-g++-4.6.0.tar.bz2 - собственно g++.</p>
+
+<p>Но это ещё не всё. Нам понадобятся также три служебные библиотеки - GMP, MPC и MPFR:</p>
+
+<p>ftp://gcc.gnu.org/pub/gcc/infrastructure/gmp-4.3.2.tar.bz2
+ftp://gcc.gnu.org/pub/gcc/infrastructure/mpc-0.8.1.tar.gz
+ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2<br /></p>
+<h3>Подготовка пути</h3>
+
+<p>Кладём все архивы в некую папку, она будет корнем установки нового компилятора. В моей системе это /home/denis/Distros/GCC/. Этот путь будет использован в качестве установочного префикса при сборке. Для краткости далее будем именовать его <strong>INSTALL_PATH</strong>.<br /></p>
+<h3>Подготовка компилятора</h3>
+
+<p>Распаковываем <strong>gcc-core-4.6.0.tar.bz2</strong> и получаем папку <strong>gcc-4.6.0</strong>. А вот теперь есть одна хитрость. Дело в том, что когда мы распакуем <strong>gcc-g++-4.6.0.tar.bz2</strong>, то получится такая же папка <strong>gcc-4.6.0</strong>. Поэтому я разношу их при распаковке в разные места.</p>
+
+<p>Захожу в папку <strong>gcc-4.6.0</strong>, полученную при распаковке <strong>gcc-g++-4.6.0.tar.bz2</strong> и вижу там две папки: <strong>gcc</strong> и <strong>libstdc++-v3</strong>. Теперь:</p>
+<ol>
+ <li>папку <strong>libstdc++-v3</strong> копирую в корень папки <strong>gcc-4.6.0</strong>, полученной при распаковке <strong>gcc-core-4.6.0.tar.bz2</strong>.</li>
+ <li>в папке gcc берём папку cp и копируем её в подпапку gcc папки <strong>gcc-4.6.0</strong>, полученной при распаковке <strong>gcc-core-4.6.0.tar.bz2</strong>.</li>
+</ol>
+<p>Итак, мы получили одну папку <strong>gcc-4.6.0</strong>, в которой есть всё необходимое для сборки. Та папка <strong>gcc-4.6.0</strong>, которая была получена их архива <strong>gcc-g++-4.6.0.tar.bz2</strong>, нам больше не нужна.<br /></p>
+<h3>Сборка служебных библиотек</h3>
+
+<p>Теперь распаковываем архивы трёх вышеупомянутых служебных библиотек. Их необходимо собрать и установить <strong><em>перед</em></strong> сборкой компилятора.</p>
+
+<p>Более того, важен порядок их сборки, поскольку они зависят друг от друга.</p>
+
+<p>Первой собираем GMP. Не забываем указать упомянутый выше префикс установки:</p>
+<cpp>$ ./configure --prefix=INSTALL_PATH</cpp>
+<p>Потом make и make install.</p>
+
+<p>Далее собираем MPFR. Указываем установочный префикс и путь к (уже) установленной GMP:</p>
+<cpp>$ ./configure --prefix=INSTALL_PATH --with-gmp=INSTALL_PATH</cpp>
+<p>Потом make и make install.</p>
+
+<p>Последней собираем MPC. Указываем установочный префикс, а также пути к (уже) установленным GMP и MPFR:</p>
+<cpp>$ ./configure --prefix=INSTALL_PATH --with-gmp=INSTALL_PATH --with-mpfr=INSTALL_PATH</cpp>
+<p>Потом make и make install.</p>
+
+<p>Итак, служебные библиотеки собраны.<br /></p>
+<h3>Сборка компилятора</h3>
+
+<p>Указываем установочный префикс и пути к (уже) установленным служебным библиотекам:</p>
+<cpp>$ ./configure --prefix=INSTALL_PATH --with-gmp=INSTALL_PATH --with-mpfr=INSTALL_PATH --with-mpc=INSTALL_PATH</cpp>
+
+<p>Далее make. Начинается компиляция компилятора (приколько звучит).<br /></p>
+<h3>Подводный камень №1</h3>
+
+<p>Вы думаете, что всё скомпилируется и готово? Не тут-то было. Компиляция прервётся с ошибкой. А причина в том, что мы забыли передать путь к служебным библиотекам линковщику, а в процессе сборки они понадобятся. Поэтому пропишем путь INSTALL_PATH/lib в <strong>/etc/ld.so.conf</strong>. Не забываем выполнить магическое <strong>ldconfig</strong>.</p>
+
+<p>После этого снова make. Компиляция продолжится.<br /></p>
+<h3>Подводный камень №2</h3>
+
+<p>Ну теперь-то всё? Нет, не всё. Если у вас 64-разрядная система (как у меня), то компиляция снова прервётся. Причина в отсутствии файла <strong>/usr/include/gnu/stubs-32.h</strong>. Если вы посмотрите, то файл stubs-64.h имеется, а stubs-32.h отсутствует. Чтобы это исправить, необходимо установить пакет <strong>libc6-dev-i386</strong>. В репозитории Debian такой имеется. После этого требуемый файл появится.</p>
+
+<p>После этого снова make. Компиляция продолжится.<br /></p>
+<h3>Подводный камень №3</h3>
+
+<p>Итак, компиляция завершена. К слову сказать, займёт она довольно много времени. На моей системе с Corei3 2.4Ггц и 2 Гб DDR3 памяти компиляция забрала часа полтора.</p>
+
+<p>После этого вы делаете make install. И в INSTALL_PATH появятся несколько дополнительных папок, такие как lib32, lib64, bin, libexec, share.</p>
+
+<p>И вот вы, в предвкушении испытаний, пишете свой hello world и скармливаете его новому компилятору. Компиляция проходит успешно, только вот запустить программу не удастся. Причина проста: стандартная библиотека.</p>
+
+<p>Проверим:</p>
+<pre>$ ldd my_program
+    ...
+    libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6  
+    ...</pre>
+
+<p>Итак, причина в том, что стандартная библиотека С++ берётся из старого пути, из <strong>/usr/lib</strong>. Но ведь там лежит библиотека, используемая нашим “старым” компилятором (в моём случае g++ 4.4.5). А нам нужна новая библиотека, собранная с новым компилятором.</p>
+
+<p>Решение простое: пропишем путь к новой стандартной библиотеке INSTALL_PATH/lib64 (для 64-разрядной системы) в <strong>/etc/ld.so.conf.d/libc.conf</strong>. Я у себя прописал этот путь первым по счёту в данном файле.</p>
+
+<p>После этого снова компилируем программу, и проверяем вновь:</p>
+<pre>$ ldd my_program
+    ...
+    libstdc++.so.6 =&gt; INSTALL_PATH/lib64/libstdc++.so.6  
+    ...</pre>
+
+<p>Теперь используется новая стандартная библиотека, как нам и нужно.<br /></p>
+<h3>Завершение</h3>
+
+<p>Ну что ж, сборка и настройка завершена. В подтверждение этому попробуем скомпилировать программу с новейшими возможностями стандарта. В частности, проверим range for. Разумеется, необходимо также указать флаг <strong>-std=c++0x</strong>, всё-таки поддержка нового стандарта носит (формально) экспериментальный характер.</p>
+
+<cpp>
+int main() {
+    std::vector&lt; int &gt; v = { 1, 2, 3 };
+    for ( auto i : v ) {
+        std::cout &lt;&lt; i &lt;&lt; std::endl;
+    }
+}
+</cpp>
+
+<p>Итак, как видите, всё работает. Теперь в нашей системе есть два компилятора, и мы можем продолжить наши эксперименты с новейшими возможностями C++0x.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2011/9/18/func.html" class="btn" title="Достойная замена __func__">Previous article</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2011/9/19/.html" class="btn" title="Мудрые мысли">Next article</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Денис Шевченко. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="Денис Шевченко on Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="Денис Шевченко on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="Денис Шевченко on Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="Денис Шевченко on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="Денис Шевченко on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

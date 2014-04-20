@@ -1,0 +1,271 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<title>GCC 4.7 на OS X Lion: тернистый путь... &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="GCC 4.7 на OS X Lion: тернистый путь...">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCC 4.7 на OS X Lion: тернистый путь...">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2012/6/10/gcc-4-7-os-x-lion.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2012/6/10/gcc-4-7-os-x-lion.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Articles</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://mademistakes.com">Made Mistakes</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">GCC 4.7 на OS X Lion: тернистый путь...</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span>
+        <span class="entry-date date published"><time datetime="2012-06-10T00:00:00+04:00"><i class="icon-calendar-empty"></i> June 10, 2012</time></span>
+        
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2012/6/10/gcc-4-7-os-x-lion.html" rel="bookmark" title="GCC 4.7 на OS X Lion: тернистый путь..."><i class="icon-link"></i> Permalink</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <p>Уффф… Наконец-то заработало…</p>
+
+<p>В общем, поставить GCC 4.7 на OS X Lion оказалось делом не столь тривиальным. Казалось бы, после успешных установок <strong><a href="http://dshevchenko.biz/ru/content/gcc-%D0%B4%D0%B2%D0%B0-%D0%BA%D0%BE%D0%BC%D0%BF%D0%B8%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D0%B0-%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B5">GCC 4.6.2 и 4.7.0 на Debian</a></strong> проблем у меня не должно было быть никаких, ан нет…</p>
+
+<p>Ну, начну с того, что собирал я GCC не совсем правильно. Вернее, не тем способом, который рекомендуют разработчики GCC. Оказывается, скачивать и отдельно устанавливать библиотеки GMP, MPC и MPFR <em>не нужно</em>! Почему? Потому что GCC, как оказалось, умеет делать это самостоятельно. Кроме того, конфигурировал я тоже не совсем правильно. Итак, по порядку…</p>
+
+<p>Скачиваем gcc-4.7.0.tar.bz2, распаковываем и заходим внутрь:</p>
+<cpp>
+cd gcc-4.7.0
+</cpp>
+<p>А вот теперь следуем простым инструкциям, взятым <strong><a href="http://gcc.gnu.org/wiki/InstallingGCC">отсюда</a></strong>. Итак:</p>
+<cpp>
+./contrib/download_prerequisites
+cd ..
+mkdir gcc_build
+cd gcc_build
+/Users/dshevchenko/Downloads/gcc-4.7.0/configure --prefix=/Users/dshevchenko/Tools/GCC 
+make
+make install
+</cpp>
+<p>Итак, в первой строке запускается небольшой скрипт, автоматически загружающий нужные версии MPFR, MPC и GMP и распаковывающий их архивы. Суть в том, что ставить эти библиотеки отдельно не нужно, поскольку в этом случае могут возникнуть проблемы с путями к ним (динамический линковщик ругается). Если же они скачиваются с помощью данного скрипта, то собираюсь и линкуются <em>статически</em>, и вам уже не придётся об этом беспокоиться.</p>
+
+<p>Далее, обращаю ваше внимание, мы <strong>выходим</strong> из gcc-4.7.0. Оказывается, это важный пункт, поскольку в официальной документации к GCC указано:<strong> “крайне не рекомендуем конфигурировать и собирать GCC, находясь внутри дерева исходников GCC или в одной из подпапок”</strong>. Нужно обязательно извне! Честно признаться, я так и не понял, почему это столь важно (ведь на Debian я собирал, находясь в корне gcc-4.7.0, и всё было ОК), но раз рекомендуется, так и сделаем.</p>
+
+<p>Обращаю ваше внимание и на то, что в конфигурации мы указали лишь <strong>–prefix</strong>, а опции <strong>–with-mpc</strong>, <strong>–with-gmp</strong> и <strong>–with-mpfr</strong> нам уже, естественно, не нужны.</p>
+
+<p>Далее проходит конфигурирование, и начинается компиляция. Однако…</p>
+
+<h4>Подводный камень.</h4>
+
+<p>К сожалению, компиляция вскоре прерывается со следующей ошибкой:</p>
+<cpp>
+checking for suffix of object files... configure: error: 
+in `/Users/dshevchenko/Downloads/gcc_build/x86_64-apple-darwin11.4.0/libgcc':
+configure: error: cannot compute suffix of object files: cannot compile
+See `config.log' for more details.
+</cpp>
+<p>Каноническая причина этой странной ошибки сводится к тому, что динамический линковщик не видит те самые служебные библиотеки GMP, MPC и/или MPFR. Но ведь мы собрали их статически, следовательно, причина в другом.</p>
+
+<p>Дооооолгое гугление и блуждание по спискам рассылки, stackoverflow.com и различным форумам натолкнули меня на <strong><a href="http://comments.gmane.org/gmane.comp.gcc.bugs/327499">эту</a></strong> страницу, а потом - на <strong><a href="http://llvm.org/bugs/show_bug.cgi?id=9571">эту</a></strong>. В общем, там имеет место один баг в Apple-вском llvm-gcc-4.2.1, и многие спотыкались об него.</p>
+
+<p>Решение оказалось неожиданно простым: необходимо определить две переменны среды:</p>
+<cpp>
+export CC=gcc-4.2
+export CXX=g++-4.2
+</cpp>
+<p>Не знаю почему, но компиляция успешно продолжится. Наберитесь терпения…</p>
+
+<p>Итак, всё готово, затем мы делаем make install - и всё ок.</p>
+
+<p>Далее необходимо определить переменную среды DYLD_LIBRARY_PATH. В моём случае это:</p>
+<cpp>
+export DYLD_LIBRARY_PATH=/Users/dshevchenko/Tools/GCC/lib
+</cpp>
+<p>Это нужно для того, чтобы при компиляции моих программ компилятор подцеплял свежесобранную стандартную библиотеку, поскольку пути, указанные в переменной DYLD_LIBRARY_PATH, просматриваются динамическим линковщиком <strong>прежде</strong> стандартных путей, что чрезвычайно удобно.</p>
+
+<p>А теперь облегчённо вздохнём - и наслаждается GCC 4.7.0 на нашем Льве.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2012/6/6/.html" class="btn" title="О кроссплатформенной разработке...">Previous article</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2012/6/14/.html" class="btn" title="Ну вот я и ИП...">Next article</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Денис Шевченко. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="Денис Шевченко on Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="Денис Шевченко on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="Денис Шевченко on Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="Денис Шевченко on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="Денис Шевченко on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

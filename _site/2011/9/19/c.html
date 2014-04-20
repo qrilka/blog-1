@@ -1,0 +1,260 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<title>Линус Торвальс против C++: мой ответ &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="Линус Торвальс против C++: мой ответ">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Линус Торвальс против C++: мой ответ">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2011/9/19/c.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2011/9/19/c.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Articles</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://mademistakes.com">Made Mistakes</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Линус Торвальс против C++: мой ответ</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span>
+        <span class="entry-date date published"><time datetime="2011-09-19T00:00:00+05:00"><i class="icon-calendar-empty"></i> September 19, 2011</time></span>
+        
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2011/9/19/c.html" rel="bookmark" title="Линус Торвальс против C++: мой ответ"><i class="icon-link"></i> Permalink</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <!--break-->
+<p>В сентябре 2007 года Линус Торвальдс, создатель ядра операционной системы Linux, в почтовой рассылке разработчиков ядра обсуждал вопрос о языке, на котором стоит написать систему контроля версий Git (кстати, получилась весьма хорошая система). В обсуждении всплыл С++. И Линус высказался о нём следующей тирадой: </p>
+
+<p style="padding-left: 30px"><font color="blue"><i><span style="font-size: 250%">"</span>C++ - ужасный язык. Еще более ужасным его делает тот факт, что его использует множество неквалифицированных программистов, причем там, где с его помощью проще всего создать полнейшее фуфло. Честно говоря, даже если язык C использовался бы только для того, чтобы держать в отдалении программистов на C++, это само по себе послужило бы достаточным оправданием использования этого языка.Другими словами, выбор языка C является единственным разумным выбором. Я пришел к выводу, что программист, который предпочел бы при написании какой-либо программы использовать язык C++, а не C, скорее всего, принадлежит к такому типу программистов, которых я бы предпочел выгнать вон, так, чтобы они не смогли прийти и испортить проект, которым я занимаюсь. C++ является причиной плохих проектных решений. Вы неизбежно начинаете использовать «изящные» возможности таких библиотек языка, как STL, Boost и другую подобную ерунду, которая может «помочь» вам программировать, однако добиваетесь этим только:
+- бесконечного геморроя, когда они не работают (и каждый, кто скажет мне, что STL и, в особенности, Boost, стабильны и переносимы, просто несет полный бред, и это даже не смешно). 
+- создания неэффективных, оторванных от жизни программных моделей; в результате через пару лет вы замечаете, что некоторые абстракции не слишком эффективны, однако весь ваш код уже находится в зависимости от всех этих изящных объектных моделей, и вы не можете исправить его, не переписав при этом всё приложение. 
+Другими словами, единственный способ использовать хороший, эффективный, системный и переносимый C++ заключается в том, чтобы ограничить себя теми возможностями, которые в принципе доступны в языке C. Кроме того, использование языка C означает, что никто не испортит ваш проект, и вы сможете найти кучу программистов, которые действительно разбираются в низкоуровневых проблемах и не испортят все дело какой-нибудь идиотской объектно-моделируемой чепухой.
+
+Желающие ознакомиться с оригиналом - пожалуйте <a href="http://article.gmane.org/gmane.comp.version-control.git/57918">сюда</a>.
+
+Ну что ж, сказано сильно. Сразу видно, Линус - человек прямой, что думает, то и говорит. Однако, при всём уважении к Торвальдсу (я очень уважаю его как профессионального разработчика и сам являюсь Linux-программистом), я позволю себе подвергнуть его слова критике.
+
+Прежде всего, в словах Линуса видна явная предвзятость по отношению к С++ и к ООП. И это можно понять: Линус разработал ядро Linux (и продолжает разработку по сей день), используя чистый С. А С остаётся конкурентом С++, особенно в разговорах Unix-программистов. Что делать, исторические корни никуда не деть. Однако попробую отсеить эмоции Торвальдса и разобраться в сути его слов.
+
+<p style="padding-left: 30px"><font color="blue"><i><span style="font-size: 250%">"</span>C++ - ужасный язык. Еще более ужасным его делает тот факт, что его использует множество неквалифицированных программистов, причем там, где с его помощью проще всего создать полнейшее фуфло.
+
+Да, это так, язык С++ используют многие неквалифицированные программисты. И это действительно приводило (приводит и будет приводить) к появлению ужасных программ. Однако можно ли этот факт ставить в укор самому языку С++? Может, виноваты те программисты, которые, взяв в руки профессиональный инструмент разработки без соответствующей квалификации, наломали дров? В результате неумелого использования токарного станка 16К20 (кстати, великолепный станок) многие токари стали инвалидами без пальцев и глаз, или же вообще погибли (а иногда были причиной травмирования или гибели окружающих). Имеем ли мы право ставить это в укор самому токарному станку или его конструкторам? Вряд ли. Если дилетант берется за использование С++, не имея достаточного уровня подготовки и понимания возможностей языка - он действительно сделает фуфло. Однако то же самое можно сказать и о языке С, на котором написаны как шедевры (и не мало), так и уроды (их тоже хватает). В чем Линус бесспорно прав, так это в том, что программисту-дилетанду с помощью С++ <strong>проще</strong> "создать полнейшее фуфло", чем с помощью С. Однако о чем это свидетельствует? О том, что С++ хуже С? Думаю, это свидетельствует о том, что С++ - более мощный язык, чем С. Представим себе двух водителей-дилетантов, первого из которых посадили за руль "Газели", а второго - за руль "Камаза". И вот этих двоих выпустили на оживленные улицы города. Вопрос: который из них наделает больше бед? Скорее всего, второй. Ибо "Камаз" обладает гораздо большей мощью, и управление им требует особых навыков и большей ответственности. Но кто будет виной этих бед? Сам "Камаз"? Или, может, конструкторы "Камаза"? Нет, но сам водитель-дилетант. Поэтому накажут именно его.
+
+<p style="padding-left: 30px"><font color="blue"><i><span style="font-size: 250%">"</span>C++ является причиной плохих проектных решений. 
+
+При всём уважении, вынужден отметить, что Линус сказал полную чушь. Язык программирования по определению не может быть причиной плохих проектных решений. Потому что язык - это инструмент, с помощью которого <strong>реализуют</strong> проектные решения, и если они плохие (по вине проектировщика), то язык вряд ли поможет. Я и на С видел программы, являющиеся (с проектной точки зрения) отвратительными уродами. 
+
+<p style="padding-left: 30px"><font color="blue"><i><span style="font-size: 250%">"</span>Вы неизбежно начинаете использовать «изящные» возможности таких библиотек языка, как STL, Boost и другую подобную ерунду, которая может «помочь» вам программировать, однако добиваетесь этим только: 
+- бесконечного геморроя, когда они не работают (и каждый, кто скажет мне, что STL и, в особенности, Boost, стабильны и переносимы, просто несет полный бред, и это даже не смешно).
+
+Значит, Комитет по стандартизации С++ состоит из глупцов. Да и сам Страуструп, выходит, глупец. С помощью STL и Boost были созданы прекрасные программные продукты. Однако это стало возможным потому, что эти инструменты использовались <strong>правильно</strong>, а не абы как. Верно сказал Страуструп: <em>"Никакие языковые средства не могут помешать программисту писать плохие программы"</em>.
+
+<p style="padding-left: 30px"><font color="blue"><i><span style="font-size: 250%">"</span>- создания неэффективных, оторванных от жизни программных моделей; в результате через пару лет вы замечаете, что некоторые абстракции не слишком эффективны, однако весь ваш код уже находится в зависимости от всех этих изящных объектных моделей, и вы не можете исправить его, не переписав при этом всё приложение.
+
+Опять субъективное утверждение. Если программист создал "неэффективную, оторванную от жизни программную модель", то причина тому - его проектные ошибки, а не язык С++. Разумеется, если программист заложил в код жесткую зависимость от "изящных объектных моделей", спроектированных в основе своей некорректно (например, без обеспечения простоты сопровождения и расширения функциональности), тогда конечно, исправить это можно будет только "переписав все приложение". Неужели в этом виноват сам С++? Не думаю...
+
+<p style="padding-left: 30px"><font color="blue"><i><span style="font-size: 250%">"</span>Кроме того, использование языка C означает, что никто не испортит ваш проект...
+
+Неужели? Вот так новость. Я-то думал, что испортить проект на С очень просто... Как и вообще любой проект, написанный на каком угодно языке. Это всё равно что сказать: "Вот эти кирпичи действительно гарантируют, что стена, из них выложенная, никогда не получиться кривой". По-моему, за кривизну стены в первую очередь отвечают каменщики. Известно, что абсолютно подавляющее большинство провалившихся программных проектов потерпели крах вовсе не из-за используемого языка программирования, а из-за проектных ошибок.
+
+<p style="padding-left: 30px"><font color="blue"><i><span style="font-size: 250%">"</span>... и вы сможете найти кучу программистов, которые действительно разбираются в низкоуровневых проблемах и не испортят все дело какой-нибудь идиотской объектно-моделируемой чепухой.
+
+Ну, здесь без комментариев. 
+
+Итак, Линус Торвальдс - прекрасный программист, однако его отношение к С++ весьма субъективно, а зачастую и в высшей степени предвзято.
+
+Есть что сказать? Приглашаю на <a href="http://www.cppforum.ru/forum/">форум</a>.
+
+P.S. 
+<em>Кстати, оказывается, что не я один ответил Линусу. Вот <strong><a href="http://warp.povusers.org/OpenLetters/ResponseToTorvalds.html">здесь</a></strong> вы можете прочитать (правда, на английском) ещё один ответ.</em>
+</i></font></p></i></font></p></i></font></p></i></font></p></i></font></p></i></font></p></i></font></p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2011/9/19/boost_foreach.html" class="btn" title="Знаете, во что превращается BOOST_FOREACH?">Previous article</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2011/9/19/c-c.html" class="btn" title="C/C++: когда же умрёт эта связка?..">Next article</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Денис Шевченко. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="Денис Шевченко on Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="Денис Шевченко on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="Денис Шевченко on Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="Денис Шевченко on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="Денис Шевченко on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

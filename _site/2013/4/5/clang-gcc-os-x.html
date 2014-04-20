@@ -1,0 +1,254 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<title>Clang вместо GCC на OS X: первый опыт &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="Clang вместо GCC на OS X: первый опыт">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Clang вместо GCC на OS X: первый опыт">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2013/4/5/clang-gcc-os-x.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2013/4/5/clang-gcc-os-x.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Articles</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://mademistakes.com">Made Mistakes</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Clang вместо GCC на OS X: первый опыт</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span>
+        <span class="entry-date date published"><time datetime="2013-04-05T00:00:00+04:00"><i class="icon-calendar-empty"></i> April 05, 2013</time></span>
+        
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2013/4/5/clang-gcc-os-x.html" rel="bookmark" title="Clang вместо GCC на OS X: первый опыт"><i class="icon-link"></i> Permalink</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <p>В общем, не GCC единым жив программист…</p>
+
+<p>Я слышал о Clang уже давно. “Замена для GCC” - так позиционируется Clang в википедии. Признаться, я не очень понимал, зачем нужно заменять GCC, если он стал уже стандартом де-факто во всех Unix-подобных системах. Однако, как выяснилось, я отстал от жизни, ведь уже год назад разработчики FreeBSD заменили GCC на Clang. И это при том, что FreeBSD всегда считалась весьма консервативной ОС.</p>
+
+<p>В общем, я решил рискнуть - и попробовать это хозяйство. Дело в том, что шальная мысль - а именно перейти с Qt 4.8.1 на Qt 5.0.1 для Style Revisor - вылилась в твёрдое решение, и я подумал: а что если скомпилировать новую версию Style Revisor с помощью Clang? (Вообще-то была мысль попробовать свеженький GCC 4.8.0, но как вспомню, сколько часов его нужно компилить… В общем, поленился я…)</p>
+
+<p>Сказано - сделано. А что сделано - о том и раскажу.</p>
+
+<p>Итак:</p>
+<ol>
+  <li>Идём на страницу скачивания: http://llvm.org/releases/download.html#3.2.</li>
+  <li>Находим ссылку: <strong>Clang Binaries for MacOS X/x86_64</strong>.</li>
+  <li>Скачиваем и распаковываем архив.</li>
+  <li>Переименовываем с длинного <strong>clang+llvm-3.2-x86_64-apple-darwin11</strong> во что-нибудь покороче, я решил назвать просто <strong>clang</strong>.</li>
+  <li>Копируем это хозяйство в какое-нибудь удобное место. У меня это <strong>/Users/dshevchenko/Tools</strong>.</li>
+</ol>
+<p>Возможно, вы будете удивлены, но это всё. :)</p>
+
+<p>Создаём в домашней папке пробный main.cpp, и вводим следующую команду:</p>
+<cpp>
+~/Tools/clang/bin/clang++ -std=c++11 -stdlib=libc++ -I/usr/local/include/libcxx main.cpp -o hello
+</cpp>
+<p>А вот теперь пару слов об этой самой команде…</p>
+
+<p>Ну, флаг <strong>-std=c++11</strong> знаком нам уже очень хорошо (а если кто не знает - этот флаг говорит компилятору о необходимости вспомнить стандарт C++11), но что такое <strong>-stdlib=libc++</strong> и зачем мы указываем Clang-у какие-то дополнительные заголовочники через флаг <strong>-I</strong>?</p>
+
+<p>Дело в том, что Clang в качестве стандартной библиотеки C++ может использовать два варианта: либо стандартную библиотеку, идущую вместе с GCC (а именно libstdc++), либо свою собственную. Я решил не мудрствовать лукаво, и использовать первый вариант. В конце концов, стоило ли брать компилятор А, чтобы использовать вместе с ним библитеку, идущую с компилятором Б?</p>
+
+<p>Итак, стандартная библиотека C++, о которой пойдёт речь, носит имя <strong>libc++</strong>. Вот её страница: http://libcxx.llvm.org. В описании читаем:</p>
+<pre>
+libc++ is a new implementation of the C++ standard library, targeting C++11.
+</pre>
+<p>Ну что ж, звучит обнадёживающе. Более того, собирать эту библиотеку мне не пришлось, ибо она уже лежала в <strong>/usr/lib</strong>.</p>
+
+<p>Однако STL-заголовочники я решил обновить, дабы свежее было. Тут всё просто:</p>
+<ol>
+  <li>Выполняем команду <strong>svn co http://llvm.org/svn/llvm-project/libcxx/trunk/include libcxx</strong>.</li>
+  <li>Копируем папку в какое-нибудь понятное место, у меня это <strong>/usr/local/include</strong>.</li>
+</ol>
+<p>Собственно, всё. Именно поэтому мы и должны указать Clang-у факт того, что хотим использовать <strong>libc++</strong> в качестве стандартной библиотеки, а также путь к новым STL-заголовочникам.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/3/11/.html" class="btn" title="Итераторы: вновь получил по башке">Previous article</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/4/16/.html" class="btn" title="О нативности интерфейса: форма и содержание">Next article</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Денис Шевченко. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="Денис Шевченко on Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="Денис Шевченко on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="Денис Шевченко on Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="Денис Шевченко on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="Денис Шевченко on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<title>C++11: и снова о литералах, на этот раз о сырых &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="C++11: и снова о литералах, на этот раз о сырых">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++11: и снова о литералах, на этот раз о сырых">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2013/9/25/c11.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2013/9/25/c11.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Articles</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://mademistakes.com">Made Mistakes</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">C++11: и снова о литералах, на этот раз о сырых</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span>
+        <span class="entry-date date published"><time datetime="2013-09-25T00:00:00+04:00"><i class="icon-calendar-empty"></i> September 25, 2013</time></span>
+        
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2013/9/25/c11.html" rel="bookmark" title="C++11: и снова о литералах, на этот раз о сырых"><i class="icon-link"></i> Permalink</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <!--break-->
+<p>Да, именно так называется одно из нововведений C++11: “Raw string literals”. Штука простая, но весьма полезная.</p>
+
+<p>Итак, имеется код:</p>
+
+<cpp>
+int main() {
+    std::cerr &lt;&lt; "Code name is "Bird"." &lt;&lt; std::endl;
+}
+</cpp>
+
+<p>Разумеется, сей код не скомпилируется. Да, мы хотели вывести строку вида:</p>
+
+<bash>
+Code name is "Bird".
+</bash>
+
+<p>Однако симметрия двойных кавычек говорит компилятору о двух строковых литералах и странном идентификаторе Bird между ними.</p>
+
+<p>В этом случае кавычки вокруг слова Bird необходимо экранировать бэкслэшем:</p>
+
+<cpp>
+    std::cerr &lt;&lt; "Code name is \"Bird\"." &lt;&lt; std::endl;
+</cpp>
+
+<p>Но, как мы знаем, в Комитете по стандартизации C++ сидят люди довольно-таки ленивые, и пришла им в голову мысль о том, как не писать все эти обратные слэши. И вот до чего они додумались:</p>
+
+<cpp>
+    std::cerr &lt;&lt; R"(Code name is "Bird".)" &lt;&lt; std::endl;
+</cpp>
+
+<p>В этом случае мы получим именно то, что нам было нужно:</p>
+
+<bash>
+Code name is "Bird".
+</bash>
+
+<p>Перед нами тот самый “сырой строковый литерал”, об этом сигнализирует буква R вначале. Общее правило таково:</p>
+
+<cpp>
+R"(...)"
+</cpp>
+
+<p>Всё то, что <em>между</em> круглыми скобками (исключая оные) - это и есть сырой литерал. Почему сырой? Потому что все символы в нём воспринимаются “как есть”, и экранировать ничего не нужно:</p>
+
+<cpp>
+    std::cerr &lt;&lt; R"(single " quote)" &lt;&lt; std::endl;
+</cpp>
+
+<p>Вывод будет корректным, несмотря на нарушение симметрии двойных кавычек, а всё потому, что вторая по счёту кавычка теперь воспринимается “как есть”, ибо она является частью сырого литерала.</p>
+
+<p>Кстати, сырые литералы не являются новшеством последнего эшелона: они были доступны уже в GCC 4.5 и в Clang 3.0.</p>
+
+<p>Но зачем всё это нужно, спросите вы? Я вижу несколько практических применений.</p>
+
+<h3>Работа с текстами</h3>
+
+<p>Допустим, нам нужно сформировать кусочек HTML-кода веб-страницы следующего вида:</p>
+
+<cpp>
+<head>
+<meta charset="UTF-8" />
+<title>Source code formatter for Mac | StrictCode</title>
+<link rel="pingback" href="http://strictcodeapp.com/xmlrpc.php" />
+<script type="text/javascript">
+document.documentElement.className = 'js';
+</script>
+</head>
+</cpp>
+
+<p>Для получения нормального результата мы должны написать так:</p>
+
+<cpp>
+std::string page( "<head>\n\
+&lt;meta charset=\"UTF-8\" /&gt;\n\
+<title>Source code formatter for Mac | StrictCode</title>\n\
+&lt;link rel=\"pingback\" href=\"http://strictcodeapp.com/xmlrpc.php\" /&gt;\n\
+&lt;script type=\"text/javascript\"&gt;\n\
+document.documentElement.className = 'js';\n\
+\n\
+</head>" );
+</cpp>
+
+<p>Мы экранировали все внутренние двойные кавычки, расставили ‘\n’ для переноса строки, да ещё и расставили конкатенирующие бэкслэши для соединения литерала воедино.</p>
+
+<p>А теперь представьте себе, что код этой страницы был бы раз в десять больше. Расставлять вручную все эти бэкслэши ну совсем не хочется. Хочется просто скопировать код откуда-нибудь и вставить себе в файл. Тут-то и приходят на помощь сырые литералы:</p>
+
+<cpp>
+std::string page( R"(<head>
+<meta charset="UTF-8" />
+<title>Source code formatter for Mac | StrictCode</title>
+<link rel="pingback" href="http://strictcodeapp.com/xmlrpc.php" />
+<script type="text/javascript">
+document.documentElement.className = 'js';
+</script>
+</head>)" );
+</cpp>
+
+<p>Мы просто указали, что сие есть сырой литерал. Всё! Никакого экранирования, никаких ‘\n’ и никакой конкатенации, вывод будет именно таким, как мы и хотели.</p>
+
+<p>Кроме того, если вам нужно скопировать этот код из своего файла куда-то, то там, наоборот, придётся убирать все эти экранирующие штуковины. Согласитесь, это неудобно.</p>
+
+<p>Или же, допустим, нам нужно подготовить строку с (по-настоящему большим) текстом, скажем, каким-нибудь лицензионным соглашением. Вы представляете себе, сколько там может быть кавычек? А сколько раз придётся ставить ‘\n’?..</p>
+
+<h3>Регулярные выражения</h3>
+
+<p>Ещё одна область применения сырых литералов - регулярные выражения. Как известно, есть несколько символов, которые в теле регулярного выражения несут специальный смысл. В частности, по синтаксису Perl, вот они:</p>
+
+<ol>
+  <li><code>.</code></li>
+  <li><code>[</code></li>
+  <li><code>{</code></li>
+  <li><code>}</code></li>
+  <li><code>(</code></li>
+  <li><code>)</code></li>
+  <li><code>\</code></li>
+  <li><code>*</code></li>
+  <li><code>+</code></li>
+  <li><code>?</code></li>
+  <li><code>|</code></li>
+  <li><code>^</code></li>
+  <li><code>$</code></li>
+</ol>
+
+<p>Естественно, если мне нужно использовать любой из этих символов сам по себе, мне опять-таки нужно его экранировать.</p>
+
+<p>Вспомним пример из документации к <strong><a href="http://www.boost.org/doc/libs/1_54_0/libs/regex/doc/html/boost_regex/introduction_and_overview.html">Boost.Regex</a></strong>:</p>
+
+<cpp>
+bool validate_card_format( const std::string&amp; s ) {
+   static const std::regex e( "(\d{4}[- ]){3}\d{4}" );
+   return std::regex_match(s, e);
+}
+</cpp>
+
+<p>При внимательном рассмотрении вы можете заметить, что в коде допущена ошибка. Во-первых, компилятор ругнётся на то, что не знает комбинацию ‘\d’, а во-вторых, само выражение работать не будет, потому что бэкслэш не экранирован. Необходимо написать так:</p>
+
+<cpp>
+   static const std::regex e( "(\\d{4}[- ]){3}\\d{4}" );
+</cpp>
+
+<p>Но с сырым литералом можно написать напрямую:</p>
+
+<cpp>
+    static const std::regex e( R"((\d{4}[- ]){3}\d{4})" );
+</cpp>
+
+<p>А теперь представьте себе, что выражение будет вот такого размера:</p>
+
+<cpp>
+"(^[[:blank:]]*#(?:[^\\\\\\n]|\\\\[^\\n[:punct:][:word:]]*[\\n[:punct:][:word:]])*)|"
+"(//[^\\n]*|/\\*.*?\\*/)|"
+"\\&lt;([+-]?(?:(?:0x[[:xdigit:]]+)|(?:(?:[[:digit:]]*\\.)"
+"?[[:digit:]]+(?:[eE][+-]?[[:digit:]]+)?))u?(?:(?:int(?:8|16|32|64))|L)?)\\&gt;|"
+"('(?:[^\\\\']|\\\\.)*'|\"(?:[^\\\\\"]|\\\\.)*\")|"
+"\\&lt;(__asm|__cdecl|__declspec|__export|__far16|__fastcall|__fortran|__import"
+"|__pascal|__rtti|__stdcall|_asm|_cdecl|__except|_export|_far16|_fastcall"
+"|__finally|_fortran|_import|_pascal|_stdcall|__thread|__try|asm|auto|bool"
+"|break|case|catch|cdecl|char|class|const|const_cast|continue|default|delete"
+"|do|double|dynamic_cast|else|enum|explicit|extern|false|float|for|friend|goto"
+"|if|inline|int|long|mutable|namespace|new|operator|pascal|private|protected"
+"|public|register|reinterpret_cast|return|short|signed|sizeof|static|static_cast"
+"|struct|switch|template|this|throw|true|try|typedef|typeid|typename|union|unsigned"
+"|using|virtual|void|volatile|wchar_t|while)\\&gt;"
+</cpp>
+
+<p>Нехило, правда? А ведь это пример из <strong><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2146.html#Motivating">реальной программы</a></strong>. Представьте себе, что нам нужно скопировать подобное заготовленное выражение к себе в код, а потом корректно расставить все эти экранирующие бэкслэши. В этом случае сырые литералы представляются чрезвычайно полезным инструментом.</p>
+
+<h3>Ну и что же мы имеем в итоге?</h3>
+
+<p>Мы имеем чрезвычайно полезный механизм, который (в ряде случаев) может сэкономить нам кучу времени. Помню, как я работал с разными протоколами и заготовками строк. Если бы мне тогда был доступен этот механизм, я был бы очень и очень рад.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/9/21/c11.html" class="btn" title="C++11: пользовательские литералы">Previous article</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/10/10/.html" class="btn" title="Исключение в конструкторе: о, сколько нам открытий чудных...">Next article</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Денис Шевченко. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="Денис Шевченко on Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="Денис Шевченко on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="Денис Шевченко on Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="Денис Шевченко on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="Денис Шевченко on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://denisshevchenko.github.io/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/" />
-<updated>2014-04-18T17:18:55+04:00</updated>
+<updated>2014-04-21T01:08:25+04:00</updated>
 <id>http://denisshevchenko.github.io/blog/</id>
 <author>
   <name>Денис Шевченко</name>
@@ -14,479 +14,1800 @@
 
 
 <entry>
-  <title type="html"><![CDATA[Syntax Highlighting Post]]></title>
-  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/articles/2013/8/16/code-highlighting-post.html"/>
-  <id>http://denisshevchenko.github.io/blog/articles/2013/8/16/code-highlighting-post</id>
-  <published>2013-08-16T00:00:00+04:00</published>
-  <updated>2013-08-16T00:00:00+04:00</updated>
+  <title type="html"><![CDATA[О Haskell по-человечески: уже онлайн]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/4/14/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/4/14/haskell</id>
+  <published>2014-04-14T00:00:00+04:00</published>
+  <updated>2014-04-14T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;p&gt;Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+  <content type="html">&lt;p&gt;Приветствую, друзья!&lt;/p&gt;
 
-&lt;h3 id=&quot;pygments-code-blocks&quot;&gt;Pygments Code Blocks&lt;/h3&gt;
+&lt;p&gt;Рад сообщить, что моя книга теперь уютно живёт &lt;strong&gt;&lt;a href=&quot;http://ohaskell.ru/fst&quot;&gt;онлайн&lt;/a&gt;&lt;/strong&gt;. Я чуток подкорректировал &lt;strong&gt;&lt;a href=&quot;https://github.com/GitbookIO/gitbook/tree/master/theme&quot;&gt;умолчальную тему&lt;/a&gt;&lt;/strong&gt;, убрав из неё всё лишнее. Получилось лаконично, симпатично и мобильно-адаптивно.&lt;/p&gt;
 
-&lt;p&gt;To modify styling and highlight colors edit &lt;code&gt;/assets/less/pygments.less&lt;/code&gt; and compile &lt;code&gt;main.less&lt;/code&gt; with your favorite preprocessor. Or edit &lt;code&gt;main.css&lt;/code&gt; if that&amp;#8217;s your thing, the classes you want to modify all begin with &lt;code&gt;.highlight&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Многие читатели просили меня об этом, и наконец решение принято: теперь книга существует в формате Markdown &lt;strong&gt;&lt;a href=&quot;https://github.com/denisshevchenko/ohaskell&quot;&gt;в своём репозитории&lt;/a&gt;&lt;/strong&gt;. Все остальные форматы книги также будут создаваться из Markdown-файлов, так будет удобнее всем. Мне очень понравился формат Markdown, поэтому и второй том книги будет написан в нём.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Кстати, о втором томе… Началась работа над маленьким проектом, описание которого ляжет в основу этого тома. Впрочем, работа над первым томом не завершена: он ещё будет дополнен и улучшен. Ждите новостей.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;pagination&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;navigation&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    {% if page.previous %}
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{ site.url }}{{ page.previous.url }}&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{ page.previous.title }}&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Previous article&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-    {% endif %}
-    {% if page.next %}
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{ site.url }}{{ page.next.url }}&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{ page.next.title }}&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Next article&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-    {% endif %}
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- /.pagination --&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/4/14/haskell.html&quot;&gt;О Haskell по-человечески: уже онлайн&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on April 14, 2014.&lt;/p&gt;</content>
+</entry>
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TagIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Page&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;vi&quot;&gt;@site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;
-      &lt;span class=&quot;vi&quot;&gt;@base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;
-      &lt;span class=&quot;vi&quot;&gt;@dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;
-      &lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;
-      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_yaml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;_layouts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;tag_index.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tag&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;tag_title_prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tag_title_prefix&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Tagged: &amp;#39;&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;tag_title_suffix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;tag_title_suffix&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;amp;#8211;&amp;#39;&lt;/span&gt;
-      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag_title_prefix&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
-      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;An archive of posts tagged &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;standard-code-block&quot;&gt;Standard Code Block&lt;/h3&gt;
+<entry>
+  <title type="html"><![CDATA[GitBook: как я строил веб-книгу]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/4/7/gitbook.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/4/7/gitbook</id>
+  <published>2014-04-07T00:00:00+04:00</published>
+  <updated>2014-04-07T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Многие из читателей пожелали видеть HTML-версию моей книги. Думал я, думал - и наткнулся на прекрасный инструмент &lt;strong&gt;&lt;a href=&quot;http://www.gitbook.io/&quot;&gt;GitBook&lt;/a&gt;&lt;/strong&gt;. А что из этого вышло - читайте здесь: http://habrahabr.ru/post/218433.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;nav class=&quot;pagination&quot; role=&quot;navigation&quot;&amp;gt;
-    {% if page.previous %}
-        &amp;lt;a href=&quot;{{ site.url }}{{ page.previous.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.previous.title }}&quot;&amp;gt;Previous article&amp;lt;/a&amp;gt;
-    {% endif %}
-    {% if page.next %}
-        &amp;lt;a href=&quot;{{ site.url }}{{ page.next.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.next.title }}&quot;&amp;gt;Next article&amp;lt;/a&amp;gt;
-    {% endif %}
-&amp;lt;/nav&amp;gt;&amp;lt;!-- /.pagination --&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Скоро вся книга будет доступна тут: http://denisshevchenko.github.io/ohaskell/index.html.&lt;/p&gt;
 
-&lt;h3 id=&quot;fenced-code-blocks&quot;&gt;Fenced Code Blocks&lt;/h3&gt;
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/4/7/gitbook.html&quot;&gt;GitBook: как я строил веб-книгу&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on April 07, 2014.&lt;/p&gt;</content>
+</entry>
 
-&lt;p&gt;To modify styling and highlight colors edit &lt;code&gt;/assets/less/coderay.less&lt;/code&gt; and compile &lt;code&gt;main.less&lt;/code&gt; with your favorite preprocessor. Or edit &lt;code&gt;main.css&lt;/code&gt; if that&amp;#8217;s your thing, the classes you want to modify all begin with &lt;code&gt;.coderay&lt;/code&gt;. Line numbers and a few other things can be modified in &lt;code&gt;_config.yml&lt;/code&gt; under &lt;code&gt;coderay&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;#container {
-    float: left;
-    margin: 0 -240px 0 0;
-    width: 100%;
+<entry>
+  <title type="html"><![CDATA[О Haskell по-человечески: четвёртое издание]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/4/1/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/4/1/haskell</id>
+  <published>2014-04-01T00:00:00+04:00</published>
+  <updated>2014-04-01T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Итак, сегодня вышло в свет издание 0.4. Нет, это не первоапрельская шутка. Из новшеств:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Глава про интеграцию Haskell с языком C.&lt;/li&gt;
+  &lt;li&gt;Корректировка PDF: новый шрифт, улучшенная структура.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Изучение просторов Stackoverflow убедительно доказало мне, что многих разработчиков интересует тема интеграции Haskell-приложения с модулями, написанными на иных языках. Но, когда я сам стал изучать эту тему, то выяснилось, что нормальных, пошаговых и понятных с &lt;em&gt;первого&lt;/em&gt; прочтения материалов по этому вопросу нет (впрочем, возможно я плохо искал). Именно поэтому в книгу добавлена глава про прикручивание C-функций к Haskell.&lt;/p&gt;
+
+&lt;p&gt;Ну и по поводу PDF. Читатели обращались ко мне с жалобами, что со шрифтом, используемым в предыдущих изданиях, у них были проблемы. В частности, в Adobe Reader на Windows 7 некоторые буквы отображались криво, ну а в Firefox на Windows 7 - там вообще была плохочитаемый текст. Теперь всё выглядит значительно красивее: я нашёл прекрасный, неизбитый шрифт “Пермиан” (http://pcrd.ru/projects/167).&lt;/p&gt;
+
+&lt;p&gt;Так что обновляйтесь, друзья: http://ohaskell.ru/&lt;/p&gt;
+
+&lt;p&gt;P.S. К следующему изданию всё-таки доберусь до монадных трансформеров…&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/4/1/haskell.html&quot;&gt;О Haskell по-человечески: четвёртое издание&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on April 01, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[О Haskell по-человечески и по-английски!]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/3/17/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/3/17/haskell</id>
+  <published>2014-03-17T00:00:00+04:00</published>
+  <updated>2014-03-17T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Я в шоке, друзья!&lt;/p&gt;
+
+&lt;p&gt;Вчера решил ради прикола опубликовать новость о третьем издании моей книги на Reddit. Ну, опубликовал в Haskell-группе. (http://redd.it/20k2we). Но, поскольку Reddit - это англоязычное сообщество, я не думал, что будет большой интерес к моей новости, тем более что опубликована она была по-русски.&lt;/p&gt;
+
+&lt;p&gt;И тут мне пишут в комментарии, мол, а английский перевод вашей книги будет? Признаюсь, такого вопроса я точно не ожидал. А один из пользователей написал мне письмо, в котором также высказал идею о переводе. Я отвечаю, мол, спасибо на добром слове, но едва ли моя книга сможет соперничать с этой книгой: “Beginning Haskell, A Project-Based Approach”, http://www.apress.com/9781430262503. А он мне отвечает, мол, ваша книги лучше, потому что в ней нет “воды” и всё по делу.&lt;/p&gt;
+
+&lt;p&gt;А сегодня я зашёл в обсуждение на Reddit, посмотреть последние комментарии, и чуть со стула не упал: пока я спал, один разработчик Jack Henahan, из университета в Вермонте, создал GitHub-репозиторий для группового английского перевода моей книги! Я даже глазам не поверил, но потом зашёл - и правда: https://github.com/jhenahan/ohaskell-translations.&lt;/p&gt;
+
+&lt;p&gt;Признаться, к интересу со стороны моих англоязычных коллег я не был готов. Но раз он появился - я, разумеется, подключусь к переводу. Это будет классный проект!&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/3/17/haskell.html&quot;&gt;О Haskell по-человечески и по-английски!&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on March 17, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[О Haskell по-человечески: первое издание]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/3/5/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/3/5/haskell</id>
+  <published>2014-03-05T00:00:00+04:00</published>
+  <updated>2014-03-05T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Готово! Первое издание моей скромной книги о Haskell вышло в свет.&lt;/p&gt;
+
+&lt;p&gt;Живёт оно тут: http://ohaskell.ru.&lt;/p&gt;
+
+&lt;p&gt;Прямая ссылка: http://ohaskell.ru/get/ohaskell.pdf.&lt;/p&gt;
+
+&lt;p&gt;Распространение книги в любой форме - приветствуется!&lt;/p&gt;
+
+&lt;p&gt;Любые отзывы о книге, вопросы, предложения, а также разгромную критику присылайте прямиком на мою почту: me@dshevchenko.biz. Или прямо сюда, в комментариях. &lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/3/5/haskell.html&quot;&gt;О Haskell по-человечески: первое издание&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on March 05, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[О геттерах и сеттерах]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/2/27/.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/2/27/</id>
+  <published>2014-02-27T00:00:00+04:00</published>
+  <updated>2014-02-27T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;!--break--&gt;
+&lt;p&gt;Итак, есть у нас следующий код:&lt;/p&gt;
+
+&lt;cpp&gt;
+class worker {
+    unsigned int m_id;
+public:
+    unsigned int get_id() const {
+        return m_id;
+    }
+    
+    void set_id( unsigned int new_id ) {
+        m_id = new_id;
+    }
+};
+&lt;/cpp&gt;
+
+&lt;p&gt;Перед нами - канонические геттер и сеттер. Первый &lt;em&gt;просто&lt;/em&gt; возвращает значение идентификатора рабочего, второй - &lt;em&gt;просто&lt;/em&gt; устанавливает это значение.&lt;/p&gt;
+
+&lt;p&gt;И вот совсем недавно я со всею остротой понял, сколь бессмысленны канонические геттеры и сеттеры. От них нет абсолютно никакой пользы. Они только усложняют нашу жизнь.&lt;/p&gt;
+
+&lt;p&gt;Сравним:&lt;/p&gt;
+
+&lt;cpp&gt;
+struct worker {
+    unsigned int id;
+};
+&lt;/cpp&gt;
+
+&lt;p&gt;Суть не изменилась, а код стал короче и проще.&lt;/p&gt;
+
+&lt;p&gt;Зачем мне прятать поле и при этом предоставлять две функции, открывающие доступ к нему? Это бессмысленно. К тому же на каждое поле мне придётся предоставлять по паре геттер-сеттер, и в большинстве случаев это будет два объявления и две реализации. Сравните это:&lt;/p&gt;
+
+&lt;cpp&gt;
+class worker {
+    unsigned int m_id;
+    std::string m_name;
+    std::string m_section;
+public:
+    unsigned int get_id() const;
+    void set_id( unsigned int new_id );
+
+    std::string get_name() const;
+    void set_name( const std::string&amp;amp; new_name );
+
+    std::string get_section() const;
+    void set_section( const std::string&amp;amp; new_section );
+};
+
+// Где-то в .cpp-шнике
+
+unsigned int worker::get_id() const {
+    return m_id;
 }
-&lt;/code&gt;&lt;/pre&gt;
+    
+void worker::set_id( unsigned int new_id ) {
+    m_id = new_id;
+}
 
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;nav class=&quot;pagination&quot; role=&quot;navigation&quot;&amp;gt;
-    {% if page.previous %}
-        &amp;lt;a href=&quot;{{ site.url }}{{ page.previous.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.previous.title }}&quot;&amp;gt;Previous article&amp;lt;/a&amp;gt;
-    {% endif %}
-    {% if page.next %}
-        &amp;lt;a href=&quot;{{ site.url }}{{ page.next.url }}&quot; class=&quot;btn&quot; title=&quot;{{ page.next.title }}&quot;&amp;gt;Next article&amp;lt;/a&amp;gt;
-    {% endif %}
-&amp;lt;/nav&amp;gt;&amp;lt;!-- /.pagination --&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+std::string worker::get_name() const {
+    return m_name;
+}
+    
+void worker::set_name( const std::string&amp;amp; new_name ) {
+    m_name = new_name;
+}
 
-&lt;pre&gt;&lt;code class=&quot;language-ruby&quot;&gt;module Jekyll
-  class TagIndex &amp;lt; Page
-    def initialize(site, base, dir, tag)
-      @site = site
-      @base = base
-      @dir = dir
-      @name = 'index.html'
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag_index.html')
-      self.data['tag'] = tag
-      tag_title_prefix = site.config['tag_title_prefix'] || 'Tagged: '
-      tag_title_suffix = site.config['tag_title_suffix'] || '&amp;amp;#8211;'
-      self.data['title'] = &quot;#{tag_title_prefix}#{tag}&quot;
-      self.data['description'] = &quot;An archive of posts tagged #{tag}.&quot;
-    end
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Syntax_highlighting&quot;&gt;http://en.wikipedia.org/wiki/Syntax_highlighting&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
+std::string worker::get_section() const {
+    return m_section;
+}
+    
+void worker::set_section( const std::string&amp;amp; new_section ) {
+    m_section = new_section;
+}
+&lt;/cpp&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/articles/2013/8/16/code-highlighting-post.html&quot;&gt;Syntax Highlighting Post&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on August 16, 2013.&lt;/p&gt;</content>
+&lt;p&gt;и это:&lt;/p&gt;
+
+&lt;cpp&gt;
+struct worker {
+    unsigned int id;
+    std::string name;
+    std::string section;
+};
+&lt;/cpp&gt;
+
+&lt;p&gt;Фундаментальная проблема канонических геттеров и сеттеров в том, что они раздувают мой код и привносят в него ненужную сложность, при этом ничего не давая мне взамен. А почему же этих геттеров и сеттеров полно в 99% всех C++-проектов? Виной тому - маниакальная страсть закрывать поля просто потому, что “в соответствии с принципом инкапсуляции данные должны быть сокрыты”.&lt;/p&gt;
+
+&lt;p&gt;Должны быть сокрыты? Так скрывай их в pimpl, и будет тебе счастье. А то, видите-ли, объявил со словом &lt;strong&gt;&lt;code&gt;private&lt;/code&gt;&lt;/strong&gt;, но при этом предоставил две функции, сводящие всю эту &lt;strong&gt;&lt;code&gt;private&lt;/code&gt;&lt;/strong&gt;-ность к нулю. И чем это отличается от открытого поля? Ничем. &lt;/p&gt;
+
+&lt;p&gt;Вывод: выкидывайте канонические геттеры и сеттеры. Окончательно и бесповоротно. А поля, к которым необходим &lt;em&gt;простой&lt;/em&gt; read-write доступ извне, просто делайте открытыми.&lt;/p&gt;
+
+&lt;h3&gt;Уточнение&lt;/h3&gt;
+
+&lt;p&gt;Вы заметили, я всё время повторяю слово “канонические”. Речь шла только о таких геттерах и сеттерах, которые &lt;em&gt;просто&lt;/em&gt; возвращают и &lt;em&gt;просто&lt;/em&gt; изменяют. Но при этом я вполне могу оправдать сеттер, который, помимо установки значения, производит некую проверку (и кричит на всю Ивановскую в случае проблем).&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/2/27/.html&quot;&gt;О геттерах и сеттерах&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on February 27, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
-  <title type="html"><![CDATA[Sample Link Post]]></title>
-  <link rel="alternate" type="text/html" href="http://mademistakes.com"/>
-  <id>http://denisshevchenko.github.io/blog/articles/2013/8/12/sample-link-post</id>
-  <published>2013-08-12T00:00:00+04:00</published>
-  <updated>2013-08-12T00:00:00+04:00</updated>
+  <title type="html"><![CDATA[Об IT-книгах: пара мыслей вслух]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/2/22/it.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/2/22/it</id>
+  <published>2014-02-22T00:00:00+04:00</published>
+  <updated>2014-02-22T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;p&gt;So Simple Theme now supports &lt;strong&gt;link posts&lt;/strong&gt;, made famous by John Gruber. To activate just add &lt;code&gt;link: http://url-you-want-linked&lt;/code&gt; to the post&amp;#8217;s YAML front matter and you&amp;#8217;re done.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Недавно задумался о книгах… На мой взгляд, электронная книга уже победила бумажную. Люди всё больше привыкают к мысли о том, что книга в виде файла столь же книжная, как и книга в виде бумаги и клея.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/articles/2013/8/12/sample-link-post.html&quot;&gt;Sample Link Post&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on August 12, 2013.&lt;/p&gt;</content>
+&lt;p&gt;В самом деле, почему бы и нет? Купил электронную читалку - и в ней вся твоя библиотека. Удобное и компактное устройство в высшей степени мобильно. А экраны e-ink просто прекрасны! И никаких тебе книжных шкафов, заставленных устаревшей IT-литературой. Вот у меня сейчас лежит десятка три книг, которые уже беспросветно устарели, и больше не нужны ни мне, ни кому-либо из моих коллег. А выбросить… Да вроде как-то жалко, что ли… А электронную книгу - два клика и нету.&lt;/p&gt;
+
+&lt;p&gt;А цены? Вы их видели? Электронная копия издания как минимум в два раза дешевле бумажной (а то и в три). К тому же, сейчас появилось много мест, где можно легально и быстро купить электронные издания. Ведь издательства тоже держат нос по ветру, поэтому электронный вариант бумажной книги - это уже не исключение, а почти правило.&lt;/p&gt;
+
+&lt;p&gt;И кстати, ещё один фактор есть - экономия бумаги. Не улыбайтесь, эта тема серьёзнее чем думают многие. Почему бы не внести свой крошечный вклад в дело сохранения мировых лесов?&lt;/p&gt;
+
+&lt;p&gt;В общем, электронная книга - это хорошо.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/2/22/it.html&quot;&gt;Об IT-книгах: пара мыслей вслух&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on February 22, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
-  <title type="html"><![CDATA[A Post with a Video]]></title>
-  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/articles/2013/6/25/video-post.html"/>
-  <id>http://denisshevchenko.github.io/blog/articles/2013/6/25/video-post</id>
-  <published>2013-06-25T00:00:00+04:00</published>
-  <updated>2013-06-25T00:00:00+04:00</updated>
+  <title type="html"><![CDATA[После долгого затишья...]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/2/12/.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/2/12/</id>
+  <published>2014-02-12T00:00:00+04:00</published>
+  <updated>2014-02-12T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/SqYiglufb8Y&quot; frameborder=&quot;0&quot;&gt; &lt;/iframe&gt;
+  <content type="html">&lt;p&gt;Прошу прощения за длительное безмолвие. Все силы, свободные от основной работы, ушли на написание руководства по языку Haskell. Скоро, очень скоро оно будет готово. &lt;/p&gt;
 
-&lt;p&gt;Video embeds are responsive and scale with the width of the main content block with the help of &lt;a href=&quot;http://fitvidsjs.com/&quot;&gt;FitVids&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;В процессе его написания я ещё больше убедился в том, что функциональное программирование в целом (и Haskell в частности) - это чрезвычайно интересная штуковина. И даже те аспекты этого языка, которые считаются архисложными и супернепонятными, оказались весьма логичными, удобными и совершенно не сложными.&lt;/p&gt;
 
-&lt;p&gt;Not sure if this only effects Kramdown or if it&amp;#8217;s an issue with Markdown in general. But adding YouTube video embeds causes errors when building your Jekyll site. To fix add a space between the &lt;code&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt; tags and remove &lt;code&gt;allowfullscreen&lt;/code&gt;. Example below:&lt;/p&gt;
+&lt;p&gt;Я окончательно увидел &lt;em&gt;ложность&lt;/em&gt; представления о Haskell как о языке сугубо академическом и невероятно трудном в освоении для простых программистов. Скажу прямо: если уж я смог разобраться - значит смогут и многие, многие другие.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;iframe&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;560&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;315&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://www.youtube.com/embed/PWf4WUoMXwg&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;frameborder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/articles/2013/6/25/video-post.html&quot;&gt;A Post with a Video&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on June 25, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/2/12/.html&quot;&gt;После долгого затишья...&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on February 12, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
-  <title type="html"><![CDATA[Post with Large Feature Image and Text]]></title>
-  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/articles/2013/5/23/readability-feature-post.html"/>
-  <id>http://denisshevchenko.github.io/blog/articles/2013/5/23/readability-feature-post</id>
-  <updated>2013-06-30T00:00:00-00:00</updated>
-  <published>2013-05-23T00:00:00+04:00</published>
-  
+  <title type="html"><![CDATA[Русские буквы в именах: невероятно, но факт]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/1/22/.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/1/22/</id>
+  <published>2014-01-22T00:00:00+04:00</published>
+  <updated>2014-01-22T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;p&gt;This is a sample post with a large feature image[^1] up top and tons of text. Odio ad blue bottle vinyl, 90&amp;#8217;s narwhal commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse Pinterest shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney&amp;#8217;s. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Случайно наткнулся на &lt;strong&gt;&lt;a href=&quot;http://eao197.blogspot.com/2014/01/progcwow-const-int-1.html&quot;&gt;одну заметку&lt;/a&gt;&lt;/strong&gt;, в которой говорится о живом коде на C++, в котором имена некоторых переменных набраны русскими буквами (в кодировке CP1251), и это компилируется!&lt;/p&gt;
 
-&lt;p&gt;Vero laborum commodo occupy. Semiotics voluptate mumblecore pug. Cosby sweater ullamco quinoa ennui assumenda, sapiente occupy delectus lo-fi. Ea fashion axe Marfa cillum aliquip. Retro Bushwick keytar cliche. Before they sold out sustainable gastropub Marfa readymade, ethical Williamsburg skateboard brunch qui consectetur gentrify semiotics. Mustache cillum irony, fingerstache magna pour-over keffiyeh tousled selfies.&lt;/p&gt;
+&lt;p&gt;Дай, думаю, попробую. Никакого рационального зерна тут нет, просто ради смешного эксперимента… Кодировка у меня UTF-8, но попробовать всё равно захотелось.&lt;/p&gt;
 
-&lt;h2 id=&quot;cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90&amp;#8217;s lo-fi authentic try-hard&lt;/h2&gt;
+&lt;p&gt;Итак, C++:&lt;/p&gt;
 
-&lt;p&gt;In pug Portland incididunt mlkshk put a bird on it vinyl quinoa. Terry Richardson shabby chic +1, scenester Tonx excepteur tempor fugiat voluptate fingerstache aliquip nisi next level. Farm-to-table hashtag Truffaut, Odd Future ex meggings gentrify single-origin coffee try-hard 90&amp;#8217;s. &lt;/p&gt;
+&lt;cpp&gt;
+int main() {
+    int код = 1;
+    std::cerr &amp;lt;&amp;lt; код &amp;lt;&amp;lt; std::endl;
+&lt;/cpp&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Sartorial hoodie &lt;/li&gt;
-  &lt;li&gt;Labore viral forage&lt;/li&gt;
-  &lt;li&gt;Tote bag selvage &lt;/li&gt;
-  &lt;li&gt;DIY exercitation et id ugh tumblr church-key&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;К счастью, или к сожалению, сей код не компилируется, и ошибка компиляции вполне ожидаемая:&lt;/p&gt;
 
-&lt;p&gt;Incididunt umami sriracha, ethical fugiat VHS ex assumenda yr irure direct trade. Marfa Truffaut bicycle rights, kitsch placeat Etsy kogi asymmetrical. Beard locavore flexitarian, kitsch photo booth hoodie plaid ethical readymade leggings yr.&lt;/p&gt;
+&lt;bash&gt;
+stray &#39;\320&#39; in program
+&lt;/bash&gt;
 
-&lt;p&gt;Aesthetic odio dolore, meggings disrupt qui readymade stumptown brunch Terry Richardson pour-over gluten-free. Banksy american apparel in selfies, biodiesel flexitarian organic meh wolf quinoa gentrify banjo kogi. Readymade tofu ex, scenester dolor umami fingerstache occaecat fashion axe Carles jean shorts minim. Keffiyeh fashion axe nisi Godard mlkshk dolore. Lomo you probably haven&amp;#8217;t heard of them eu non, Odd Future Truffaut pug keytar meggings McSweeney&amp;#8217;s Pinterest cred. Etsy literally aute esse, eu bicycle rights qui meggings fanny pack. Gentrify leggings pug flannel duis.&lt;/p&gt;
+&lt;p&gt;А теперь, ради эксперимента, попробуем на Haskell:&lt;/p&gt;
 
-&lt;h2 id=&quot;forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/h2&gt;
+&lt;hs&gt;
+больше_чем :: Integer -&amp;gt; Integer -&amp;gt; Bool
+больше_чем a b = a &amp;gt; b
 
-&lt;p&gt;Fashion axe hella gastropub lo-fi kogi 90&amp;#8217;s aliquip +1 veniam delectus tousled. Cred sriracha locavore gastropub kale chips, iPhone mollit sartorial. Anim dolore 8-bit, pork belly dolor photo booth aute flannel small batch. Dolor disrupt ennui, tattooed whatever salvia Banksy sartorial roof party selfies raw denim sint meh pour-over. Ennui eu cardigan sint, gentrify iPhone cornhole. &lt;/p&gt;
+main = print( 10 `больше_чем` 2 )
+&lt;/hs&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Whatever velit occaecat quis deserunt gastropub, leggings elit tousled roof party 3 wolf moon kogi pug blue bottle ea. Fashion axe shabby chic Austin quinoa pickled laborum bitters next level, disrupt deep v accusamus non fingerstache.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Вы не поверите, но это компилируется и работает! Не знаю, хорошо это или плохо, но русскоязычное имя функции допустимо, в том числе и в инфиксной форме, как здесь.&lt;/p&gt;
 
-&lt;p&gt;Tote bag asymmetrical elit sunt. Occaecat authentic Marfa, hella McSweeney&amp;#8217;s next level irure veniam master cleanse. Sed hoodie letterpress artisan wolf leggings, 3 wolf moon commodo ullamco. Anim occupy ea labore Terry Richardson. Tofu ex master cleanse in whatever pitchfork banh mi, occupy fugiat fanny pack Austin authentic. Magna fugiat 3 wolf moon, labore McSweeney&amp;#8217;s sustainable vero consectetur. Gluten-free disrupt enim, aesthetic fugiat jean shorts trust fund keffiyeh magna try-hard.&lt;/p&gt;
+&lt;p&gt;Кроме того, я могу использовать русские буквы в имени типа:&lt;/p&gt;
 
-&lt;h2 id=&quot;hoodie-duis&quot;&gt;Hoodie Duis&lt;/h2&gt;
+&lt;hs&gt;
+data IP_адрес = IP_адрес String
+&lt;/hs&gt;
 
-&lt;p&gt;Actually salvia consectetur, hoodie duis lomo YOLO sunt sriracha. Aute pop-up brunch farm-to-table odio, salvia irure occaecat. Sriracha small batch literally skateboard. Echo Park nihil hoodie, aliquip forage artisan laboris. Trust fund reprehenderit nulla locavore. Stumptown raw denim kitsch, keffiyeh nulla twee dreamcatcher fanny pack ullamco 90&amp;#8217;s pop-up est culpa farm-to-table. Selfies 8-bit do pug odio.&lt;/p&gt;
+&lt;p&gt;И это тоже работает! А как вам такое:&lt;/p&gt;
 
-&lt;h3 id=&quot;thundercats-ho&quot;&gt;Thundercats Ho!&lt;/h3&gt;
+&lt;hs&gt;
+type Строка = String
 
-&lt;p&gt;Fingerstache thundercats Williamsburg, deep v scenester Banksy ennui vinyl selfies mollit biodiesel duis odio pop-up. Banksy 3 wolf moon try-hard, sapiente enim stumptown deep v ad letterpress. Squid beard brunch, exercitation raw denim yr sint direct trade. Raw denim narwhal id, flannel DIY McSweeney&amp;#8217;s seitan. Letterpress artisan bespoke accusamus, meggings laboris consequat Truffaut qui in seitan. Sustainable cornhole Schlitz, twee Cosby sweater banh mi deep v forage letterpress flannel whatever keffiyeh. Sartorial cred irure, semiotics ethical sed blue bottle nihil letterpress.&lt;/p&gt;
+class Машина a where
+    номер :: a -&amp;gt; Строка
+&lt;/hs&gt;
 
-&lt;p&gt;Occupy et selvage squid, pug brunch blog nesciunt hashtag mumblecore skateboard yr kogi. Ugh small batch swag four loko. Fap post-ironic qui tote bag farm-to-table american apparel scenester keffiyeh vero, swag non pour-over gentrify authentic pitchfork. Schlitz scenester lo-fi voluptate, tote bag irony bicycle rights pariatur vero Vice freegan wayfarers exercitation nisi shoreditch. Chambray tofu vero sed. Street art swag literally leggings, Cosby sweater mixtape PBR lomo Banksy non in pitchfork ennui McSweeney&amp;#8217;s selfies. Odd Future Banksy non authentic.&lt;/p&gt;
+&lt;p&gt;Я чуть со стула не упал! Друзья, я не поверил своим глаза (как, вероятно, не верите и вы), но это работает! Ещё сегодня утром я был бы готов поспорить, что такое невозможно. Но, как видим, и невозможное возможно…&lt;/p&gt;
 
-&lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
+&lt;p&gt;Впрочем, я надеюсь, вы не рассматриваете эту заметочку как призыв русифицировать свой код. :)&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/articles/2013/5/23/readability-feature-post.html&quot;&gt;Post with Large Feature Image and Text&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on May 23, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/1/22/.html&quot;&gt;Русские буквы в именах: невероятно, но факт&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on January 22, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
-  <title type="html"><![CDATA[A Post with Images]]></title>
-  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/articles/2013/5/22/sample-post-images.html"/>
-  <id>http://denisshevchenko.github.io/blog/articles/2013/5/22/sample-post-images</id>
-  <published>2013-05-22T00:00:00+04:00</published>
-  <updated>2013-05-22T00:00:00+04:00</updated>
+  <title type="html"><![CDATA[Haskell: идея]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/29/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/29/haskell</id>
+  <published>2013-12-29T00:00:00+04:00</published>
+  <updated>2013-12-29T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;p&gt;Here are some examples of what a post with images might look like. If you want to display two or three images next to each other responsively use &lt;code&gt;figure&lt;/code&gt; with the appropriate &lt;code&gt;class&lt;/code&gt;. Each instance of &lt;code&gt;figure&lt;/code&gt; is auto-numbered and displayed in the caption.&lt;/p&gt;
+  <content type="html">&lt;p&gt;В общем, после долгих размышлений, после первичного восторга от ФП в целом и от Haskell в частности я решил внести свой посильный вклад в популяризацию Haskell среди русскоязычного IT-сообщества.&lt;/p&gt;
 
-&lt;h2 id=&quot;figures-for-images-or-video&quot;&gt;Figures (for images or video)&lt;/h2&gt;
+&lt;p&gt;На мой взгляд, одним из важных препятствий на пути развития Haskell в России является очень малое количество русскоязычных руководств. Нет, руководства-то имеются, но большая их часть - это те самые, с числами Фибоначчи которые…&lt;/p&gt;
 
-&lt;h3 id=&quot;one-up&quot;&gt;One Up&lt;/h3&gt;
+&lt;p&gt;Поэтому я решил не ограничиваться рамками данного блога, а сделать отдельный сайт, посвящённый практическому руководство по языку Haskell. Цель этого руководства - пошаговое, максимально понятное и предельное практичное объяснение сущности языка Haskell и вменяемая демонстрация его реального использования.&lt;/p&gt;
 
-&lt;figure&gt;
-	&lt;a href=&quot;http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_b.jpg&quot;&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_c.jpg&quot; /&gt;&lt;/a&gt;
-	&lt;figcaption&gt;&lt;a href=&quot;http://www.flickr.com/photos/80901381@N04/7758832526/&quot; title=&quot;Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr&quot;&gt;Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr&lt;/a&gt;.&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;p&gt;И тот факт, что я, мягко выражаясь, не являюсь доцентом МФТИ, как раз является преимуществом для такой задумки! Потому что если уж я смогу разобраться с этим самым Haskell, то и многие другие тоже смогут. &lt;/p&gt;
 
-&lt;h3 id=&quot;two-up&quot;&gt;Two Up&lt;/h3&gt;
+&lt;p&gt;Следите за новостями…&lt;/p&gt;
 
-&lt;p&gt;Apply the &lt;code&gt;half&lt;/code&gt; class like so to display two images side by side that share the same caption.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;figure&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;half&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/images/image-filename-1.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/images/image-filename-2.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;Caption describing these two images.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figcaption&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;And you&amp;#8217;ll get something that looks like this:&lt;/p&gt;
-
-&lt;figure class=&quot;half&quot;&gt;
-	&lt;a href=&quot;http://placehold.it/1200x600.jpg&quot;&gt;&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;&lt;/a&gt;
-	&lt;a href=&quot;http://placehold.it/1200x600.jpg&quot;&gt;&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;&lt;/a&gt;
-	&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;
-	&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;
-	&lt;figcaption&gt;Two images.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h3 id=&quot;three-up&quot;&gt;Three Up&lt;/h3&gt;
-
-&lt;p&gt;Apply the &lt;code&gt;third&lt;/code&gt; class like so to display three images side by side that share the same caption.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;figure&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;third&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://placehold.it/1200x600.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://placehold.it/600x300.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://placehold.it/1200x600.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://placehold.it/600x300.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://placehold.it/1200x600.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://placehold.it/600x300.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;Caption describing these three images.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figcaption&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;And you&amp;#8217;ll get something that looks like this:&lt;/p&gt;
-
-&lt;figure class=&quot;third&quot;&gt;
-	&lt;a href=&quot;http://placehold.it/1200x600.jpg&quot;&gt;&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;&lt;/a&gt;
-	&lt;a href=&quot;http://placehold.it/1200x600.jpg&quot;&gt;&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;&lt;/a&gt;
-	&lt;a href=&quot;http://placehold.it/1200x600.jpg&quot;&gt;&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;&lt;/a&gt;
-	&lt;a href=&quot;http://placehold.it/1200x600.jpg&quot;&gt;&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;&lt;/a&gt;
-	&lt;a href=&quot;http://placehold.it/1200x600.jpg&quot;&gt;&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;&lt;/a&gt;
-	&lt;a href=&quot;http://placehold.it/1200x600.jpg&quot;&gt;&lt;img src=&quot;http://placehold.it/600x300.jpg&quot; /&gt;&lt;/a&gt;
-	&lt;figcaption&gt;Three images.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/articles/2013/5/22/sample-post-images.html&quot;&gt;A Post with Images&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on May 22, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/29/haskell.html&quot;&gt;Haskell: идея&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 29, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
-  <title type="html"><![CDATA[Testing Readability with a Bunch of Text]]></title>
-  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/articles/2012/5/22/readability-post.html"/>
-  <id>http://denisshevchenko.github.io/blog/articles/2012/5/22/readability-post</id>
-  <published>2012-05-22T00:00:00+04:00</published>
-  <updated>2012-05-22T00:00:00+04:00</updated>
+  <title type="html"><![CDATA[Haskell: о функциях высшего порядка]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/26/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/26/haskell</id>
+  <published>2013-12-26T00:00:00+04:00</published>
+  <updated>2013-12-26T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;p&gt;Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schlitz forage. Odio ad blue bottle vinyl, 90&amp;#8217;s narwhal commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse Pinterest shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney&amp;#8217;s. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.&lt;/p&gt;
+  <content type="html">&lt;!--break--&gt;
+&lt;p&gt;Функции высшего порядка (higher-order functions) - очень важная и очень интересная особенность языка Haskell. Эта особенность основана на том постулате, что функции в Haskell - это &lt;em&gt;значения&lt;/em&gt;. Знаю, это не так легко укладывается в голове, но такова особенность функционального программирования в целом: функции являются значениями (в широком смысле этого слова). Впрочем, если вы прочитали мою прошлую заметку о чистых функциях, вас это уже не должно удивлять, потому что вы уже знаете. что вызов чистой функции в конечном итоге порождает некоторое конечное выражение (являющееся итогом вычисления всех выражений в теле этой функции), которым компилятор заменяет место вызова.&lt;/p&gt;
 
-&lt;p&gt;Vero laborum commodo occupy. Semiotics voluptate mumblecore pug. Cosby sweater ullamco quinoa ennui assumenda, sapiente occupy delectus lo-fi. Ea fashion axe Marfa cillum aliquip. Retro Bushwick keytar cliche. Before they sold out sustainable gastropub Marfa readymade, ethical Williamsburg skateboard brunch qui consectetur gentrify semiotics. Mustache cillum irony, fingerstache magna pour-over keffiyeh tousled selfies.&lt;/p&gt;
+&lt;p&gt;А раз уж функции являются значениями, то их можно, во-первых, передавать другим функциям в качестве аргумента, а во-вторых, возвращать из других функций в качестве выходного значения. Так вот функция A, которая принимает некую функцию B в качестве аргумента и/или возвращает некую функцию C в качестве выходного значения, называется &lt;em&gt;функцией высшего порядка&lt;/em&gt;.&lt;/p&gt;
 
-&lt;h2 id=&quot;cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90&amp;#8217;s lo-fi authentic try-hard&lt;/h2&gt;
+&lt;h3&gt;А теперь начинаем удивляться...&lt;/h3&gt;
 
-&lt;p&gt;In pug Portland incididunt mlkshk put a bird on it vinyl quinoa. Terry Richardson shabby chic +1, scenester Tonx excepteur tempor fugiat voluptate fingerstache aliquip nisi next level. Farm-to-table hashtag Truffaut, Odd Future ex meggings gentrify single-origin coffee try-hard 90&amp;#8217;s. &lt;/p&gt;
+&lt;p&gt;Помните, когда я рассказывал вам о чистых функциях, было упомянуто, что такие функции могут принимать как один, так и множество аргументов. На самом деле, я обманул вас, ибо правда такова:&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Sartorial hoodie &lt;/li&gt;
-  &lt;li&gt;Labore viral forage&lt;/li&gt;
-  &lt;li&gt;Tote bag selvage &lt;/li&gt;
-  &lt;li&gt;DIY exercitation et id ugh tumblr church-key&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Функции в Haskell всегда принимают только один аргумент. Ни больше, ни меньше.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Incididunt umami sriracha, ethical fugiat VHS ex assumenda yr irure direct trade. Marfa Truffaut bicycle rights, kitsch placeat Etsy kogi asymmetrical. Beard locavore flexitarian, kitsch photo booth hoodie plaid ethical readymade leggings yr.&lt;/p&gt;
+&lt;p&gt;Но, простите, а как же мы смогли определить функции, принимающие два аргумента?? Отвечаю: это была хитрость. :)&lt;/p&gt;
 
-&lt;p&gt;Aesthetic odio dolore, meggings disrupt qui readymade stumptown brunch Terry Richardson pour-over gluten-free. Banksy american apparel in selfies, biodiesel flexitarian organic meh wolf quinoa gentrify banjo kogi. Readymade tofu ex, scenester dolor umami fingerstache occaecat fashion axe Carles jean shorts minim. Keffiyeh fashion axe nisi Godard mlkshk dolore. Lomo you probably haven&amp;#8217;t heard of them eu non, Odd Future Truffaut pug keytar meggings McSweeney&amp;#8217;s Pinterest cred. Etsy literally aute esse, eu bicycle rights qui meggings fanny pack. Gentrify leggings pug flannel duis.&lt;/p&gt;
+&lt;p&gt;Хитрость это называется “каррирование” (currying), иногда говорят “карринг”. Слово это знаменитое, ибо оно происходит от имени &lt;strong&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Haskell_Curry&quot;&gt;Haskell Curry&lt;/a&gt;&lt;/strong&gt;. Да-да, этот тот самый американский математик, в честь которого назвали изучаемый нами язык.&lt;/p&gt;
 
-&lt;h2 id=&quot;forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/h2&gt;
+&lt;p&gt;Каррирование - это превращение функции, принимающей множество аргументов, в функцию, принимающую все эти аргументы по одному. Что за ерунда, спросите вы. Поясняю.&lt;/p&gt;
 
-&lt;p&gt;Fashion axe hella gastropub lo-fi kogi 90&amp;#8217;s aliquip +1 veniam delectus tousled. Cred sriracha locavore gastropub kale chips, iPhone mollit sartorial. Anim dolore 8-bit, pork belly dolor photo booth aute flannel small batch. Dolor disrupt ennui, tattooed whatever salvia Banksy sartorial roof party selfies raw denim sint meh pour-over. Ennui eu cardigan sint, gentrify iPhone cornhole. &lt;/p&gt;
+&lt;p&gt;Определим функцию деления двух чисел:&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Whatever velit occaecat quis deserunt gastropub, leggings elit tousled roof party 3 wolf moon kogi pug blue bottle ea. Fashion axe shabby chic Austin quinoa pickled laborum bitters next level, disrupt deep v accusamus non fingerstache.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;hs&gt;
+divide :: Double -&amp;gt; Double -&amp;gt; Double
+divide arg1 arg2 = arg1 / arg2
 
-&lt;p&gt;Tote bag asymmetrical elit sunt. Occaecat authentic Marfa, hella McSweeney&amp;#8217;s next level irure veniam master cleanse. Sed hoodie letterpress artisan wolf leggings, 3 wolf moon commodo ullamco. Anim occupy ea labore Terry Richardson. Tofu ex master cleanse in whatever pitchfork banh mi, occupy fugiat fanny pack Austin authentic. Magna fugiat 3 wolf moon, labore McSweeney&amp;#8217;s sustainable vero consectetur. Gluten-free disrupt enim, aesthetic fugiat jean shorts trust fund keffiyeh magna try-hard.&lt;/p&gt;
+main =
+    putStrLn (show (divide 10.03 2.1))
+&lt;/hs&gt;
 
-&lt;h2 id=&quot;hoodie-duis&quot;&gt;Hoodie Duis&lt;/h2&gt;
+&lt;p&gt;Итак, мы определили функцию, принимающую два значения типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt; и возвращающую результат деления первого на второе. Всё предельно просто, не так ли? На самом деле, не так…&lt;/p&gt;
 
-&lt;p&gt;Actually salvia consectetur, hoodie duis lomo YOLO sunt sriracha. Aute pop-up brunch farm-to-table odio, salvia irure occaecat. Sriracha small batch literally skateboard. Echo Park nihil hoodie, aliquip forage artisan laboris. Trust fund reprehenderit nulla locavore. Stumptown raw denim kitsch, keffiyeh nulla twee dreamcatcher fanny pack ullamco 90&amp;#8217;s pop-up est culpa farm-to-table. Selfies 8-bit do pug odio.&lt;/p&gt;
+&lt;p&gt;Если мы посмотрим “пот капот” вызова этой функции:&lt;/p&gt;
 
-&lt;h3 id=&quot;thundercats-ho&quot;&gt;Thundercats Ho!&lt;/h3&gt;
+&lt;hs&gt;
+divide 10.03 2.1
+&lt;/hs&gt;
 
-&lt;p&gt;Fingerstache thundercats Williamsburg, deep v scenester Banksy ennui vinyl selfies mollit biodiesel duis odio pop-up. Banksy 3 wolf moon try-hard, sapiente enim stumptown deep v ad letterpress. Squid beard brunch, exercitation raw denim yr sint direct trade. Raw denim narwhal id, flannel DIY McSweeney&amp;#8217;s seitan. Letterpress artisan bespoke accusamus, meggings laboris consequat Truffaut qui in seitan. Sustainable cornhole Schlitz, twee Cosby sweater banh mi deep v forage letterpress flannel whatever keffiyeh. Sartorial cred irure, semiotics ethical sed blue bottle nihil letterpress.&lt;/p&gt;
-
-&lt;p&gt;Occupy et selvage squid, pug brunch blog nesciunt hashtag mumblecore skateboard yr kogi. Ugh small batch swag four loko. Fap post-ironic qui tote bag farm-to-table american apparel scenester keffiyeh vero, swag non pour-over gentrify authentic pitchfork. Schlitz scenester lo-fi voluptate, tote bag irony bicycle rights pariatur vero Vice freegan wayfarers exercitation nisi shoreditch. Chambray tofu vero sed. Street art swag literally leggings, Cosby sweater mixtape PBR lomo Banksy non in pitchfork ennui McSweeney&amp;#8217;s selfies. Odd Future Banksy non authentic.&lt;/p&gt;
-
-&lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/articles/2012/5/22/readability-post.html&quot;&gt;Testing Readability with a Bunch of Text&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on May 22, 2012.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Sample Post]]></title>
-  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/articles/2011/3/10/sample-post.html"/>
-  <id>http://denisshevchenko.github.io/blog/articles/2011/3/10/sample-post</id>
-  <updated>2013-05-31T00:00:00-00:00</updated>
-  <published>2011-03-10T00:00:00+04:00</published>
-  
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://denisshevchenko.github.io/blog</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;p&gt;Below is just about everything you&amp;#8217;ll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.&lt;/p&gt;
-
-&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;/h1&gt;
-
-&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;/h2&gt;
-
-&lt;h3 id=&quot;heading-3&quot;&gt;Heading 3&lt;/h3&gt;
-
-&lt;h4 id=&quot;heading-4&quot;&gt;Heading 4&lt;/h4&gt;
-
-&lt;h5 id=&quot;heading-5&quot;&gt;Heading 5&lt;/h5&gt;
-
-&lt;h6 id=&quot;heading-6&quot;&gt;Heading 6&lt;/h6&gt;
-
-&lt;h3 id=&quot;body-text&quot;&gt;Body text&lt;/h3&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, test link adipiscing elit. &lt;strong&gt;This is strong&lt;/strong&gt;. Nullam dignissim convallis est. Quisque aliquam.&lt;/p&gt;
-
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://denisshevchenko.github.io/blog/images/3953273590_704e3899d5_m.jpg&quot; alt=&quot;Smithsonian Image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;This is emphasized&lt;/em&gt;. Donec faucibus. Nunc iaculis suscipit dui. 53 = 125. Water is H&lt;sub&gt;2&lt;/sub&gt;O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. The New York Times &lt;cite&gt;(That’s a citation)&lt;/cite&gt;. &lt;u&gt;Underline&lt;/u&gt;. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.&lt;/p&gt;
-
-&lt;p&gt;HTML and &lt;abbr title=&quot;cascading stylesheets&quot;&gt;CSS&lt;abbr&gt; are our tools. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.&lt;/abbr&gt;&lt;/abbr&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est. Quisque aliquam.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;list-types&quot;&gt;List Types&lt;/h2&gt;
-
-&lt;h3 id=&quot;ordered-lists&quot;&gt;Ordered Lists&lt;/h3&gt;
+&lt;p&gt;то узнаем, что вызов этой функции происходит &lt;em&gt;в два этапа&lt;/em&gt;:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Item one
-    &lt;ol&gt;
-      &lt;li&gt;sub item one&lt;/li&gt;
-      &lt;li&gt;sub item two&lt;/li&gt;
-      &lt;li&gt;sub item three&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Item two&lt;/li&gt;
+  &lt;li&gt;Функция &lt;code&gt;divide&lt;/code&gt; применяется к первому аргументу &lt;code&gt;10.03&lt;/code&gt;, вычисляется и возвращает &lt;em&gt;функцию&lt;/em&gt; типа &lt;code&gt;Double -&amp;gt; Double&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Эта возвращённая функция применяется ко второму аргументу &lt;code&gt;2.1&lt;/code&gt;, вычисляется и возвращает конечное значение 4.776190476190476.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;unordered-lists&quot;&gt;Unordered Lists&lt;/h3&gt;
+&lt;p&gt;На самом деле мы могли бы более явно отразить эту “двуэтапность”, переписав вызов так:&lt;/p&gt;
+
+&lt;hs&gt;
+(divide 10.03) 2.1
+&lt;/hs&gt;
+
+&lt;p&gt;Понимаете, да? Функция всегда применяется только к одному аргументу: сначала к 10.03, а потом возвращённая первым вызовом функция применяется к 2.1.&lt;/p&gt;
+
+&lt;p&gt;Именно поэтому строка объявления такой функции содержит &lt;em&gt;две&lt;/em&gt; стрелочки вместо одной:&lt;/p&gt;
+
+&lt;hs&gt;
+divide :: Double -&amp;gt; Double -&amp;gt; Double
+&lt;/hs&gt;
+
+&lt;p&gt;Мы помним, что символ стрелочки говорит нам о функции. Так вот здесь мы видим &lt;em&gt;две&lt;/em&gt; стрелочки именно потому, что вызов этой функции происходит в два этапа. И поэтому, строго говоря, неправильно читать это объявление так:&lt;/p&gt;
+
+&lt;p&gt;“Функция &lt;code&gt;divide&lt;/code&gt; принимает два аргумента типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt; и возвращает значение типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt;.”&lt;/p&gt;
+
+&lt;p&gt;Правильно читать так:&lt;/p&gt;
+
+&lt;p&gt;“Функция &lt;code&gt;divide&lt;/code&gt; принимает первый аргумент типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt; и возвращает функцию типа &lt;strong&gt;&lt;code&gt;Double -&amp;gt; Double&lt;/code&gt;&lt;/strong&gt;, принимающую второй аргумент типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt; и возвращающую значение типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt;.”&lt;/p&gt;
+
+&lt;p&gt;Более того, это правильное прочтение объявления можно было бы отразить явно и в самом объявлении! Вот так:&lt;/p&gt;
+
+&lt;hs&gt;
+divide :: Double -&amp;gt; (Double -&amp;gt; Double)
+&lt;/hs&gt;
+
+&lt;p&gt;Теперь мы явно видим, что на первом этапе происходит вызов функции от одного аргумента, возвращающей функцию типа &lt;strong&gt;&lt;code&gt;Double -&amp;gt; Double&lt;/code&gt;&lt;/strong&gt;, а на втором этапе происходит уже вызов этой (возвращённой на первом этапе) функции.&lt;/p&gt;
+
+&lt;p&gt;По аналогии, если бы у нас была функция, принимающая три аргумента:&lt;/p&gt;
+
+&lt;hs&gt;
+total_sum :: Double -&amp;gt; Double -&amp;gt; Double -&amp;gt; Double
+total_sum arg1 arg2 arg3 = arg1 + arg2 + arg3
+
+main =
+    putStrLn (show (total_sum 10.03 2.1 45.7))
+&lt;/hs&gt;
+
+&lt;p&gt;то её вызов на самом деле проходил бы &lt;em&gt;в три этапа&lt;/em&gt;, и чтобы явно отразить это, мы могли бы переписать её объявление так:&lt;/p&gt;
+
+&lt;hs&gt;
+total_sum :: Double -&amp;gt; (Double -&amp;gt; (Double -&amp;gt; Double))
+&lt;/hs&gt;
+
+&lt;p&gt;а её вызов - так:&lt;/p&gt;
+
+&lt;hs&gt;
+((total_sum 10.03) 2.1) 45.7
+&lt;/hs&gt;
+
+&lt;p&gt;А теперь нам нужно уточнить одну важную деталь.&lt;/p&gt;
+
+&lt;h3&gt;Частичное применение функции&lt;/h3&gt;
+
+&lt;p&gt;Вспомните, что я сказал о функции &lt;code&gt;divide&lt;/code&gt;: её вызов происходит &lt;em&gt;в два этапа&lt;/em&gt;. Так вот важно понимать, что функция &lt;code&gt;divide&lt;/code&gt; вызывается &lt;em&gt;один&lt;/em&gt; раз, а не два раза! Вызов один (то есть тело этой функции выполняется единократно), просто этот вызов разделён на два шага. А чтобы понять суть этих шагов, необходимо узнать об одной важной детали: частичное применение функции. Звучит страшновато, но суть очень проста.&lt;/p&gt;
+
+&lt;p&gt;Частичное применение (partial application) функции - это такой её вызов, когда ей на вход подаются не все аргументы, которые она ожидает. И здесь нам пригодятся уже известные нам &lt;strong&gt;&lt;a href=&quot;http://dshevchenko.biz/ru/content/haskell-%D0%BE-%D0%BB%D1%8F%D0%BC%D0%B1%D0%B4%D0%B0-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F%D1%85&quot;&gt;λ-функции&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Представим себе, что наша функция &lt;code&gt;divide&lt;/code&gt; была бы апплицирована (применена) не к двум, а только к одному аргументу. Тогда это выглядело бы так:&lt;/p&gt;
+
+&lt;hs&gt;
+main = 
+    let temporary_function = divide 10.03 -- &quot;запомнили&quot; первый
+    in 
+    putStrLn (show (temporary_function 2.1)) -- получили второй!
+&lt;/hs&gt;
+
+&lt;p&gt;Вот теперь всё встало на свои места. Здесь наглядно показано, что же на самом деле означает вызов вида:&lt;/p&gt;
+
+&lt;hs&gt;
+(divide 10.03) 2.1
+&lt;/hs&gt;
+
+&lt;p&gt;В результате первого вызова, когда мы применили функцию &lt;code&gt;divide&lt;/code&gt; лишь к одному (первому) аргументу, мы ещё не можем получить результат деления, потому что второго-то аргумента мы функции ещё не дали! Вместо этого мы получили как бы временную (промежуточную) λ-функцию, которую мы для наглядности ассоциировали с выражением &lt;code&gt;temporary_function&lt;/code&gt;. Эта временная λ-функция как бы запомнила значение первого аргумента, и когда мы применили её уже ко второму аргументу, то в результате мы уже получили итоговый результат деления.&lt;/p&gt;
+
+&lt;p&gt;По аналогии, вызов нашей функции &lt;code&gt;total_sum&lt;/code&gt;, который, как мы помним, происходит в три этапа, можно разложить так:&lt;/p&gt;
+
+&lt;hs&gt;
+total_sum :: Double -&amp;gt; Double -&amp;gt; Double -&amp;gt; Double
+total_sum arg1 arg2 arg3 = arg1 + arg2 + arg3
+
+main =
+    let first_function = total_sum 1.0 -- &quot;запомнили&quot; первый
+        second_function = first_function 2.0 -- &quot;запомнили&quot; второй
+    in
+    putStrLn (show (second_function 3.0)) -- получили третий!
+&lt;/hs&gt;
+
+&lt;p&gt;То есть в процессе вызова у нас появилось уже две промежуточные λ-функции, каждая из которых принимала лишь один аргумент и как бы запоминала его. И только тогда, когда вторая промежуточная λ-функция была апплицирована к третьему аргументу (который и оказался последним необходимым для нас), мы и получаем итоговую сумму.&lt;/p&gt;
+
+&lt;p&gt;Разумеется, на практике вводить такие промежуточные λ-функции вам не придётся. Я лишь показал процесс каррирования на практике. Считайте, что мы просто заглянули “под капот” функции и увидели её внутреннюю “пошаговость”.&lt;/p&gt;
+
+&lt;h3&gt;&quot;Ну хорошо, а зачем всё это нужно??&quot;&lt;/h3&gt;
+
+&lt;p&gt;Резонный вопрос. На самом деле, в подавляющем большинстве случаев знать вышеизложенную информацию о каррировании функций и о частичном применении к аргументам &lt;em&gt;не нужно&lt;/em&gt;. Главное преимущество такого подхода, при котором одна функция от нескольких аргументов раскладывается на цепочку функций от одного аргумента каждая, лежит в “академическом измерении”: проводить формальные математические доказательства гораздо легче, если договориться, что каждая из вычисляемых функций всегда принимает строго один аргумент и выдаёт строго одно значение.&lt;/p&gt;
+
+&lt;p&gt;Но нас-то с вами, как программистов-практиков, гораздо больше интересует аспект практический, а не академический. И поэтому теперь мы возвращаемся к рассмотрению функций высшего порядка (далее - ФВП).&lt;/p&gt;
+
+&lt;p&gt;Формально функции &lt;code&gt;divide&lt;/code&gt; и &lt;code&gt;total_sum&lt;/code&gt; являются ФВП, в силу тех самых промежуточных λ-функций. Фактически, все функции, объявленные как принимающие более одного аргумента, являются ФВП. Но на самом деле все эти промежуточные λ-функции - это всего лишь подкапотные дела, они скрыты от наших глаз, в то время как гораздо больший интерес представляют “настоящие” ФВП, которые характеризуются именно тем, что явно объявлены как принимающие на вход реальные функциональные значения и/или возвращающие реальные функциональные значения.&lt;/p&gt;
+
+&lt;p&gt;А чтобы разобраться в том, как всё это работает на практике, и понять реальную пользу от ФВП, давайте разберём небольшой пример.&lt;/p&gt;
+
+&lt;hs&gt;
+type Login = String
+type Password = String
+type AvatarURL = String
+type UserId = Integer
+
+user_info :: Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
+user_info login password avatar_URL user_id =
+    &quot;Full info about user @&quot; ++ (show user_id) ++ &quot;:&quot; ++
+    &quot;\n login: &quot; ++ login ++
+    &quot;\n password: &quot; ++ password ++
+    &quot;\n avatar URL: &quot; ++ avatar_URL
+
+type EmptyInfo = Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
+type WithLogin = Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
+type AndWithPassword = AvatarURL -&amp;gt; UserId -&amp;gt; String
+type AndWithAvatarURL = UserId -&amp;gt; String
+
+store_login_in :: EmptyInfo -&amp;gt; UserId -&amp;gt; WithLogin
+store_login_in empty_info user_id =
+    empty_info &quot;denis&quot;
+    -- В реальности логин будет получен 
+    -- в соответствии с переданным user_id
+
+store_password_in :: WithLogin -&amp;gt; UserId -&amp;gt; AndWithPassword
+store_password_in info_with_login user_id =
+    info_with_login &quot;123456789abc&quot;
+    -- В реальности пароль будет получен 
+    -- в соответствии с переданным user_id
+
+store_avatar_URL_in :: AndWithPassword -&amp;gt; UserId -&amp;gt; AndWithAvatarURL
+store_avatar_URL_in info_with_password user_id =
+    info_with_password &quot;http://dshevchenko.biz/denis_avatar.png&quot;
+    -- В реальности URL будет получен 
+    -- в соответствии с переданным user_id
+
+main =
+    let user_id = 1234
+        info_with_login = store_login_in user_info 
+                                         user_id
+        info_with_password = store_password_in info_with_login 
+                                               user_id
+        info_with_avatar_URL = store_avatar_URL_in info_with_password 
+                                                   user_id
+        full_info_about_user = info_with_avatar_URL user_id
+    in
+    putStrLn full_info_about_user
+&lt;/hs&gt;
+
+&lt;p&gt;Красиво, не так ли? Давайте разберём это хозяйство по косточкам…&lt;/p&gt;
+
+&lt;p&gt;Во-первых, новая для нас конструкция вида:&lt;/p&gt;
+
+&lt;hs&gt;
+type Login = String
+&lt;/hs&gt;
+
+&lt;p&gt;Очевидно, вы уже догадались, что это всего лишь добавление псевдонима для (уже известного) типа. Теперь вместо типа &lt;strong&gt;&lt;code&gt;String&lt;/code&gt;&lt;/strong&gt; можно использовать идентификатор &lt;code&gt;Login&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Далее мы определили простую функцию вида:&lt;/p&gt;
+
+&lt;hs&gt;
+user_info :: Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
+&lt;/hs&gt;
+
+&lt;p&gt;Тут всё просто: функция &lt;code&gt;user_info&lt;/code&gt; ожидает на вход логин, пароль, адрес аватара и идентификатор пользователя, а на выходе выдаёт некую результирующую строку.&lt;/p&gt;
+
+&lt;p&gt;А вот теперь начинается самое интересное. Подразумевается, что изначально у нас имеется лишь некий идентификатор пользователя, а соответствующие этому идентификатору логин, пароль и путь к аватару нам нужно откуда-то получить. К счастью, у нас есть три функции, каждая из которых знает, откуда получить логин, пароль и путь к аватару соответственно. Причём каждая из этих трёх функций является ФВП!&lt;/p&gt;
+
+&lt;p&gt;Обратите внимание на следующие псевдонимы:&lt;/p&gt;
+
+&lt;hs&gt;
+type EmptyInfo = Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
+type WithLogin = Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
+type AndWithPassword = AvatarURL -&amp;gt; UserId -&amp;gt; String
+type AndWithAvatarURL = UserId -&amp;gt; String
+&lt;/hs&gt;
+
+&lt;p&gt;Каждый из них вводит упрощающее имя для функционального типа, образованного от типа функции &lt;code&gt;user_info&lt;/code&gt;. Обратите внимание: каждый последующий тип ожидает на один аргумент меньше, чем предыдущий тип. Чтобы было понятнее, изобразим это с соответствующими сдвигами:&lt;/p&gt;
+
+&lt;hs&gt;
+EmptyInfo = Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
+WithLogin =          Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
+AndWithPassword =                AvatarURL -&amp;gt; UserId -&amp;gt; String
+AndWithAvatarURL =                            UserId -&amp;gt; String
+&lt;/hs&gt;
+
+&lt;p&gt;Каждый из этих псевдонимов задаёт сигнатуру для (очередной) промежуточной λ-функции, и нужно это, как вы уже догадались, для упомянутого выше частичного применения функции &lt;code&gt;user_info&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Рассмотрим первый вызов:&lt;/p&gt;
+
+&lt;hs&gt;
+        info_with_login = store_login_in user_info 
+                                         user_id
+&lt;/hs&gt;
+
+&lt;p&gt;Здесь мы передаём функцию &lt;code&gt;user_info&lt;/code&gt; в качестве первого аргумента функции &lt;code&gt;store_login_in&lt;/code&gt;, внутри которой мы апплицируем переданную функцию &lt;code&gt;user_info&lt;/code&gt; к единственному аргументу, а именно к логину (потому что функция &lt;code&gt;store_login_in&lt;/code&gt; знает только о том, откуда и как получить логин). Соответственно, на выходе из функции &lt;code&gt;store_login_in&lt;/code&gt; мы получаем первую промежуточную λ-функцию, в которой мы как бы сохранили (store) значение логина (именно поэтому сигнатура этой λ-функции названа &lt;code&gt;WithLogin&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Далее следует вызов:&lt;/p&gt;
+
+&lt;hs&gt;
+        info_with_password = store_password_in info_with_login 
+                                               user_id
+&lt;/hs&gt;
+
+&lt;p&gt;Здесь мы передаём нашу промежуточную λ-функцию (в которой мы как бы сохранили значение логина) в качестве первого аргумента функции &lt;code&gt;store_password_in&lt;/code&gt;. Эта функция, в свою очередь, апплицирует переданную ей λ-функцию к единственному аргументу, а именно к паролю (ибо функция &lt;code&gt;store_password_in&lt;/code&gt;, как вы уже поняли, умеет доставать только пароль). Таким образом, на выходе из функции &lt;code&gt;store_password_in&lt;/code&gt; мы имеем вторую промежуточную λ-функцию, в которой как бы сохранены уже два значения (полученный на предыдущем вызове логин и на этом вызове - пароль), именно поэтому сигнатура этой λ-функции носит имя &lt;code&gt;AndWithPassword&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;То же самое справедливо и для следующего вызова:&lt;/p&gt;
+
+&lt;hs&gt;
+        info_with_avatar_URL = store_avatar_URL_in info_with_password 
+                                                   user_id
+&lt;/hs&gt;
+
+&lt;p&gt;На выходе из функции &lt;code&gt;store_avatar_URL_in&lt;/code&gt; мы получаем третью λ-функцию, в которой как бы сохранены уже три значения: логин, пароль и путь к аватару.&lt;/p&gt;
+
+&lt;p&gt;В итоге всё завершается апплицированием этой третьей λ-функции к последнему нужному аргументу, а именно к идентификатору пользователя:&lt;/p&gt;
+
+&lt;hs&gt;
+        full_info_about_user = info_with_avatar_URL user_id
+&lt;/hs&gt;
+
+&lt;p&gt;Именно здесь и происходит наконец “полноценный” вызов функции &lt;code&gt;user_info&lt;/code&gt;, в результате которого мы получаем и выводим на экран результирующую строку следующего вида:&lt;/p&gt;
+
+&lt;bash&gt;
+Full info about user @1234:
+ login: denis
+ password: 123456789abc
+ avatar URL: http://dshevchenko.biz/denis_avatar.png
+&lt;/bash&gt;
+
+&lt;p&gt;Таким образом, функция &lt;code&gt;user_info&lt;/code&gt; была частично апплицирована три раза (каждый раз получая очередной аргумент), и лишь на четвёртый она получила все четыре необходимых ей аргумента. Мы можем сравнить это с конвейерной цепочкой, которую прошла данная функция: на каждом шаге она получала очередной аргумент.&lt;/p&gt;
+
+&lt;p&gt;Итак, перед нами - живая демонстрация реальной пользы ФВП. Да, признаю, этот пример можно было бы упростить (в данном конкретном случае можно было обойтись без частичного применения), но цель была не в том, чтобы дать на 100% оптимальное решение, а в том чтобы продемонстрировать упомянутую выше теорию на практическом примере. И как вы смогли убедиться, эта теория лишь поначалу казалось нам страшноватой, в реальности же она достаточно проста.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/26/haskell.html&quot;&gt;Haskell: о функциях высшего порядка&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 26, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell: об инфиксных функциях]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/25/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/25/haskell</id>
+  <published>2013-12-25T00:00:00+04:00</published>
+  <updated>2013-12-25T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;!--break--&gt;
+&lt;p&gt;Как мы уже знаем, вызов чистой функции выглядит так:&lt;/p&gt;
+
+&lt;hs&gt;
+name arg1 arg2 ... argN
+&lt;/hs&gt;
+
+&lt;p&gt;Это соответствует идее апплицирования: мы применяем функцию &lt;code&gt;name&lt;/code&gt; к списку аргументов. Однако в математике существует и другая модель функции, а именно инфиксная модель. Если вы никогда не слышали это слово - не беспокойтесь, вы постоянно используете эту модель. Классический пример:&lt;/p&gt;
+
+&lt;hs&gt;
+1 + 2
+&lt;/hs&gt;
+
+&lt;p&gt;В данном случае у нас есть функция сложения, отражённая символом &lt;code&gt;+&lt;/code&gt;, которая принимает на вход два аргумента. Но если бы мы хотели записать этот вызов неинфиксным, классическим способом, то получилось бы вот что:&lt;/p&gt;
+
+&lt;hs&gt;
+(+) 1 2
+&lt;/hs&gt;
+
+&lt;p&gt;Всё как обычно: мы апплицируем функцию &lt;code&gt;(+)&lt;/code&gt; к двум аргументам. Однако предыдущая форма записи гораздо привычнее для нас, и при этом она значительно читабельнее.&lt;/p&gt;
+
+&lt;p&gt;Так вот и наши собственные функции можно вызывать как классическим способом, так и инфиксным. Например:&lt;/p&gt;
+
+&lt;hs&gt;
+full_address :: String -&amp;gt; Int -&amp;gt; String
+full_address host port = 
+    host ++ &quot;:&quot; ++ (show port)
+
+main =
+    do putStrLn (full_address host port)
+    where host = &quot;127.0.0.1&quot;
+          port = 80
+&lt;/hs&gt;
+
+&lt;p&gt;Здесь мы определили функцию, принимающую строку, соответствующую IP-адресу, и целое число, соответствующее порту, и возвращающую строку с полным адресом (включающую хост и порт вместе). Как видите, мы вызвали её классическим способом. Но мы можем вызвать её и инфиксным способом. Для этого достаточно при вызове заключить имя функции в обратные одинарные кавычки (этот символ располагается обычно на клавише с тильдой). Выглядит это так:&lt;/p&gt;
+
+&lt;hs&gt;
+main =
+    do putStrLn (host `full_address` port)
+    where host = &quot;127.0.0.1&quot;
+          port = 80
+&lt;/hs&gt;
+
+&lt;p&gt;В инфиксной форме мы, как и со знаком сложения, заключаем имя функции &lt;em&gt;между&lt;/em&gt; аргументами.&lt;/p&gt;
+
+&lt;p&gt;Давайте переименуем функцию для бОльшей литературности:&lt;/p&gt;
+
+&lt;hs&gt;
+with :: String -&amp;gt; Int -&amp;gt; String
+with host port = 
+    host ++ &quot;:&quot; ++ (show port)
+&lt;/hs&gt;
+
+&lt;p&gt;В этом случае инфиксная запись будет выглядеть значительно более привлекательно:&lt;/p&gt;
+
+&lt;hs&gt;
+main =
+    do putStrLn (host `with` port)
+    where host = &quot;127.0.0.1&quot;
+          port = 80
+&lt;/hs&gt;
+
+&lt;p&gt;Довольно-таки симпатишно вышло. &lt;/p&gt;
+
+&lt;p&gt;Конечно, инфиксную запись можно считать не более чем синтаксическим сахаром, но в ряде случаев такая запись может сделать код более удобным для чтения. Впрочем, чрезмерно увлекаться “инфиксностью” не рекомендуется (также как и, скажем, перегрузкой операторов в C++).&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/25/haskell.html&quot;&gt;Haskell: об инфиксных функциях&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 25, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell: устанавливаем пакет из Hackage]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/23/haskell-hackage.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/23/haskell-hackage</id>
+  <published>2013-12-23T00:00:00+04:00</published>
+  <updated>2013-12-23T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;!--break--&gt;
+&lt;h3&gt;Готовимся&lt;/h3&gt;
+
+&lt;p&gt;Все приведённые ниже команды выполняются в терминале из корневой папки нашего проекта.&lt;/p&gt;
+
+&lt;p&gt;Для начала выполним команду:&lt;/p&gt;
+
+&lt;bash&gt;
+cabal update
+&lt;/bash&gt;
+
+&lt;p&gt;Эта команда обновляет список пакетов из вышеупомянутого репозитория, поэтому в ответ мы мы увидим нечто подобное:&lt;/p&gt;
+
+&lt;bash&gt;
+Downloading the latest package list from hackage.haskell.org
+&lt;/bash&gt;
+
+&lt;p&gt;Чуточку терпения - и список обновлён. Рекомендуется периодически выполнять эту команду, дабы поддерживать список доступных пакетов в актуальном состоянии.&lt;/p&gt;
+
+&lt;h3&gt;Выбираем нужный пакет&lt;/h3&gt;
+
+&lt;p&gt;Заходим на страницу списка пакетов и ищем. В частности, мне понадобилось установить пакет &lt;strong&gt;&lt;a href=&quot;http://hackage.haskell.org/package/filemanip&quot;&gt;filemanip&lt;/a&gt;&lt;/strong&gt;, предназначенный для работы с файловой системой. Кстати, поиск нужных вам пакетов можно производить в &lt;strong&gt;&lt;a href=&quot;http://www.haskell.org/hoogle/&quot;&gt;Hoogle&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Устанавливаем пакет следующей командой:&lt;/p&gt;
+
+&lt;bash&gt;
+cabal install filemanip
+&lt;/bash&gt;
+
+&lt;p&gt;В ответ последует список со всякими умными строками наподобие этого:&lt;/p&gt;
+
+&lt;bash&gt;
+...
+Downloading filemanip-0.3.6.2...
+Configuring filemanip-0.3.6.2...
+Building filemanip-0.3.6.2...
+...
+Installing library in
+/Users/dshevchenko/Library/Haskell/ghc-7.6.3/lib/filemanip-0.3.6.2/lib
+Registering filemanip-0.3.6.2...
+Installed filemanip-0.3.6.2
+Updating documentation index /Users/dshevchenko/Library/Haskell/doc/index.html
+&lt;/bash&gt;
+
+&lt;p&gt;Итак, пакет установлен.&lt;/p&gt;
+
+&lt;h3&gt;Указываем пакет в .cabal-файле&lt;/h3&gt;
+
+&lt;p&gt;Открываем конфигурационный &lt;code&gt;.cabal&lt;/code&gt;-файл (помните про такой, не так ли?), находящийся в корне нашего проекта, и дописываем наш только что установленный пакет:&lt;/p&gt;
+
+&lt;hs&gt;
+executable Haskell
+    main-is:         main.hs            
+    other-modules:   Haq
+    hs-source-dirs:  src 
+                     src/utils
+    build-depends:   base == 4.6.*, filemanip
+&lt;/hs&gt;
+
+&lt;p&gt;Как видите, мы просто дописали в параметр &lt;code&gt;build-depends&lt;/code&gt; название нового пакета. Обратите внимание, что имена пакетов в этом параметре указываются через запятую, это важно.&lt;/p&gt;
+
+&lt;p&gt;Если вы пропустите этот шаг, то воспользоваться каким-либо из модулей данного пакета вы, разумеется, не сможете. Напоминаю, что пакет представлен набором модулей, которые можно импортировать в ваш код (а импорт модуля, напоминаю, подобен включению файла с помощью &lt;code&gt;#include&lt;/code&gt;-директивы).&lt;/p&gt;
+
+&lt;p&gt;Впрочем, даже если вы всё-таки забудете указать установленный пакет &lt;em&gt;и при этом&lt;/em&gt; попытаетесь импортировать какие-либо из его модулей в ваш проект, компилятор вежливо поправит вас:&lt;/p&gt;
+
+&lt;bash&gt;
+src/main.hs:3:8:
+    Could not find module `System.FilePath.Find&#39;
+    It is a member of the hidden package `filemanip-0.3.6.2&#39;.
+    Perhaps you need to add `filemanip&#39; to the build-depends in your .cabal file.
+    Use -v to see a list of the files searched for.
+&lt;/bash&gt;
+
+&lt;h3&gt;Подключаем нужные модули&lt;/h3&gt;
+
+&lt;p&gt;А теперь открываем наш файл (например, &lt;code&gt;main.hs&lt;/code&gt;) и дописываем в его верхней части следующую строку:&lt;/p&gt;
+
+&lt;hs&gt;
+import System.FilePath.Find
+&lt;/hs&gt;
+
+&lt;p&gt;Этой инструкцией мы импортировали конкретный модуль из установленного пакета. Теперь мы сможем использовать содержимое этого модуля в нашем проекте.&lt;/p&gt;
+
+&lt;p&gt;Напоследок выполним команды:&lt;/p&gt;
+
+&lt;bash&gt;
+cabal configure
+cabal build
+&lt;/bash&gt;
+
+&lt;p&gt;Готово!&lt;/p&gt;
+
+&lt;p&gt;Лично мне очень понравилась такая философия работы с пакетами. Во-первых, утилита cabal предоставляет единый централизованный способ установки пакетов, во-вторых, сама установка занимает три простейших шага (установить, прописать в &lt;code&gt;.cabal&lt;/code&gt;-файле, импортировать нужные модули), а в-третьих, я могу установить только те пакеты, которые мне реально нужны.&lt;/p&gt;
+
+&lt;p&gt;На сегодня достаточно, но мы обязательно продолжим изучение &lt;code&gt;cabal&lt;/code&gt;, а уж к пакетам из Hackage мы будем возвращаться не раз и не два.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/23/haskell-hackage.html&quot;&gt;Haskell: устанавливаем пакет из Hackage&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 23, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell: о функциях]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/23/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/23/haskell</id>
+  <published>2013-12-23T00:00:00+04:00</published>
+  <updated>2013-12-23T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;!--break--&gt;
+&lt;p&gt;Если вы помните &lt;strong&gt;&lt;a href=&quot;http://dshevchenko.biz/ru/content/haskell-%D0%BE-%D0%BB%D1%8F%D0%BC%D0%B1%D0%B4%D0%B0-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F%D1%85&quot;&gt;заметку о лямбда-функциях&lt;/a&gt;&lt;/strong&gt;, математическое определение функции очень простое:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Функция - это описание зависимости чего-то от чего-то.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Так вот чистые функции в языке Haskell - это и есть функции в математическом смысле. Они представляют собой описание того, &lt;em&gt;как&lt;/em&gt; входное выражение (или совокупность таковых) определяет выходное выражение. Именно поэтому они не имеют побочных эффектов, и если мы миллион раз подадим на вход одно и то же значение, то на выходе мы миллион раз получим один и тот же ответ.&lt;/p&gt;
+
+&lt;p&gt;А теперь за дело.&lt;/p&gt;
+
+&lt;h3&gt;Объявляем&lt;/h3&gt;
+
+&lt;p&gt;Начинается всё с объявления функции:&lt;/p&gt;
+
+&lt;hs&gt;
+simple_sum :: Int -&amp;gt; Int
+&lt;/hs&gt;
+
+&lt;p&gt;Перед нами - объявление выражения. До символа &lt;code&gt;::&lt;/code&gt; указывается имя выражения, а после - тип выражения. &lt;/p&gt;
+
+&lt;hs&gt;
+simple_sum :: Int -&amp;gt; Int
+|        |    |        |
+   имя           тип
+&lt;/hs&gt;
+
+&lt;p&gt;Итак, перед нами выражение с именем &lt;code&gt;simple_sum&lt;/code&gt;, имеющее тип функции. Пусть вас не смущают эти слова: в Haskell функция - это тоже тип. Но откуда же мы знаем, что тип этого выражения представляет собой именно функцию? Давайте рассмотрим описание типа подробнее:&lt;/p&gt;
+
+&lt;hs&gt;
+Int -&amp;gt; Int
+&lt;/hs&gt;
+
+&lt;p&gt;Обратите внимание на стрелочку. Именно эта стрелочка и говорит нам о том, что перед нами функция. Слева от неё указан тип единственного аргумента функции (в данном случае это стандартный тип &lt;strong&gt;&lt;code&gt;Int&lt;/code&gt;&lt;/strong&gt;), а справа от неё - тип выходного выражения (тот же &lt;strong&gt;&lt;code&gt;Int&lt;/code&gt;&lt;/strong&gt;). Саму же стрелочку можно воспринимать как ментальное указание на поток информации через функцию - от входа к выходу, слева направо.&lt;/p&gt;
+
+&lt;p&gt;В силу того, что чистая функция в Haskell является математической, невозможно написать аналоги вот таких C-шных функций:&lt;/p&gt;
+
+&lt;cpp&gt;
+void f();
+int f();
+void f( int i );
+&lt;/cpp&gt;
+
+&lt;p&gt;Чистая функция в Haskell обязана иметь входной аргумент (хотя бы один) и выходное значение. Почему? Потому что это отражает суть математической функции: что-то &lt;em&gt;обязательно&lt;/em&gt; подаём на вход и что-то &lt;em&gt;обязательно&lt;/em&gt; получаем на выходе.&lt;/p&gt;
+
+&lt;p&gt;Кстати, о количестве аргументнов. Разумеется, чистая функция может принимать несколько аргументов. В этом случае её тип будет выглядеть так:&lt;/p&gt;
+
+&lt;hs&gt;
+Int -&amp;gt; Int -&amp;gt; Int
+&lt;/hs&gt;
+
+&lt;p&gt;Я понимаю, выглядит чуток странно, но читать это очень просто: ищем последнюю по счёту (самую правую) стрелочку - она-то и будет тем самым разделителем: слева от неё идёт список типов аргументов, справа - тип возвращаемого выражения:&lt;/p&gt;
+
+&lt;hs&gt;
+Int -&amp;gt; Int -&amp;gt; Int -&amp;gt; Int
+типы аргументов  |  | тип того, что будет на выходе 
+&lt;/hs&gt;
+
+&lt;p&gt;Итак, с объявлением разобрались. Идём дальше.&lt;/p&gt;
+
+&lt;h3&gt;Определяем&lt;/h3&gt;
+
+&lt;p&gt;Теперь функцию нужно определить. Кстати, определить нужно &lt;em&gt;обязательно&lt;/em&gt;. Известно, что в том же C++ мы можем спокойно объявить функцию и не определять её (при условии, что она никогда нигде не вызывается). В Haskell более строгий подход: если объявил - будь добр и определить, в противном случае компилятор выскажет своё недовольство.&lt;/p&gt;
+
+&lt;p&gt;Итак, сразу после объявления пишем тело функции:&lt;/p&gt;
+
+&lt;hs&gt;
+simple_sum :: Int -&amp;gt; Int
+simple_sum value = value + value
+&lt;/hs&gt;
+
+&lt;p&gt;Рассмотрим его подробнее:&lt;/p&gt;
+
+&lt;hs&gt;
+simple_sum value = value + value
+&lt;/hs&gt;
+
+&lt;p&gt;Здесь ментальным разделителем является знак равенства. Напоминаю, что в Haskell нет оператора присваивания, поэтому знак равенства здесь - это именно &lt;em&gt;знак равенства&lt;/em&gt;, как в математике. Скелет данного выражения можно представить так:&lt;/p&gt;
+
+&lt;hs&gt;
+name arguments = body_expression
+&lt;/hs&gt;
+
+&lt;p&gt;Здесь:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Item one&lt;/li&gt;
-  &lt;li&gt;Item two&lt;/li&gt;
-  &lt;li&gt;Item three&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;name&lt;/code&gt; - имя функции.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;arguments&lt;/code&gt; - список имён аргументов (именно имён, а не их типов).&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;body_expression&lt;/code&gt; - тело функции.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+&lt;p&gt;В данном случае у нас имеется один-единственный аргумент по имени &lt;code&gt;value&lt;/code&gt;, а также имеется чрезвычайно простое тело, в котором мы просто-напросто складываем аргумент с самим собой.&lt;/p&gt;
 
-&lt;table rules=&quot;groups&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Header1&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Header2&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Header3&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-  &lt;tfoot&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Foot1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Foot2&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;Foot3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tfoot&gt;
-&lt;/table&gt;
+&lt;h3&gt;Вызываем&lt;/h3&gt;
 
-&lt;h2 id=&quot;code-snippets&quot;&gt;Code Snippets&lt;/h2&gt;
+&lt;p&gt;Теперь нашу функцию можно вызывать с аргументом 4 (или, как привычно говорить в мире ФП, апплицировать функцию к аргументу 4):&lt;/p&gt;
 
-&lt;p&gt;Syntax highlighting via Pygments&lt;/p&gt;
+&lt;hs&gt;
+main = putStrLn (show (simple_sum 4))
+&lt;/hs&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;css&quot;&gt;&lt;span class=&quot;nf&quot;&gt;#container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;-240px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;В ответ получаем ожидаемое значение:&lt;/p&gt;
 
-&lt;p&gt;Non Pygments code example&lt;/p&gt;
+&lt;bash&gt;
+8
+&lt;/bash&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&quot;awesome&quot;&amp;gt;
-    &amp;lt;p&amp;gt;This is great isn't it?&amp;lt;/p&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;А теперь подробнее...&lt;/h3&gt;
 
-&lt;h2 id=&quot;buttons&quot;&gt;Buttons&lt;/h2&gt;
+&lt;p&gt;Естественно, всё вышесказанное - это лишь самые азы. Теперь же необходимо уточнить некоторые детали.&lt;/p&gt;
 
-&lt;p&gt;Make any link standout more when applying the &lt;code&gt;.btn&lt;/code&gt; class.&lt;/p&gt;
+&lt;h4&gt;Выход из функции&lt;/h4&gt;
 
-&lt;div&gt;&lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;This is a button&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;В C++, если у нас есть функция с возвращаемым значением, мы обязаны где-то в её теле написать инструкцию &lt;strong&gt;&lt;code&gt;return&lt;/code&gt;&lt;/strong&gt;. Это - точка выхода из тела функции. Кроме того, мы знаем, что точек выхода из тела функции может быть сколько угодно. В Haskell же всё обстоит иначе. Во-первых, точка выхода из чистой функции может быть только одна, а во-вторых, аналога инструкции &lt;strong&gt;&lt;code&gt;return&lt;/code&gt;&lt;/strong&gt; в Haskell нету.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/articles/2011/3/10/sample-post.html&quot;&gt;Sample Post&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on March 10, 2011.&lt;/p&gt;</content>
+&lt;p&gt;Да, я понимаю, это удивляет. Мол, а как же нам быть, если мы хотим указать точку выхода явно? Но если мы вспомним математическую природу чистой функции, то поймём, что иначе быть не может. Ведь чистая функция представляет собой описание зависимости выходного выражения от совокупности входных выражений, поэтому её тело представляет собой совокупность выражений, которые вычисляются (в некотором порядке) и в конечном итоге оставляют одно-единственное, последнее выражение. Так вот это последнее выражение и будет являться точкой выхода из функции.&lt;/p&gt;
+
+&lt;p&gt;Чтобы стало понятнее, приведу пример:&lt;/p&gt;
+
+&lt;hs&gt;
+indicate :: String -&amp;gt; String
+indicate address = 
+    if address == &quot;127.0.0.1&quot;
+    then
+        &quot;localhost&quot;
+    else 
+        address
+&lt;/hs&gt;
+
+&lt;p&gt;Эта функция принимает единственный аргумент типа &lt;strong&gt;&lt;code&gt;String&lt;/code&gt;&lt;/strong&gt;, соответствующий некоему IP-адресу. В теле функции происходит проверка аргумента на равенство адресу “127.0.0.1”, в результате мы оказываемся в одной из двух логических ветвей. Если бы это была функция на C++, это выглядело бы примерно так:&lt;/p&gt;
+
+&lt;cpp&gt;
+std::string indicate( const std::string&amp;amp; address ) {
+    if( address == &quot;127.0.0.1&quot; ) {
+        return &quot;localhost&quot;;
+    } else {
+        return address;
+    }
+}
+&lt;/cpp&gt;
+
+&lt;p&gt;Обратите внимание, что мы явно указали две точки выхода из функции. Но в Haskell это не нужно, потому что когда мы окажемся в одной из двух логических ветвей, то выражение, на котором мы окажемся, оно и будет возвращено.&lt;/p&gt;
+
+&lt;p&gt;А чтобы стало совсем понятно, перепишем тело этой функции для того, чтобы избавиться от выражения &lt;strong&gt;&lt;code&gt;if then else&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;hs&gt;
+indicate :: String -&amp;gt; String
+indicate &quot;127.0.0.1&quot; = &quot;localhost&quot;
+indicate address = address
+&lt;/hs&gt;
+
+&lt;p&gt;Мы вводим вместо одного тела два, для каждого из которых мы определяем свою зависимость. Мы как бы говорим: “Если входной аргумент будет равен “127.0.0.1”, то пусть возвращаемым функцией значением будет строка “localhost”, если же аргумент будет какой-либо другой, то пусть возвращаемым функцией значением будет сам этот аргумент.” Следовательно, когда компилятор увидит вызов этой функции в коде, он просто &lt;em&gt;подставит&lt;/em&gt; на место этого вызова соответствующее выражение: либо строку “localhost”, либо фактически переданный аргумент.&lt;/p&gt;
+
+&lt;p&gt;Теперь всё встало на свои места: явно определять точку выхода из чистой функции в Haskell не нужно потому, что конечное выражение в теле этой функции просто заменит собой вызов функции. То есть если написано так:&lt;/p&gt;
+
+&lt;hs&gt;
+main = putStrLn (indicate &quot;127.0.0.1&quot;)
+&lt;/hs&gt;
+
+&lt;p&gt;то это то же самое, что было бы написано так:&lt;/p&gt;
+
+&lt;hs&gt;
+main = putStrLn &quot;localhost&quot;
+&lt;/hs&gt;
+
+&lt;p&gt;потому что компилятор, вычислив внутренности функции, просто заменит место вызова конечным (итоговым) выражением.&lt;/p&gt;
+
+&lt;h4&gt;Локальные выражения&lt;/h4&gt;
+
+&lt;p&gt;Очень полезно бывает ввести некое локальное значение в теле функции, например, для избавления от дубляжа кода или от магических чисел. Например, у нас есть такая функция:&lt;/p&gt;
+
+&lt;hs&gt;
+prepare_length :: Double -&amp;gt; Double
+prepare_length line = 
+    line * 0.4959
+&lt;/hs&gt;
+
+&lt;p&gt;Итак, мы готовим длину некой линии путём умножения её первоначальной длины на поправочный коэффициент. Но перед нами - магическое число, а это очень плохо. Добавлять комментарий - это не лучшее решение. Поэтому добавим локальное поясняющее выражение:&lt;/p&gt;
+
+&lt;hs&gt;
+prepare_length :: Double -&amp;gt; Double
+prepare_length line = 
+    line * coefficient
+    where coefficient = 0.4959
+&lt;/hs&gt;
+
+&lt;p&gt;Красиво, не так ли? Ключевое слово &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt; вводит локальное выражение, которое можно использовать в теле функции. Разумеется, локальных выражений может быть несколько:&lt;/p&gt;
+
+&lt;hs&gt;
+prepare_length :: Double -&amp;gt; Double
+prepare_length line = 
+    line * coefficient - correction
+    where coefficient = 0.4959
+          correction = 0.0012
+&lt;/hs&gt;
+
+&lt;p&gt;Есть ещё один способ ввести локальное вспомогательное выражение, с помощью ключевого слова &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt;. На примере нашей последней функции это выглядит так:&lt;/p&gt;
+
+&lt;hs&gt;
+prepare_length :: Double -&amp;gt; Double
+prepare_length line = 
+    let coefficient = 12.4959
+        correction = 0.0012
+    in
+    line * coefficient - correction
+&lt;/hs&gt;
+
+&lt;p&gt;Общая модель такая: &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt; &lt;code&gt;bindings&lt;/code&gt; &lt;strong&gt;&lt;code&gt;in&lt;/code&gt;&lt;/strong&gt; &lt;code&gt;expression&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Но у вас, очевидно, возник вопрос, в чём же разница между &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt; и &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;Во-первых, выражение &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt; может быть только одно и только в конце тела функции, в то время как выражение &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt; может присутствовать многократно и в любой части тела функции.&lt;/p&gt;
+
+&lt;p&gt;Во-вторых, выражение, введённое ключевым словом &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt;, всегда видимо в любой точке тела функции, в то время как выражение, введённое ключевым словом &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt;, может быть “супер-локальным”. Например:&lt;/p&gt;
+
+&lt;hs&gt;
+prepare_length :: Double -&amp;gt; Double
+prepare_length line = 
+    let coefficient = 12.4959
+        correction = 0.0012
+    in
+    line * coefficient - correction - (let s = 10.9 in s + 1) - s
+&lt;/hs&gt;
+
+&lt;p&gt;Понимаю, пример несколько надуманный, но всё-таки… Здесь мы ввели выражение с именем &lt;code&gt;s&lt;/code&gt;, которое действует только внутри круглых скобок. Именно поэтому пример этот не скомпилируется, ведь второе выражение &lt;code&gt;s&lt;/code&gt; находится уже не в скобках, и поэтому компилятор вполне справедливо возмутится:&lt;/p&gt;
+
+&lt;bash&gt;
+[2 of 2] Compiling Main             ( src/main.hs, dist/build/Haskell/Haskell-tmp/Main.o )
+
+src/main.hs:43:61: Not in scope: `s&#39;
+&lt;/bash&gt;
+
+&lt;h4&gt;Про объявление&lt;/h4&gt;
+
+&lt;p&gt;Как вы помните, нельзя объявить функцию и при этом не определить её. А можно ли определить функцию без объявления? Отвечаю: можно, но не рекомендуется.&lt;/p&gt;
+
+&lt;p&gt;Общепринятой практикой является объявлять функцию и тут же определять её. И несмотря на то, что мы &lt;em&gt;можем&lt;/em&gt; написать так:&lt;/p&gt;
+
+&lt;hs&gt;
+prepare_length line = 
+    let coefficient = 12.4959
+    in
+    line * coefficient
+&lt;/hs&gt;
+
+&lt;p&gt;делать так не рекомендуется, поскольку определение функции становится как бы беднее, ведь сигнатура типов аргументов и возвращаемого выражения помогает лучше понять функцию.&lt;/p&gt;
+
+&lt;p&gt;К тому же в случае отсутствия объявления тип аргумента &lt;code&gt;line&lt;/code&gt; становится неопределённым, и поэтому строгость проверки этого самого типа (на стадии компиляции) снизится. Если вы делаете это &lt;em&gt;сознательно&lt;/em&gt; - три раза подумайте. Во всех же остальных случаях -  объявляйте.&lt;/p&gt;
+
+&lt;h4&gt;Вот и всё?&lt;/h4&gt;
+
+&lt;p&gt;Конечно, это далеко не всё, что можно сказать о чистых функциях, но этот базис достаточен для того, чтобы понять суть чистых функций и то, как их можно использовать в своём коде. Продолжение следует…&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/23/haskell.html&quot;&gt;Haskell: о функциях&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 23, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell: о лямбда-функциях]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/20/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/20/haskell</id>
+  <published>2013-12-20T00:00:00+04:00</published>
+  <updated>2013-12-20T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;!--break--&gt;
+&lt;p&gt;Помню как в школе я довольно долго не мог понять, что же такое функция. Да, я уже решал многие задания с использованием функций, да, уже рисовал разнообразные графики (помните эти прелестные дуги на тетрадном листе в клеточку?), но при этом не мог бы объяснить ребёнку, что такое функция как &lt;em&gt;понятие&lt;/em&gt;. А памятуя о мудрых словах Эйнштейна, если вы не можете объяснить некую идею пятилетнему ребёнку, значит вы и сами её не понимаете…&lt;/p&gt;
+
+&lt;p&gt;А ведь понятие-то оказалось предельно простым:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Функция - это описание зависимости чего-то от чего-то.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Всё. Если у нас есть описание того, &lt;em&gt;как&lt;/em&gt; конкретное входное значение определяет конкретное выходное значение - значит это описание и есть функция.&lt;/p&gt;
+
+&lt;p&gt;Однако в мире языка C (и подобных ему языков) функция никогда не ассоциировалась с таким определением. Напротив, функция там есть не что иное, как &lt;em&gt;подпрограмма&lt;/em&gt;, а имя функции есть не что иное, как указатель на первую инструкцию этой подпрограммы.&lt;/p&gt;
+
+&lt;p&gt;Кроме того, функция в C является глобальной в рамках текущей единицы трансляции. И поэтому вызов функции - это как бы “глобальный &lt;strong&gt;&lt;code&gt;goto&lt;/code&gt;&lt;/strong&gt;” в её тело (с последующим возвратом из него). Именно поэтому функция в языке C не может быть безымянной, потому что иначе её невозможно было бы вызывать.&lt;/p&gt;
+
+&lt;p&gt;Всё это я напоминаю вам для того, чтобы, продолжив чтение этой заметки, вы увидели, насколько концепция λ-функций отличается от концепции функций в языке C.&lt;/p&gt;
+
+&lt;h3&gt;Так что же это за лямбды такие?&lt;/h3&gt;
+
+&lt;p&gt;В основе идеи λ-функций лежит λ-исчисление, названное так по имени этой красивой греческой буквы. У понятия λ-исчисления довольно-таки долгая академическая история, нам нет смысла её здесь разбирать по косточкам. Нас интересует лишь суть, поэтому сразу пример.&lt;/p&gt;
+
+&lt;p&gt;Представим себе, что нам нужна функция, принимающая некое целочисленное значение и возвращающая квадрат этого значения. Причём функция именно в том самом, математическом смысле. Как бы мы могли это отобразить? Примерно так:&lt;/p&gt;
+
+&lt;cpp&gt;
+5 -&amp;gt; f -&amp;gt; 25
+&lt;/cpp&gt;
+
+&lt;p&gt;Итак, подаём на вход значение 5, а на выходе получаем 25. Проще некуда. Но как же нам записать внутренности функции &lt;code&gt;f&lt;/code&gt;? Ну, например, так:&lt;/p&gt;
+
+&lt;cpp&gt;
+5 -&amp;gt; (x * x) -&amp;gt; 25
+&lt;/cpp&gt;
+
+&lt;p&gt;Тут тоже всё ясно: поданный на вход аргумент умножается сам на себя. &lt;/p&gt;
+
+&lt;p&gt;Ну а теперь главный вопрос: как эту функцию описать &lt;em&gt;формально&lt;/em&gt;, или &lt;em&gt;унифицированно&lt;/em&gt;? Вот тут-то на сцену и выходит λ-исчисление, ибо оно как раз и предлагает такой вот унифицированный способ записи функции. &lt;/p&gt;
+
+&lt;p&gt;Вот λ-выражение для нашей функции:&lt;/p&gt;
+
+&lt;pre&gt;
+&amp;lambda;x.x*x
+&lt;/pre&gt;
+
+&lt;p&gt;Буква λ - это признак λ-функции. А читать это выражение следует примерно так: &lt;/p&gt;
+
+&lt;p&gt;λ-функция от одного аргумента &lt;code&gt;x&lt;/code&gt;, умножающая этот аргумент сам на себя.&lt;/p&gt;
+
+&lt;p&gt;Таким образом, выражение до разделяющей точки:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;lt;pre&amp;gt;
+λx
+&amp;lt;/pre&amp;gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;это список аргументов (в данном случае он один), а выражение после разделяющей точки:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;lt;pre&amp;gt;
+x*x
+&amp;lt;/pre&amp;gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;это “тело” функции, описывающее ту самую зависимость выходного значения от значения входного.&lt;/p&gt;
+
+&lt;p&gt;Как видите, весьма простое и элегантное описание. Как говорится, ничего лишнего.&lt;/p&gt;
+
+&lt;p&gt;Обратите также внимание на то, что здесь нет имени. Особенностью λ-функции является её безымянность. Почему? Потому что имя ей не нужно. И это принципиально отличает её от функции в языке C, потому что там я могу обратиться к функции не иначе, как через её имя (даже вызов через указатель всё равно требует хотя бы единократное использование имени функции). &lt;/p&gt;
+
+&lt;h3&gt;Ну хорошо, а как это будет выглядеть в коде?&lt;/h3&gt;
+
+&lt;p&gt;λ-функции присутствуют во многих языках программирования. Но есть один язык, в котором синтаксис λ-выражения максимально приближен к приведённому здесь математическому. Угадайте с трёх раз, о каком языке я говорю… :)&lt;/p&gt;
+
+&lt;p&gt;Итак, вот наша функция в Haskell:&lt;/p&gt;
+
+&lt;hs&gt;
+\x -&amp;gt; x*x
+&lt;/hs&gt;
+
+&lt;p&gt;Ну, что я говорил? Прямое сходство. Ведь даже обратный слэш вначале подходит как нельзя лучше: рассматривайте его как “спинку” буквы λ. Фактически, единственное отличие - это замена точки стрелочкой, потому что символ ‘&lt;code&gt;-&amp;gt;&lt;/code&gt;’ присущ языку Haskell как признак (любой) функции. Нда-с, сразу чувствуется, что язык Haskell создал математик.&lt;/p&gt;
+
+&lt;p&gt;А теперь, вероятно, вас интересует, как же можно &lt;em&gt;вызывать&lt;/em&gt; такую функцию? Вероятно, мой ответ удивит вас, но λ-функции, строго говоря, не вызывают.&lt;/p&gt;
+
+&lt;p&gt;Да-да, я уже вижу расширающиеся от удивления глаза. Точно такие же были и у меня, когда я впервые прочитал об этом. Но на самом деле здесь имеет место лишь игра слов. А для того, чтобы всё встало на свои места, мы опять вынуждены на пару минут вернуться в математику.&lt;/p&gt;
+
+&lt;p&gt;Идея λ-функции базируется на принципе “аппликации” (application), или “применения”. Это означает, что λ-функции не вызывают, а применяют (или, если хотите, прикладывают) к аргументу. Знаю, это звучит странновато для уха программистов из мира C, потому что там аргумент “прикладывают” к функции, но в математике договорились на таком определении. Поэтому запись вида:&lt;/p&gt;
+
+&lt;cpp&gt;
+f a
+&lt;/cpp&gt;
+
+&lt;p&gt;принято читать так: применение функции &lt;code&gt;f&lt;/code&gt; к аргументу &lt;code&gt;a&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Вот как это выглядит в Haskell:&lt;/p&gt;
+
+&lt;hs&gt;
+(\x -&amp;gt; x*x) 5
+&lt;/hs&gt;
+
+&lt;p&gt;Как видите, тут тоже прямое сходство с математической записью. Выражение в скобках - это уже знакомое нам λ-выражение. Оно “порождает” λ-функцию, которая сразу же применяется (прикладывается) к аргументу 5, результатом чего и явится значение 25.&lt;/p&gt;
+
+&lt;p&gt;Таким образом, можно сказать, что перед нами - вызов λ-функции с аргументом 5, но учитывая математические корни языка Haskell, можно сказать, что перед нами - применение λ-функции к аргументу 5.&lt;/p&gt;
+
+&lt;h3&gt;Да, но какая же от всего этого польза?&lt;/h3&gt;
+
+&lt;p&gt;Действительно, пора и к практике переходить.&lt;/p&gt;
+
+&lt;p&gt;В языке C принят стандартный “круг трёх шагов” по работе с функцией:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;объявление,&lt;/li&gt;
+  &lt;li&gt;определение,&lt;/li&gt;
+  &lt;li&gt;вызов.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;И потому работа с нашей функцией возведения в квадрат, применительно к языку C, могла бы выглядеть так:&lt;/p&gt;
+
+&lt;cpp&gt;
+int f( int i ) {
+    return i * i;
+}
+
+int main() {
+    printf( &quot;%d&quot;, f( 5 ) );
+}
+&lt;/cpp&gt;
+
+&lt;p&gt;Мы подготовили нашу “глобальную подпрограмму”, в которую чуть позже зайдём через вызов (фактически - через разыменование указателя &lt;code&gt;f&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;А вот как это выглядело бы на Haskell:&lt;/p&gt;
+
+&lt;hs&gt;
+main =
+    putStrLn (show ((\x -&amp;gt; x * x) 5))
+&lt;/hs&gt;
+
+&lt;p&gt;Как видите, мы ничего не готовим заранее. Напротив, мы &lt;em&gt;создаём&lt;/em&gt; функцию (или, если хотите, функциональный объект) локально и непосредственно перед использованием. Создаём - и сразу апплицируем его к аргументу 5.&lt;/p&gt;
+
+&lt;p&gt;Для большей простоты и похожести на нашу функцию мы можем написать и так:&lt;/p&gt;
+
+&lt;hs&gt;
+main =
+    do putStrLn (show (f 5))
+    where f = (\x -&amp;gt; x*x)
+&lt;/hs&gt;
+
+&lt;p&gt;Выражение&lt;/p&gt;
+
+&lt;hs&gt;
+    where f = (\x -&amp;gt; x*x)
+&lt;/hs&gt;
+
+&lt;p&gt;это не присваивание (напомню, в Haskell его нет), это как бы ассоциация. Мы вводим локальный псевдоним для λ-функции и называем его &lt;code&gt;f&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Вы можете спросить меня, мол, какова же реальная польза от λ-функции, если у нас есть функция обыкновенная? Ведь мы могли бы написать и так:&lt;/p&gt;
+
+&lt;hs&gt;
+f :: Integer -&amp;gt; Integer
+f x =
+    x * x
+
+main =
+    putStrLn (show (f 5))
+&lt;/hs&gt;
+
+&lt;p&gt;Тут всё как обычно: мы определили функцию &lt;code&gt;f&lt;/code&gt; заранее, а потом апплицировали её к аргументу 5.&lt;/p&gt;
+
+&lt;p&gt;Так вот одно из преимуществ λ-функции как раз и заключается в её локальности. Зачем нам определять (подготавливать заранее) некую “глобальную подпрограмму”, если мы можем создать и использовать её непосредственно в том месте, где она нужна? Очень часто в реальных программах случается такое, что функция определяется лишь для того, чтобы быть вызванной в одном-единственном месте. Ну и зачем же нам определяеть её “глобально”?&lt;/p&gt;
+
+&lt;p&gt;Анонимность λ-функции также видится мне преимуществом, по крайней мере в ряде случаев. Если действие, совершаемое с помощью конкретной λ-функции, тривиально (и может быть понято из её “тела”, как в случае с функцией возведения в квадрат) - зачем же нам придумывать имя? Мы можем спокойно обойтись без него. Однако, в том случае, когда λ-функция нужна нам во многих местах кода, мы можем, во избежание дубляжа, “определить” λ-функцию глобально. Делается это в нашем случае так:&lt;/p&gt;
+
+&lt;hs&gt;
+f = \x -&amp;gt; x * x
+
+main =
+    do putStrLn (show ((f 5) + (f 6)))
+&lt;/hs&gt;
+
+&lt;p&gt;Как видите, мы “определили” нашу функцию глобально и ассоциировали её с выражением &lt;code&gt;f&lt;/code&gt;. Теперь мы можем многократно использовать это выражение в коде, для апплицирования его к различным аргументам (в данном случае к 5 и к 6).&lt;/p&gt;
+
+&lt;p&gt;Ну вот, собственно, и всё. Конечно, это далеко не вся информация о λ-функциях, но этого базиса нам пока достаточно. Продолжение следует…&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/20/haskell.html&quot;&gt;Haskell: о лямбда-функциях&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 20, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Disqus-общение: попробуем...]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/19/disqus.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/19/disqus</id>
+  <published>2013-12-19T00:00:00+04:00</published>
+  <updated>2013-12-19T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Друзья!&lt;/p&gt;
+
+&lt;p&gt;Как вы могли заметить, на сайт была добавлена система &lt;strong&gt;&lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt;&lt;/strong&gt;. Это очень известный сторонний сервис, позволяющий комментировать заметки в блогах. Мне понравилась простота и ясность этого сервиса, надеюсь, понравится и вам.&lt;/p&gt;
+
+&lt;p&gt;Разумеется, анонимные комментарии запрещены, ибо они суть зло. Воспользуйтесь социальными профилями (которые у вас наверняка есть) или зарегистрируйтесь в самой Disqus.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/19/disqus.html&quot;&gt;Disqus-общение: попробуем...&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 19, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell: и снова о типах]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/14/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/14/haskell</id>
+  <published>2013-12-14T00:00:00+04:00</published>
+  <updated>2013-12-14T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;!--break--&gt;
+&lt;p&gt;В языке Haskell есть три ключевых слова, используемые при определении собственных типов. И слова эти могут, скажем так, смутить программистов, пришедших из мира C++. Вот эти слова:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code&gt;data&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code&gt;class&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code&gt;instance&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ключевое слово &lt;strong&gt;&lt;code&gt;data&lt;/code&gt;&lt;/strong&gt; служит для определения пользовательского типа (естественно, оно служит также и для определения всех стандартных типов Haskell, но сейчас это не столь важно).&lt;/p&gt;
+
+&lt;p&gt;Что же тогда означает слово &lt;strong&gt;&lt;code&gt;class&lt;/code&gt;&lt;/strong&gt;, спросите вы. Это слово предназначено для определения &lt;em&gt;класса типов&lt;/em&gt;. Да, я понимаю, звучит на первый взгляд странно, но идея этой концепции весьма проста.&lt;/p&gt;
+
+&lt;p&gt;В языке C++ понятия “тип” и “класс” фактически взаимозаменяемы, потому что ключевое слово &lt;strong&gt;&lt;code&gt;class&lt;/code&gt;&lt;/strong&gt; как раз и используется для определения пользовательских типов. Если мы написали:&lt;/p&gt;
+
+&lt;cpp&gt;
+class IP_address {
+    // ...
+};
+
+int main() {
+    IP_address address;
+}
+&lt;/cpp&gt;
+
+&lt;p&gt;что это означает? Мы определили класс &lt;code&gt;IP_address&lt;/code&gt;, но при этом мы определили и пользовательский тип &lt;code&gt;IP_address&lt;/code&gt;. :) Однако в языке Haskell всё иначе. А чтобы моё объяснение было более понятным, сразу перейдём к практическому примеру.&lt;/p&gt;
+
+&lt;h3&gt;Собственный тип&lt;/h3&gt;
+
+&lt;p&gt;Для начала определим собственный тип &lt;code&gt;IP_address&lt;/code&gt;:&lt;/p&gt;
+
+&lt;hs&gt;
+data IP_address = IP_address String
+&lt;/hs&gt;
+
+&lt;p&gt;Готово. Перед нами простейший пользовательский тип. Объект этого типа фактически будет представлять собою значение стандартного типа &lt;code&gt;String&lt;/code&gt; с меткой &lt;code&gt;IP_address&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;Вы спросите, что такое метка? Рассматривайте метку как пояснительный идентификатор. Многие типы (в частности, стандартные типы) не имеют метки, поэтому их можно инициализировать значениями без пояснений. Например, если у нас есть некая функция, принимающая значение типа &lt;code&gt;Int&lt;/code&gt; в качестве аргумента, то при её вызове мы будем писать так:&lt;/p&gt;
+
+&lt;hs&gt;
+show 6
+&lt;/hs&gt;
+
+&lt;p&gt;Однако если эта функция в качестве аргумента принимает объект типа &lt;code&gt;IP_address&lt;/code&gt;, то мы должны явно указать это при её вызове:&lt;/p&gt;
+
+&lt;hs&gt;
+show (IP_address &quot;127.0.0.1&quot;)
+&lt;/hs&gt;
+
+&lt;p&gt;Выражение &lt;code&gt;(IP_address &quot;127.0.0.1&quot;)&lt;/code&gt; породит объект типа &lt;code&gt;IP_address&lt;/code&gt;, “содержащий в себе” строку со значением “127.0.0.1”.&lt;/p&gt;
+
+&lt;p&gt;Кстати, метку принято ещё называть конструктором. &lt;/p&gt;
+
+&lt;p&gt;Обратите внимание, что имя типа не может начинаться с маленькой буквы. Поэтому такой код:&lt;/p&gt;
+
+&lt;hs&gt;
+data ip_address = ip_address String
+&lt;/hs&gt;
+
+&lt;p&gt;будет неизбежно отвергнут компилятором.&lt;/p&gt;
+
+&lt;h3&gt;Класс типов&lt;/h3&gt;
+
+&lt;p&gt;Проблема в том, что тип &lt;code&gt;IP_address&lt;/code&gt; в его нынешнем виде настолько примитивен, что не представляет для нас большого интереса (фактически, никакого интереса не представляет). Ведь мы, создав такой объект, даже не сможем вывести его на консоль. В частности, упомянутая функция &lt;code&gt;show&lt;/code&gt; (стандартная функция Haskell, выводящая переданный ей аргумент в строковом виде) с гневом отвергнет аргумент типа &lt;code&gt;IP_address&lt;/code&gt;, и правильно сделает: откуда ей знать, &lt;em&gt;как&lt;/em&gt; можно представить объект типа &lt;code&gt;IP_address&lt;/code&gt; в строковом виде? Она не узнает это до тех пор, пока мы явно ей не расскажем об этом. И вот тут-то на арену и выходят классы типов.&lt;/p&gt;
+
+&lt;p&gt;Я понимаю, в выражении “класс типов” слово “класс” невольно режет слух программисту на C++, но потерпите, дальше будет понятнее. Класс типов - это некая обобщённая категория типов, отражающая конкретные общие черты для всех этих типов.&lt;/p&gt;
+
+&lt;p&gt;Например, в стандартной библиотеке Haskell есть класс типов &lt;code&gt;Show&lt;/code&gt;. Он обобщает все типы, объекты которых могут быть “показаны” (то есть отображены в виде строки). Как именно обобщает, спросите вы? Через общие методы. Вот определение класса &lt;code&gt;Show&lt;/code&gt;:&lt;/p&gt;
+
+&lt;hs&gt;
+class Show a where
+    show :: a -&amp;gt; String
+&lt;/hs&gt;
+
+&lt;p&gt;Как видите, тут присутствует один-единственный метод &lt;code&gt;show&lt;/code&gt;, принимающий в качестве аргумента объект некоторого типа &lt;code&gt;a&lt;/code&gt; и возвращающий некоторое строковое отображение этого объекта.&lt;/p&gt;
+
+&lt;p&gt;Но что же такое тип &lt;code&gt;a&lt;/code&gt; в этом выражении, спросите вы. Тип &lt;code&gt;a&lt;/code&gt; - это любой тип. Рассматривайте его примерно как &lt;code&gt;T&lt;/code&gt; в строке &lt;code&gt;template&lt;typename t=&quot;&quot;&gt;&amp;lt;/code&amp;gt; в C++ или как &lt;code&gt;id&lt;/code&gt; в Objective-C. Разумеется, в данном случае речь идёт о любом типе, для которого понятие &quot;показать&quot; имеет смысл.&lt;/typename&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Да, но каким же образом метод &lt;code&gt;show&lt;/code&gt; узнает, &lt;em&gt;как&lt;/em&gt; ему отобразить объект некоторого конкретного типа в виде строки? Он узнает это через экземпляр класса типов (звучит ещё страшнее, но наберитесь мужества).&lt;/p&gt;
+
+&lt;h3&gt;Экземпляр класса типов&lt;/h3&gt;
+
+&lt;p&gt;Если класс типов &lt;code&gt;Show&lt;/code&gt; - это абстракция для типов, объекты которых можно “показать”, то экземпляр этого класса представляет собой реальное объяснение о том, &lt;em&gt;как&lt;/em&gt; можно “показать” объект того или иного типа. То есть если мы хотим объяснить, как можно “показать” объект типа &lt;code&gt;IP_address&lt;/code&gt;, мы должны создать экземпляр класса типов &lt;code&gt;Show&lt;/code&gt; для типа &lt;code&gt;IP_address&lt;/code&gt;. Сделаем же это:&lt;/p&gt;
+
+&lt;hs&gt;
+instance Show IP_address where
+    show (IP_address address) = 
+        if address == &quot;127.0.0.1&quot;
+        then 
+            &quot;localhost&quot;
+        else 
+            address
+&lt;/hs&gt;
+
+&lt;p&gt;Как видите, мы использовали ключевое слово &lt;code&gt;instance&lt;/code&gt;, а обобщённый тип &lt;code&gt;a&lt;/code&gt; заменён здесь на наш конкретный тип &lt;code&gt;IP_address&lt;/code&gt;. А дальше следует конкретное определение метода &lt;code&gt;show&lt;/code&gt; для нашего типа. Таким образом, класс типов можно рассматривать примерно как чистый интерфейс в C++ (с чисто виртуальными функциями), а экземпляр класса типов - как определение этих чисто виртуальных функций для конкретного типа.&lt;/p&gt;
+
+&lt;p&gt;Взглянем ещё раз на определение метода &lt;code&gt;show&lt;/code&gt;:&lt;/p&gt;
+
+&lt;hs&gt;
+    show (IP_address address) =
+        if address == &quot;127.0.0.1&quot;
+        then 
+            &quot;localhost&quot;
+        else 
+            address
+&lt;/hs&gt;
+
+&lt;p&gt;Первая строка показывает, что метод &lt;code&gt;show&lt;/code&gt; принимает объект типа &lt;code&gt;IP_address&lt;/code&gt;, который в свою очередь будет “порождён” выражением вида &lt;code&gt;(IP_address address)&lt;/code&gt;, например, как в примере выше, выражением &lt;code&gt;IP_address &quot;127.0.0.1&quot;&lt;/code&gt;. Далее следует простое условие, выводящее слово &lt;code&gt;localhost&lt;/code&gt; в случае значения адреса 127.0.0.1.&lt;/p&gt;
+
+&lt;p&gt;А теперь мы можем использовать всё это хозяйство следующим образом:&lt;/p&gt;
+
+&lt;hs&gt;
+main = 
+    putStrLn (show (IP_address &quot;127.0.0.1&quot;))
+&lt;/hs&gt;
+
+&lt;p&gt;Теперь-то уж метод &lt;code&gt;show&lt;/code&gt; прекрасно знает, как именно “показать” наш объект типа &lt;code&gt;IP_address&lt;/code&gt;, поэтому мы получим ожидаемый вывод:&lt;/p&gt;
+
+&lt;bash&gt;
+localhost
+&lt;/bash&gt;
+
+&lt;p&gt;Если же мы напишем так:&lt;/p&gt;
+
+&lt;hs&gt;
+main = 
+    -- IP-адрес google.com ;-)
+    putStrLn (show (IP_address &quot;46.19.98.158&quot;))
+&lt;/hs&gt;
+
+&lt;p&gt;то результат столь же ожидаем:&lt;/p&gt;
+
+&lt;bash&gt;
+46.19.98.158
+&lt;/bash&gt;
+
+&lt;p&gt;Вот и всё. Теперь вы знаете о пользовательских типах в Haskell. Признаюсь, там не так всё просто, как описано выше, но самый базис вы уже освоили. Продолжение следует…&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/14/haskell.html&quot;&gt;Haskell: и снова о типах&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 14, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell: о типах]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/10/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/10/haskell</id>
+  <published>2013-12-10T00:00:00+04:00</published>
+  <updated>2013-12-10T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;!--break--&gt;
+&lt;h3&gt;Строгая статическая проверка&lt;/h3&gt;
+
+&lt;p&gt;Haskell имеет статическую проверку типов. Это означает, что тип каждого выражения в программе обязательно проверяется на стадии компиляции. Более того, Haskell весьма строг по отношению к типам, чего, к сожалению, нельзя сказать о C-подобных языках. Дело в том, что в C или C++ допустимо неявное приведение одного типа к другому. Например, так:&lt;/p&gt;
+
+&lt;cpp&gt;
+int f() {
+    return 12.9;
+}
+&lt;/cpp&gt;
+
+&lt;p&gt;Компилятор C или C++ не только проглотит это, но даже не обмолвится ни единым предупреждением (в том числе и при использовании флага &lt;code&gt;-Wall&lt;/code&gt;), при этом аккуратно отбросив дробную часть, ведь тип возращаемого значения будет незримо приведён к &lt;code&gt;int&lt;/code&gt;. В Haskell подобный код не имеет ни малейших шансов пройти компиляцию: нужно вернуть &lt;code&gt;int&lt;/code&gt; - будь добр предоставить выражение, имеющее (в конечном итоге) тип &lt;code&gt;int&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Автоматическое выведение&lt;/h3&gt;
+
+&lt;p&gt;В Haskell применяется принцип автоматического выведения типов, что позволяет программисту не указывать тип выражения явно. Похожий подход используется в C++11 с использованием ключевого слова &lt;code&gt;auto&lt;/code&gt;:&lt;/p&gt;
+
+&lt;cpp&gt;
+auto i = 12;
+&lt;/cpp&gt;
+
+&lt;p&gt;Но в Haskell пишут ещё проще:&lt;/p&gt;
+
+&lt;hs&gt;
+i = 12
+&lt;/hs&gt;
+
+&lt;p&gt;Компилятор сам поймёт, что тип выражения &lt;code&gt;i&lt;/code&gt; - это именно &lt;code&gt;Integer&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Впрочем, при желании программист &lt;em&gt;может&lt;/em&gt; указать тип выражения явно (иногда это бывает полезно, в частности, при отладке и для большей самодокументируемости кода). Например, если я напишу так:&lt;/p&gt;
+
+&lt;hs&gt;
+let i = 12 :: Double
+&lt;/hs&gt;
+
+&lt;p&gt;то тип &lt;code&gt;i&lt;/code&gt; будет уже &lt;code&gt;Double&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Вот и всё, теперь вы знаете фундаментальные утверждения о типах в Haskell. Продолжение следует…&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/10/haskell.html&quot;&gt;Haskell: о типах&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 10, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[О памяти]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/12/1/.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/12/1/</id>
+  <published>2013-12-01T00:00:00+04:00</published>
+  <updated>2013-12-01T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;!--break--&gt;
+&lt;p&gt;Мы знаем, что все сущности, которые мы так заботливо создали в процессе написания кода, при запуске процесса находят своё уютное место где-то в памяти (выделенной этому процессу операционной системой). И когда в 70-х годах прошлого века родился великий и могучий язык C, он предоставлял программисту прямой доступ к управлению этой самой памятью. Впрочем, справедливее будет сказать не “предоставлял”, а “заставлял”. Программист должен был решать, в какой памяти будет создана та или иная сущность. Программист должен был решать, когда создавать эту сущность и кто будет ответственен за её жизненный цикл. Программист должен был решать, когда и как этот ответственный должен уничтожить эту сущность. Программист должен помнить, что создать объект или массив объектов - это две большие разницы, как говорят в Одессе. И даже после всего этого программист (с той или иной частотой) получал прелестные ошибки типа segmentation fault, bus error или double free…&lt;/p&gt;
+
+&lt;p&gt;То есть, во-первых, программист должен был держать в голове кучу специфической информации, а во-вторых, эта информация не избавляла его от вышеупомянутых ошибок. Ну не верю я в то, что существовал хотя бы один программист на C, который ни разу не получал segmentation fault…&lt;/p&gt;
+
+&lt;p&gt;К чему я веду? К тому, что с тех славных времён минуло уже более трёх десятилетий. Почему же и сегодня многие из нас продолжают думать о памяти? Какая разница, что мы сидим на Core i7, а не на i386, если натыкаемся на те же самые грабли?&lt;/p&gt;
+
+&lt;p&gt;Несомненно, нововведения в языке C++ (если уж говорить именно о нём) облегчили задачу программисту. Облегчили, но вовсе не избавили его от упомянутых выше проблем. Но суть даже не в том, чтобы обсуждать сильные и слабые стороны какого-нибудь &lt;code&gt;std::shared_ptr&lt;/code&gt;. Суть в том, что это ненормально, когда программист в 2013 году обязан думать о том же, о чём думал программист в 1979. Это неправильно.&lt;/p&gt;
+
+&lt;p&gt;Да, есть специфические области типа embedded development, в которых думать о памяти приходится всегда, но это уникальные и обособленные сегменты программирования. В остальных же случаях мы вынуждены признать: при всех вкусностях C++11, этот язык всё ещё остаётся стариком прошлого века в контексте управления памятью. Не потому что он делает это плохо, а потому, что он возлагает на меня как на разработчика &lt;em&gt;заботы&lt;/em&gt; о памяти и &lt;em&gt;ответственность&lt;/em&gt; за работу с ней.&lt;/p&gt;
+
+&lt;p&gt;Почему язык не может взять эти заботы и эту ответственность на себя? Ведь работа с памятью - это, по сути своей, “дела под капотом” языка. И я вовсе не горю желанием заглядывать под этот капот. Я хочу думать о решаемой мною задаче, а не о том, где, как и почему разместятся байты, соответствующие сущностям моего приложения.&lt;/p&gt;
+
+&lt;p&gt;Что же я предлагаю? &lt;del&gt;Всем срочно перейти на Haskell&lt;/del&gt; Задуматься о перспективах. Мы видим, как меняется компьютерное железо. Но если софт не будет поспевать за железом, то он, этот софт, окажется слабым звеном в связке под названием “компьютер”. Если есть языки программирования, в которых с программиста полностью снята ответственность за работу с памятью (как это и должно быть в 21 веке), то почему бы не… Ну вы поняли…&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/1/.html&quot;&gt;О памяти&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on December 01, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell: собираем простейший проект]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/11/30/haskell.html"/>
+  <id>http://denisshevchenko.github.io/blog/2013/11/30/haskell</id>
+  <published>2013-11-30T00:00:00+04:00</published>
+  <updated>2013-11-30T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;!--break--&gt;
+&lt;p&gt;За основу я взял хорошее пошаговое руководство с &lt;strong&gt;&lt;a href=&quot;http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program#Structure_of_a_simple_project&quot;&gt;официального сайта&lt;/a&gt;&lt;/strong&gt; Haskell, и снабдил его некоторыми пояснениями. Не пугайтесь, что дальше идёт довольно много текста, потому что фактических команд, которые вам нужно будет выполнить в терминале, всего несколько. Объём этой статьи обусловлен подробностью моих комментариев. &lt;/p&gt;
+
+&lt;p&gt;Итак, подразумевается, что у вас уже установлена &lt;strong&gt;&lt;a href=&quot;http://www.haskell.org/platform/&quot;&gt;Haskell Platform&lt;/a&gt;&lt;/strong&gt;. В составе этой самой платформы присутствует мощная утилита под названием &lt;code&gt;cabal&lt;/code&gt;. Не знаю как вам, а мне это название напомнило о персонаже из кровопролитной игры Mortal Kombat по имени Kabal. Впрочем, не пугайтесь, утилита эта не станет набрасываться на вас с железными крюками. Фактически она представляет собою эдакий Haskell-овский &lt;code&gt;make&lt;/code&gt;. На самом деле эта утилита весьма мощная и многогранная в своих возможностях, но на данный момент просто воспринимайте её как сборочную утилиту специально для Haskell-проектов.&lt;/p&gt;
+
+&lt;p&gt;Создаём папку под названием Haskell и заходим в неё. В ней мы должны создать один файл: main.hs. Это наш файл исходного кода, в нашем простейшем случае других файлов не будет.&lt;/p&gt;
+
+&lt;p&gt;Открываем этот файл и пишем в нём, например, это:&lt;/p&gt;
+
+&lt;hs&gt;
+import System.Environment
+ 
+main :: IO ()
+main = getArgs &amp;gt;&amp;gt;= print . haqify . head
+ 
+haqify s = &quot;Haq! &quot; ++ s
+&lt;/hs&gt;
+
+&lt;p&gt;Сохраняем, закрываем, а потом выполняем в терминале простую команду:&lt;/p&gt;
+
+&lt;bash&gt;
+cabal init
+&lt;/bash&gt;
+
+&lt;p&gt;В результате вы попадёте в интерактивный диалог, в ходе которого вам будет предложено ответить на несколько вопросов о вашем проекте:&lt;/p&gt;
+
+&lt;bash&gt;
+MacBook-Pro-Sevcenko:Haskell dshevchenko$ cabal init
+Package name? [default: Haskell] 
+Package version? [default: 0.1.0.0] 
+Please choose a license:
+ * 1) (none)
+   2) GPL-2
+   3) GPL-3
+   4) LGPL-2.1
+   5) LGPL-3
+   6) BSD3
+   7) MIT
+   8) Apache-2.0
+   9) PublicDomain
+  10) AllRightsReserved
+  11) Other (specify)
+Your choice? [default: (none)] 7
+Author name? Denis Shevchenko
+Maintainer email? me@dshevchenko.biz
+Project homepage URL? 
+Project synopsis? Learn project
+Project category:
+ * 1) (none)
+   2) Codec
+   3) Concurrency
+   4) Control
+   5) Data
+   6) Database
+   7) Development
+   8) Distribution
+   9) Game
+  10) Graphics
+  11) Language
+  12) Math
+  13) Network
+  14) Sound
+  15) System
+  16) Testing
+  17) Text
+  18) Web
+  19) Other (specify)
+Your choice? [default: (none)] 
+What does the package build:
+   1) Library
+   2) Executable
+Your choice? 2
+Include documentation on what each field means (y/n)? [default: n] 
+
+Guessing dependencies...
+
+Generating LICENSE...
+Warning: unknown license type, you must put a copy in LICENSE yourself.
+Generating Setup.hs...
+Generating Haskell.cabal...
+
+You may want to edit the .cabal file and add a Description field.
+&lt;/bash&gt;
+
+&lt;p&gt;В результате в вашей папке будут созданы несколько дополнительных файлов. Не знаю, почему, но с автоматическим генерированием файла LICENSE произошла проблемка. Как видим, мы получили предупреждение вида:&lt;/p&gt;
+
+&lt;bash&gt;
+Generating LICENSE...
+Warning: unknown license type, you must put a copy in LICENSE yourself.
+&lt;/bash&gt;
+
+&lt;p&gt;Совершенно непонятно, &lt;em&gt;что&lt;/em&gt; не понравилось утилите, ведь я ввёл номер лицензии 7 (что соответствует лицензии MIT) и она это проглотила, но в итоге файл LICENSE в корневой папке проекта так и не появился. Но дабы не было противоречий, просто добавьте этот файл вручную (и можете оставить его пустым).&lt;/p&gt;
+
+&lt;p&gt;Как уже было упомянуто, в корневой папке проекта появились следующие важные файлы:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Setup.hs&lt;/li&gt;
+  &lt;li&gt;Haskell.cabal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Первый нам не так интересен, потому что (в соответствии с официальным руководством) редактировать этот файл руками нам придётся очень редко. А вот второй файл весьма любопытен. Откроем его и посмотрим:&lt;/p&gt;
+
+&lt;hs&gt;
+name:                Haskell
+version:             0.1.0.0
+synopsis:            Learn project
+-- description:         
+license:             MIT
+license-file:        LICENSE
+author:              Denis Shevchenko
+maintainer:          me@dshevchenko.biz
+-- copyright:           
+-- category:            
+build-type:          Simple
+cabal-version:       &amp;gt;=1.8
+
+executable Haskell
+  main-is:           main.hs            
+  -- other-modules:       
+  build-depends:     base ==4.6.*
+&lt;/hs&gt;
+
+&lt;p&gt;Как видите, этот файл представляет собой некий аналог Makefile для системы cabal. Тут уже сохранены те самые значения, которые мы вводили в процессе вышеупомянутого диалога.&lt;/p&gt;
+
+&lt;p&gt;Обращаю ваше внимание на то, что в этом сгенерированном файле изначально строка:&lt;/p&gt;
+
+&lt;hs&gt;
+  main-is:
+&lt;/hs&gt;
+
+&lt;p&gt;закомментирована. Вам необходимо раскомментировать её и прописать имя файла, содержащего функцию main, в нашем случае это main.hs. Если вы этого не сделаете, получите ошибку вида:&lt;/p&gt;
+
+&lt;bash&gt;
+Error: No &#39;Main-Is&#39; field found for executable Haskell
+&lt;/bash&gt;
+
+&lt;p&gt;Итак, после этого выполняем следующую простую команду в терминале:&lt;/p&gt;
+
+&lt;bash&gt;
+cabal configure
+&lt;/bash&gt;
+
+&lt;p&gt;В результате произойдёт конфигурирование проекта, то есть некая подготовка к фактической сборке. И тут нас ожидает следующая тонкость.&lt;/p&gt;
+
+&lt;p&gt;Обратите внимание на последнюю часть файла Haskell.cabal:&lt;/p&gt;
+
+&lt;hs&gt;
+executable Haskell
+  main-is:           main.hs            
+  -- other-modules:       
+  build-depends:     base ==4.6.*
+&lt;/hs&gt;
+
+&lt;p&gt;Видите отступ в два пробела перед тремя последними строками? Оказывается, это не просто так. Если мы уберём этот отступ, то получим такую ошибку:&lt;/p&gt;
+
+&lt;bash&gt;
+cabal: Haskell.cabal:18: Construct not supported at this position: F 18
+&quot;main-is&quot; &quot;main.hs\nbuild-depends: base ==4.6.*&quot;
+&lt;/bash&gt;
+
+&lt;p&gt;Кроме того, отступ должен быть никак не меньше двух пробелов, потому что ради эксперимента я пробовал поставить отступ из одного-единственного пробела, и получил уже такую ошибку:&lt;/p&gt;
+
+&lt;bash&gt;
+cabal: Haskell.cabal:18: Parse of field &#39;main-is&#39; failed.
+&lt;/bash&gt;
+
+&lt;p&gt;В общем, два пробела. В этом случае конфигурирование пройдёт нормально.&lt;/p&gt;
+
+&lt;bash&gt;
+$ cabal configure
+Resolving dependencies...
+Configuring Haskell-0.1.0.0...
+&lt;/bash&gt;
+
+&lt;p&gt;После этого выполняем, собственно, команду сборки:&lt;/p&gt;
+
+&lt;bash&gt;
+$ cabal build
+Building Haskell-0.1.0.0...
+Preprocessing executable &#39;Haskell&#39; for Haskell-0.1.0.0...
+&lt;/bash&gt;
+
+&lt;p&gt;Всё. После этого в нашей корневой папке проекта появилась папка &lt;code&gt;dist&lt;/code&gt;. Вот её содержимое:&lt;/p&gt;
+
+&lt;bash&gt;
+dist/
+├── build
+│   ├── Haskell
+│   │   ├── Haskell    &amp;lt;&amp;lt;---- Это и есть наш исполняемый файл.
+│   │   └── Haskell-tmp
+│   │       ├── Main.hi
+│   │       └── Main.o
+│   └── autogen
+│       ├── Paths_Haskell.hs
+│       └── cabal_macros.h
+├── package.conf.inplace
+└── setup-config
+&lt;/bash&gt;
+
+&lt;p&gt;Ну вот собственно и всё. Можем запускать наше приложение:&lt;/p&gt;
+
+&lt;bash&gt;
+./dist/build/Haskell/Haskell arg1
+&lt;/bash&gt;
+
+&lt;p&gt;Вывод будет таким:&lt;/p&gt;
+
+&lt;bash&gt;
+&quot;Haq! arg1&quot;
+&lt;/bash&gt;
+
+&lt;p&gt;В дальнейшем я обязательно продолжу рассказы об утилите &lt;code&gt;cabal&lt;/code&gt;, но главное, что теперь вы имеете представление о том, как в Haskell создать пусть и простейший, но уже реальный проект.&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/11/30/haskell.html&quot;&gt;Haskell: собираем простейший проект&lt;/a&gt; was originally published by Денис Шевченко at &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt; on November 30, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

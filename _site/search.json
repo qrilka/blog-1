@@ -1,59 +1,1427 @@
 [
 	
 		{
+		  "title"      : "О Haskell по-человечески: уже онлайн",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2014/4/14/haskell.html",
+		  "date"       : "2014-04-14 00:00:00 +0400",
+		  "shortdate"  : "April 14, 2014"
+		} ,
+	
+		{
+		  "title"      : "GitBook: как я строил веб-книгу",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2014/4/7/gitbook.html",
+		  "date"       : "2014-04-07 00:00:00 +0400",
+		  "shortdate"  : "April 07, 2014"
+		} ,
+	
+		{
+		  "title"      : "О Haskell по-человечески: четвёртое издание",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2014/4/1/haskell.html",
+		  "date"       : "2014-04-01 00:00:00 +0400",
+		  "shortdate"  : "April 01, 2014"
+		} ,
+	
+		{
+		  "title"      : "О Haskell по-человечески и по-английски!",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2014/3/17/haskell.html",
+		  "date"       : "2014-03-17 00:00:00 +0400",
+		  "shortdate"  : "March 17, 2014"
+		} ,
+	
+		{
+		  "title"      : "О Haskell по-человечески: первое издание",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2014/3/5/haskell.html",
+		  "date"       : "2014-03-05 00:00:00 +0400",
+		  "shortdate"  : "March 05, 2014"
+		} ,
+	
+		{
+		  "title"      : "О геттерах и сеттерах",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2014/2/27/.html",
+		  "date"       : "2014-02-27 00:00:00 +0400",
+		  "shortdate"  : "February 27, 2014"
+		} ,
+	
+		{
+		  "title"      : "Об IT-книгах: пара мыслей вслух",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2014/2/22/it.html",
+		  "date"       : "2014-02-22 00:00:00 +0400",
+		  "shortdate"  : "February 22, 2014"
+		} ,
+	
+		{
+		  "title"      : "После долгого затишья...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2014/2/12/.html",
+		  "date"       : "2014-02-12 00:00:00 +0400",
+		  "shortdate"  : "February 12, 2014"
+		} ,
+	
+		{
+		  "title"      : "Русские буквы в именах: невероятно, но факт",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2014/1/22/.html",
+		  "date"       : "2014-01-22 00:00:00 +0400",
+		  "shortdate"  : "January 22, 2014"
+		} ,
+	
+		{
+		  "title"      : "Haskell: идея",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/29/haskell.html",
+		  "date"       : "2013-12-29 00:00:00 +0400",
+		  "shortdate"  : "December 29, 2013"
+		} ,
+	
+		{
+		  "title"      : "Haskell: о функциях высшего порядка",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/26/haskell.html",
+		  "date"       : "2013-12-26 00:00:00 +0400",
+		  "shortdate"  : "December 26, 2013"
+		} ,
+	
+		{
+		  "title"      : "Haskell: об инфиксных функциях",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/25/haskell.html",
+		  "date"       : "2013-12-25 00:00:00 +0400",
+		  "shortdate"  : "December 25, 2013"
+		} ,
+	
+		{
+		  "title"      : "Haskell: устанавливаем пакет из Hackage",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/23/haskell-hackage.html",
+		  "date"       : "2013-12-23 00:00:00 +0400",
+		  "shortdate"  : "December 23, 2013"
+		} ,
+	
+		{
+		  "title"      : "Haskell: о функциях",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/23/haskell.html",
+		  "date"       : "2013-12-23 00:00:00 +0400",
+		  "shortdate"  : "December 23, 2013"
+		} ,
+	
+		{
+		  "title"      : "Haskell: о лямбда-функциях",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/20/haskell.html",
+		  "date"       : "2013-12-20 00:00:00 +0400",
+		  "shortdate"  : "December 20, 2013"
+		} ,
+	
+		{
+		  "title"      : "Disqus-общение: попробуем...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/19/disqus.html",
+		  "date"       : "2013-12-19 00:00:00 +0400",
+		  "shortdate"  : "December 19, 2013"
+		} ,
+	
+		{
+		  "title"      : "Haskell: и снова о типах",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/14/haskell.html",
+		  "date"       : "2013-12-14 00:00:00 +0400",
+		  "shortdate"  : "December 14, 2013"
+		} ,
+	
+		{
+		  "title"      : "Haskell: о типах",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/10/haskell.html",
+		  "date"       : "2013-12-10 00:00:00 +0400",
+		  "shortdate"  : "December 10, 2013"
+		} ,
+	
+		{
+		  "title"      : "О памяти",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/1/.html",
+		  "date"       : "2013-12-01 00:00:00 +0400",
+		  "shortdate"  : "December 01, 2013"
+		} ,
+	
+		{
+		  "title"      : "Haskell: собираем простейший проект",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/11/30/haskell.html",
+		  "date"       : "2013-11-30 00:00:00 +0400",
+		  "shortdate"  : "November 30, 2013"
+		} ,
+	
+		{
+		  "title"      : "Haskell: что же это за ленивые вычисления такие?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/11/28/haskell.html",
+		  "date"       : "2013-11-28 00:00:00 +0400",
+		  "shortdate"  : "November 28, 2013"
+		} ,
+	
+		{
+		  "title"      : "К вопросу о продолжительности изучения языков...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/11/28/.html",
+		  "date"       : "2013-11-28 00:00:00 +0400",
+		  "shortdate"  : "November 28, 2013"
+		} ,
+	
+		{
+		  "title"      : "sizeof, sizeof и ещё раз sizeof",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/11/8/sizeof-sizeof-sizeof.html",
+		  "date"       : "2013-11-08 00:00:00 +0400",
+		  "shortdate"  : "November 08, 2013"
+		} ,
+	
+		{
+		  "title"      : "О совершенстве: Apple, будьте осторожны!",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/11/1/apple.html",
+		  "date"       : "2013-11-01 00:00:00 +0400",
+		  "shortdate"  : "November 01, 2013"
+		} ,
+	
+		{
+		  "title"      : "Holywar как показатель зрелости разработчика...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/10/21/holywar.html",
+		  "date"       : "2013-10-21 00:00:00 +0400",
+		  "shortdate"  : "October 21, 2013"
+		} ,
+	
+		{
+		  "title"      : "C++11: новое в векторе",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/10/14/c11.html",
+		  "date"       : "2013-10-14 00:00:00 +0400",
+		  "shortdate"  : "October 14, 2013"
+		} ,
+	
+		{
+		  "title"      : "Исключение в конструкторе: о, сколько нам открытий чудных...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/10/10/.html",
+		  "date"       : "2013-10-10 00:00:00 +0400",
+		  "shortdate"  : "October 10, 2013"
+		} ,
+	
+		{
+		  "title"      : "C++11: и снова о литералах, на этот раз о сырых",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/9/25/c11.html",
+		  "date"       : "2013-09-25 00:00:00 +0400",
+		  "shortdate"  : "September 25, 2013"
+		} ,
+	
+		{
+		  "title"      : "C++11: пользовательские литералы",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/9/21/c11.html",
+		  "date"       : "2013-09-21 00:00:00 +0400",
+		  "shortdate"  : "September 21, 2013"
+		} ,
+	
+		{
+		  "title"      : "Ещё один коан Мастера Фу",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/9/18/.html",
+		  "date"       : "2013-09-18 00:00:00 +0400",
+		  "shortdate"  : "September 18, 2013"
+		} ,
+	
+		{
+		  "title"      : "Об удалёнке: когда сознание отстаёт от технологий...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/9/11/.html",
+		  "date"       : "2013-09-11 00:00:00 +0400",
+		  "shortdate"  : "September 11, 2013"
+		} ,
+	
+		{
+		  "title"      : "О сложности С++ замолвим слово... Ещё раз...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/28/.html",
+		  "date"       : "2013-08-28 00:00:00 +0400",
+		  "shortdate"  : "August 28, 2013"
+		} ,
+	
+		{
 		  "title"      : "Syntax Highlighting Post",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/8/16/code-highlighting-post.html",
-		  "date"       : "Fri Aug 16 00:00:00 +0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/16/code-highlighting-post.html",
+		  "date"       : "2013-08-16 00:00:00 +0400",
 		  "shortdate"  : "August 16, 2013"
+		} ,
+	
+		{
+		  "title"      : "Товары и услуги",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/16/.html",
+		  "date"       : "2013-08-16 00:00:00 +0400",
+		  "shortdate"  : "August 16, 2013"
+		} ,
+	
+		{
+		  "title"      : "Objective-C: длительность вызова функции",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/13/objective-c.html",
+		  "date"       : "2013-08-13 00:00:00 +0400",
+		  "shortdate"  : "August 13, 2013"
 		} ,
 	
 		{
 		  "title"      : "Sample Link Post",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/8/12/sample-link-post.html",
-		  "date"       : "Mon Aug 12 00:00:00 +0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/12/sample-link-post.html",
+		  "date"       : "2013-08-12 00:00:00 +0400",
 		  "shortdate"  : "August 12, 2013"
+		} ,
+	
+		{
+		  "title"      : "Xcode: прекрасен, но не совершенен",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/8/xcode.html",
+		  "date"       : "2013-08-08 00:00:00 +0400",
+		  "shortdate"  : "August 08, 2013"
+		} ,
+	
+		{
+		  "title"      : "Qt 5 и Cocoa: самое первое впечатление",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/2/qt-5-cocoa.html",
+		  "date"       : "2013-08-02 00:00:00 +0400",
+		  "shortdate"  : "August 02, 2013"
+		} ,
+	
+		{
+		  "title"      : "Sparkle: давняя проблема и простое решение",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/7/24/sparkle.html",
+		  "date"       : "2013-07-24 00:00:00 +0400",
+		  "shortdate"  : "July 24, 2013"
 		} ,
 	
 		{
 		  "title"      : "A Post with a Video",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/6/25/video-post.html",
-		  "date"       : "Tue Jun 25 00:00:00 +0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/6/25/video-post.html",
+		  "date"       : "2013-06-25 00:00:00 +0400",
 		  "shortdate"  : "June 25, 2013"
+		} ,
+	
+		{
+		  "title"      : "Objective-C и Boost.Xpressive: конфликт слов",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/6/19/objective-c-boost-xpressive.html",
+		  "date"       : "2013-06-19 00:00:00 +0400",
+		  "shortdate"  : "June 19, 2013"
+		} ,
+	
+		{
+		  "title"      : "Итак, Objective-C...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/6/6/objective-c.html",
+		  "date"       : "2013-06-06 00:00:00 +0400",
+		  "shortdate"  : "June 06, 2013"
+		} ,
+	
+		{
+		  "title"      : "Кроссплатформенность: выигрыш для программиста и проигрыш для малого бизнеса",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/6/6/.html",
+		  "date"       : "2013-06-06 00:00:00 +0400",
+		  "shortdate"  : "June 06, 2013"
+		} ,
+	
+		{
+		  "title"      : "О переквалификации: новый путь",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/5/27/.html",
+		  "date"       : "2013-05-27 00:00:00 +0400",
+		  "shortdate"  : "May 27, 2013"
 		} ,
 	
 		{
 		  "title"      : "Post with Large Feature Image and Text",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/5/23/readability-feature-post.html",
-		  "date"       : "Thu May 23 00:00:00 +0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/5/23/readability-feature-post.html",
+		  "date"       : "2013-05-23 00:00:00 +0400",
 		  "shortdate"  : "May 23, 2013"
 		} ,
 	
 		{
 		  "title"      : "A Post with Images",
 		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/articles/2013/5/22/sample-post-images.html",
-		  "date"       : "Wed May 22 00:00:00 +0400 2013",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/5/22/sample-post-images.html",
+		  "date"       : "2013-05-22 00:00:00 +0400",
 		  "shortdate"  : "May 22, 2013"
 		} ,
 	
 		{
-		  "title"      : "Testing Readability with a Bunch of Text",
-		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/articles/2012/5/22/readability-post.html",
-		  "date"       : "Tue May 22 00:00:00 +0400 2012",
-		  "shortdate"  : "May 22, 2012"
+		  "title"      : "Новый способ приёма на работу: мне понравилась такая идея",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/5/7/.html",
+		  "date"       : "2013-05-07 00:00:00 +0400",
+		  "shortdate"  : "May 07, 2013"
 		} ,
 	
 		{
-		  "title"      : "Sample Post",
-		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/articles/2011/3/10/sample-post.html",
-		  "date"       : "Thu Mar 10 00:00:00 +0400 2011",
-		  "shortdate"  : "March 10, 2011"
+		  "title"      : "О нативности интерфейса: форма и содержание",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/4/16/.html",
+		  "date"       : "2013-04-16 00:00:00 +0400",
+		  "shortdate"  : "April 16, 2013"
+		} ,
+	
+		{
+		  "title"      : "Clang вместо GCC на OS X: первый опыт",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/4/5/clang-gcc-os-x.html",
+		  "date"       : "2013-04-05 00:00:00 +0400",
+		  "shortdate"  : "April 05, 2013"
+		} ,
+	
+		{
+		  "title"      : "Итераторы: вновь получил по башке",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/3/11/.html",
+		  "date"       : "2013-03-11 00:00:00 +0400",
+		  "shortdate"  : "March 11, 2013"
+		} ,
+	
+		{
+		  "title"      : "Команды Vim, полезные для разработчика",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/2/16/vim.html",
+		  "date"       : "2013-02-16 00:00:00 +0400",
+		  "shortdate"  : "February 16, 2013"
+		} ,
+	
+		{
+		  "title"      : "Коаны Мастера Фу: ещё несколько",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/1/30/.html",
+		  "date"       : "2013-01-30 00:00:00 +0400",
+		  "shortdate"  : "January 30, 2013"
+		} ,
+	
+		{
+		  "title"      : "Итак, софтверный кризис и... его решение?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/1/29/.html",
+		  "date"       : "2013-01-29 00:00:00 +0400",
+		  "shortdate"  : "January 29, 2013"
+		} ,
+	
+		{
+		  "title"      : "Итак, начал изучение Objective-C...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2013/1/10/objective-c.html",
+		  "date"       : "2013-01-10 00:00:00 +0400",
+		  "shortdate"  : "January 10, 2013"
+		} ,
+	
+		{
+		  "title"      : "Так, ни о чём...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/12/17/.html",
+		  "date"       : "2012-12-17 00:00:00 +0400",
+		  "shortdate"  : "December 17, 2012"
+		} ,
+	
+		{
+		  "title"      : "И снова о языковых войнах...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/12/13/.html",
+		  "date"       : "2012-12-13 00:00:00 +0400",
+		  "shortdate"  : "December 13, 2012"
+		} ,
+	
+		{
+		  "title"      : "Один неверный байт: смешной баг",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/11/13/.html",
+		  "date"       : "2012-11-13 00:00:00 +0400",
+		  "shortdate"  : "November 13, 2012"
+		} ,
+	
+		{
+		  "title"      : "Ищем в строке",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/11/1/.html",
+		  "date"       : "2012-11-01 00:00:00 +0400",
+		  "shortdate"  : "November 01, 2012"
+		} ,
+	
+		{
+		  "title"      : "Парадигмы? Не, не слышал...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/10/19/.html",
+		  "date"       : "2012-10-19 00:00:00 +0400",
+		  "shortdate"  : "October 19, 2012"
+		} ,
+	
+		{
+		  "title"      : "Временное затишье...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/9/27/.html",
+		  "date"       : "2012-09-27 00:00:00 +0400",
+		  "shortdate"  : "September 27, 2012"
+		} ,
+	
+		{
+		  "title"      : "OS X: новые сюрпризы для разработчика",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/8/15/os-x.html",
+		  "date"       : "2012-08-15 00:00:00 +0400",
+		  "shortdate"  : "August 15, 2012"
+		} ,
+	
+		{
+		  "title"      : "О кнопках активных и не совсем",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/8/9/.html",
+		  "date"       : "2012-08-09 00:00:00 +0400",
+		  "shortdate"  : "August 09, 2012"
+		} ,
+	
+		{
+		  "title"      : "OS X: прекрасна, но несовершенна",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/8/8/os-x.html",
+		  "date"       : "2012-08-08 00:00:00 +0400",
+		  "shortdate"  : "August 08, 2012"
+		} ,
+	
+		{
+		  "title"      : "Данные заранее: я передумал...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/8/2/.html",
+		  "date"       : "2012-08-02 00:00:00 +0400",
+		  "shortdate"  : "August 02, 2012"
+		} ,
+	
+		{
+		  "title"      : "От Linux к OS X: мой путь",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/7/29/linux-os-x.html",
+		  "date"       : "2012-07-29 00:00:00 +0400",
+		  "shortdate"  : "July 29, 2012"
+		} ,
+	
+		{
+		  "title"      : "Запрашивающий сигнал",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/7/3/.html",
+		  "date"       : "2012-07-03 00:00:00 +0400",
+		  "shortdate"  : "July 03, 2012"
+		} ,
+	
+		{
+		  "title"      : "Проблема с исключениями: странно, но факт",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/6/22/.html",
+		  "date"       : "2012-06-22 00:00:00 +0400",
+		  "shortdate"  : "June 22, 2012"
+		} ,
+	
+		{
+		  "title"      : "Ну вот я и ИП...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/6/14/.html",
+		  "date"       : "2012-06-14 00:00:00 +0400",
+		  "shortdate"  : "June 14, 2012"
+		} ,
+	
+		{
+		  "title"      : "GCC 4.7 на OS X Lion: тернистый путь...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/6/10/gcc-4-7-os-x-lion.html",
+		  "date"       : "2012-06-10 00:00:00 +0400",
+		  "shortdate"  : "June 10, 2012"
+		} ,
+	
+		{
+		  "title"      : "О кроссплатформенной разработке...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/6/6/.html",
+		  "date"       : "2012-06-06 00:00:00 +0400",
+		  "shortdate"  : "June 06, 2012"
+		} ,
+	
+		{
+		  "title"      : "О спросе и прогнозе",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/6/4/.html",
+		  "date"       : "2012-06-04 00:00:00 +0400",
+		  "shortdate"  : "June 04, 2012"
+		} ,
+	
+		{
+		  "title"      : "О кнопке Cancel",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/5/30/cancel.html",
+		  "date"       : "2012-05-30 00:00:00 +0400",
+		  "shortdate"  : "May 30, 2012"
+		} ,
+	
+		{
+		  "title"      : "Замечание про оптимизацию",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/5/29/.html",
+		  "date"       : "2012-05-29 00:00:00 +0400",
+		  "shortdate"  : "May 29, 2012"
+		} ,
+	
+		{
+		  "title"      : "31 год...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/5/25/31.html",
+		  "date"       : "2012-05-25 00:00:00 +0400",
+		  "shortdate"  : "May 25, 2012"
+		} ,
+	
+		{
+		  "title"      : "C++11: делегирующий конструктор",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/5/24/c11.html",
+		  "date"       : "2012-05-24 00:00:00 +0400",
+		  "shortdate"  : "May 24, 2012"
+		} ,
+	
+		{
+		  "title"      : "Возвращаемое значение bool как признак...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/5/14/bool.html",
+		  "date"       : "2012-05-14 00:00:00 +0400",
+		  "shortdate"  : "May 14, 2012"
+		} ,
+	
+		{
+		  "title"      : "tmp в стеке...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/5/10/tmp.html",
+		  "date"       : "2012-05-10 00:00:00 +0400",
+		  "shortdate"  : "May 10, 2012"
+		} ,
+	
+		{
+		  "title"      : "Haskell и время: пробуем",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/4/27/haskell.html",
+		  "date"       : "2012-04-27 00:00:00 +0400",
+		  "shortdate"  : "April 27, 2012"
+		} ,
+	
+		{
+		  "title"      : "Haskell и файловая система: проверяем путь",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/4/26/haskell.html",
+		  "date"       : "2012-04-26 00:00:00 +0400",
+		  "shortdate"  : "April 26, 2012"
+		} ,
+	
+		{
+		  "title"      : "Красота Haskell: конвертируем текст из файла",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/4/20/haskell.html",
+		  "date"       : "2012-04-20 00:00:00 +0400",
+		  "shortdate"  : "April 20, 2012"
+		} ,
+	
+		{
+		  "title"      : "К вопросу о математических функциях...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/4/19/.html",
+		  "date"       : "2012-04-19 00:00:00 +0400",
+		  "shortdate"  : "April 19, 2012"
+		} ,
+	
+		{
+		  "title"      : "К вопросу о данных класса...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/4/18/.html",
+		  "date"       : "2012-04-18 00:00:00 +0400",
+		  "shortdate"  : "April 18, 2012"
+		} ,
+	
+		{
+		  "title"      : "Э-э-э... Недоделочка, однако...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/4/12/.html",
+		  "date"       : "2012-04-12 00:00:00 +0400",
+		  "shortdate"  : "April 12, 2012"
+		} ,
+	
+		{
+		  "title"      : "ВременнЫе замеры с std::chrono",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/4/11/stdchrono.html",
+		  "date"       : "2012-04-11 00:00:00 +0400",
+		  "shortdate"  : "April 11, 2012"
+		} ,
+	
+		{
+		  "title"      : "О свободных программистах и цене...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/3/30/.html",
+		  "date"       : "2012-03-30 00:00:00 +0400",
+		  "shortdate"  : "March 30, 2012"
+		} ,
+	
+		{
+		  "title"      : "Я не собираюсь создавать лучший продукт",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/3/29/.html",
+		  "date"       : "2012-03-29 00:00:00 +0400",
+		  "shortdate"  : "March 29, 2012"
+		} ,
+	
+		{
+		  "title"      : "Консольное сообщение: маленький пример",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/3/17/.html",
+		  "date"       : "2012-03-17 00:00:00 +0400",
+		  "shortdate"  : "March 17, 2012"
+		} ,
+	
+		{
+		  "title"      : "Нужен ваш совет...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/3/12/.html",
+		  "date"       : "2012-03-12 00:00:00 +0400",
+		  "shortdate"  : "March 12, 2012"
+		} ,
+	
+		{
+		  "title"      : "Ой, закричу сейчас, точно закричу...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/3/9/.html",
+		  "date"       : "2012-03-09 00:00:00 +0400",
+		  "shortdate"  : "March 09, 2012"
+		} ,
+	
+		{
+		  "title"      : "Почему мы срываем сроки?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/3/8/.html",
+		  "date"       : "2012-03-08 00:00:00 +0400",
+		  "shortdate"  : "March 08, 2012"
+		} ,
+	
+		{
+		  "title"      : "Boost.DateTime: почему они не добавили эту мелочь??",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/3/6/boost-datetime.html",
+		  "date"       : "2012-03-06 00:00:00 +0400",
+		  "shortdate"  : "March 06, 2012"
+		} ,
+	
+		{
+		  "title"      : "И снова про Boost.UUID",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/3/1/boost-uuid.html",
+		  "date"       : "2012-03-01 00:00:00 +0400",
+		  "shortdate"  : "March 01, 2012"
+		} ,
+	
+		{
+		  "title"      : "About Boost.UUID again",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/3/1/about-boost-uuid-again.html",
+		  "date"       : "2012-03-01 00:00:00 +0400",
+		  "shortdate"  : "March 01, 2012"
+		} ,
+	
+		{
+		  "title"      : "Обалдеть! Вот что значит сообщество!",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/2/28/.html",
+		  "date"       : "2012-02-28 00:00:00 +0400",
+		  "shortdate"  : "February 28, 2012"
+		} ,
+	
+		{
+		  "title"      : "Explanation without comments: example",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/2/18/explanation-without-comments-example.html",
+		  "date"       : "2012-02-18 00:00:00 +0400",
+		  "shortdate"  : "February 18, 2012"
+		} ,
+	
+		{
+		  "title"      : "Пояснение без комментариев: пример",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/2/18/.html",
+		  "date"       : "2012-02-18 00:00:00 +0400",
+		  "shortdate"  : "February 18, 2012"
+		} ,
+	
+		{
+		  "title"      : "Ответ моим друзьям",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/2/17/.html",
+		  "date"       : "2012-02-17 00:00:00 +0400",
+		  "shortdate"  : "February 17, 2012"
+		} ,
+	
+		{
+		  "title"      : "Our professional ethics: one aspect",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/2/10/our-professional-ethics-one-aspect.html",
+		  "date"       : "2012-02-10 00:00:00 +0400",
+		  "shortdate"  : "February 10, 2012"
+		} ,
+	
+		{
+		  "title"      : "Наша профессиональная этика: один из аспектов",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/2/10/.html",
+		  "date"       : "2012-02-10 00:00:00 +0400",
+		  "shortdate"  : "February 10, 2012"
+		} ,
+	
+		{
+		  "title"      : "while-loop: simple as possible",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/2/3/while-loop-simple-as-possible.html",
+		  "date"       : "2012-02-03 00:00:00 +0400",
+		  "shortdate"  : "February 03, 2012"
+		} ,
+	
+		{
+		  "title"      : "while-цикл: проще некуда",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/2/2/while.html",
+		  "date"       : "2012-02-02 00:00:00 +0400",
+		  "shortdate"  : "February 02, 2012"
+		} ,
+	
+		{
+		  "title"      : "Syntax highlighting in Qt: one function",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/26/syntax-highlighting-in-qt-one-function.html",
+		  "date"       : "2012-01-26 00:00:00 +0400",
+		  "shortdate"  : "January 26, 2012"
+		} ,
+	
+		{
+		  "title"      : "Синтаксическая подсветка в Qt: кусочек",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/26/qt.html",
+		  "date"       : "2012-01-26 00:00:00 +0400",
+		  "shortdate"  : "January 26, 2012"
+		} ,
+	
+		{
+		  "title"      : "Большие классы и сокрытие деталей - что первостепенно?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/26/.html",
+		  "date"       : "2012-01-26 00:00:00 +0400",
+		  "shortdate"  : "January 26, 2012"
+		} ,
+	
+		{
+		  "title"      : "2011 год: мои личные итоги",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/25/2011.html",
+		  "date"       : "2012-01-25 00:00:00 +0400",
+		  "shortdate"  : "January 25, 2012"
+		} ,
+	
+		{
+		  "title"      : "Writing to log: trifle, but nice",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/22/writing-to-log-trifle-but-nice.html",
+		  "date"       : "2012-01-22 00:00:00 +0400",
+		  "shortdate"  : "January 22, 2012"
+		} ,
+	
+		{
+		  "title"      : "Button &quot;OK&quot;: misunderstanding since Windows 95",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/22/button-ok-misunderstanding-since-windows-95.html",
+		  "date"       : "2012-01-22 00:00:00 +0400",
+		  "shortdate"  : "January 22, 2012"
+		} ,
+	
+		{
+		  "title"      : "Big classes, small classes...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/22/big-classes-small-classes.html",
+		  "date"       : "2012-01-22 00:00:00 +0400",
+		  "shortdate"  : "January 22, 2012"
+		} ,
+	
+		{
+		  "title"      : "Сравнительные тесты компиляторов msvc2010, Intel11, gcc-4.6.3 (MinGW)",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/20/msvc2010-intel11-gcc-4-6-3-mingw.html",
+		  "date"       : "2012-01-20 00:00:00 +0400",
+		  "shortdate"  : "January 20, 2012"
+		} ,
+	
+		{
+		  "title"      : "Superfluous confirmations",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/18/superfluous-confirmations.html",
+		  "date"       : "2012-01-18 00:00:00 +0400",
+		  "shortdate"  : "January 18, 2012"
+		} ,
+	
+		{
+		  "title"      : "Интеллектуальный аллокатор оО",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/18/.html",
+		  "date"       : "2012-01-18 00:00:00 +0400",
+		  "shortdate"  : "January 18, 2012"
+		} ,
+	
+		{
+		  "title"      : "Вчера наткнулся... На строчку...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/17/.html",
+		  "date"       : "2012-01-17 00:00:00 +0400",
+		  "shortdate"  : "January 17, 2012"
+		} ,
+	
+		{
+		  "title"      : "Уважайте вашего пользователя",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/16/.html",
+		  "date"       : "2012-01-16 00:00:00 +0400",
+		  "shortdate"  : "January 16, 2012"
+		} ,
+	
+		{
+		  "title"      : "Классы маленькие и классы большие...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/14/.html",
+		  "date"       : "2012-01-14 00:00:00 +0400",
+		  "shortdate"  : "January 14, 2012"
+		} ,
+	
+		{
+		  "title"      : "Логические флаги в сигнатуре функции - не делайте этого!",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2012/1/13/.html",
+		  "date"       : "2012-01-13 00:00:00 +0400",
+		  "shortdate"  : "January 13, 2012"
+		} ,
+	
+		{
+		  "title"      : "Linux 3.x: вот это исходнички...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/29/linux-3-x.html",
+		  "date"       : "2011-12-29 00:00:00 +0400",
+		  "shortdate"  : "December 29, 2011"
+		} ,
+	
+		{
+		  "title"      : "MicroISV: вопрос в лоб",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/28/microisv.html",
+		  "date"       : "2011-12-28 00:00:00 +0400",
+		  "shortdate"  : "December 28, 2011"
+		} ,
+	
+		{
+		  "title"      : "Кнопка OK: недоразумение со времён Windows 95",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/27/ok-windows-95.html",
+		  "date"       : "2011-12-27 00:00:00 +0400",
+		  "shortdate"  : "December 27, 2011"
+		} ,
+	
+		{
+		  "title"      : "Реализация или идея? что первостепенно?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/25/.html",
+		  "date"       : "2011-12-25 00:00:00 +0400",
+		  "shortdate"  : "December 25, 2011"
+		} ,
+	
+		{
+		  "title"      : "RTTI+typeid+GCC",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/24/rttitypeidgcc.html",
+		  "date"       : "2011-12-24 00:00:00 +0400",
+		  "shortdate"  : "December 24, 2011"
+		} ,
+	
+		{
+		  "title"      : "В стотысячный раз - о фигурной скобке",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/23/.html",
+		  "date"       : "2011-12-23 00:00:00 +0400",
+		  "shortdate"  : "December 23, 2011"
+		} ,
+	
+		{
+		  "title"      : "Программа и верные предположения",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/8/.html",
+		  "date"       : "2011-12-08 00:00:00 +0400",
+		  "shortdate"  : "December 08, 2011"
+		} ,
+	
+		{
+		  "title"      : "Кросскомпиляция - host/build/target ?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/7/host-build-target.html",
+		  "date"       : "2011-12-07 00:00:00 +0400",
+		  "shortdate"  : "December 07, 2011"
+		} ,
+	
+		{
+		  "title"      : "Пользователю не нужна ваша программа!",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/7/.html",
+		  "date"       : "2011-12-07 00:00:00 +0400",
+		  "shortdate"  : "December 07, 2011"
+		} ,
+	
+		{
+		  "title"      : "Предупреждения, предупреждения, предупреждения...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/12/2/.html",
+		  "date"       : "2011-12-02 00:00:00 +0400",
+		  "shortdate"  : "December 02, 2011"
+		} ,
+	
+		{
+		  "title"      : "И всё-таки GUI!",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/11/28/gui.html",
+		  "date"       : "2011-11-28 00:00:00 +0400",
+		  "shortdate"  : "November 28, 2011"
+		} ,
+	
+		{
+		  "title"      : "Чего не может С++. часть 2.",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/11/28/2.html",
+		  "date"       : "2011-11-28 00:00:00 +0400",
+		  "shortdate"  : "November 28, 2011"
+		} ,
+	
+		{
+		  "title"      : "Boost.UUID: досадная оплошность",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/11/21/boost-uuid.html",
+		  "date"       : "2011-11-21 00:00:00 +0400",
+		  "shortdate"  : "November 21, 2011"
+		} ,
+	
+		{
+		  "title"      : "О книге &quot;Не заставляйте меня думать&quot;",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/11/17/.html",
+		  "date"       : "2011-11-17 00:00:00 +0400",
+		  "shortdate"  : "November 17, 2011"
+		} ,
+	
+		{
+		  "title"      : "Красота Haskell: вывод имени ОС и архитектуры",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/11/12/haskell.html",
+		  "date"       : "2011-11-12 00:00:00 +0400",
+		  "shortdate"  : "November 12, 2011"
+		} ,
+	
+		{
+		  "title"      : "Красота Haskell: подсчёт букв",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/11/9/haskell.html",
+		  "date"       : "2011-11-09 00:00:00 +0400",
+		  "shortdate"  : "November 09, 2011"
+		} ,
+	
+		{
+		  "title"      : "Чего не может С++",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/11/6/.html",
+		  "date"       : "2011-11-06 00:00:00 +0400",
+		  "shortdate"  : "November 06, 2011"
+		} ,
+	
+		{
+		  "title"      : "Boost.DateTime: логический баг...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/11/4/boost-datetime.html",
+		  "date"       : "2011-11-04 00:00:00 +0400",
+		  "shortdate"  : "November 04, 2011"
+		} ,
+	
+		{
+		  "title"      : "Зачем программистам своё дело?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/11/3/.html",
+		  "date"       : "2011-11-03 00:00:00 +0400",
+		  "shortdate"  : "November 03, 2011"
+		} ,
+	
+		{
+		  "title"      : "13 способов обломаться с созданием коммерческого софта",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/28/13.html",
+		  "date"       : "2011-10-28 00:00:00 +0500",
+		  "shortdate"  : "October 28, 2011"
+		} ,
+	
+		{
+		  "title"      : "boost-1.48.0-beta1",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/27/boost-1-48-0-beta1.html",
+		  "date"       : "2011-10-27 00:00:00 +0500",
+		  "shortdate"  : "October 27, 2011"
+		} ,
+	
+		{
+		  "title"      : "Языки программирования и парадокс Blub",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/25/blub.html",
+		  "date"       : "2011-10-25 00:00:00 +0500",
+		  "shortdate"  : "October 25, 2011"
+		} ,
+	
+		{
+		  "title"      : "7 причин ненавидеть свой код",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/24/7.html",
+		  "date"       : "2011-10-24 00:00:00 +0500",
+		  "shortdate"  : "October 24, 2011"
+		} ,
+	
+		{
+		  "title"      : "Haskell и C++: чтение файла в духе Unix",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/22/haskell-c-unix.html",
+		  "date"       : "2011-10-22 00:00:00 +0500",
+		  "shortdate"  : "October 22, 2011"
+		} ,
+	
+		{
+		  "title"      : "Haskell и C++: сравним решения?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/21/haskell-c.html",
+		  "date"       : "2011-10-21 00:00:00 +0500",
+		  "shortdate"  : "October 21, 2011"
+		} ,
+	
+		{
+		  "title"      : "Boost: в погоне за легендой...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/21/boost.html",
+		  "date"       : "2011-10-21 00:00:00 +0500",
+		  "shortdate"  : "October 21, 2011"
+		} ,
+	
+		{
+		  "title"      : "Работа на дядю? А на кого же ещё...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/20/.html",
+		  "date"       : "2011-10-20 00:00:00 +0500",
+		  "shortdate"  : "October 20, 2011"
+		} ,
+	
+		{
+		  "title"      : "Задача и инструмент: о приоритетах",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/10/.html",
+		  "date"       : "2011-10-10 00:00:00 +0500",
+		  "shortdate"  : "October 10, 2011"
+		} ,
+	
+		{
+		  "title"      : "C++11: static_assert",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/8/c11-static_assert.html",
+		  "date"       : "2011-10-08 00:00:00 +0500",
+		  "shortdate"  : "October 08, 2011"
+		} ,
+	
+		{
+		  "title"      : "Функция main(): сделаем мир безопаснее",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/7/main.html",
+		  "date"       : "2011-10-07 00:00:00 +0500",
+		  "shortdate"  : "October 07, 2011"
+		} ,
+	
+		{
+		  "title"      : "Функтор-предикат?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/6/.html",
+		  "date"       : "2011-10-06 00:00:00 +0500",
+		  "shortdate"  : "October 06, 2011"
+		} ,
+	
+		{
+		  "title"      : "Функтор без operator()?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/5/operator.html",
+		  "date"       : "2011-10-05 00:00:00 +0500",
+		  "shortdate"  : "October 05, 2011"
+		} ,
+	
+		{
+		  "title"      : "Читаем и понимаем?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/10/2/.html",
+		  "date"       : "2011-10-02 00:00:00 +0500",
+		  "shortdate"  : "October 02, 2011"
+		} ,
+	
+		{
+		  "title"      : "Если обещаете - выполняйте! Всегда!",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/24/.html",
+		  "date"       : "2011-09-24 00:00:00 +0500",
+		  "shortdate"  : "September 24, 2011"
+		} ,
+	
+		{
+		  "title"      : "auto и обобщённая инициализация: проблема?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/23/auto.html",
+		  "date"       : "2011-09-23 00:00:00 +0500",
+		  "shortdate"  : "September 23, 2011"
+		} ,
+	
+		{
+		  "title"      : "Хорошо знаешь только то, что постоянно используешь",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/22/.html",
+		  "date"       : "2011-09-22 00:00:00 +0500",
+		  "shortdate"  : "September 22, 2011"
+		} ,
+	
+		{
+		  "title"      : "Чё-то на C++Next затишье...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/21/cnext.html",
+		  "date"       : "2011-09-21 00:00:00 +0500",
+		  "shortdate"  : "September 21, 2011"
+		} ,
+	
+		{
+		  "title"      : "Теперь - только Vim",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/vim.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "KISS: простой пример с циклом",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/kiss.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "Последние версии GCC в Windows!",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/gcc-windows.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "CMake: понятные примеры",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/cmake.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "C++11: std::unordered_map против std::map",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/c11-stdunordered_map-stdmap.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "C++11, enum class: решаем проблемы перечислений",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/c11-enum-class.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "C++11: auto в функциях",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/c11-auto.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "C++11: хитрости со списком захвата",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/c11.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "C/C++: когда же умрёт эта связка?..",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/c-c.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "Линус Торвальс против C++: мой ответ",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/c.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "Знаете, во что превращается BOOST_FOREACH?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/boost_foreach.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "Boost.Test: ловим Segmentation Fault",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/boost-test-segmentation-fault.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "От Boost к C++11: частичный переход неизбежен",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/boost-c11.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "Boost.Assign 2.0: упрощение или усложнение?",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/boost-assign-2-0.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "accumulate и строки: подсказка",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/accumulate.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "Мудрые мысли",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/19/.html",
+		  "date"       : "2011-09-19 00:00:00 +0500",
+		  "shortdate"  : "September 19, 2011"
+		} ,
+	
+		{
+		  "title"      : "GCC: два компилятора вместе",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/gcc.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
+		} ,
+	
+		{
+		  "title"      : "Достойная замена __func__",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/func.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
+		} ,
+	
+		{
+		  "title"      : "C++11: анализ range-for",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/c11-range-for.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
+		} ,
+	
+		{
+		  "title"      : "C++11: циклы с auto",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/c11-auto.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
+		} ,
+	
+		{
+		  "title"      : "C++11: инициализация стандартных контейнеро",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/c11.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
+		} ,
+	
+		{
+		  "title"      : "С-шность в С++",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/c-in-c%2B%2B.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
+		} ,
+	
+		{
+		  "title"      : "Пользователям boost::ptr_container, важно!",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/boostptr_container.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
+		} ,
+	
+		{
+		  "title"      : "BOOST_FOREACH или for",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/boost_foreach-for.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
+		} ,
+	
+		{
+		  "title"      : "Пользователям BOOST_FOREACH, важно...",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/boost_foreach.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
+		} ,
+	
+		{
+		  "title"      : "Книга про Boost",
+		  "category"   : "",
+		  "url"        : "http://denisshevchenko.github.io/blog/2011/9/18/boost.html",
+		  "date"       : "2011-09-18 00:00:00 +0500",
+		  "shortdate"  : "September 18, 2011"
 		} 
 	
 ]

@@ -1,0 +1,389 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<title>CMake: понятные примеры &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="CMake: понятные примеры">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMake: понятные примеры">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2011/9/19/cmake.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2011/9/19/cmake.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Articles</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://mademistakes.com">Made Mistakes</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">CMake: понятные примеры</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span>
+        <span class="entry-date date published"><time datetime="2011-09-19T00:00:00+05:00"><i class="icon-calendar-empty"></i> September 19, 2011</time></span>
+        
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2011/9/19/cmake.html" rel="bookmark" title="CMake: понятные примеры"><i class="icon-link"></i> Permalink</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <!--break-->
+<p>Признаюсь честно - система сборки Boost Build меня разочаровала. </p>
+
+<p>Во-первых, синтаксис Jamfile (как я теперь понимаю) сложнее для восприятия, чем синтаксис CMakeLists.txt. </p>
+
+<p>Во-вторых, и это самое главное, сборка с помощью Boost Build непрозрачна. Я имею в виду, что компилятору скрыто от меня передаются несколько дополнительных флагов. В итоге размер исполняемого файла очень ощутимо увеличивается (в моей системе - в 6 раз). Я не понимаю, зачем разработчики Boost Build это сделали. Не надо за меня решать, какие опции компилятора мне нужны, а какие нет. Предоставьте это мне самому.</p>
+
+<p>В-третьих, я так и не смог разобраться, как сделать так, чтобы при установке динамической библиотеки автоматически создавались символически ссылки в соответствии с Unix-традицией:</p>
+
+<cpp>
+lib_my_lib.so       -&gt; lib_my_lib.so.1.0
+lib_my_lib.so.1.0   -&gt; lib_my_lib.so.1.0.0
+lib_my_lib.so.1.0.0
+</cpp>
+
+<p>Я знаю, что Boost Build умеет это делать, но не понял как.</p>
+
+<p>В итоге было принято решение попробовать <a href="http://www.cmake.org"><strong>CMake</strong></a>. Слышал об этой системе и раньше, но как-то побаивался. Помню, увидел какой-то CMakeLists.txt-файл, и меня почему-то отпугнул его синтаксис. Однако, преодолев первое ощущение, начал изучение. В итоге я получил именно то, что мне нужно: простую, понятную и прозрачную систему сборки. К тому же она кроссплатформенна, что делает её универсальной.</p>
+
+<p>Однако, в процессе изучения <strong>CMake</strong>, я не смог найти ясных и простых примеров CMakeLists.txt-файлов. Я подчёркиваю, <ins><em>ясных и простых</em></ins>. В итоге мне пришлось идти путём проб и ошибок, наскребая крупицы примеров из разных источников. А нужно-то было всего два канонических примера: для сборки приложения и для сборки динамической библиотеки.</p>
+
+<p>Дабы избавить вас от мук поиска, привожу здесь два таких CMakeLists.txt-файла, с подробными пояснениями. Сразу уточнение: файлы учитывают принятую мною структуру “базовых папок” проекта:</p>
+
+<cpp>- my_program
+    - build     # Папка с файлом CMakeLists.txt.
+                # Здесь же будут помещены объектые файлы и сам файл программы.
+    - src       # Папка с исходными файлами программы. 
+                # Может содержать в себе подпапки произвольной вложенности.</cpp>
+
+<cpp>- my_lib
+    - build     # Папка с файлом CMakeLists.txt. 
+                # Здесь же будут помещены объектые файлы и сам файл библиотеки.
+    - include   # Папка с заголовочными файлами библиотеки, 
+                # предназначенными для последующей установки и использования программами.
+    - srс       # Папка с исходными библиотеки программы. 
+                # Может содержать в себе подпапки произвольной вложенности.</cpp>
+<p>Примеры составлены на основе моих рабочих программ, так что не сомневайтесь - всё заработает. Итак, по порядку.
+<br /></p>
+<h2>Программа</h2>
+
+<cpp>
+# Сборочный файл для программы my_program
+
+# Минимальная версия CMake, младше нельзя.
+cmake_minimum_required( VERSION 2.6 )
+
+# Устанавливаем значение переменной BIN
+set( BIN my_program )
+# Имя проекта у нас соответствует имени программы.
+project( ${BIN} )
+
+# Устанавливаем корневой путь к папке с исходниками программы.
+set( SOURCE_ROOT ../src )
+
+# Очень полезная функция. По умолчанию имена файлов с исходниками
+# нужно перечислять явно. Мне это кажется совершенно неудобным (особенно
+# если файлов много). Поэтому я использую эту функцию.
+# Она (рекурсивно) просматривает исходники (начиная от корневого пути,
+# указанного выше) и собирает имена всех файлов, имеющих классическое
+# разрешение, такие как .cpp, .cxx и т.п.
+# В итоге формируется список всех найденных файлов и сохраняется в переменной
+# SOURCES
+aux_source_directory( ${SOURCE_ROOT} SOURCES )
+
+# Указываем пути, где искать заголовочники, дополнительно к стандартным путям.
+include_directories( "/my/addition/path/to/headers"
+                     "${SOURCE_ROOT}" )
+
+# Устанавливаем путь, куда будет скопирован исполняемый файл при выполнении
+# команды 'make install'.
+set( INSTALL_PATH /usr/local/bin/ )
+
+# Указываем пути, где искать сторонние динамически библиотеки. Эти пути будут
+# просмотрены в дополнение к умолчальными системным путям.
+link_directories( "/my/addition/path/to/lib" )
+
+# Перечисляем необходимые сторонние динамические библиотеки и сохраняем
+# их список в переменной REQUIRED_LIBRARIES.
+# Поиск этих библиотек будет произведён как по стандартным системным путям, 
+# так и по указанным выше (с помощью функции link_directories).
+set( REQUIRED_LIBRARIES
+		my_addition_lib
+		boost_thread 
+		boost_system )
+
+# Устанавливаем флаги компилятора (причём никаких скрытых флагов, только эти).
+set( CMAKE_CXX_FLAGS "-O0 -Wall -pedantic -std=c++0x" ) 
+
+# Собираем исполняемый файл с именем my_program.
+add_executable( ${BIN} ${SOURCES} )
+# Компонуем собранную программу с необходимыми динамическими библиотеками.
+target_link_libraries( ${BIN} ${REQUIRED_LIBRARIES} )
+
+# Установка. Это действие будет активировано при выполнении команды 'make install'.
+install( TARGETS ${BIN} DESTINATION ${INSTALL_PATH} )
+</cpp>
+
+<p>Всё. На мой взгляд, чрезвычайно понятный синтаксис, и даже комментарии не особо нужны.
+<br /></p>
+<h2>Динамическая библиотека</h2>
+<cpp>
+# Сборочный файл для библиотеки my_lib
+
+# См. выше.
+cmake_minimum_required( VERSION 2.6 ) 
+
+# Устанавливаем значение переменной LIB
+set( LIB my_lib ) 
+# Имя проекта у нас соответствует имени библиотеки.
+project( ${LIB} ) 
+
+# Устанавливаем версии библиотеки. В данном случае собранная библиотека будет иметь версию
+# 1.0.0, а первая символическая ссылка на неё будет иметь версию 1.0.
+set( MAJOR_VERSION 1.0.0 )
+set( MINOR_VERSION 1.0 )
+
+# Устанавливаем корневые пути к папками с исходниками библиотеки и 
+# к заголовочникам для установки.
+set( SOURCE_ROOT ../src )
+set( HEADERS ../include )
+
+# См. выше.
+aux_source_directory( ${SOURCE_ROOT} SOURCES )
+# См. выше.
+include_directories( "${HEADERS}"
+                     "${SOURCE_ROOT}"
+                     "/my/addition/path/to/headers" )
+
+# См. выше.
+set( LIB_INSTALL_PATH /usr/local/lib )
+# Устанавливаем путь установки заголовочных файлов библиотеки.
+set( HEADERS_INSTALL_PATH /usr/local/include/my_lib )
+# См. выше.
+link_directories( "${LIB_INSTALL_PATH}" )
+
+# См. выше.
+set( REQUIRED_LIBRARIES 
+		my_addition_lib
+		boost_thread 
+		boost_system )
+
+# См. выше.
+set( CMAKE_CXX_FLAGS "-O0 -Wall -pedantic -std=c++0x" )
+
+# Собираем динамическую библиотеку.
+add_library( ${LIB} SHARED ${SOURCES} )
+# См. выше.
+target_link_libraries( ${LIB} ${REQUIRED_LIBRARIES} )
+
+# Создаём символические ссылки. Учитывая указанные выше версии, результат будет
+# таким:
+# lib_my_lib.so       -&gt; lib_my_lib.so.1.0
+# lib_my_lib.so.1.0   -&gt; lib_my_lib.so.1.0.0
+# lib_my_lib.so.1.0.0
+# Это действие будет активировано при выполнении команды 'make install'.
+set_target_properties( ${LIB} PROPERTIES 
+                              VERSION ${MAJOR_VERSION} 
+                              SOVERSION ${MINOR_VERSION} )
+
+# Установка. Это действие будет активировано при выполнении команды 'make install'.
+install( TARGETS ${LIB} DESTINATION ${LIB_INSTALL_PATH} )
+# Берём из папки ${HEADERS} все файлы с расширением .hpp и копируем их в 
+# ${HEADERS_INSTALL_PATH}.
+install( DIRECTORY ${HEADERS}/
+         DESTINATION ${HEADERS_INSTALL_PATH}
+         FILES_MATCHING PATTERN "*.hpp" )
+</cpp>
+
+<p>Всё. Проще, на мой взгляд, придумать сложно…
+<br /></p>
+<h2>Заключение</h2>
+
+<p>Конечно, эти примеры - самые базовые, самые простые. Система CMake обладает значительно бОльшими возможностями. Кстати, документация к CMake достаточно богата (хотя немного суховата, да и примеров не так много, как хотелось бы).</p>
+
+<p><em>P.S. В Интернете есть и русскоязычные ресурсы, посвящённые CMake.</em></p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2011/9/19/c11-stdunordered_map-stdmap.html" class="btn" title="C++11: std::unordered_map против std::map">Previous article</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2011/9/19/gcc-windows.html" class="btn" title="Последние версии GCC в Windows!">Next article</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Денис Шевченко. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="Денис Шевченко on Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="Денис Шевченко on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="Денис Шевченко on Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="Денис Шевченко on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="Денис Шевченко on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

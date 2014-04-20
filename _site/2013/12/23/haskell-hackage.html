@@ -1,0 +1,309 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<title>Haskell: устанавливаем пакет из Hackage &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="Haskell: устанавливаем пакет из Hackage">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Haskell: устанавливаем пакет из Hackage">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2013/12/23/haskell-hackage.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2013/12/23/haskell-hackage.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Articles</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://mademistakes.com">Made Mistakes</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Haskell: устанавливаем пакет из Hackage</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span>
+        <span class="entry-date date published"><time datetime="2013-12-23T00:00:00+04:00"><i class="icon-calendar-empty"></i> December 23, 2013</time></span>
+        
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2013/12/23/haskell-hackage.html" rel="bookmark" title="Haskell: устанавливаем пакет из Hackage"><i class="icon-link"></i> Permalink</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <!--break-->
+<h3>Готовимся</h3>
+
+<p>Все приведённые ниже команды выполняются в терминале из корневой папки нашего проекта.</p>
+
+<p>Для начала выполним команду:</p>
+
+<bash>
+cabal update
+</bash>
+
+<p>Эта команда обновляет список пакетов из вышеупомянутого репозитория, поэтому в ответ мы мы увидим нечто подобное:</p>
+
+<bash>
+Downloading the latest package list from hackage.haskell.org
+</bash>
+
+<p>Чуточку терпения - и список обновлён. Рекомендуется периодически выполнять эту команду, дабы поддерживать список доступных пакетов в актуальном состоянии.</p>
+
+<h3>Выбираем нужный пакет</h3>
+
+<p>Заходим на страницу списка пакетов и ищем. В частности, мне понадобилось установить пакет <strong><a href="http://hackage.haskell.org/package/filemanip">filemanip</a></strong>, предназначенный для работы с файловой системой. Кстати, поиск нужных вам пакетов можно производить в <strong><a href="http://www.haskell.org/hoogle/">Hoogle</a></strong>.</p>
+
+<p>Устанавливаем пакет следующей командой:</p>
+
+<bash>
+cabal install filemanip
+</bash>
+
+<p>В ответ последует список со всякими умными строками наподобие этого:</p>
+
+<bash>
+...
+Downloading filemanip-0.3.6.2...
+Configuring filemanip-0.3.6.2...
+Building filemanip-0.3.6.2...
+...
+Installing library in
+/Users/dshevchenko/Library/Haskell/ghc-7.6.3/lib/filemanip-0.3.6.2/lib
+Registering filemanip-0.3.6.2...
+Installed filemanip-0.3.6.2
+Updating documentation index /Users/dshevchenko/Library/Haskell/doc/index.html
+</bash>
+
+<p>Итак, пакет установлен.</p>
+
+<h3>Указываем пакет в .cabal-файле</h3>
+
+<p>Открываем конфигурационный <code>.cabal</code>-файл (помните про такой, не так ли?), находящийся в корне нашего проекта, и дописываем наш только что установленный пакет:</p>
+
+<hs>
+executable Haskell
+    main-is:         main.hs            
+    other-modules:   Haq
+    hs-source-dirs:  src 
+                     src/utils
+    build-depends:   base == 4.6.*, filemanip
+</hs>
+
+<p>Как видите, мы просто дописали в параметр <code>build-depends</code> название нового пакета. Обратите внимание, что имена пакетов в этом параметре указываются через запятую, это важно.</p>
+
+<p>Если вы пропустите этот шаг, то воспользоваться каким-либо из модулей данного пакета вы, разумеется, не сможете. Напоминаю, что пакет представлен набором модулей, которые можно импортировать в ваш код (а импорт модуля, напоминаю, подобен включению файла с помощью <code>#include</code>-директивы).</p>
+
+<p>Впрочем, даже если вы всё-таки забудете указать установленный пакет <em>и при этом</em> попытаетесь импортировать какие-либо из его модулей в ваш проект, компилятор вежливо поправит вас:</p>
+
+<bash>
+src/main.hs:3:8:
+    Could not find module `System.FilePath.Find'
+    It is a member of the hidden package `filemanip-0.3.6.2'.
+    Perhaps you need to add `filemanip' to the build-depends in your .cabal file.
+    Use -v to see a list of the files searched for.
+</bash>
+
+<h3>Подключаем нужные модули</h3>
+
+<p>А теперь открываем наш файл (например, <code>main.hs</code>) и дописываем в его верхней части следующую строку:</p>
+
+<hs>
+import System.FilePath.Find
+</hs>
+
+<p>Этой инструкцией мы импортировали конкретный модуль из установленного пакета. Теперь мы сможем использовать содержимое этого модуля в нашем проекте.</p>
+
+<p>Напоследок выполним команды:</p>
+
+<bash>
+cabal configure
+cabal build
+</bash>
+
+<p>Готово!</p>
+
+<p>Лично мне очень понравилась такая философия работы с пакетами. Во-первых, утилита cabal предоставляет единый централизованный способ установки пакетов, во-вторых, сама установка занимает три простейших шага (установить, прописать в <code>.cabal</code>-файле, импортировать нужные модули), а в-третьих, я могу установить только те пакеты, которые мне реально нужны.</p>
+
+<p>На сегодня достаточно, но мы обязательно продолжим изучение <code>cabal</code>, а уж к пакетам из Hackage мы будем возвращаться не раз и не два.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/12/23/haskell.html" class="btn" title="Haskell: о функциях">Previous article</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/12/25/haskell.html" class="btn" title="Haskell: об инфиксных функциях">Next article</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Денис Шевченко. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="Денис Шевченко on Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="Денис Шевченко on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="Денис Шевченко on Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="Денис Шевченко on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="Денис Шевченко on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

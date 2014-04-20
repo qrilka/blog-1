@@ -1,0 +1,351 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<title>Haskell: и снова о типах &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="Haskell: и снова о типах">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Haskell: и снова о типах">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2013/12/14/haskell.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2013/12/14/haskell.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Articles</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://mademistakes.com">Made Mistakes</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Haskell: и снова о типах</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span>
+        <span class="entry-date date published"><time datetime="2013-12-14T00:00:00+04:00"><i class="icon-calendar-empty"></i> December 14, 2013</time></span>
+        
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2013/12/14/haskell.html" rel="bookmark" title="Haskell: и снова о типах"><i class="icon-link"></i> Permalink</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <!--break-->
+<p>В языке Haskell есть три ключевых слова, используемые при определении собственных типов. И слова эти могут, скажем так, смутить программистов, пришедших из мира C++. Вот эти слова:</p>
+
+<ul>
+  <li><strong><code>data</code></strong></li>
+  <li><strong><code>class</code></strong></li>
+  <li><strong><code>instance</code></strong></li>
+</ul>
+
+<p>Ключевое слово <strong><code>data</code></strong> служит для определения пользовательского типа (естественно, оно служит также и для определения всех стандартных типов Haskell, но сейчас это не столь важно).</p>
+
+<p>Что же тогда означает слово <strong><code>class</code></strong>, спросите вы. Это слово предназначено для определения <em>класса типов</em>. Да, я понимаю, звучит на первый взгляд странно, но идея этой концепции весьма проста.</p>
+
+<p>В языке C++ понятия “тип” и “класс” фактически взаимозаменяемы, потому что ключевое слово <strong><code>class</code></strong> как раз и используется для определения пользовательских типов. Если мы написали:</p>
+
+<cpp>
+class IP_address {
+    // ...
+};
+
+int main() {
+    IP_address address;
+}
+</cpp>
+
+<p>что это означает? Мы определили класс <code>IP_address</code>, но при этом мы определили и пользовательский тип <code>IP_address</code>. :) Однако в языке Haskell всё иначе. А чтобы моё объяснение было более понятным, сразу перейдём к практическому примеру.</p>
+
+<h3>Собственный тип</h3>
+
+<p>Для начала определим собственный тип <code>IP_address</code>:</p>
+
+<hs>
+data IP_address = IP_address String
+</hs>
+
+<p>Готово. Перед нами простейший пользовательский тип. Объект этого типа фактически будет представлять собою значение стандартного типа <code>String</code> с меткой <code>IP_address</code>. </p>
+
+<p>Вы спросите, что такое метка? Рассматривайте метку как пояснительный идентификатор. Многие типы (в частности, стандартные типы) не имеют метки, поэтому их можно инициализировать значениями без пояснений. Например, если у нас есть некая функция, принимающая значение типа <code>Int</code> в качестве аргумента, то при её вызове мы будем писать так:</p>
+
+<hs>
+show 6
+</hs>
+
+<p>Однако если эта функция в качестве аргумента принимает объект типа <code>IP_address</code>, то мы должны явно указать это при её вызове:</p>
+
+<hs>
+show (IP_address "127.0.0.1")
+</hs>
+
+<p>Выражение <code>(IP_address "127.0.0.1")</code> породит объект типа <code>IP_address</code>, “содержащий в себе” строку со значением “127.0.0.1”.</p>
+
+<p>Кстати, метку принято ещё называть конструктором. </p>
+
+<p>Обратите внимание, что имя типа не может начинаться с маленькой буквы. Поэтому такой код:</p>
+
+<hs>
+data ip_address = ip_address String
+</hs>
+
+<p>будет неизбежно отвергнут компилятором.</p>
+
+<h3>Класс типов</h3>
+
+<p>Проблема в том, что тип <code>IP_address</code> в его нынешнем виде настолько примитивен, что не представляет для нас большого интереса (фактически, никакого интереса не представляет). Ведь мы, создав такой объект, даже не сможем вывести его на консоль. В частности, упомянутая функция <code>show</code> (стандартная функция Haskell, выводящая переданный ей аргумент в строковом виде) с гневом отвергнет аргумент типа <code>IP_address</code>, и правильно сделает: откуда ей знать, <em>как</em> можно представить объект типа <code>IP_address</code> в строковом виде? Она не узнает это до тех пор, пока мы явно ей не расскажем об этом. И вот тут-то на арену и выходят классы типов.</p>
+
+<p>Я понимаю, в выражении “класс типов” слово “класс” невольно режет слух программисту на C++, но потерпите, дальше будет понятнее. Класс типов - это некая обобщённая категория типов, отражающая конкретные общие черты для всех этих типов.</p>
+
+<p>Например, в стандартной библиотеке Haskell есть класс типов <code>Show</code>. Он обобщает все типы, объекты которых могут быть “показаны” (то есть отображены в виде строки). Как именно обобщает, спросите вы? Через общие методы. Вот определение класса <code>Show</code>:</p>
+
+<hs>
+class Show a where
+    show :: a -&gt; String
+</hs>
+
+<p>Как видите, тут присутствует один-единственный метод <code>show</code>, принимающий в качестве аргумента объект некоторого типа <code>a</code> и возвращающий некоторое строковое отображение этого объекта.</p>
+
+<p>Но что же такое тип <code>a</code> в этом выражении, спросите вы. Тип <code>a</code> - это любой тип. Рассматривайте его примерно как <code>T</code> в строке <code>template<typename t="">&lt;/code&gt; в C++ или как <code>id</code> в Objective-C. Разумеется, в данном случае речь идёт о любом типе, для которого понятие "показать" имеет смысл.</typename></code></p>
+
+<p>Да, но каким же образом метод <code>show</code> узнает, <em>как</em> ему отобразить объект некоторого конкретного типа в виде строки? Он узнает это через экземпляр класса типов (звучит ещё страшнее, но наберитесь мужества).</p>
+
+<h3>Экземпляр класса типов</h3>
+
+<p>Если класс типов <code>Show</code> - это абстракция для типов, объекты которых можно “показать”, то экземпляр этого класса представляет собой реальное объяснение о том, <em>как</em> можно “показать” объект того или иного типа. То есть если мы хотим объяснить, как можно “показать” объект типа <code>IP_address</code>, мы должны создать экземпляр класса типов <code>Show</code> для типа <code>IP_address</code>. Сделаем же это:</p>
+
+<hs>
+instance Show IP_address where
+    show (IP_address address) = 
+        if address == "127.0.0.1"
+        then 
+            "localhost"
+        else 
+            address
+</hs>
+
+<p>Как видите, мы использовали ключевое слово <code>instance</code>, а обобщённый тип <code>a</code> заменён здесь на наш конкретный тип <code>IP_address</code>. А дальше следует конкретное определение метода <code>show</code> для нашего типа. Таким образом, класс типов можно рассматривать примерно как чистый интерфейс в C++ (с чисто виртуальными функциями), а экземпляр класса типов - как определение этих чисто виртуальных функций для конкретного типа.</p>
+
+<p>Взглянем ещё раз на определение метода <code>show</code>:</p>
+
+<hs>
+    show (IP_address address) =
+        if address == "127.0.0.1"
+        then 
+            "localhost"
+        else 
+            address
+</hs>
+
+<p>Первая строка показывает, что метод <code>show</code> принимает объект типа <code>IP_address</code>, который в свою очередь будет “порождён” выражением вида <code>(IP_address address)</code>, например, как в примере выше, выражением <code>IP_address "127.0.0.1"</code>. Далее следует простое условие, выводящее слово <code>localhost</code> в случае значения адреса 127.0.0.1.</p>
+
+<p>А теперь мы можем использовать всё это хозяйство следующим образом:</p>
+
+<hs>
+main = 
+    putStrLn (show (IP_address "127.0.0.1"))
+</hs>
+
+<p>Теперь-то уж метод <code>show</code> прекрасно знает, как именно “показать” наш объект типа <code>IP_address</code>, поэтому мы получим ожидаемый вывод:</p>
+
+<bash>
+localhost
+</bash>
+
+<p>Если же мы напишем так:</p>
+
+<hs>
+main = 
+    -- IP-адрес google.com ;-)
+    putStrLn (show (IP_address "46.19.98.158"))
+</hs>
+
+<p>то результат столь же ожидаем:</p>
+
+<bash>
+46.19.98.158
+</bash>
+
+<p>Вот и всё. Теперь вы знаете о пользовательских типах в Haskell. Признаюсь, там не так всё просто, как описано выше, но самый базис вы уже освоили. Продолжение следует…</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/12/10/haskell.html" class="btn" title="Haskell: о типах">Previous article</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/12/19/disqus.html" class="btn" title="Disqus-общение: попробуем...">Next article</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Денис Шевченко. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="Денис Шевченко on Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="Денис Шевченко on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="Денис Шевченко on Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="Денис Шевченко on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="Денис Шевченко on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

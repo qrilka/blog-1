@@ -1,0 +1,263 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<title>Boost.Assign 2.0: упрощение или усложнение? &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="Boost.Assign 2.0: упрощение или усложнение?">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Boost.Assign 2.0: упрощение или усложнение?">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2011/9/19/boost-assign-2-0.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2011/9/19/boost-assign-2-0.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">About</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Articles</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://mademistakes.com">Made Mistakes</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Search...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Boost.Assign 2.0: упрощение или усложнение?</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span>
+        <span class="entry-date date published"><time datetime="2011-09-19T00:00:00+05:00"><i class="icon-calendar-empty"></i> September 19, 2011</time></span>
+        
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2011/9/19/boost-assign-2-0.html" rel="bookmark" title="Boost.Assign 2.0: упрощение или усложнение?"><i class="icon-link"></i> Permalink</a></span>
+        
+      </footer>
+      <div class="entry-content">
+        <!--break-->
+<p>Ну, во-первых, если кому-то интересно взглянуть на документацию к этому хозяйству - прошу <a href="http://svn.boost.org/svn/boost/sandbox/assign_v2/libs/assign/v2/doc/html/index.html"><strong>сюда</strong></a>.</p>
+
+<p>А, во-вторых, давайте вспомним, зачему была нужна эта библиотека? Она нужна была для того, чтобы упростить жизнь программиста. И не просто упростить, но сделать это <em>быстро</em>.</p>
+
+<p>Давайте взглянем на самый первый пример использования первой Assign (желающие ознакомиться лично - <a href="http://www.boost.org/doc/libs/1_46_1/libs/assign/doc/index.html"><strong>сюда</strong></a>):</p>
+
+<cpp>
+vector<int> v; 
+v += 1,2,3,4,5,6,7,8,9;
+
+map&lt;string,int&gt; m; 
+insert( m )( "Bar", 1 )( "Foo", 2 );
+
+
+Согласитесь, что даже без чтения остальной документации <em>любой</em> программист, имеющий хоть какой-то опыт работы с vector и map, поймёт этот код. Знаете почему? Потому что этот код простой. Я подчёркиваю: он простой даже для новичка. 
+
+Более того, этот новичок сможет начать использовать такую библиотеку <em>сразу же</em>, и ему не потребуется изучать всю документацию для этого. Это и есть то, что я называю: "библиотека, упрощающая жизнь программиста".
+
+А теперь взглянем на самый первый пример использования Assign 2.0 (он <strong><a href="http://svn.boost.org/svn/boost/sandbox/assign_v2/libs/assign/v2/doc/html/index.html">тут</a></strong>):
+
+<cpp>
+typedef std::map&lt;std::string, int&gt; map_; map_ cal;
+typedef map_::value_type p_;
+
+boost::for_each(
+    cal | do_csv_put&lt;2&gt;( "jan", 31, "feb", 28, "mar", 31 ),
+    std::cout
+        &lt;&lt; lambda::bind( &amp;p_::first, lambda::_1 ) &lt;&lt; ':'
+        &lt;&lt; lambda::bind( &amp;p_::second, lambda:: _1 ) &lt;&lt; ' '
+); // prints jan:31 feb:28 mar:31
+</cpp>
+
+Э-э... Хм...  
+
+Друзья, режьте меня на части, но я всё равно буду утверждать, что такой код отпугнёт новичка. Знаете почему? Потому что этот код сложный.
+
+Вдумайтесь: это ведь самый первый и простейший пример, а-ля "Hello world". Человек, который не знает, что такое lambda::bind и не знакомый с концепцией адаптеров (отражённной здесь перегруженным operator|) увидит это и подумает: "Ёлки-палки, если это - простейший пример, то что же там дальше?! И это библиотека для упрощения работы с контейнерами?!" Получается, такому человеку придётся хотя бы поверхностно познакомиться с лямбда-выражениями (и с Boost.Lambda в частности) только лишь для того, чтобы понять первый пример!
+
+Я понимаю, есть библиотеки, который трудно начать использовать <em>сразу</em>. Spirit, MPL, Proto и некоторые другие действительно требуют достаточно глубокой подготовки. Но эти библиотеки являются серьёзными инструментами, и они вовсе не предназначены для того, чтобы их начали использовать через пару минут после установки Boost. Понятно, что если человек собирается создавать собственный DSEL на основе Proto, то он должен обладать достаточно глубокими знаниями C++, и ему, разумеется, придётся изучить документацию к Proto весьма глубоко.
+
+Однако такие библиотеки, как Assign, именно для того и предназначены, чтобы их можно было использовать <em>сразу</em>, и чтобы высокой квалификации для этого не требовалось. Это те библиотеки, с которых начнёт новичок и по которым этот новичок будет судить о Boost в целом. И вот представьте себе, как он читает аннотацию к Assign:
+
+<strong>Filling containers with constant or generated data has never been easier.</strong>
+
+Чего-чего? Никогда не было проще? Вы что, издеваетесь? Я вспоминаю себя при освоении Assign первой версии, и если бы мне <em>тогда</em> дали Assign 2.0, я бы ужаснулся.
+
+По моему мнению, авторы Assign 2.0 пошли куда-то не туда. Библиотека, предназначенная, по сути, лишь для того, чтобы упростить вставку элементов в контейнер, обязана быть простой. В противном случае зачем она нужна?
+</int></cpp>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2011/9/19/accumulate.html" class="btn" title="accumulate и строки: подсказка">Previous article</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2011/9/19/boost-c11.html" class="btn" title="От Boost к C++11: частичный переход неизбежен">Next article</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Денис Шевченко. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="Денис Шевченко on Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="Денис Шевченко on Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="Денис Шевченко on Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="Денис Шевченко on StackExchange" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="Денис Шевченко on Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>
