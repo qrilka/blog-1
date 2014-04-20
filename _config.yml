@@ -16,7 +16,7 @@ owner:
   facebook:       dshevchenko.biz
   github:         denisshevchenko
   stackexchange:  http://stackexchange.com/users/131381/denis-shevchenko
-  linkedin:       
+  linkedin:       dshevchenkobiz
   instagram:      
   flickr:         
   tumblr:         
@@ -32,12 +32,14 @@ bing_verify:
 # Links to include in top navigation
 # For external links add external: true
 links:
-  - title: About
-    url: /about/
-  - title: Articles
+  - title: Записи
     url: /articles/
-  - title: Made Mistakes
-    url: http://mademistakes.com
+  - title: Друзья
+    url: /friends/
+  - title: О себе
+    url: /about/
+  - title: О Haskell
+    url: http://ohaskell.ru
     external: true
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
