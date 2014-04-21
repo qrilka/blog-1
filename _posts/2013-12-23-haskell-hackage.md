@@ -1,11 +1,12 @@
 ---
 layout: post
 title: 'Haskell: устанавливаем пакет из Hackage'
-created: 1387742409
-categories:
-- haskell
+category: articles
+tags: [Haskell]
+comments: true
+share: true
 ---
-<!--break-->
+
 <h3>Готовимся</h3>
 
 Все приведённые ниже команды выполняются в терминале из корневой папки нашего проекта.

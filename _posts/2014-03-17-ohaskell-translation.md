@@ -1,9 +1,10 @@
 ---
 layout: post
 title: О Haskell по-человечески и по-английски!
-created: 1395042729
-categories:
-- haskell
+category: articles
+tags: [Haskell]
+comments: true
+share: true
 ---
 Я в шоке, друзья!
 

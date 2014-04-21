@@ -2,7 +2,7 @@
 	
 		{
 		  "title"      : "О Haskell по-человечески: уже онлайн",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2014/4/14/ohaskell-online.html",
 		  "date"       : "2014-04-14 00:00:00 +0400",
 		  "shortdate"  : "April 14, 2014"
@@ -10,7 +10,7 @@
 	
 		{
 		  "title"      : "GitBook: как я строил веб-книгу",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2014/4/7/gitbook.html",
 		  "date"       : "2014-04-07 00:00:00 +0400",
 		  "shortdate"  : "April 07, 2014"
@@ -18,7 +18,7 @@
 	
 		{
 		  "title"      : "О Haskell по-человечески: четвёртое издание",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2014/4/1/ohaskell-fourth-edition.html",
 		  "date"       : "2014-04-01 00:00:00 +0400",
 		  "shortdate"  : "April 01, 2014"
@@ -26,7 +26,7 @@
 	
 		{
 		  "title"      : "О Haskell по-человечески и по-английски!",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2014/3/17/ohaskell-translation.html",
 		  "date"       : "2014-03-17 00:00:00 +0400",
 		  "shortdate"  : "March 17, 2014"
@@ -42,7 +42,7 @@
 	
 		{
 		  "title"      : "О геттерах и сеттерах",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2014/2/27/getters-and-setters.html",
 		  "date"       : "2014-02-27 00:00:00 +0400",
 		  "shortdate"  : "February 27, 2014"
@@ -50,7 +50,7 @@
 	
 		{
 		  "title"      : "Об IT-книгах: пара мыслей вслух",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2014/2/22/it-books.html",
 		  "date"       : "2014-02-22 00:00:00 +0400",
 		  "shortdate"  : "February 22, 2014"
@@ -58,7 +58,7 @@
 	
 		{
 		  "title"      : "После долгого затишья...",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2014/2/12/after-long-silence.html",
 		  "date"       : "2014-02-12 00:00:00 +0400",
 		  "shortdate"  : "February 12, 2014"
@@ -66,7 +66,7 @@
 	
 		{
 		  "title"      : "Русские буквы в именах: невероятно, но факт",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2014/1/22/russian-letters-in-names.html",
 		  "date"       : "2014-01-22 00:00:00 +0400",
 		  "shortdate"  : "January 22, 2014"
@@ -74,7 +74,7 @@
 	
 		{
 		  "title"      : "Haskell: идея",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/29/haskell-idea.html",
 		  "date"       : "2013-12-29 00:00:00 +0400",
 		  "shortdate"  : "December 29, 2013"
@@ -82,7 +82,7 @@
 	
 		{
 		  "title"      : "Haskell: о функциях высшего порядка",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/26/haskell-higher-order-functions.html",
 		  "date"       : "2013-12-26 00:00:00 +0400",
 		  "shortdate"  : "December 26, 2013"
@@ -90,7 +90,7 @@
 	
 		{
 		  "title"      : "Haskell: об инфиксных функциях",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/25/haskell-infix-functions.html",
 		  "date"       : "2013-12-25 00:00:00 +0400",
 		  "shortdate"  : "December 25, 2013"
@@ -98,7 +98,7 @@
 	
 		{
 		  "title"      : "Haskell: устанавливаем пакет из Hackage",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/23/haskell-hackage.html",
 		  "date"       : "2013-12-23 00:00:00 +0400",
 		  "shortdate"  : "December 23, 2013"
@@ -106,7 +106,7 @@
 	
 		{
 		  "title"      : "Haskell: о функциях",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/23/haskell-functions.html",
 		  "date"       : "2013-12-23 00:00:00 +0400",
 		  "shortdate"  : "December 23, 2013"
@@ -114,7 +114,7 @@
 	
 		{
 		  "title"      : "Haskell: о лямбда-функциях",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/20/haskell-lambda-functions.html",
 		  "date"       : "2013-12-20 00:00:00 +0400",
 		  "shortdate"  : "December 20, 2013"
@@ -122,7 +122,7 @@
 	
 		{
 		  "title"      : "Disqus-общение: попробуем...",
-		  "category"   : "",
+		  "category"   : "articles",
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/12/19/disqus.html",
 		  "date"       : "2013-12-19 00:00:00 +0400",
 		  "shortdate"  : "December 19, 2013"

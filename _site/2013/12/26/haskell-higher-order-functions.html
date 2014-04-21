@@ -10,7 +10,7 @@
 <link href='http://fonts.googleapis.com/css?family=Philosopher:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <title>Haskell: о функциях высшего порядка &#8211; Д. Шевченко</title>
 <meta name="description" content="Программист, исследователь, писатель">
-<meta name="keywords" content="">
+<meta name="keywords" content="Haskell">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
@@ -128,7 +128,7 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"></span>
+        <span class="entry-tags"><a href="http://denisshevchenko.github.io/blog/tags/#Haskell" title="Pages tagged Haskell">Haskell</a></span>
         
           <h1 class="entry-title">Haskell: о функциях высшего порядка</h1>
         
@@ -139,12 +139,18 @@
         <span class="entry-date date published"><time datetime="2013-12-26T00:00:00+04:00"><i class="icon-calendar-empty"></i> December 26, 2013</time></span>
         
         <span><a href="http://denisshevchenko.github.io/blog/2013/12/26/haskell-higher-order-functions.html" rel="bookmark" title="Haskell: о функциях высшего порядка"><i class="icon-link"></i> Вечная ссылка</a></span>
+        <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Комментарии</a></span>
         
-        
+        <span class="social-share-facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://denisshevchenko.github.io/blog/2013/12/26/haskell-higher-order-functions.html" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+        <span class="social-share-twitter">
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Haskell: о функциях высшего порядка&url=http://denisshevchenko.github.io/blog/2013/12/26/haskell-higher-order-functions.html&via=dshevchenko_biz" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+        <span class="social-share-googleplus">
+            <a href="https://plus.google.com/share?url=http://denisshevchenko.github.io/blog/2013/12/26/haskell-higher-order-functions.html" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <!-- /.social-share -->
       </footer>
       <div class="entry-content">
-        <!--break-->
-<p>Функции высшего порядка (higher-order functions) - очень важная и очень интересная особенность языка Haskell. Эта особенность основана на том постулате, что функции в Haskell - это <em>значения</em>. Знаю, это не так легко укладывается в голове, но такова особенность функционального программирования в целом: функции являются значениями (в широком смысле этого слова). Впрочем, если вы прочитали мою прошлую заметку о чистых функциях, вас это уже не должно удивлять, потому что вы уже знаете. что вызов чистой функции в конечном итоге порождает некоторое конечное выражение (являющееся итогом вычисления всех выражений в теле этой функции), которым компилятор заменяет место вызова.</p>
+        <p>Функции высшего порядка (higher-order functions) - очень важная и очень интересная особенность языка Haskell. Эта особенность основана на том постулате, что функции в Haskell - это <em>значения</em>. Знаю, это не так легко укладывается в голове, но такова особенность функционального программирования в целом: функции являются значениями (в широком смысле этого слова). Впрочем, если вы прочитали мою прошлую заметку о чистых функциях, вас это уже не должно удивлять, потому что вы уже знаете. что вызов чистой функции в конечном итоге порождает некоторое конечное выражение (являющееся итогом вычисления всех выражений в теле этой функции), которым компилятор заменяет место вызова.</p>
 
 <p>А раз уж функции являются значениями, то их можно, во-первых, передавать другим функциям в качестве аргумента, а во-вторых, возвращать из других функций в качестве выходного значения. Так вот функция A, которая принимает некую функцию B в качестве аргумента и/или возвращает некую функцию C в качестве выходного значения, называется <em>функцией высшего порядка</em>.</p>
 
@@ -404,7 +410,7 @@ Full info about user @1234:
 
 <p>Итак, перед нами - живая демонстрация реальной пользы ФВП. Да, признаю, этот пример можно было бы упростить (в данном конкретном случае можно было обойтись без частичного применения), но цель была не в том, чтобы дать на 100% оптимальное решение, а в том чтобы продемонстрировать упомянутую выше теорию на практическом примере. И как вы смогли убедиться, эта теория лишь поначалу казалось нам страшноватой, в реальности же она достаточно проста.</p>
 
-        
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
@@ -476,7 +482,27 @@ Full info about user @1234:
 </script>
 
 
-	        
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>	        
 
 </body>
 </html>

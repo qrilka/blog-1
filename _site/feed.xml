@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://denisshevchenko.github.io/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/" />
-<updated>2014-04-21T19:26:22+04:00</updated>
+<updated>2014-04-21T20:13:51+04:00</updated>
 <id>http://denisshevchenko.github.io/blog/</id>
 <author>
   <name>Денис Шевченко</name>
@@ -146,8 +146,7 @@
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;!--break--&gt;
-&lt;p&gt;Итак, есть у нас следующий код:&lt;/p&gt;
+  <content type="html">&lt;p&gt;Итак, есть у нас следующий код:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;worker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -383,8 +382,7 @@ stray &#39;\320&#39; in program
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;!--break--&gt;
-&lt;p&gt;Функции высшего порядка (higher-order functions) - очень важная и очень интересная особенность языка Haskell. Эта особенность основана на том постулате, что функции в Haskell - это &lt;em&gt;значения&lt;/em&gt;. Знаю, это не так легко укладывается в голове, но такова особенность функционального программирования в целом: функции являются значениями (в широком смысле этого слова). Впрочем, если вы прочитали мою прошлую заметку о чистых функциях, вас это уже не должно удивлять, потому что вы уже знаете. что вызов чистой функции в конечном итоге порождает некоторое конечное выражение (являющееся итогом вычисления всех выражений в теле этой функции), которым компилятор заменяет место вызова.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Функции высшего порядка (higher-order functions) - очень важная и очень интересная особенность языка Haskell. Эта особенность основана на том постулате, что функции в Haskell - это &lt;em&gt;значения&lt;/em&gt;. Знаю, это не так легко укладывается в голове, но такова особенность функционального программирования в целом: функции являются значениями (в широком смысле этого слова). Впрочем, если вы прочитали мою прошлую заметку о чистых функциях, вас это уже не должно удивлять, потому что вы уже знаете. что вызов чистой функции в конечном итоге порождает некоторое конечное выражение (являющееся итогом вычисления всех выражений в теле этой функции), которым компилятор заменяет место вызова.&lt;/p&gt;
 
 &lt;p&gt;А раз уж функции являются значениями, то их можно, во-первых, передавать другим функциям в качестве аргумента, а во-вторых, возвращать из других функций в качестве выходного значения. Так вот функция A, которая принимает некую функцию B в качестве аргумента и/или возвращает некую функцию C в качестве выходного значения, называется &lt;em&gt;функцией высшего порядка&lt;/em&gt;.&lt;/p&gt;
 
@@ -659,8 +657,7 @@ Full info about user @1234:
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;!--break--&gt;
-&lt;p&gt;Как мы уже знаем, вызов чистой функции выглядит так:&lt;/p&gt;
+  <content type="html">&lt;p&gt;Как мы уже знаем, вызов чистой функции выглядит так:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argN&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -733,8 +730,7 @@ Full info about user @1234:
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;!--break--&gt;
-&lt;h3&gt;Готовимся&lt;/h3&gt;
+  <content type="html">&lt;h3&gt;Готовимся&lt;/h3&gt;
 
 &lt;p&gt;Все приведённые ниже команды выполняются в терминале из корневой папки нашего проекта.&lt;/p&gt;
 
@@ -842,8 +838,7 @@ cabal build
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;!--break--&gt;
-&lt;p&gt;Если вы помните &lt;strong&gt;&lt;a href=&quot;http://dshevchenko.biz/ru/content/haskell-%D0%BE-%D0%BB%D1%8F%D0%BC%D0%B1%D0%B4%D0%B0-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F%D1%85&quot;&gt;заметку о лямбда-функциях&lt;/a&gt;&lt;/strong&gt;, математическое определение функции очень простое:&lt;/p&gt;
+  <content type="html">&lt;p&gt;Если вы помните &lt;strong&gt;&lt;a href=&quot;http://dshevchenko.biz/ru/content/haskell-%D0%BE-%D0%BB%D1%8F%D0%BC%D0%B1%D0%B4%D0%B0-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F%D1%85&quot;&gt;заметку о лямбда-функциях&lt;/a&gt;&lt;/strong&gt;, математическое определение функции очень простое:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Функция - это описание зависимости чего-то от чего-то.&lt;/strong&gt;&lt;/p&gt;
 
@@ -1087,8 +1082,7 @@ src/main.hs:43:61: Not in scope: `s&#39;
     <uri>http://denisshevchenko.github.io/blog</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;!--break--&gt;
-&lt;p&gt;Помню как в школе я довольно долго не мог понять, что же такое функция. Да, я уже решал многие задания с использованием функций, да, уже рисовал разнообразные графики (помните эти прелестные дуги на тетрадном листе в клеточку?), но при этом не мог бы объяснить ребёнку, что такое функция как &lt;em&gt;понятие&lt;/em&gt;. А памятуя о мудрых словах Эйнштейна, если вы не можете объяснить некую идею пятилетнему ребёнку, значит вы и сами её не понимаете…&lt;/p&gt;
+  <content type="html">&lt;p&gt;Помню как в школе я довольно долго не мог понять, что же такое функция. Да, я уже решал многие задания с использованием функций, да, уже рисовал разнообразные графики (помните эти прелестные дуги на тетрадном листе в клеточку?), но при этом не мог бы объяснить ребёнку, что такое функция как &lt;em&gt;понятие&lt;/em&gt;. А памятуя о мудрых словах Эйнштейна, если вы не можете объяснить некую идею пятилетнему ребёнку, значит вы и сами её не понимаете…&lt;/p&gt;
 
 &lt;p&gt;А ведь понятие-то оказалось предельно простым:&lt;/p&gt;
 

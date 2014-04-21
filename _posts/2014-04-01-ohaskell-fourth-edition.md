@@ -1,9 +1,10 @@
 ---
 layout: post
 title: 'О Haskell по-человечески: четвёртое издание'
-created: 1396351070
-categories:
-- haskell
+category: articles
+tags: [Haskell]
+comments: true
+share: true
 ---
 Итак, сегодня вышло в свет издание 0.4. Нет, это не первоапрельская шутка. Из новшеств:
 

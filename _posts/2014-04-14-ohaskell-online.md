@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'О Haskell по-человечески: уже онлайн'
-created: 1397486123
-categories:
-- haskell
-- gitbook
+category: articles
+tags: [Haskell, GitBook]
+comments: true
+share: true
 ---
 Приветствую, друзья!
 

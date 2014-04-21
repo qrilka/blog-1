@@ -1,11 +1,12 @@
 ---
 layout: post
 title: 'Haskell: об инфиксных функциях'
-created: 1387953488
-categories:
-- haskell
+category: articles
+tags: [Haskell]
+comments: true
+share: true
 ---
-<!--break-->
+
 Как мы уже знаем, вызов чистой функции выглядит так:
 
 {% highlight haskell %}

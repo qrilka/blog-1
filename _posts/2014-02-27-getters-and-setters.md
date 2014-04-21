@@ -1,13 +1,12 @@
 ---
 layout: post
 title: О геттерах и сеттерах
-created: 1393491627
-categories:
-- !binary |-
-  0J/RgNC+0LPRgNCw0LzQvNC40YDQvtCy0LDQvdC40LU=
-- c++
+category: articles
+tags: [C++]
+comments: true
+share: true
 ---
-<!--break-->
+
 Итак, есть у нас следующий код:
 
 {% highlight cpp %}
