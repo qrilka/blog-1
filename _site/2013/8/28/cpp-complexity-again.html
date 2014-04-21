@@ -1,0 +1,342 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Philosopher:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<title>О сложности С++ замолвим слово... Ещё раз... &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="О сложности С++ замолвим слово... Ещё раз...">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="О сложности С++ замолвим слово... Ещё раз...">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2013/8/28/cpp-complexity-again.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2013/8/28/cpp-complexity-again.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Записи</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/friends/">Друзья</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">О себе</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://ohaskell.ru">О Haskell</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Поиск</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Ищем...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">О сложности С++ замолвим слово... Ещё раз...</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <!-- <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span> -->
+        <span class="entry-date date published"><time datetime="2013-08-28T00:00:00+04:00"><i class="icon-calendar-empty"></i> August 28, 2013</time></span>
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2013/8/28/cpp-complexity-again.html" rel="bookmark" title="О сложности С++ замолвим слово... Ещё раз..."><i class="icon-link"></i> Вечная ссылка</a></span>
+        
+        
+      </footer>
+      <div class="entry-content">
+        <!--break-->
+<p>Сегодня прочёл одну <strong><a href="http://blog.greaterthanzero.com/post/58482859780/c-and-the-culture-of-complexity">заметку</a></strong> под названием “C++ and the Culture of Complexity”. Суть её в том, что С++ избыточно сложен в сравнении со многим современными языками программирования. Ну и на волне этой заметки я хотел бы поразмышлять об одном аспекте, который сразу же бросился мне в глаза при изучении Objective-C.</p>
+
+<p>Речь пойдёт о создании и манипулировании объектами пользовательских типов. Почему пользовательских? Потому что с типами <strong>int</strong> и ему подобными и так всё понятно: они мгновенно создаются, столь же мгновенно и безопасно копируются, да и вообще проблем с ними как правило не возникает. Поэтому говорить будем именно о типах, созданных пользователем.</p>
+
+<p>Известно, что в C++ объект пользовательского типа может быть создан самыми разными способами:</p>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">class</span> <span class="nc">My</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
+
+<span class="n">My</span> <span class="n">my_global</span><span class="p">;</span> <span class="c1">// Можно так...</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">My</span> <span class="n">my</span><span class="p">;</span> <span class="c1">// Можно так...</span>
+    <span class="n">My</span><span class="o">*</span> <span class="n">my_in_heap</span><span class="p">(</span> <span class="k">new</span> <span class="n">My</span><span class="p">()</span> <span class="p">);</span> <span class="c1">// Или так...</span>
+    <span class="k">static</span> <span class="n">My</span> <span class="n">my_static</span><span class="p">;</span> <span class="c1">// Или даже так...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>В общем, как хотим так и создаём. Гибкость с большой буквы. А теперь вопрос: чем является эта гибкость, благом или злом? И чтобы ответить на этот вопрос, мы должны рассмотреть <em>использование</em> созданного объекта. А использовать этот самый объект в C++ можно тоже различными способами:</p>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="nf">by_value</span><span class="p">(</span> <span class="n">My</span> <span class="n">m</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* Передаём по значению... */</span> <span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">by_ptr</span><span class="p">(</span> <span class="n">My</span><span class="o">*</span> <span class="n">m</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* Передаём по указателю... */</span> <span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">by_classic_cref</span><span class="p">(</span> <span class="k">const</span> <span class="n">My</span><span class="o">&amp;</span> <span class="n">m</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* Передаём по классической константной ссылке... */</span> <span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">by_classic_ref</span><span class="p">(</span> <span class="n">My</span><span class="o">&amp;</span> <span class="n">m</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* Передаём по классической ссылке... */</span> <span class="p">}</span>
+
+<span class="n">My</span> <span class="nf">return_by_value</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">My</span> <span class="n">my</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">my</span><span class="p">;</span> <span class="c1">// Возвращаем по значению...</span>
+<span class="p">}</span>
+
+<span class="n">My</span><span class="o">&amp;</span> <span class="n">return_by_classic_ref</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">My</span> <span class="n">my</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">my</span><span class="p">;</span> <span class="c1">// Глупо, но ведь можно...</span>
+<span class="p">}</span>
+
+<span class="n">My</span><span class="o">*</span> <span class="n">return_by_ptr</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">My</span><span class="p">();</span> <span class="c1">// Возвращаем по указателю...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>И тут тоже сплошная гибкость.</p>
+
+<p>С одной стороны, это хорошо. Например, если пользовательский тип относительно прост (уровня несложной С-подобной структуры), то его создание в стеке займёт меньше времени чем в куче. Конечно, в реальности эта разница (особенно на современном компьютере) никак себя не проявит, но если вдруг объект нужно создавать и уничтожать, скажем, миллион раз в секунду, то об этом можно задуматься…</p>
+
+<p>С другой же стороны, использование объекта разными способами влечёт (вернее, может повлечь) за собой несколько мааааленьких сложностей, таких как побочное копирование или мёртвая ссылка. Передаёте по значению - получите <del>ненужную</del> временную копию. Возвращаете по ссылке объект, который (уже) разрушен - получите проблемы с памятью. К тому же, говоря о копировании, нельзя не вспомнить копирующий конструктор, и едва ли есть хотя бы один программист С++, избежавший проблем с этим зверем. :)</p>
+
+<p>Да, я знаю классический ответ, ибо и сам многократно так отвечал: <em>“Будьте внимательней! Если вам не нужна временная копия - передавайте объект по ссылке. Если вам нужно правильное глубокое копирование - определяйте собственный копирующий конструктор.”</em> Однако в суровой реальности мы все наступали на эти грабли (лично я наступал на них неоднократно). Казалось бы, разве мы не знаем о том, что нужно быть внимательным? Разве мы не знаем разницу между передачей по значению и по ссылке? Конечно знаем. Но…</p>
+
+<p>Но давайте задумаемся: а нужна ли сия вышеупомянутая гибкость? Лично я прихожу к выводу, что не нужна.</p>
+
+<p>Во-первых, практику создания и использования объекта по значению, по ссылке и по указателю необходимо изучать <em>всем</em> новичкам С++, таким образом время изучения языка увеличивается (только не говорите мне, что эту тему новичок освоит за пару дней). Во-вторых, ошибки в этой области зачастую не могут быть обнаружены компилятором (впрочем, при флаге -pedantic могут всплывать вспомогательные предупреждения). И в-третьих, эта гибкость привносит в язык <del>ненужную</del> избыточную сложность.</p>
+
+<p>Почему избыточную? Потому что можно обойтись и без неё. Пример тому - Objective-C. Известно, что как C++, так и Objective-C переняли многие черты своего общего предка - языка С. Но создатели Objective-C кое-что упростили.</p>
+
+<p>Для меня было приятным сюрпризом узнать, что в Objective-C объект невстроенного типа невозможно создать иначе, как в куче. Таким образом, мы имеем только указатель, и работать с объектом мы можем исключительно через него. Принимаем - по указателю, возвращаем - по указателю. Сначала мне показалось это не очень гибким, но потом я понял, что это даже хорошо.</p>
+
+<p>Более того, при попытке нарушить этот принцип разработчик незамедлительно получает ошибку. Не предупреждение, которое можно не заметить или проигнорировать, но именно ошибку.</p>
+<m>
+@interface Message
+-(void) check: (NSString) header;
+@end
+
+@implementation Message
+-(void) check: (NSString) header {
+    // Какой-то код...
+}
+@end
+</m>
+
+<p>Здесь мы определяем собственный тип <strong>Message</strong>, один из методов которого принимает в качестве аргумента объект типа <strong>NSString</strong> (стандартная строка). Как видите, метод принимает строку по значению. В результате получаем ошибку:</p>
+
+<p><strong>Interface type ‘NSString’ cannot be passed by value; did you forget * in ‘NSString’?</strong></p>
+
+<p>Не просто ошибка, но и сразу же подсказка к её исправлению. Та же ситуация при попытке вернуть по значению:</p>
+<m>
+@interface Message
+-(NSString) header;
+@end
+
+@implementation Message
+-(NSString) header {
+    // Какой-то код...
+}
+@end
+</m>
+
+<p>Компилятор грозно сообщает:</p>
+
+<p><strong>Interface type ‘NSString’ cannot be returned by value; did you forget * in ‘NSString’?</strong></p>
+
+<p>Попробуем неправильно создать объект:</p>
+<m>
+static void testMessage() {
+    Message m; // Создаём в стеке... Ну-ну...
+}
+</m>
+
+<p>В этом случае компилятор опять даст нам по башке:</p>
+
+<p><strong>Interface type cannot be statically allocated</strong></p>
+
+<p>Таким образом, работаем только с указателем, и никак иначе. Ссылок же в Objective-C нет и вовсе. Да и с копированием тоже всё строго:</p>
+<m>
+static void testMessages(Message* m1, Message* m2) {
+    *m1 = *m2; // Разыменовываем указатели с попыткой присвоения? Ну-ну...
+}
+</m>
+
+<p>И вновь - ошибка:</p>
+
+<p><strong>Cannot assign to class object (‘Message’ invalid)</strong></p>
+
+<p>То есть никакого неправильного копирования объекта не может быть в принципе. Кстати, понятие “копирующий конструктор” языку Objective-C тоже незнакомо…</p>
+
+<p>К чему это я? Да к тому, что единый способ создания объекта (а именно в куче) и единый способ работы с ним (исключительно по указателю) видится мне значительно лучшей альтернативой той гибкости, которую предлагает C++.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/8/16/goods-and-services.html" class="btn" title="Товары и услуги">Предыдущий</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/9/11/about-remote-work.html" class="btn" title="Об удалёнке: когда сознание отстаёт от технологий...">Следующий</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2011-2014 Денис Шевченко. Сайт работает на <a href="http://jekyllrb.com">Jekyll</a> с использованием <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="В Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="На Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="На Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	<a href="http://linkedin.com/in/dshevchenkobiz" title="И в LinkedIn я тоже есть" target="_blank"><i class="icon-linkedin icon-2x"></i></a>
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="И даже на StackExchange я есть" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="И конечно же на Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Philosopher:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<title>Haskell: собираем простейший проект &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="Haskell: собираем простейший проект">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Haskell: собираем простейший проект">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Записи</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/friends/">Друзья</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">О себе</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://ohaskell.ru">О Haskell</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Поиск</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Ищем...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Haskell: собираем простейший проект</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <!-- <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span> -->
+        <span class="entry-date date published"><time datetime="2013-11-30T00:00:00+04:00"><i class="icon-calendar-empty"></i> November 30, 2013</time></span>
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project.html" rel="bookmark" title="Haskell: собираем простейший проект"><i class="icon-link"></i> Вечная ссылка</a></span>
+        
+        
+      </footer>
+      <div class="entry-content">
+        <!--break-->
+<p>За основу я взял хорошее пошаговое руководство с <strong><a href="http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program#Structure_of_a_simple_project">официального сайта</a></strong> Haskell, и снабдил его некоторыми пояснениями. Не пугайтесь, что дальше идёт довольно много текста, потому что фактических команд, которые вам нужно будет выполнить в терминале, всего несколько. Объём этой статьи обусловлен подробностью моих комментариев. </p>
+
+<p>Итак, подразумевается, что у вас уже установлена <strong><a href="http://www.haskell.org/platform/">Haskell Platform</a></strong>. В составе этой самой платформы присутствует мощная утилита под названием <code>cabal</code>. Не знаю как вам, а мне это название напомнило о персонаже из кровопролитной игры Mortal Kombat по имени Kabal. Впрочем, не пугайтесь, утилита эта не станет набрасываться на вас с железными крюками. Фактически она представляет собою эдакий Haskell-овский <code>make</code>. На самом деле эта утилита весьма мощная и многогранная в своих возможностях, но на данный момент просто воспринимайте её как сборочную утилиту специально для Haskell-проектов.</p>
+
+<p>Создаём папку под названием Haskell и заходим в неё. В ней мы должны создать один файл: main.hs. Это наш файл исходного кода, в нашем простейшем случае других файлов не будет.</p>
+
+<p>Открываем этот файл и пишем в нём, например, это:</p>
+
+<div class="highlight"><pre><code class="haskell"><span class="kr">import</span> <span class="nn">System.Environment</span>
+ 
+<span class="nf">main</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="nb">()</span>
+<span class="nf">main</span> <span class="ow">=</span> <span class="n">getArgs</span> <span class="o">&gt;&gt;=</span> <span class="n">print</span> <span class="o">.</span> <span class="n">haqify</span> <span class="o">.</span> <span class="n">head</span>
+ 
+<span class="nf">haqify</span> <span class="n">s</span> <span class="ow">=</span> <span class="s">&quot;Haq! &quot;</span> <span class="o">++</span> <span class="n">s</span>
+</code></pre></div>
+
+<p>Сохраняем, закрываем, а потом выполняем в терминале простую команду:</p>
+
+<bash>
+cabal init
+</bash>
+
+<p>В результате вы попадёте в интерактивный диалог, в ходе которого вам будет предложено ответить на несколько вопросов о вашем проекте:</p>
+
+<bash>
+MacBook-Pro-Sevcenko:Haskell dshevchenko$ cabal init
+Package name? [default: Haskell] 
+Package version? [default: 0.1.0.0] 
+Please choose a license:
+ * 1) (none)
+   2) GPL-2
+   3) GPL-3
+   4) LGPL-2.1
+   5) LGPL-3
+   6) BSD3
+   7) MIT
+   8) Apache-2.0
+   9) PublicDomain
+  10) AllRightsReserved
+  11) Other (specify)
+Your choice? [default: (none)] 7
+Author name? Denis Shevchenko
+Maintainer email? me@dshevchenko.biz
+Project homepage URL? 
+Project synopsis? Learn project
+Project category:
+ * 1) (none)
+   2) Codec
+   3) Concurrency
+   4) Control
+   5) Data
+   6) Database
+   7) Development
+   8) Distribution
+   9) Game
+  10) Graphics
+  11) Language
+  12) Math
+  13) Network
+  14) Sound
+  15) System
+  16) Testing
+  17) Text
+  18) Web
+  19) Other (specify)
+Your choice? [default: (none)] 
+What does the package build:
+   1) Library
+   2) Executable
+Your choice? 2
+Include documentation on what each field means (y/n)? [default: n] 
+
+Guessing dependencies...
+
+Generating LICENSE...
+Warning: unknown license type, you must put a copy in LICENSE yourself.
+Generating Setup.hs...
+Generating Haskell.cabal...
+
+You may want to edit the .cabal file and add a Description field.
+</bash>
+
+<p>В результате в вашей папке будут созданы несколько дополнительных файлов. Не знаю, почему, но с автоматическим генерированием файла LICENSE произошла проблемка. Как видим, мы получили предупреждение вида:</p>
+
+<bash>
+Generating LICENSE...
+Warning: unknown license type, you must put a copy in LICENSE yourself.
+</bash>
+
+<p>Совершенно непонятно, <em>что</em> не понравилось утилите, ведь я ввёл номер лицензии 7 (что соответствует лицензии MIT) и она это проглотила, но в итоге файл LICENSE в корневой папке проекта так и не появился. Но дабы не было противоречий, просто добавьте этот файл вручную (и можете оставить его пустым).</p>
+
+<p>Как уже было упомянуто, в корневой папке проекта появились следующие важные файлы:</p>
+
+<ul>
+  <li>Setup.hs</li>
+  <li>Haskell.cabal</li>
+</ul>
+
+<p>Первый нам не так интересен, потому что (в соответствии с официальным руководством) редактировать этот файл руками нам придётся очень редко. А вот второй файл весьма любопытен. Откроем его и посмотрим:</p>
+
+<div class="highlight"><pre><code class="haskell"><span class="nf">name</span><span class="kt">:</span>                <span class="kt">Haskell</span>
+<span class="nf">version</span><span class="kt">:</span>             <span class="mf">0.1</span><span class="o">.</span><span class="mf">0.0</span>
+<span class="nf">synopsis</span><span class="kt">:</span>            <span class="kt">Learn</span> <span class="n">project</span>
+<span class="c1">-- description:         </span>
+<span class="nf">license</span><span class="kt">:</span>             <span class="kt">MIT</span>
+<span class="nf">license</span><span class="o">-</span><span class="n">file</span><span class="kt">:</span>        <span class="kt">LICENSE</span>
+<span class="nf">author</span><span class="kt">:</span>              <span class="kt">Denis</span> <span class="kt">Shevchenko</span>
+<span class="nf">maintainer</span><span class="kt">:</span>          <span class="n">me</span><span class="o">@</span><span class="n">dshevchenko</span><span class="o">.</span><span class="n">biz</span>
+<span class="c1">-- copyright:           </span>
+<span class="c1">-- category:            </span>
+<span class="nf">build</span><span class="o">-</span><span class="kr">type</span><span class="kt">:</span>          <span class="kt">Simple</span>
+<span class="nf">cabal</span><span class="o">-</span><span class="n">version</span><span class="kt">:</span>       <span class="o">&gt;=</span><span class="mf">1.8</span>
+
+<span class="nf">executable</span> <span class="kt">Haskell</span>
+  <span class="n">main</span><span class="o">-</span><span class="n">is</span><span class="kt">:</span>           <span class="n">main</span><span class="o">.</span><span class="n">hs</span>            
+  <span class="c1">-- other-modules:       </span>
+  <span class="n">build</span><span class="o">-</span><span class="n">depends</span><span class="kt">:</span>     <span class="n">base</span> <span class="o">==</span><span class="mf">4.6</span><span class="o">.*</span>
+</code></pre></div>
+
+<p>Как видите, этот файл представляет собой некий аналог Makefile для системы cabal. Тут уже сохранены те самые значения, которые мы вводили в процессе вышеупомянутого диалога.</p>
+
+<p>Обращаю ваше внимание на то, что в этом сгенерированном файле изначально строка:</p>
+
+<div class="highlight"><pre><code class="haskell">  <span class="n">main</span><span class="o">-</span><span class="n">is</span><span class="kt">:</span>
+</code></pre></div>
+
+<p>закомментирована. Вам необходимо раскомментировать её и прописать имя файла, содержащего функцию main, в нашем случае это main.hs. Если вы этого не сделаете, получите ошибку вида:</p>
+
+<bash>
+Error: No 'Main-Is' field found for executable Haskell
+</bash>
+
+<p>Итак, после этого выполняем следующую простую команду в терминале:</p>
+
+<bash>
+cabal configure
+</bash>
+
+<p>В результате произойдёт конфигурирование проекта, то есть некая подготовка к фактической сборке. И тут нас ожидает следующая тонкость.</p>
+
+<p>Обратите внимание на последнюю часть файла Haskell.cabal:</p>
+
+<div class="highlight"><pre><code class="haskell"><span class="nf">executable</span> <span class="kt">Haskell</span>
+  <span class="n">main</span><span class="o">-</span><span class="n">is</span><span class="kt">:</span>           <span class="n">main</span><span class="o">.</span><span class="n">hs</span>            
+  <span class="c1">-- other-modules:       </span>
+  <span class="n">build</span><span class="o">-</span><span class="n">depends</span><span class="kt">:</span>     <span class="n">base</span> <span class="o">==</span><span class="mf">4.6</span><span class="o">.*</span>
+</code></pre></div>
+
+<p>Видите отступ в два пробела перед тремя последними строками? Оказывается, это не просто так. Если мы уберём этот отступ, то получим такую ошибку:</p>
+
+<bash>
+cabal: Haskell.cabal:18: Construct not supported at this position: F 18
+"main-is" "main.hs\nbuild-depends: base ==4.6.*"
+</bash>
+
+<p>Кроме того, отступ должен быть никак не меньше двух пробелов, потому что ради эксперимента я пробовал поставить отступ из одного-единственного пробела, и получил уже такую ошибку:</p>
+
+<bash>
+cabal: Haskell.cabal:18: Parse of field 'main-is' failed.
+</bash>
+
+<p>В общем, два пробела. В этом случае конфигурирование пройдёт нормально.</p>
+
+<bash>
+$ cabal configure
+Resolving dependencies...
+Configuring Haskell-0.1.0.0...
+</bash>
+
+<p>После этого выполняем, собственно, команду сборки:</p>
+
+<bash>
+$ cabal build
+Building Haskell-0.1.0.0...
+Preprocessing executable 'Haskell' for Haskell-0.1.0.0...
+</bash>
+
+<p>Всё. После этого в нашей корневой папке проекта появилась папка <code>dist</code>. Вот её содержимое:</p>
+
+<bash>
+dist/
+├── build
+│   ├── Haskell
+│   │   ├── Haskell    &lt;&lt;---- Это и есть наш исполняемый файл.
+│   │   └── Haskell-tmp
+│   │       ├── Main.hi
+│   │       └── Main.o
+│   └── autogen
+│       ├── Paths_Haskell.hs
+│       └── cabal_macros.h
+├── package.conf.inplace
+└── setup-config
+</bash>
+
+<p>Ну вот собственно и всё. Можем запускать наше приложение:</p>
+
+<bash>
+./dist/build/Haskell/Haskell arg1
+</bash>
+
+<p>Вывод будет таким:</p>
+
+<bash>
+"Haq! arg1"
+</bash>
+
+<p>В дальнейшем я обязательно продолжу рассказы об утилите <code>cabal</code>, но главное, что теперь вы имеете представление о том, как в Haskell создать пусть и простейший, но уже реальный проект.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/11/28/language-studying.html" class="btn" title="К вопросу о продолжительности изучения языков...">Предыдущий</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/12/1/about-memory.html" class="btn" title="О памяти">Следующий</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2011-2014 Денис Шевченко. Сайт работает на <a href="http://jekyllrb.com">Jekyll</a> с использованием <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="В Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="На Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="На Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	<a href="http://linkedin.com/in/dshevchenkobiz" title="И в LinkedIn я тоже есть" target="_blank"><i class="icon-linkedin icon-2x"></i></a>
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="И даже на StackExchange я есть" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="И конечно же на Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>

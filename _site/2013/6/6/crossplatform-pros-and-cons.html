@@ -1,0 +1,253 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Philosopher:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<title>Кроссплатформенность: выигрыш для программиста и проигрыш для малого бизнеса &#8211; Д. Шевченко</title>
+<meta name="description" content="Программист, исследователь, писатель">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://denisshevchenko.github.io/blog/images/site-logo.png">
+<meta name="twitter:title" content="Кроссплатформенность: выигрыш для программиста и проигрыш для малого бизнеса">
+<meta name="twitter:description" content="Программист, исследователь, писатель">
+<meta name="twitter:creator" content="@dshevchenko_biz">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Кроссплатформенность: выигрыш для программиста и проигрыш для малого бизнеса">
+<meta property="og:description" content="Программист, исследователь, писатель">
+<meta property="og:url" content="http://denisshevchenko.github.io/blog/2013/6/6/crossplatform-pros-and-cons.html">
+<meta property="og:site_name" content="Д. Шевченко">
+
+
+
+
+
+<link rel="canonical" href="http://denisshevchenko.github.io/blog/2013/6/6/crossplatform-pros-and-cons.html">
+<link href="http://denisshevchenko.github.io/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Д. Шевченко Feed">
+<link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://denisshevchenko.github.io/blog/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://denisshevchenko.github.io/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://denisshevchenko.github.io/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/articles/">Записи</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/friends/">Друзья</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://denisshevchenko.github.io/blog/about/">О себе</a>
+				 
+			</li>
+	        
+			<li>
+				
+					<a href="http://ohaskell.ru">О Haskell</a>
+				 
+			</li>
+	        
+	        <li><a href="http://denisshevchenko.github.io/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li class="dosearch"><i class="icon-search"></i> Поиск</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+	<div class="search-form">
+		<input type="text" class="search-field" placeholder="Ищем...">
+		<i class="icon-remove-sign icon-2x"></i>
+		<ul class="search-results post-list"></ul><!-- /.search-results -->
+	</div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+    		<a href="http://denisshevchenko.github.io/blog/" class="site-logo" rel="home" title="Д. Шевченко"><img src="http://denisshevchenko.github.io/blog/images/site-logo.png" width="200" height="200" alt="Д. Шевченко logo" class="animated fadeInUp"></a>
+        
+        <h1 class="site-title animated fadeIn"><a href="http://denisshevchenko.github.io/blog/">Д. Шевченко</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">Программист, исследователь, писатель</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Кроссплатформенность: выигрыш для программиста и проигрыш для малого бизнеса</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        <!-- <img src="http://denisshevchenko.github.io/blog/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://denisshevchenko.github.io/blog/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span> -->
+        <span class="entry-date date published"><time datetime="2013-06-06T00:00:00+04:00"><i class="icon-calendar-empty"></i> June 06, 2013</time></span>
+        
+        <span><a href="http://denisshevchenko.github.io/blog/2013/6/6/crossplatform-pros-and-cons.html" rel="bookmark" title="Кроссплатформенность: выигрыш для программиста и проигрыш для малого бизнеса"><i class="icon-link"></i> Вечная ссылка</a></span>
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>История кроссплатформенной идеи довольно-таки продолжительна, особенно по IT-меркам. Так, Qt с нами уже с 1995 года, а wxWidgets - с 1992 года. Да и сама идея, согласитесь, хорошая - одна кодовая база и тут же разные версии итогового приложения.</p>
+
+<p>Впрочем, зададим себе вопрос: действительно ли идея кроссплатформенного кода столь хороша? Я постараюсь удержаться от оценки (и тем более от сравнения) конкретных инструментариев, сфокусируюсь лишь на самой этой идее.</p>
+
+<p>С течением времени я пришёл к выводу, что кроссплатформенность, как и любая медаль, имеет две стороны. Первая сторона - взгляд IT-шника, вторая - взгляд бизнеса. А теперь подробнее…</p>
+
+<p>Хороша ли идея кроссплатформенного кода с точки зрения IT-шника? Уверен, большинство разработчиков ответят “Да”. Ну, давайте непредвзято: одна кодовая база на все (поддерживаемые) платформы - это действительно хорошо. Ты думаешь лишь о языке программирования, о внутренней логике приложения и об API конкретного кроссплатформенного инструментария. Потом три (пере)компиляции - и версии для, скажем, Windows, Linux и OS X готовы. Захотел добавить версию для какой-нибудь Solaris - ставь соответствующую версию инструментария, очередная перекомпиляция - и вот уже четвёртая версия приложения готова. Красота!</p>
+
+<p>Главное преимущество здесь - экономия. Экономия сил, времени и, соответственно, денег. Представьте себе, что вам одному пришлось бы поддерживать три кодовые базы, предварительно изучив три (совершенно разных) API, да ещё и постоянно синхронизировать состояние трёх репозиториев (в двух баг поправил, а в третьем - забыл) - и вы поймёте, что преимущество это очень весомое. Это - взгляд IT-шника. Именно поэтому во вводном руководстве Qt сказано, что “программисты любят Qt за то, что она им нравится”.</p>
+
+<p>А теперь взглянем на вторую сторону и попытаемся поставить себя на место предпринимателя. Естественно, когда речь идёт о свободном софте, создаваемом без какого бы то ни было коммерческого интереса, сию вторую сторону можно проигнорировать.</p>
+
+<p>Итак, сторона предпринимателя, сторона бизнеса. Здесь, казалось бы, вышеупомянутое преимущество кроссплатформенного кода (а именно экономия сил, времени и денег) должно быть <em>ещё более весомым</em>. Теоретически так оно и есть. Практически же, у кроссплатформенного кода есть один ааааграменный недостаток. И недостаток этот, как ни парадокально звучит, заключается именно в универсальности такого кода. Почему? Потому что, как ни крути, нельзя быть всем для всех.</p>
+
+<p>При чём же тут взгляд предпринимателя, спросите вы. А при том, что, думая о коммерческом успехе приложения, мы обязаны смотреть правде в глаза. А правда в данном случае такова: приложение, родное для платформы Х, в подавляющем большинстве случаев будет на голову выше, чем кроссплатформенное, для этой платформы Х. Родное есть родное…</p>
+
+<p>Разумеется, речь идёт не о банальностях типа PushButton (поверьте мне, простая кнопка, созданная в Qt-приложении, визуально неотличима от простой кнопки, созданной, скажем, в Cocoa). Речь идёт о вещах более сложных. При всём уважении к Digia, программисты-создатели той же Qt ну никак не смогут успеть за развитием всех (поддерживаемых Qt) платформ. Поэтому графический интерфейс, созданный Qt, всегда будет выглядеть (в тех или иных аспектах) чужеродным по сравнению с родным интерфейсом. И это не плохо и не хорошо, это просто данность. И эта данность приводит к тому, что коммерческий успех родных приложений всегда будет знаааачительно выше, чем кроссплатформенных.</p>
+
+<p>Впрочем, может быть, это лишь мои субъективные догадки? Нет, друзья, это объективная реальность. И чтобы убедиться в этом, зададим себе вопрос: сколько мы знаем коммерчески успешных приложений, основанных на Qt или wxWidgets? Ну, поскольку мир Linux в данном аспекте выпадает (большинство тамошних пользователей использовали, используют и будут использовать только свободный софт), остаются Windows и Mac. Ну и? Много ли есть коммерчески успешных приложений для этих рынков? Честно признаться, я не знаю ни одного. И даже если таковые имеются, их очень немного.</p>
+
+<p>Да, есть такая штука, как QML. В ней приложения могут выглядеть идентично на всех поддерживаемых платформах. Но, по моему скромному мнению, это в корне ошибочное решение. Почему? Потому что такое приложение будет выглядеть чужаком на ВСЕХ платформах. Как ни крути, десктопный GUI на тех же Windows и Linux всегда был и всегда будет очень различаться, и это данность, и с этой данностью нужно мириться. По моему мнению, одинаковость графического интерфейса независимо от платформы - это область веб-приложений, но никак не десктопных.</p>
+
+<p>Ах да, я же совсем забыл про Java! Ведь среди приложений, написанных на Java, есть коммерчески успешные! Есть! Только, по моему личному опыту, скажу: графический интерфейс, созданный на Java, с первой же секунды режет глаз. Ну некрасивый он, как ни крути! К тому же всегда тормозной. Более или менее симпатично он выглядит на Windows, а вот на Linux и Mac… Я ставил несколько коммерческих Java-приложений на Debian и на OS X Lion - это тихий ужас. Поэтому пользователь ВСЕГДА предпочтёт родное приложение написанному на Java, если таковая альтернатива имеется. К тому же, Java уже несколько лет назад попала в большую немилость у Apple, так что этот рынок весьма неприветлив к Java-приложениям. Настолько неприветлив, что многие пользователи, увидев в описании приложения аббревиатуру “JRE”, сразу же закрывают вкладку браузера…</p>
+
+<p>Единственное, приходящее на ум, исключение составляет JetBrains. Весьма неплохие инструменты они делают, к тому же коммерчески успешные. Но вот я ставил себе их AppCode… Ну тормозит, собака, тормозит и всё тут, и это даже на моём MacBook Pro. Впрочем, к этому наверное, можно привыкнуть.</p>
+
+<p>Опять-таки, подчеркну: высокий корпоративный сегмент не в счёт! Да, я знаю, что есть очень успешные B2B приложения, написанные на Java. Но речь идёт о специализированных программных решениях, стоимость которых зачастую измеряется десятками тысяч вечнозелёных рублей. Поэтому сия сфера лишь для компаний-миллионеров…</p>
+
+<p>К чему я это всё? Да к тому, что идея кроссплатформенных десктопных приложений, на мой взгляд, по большей части потерпела крах в малом софтверном бизнесе. Ну неконкурентоспособны они, чего греха таить. Мне ведь довелось однажды участвовать в разработке одной большой программы, основанной на Qt, и на эту программу делали большую ставку. Но, как вспомню сейчас её интерфейс… Мысль о том, что на эту программу делали серьёзную коммерческую ставку, не вызывает у меня теперь ничего, кроме улыбки…</p>
+
+<p>Так что если желаете (хоть какого-нибудь) успеха вашему приложению на рынке - делайте его нативным для этого рынка. Поверьте мне на слово.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/5/7/without-resume.html" class="btn" title="Новый способ приёма на работу: мне понравилась такая идея">Предыдущий</a>
+      
+      
+        <a href="http://denisshevchenko.github.io/blog/2013/6/6/objective-c.html" class="btn" title="Итак, Objective-C...">Следующий</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2011-2014 Денис Шевченко. Сайт работает на <a href="http://jekyllrb.com">Jekyll</a> с использованием <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/dshevchenko_biz" title="В Twitter" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+	<a href="http://facebook.com/dshevchenko.biz" title="На Facebook" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+	<a href="https://google.com/+DenisShevchenko" title="На Google+" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+	<a href="http://linkedin.com/in/dshevchenkobiz" title="И в LinkedIn я тоже есть" target="_blank"><i class="icon-linkedin icon-2x"></i></a>
+	<a href="http://stackexchange.com/users/131381/denis-shevchenko" title="И даже на StackExchange я есть" target="_blank"><i class="icon-stackexchange icon-2x"></i></a>
+	
+	
+	<a href="http://github.com/denisshevchenko" title="И конечно же на Github" target="_blank"><i class="icon-github icon-2x"></i></a>
+	
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://denisshevchenko.github.io/blog/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://denisshevchenko.github.io/blog/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').simpleJekyllSearch({
+          jsonFile : 'http://denisshevchenko.github.io/blog/search.json',
+          searchResults : '.search-results',
+          template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".icon-remove-sign"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+	        
+
+</body>
+</html>
