@@ -148,41 +148,45 @@
 <p>Я не считаю этот вопрос сверх-принципиальным и гипер-важным, любой программист может писать и так, и эдак. Однако я убеждён, что в языках программирования, где фигурные скобки ограничивают тело констукции, <strong>открывающая скобка не должна переноситься на следующую строку</strong>. И вот почему.</p>
 
 <p>Рассмотрим два примера:</p>
-<cpp>
-if ( predicat )
-{
-    some_action;
-}
-</cpp>
-<p>и<cpp>
-if ( predicat ) {
-    some_action;
-}
-</cpp>
-В чём тут разница? Сразу скажу: экономия лишней строки во втором примере, конечно же, не играет никакой роли.</p>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">if</span> <span class="p">(</span> <span class="n">predicat</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">some_action</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>и
+&lt;div class="highlight"&gt;&lt;pre&gt;<code class="cpp"><span class="k">if</span> <span class="p">(</span> <span class="n">predicat</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">some_action</span><span class="p">;</span>
+<span class="p">}</span>
+</code>&lt;/pre&gt;&lt;/div&gt;</p>
+
+<p>В чём тут разница? Сразу скажу: экономия лишней строки во втором примере, конечно же, не играет никакой роли.</p>
 
 <p>А ведь разница имеется, и достаточно важная. Главный довод защитников первого примера звучит так: <em>“Открывающая и закрывающая скобки симметричны друг по отношению к другу, и мы сразу видим их соответствие, поскольку одна расположена над другой”</em>. Когда-то я тоже придерживался этого довода, и всегда писал открывающую над закрывающей. Однако потом…</p>
 
 <p>Друзья, разве цель в том, чтобы соблюсти симметричность <em>скобок</em>? Нет, цель в том, чтобы соблюсти симметричность <em>всей конструкции</em>. Ведь конструкция - это не скобки, это описательная строка + скобки. То есть:</p>
-<cpp>
-if ( predicat )   // Это описательная строка if-конструкции
-{                 // Это начало тела if-конструкции
-    some_action;  // Это тело if-конструкции
-}                 // Это конец тела if-конструкции
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">if</span> <span class="p">(</span> <span class="n">predicat</span> <span class="p">)</span>   <span class="c1">// Это описательная строка if-конструкции</span>
+<span class="p">{</span>                 <span class="c1">// Это начало тела if-конструкции</span>
+    <span class="n">some_action</span><span class="p">;</span>  <span class="c1">// Это тело if-конструкции</span>
+<span class="p">}</span>                 <span class="c1">// Это конец тела if-конструкции</span>
+</code></pre></div>
+
 <p>Но мы знаем, что описательная строка неотделима от тела, ведь это две части единого целого. Поэтому смотрим на этот пример ещё раз:</p>
-<cpp>
-if ( predicat )   // Это начало if-конструкции?
-{                 // Или это?
-    some_action;   
-}                 // Это конец if-конструкции
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">if</span> <span class="p">(</span> <span class="n">predicat</span> <span class="p">)</span>   <span class="c1">// Это начало if-конструкции?</span>
+<span class="p">{</span>                 <span class="c1">// Или это?</span>
+    <span class="n">some_action</span><span class="p">;</span>   
+<span class="p">}</span>                 <span class="c1">// Это конец if-конструкции</span>
+</code></pre></div>
+
 <p>Понимаете мою мысль? Симметричными должны быть начало и конец <em>всей конструкции</em>, а не начало и конец её <em>тела</em>. Поэтому в примере номер два мы избавляемся от этой неоднозначности:</p>
-<cpp>
-if ( predicat ) { // Это начало if-конструкции 
-    some_action;   
-}                 // Это конец if-конструкции
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">if</span> <span class="p">(</span> <span class="n">predicat</span> <span class="p">)</span> <span class="p">{</span> <span class="c1">// Это начало if-конструкции </span>
+    <span class="n">some_action</span><span class="p">;</span>   
+<span class="p">}</span>                 <span class="c1">// Это конец if-конструкции</span>
+</code></pre></div>
+
 <p>Здесь закрывающая скобка (обозначающая конец всей конструкции) симметрична с буквой <strong>i</strong> (обозначающей начало всей конструкции).</p>
 
 <p>То же справедливо и для всех остальных конструкций языка (for, class, enum и т.д). </p>

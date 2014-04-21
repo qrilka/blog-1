@@ -257,14 +257,6 @@
 		} ,
 	
 		{
-		  "title"      : "Syntax Highlighting Post",
-		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/16/code-highlighting-post.html",
-		  "date"       : "2013-08-16 00:00:00 +0400",
-		  "shortdate"  : "August 16, 2013"
-		} ,
-	
-		{
 		  "title"      : "Товары и услуги",
 		  "category"   : "",
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/16/.html",
@@ -278,14 +270,6 @@
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/13/objective-c.html",
 		  "date"       : "2013-08-13 00:00:00 +0400",
 		  "shortdate"  : "August 13, 2013"
-		} ,
-	
-		{
-		  "title"      : "Sample Link Post",
-		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/2013/8/12/sample-link-post.html",
-		  "date"       : "2013-08-12 00:00:00 +0400",
-		  "shortdate"  : "August 12, 2013"
 		} ,
 	
 		{
@@ -310,14 +294,6 @@
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/7/24/sparkle.html",
 		  "date"       : "2013-07-24 00:00:00 +0400",
 		  "shortdate"  : "July 24, 2013"
-		} ,
-	
-		{
-		  "title"      : "A Post with a Video",
-		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/2013/6/25/video-post.html",
-		  "date"       : "2013-06-25 00:00:00 +0400",
-		  "shortdate"  : "June 25, 2013"
 		} ,
 	
 		{
@@ -350,22 +326,6 @@
 		  "url"        : "http://denisshevchenko.github.io/blog/2013/5/27/.html",
 		  "date"       : "2013-05-27 00:00:00 +0400",
 		  "shortdate"  : "May 27, 2013"
-		} ,
-	
-		{
-		  "title"      : "Post with Large Feature Image and Text",
-		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/2013/5/23/readability-feature-post.html",
-		  "date"       : "2013-05-23 00:00:00 +0400",
-		  "shortdate"  : "May 23, 2013"
-		} ,
-	
-		{
-		  "title"      : "A Post with Images",
-		  "category"   : "articles",
-		  "url"        : "http://denisshevchenko.github.io/blog/2013/5/22/sample-post-images.html",
-		  "date"       : "2013-05-22 00:00:00 +0400",
-		  "shortdate"  : "May 22, 2013"
 		} ,
 	
 		{

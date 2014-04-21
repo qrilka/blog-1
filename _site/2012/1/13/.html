@@ -146,9 +146,9 @@
         <p>Ух, наболело…</p>
 
 <p>Как вам вызов такой функции:</p>
-<cpp>
-auto handler = create_packets_handler( channel, true );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">auto</span> <span class="n">handler</span> <span class="o">=</span> <span class="n">create_packets_handler</span><span class="p">(</span> <span class="n">channel</span><span class="p">,</span> <span class="nb">true</span> <span class="p">);</span>
+</code></pre></div>
 
 <p>Знаете, я когда вижу подобную функцию, мне хочется закричать громким-прегромким голосом… Вот скажите, что значит true? Да, я понимаю, что вторым аргументом функция, очевидно, принимает значение типа bool. Но ёлки-палки, что значит это bool по своей сути?? Да ничего оно не значит.</p>
 
@@ -159,34 +159,38 @@ auto handler = create_packets_handler( channel, true );
 <p>Ладно, хватит ругаться, давайте лучше рассмотрим варианты избавления от этого кошмара.</p>
 
 <p>Для примера допустим, что изначальная сигнатура функции такова:</p>
-<cpp>
-handler create_packets_handler( packets_channel const&amp; channel
-                                , bool async = false );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">handler</span> <span class="nf">create_packets_handler</span><span class="p">(</span> <span class="n">packets_channel</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">channel</span>
+                                <span class="p">,</span> <span class="kt">bool</span> <span class="n">async</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">);</span>
+</code></pre></div>
 
 <p>Вариант первый, самый дубовый:</p>
-<cpp>
-bool const make_async = true;
-auto handler = create_packets_handler( channel, make_async );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">bool</span> <span class="k">const</span> <span class="n">make_async</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="k">auto</span> <span class="n">handler</span> <span class="o">=</span> <span class="n">create_packets_handler</span><span class="p">(</span> <span class="n">channel</span><span class="p">,</span> <span class="n">make_async</span> <span class="p">);</span>
+</code></pre></div>
+
 <p>Уже значительно лучше. При первом же взгляде на такой вызов мы понимаем предназначение этого флага. Этот вариант не требует изменения сигнатуры функции.</p>
 
 <p>Вариант второй, получше. Сигнатуру меняем:</p>
-<cpp>
-handler create_packets_handler( packets_channel const&amp; channel
-                                , handler::type = make_sync );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">handler</span> <span class="nf">create_packets_handler</span><span class="p">(</span> <span class="n">packets_channel</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">channel</span>
+                                <span class="p">,</span> <span class="n">handler</span><span class="o">::</span><span class="n">type</span> <span class="o">=</span> <span class="n">make_sync</span> <span class="p">);</span>
+</code></pre></div>
+
 <p>Итак, мы избавились от типа bool и добавили в класс handler enum с двумя значениями. Поэтому при вызове пишем:</p>
-<cpp>
-auto handler = create_packets_handler( channel, handler::make_async );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">auto</span> <span class="n">handler</span> <span class="o">=</span> <span class="n">create_packets_handler</span><span class="p">(</span> <span class="n">channel</span><span class="p">,</span> <span class="n">handler</span><span class="o">::</span><span class="n">make_async</span> <span class="p">);</span>
+</code></pre></div>
+
 <p>Неплохо.</p>
 
 <p>Но третий вариант - самый лучший (на мой взгляд). Сигнатуру меняем кардинально и просто:</p>
-<cpp>
-handler create_sync_packets_handler( packets_channel const&amp; channel );
-handler create_async_packets_handler( packets_channel const&amp; channel );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">handler</span> <span class="nf">create_sync_packets_handler</span><span class="p">(</span> <span class="n">packets_channel</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">channel</span> <span class="p">);</span>
+<span class="n">handler</span> <span class="nf">create_async_packets_handler</span><span class="p">(</span> <span class="n">packets_channel</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">channel</span> <span class="p">);</span>
+</code></pre></div>
+
 <p>Итак, раз уж возможны лишь два состояния обработчика, синхронный и асинхронный, тогда избавимся от переключателя вовсе, и введём две понятные функции. Никаких bool и никаких enum.</p>
 
 <p>Вот вроде бы простые вещи говорю, никому Америку не открываю… Эх… </p>

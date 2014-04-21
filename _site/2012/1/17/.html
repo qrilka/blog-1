@@ -144,9 +144,10 @@
       </footer>
       <div class="entry-content">
         <p>Итак, вижу:</p>
-<cpp>
-d.flag &amp;= ~(boost::uint64_t(1) &lt;&lt; (number%32));
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">d</span><span class="p">.</span><span class="n">flag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="kt">uint64_t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">number</span><span class="o">%</span><span class="mi">32</span><span class="p">));</span>
+</code></pre></div>
+
 <p>Хм… Наследие языка C бессмертно…</p>
 
 <p>Я ничего не имею против поразрядных операций, тем более что в ряде ситуаций без них всё равно не обойтись. Но зачем же писать это так? В одной строке один “двойной” оператор, и три “одинарных”. Таким образом, имеем пять действий за раз…</p>

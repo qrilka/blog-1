@@ -146,27 +146,27 @@
         <p>Эта практика распространена повсеместно.</p>
 
 <p>Итак:</p>
-<cpp>
-bool open( std::string const&amp; file );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">bool</span> <span class="nf">open</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">file</span> <span class="p">);</span>
+</code></pre></div>
 <p>Допустим, что file - это путь к файлу, и мы его открываем. Не так важно, где тут у нас объект (поток или, скажем, дескриптор), ассоциированный с открытым файлом, суть не в этом. Суть в возвращаемом значении, поскольку именно оно (очень часто) сигнализирует нам о корректности открытия файла.</p>
 
 <p>Вот как может выглядеть вызов этой функции:</p>
-<cpp>
-if( open( "~/file" ) )
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">if</span><span class="p">(</span> <span class="n">open</span><span class="p">(</span> <span class="s">&quot;~/file&quot;</span> <span class="p">)</span> <span class="p">)</span>
+</code></pre></div>
 <p>Ну и что же мы проверяем тут, корректность или некорректность открытия файла? Совершенно непонятно. Поэтому функция такого вида - плохая.</p>
 
 <p>Если функция, возвращающая bool, предназначена (чаще всего) для встаивания в конструкции типа <strong>if</strong> или <strong>while</strong>, то она должна порождать единое выражение с соответствующим ключевым словом. Тогда вопросов о возвращаемом признаке уже не возникнет.</p>
 
 <p>Скажем, так:</p>
-<cpp>
-if( session_is_opened() )
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">if</span><span class="p">(</span> <span class="n">session_is_opened</span><span class="p">()</span> <span class="p">)</span>
+</code></pre></div>
 <p>Здесь смысл возвращаемого значения понятен с первого прочтения. Или так:</p>
-<cpp>
-while( not_all( messages ).was_sent() )
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">while</span><span class="p">(</span> <span class="n">not_all</span><span class="p">(</span> <span class="n">messages</span> <span class="p">).</span><span class="n">was_sent</span><span class="p">()</span> <span class="p">)</span>
+</code></pre></div>
 <p>Мы сразу понимаем, чем именно обусловлен этот цикл.</p>
 
         

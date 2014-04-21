@@ -146,32 +146,29 @@
         <!--break-->
 <p>Друзья! А почему бы нам чуток не обезопасить функцию <strong>main()</strong>? Смотрите, вот её каноническое определение:</p>
 
-<cpp>
-int main( int arguments_quantity, char* arguments[] ) {
-    //
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">arguments_quantity</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">arguments</span><span class="p">[]</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Канонические имена <strong>argc</strong> и <strong>argv</strong> я заменил на более литературные, но не суть.</p>
 
 <p>Однако подобная форма позволяет программисту сделать вот такую глупость:</p>
 
-<cpp>
-int main( int arguments_quantity, char* arguments[] ) {
-    ++arguments_quantity; // Первая глупость.
-    arguments[123] = "";  // Вторая глупость.
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">arguments_quantity</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">arguments</span><span class="p">[]</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="o">++</span><span class="n">arguments_quantity</span><span class="p">;</span> <span class="c1">// Первая глупость.</span>
+    <span class="n">arguments</span><span class="p">[</span><span class="mi">123</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>  <span class="c1">// Вторая глупость.</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Причём подобные глупые действия, разумеется, не приведут к ошибке компиляции (ну разве что во второй глупой строке получит программист предупреждение, мол, запрещённое конвертирование строки в char*). Однако запуск такой программы не сулит ничего хорошего.</p>
 
 <p>Конечно, вероятность возникновения подобных ошибок очень, очень низка, но почему бы не сделать так, чтобы подобные глупости не прошли вовсе:</p>
 
-<cpp>
-int main( const int arguments_quantity, char* const arguments[] ) {
-    ++arguments_quantity; // Компилятор на страже!
-    arguments[123] = "";  // И тут тоже на страже!
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">arguments_quantity</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span> <span class="n">arguments</span><span class="p">[]</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="o">++</span><span class="n">arguments_quantity</span><span class="p">;</span> <span class="c1">// Компилятор на страже!</span>
+    <span class="n">arguments</span><span class="p">[</span><span class="mi">123</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>  <span class="c1">// И тут тоже на страже!</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Формально, мы как бы изменили принятую сигнатуру функции <strong>main()</strong>. Но добавление const в <em><ins>данном случае</ins></em> реально не меняет её.</p>
 

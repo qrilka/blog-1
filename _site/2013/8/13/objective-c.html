@@ -146,19 +146,19 @@
         <p>Итак, понадобилось мне узнать, сколько длится вызов функции. И захотелось мне (раз уж речь шла о <strong><a href="http://strictcodeapp.com">StrictCode</a></strong>) сделать это на Objective-C. Заодно и узнал этот способ.</p>
 
 <p>Способ, как выяснилось, оказался чрезвычайно простым (спасибо <strong><a href="http://stackoverflow.com/questions/2129794/iphone-objective-c-how-to-log-a-methods-execution-time-exactly-in-millisecond">StackOverflow</a></strong>):</p>
-<cpp>
-    NSDate* methodStart = [NSDate date];
-    [self obtainDatesOfLastModificationOfFiles]; // &lt;&lt;&lt; Время вызова этого метода...    
-    NSDate* methodFinish = [NSDate date];
 
-    NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate: methodStart];
-    NSLog(@"executionTime = %f", executionTime);
-</cpp>
+<div class="highlight"><pre><code class="cpp">    <span class="n">NSDate</span><span class="o">*</span> <span class="n">methodStart</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="n">date</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span> <span class="n">obtainDatesOfLastModificationOfFiles</span><span class="p">];</span> <span class="c1">// &lt;&lt;&lt; Время вызова этого метода...    </span>
+    <span class="n">NSDate</span><span class="o">*</span> <span class="n">methodFinish</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="n">date</span><span class="p">];</span>
+
+    <span class="n">NSTimeInterval</span> <span class="n">executionTime</span> <span class="o">=</span> <span class="p">[</span><span class="n">methodFinish</span> <span class="n">timeIntervalSinceDate</span><span class="o">:</span> <span class="n">methodStart</span><span class="p">];</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s">&quot;executionTime = %f&quot;</span><span class="p">,</span> <span class="n">executionTime</span><span class="p">);</span>
+</code></pre></div>
 
 <p>Получаем строчку вида:</p>
-<cpp>
-2013-08-13 11:43:03.407 StrictCode[3293:503] executionTime = 0.000209
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="mi">2013</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">13</span> <span class="mi">11</span><span class="o">:</span><span class="mi">43</span><span class="o">:</span><span class="mf">03.407</span> <span class="n">StrictCode</span><span class="p">[</span><span class="mi">3293</span><span class="o">:</span><span class="mi">503</span><span class="p">]</span> <span class="n">executionTime</span> <span class="o">=</span> <span class="mf">0.000209</span>
+</code></pre></div>
 
 <p>Итак, имеем точность до микросекунд. Да, это не наносекунды, как в C++11, но точность вызова до наносекунд лично мне никогда не была нужна.</p>
 
@@ -167,7 +167,7 @@
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://denisshevchenko.github.io/blog/2013/8/12/sample-link-post.html" class="btn" title="Sample Link Post">Предыдущий</a>
+        <a href="http://denisshevchenko.github.io/blog/2013/8/8/xcode.html" class="btn" title="Xcode: прекрасен, но не совершенен">Предыдущий</a>
       
       
         <a href="http://denisshevchenko.github.io/blog/2013/8/16/.html" class="btn" title="Товары и услуги">Следующий</a>

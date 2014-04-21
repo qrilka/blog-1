@@ -149,17 +149,18 @@
 <p>Так-то оно так, но не всегда. :-)</p>
 
 <p>Сразу пример:</p>
-<cpp>
-typedef std::vector&lt; int &gt; V;
 
-int main() {
-    V v{ 1, 2, 3 };
-    const int i = 10;
-    boost::range::for_each( v, []( const int elem ) {
-                                   std::cout &lt;&lt; elem + i &lt;&lt; std::endl;
-                               } );
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">V</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">V</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="n">boost</span><span class="o">::</span><span class="n">range</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span> <span class="n">v</span><span class="p">,</span> <span class="p">[](</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">elem</span> <span class="p">)</span> <span class="p">{</span>
+                                   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">elem</span> <span class="o">+</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+                               <span class="p">}</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Итак, значение <strong>i</strong> мы не захватили, однако будьте уверены - этот код компилируется. Более того, он корректно работает, и к каждому из элементов вектора честно прибавляется значение 10.</p>
 
 <p>Обратите внимание, переменная <strong>i</strong> определена как <strong>const</strong>. В этом и ответ: мы можем использовать константное значение в теле лямбда-функции, не захватывая его в списке захвата.</p>
@@ -167,18 +168,19 @@ int main() {
 <p>Итак, то, что является константой времени компиляции, можно использовать без захвата.</p>
 
 <p>Подтвердим наше предположение следующим примером:</p>
-<cpp>
-typedef std::vector&lt; int &gt; V;
 
-enum { i = 10 };
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">V</span><span class="p">;</span>
 
-int main() {
-    V v{ 1, 2, 3 };
-    boost::range::for_each( v, []( const int elem ) {
-                                   std::cout &lt;&lt; elem + i &lt;&lt; std::endl;
-                               } );
-}
-</cpp>
+<span class="k">enum</span> <span class="p">{</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">V</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+    <span class="n">boost</span><span class="o">::</span><span class="n">range</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span> <span class="n">v</span><span class="p">,</span> <span class="p">[](</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">elem</span> <span class="p">)</span> <span class="p">{</span>
+                                   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">elem</span> <span class="o">+</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+                               <span class="p">}</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Итак, используем значение из <strong>enum</strong>, то есть константу времени компиляции. И опять, уверяю вас, код компилируется и работает правильно, хотя список захвата остаётся пустым.</p>
 
         

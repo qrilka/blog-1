@@ -193,14 +193,13 @@ Updating documentation index /Users/dshevchenko/Library/Haskell/doc/index.html
 
 <p>Открываем конфигурационный <code>.cabal</code>-файл (помните про такой, не так ли?), находящийся в корне нашего проекта, и дописываем наш только что установленный пакет:</p>
 
-<hs>
-executable Haskell
-    main-is:         main.hs            
-    other-modules:   Haq
-    hs-source-dirs:  src 
-                     src/utils
-    build-depends:   base == 4.6.*, filemanip
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">executable</span> <span class="kt">Haskell</span>
+    <span class="n">main</span><span class="o">-</span><span class="n">is</span><span class="kt">:</span>         <span class="n">main</span><span class="o">.</span><span class="n">hs</span>            
+    <span class="n">other</span><span class="o">-</span><span class="n">modules</span><span class="kt">:</span>   <span class="kt">Haq</span>
+    <span class="n">hs</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">dirs</span><span class="kt">:</span>  <span class="n">src</span> 
+                     <span class="n">src</span><span class="o">/</span><span class="n">utils</span>
+    <span class="n">build</span><span class="o">-</span><span class="n">depends</span><span class="kt">:</span>   <span class="n">base</span> <span class="o">==</span> <span class="mf">4.6</span><span class="o">.*</span><span class="p">,</span> <span class="n">filemanip</span>
+</code></pre></div>
 
 <p>Как видите, мы просто дописали в параметр <code>build-depends</code> название нового пакета. Обратите внимание, что имена пакетов в этом параметре указываются через запятую, это важно.</p>
 
@@ -220,9 +219,8 @@ src/main.hs:3:8:
 
 <p>А теперь открываем наш файл (например, <code>main.hs</code>) и дописываем в его верхней части следующую строку:</p>
 
-<hs>
-import System.FilePath.Find
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kr">import</span> <span class="nn">System.FilePath.Find</span>
+</code></pre></div>
 
 <p>Этой инструкцией мы импортировали конкретный модуль из установленного пакета. Теперь мы сможем использовать содержимое этого модуля в нашем проекте.</p>
 

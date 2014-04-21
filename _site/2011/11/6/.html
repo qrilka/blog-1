@@ -148,28 +148,33 @@
 
 <p>Итак. Словари в качестве аргументов для функций.
 К примеру, имеем такую функцию:</p>
-<python>
-def myfunc(arg1, arg2, arg3):
-   return arg1, arg2, arg3
-</python>
+
+<div class="highlight"><pre><code class="python"><span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span>
+</code></pre></div>
+
 <p>Передать аргументы в нее мы можем как обычно:</p>
-<python>
-myfunc("val1", "val2", "val3")
-</python>
+
+<div class="highlight"><pre><code class="python"><span class="n">myfunc</span><span class="p">(</span><span class="s">&quot;val1&quot;</span><span class="p">,</span> <span class="s">&quot;val2&quot;</span><span class="p">,</span> <span class="s">&quot;val3&quot;</span><span class="p">)</span>
+</code></pre></div>
+
 <p>Или так(именованные аргументы):</p>
-<python>
-myfunc(arg1="val1", arg2="val2", arg3="val3")
-myfunc(arg2="val2", arg1="val1", arg3="val3")
-</python>
+
+<div class="highlight"><pre><code class="python"><span class="n">myfunc</span><span class="p">(</span><span class="n">arg1</span><span class="o">=</span><span class="s">&quot;val1&quot;</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="s">&quot;val2&quot;</span><span class="p">,</span> <span class="n">arg3</span><span class="o">=</span><span class="s">&quot;val3&quot;</span><span class="p">)</span>
+<span class="n">myfunc</span><span class="p">(</span><span class="n">arg2</span><span class="o">=</span><span class="s">&quot;val2&quot;</span><span class="p">,</span> <span class="n">arg1</span><span class="o">=</span><span class="s">&quot;val1&quot;</span><span class="p">,</span> <span class="n">arg3</span><span class="o">=</span><span class="s">&quot;val3&quot;</span><span class="p">)</span>
+</code></pre></div>
+
 <p>Или так(разворот списка):</p>
-<python>
-myfunc(*["val1", "val2", "val3"])
-</python>
+
+<div class="highlight"><pre><code class="python"><span class="n">myfunc</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="s">&quot;val1&quot;</span><span class="p">,</span> <span class="s">&quot;val2&quot;</span><span class="p">,</span> <span class="s">&quot;val3&quot;</span><span class="p">])</span>
+</code></pre></div>
+
 <p>Или даже так(словарь):</p>
-<python>
-myfunc(**{"arg1":"val1","arg2":"val2","arg3":"val3"})
-myfunc(**{"arg2":"val2","arg1":"val1","arg3":"val3"})
-</python>
+
+<div class="highlight"><pre><code class="python"><span class="n">myfunc</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s">&quot;arg1&quot;</span><span class="p">:</span><span class="s">&quot;val1&quot;</span><span class="p">,</span><span class="s">&quot;arg2&quot;</span><span class="p">:</span><span class="s">&quot;val2&quot;</span><span class="p">,</span><span class="s">&quot;arg3&quot;</span><span class="p">:</span><span class="s">&quot;val3&quot;</span><span class="p">})</span>
+<span class="n">myfunc</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s">&quot;arg2&quot;</span><span class="p">:</span><span class="s">&quot;val2&quot;</span><span class="p">,</span><span class="s">&quot;arg1&quot;</span><span class="p">:</span><span class="s">&quot;val1&quot;</span><span class="p">,</span><span class="s">&quot;arg3&quot;</span><span class="p">:</span><span class="s">&quot;val3&quot;</span><span class="p">})</span>
+</code></pre></div>
+
 <p>Последний способ самый необычный! Заметьте, тут мы используем сразу две плюшки языка: 1)именованные аргументы, 2)значения привязанные к именам аргументов.</p>
 
 <p>Тест-драйв: http://liveworkspace.org/code/43fe2cc6286f7de97fe4c44502b4a865</p>

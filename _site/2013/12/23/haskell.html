@@ -156,48 +156,42 @@
 
 <p>Начинается всё с объявления функции:</p>
 
-<hs>
-simple_sum :: Int -&gt; Int
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">simple_sum</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+</code></pre></div>
 
 <p>Перед нами - объявление выражения. До символа <code>::</code> указывается имя выражения, а после - тип выражения. </p>
 
-<hs>
-simple_sum :: Int -&gt; Int
-|        |    |        |
-   имя           тип
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">simple_sum</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+<span class="o">|</span>        <span class="o">|</span>    <span class="o">|</span>        <span class="o">|</span>
+   <span class="err">имя</span>           <span class="err">тип</span>
+</code></pre></div>
 
 <p>Итак, перед нами выражение с именем <code>simple_sum</code>, имеющее тип функции. Пусть вас не смущают эти слова: в Haskell функция - это тоже тип. Но откуда же мы знаем, что тип этого выражения представляет собой именно функцию? Давайте рассмотрим описание типа подробнее:</p>
 
-<hs>
-Int -&gt; Int
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+</code></pre></div>
 
 <p>Обратите внимание на стрелочку. Именно эта стрелочка и говорит нам о том, что перед нами функция. Слева от неё указан тип единственного аргумента функции (в данном случае это стандартный тип <strong><code>Int</code></strong>), а справа от неё - тип выходного выражения (тот же <strong><code>Int</code></strong>). Саму же стрелочку можно воспринимать как ментальное указание на поток информации через функцию - от входа к выходу, слева направо.</p>
 
 <p>В силу того, что чистая функция в Haskell является математической, невозможно написать аналоги вот таких C-шных функций:</p>
 
-<cpp>
-void f();
-int f();
-void f( int i );
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="nf">f</span><span class="p">();</span>
+<span class="kt">int</span> <span class="nf">f</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">f</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="p">);</span>
+</code></pre></div>
 
 <p>Чистая функция в Haskell обязана иметь входной аргумент (хотя бы один) и выходное значение. Почему? Потому что это отражает суть математической функции: что-то <em>обязательно</em> подаём на вход и что-то <em>обязательно</em> получаем на выходе.</p>
 
 <p>Кстати, о количестве аргументнов. Разумеется, чистая функция может принимать несколько аргументов. В этом случае её тип будет выглядеть так:</p>
 
-<hs>
-Int -&gt; Int -&gt; Int
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+</code></pre></div>
 
 <p>Я понимаю, выглядит чуток странно, но читать это очень просто: ищем последнюю по счёту (самую правую) стрелочку - она-то и будет тем самым разделителем: слева от неё идёт список типов аргументов, справа - тип возвращаемого выражения:</p>
 
-<hs>
-Int -&gt; Int -&gt; Int -&gt; Int
-типы аргументов  |  | тип того, что будет на выходе 
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+<span class="err">типы</span> <span class="err">аргументов</span>  <span class="o">|</span>  <span class="o">|</span> <span class="err">тип</span> <span class="err">того</span><span class="p">,</span> <span class="err">что</span> <span class="err">будет</span> <span class="err">на</span> <span class="err">выходе</span> 
+</code></pre></div>
 
 <p>Итак, с объявлением разобрались. Идём дальше.</p>
 
@@ -207,22 +201,19 @@ Int -&gt; Int -&gt; Int -&gt; Int
 
 <p>Итак, сразу после объявления пишем тело функции:</p>
 
-<hs>
-simple_sum :: Int -&gt; Int
-simple_sum value = value + value
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">simple_sum</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+<span class="nf">simple_sum</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">value</span> <span class="o">+</span> <span class="n">value</span>
+</code></pre></div>
 
 <p>Рассмотрим его подробнее:</p>
 
-<hs>
-simple_sum value = value + value
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">simple_sum</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">value</span> <span class="o">+</span> <span class="n">value</span>
+</code></pre></div>
 
 <p>Здесь ментальным разделителем является знак равенства. Напоминаю, что в Haskell нет оператора присваивания, поэтому знак равенства здесь - это именно <em>знак равенства</em>, как в математике. Скелет данного выражения можно представить так:</p>
 
-<hs>
-name arguments = body_expression
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">name</span> <span class="n">arguments</span> <span class="ow">=</span> <span class="n">body_expression</span>
+</code></pre></div>
 
 <p>Здесь:</p>
 
@@ -238,9 +229,8 @@ name arguments = body_expression
 
 <p>Теперь нашу функцию можно вызывать с аргументом 4 (или, как привычно говорить в мире ФП, апплицировать функцию к аргументу 4):</p>
 
-<hs>
-main = putStrLn (show (simple_sum 4))
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span> <span class="n">putStrLn</span> <span class="p">(</span><span class="n">show</span> <span class="p">(</span><span class="n">simple_sum</span> <span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
 
 <p>В ответ получаем ожидаемое значение:</p>
 
@@ -260,51 +250,46 @@ main = putStrLn (show (simple_sum 4))
 
 <p>Чтобы стало понятнее, приведу пример:</p>
 
-<hs>
-indicate :: String -&gt; String
-indicate address = 
-    if address == "127.0.0.1"
-    then
-        "localhost"
-    else 
-        address
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">indicate</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="nf">indicate</span> <span class="n">address</span> <span class="ow">=</span> 
+    <span class="kr">if</span> <span class="n">address</span> <span class="o">==</span> <span class="s">&quot;127.0.0.1&quot;</span>
+    <span class="kr">then</span>
+        <span class="s">&quot;localhost&quot;</span>
+    <span class="kr">else</span> 
+        <span class="n">address</span>
+</code></pre></div>
 
 <p>Эта функция принимает единственный аргумент типа <strong><code>String</code></strong>, соответствующий некоему IP-адресу. В теле функции происходит проверка аргумента на равенство адресу “127.0.0.1”, в результате мы оказываемся в одной из двух логических ветвей. Если бы это была функция на C++, это выглядело бы примерно так:</p>
 
-<cpp>
-std::string indicate( const std::string&amp; address ) {
-    if( address == "127.0.0.1" ) {
-        return "localhost";
-    } else {
-        return address;
-    }
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">indicate</span><span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">address</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">address</span> <span class="o">==</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;localhost&quot;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">address</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Обратите внимание, что мы явно указали две точки выхода из функции. Но в Haskell это не нужно, потому что когда мы окажемся в одной из двух логических ветвей, то выражение, на котором мы окажемся, оно и будет возвращено.</p>
 
 <p>А чтобы стало совсем понятно, перепишем тело этой функции для того, чтобы избавиться от выражения <strong><code>if then else</code></strong>:</p>
 
-<hs>
-indicate :: String -&gt; String
-indicate "127.0.0.1" = "localhost"
-indicate address = address
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">indicate</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="nf">indicate</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="ow">=</span> <span class="s">&quot;localhost&quot;</span>
+<span class="nf">indicate</span> <span class="n">address</span> <span class="ow">=</span> <span class="n">address</span>
+</code></pre></div>
 
 <p>Мы вводим вместо одного тела два, для каждого из которых мы определяем свою зависимость. Мы как бы говорим: “Если входной аргумент будет равен “127.0.0.1”, то пусть возвращаемым функцией значением будет строка “localhost”, если же аргумент будет какой-либо другой, то пусть возвращаемым функцией значением будет сам этот аргумент.” Следовательно, когда компилятор увидит вызов этой функции в коде, он просто <em>подставит</em> на место этого вызова соответствующее выражение: либо строку “localhost”, либо фактически переданный аргумент.</p>
 
 <p>Теперь всё встало на свои места: явно определять точку выхода из чистой функции в Haskell не нужно потому, что конечное выражение в теле этой функции просто заменит собой вызов функции. То есть если написано так:</p>
 
-<hs>
-main = putStrLn (indicate "127.0.0.1")
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span> <span class="n">putStrLn</span> <span class="p">(</span><span class="n">indicate</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>то это то же самое, что было бы написано так:</p>
 
-<hs>
-main = putStrLn "localhost"
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span> <span class="n">putStrLn</span> <span class="s">&quot;localhost&quot;</span>
+</code></pre></div>
 
 <p>потому что компилятор, вычислив внутренности функции, просто заменит место вызова конечным (итоговым) выражением.</p>
 
@@ -312,41 +297,37 @@ main = putStrLn "localhost"
 
 <p>Очень полезно бывает ввести некое локальное значение в теле функции, например, для избавления от дубляжа кода или от магических чисел. Например, у нас есть такая функция:</p>
 
-<hs>
-prepare_length :: Double -&gt; Double
-prepare_length line = 
-    line * 0.4959
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">prepare_length</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+<span class="nf">prepare_length</span> <span class="n">line</span> <span class="ow">=</span> 
+    <span class="n">line</span> <span class="o">*</span> <span class="mf">0.4959</span>
+</code></pre></div>
 
 <p>Итак, мы готовим длину некой линии путём умножения её первоначальной длины на поправочный коэффициент. Но перед нами - магическое число, а это очень плохо. Добавлять комментарий - это не лучшее решение. Поэтому добавим локальное поясняющее выражение:</p>
 
-<hs>
-prepare_length :: Double -&gt; Double
-prepare_length line = 
-    line * coefficient
-    where coefficient = 0.4959
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">prepare_length</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+<span class="nf">prepare_length</span> <span class="n">line</span> <span class="ow">=</span> 
+    <span class="n">line</span> <span class="o">*</span> <span class="n">coefficient</span>
+    <span class="kr">where</span> <span class="n">coefficient</span> <span class="ow">=</span> <span class="mf">0.4959</span>
+</code></pre></div>
 
 <p>Красиво, не так ли? Ключевое слово <strong><code>where</code></strong> вводит локальное выражение, которое можно использовать в теле функции. Разумеется, локальных выражений может быть несколько:</p>
 
-<hs>
-prepare_length :: Double -&gt; Double
-prepare_length line = 
-    line * coefficient - correction
-    where coefficient = 0.4959
-          correction = 0.0012
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">prepare_length</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+<span class="nf">prepare_length</span> <span class="n">line</span> <span class="ow">=</span> 
+    <span class="n">line</span> <span class="o">*</span> <span class="n">coefficient</span> <span class="o">-</span> <span class="n">correction</span>
+    <span class="kr">where</span> <span class="n">coefficient</span> <span class="ow">=</span> <span class="mf">0.4959</span>
+          <span class="n">correction</span> <span class="ow">=</span> <span class="mf">0.0012</span>
+</code></pre></div>
 
 <p>Есть ещё один способ ввести локальное вспомогательное выражение, с помощью ключевого слова <strong><code>let</code></strong>. На примере нашей последней функции это выглядит так:</p>
 
-<hs>
-prepare_length :: Double -&gt; Double
-prepare_length line = 
-    let coefficient = 12.4959
-        correction = 0.0012
-    in
-    line * coefficient - correction
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">prepare_length</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+<span class="nf">prepare_length</span> <span class="n">line</span> <span class="ow">=</span> 
+    <span class="kr">let</span> <span class="n">coefficient</span> <span class="ow">=</span> <span class="mf">12.4959</span>
+        <span class="n">correction</span> <span class="ow">=</span> <span class="mf">0.0012</span>
+    <span class="kr">in</span>
+    <span class="n">line</span> <span class="o">*</span> <span class="n">coefficient</span> <span class="o">-</span> <span class="n">correction</span>
+</code></pre></div>
 
 <p>Общая модель такая: <strong><code>let</code></strong> <code>bindings</code> <strong><code>in</code></strong> <code>expression</code>.</p>
 
@@ -356,14 +337,13 @@ prepare_length line =
 
 <p>Во-вторых, выражение, введённое ключевым словом <strong><code>where</code></strong>, всегда видимо в любой точке тела функции, в то время как выражение, введённое ключевым словом <strong><code>let</code></strong>, может быть “супер-локальным”. Например:</p>
 
-<hs>
-prepare_length :: Double -&gt; Double
-prepare_length line = 
-    let coefficient = 12.4959
-        correction = 0.0012
-    in
-    line * coefficient - correction - (let s = 10.9 in s + 1) - s
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">prepare_length</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+<span class="nf">prepare_length</span> <span class="n">line</span> <span class="ow">=</span> 
+    <span class="kr">let</span> <span class="n">coefficient</span> <span class="ow">=</span> <span class="mf">12.4959</span>
+        <span class="n">correction</span> <span class="ow">=</span> <span class="mf">0.0012</span>
+    <span class="kr">in</span>
+    <span class="n">line</span> <span class="o">*</span> <span class="n">coefficient</span> <span class="o">-</span> <span class="n">correction</span> <span class="o">-</span> <span class="p">(</span><span class="kr">let</span> <span class="n">s</span> <span class="ow">=</span> <span class="mf">10.9</span> <span class="kr">in</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span>
+</code></pre></div>
 
 <p>Понимаю, пример несколько надуманный, но всё-таки… Здесь мы ввели выражение с именем <code>s</code>, которое действует только внутри круглых скобок. Именно поэтому пример этот не скомпилируется, ведь второе выражение <code>s</code> находится уже не в скобках, и поэтому компилятор вполне справедливо возмутится:</p>
 
@@ -379,12 +359,11 @@ src/main.hs:43:61: Not in scope: `s'
 
 <p>Общепринятой практикой является объявлять функцию и тут же определять её. И несмотря на то, что мы <em>можем</em> написать так:</p>
 
-<hs>
-prepare_length line = 
-    let coefficient = 12.4959
-    in
-    line * coefficient
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">prepare_length</span> <span class="n">line</span> <span class="ow">=</span> 
+    <span class="kr">let</span> <span class="n">coefficient</span> <span class="ow">=</span> <span class="mf">12.4959</span>
+    <span class="kr">in</span>
+    <span class="n">line</span> <span class="o">*</span> <span class="n">coefficient</span>
+</code></pre></div>
 
 <p>делать так не рекомендуется, поскольку определение функции становится как бы беднее, ведь сигнатура типов аргументов и возвращаемого выражения помогает лучше понять функцию.</p>
 

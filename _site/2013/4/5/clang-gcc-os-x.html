@@ -154,17 +154,17 @@
 <p>Итак:</p>
 <ol>
   <li>Идём на страницу скачивания: http://llvm.org/releases/download.html#3.2.</li>
-  <li>Находим ссылку: <strong>Clang Binaries for MacOS X/x86_64</strong>.</li>
+  <li>Находим ссылку: **Clang Binaries for MacOS X/x86_64**.</li>
   <li>Скачиваем и распаковываем архив.</li>
-  <li>Переименовываем с длинного <strong>clang+llvm-3.2-x86_64-apple-darwin11</strong> во что-нибудь покороче, я решил назвать просто <strong>clang</strong>.</li>
-  <li>Копируем это хозяйство в какое-нибудь удобное место. У меня это <strong>/Users/dshevchenko/Tools</strong>.</li>
+  <li>Переименовываем с длинного **clang+llvm-3.2-x86_64-apple-darwin11** во что-нибудь покороче, я решил назвать просто **clang**.</li>
+  <li>Копируем это хозяйство в какое-нибудь удобное место. У меня это **/Users/dshevchenko/Tools**.</li>
 </ol>
 <p>Возможно, вы будете удивлены, но это всё. :)</p>
 
 <p>Создаём в домашней папке пробный main.cpp, и вводим следующую команду:</p>
-<cpp>
-~/Tools/clang/bin/clang++ -std=c++11 -stdlib=libc++ -I/usr/local/include/libcxx main.cpp -o hello
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="o">~/</span><span class="n">Tools</span><span class="o">/</span><span class="n">clang</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">clang</span><span class="o">++</span> <span class="o">-</span><span class="n">std</span><span class="o">=</span><span class="n">c</span><span class="o">++</span><span class="mi">11</span> <span class="o">-</span><span class="n">stdlib</span><span class="o">=</span><span class="n">libc</span><span class="o">++</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">libcxx</span> <span class="n">main</span><span class="p">.</span><span class="n">cpp</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span>
+</code></pre></div>
 <p>А вот теперь пару слов об этой самой команде…</p>
 
 <p>Ну, флаг <strong>-std=c++11</strong> знаком нам уже очень хорошо (а если кто не знает - этот флаг говорит компилятору о необходимости вспомнить стандарт C++11), но что такое <strong>-stdlib=libc++</strong> и зачем мы указываем Clang-у какие-то дополнительные заголовочники через флаг <strong>-I</strong>?</p>
@@ -179,8 +179,8 @@ libc++ is a new implementation of the C++ standard library, targeting C++11.
 
 <p>Однако STL-заголовочники я решил обновить, дабы свежее было. Тут всё просто:</p>
 <ol>
-  <li>Выполняем команду <strong>svn co http://llvm.org/svn/llvm-project/libcxx/trunk/include libcxx</strong>.</li>
-  <li>Копируем папку в какое-нибудь понятное место, у меня это <strong>/usr/local/include</strong>.</li>
+  <li>Выполняем команду **svn co http://llvm.org/svn/llvm-project/libcxx/trunk/include libcxx**.</li>
+  <li>Копируем папку в какое-нибудь понятное место, у меня это **/usr/local/include**.</li>
 </ol>
 <p>Собственно, всё. Именно поэтому мы и должны указать Clang-у факт того, что хотим использовать <strong>libc++</strong> в качестве стандартной библиотеки, а также путь к новым STL-заголовочникам.</p>
 

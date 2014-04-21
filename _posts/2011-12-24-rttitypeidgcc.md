@@ -8,7 +8,7 @@ categories:
 Наверняка для многих не секрет то, что GCC манглит(<a href="http://en.wikipedia.org/wiki/Name_mangling#Name_mangling_in_C.2B.2B">name mangling</a>) имена идентификаторов. Но на оборот, наверняка для многих является секретом то, что такие идентификаторы можно расшифровать.
 
 <a href="http://liveworkspace.org/code/b7dff0c2e0f7cd795562734eda8c68f2">Изначальный пример</a>:
-<cpp>
+{% highlight cpp %}
 #include <string>
 #include <iostream>
 #include <cxxabi.h>
@@ -28,7 +28,7 @@ int main() {
    typedef less<'a', 'b', pred> ls;
    std::cout << typeid(ls).name() << std::endl;
 }
-</cpp>
+{% endhighlight %}
 Вывод:
 <blockquote>
 c
@@ -41,7 +41,7 @@ So
 
 Сейчас, давайте попытаемся расшифровать "это" в человекоупотребляемую форму.
 Изменяем код <a href="http://liveworkspace.org/code/6a3499c487818bfc4f5e063f78f512a2">так</a>:
-<cpp>
+{% highlight cpp %}
 #include <string>
 #include <iostream>
 #include <cxxabi.h>
@@ -83,7 +83,7 @@ int main() {
    typedef less<'a', 'b', pred> ls;
    std::cout << demangle<ls>() << std::endl;
 }
-</cpp>
+{% endhighlight %}
 Вывод:
 <blockquote>
 char

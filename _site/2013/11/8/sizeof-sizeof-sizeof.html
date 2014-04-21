@@ -149,47 +149,45 @@
 <!--break-->
 Для простоты используем симпатишное решение для вывода нормального имени типа вместе с его размером:</p>
 
-<cpp>
-template&lt; typename T &gt;
-inline std::string result_for() {
-    int status = -1;
-    std::string const name( abi::__cxa_demangle( typeid( T ).name(), 
-                                                 0, 
-                                                 0, 
-                                                 &amp;status ) );
-    if ( status not_eq 0 ) {
-        return "undemangled";
-    }
+<div class="highlight"><pre><code class="cpp"><span class="k">template</span><span class="o">&lt;</span> <span class="k">typename</span> <span class="n">T</span> <span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">result_for</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span> <span class="n">name</span><span class="p">(</span> <span class="n">abi</span><span class="o">::</span><span class="n">__cxa_demangle</span><span class="p">(</span> <span class="k">typeid</span><span class="p">(</span> <span class="n">T</span> <span class="p">).</span><span class="n">name</span><span class="p">(),</span> 
+                                                 <span class="mi">0</span><span class="p">,</span> 
+                                                 <span class="mi">0</span><span class="p">,</span> 
+                                                 <span class="o">&amp;</span><span class="n">status</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">status</span> <span class="n">not_eq</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;undemangled&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    return name 
-           + ": " 
-           + boost::lexical_cast<std::string>( sizeof( T ) );
-}
-
+    <span class="k">return</span> <span class="n">name</span> 
+           <span class="o">+</span> <span class="s">&quot;: &quot;</span> 
+           <span class="o">+</span> <span class="n">boost</span><span class="o">::</span><span class="n">lexical_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span> <span class="k">sizeof</span><span class="p">(</span> <span class="n">T</span> <span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <h3>Стандартные типы C++</h3>
 
-Ну, куда ж без них-то:
+<p>Ну, куда ж без них-то:</p>
 
-<cpp>
-int main() {
-    std::cout &lt;&lt; result_for&lt; char &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; wchar_t &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; char16_t &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; char32_t &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; short int &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; int &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; long int &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; long long int &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; float &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; double &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; long double &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; bool &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; char* &gt;() &lt;&lt; std::endl;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">char</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">wchar_t</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">char16_t</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">char32_t</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">short</span> <span class="kt">int</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">long</span> <span class="kt">int</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">long</span> <span class="kt">long</span> <span class="kt">int</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">float</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">long</span> <span class="kt">double</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">bool</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="kt">char</span><span class="o">*</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-Результаты:
+<p>Результаты:</p>
 
 <bash>
 char: 1
@@ -207,34 +205,33 @@ bool: 1
 char*: 8
 </bash>
 
-Итак, рекордсмен с большим отрывом - <strong>long double</strong>. Нда-с, 128-битное значение - это реально много.
+<p>Итак, рекордсмен с большим отрывом - <strong>long double</strong>. Нда-с, 128-битное значение - это реально много.</p>
 
-Кстати, вероятно вы заметили отсутствие стандартного типа <strong>void</strong>. Дело в том, что попытка применения к "пустому" типу оператора <strong>sizeof</strong> вызывает гнев компилятора (правда без ошибок, но предупреждение вы получите, по крайней мере при компиляции с флагом <strong>-pedantic</strong>).
+<p>Кстати, вероятно вы заметили отсутствие стандартного типа <strong>void</strong>. Дело в том, что попытка применения к “пустому” типу оператора <strong>sizeof</strong> вызывает гнев компилятора (правда без ошибок, но предупреждение вы получите, по крайней мере при компиляции с флагом <strong>-pedantic</strong>).</p>
 
-Кстати, пусть вас не смущают типы <strong>char16_t</strong> и <strong>char32_t</strong>. Стандарт C++11 ввёл эти новые ключевые слова, так что данные типы уже являются стандартными.
+<p>Кстати, пусть вас не смущают типы <strong>char16_t</strong> и <strong>char32_t</strong>. Стандарт C++11 ввёл эти новые ключевые слова, так что данные типы уже являются стандартными.</p>
 
-Напоминаю, что размер указателя никак не зависит от типа, на который он указывает. В то время как размер типа "ссылка на..." очень даже зависит, потому что это и есть размер типа, на который мы ссылаемся. :-)
+<p>Напоминаю, что размер указателя никак не зависит от типа, на который он указывает. В то время как размер типа “ссылка на…” очень даже зависит, потому что это и есть размер типа, на который мы ссылаемся. :-)</p>
 
 <h3>Стандартные контейнеры</h3>
 
-Вот это уже поинтереснее будет. Обращаю ваше внимание, что здесь включены и контейнеры, добавленные в STL новым стандартом. Для просты будем в качестве наполнения использовать тип <strong>char</strong>, как самый маленький:
+<p>Вот это уже поинтереснее будет. Обращаю ваше внимание, что здесь включены и контейнеры, добавленные в STL новым стандартом. Для просты будем в качестве наполнения использовать тип <strong>char</strong>, как самый маленький:</p>
 
-<cpp>
-int main() {
-    std::cout &lt;&lt; result_for&lt; std::deque<char> &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::forward_list<char> &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::list<char> &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::map&lt;char, char&gt; &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::queue<char> &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::set<char> &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::stack<char> &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::unordered_map&lt;char, char&gt; &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::unordered_set<char> &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::vector<char> &gt;() &lt;&lt; std::endl;
-}
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">forward_list</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span> <span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-
-Результаты таковы:
+<p>Результаты таковы:</p>
 
 <bash>
 std::deque&lt;char, std::allocator<char> &gt;: 80
@@ -249,22 +246,23 @@ std::unordered_set&lt;char, std::hash<char>, std::equal_to<char>, std::allocator
 std::vector&lt;char, std::allocator<char> &gt;: 24
 
 
-Как видим, от 8 до 80. <strong>deque</strong> самый тяжёлый, <strong>forward_list</strong> - легок как пух.
+Как видим, от 8 до 80. **deque** самый тяжёлый, **forward_list** - легок как пух.
 
-Разумеется, изменение типа значений, содержащихся в контейнере, никак не повлияет на результат: поставьте <strong>long double</strong> вместо <strong>char</strong>, а <strong>sizeof</strong> контейнера останется прежним.
+Разумеется, изменение типа значений, содержащихся в контейнере, никак не повлияет на результат: поставьте **long double** вместо **char**, а **sizeof** контейнера останется прежним.
 
 <h3>Строки</h3>
 
 Что у нас со строками:
 
-<cpp>
-int main() {
-    std::cout &lt;&lt; result_for&lt; std::string &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::wstring &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::u16string &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::u32string &gt;() &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">wstring</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">u16string</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">u32string</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 
 Результат:
 
@@ -281,15 +279,16 @@ std::basic_string&lt;char32_t, std::char_traits<char32_t>, std::allocator<char32
 
 С перечислимым типом всё просто:
 
-<cpp>
-enum Enum {
-    a
-};
 
-int main() {
-    std::cout &lt;&lt; result_for&lt; Enum &gt;() &lt;&lt; std::endl;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">enum</span> <span class="n">Enum</span> <span class="p">{</span>
+    <span class="n">a</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">Enum</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 
 Результат таков:
 
@@ -303,28 +302,29 @@ Enum: 4
 
 А это так, для развлечения:
 
-<cpp>
-int main() {
-    std::cout &lt;&lt; result_for&lt; std::valarray<char> &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; "---------------------------" &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::thread &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; "---------------------------" &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::regex &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; "---------------------------" &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::ifstream &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::ofstream &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::fstream &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::filebuf &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; "---------------------------" &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::istream &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::ostream &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::iostream &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; "---------------------------" &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::istringstream &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::ostringstream &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::stringstream &gt;() &lt;&lt; std::endl;
-    std::cout &lt;&lt; result_for&lt; std::stringbuf &gt;() &lt;&lt; std::endl;
-}
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">valarray</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;---------------------------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;---------------------------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">regex</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;---------------------------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">ifstream</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">ofstream</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">fstream</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">filebuf</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;---------------------------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">istream</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">iostream</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;---------------------------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">istringstream</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result_for</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">stringbuf</span> <span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 Да, я знаю, размер такого рода типов нужен нам редко. Очень редко. Можно даже сказать, вообще не нужен. И всё же вот результат:
@@ -350,7 +350,7 @@ std::basic_ostringstream&lt;char, std::char_traits<char>, std::allocator<char> &
 std::basic_stringstream&lt;char, std::char_traits<char>, std::allocator<char> &gt;: 368
 std::basic_stringbuf&lt;char, std::char_traits<char>, std::allocator<char> &gt;: 80
 
-</char></char></char></char></char></char></char></char></char></char></char></char></char></char></bash></char></cpp></char32_t></char32_t></char16_t></char16_t></wchar_t></wchar_t></bash></char></char></char></char></char></char></char></char></char></char></char></char></char></char></bash></char></char></char></char></char></char></char></char></cpp></std::string></cpp>
+</char></char></char></char></char></char></char></char></char></char></char></char></char></char></bash></char32_t></char32_t></char16_t></char16_t></wchar_t></wchar_t></bash></char></char></char></char></char></char></char></char></char></char></char></char></char></char></bash>
 
         
       </div><!-- /.entry-content -->

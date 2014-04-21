@@ -146,19 +146,18 @@
         <!--break-->
 <p>Итак, есть у нас следующий код:</p>
 
-<cpp>
-class worker {
-    unsigned int m_id;
-public:
-    unsigned int get_id() const {
-        return m_id;
-    }
+<div class="highlight"><pre><code class="cpp"><span class="k">class</span> <span class="nc">worker</span> <span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_id</span><span class="p">;</span>
+<span class="nl">public:</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">get_id</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">m_id</span><span class="p">;</span>
+    <span class="p">}</span>
     
-    void set_id( unsigned int new_id ) {
-        m_id = new_id;
-    }
-};
-</cpp>
+    <span class="kt">void</span> <span class="n">set_id</span><span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">new_id</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">m_id</span> <span class="o">=</span> <span class="n">new_id</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
 
 <p>Перед нами - канонические геттер и сеттер. Первый <em>просто</em> возвращает значение идентификатора рабочего, второй - <em>просто</em> устанавливает это значение.</p>
 
@@ -166,68 +165,65 @@ public:
 
 <p>Сравним:</p>
 
-<cpp>
-struct worker {
-    unsigned int id;
-};
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">worker</span> <span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
 
 <p>Суть не изменилась, а код стал короче и проще.</p>
 
 <p>Зачем мне прятать поле и при этом предоставлять две функции, открывающие доступ к нему? Это бессмысленно. К тому же на каждое поле мне придётся предоставлять по паре геттер-сеттер, и в большинстве случаев это будет два объявления и две реализации. Сравните это:</p>
 
-<cpp>
-class worker {
-    unsigned int m_id;
-    std::string m_name;
-    std::string m_section;
-public:
-    unsigned int get_id() const;
-    void set_id( unsigned int new_id );
+<div class="highlight"><pre><code class="cpp"><span class="k">class</span> <span class="nc">worker</span> <span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">m_id</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">m_name</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">m_section</span><span class="p">;</span>
+<span class="nl">public:</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">get_id</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">set_id</span><span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">new_id</span> <span class="p">);</span>
 
-    std::string get_name() const;
-    void set_name( const std::string&amp; new_name );
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">get_name</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">set_name</span><span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">new_name</span> <span class="p">);</span>
 
-    std::string get_section() const;
-    void set_section( const std::string&amp; new_section );
-};
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">get_section</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">set_section</span><span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">new_section</span> <span class="p">);</span>
+<span class="p">};</span>
 
-// Где-то в .cpp-шнике
+<span class="c1">// Где-то в .cpp-шнике</span>
 
-unsigned int worker::get_id() const {
-    return m_id;
-}
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">worker</span><span class="o">::</span><span class="n">get_id</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">m_id</span><span class="p">;</span>
+<span class="p">}</span>
     
-void worker::set_id( unsigned int new_id ) {
-    m_id = new_id;
-}
+<span class="kt">void</span> <span class="n">worker</span><span class="o">::</span><span class="n">set_id</span><span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">new_id</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">m_id</span> <span class="o">=</span> <span class="n">new_id</span><span class="p">;</span>
+<span class="p">}</span>
 
-std::string worker::get_name() const {
-    return m_name;
-}
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">worker</span><span class="o">::</span><span class="n">get_name</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">m_name</span><span class="p">;</span>
+<span class="p">}</span>
     
-void worker::set_name( const std::string&amp; new_name ) {
-    m_name = new_name;
-}
+<span class="kt">void</span> <span class="n">worker</span><span class="o">::</span><span class="n">set_name</span><span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">new_name</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">m_name</span> <span class="o">=</span> <span class="n">new_name</span><span class="p">;</span>
+<span class="p">}</span>
 
-std::string worker::get_section() const {
-    return m_section;
-}
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">worker</span><span class="o">::</span><span class="n">get_section</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">m_section</span><span class="p">;</span>
+<span class="p">}</span>
     
-void worker::set_section( const std::string&amp; new_section ) {
-    m_section = new_section;
-}
-</cpp>
+<span class="kt">void</span> <span class="n">worker</span><span class="o">::</span><span class="n">set_section</span><span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">new_section</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">m_section</span> <span class="o">=</span> <span class="n">new_section</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>и это:</p>
 
-<cpp>
-struct worker {
-    unsigned int id;
-    std::string name;
-    std::string section;
-};
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">worker</span> <span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">section</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
 
 <p>Фундаментальная проблема канонических геттеров и сеттеров в том, что они раздувают мой код и привносят в него ненужную сложность, при этом ничего не давая мне взамен. А почему же этих геттеров и сеттеров полно в 99% всех C++-проектов? Виной тому - маниакальная страсть закрывать поля просто потому, что “в соответствии с принципом инкапсуляции данные должны быть сокрыты”.</p>
 

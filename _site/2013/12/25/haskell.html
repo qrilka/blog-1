@@ -146,64 +146,57 @@
         <!--break-->
 <p>Как мы уже знаем, вызов чистой функции выглядит так:</p>
 
-<hs>
-name arg1 arg2 ... argN
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">name</span> <span class="n">arg1</span> <span class="n">arg2</span> <span class="o">...</span> <span class="n">argN</span>
+</code></pre></div>
 
 <p>Это соответствует идее апплицирования: мы применяем функцию <code>name</code> к списку аргументов. Однако в математике существует и другая модель функции, а именно инфиксная модель. Если вы никогда не слышали это слово - не беспокойтесь, вы постоянно используете эту модель. Классический пример:</p>
 
-<hs>
-1 + 2
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+</code></pre></div>
 
 <p>В данном случае у нас есть функция сложения, отражённая символом <code>+</code>, которая принимает на вход два аргумента. Но если бы мы хотели записать этот вызов неинфиксным, классическим способом, то получилось бы вот что:</p>
 
-<hs>
-(+) 1 2
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="mi">1</span> <span class="mi">2</span>
+</code></pre></div>
 
 <p>Всё как обычно: мы апплицируем функцию <code>(+)</code> к двум аргументам. Однако предыдущая форма записи гораздо привычнее для нас, и при этом она значительно читабельнее.</p>
 
 <p>Так вот и наши собственные функции можно вызывать как классическим способом, так и инфиксным. Например:</p>
 
-<hs>
-full_address :: String -&gt; Int -&gt; String
-full_address host port = 
-    host ++ ":" ++ (show port)
+<div class="highlight"><pre><code class="haskell"><span class="nf">full_address</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">-&gt;</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="nf">full_address</span> <span class="n">host</span> <span class="n">port</span> <span class="ow">=</span> 
+    <span class="n">host</span> <span class="o">++</span> <span class="s">&quot;:&quot;</span> <span class="o">++</span> <span class="p">(</span><span class="n">show</span> <span class="n">port</span><span class="p">)</span>
 
-main =
-    do putStrLn (full_address host port)
-    where host = "127.0.0.1"
-          port = 80
-</hs>
+<span class="nf">main</span> <span class="ow">=</span>
+    <span class="kr">do</span> <span class="n">putStrLn</span> <span class="p">(</span><span class="n">full_address</span> <span class="n">host</span> <span class="n">port</span><span class="p">)</span>
+    <span class="kr">where</span> <span class="n">host</span> <span class="ow">=</span> <span class="s">&quot;127.0.0.1&quot;</span>
+          <span class="n">port</span> <span class="ow">=</span> <span class="mi">80</span>
+</code></pre></div>
 
 <p>Здесь мы определили функцию, принимающую строку, соответствующую IP-адресу, и целое число, соответствующее порту, и возвращающую строку с полным адресом (включающую хост и порт вместе). Как видите, мы вызвали её классическим способом. Но мы можем вызвать её и инфиксным способом. Для этого достаточно при вызове заключить имя функции в обратные одинарные кавычки (этот символ располагается обычно на клавише с тильдой). Выглядит это так:</p>
 
-<hs>
-main =
-    do putStrLn (host `full_address` port)
-    where host = "127.0.0.1"
-          port = 80
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span>
+    <span class="kr">do</span> <span class="n">putStrLn</span> <span class="p">(</span><span class="n">host</span> <span class="p">`</span><span class="n">full_address</span><span class="p">`</span> <span class="n">port</span><span class="p">)</span>
+    <span class="kr">where</span> <span class="n">host</span> <span class="ow">=</span> <span class="s">&quot;127.0.0.1&quot;</span>
+          <span class="n">port</span> <span class="ow">=</span> <span class="mi">80</span>
+</code></pre></div>
 
 <p>В инфиксной форме мы, как и со знаком сложения, заключаем имя функции <em>между</em> аргументами.</p>
 
 <p>Давайте переименуем функцию для бОльшей литературности:</p>
 
-<hs>
-with :: String -&gt; Int -&gt; String
-with host port = 
-    host ++ ":" ++ (show port)
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">with</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">-&gt;</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="nf">with</span> <span class="n">host</span> <span class="n">port</span> <span class="ow">=</span> 
+    <span class="n">host</span> <span class="o">++</span> <span class="s">&quot;:&quot;</span> <span class="o">++</span> <span class="p">(</span><span class="n">show</span> <span class="n">port</span><span class="p">)</span>
+</code></pre></div>
 
 <p>В этом случае инфиксная запись будет выглядеть значительно более привлекательно:</p>
 
-<hs>
-main =
-    do putStrLn (host `with` port)
-    where host = "127.0.0.1"
-          port = 80
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span>
+    <span class="kr">do</span> <span class="n">putStrLn</span> <span class="p">(</span><span class="n">host</span> <span class="p">`</span><span class="n">with</span><span class="p">`</span> <span class="n">port</span><span class="p">)</span>
+    <span class="kr">where</span> <span class="n">host</span> <span class="ow">=</span> <span class="s">&quot;127.0.0.1&quot;</span>
+          <span class="n">port</span> <span class="ow">=</span> <span class="mi">80</span>
+</code></pre></div>
 
 <p>Довольно-таки симпатишно вышло. </p>
 

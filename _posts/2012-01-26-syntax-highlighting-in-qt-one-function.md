@@ -10,15 +10,15 @@ categories:
   0L7QstCw0L3QuNC1
 ---
 Function for syntax highlighting of keywords in text.
-<cpp>
+{% highlight cpp %}
 void editor_highlighter::highlightBlock( QString const& text ) {
     QTextCharFormat keywords_format;
     keywords_format.setFontWeight( QFont::Bold );
     auto keywords( kernel.list_of_keywords_of_current_language() );
     highlight( this, keywords ).based_on( keywords_format ).in_this( text );
 }
-</cpp>Pay your attention to last line. Functor <strong>highlight</strong> require <strong>this</strong>-pointer, and we do it in literary manner:
-<cpp>
+{% endhighlight %}Pay your attention to last line. Functor **highlight** require **this**-pointer, and we do it in literary manner:
+{% highlight cpp %}
     highlight this keywords...
-</cpp>So word <strong>this</strong> is not only pointer to this class, but exactly English word "this". I very like this solution. 
+{% endhighlight %}So word **this** is not only pointer to this class, but exactly English word "this". I very like this solution. 
 

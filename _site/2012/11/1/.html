@@ -146,39 +146,40 @@
         <p>Канонически известно, что проивзодить поиск в контейнере лучше с помощью его собственных алгоритмов (если таковые имеются), нежели с помощью обобщённых. У Мейерса написано именно так. Ну и решил я на днях провести простой эксперимент. А поскольку в Style Revisor мне нужно очень часто производить поиск в строке, то эксперимент был мне особенно интересен.</p>
 
 <p>Итак:</p>
-<cpp>
-using namespace std::chrono;
 
-int main() {
-    std::string const s( "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcd" );
-    std::string const what( "bcd" );
+<div class="highlight"><pre><code class="cpp"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span> <span class="n">s</span><span class="p">(</span> <span class="s">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcd&quot;</span> <span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span> <span class="n">what</span><span class="p">(</span> <span class="s">&quot;bcd&quot;</span> <span class="p">);</span>
     
-    auto const begin( high_resolution_clock::now() );
-    for( size_t i = 0; i &lt; 100000; ++i ) {
-        auto const it( std::search(   s.begin()
-                                    , s.end()
-                                    , what.begin()
-                                    , what.end() ) );
-    }
-    auto const end( high_resolution_clock::now() );
-    std::cout &lt;&lt; "tm: " 
-              &lt;&lt; duration_cast <microseconds>( end - begin ).count() 
-              &lt;&lt; std::endl;
-}
-Итак, ищем подстроку обобщённым способом. Во втором варианте цикла ищем через собственную функцию:
-<cpp>
-    ...
-    for( size_t i = 0; i &lt; 100000; ++i ) {
-        auto const pos( s.find( what ) );
-        auto const it( s.begin() + pos );
-    }
-    ...
-</cpp>Ну казалось бы, что может быть проще? В обоих случаях получаем итератор на начало нужной нам подстроки.
+    <span class="k">auto</span> <span class="k">const</span> <span class="n">begin</span><span class="p">(</span> <span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">()</span> <span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span> <span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="k">const</span> <span class="n">it</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">search</span><span class="p">(</span>   <span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span>
+                                    <span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">end</span><span class="p">()</span>
+                                    <span class="p">,</span> <span class="n">what</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span>
+                                    <span class="p">,</span> <span class="n">what</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">auto</span> <span class="k">const</span> <span class="n">end</span><span class="p">(</span> <span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">()</span> <span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;tm: &quot;</span> 
+              <span class="o">&lt;&lt;</span> <span class="n">duration_cast</span> <span class="o">&lt;</span><span class="n">microseconds</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">end</span> <span class="o">-</span> <span class="n">begin</span> <span class="p">).</span><span class="n">count</span><span class="p">()</span> 
+              <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Итак, ищем подстроку обобщённым способом. Во втором варианте цикла ищем через собственную функцию:</p>
 
-Как вы думаете, какой код выполняется быстрее? Я бы удивлён результатами: первый вариант оказался быстрее, причём значительно! Во втором случае имеем в среднем 6900 мкс (худший результат на моём компьютере - 7188 мкс), в то время как в первом - 2900 мкс (худший результат - 3383 мкс).
+<div class="highlight"><pre><code class="cpp">    <span class="p">...</span>
+    <span class="k">for</span><span class="p">(</span> <span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="k">const</span> <span class="n">pos</span><span class="p">(</span> <span class="n">s</span><span class="p">.</span><span class="n">find</span><span class="p">(</span> <span class="n">what</span> <span class="p">)</span> <span class="p">);</span>
+        <span class="k">auto</span> <span class="k">const</span> <span class="nf">it</span><span class="p">(</span> <span class="n">s</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="n">pos</span> <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+</code></pre></div>
+<p>Ну казалось бы, что может быть проще? В обоих случаях получаем итератор на начало нужной нам подстроки.</p>
 
-Вот тебе и канонический поиск...
-</microseconds></cpp>
+<p>Как вы думаете, какой код выполняется быстрее? Я бы удивлён результатами: первый вариант оказался быстрее, причём значительно! Во втором случае имеем в среднем 6900 мкс (худший результат на моём компьютере - 7188 мкс), в то время как в первом - 2900 мкс (худший результат - 3383 мкс).</p>
+
+<p>Вот тебе и канонический поиск…</p>
 
         
       </div><!-- /.entry-content -->

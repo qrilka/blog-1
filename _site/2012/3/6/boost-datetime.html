@@ -158,14 +158,15 @@ The seconds held in the time_t are added to a time point of 1970-Jan-01.
 <p>Ну уж могли бы и сами дописать. Ведь это весьма частая задача, я имею в виду конвертацию <em>В</em> time_t, а не только <em>ИЗ</em> него.</p>
 
 <p>Ну что ж, если гора не идёт к Магомету… Пишем за них:</p>
-<cpp>
-inline time_t to_time_t( boost::posix_time::ptime const&amp; a_posix_time ) {
-    boost::posix_time::ptime const time_since_epoch( 
-            boost::gregorian::date( 1970, 1, 1 ) );
-    return boost::posix_time::time_duration( a_posix_time - time_since_epoch )
-           .total_seconds();
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kr">inline</span> <span class="kt">time_t</span> <span class="nf">to_time_t</span><span class="p">(</span> <span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="o">::</span><span class="n">ptime</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">a_posix_time</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="o">::</span><span class="n">ptime</span> <span class="k">const</span> <span class="n">time_since_epoch</span><span class="p">(</span> 
+            <span class="n">boost</span><span class="o">::</span><span class="n">gregorian</span><span class="o">::</span><span class="n">date</span><span class="p">(</span> <span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="k">return</span> <span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="o">::</span><span class="n">time_duration</span><span class="p">(</span> <span class="n">a_posix_time</span> <span class="o">-</span> <span class="n">time_since_epoch</span> <span class="p">)</span>
+           <span class="p">.</span><span class="n">total_seconds</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>и используем.</p>
 
         

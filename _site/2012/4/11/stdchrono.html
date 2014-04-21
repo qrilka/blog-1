@@ -146,33 +146,35 @@
         <p>Стандарт C++11 ввёл новый набор классов для работы с временем, в заголовочнике <chrono>. И вот простой рецепт (спасибо сайту cplusplus.com), как измерить время работы некой функции. Достаточно часто это нужно знать.</chrono></p>
 
 <p>Итак:</p>
-<cpp>
-typedef std::chrono::duration <int> seconds;
 
-void for_second() {
-    std::this_thread::sleep_for( seconds( 1 ) );
-}
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration</span> <span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">seconds</span><span class="p">;</span>
 
-int main() {
-    using namespace std::chrono;
-    auto begin = high_resolution_clock::now();
-    for_second();
-    auto end = high_resolution_clock::now();
-    std::cout &lt;&lt; duration_cast <milliseconds>( end - begin ).count() 
-              &lt;&lt; std::endl
-              ;
-}
+<span class="kt">void</span> <span class="nf">for_second</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span> <span class="n">seconds</span><span class="p">(</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
 
-Таким образом, мы сразу получаем количество милисекунд, прошедших за время вызова функции.
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">begin</span> <span class="o">=</span> <span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+    <span class="n">for_second</span><span class="p">();</span>
+    <span class="k">auto</span> <span class="n">end</span> <span class="o">=</span> <span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">duration_cast</span> <span class="o">&lt;</span><span class="n">milliseconds</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">end</span> <span class="o">-</span> <span class="n">begin</span> <span class="p">).</span><span class="n">count</span><span class="p">()</span> 
+              <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+              <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-Если нужен замер поточнее, можем использовать микросекунды:
-<cpp>
-duration_cast <microseconds>( end - begin ).count() 
-и даже наносекунды:
-<cpp>
-duration_cast <nanoseconds>( end - begin ).count() 
+<p>Таким образом, мы сразу получаем количество милисекунд, прошедших за время вызова функции.</p>
 
-</nanoseconds></cpp></microseconds></cpp></milliseconds></int></cpp>
+<p>Если нужен замер поточнее, можем использовать микросекунды:</p>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">duration_cast</span> <span class="o">&lt;</span><span class="n">microseconds</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">end</span> <span class="o">-</span> <span class="n">begin</span> <span class="p">).</span><span class="n">count</span><span class="p">()</span> 
+</code></pre></div>
+<p>и даже наносекунды:</p>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">duration_cast</span> <span class="o">&lt;</span><span class="n">nanoseconds</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">end</span> <span class="o">-</span> <span class="n">begin</span> <span class="p">).</span><span class="n">count</span><span class="p">()</span> 
+</code></pre></div>
+
 
         
       </div><!-- /.entry-content -->

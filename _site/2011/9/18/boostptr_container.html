@@ -147,77 +147,77 @@
 <p>Недавно я потерял добрую половину рабочего дня на исправление одной хитрой ошибки при использовании boost::ptr_vector.</p>
 
 <p>Итак, имеется следующий код:</p>
-<cpp>
-struct A {
-    A( int ii ) : i( ii ) {}
-    int i;
-    bool operator==( int ii ) { return ii == i; }
-};
 
-int main() {
-    typedef boost::ptr_vector&lt; A &gt; V;
-    V v;
-    v.push_back( new A( 1 ) );
-    v.push_back( new A( 2 ) );
-    v.push_back( new A( 3 ) );
-    // Теперь удаляем значение по предикату (фактически, по оператору проверки на равенство).
-    std::cout &lt;&lt; "before: " &lt;&lt; v.size() &lt;&lt; std::endl;
-    v.erase( std::remove( v.begin(), v.end(), 2 ), 
-             v.end() );
-    std::cout &lt;&lt; "after: " &lt;&lt; v.size() &lt;&lt; std::endl;
-    // Теперь проверяем, остался ли в контейнере объект со значением 2.
-    V::iterator it = std::find( v.begin(), v.end(), 2 );
-    if ( v.end() != it ) {
-        std::cout &lt;&lt; "2 - yes" &lt;&lt; std::endl;
-    } else {
-        std::cout &lt;&lt; "2 - no" &lt;&lt; std::endl;
-    }
-    return 0;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">A</span> <span class="p">{</span>
+    <span class="n">A</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ii</span> <span class="p">)</span> <span class="o">:</span> <span class="n">i</span><span class="p">(</span> <span class="n">ii</span> <span class="p">)</span> <span class="p">{}</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ii</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ii</span> <span class="o">==</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">ptr_vector</span><span class="o">&lt;</span> <span class="n">A</span> <span class="o">&gt;</span> <span class="n">V</span><span class="p">;</span>
+    <span class="n">V</span> <span class="n">v</span><span class="p">;</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span> <span class="mi">3</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="c1">// Теперь удаляем значение по предикату (фактически, по оператору проверки на равенство).</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;before: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">2</span> <span class="p">),</span> 
+             <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;after: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="c1">// Теперь проверяем, остался ли в контейнере объект со значением 2.</span>
+    <span class="n">V</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">2</span> <span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">!=</span> <span class="n">it</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2 - yes&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2 - no&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Казалось бы, тривиальнее этого кода и придумать тяжело. Запускаем программу. Вывод:</p>
-<cpp>
-before: 3
-2 - no
-after: 2
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="nl">before:</span> <span class="mi">3</span>
+<span class="mi">2</span> <span class="o">-</span> <span class="n">no</span>
+<span class="nl">after:</span> <span class="mi">2</span>
+</code></pre></div>
 
 <p>Ну, казалось бы, что тут интересного? Было три объекта, один удалили, потом даже проверили факт удаления, и размер контейнера уменьшился, как и ожидалось, на 1.</p>
 
 <p>В абсолютной уверенности о корректности данного кода пребывал и я. До тех пор, пока моя программа не начала вдруг ни с того, ни с сего падать с Segmentation Fault.</p>
 
 <p>Вы будете удивлены, но данный код работает неправильно. Он прекрасно компилируется и запускается, однако его поведение вовсе не такое, как мы ожидаем. И для того, чтобы в этом убедиться, определим деструктор в структуре А с меткой, а также пометим момент удаления в main().</p>
-<cpp>
-struct A {
-    A( int ii ) : i( ii ) {}
-    ~A() {
-        std::cout &lt;&lt; "what erased, i: " &lt;&lt; i &lt;&lt; std::endl;
-    }
-    int i;
-    bool operator==( int ii ) { return ii == i; }
-};
 
-int main() {
-    // то же самое...
-    v.erase( std::remove( v.begin(), v.end(), 2 ), 
-             v.end() );
-    // Перед этой меткой мы увидим, как вызывается деструктор объекта со значением 2? Ну-ну...
-    std::cout &lt;&lt; "-----------" &lt;&lt; std::endl;
-    // то же самое...
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">A</span> <span class="p">{</span>
+    <span class="n">A</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ii</span> <span class="p">)</span> <span class="o">:</span> <span class="n">i</span><span class="p">(</span> <span class="n">ii</span> <span class="p">)</span> <span class="p">{}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;what erased, i: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ii</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ii</span> <span class="o">==</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// то же самое...</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">2</span> <span class="p">),</span> 
+             <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="p">);</span>
+    <span class="c1">// Перед этой меткой мы увидим, как вызывается деструктор объекта со значением 2? Ну-ну...</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;-----------&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="c1">// то же самое...</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Теперь снова запустим программу. Вывод:</p>
-<cpp>
-before: 3
-what erased, i: 3
-2 - no
-----------------
-after: 2
-what erased, i: 1
-what erased, i: 3
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="nl">before:</span> <span class="mi">3</span>
+<span class="n">what</span> <span class="n">erased</span><span class="p">,</span> <span class="n">i</span><span class="o">:</span> <span class="mi">3</span>
+<span class="mi">2</span> <span class="o">-</span> <span class="n">no</span>
+<span class="o">----------------</span>
+<span class="nl">after:</span> <span class="mi">2</span>
+<span class="n">what</span> <span class="n">erased</span><span class="p">,</span> <span class="n">i</span><span class="o">:</span> <span class="mi">1</span>
+<span class="n">what</span> <span class="n">erased</span><span class="p">,</span> <span class="n">i</span><span class="o">:</span> <span class="mi">3</span>
+</code></pre></div>
 
 <p>Ой! Итак, видим следующие странности:</p>
 <ol>
@@ -228,35 +228,35 @@ what erased, i: 3
 </ol>
 
 <p>Чтобы запутать вас окончательно, добавлю поиск объекта со значением 3.</p>
-<cpp>
-int main() {
-    // то же самое...
-    v.erase( std::remove( v.begin(), v.end(), 2 ), 
-             v.end() );
-    // то же самое...
-    // Как мы убедились, объект со значением 3 почему-то удаляется.
-    // Получается, он уже не будет найден, не так ли? 
-    V::iterator it = std::find( v.begin(), v.end(), 3 );
-    if ( v.end() != it ) {
-        std::cout &lt;&lt; "3 - yes" &lt;&lt; std::endl;
-    } else {
-        std::cout &lt;&lt; "3 - no" &lt;&lt; std::endl;
-    }
-    // то же самое...
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// то же самое...</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">2</span> <span class="p">),</span> 
+             <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="p">);</span>
+    <span class="c1">// то же самое...</span>
+    <span class="c1">// Как мы убедились, объект со значением 3 почему-то удаляется.</span>
+    <span class="c1">// Получается, он уже не будет найден, не так ли? </span>
+    <span class="n">V</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">3</span> <span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">!=</span> <span class="n">it</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;3 - yes&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;3 - no&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// то же самое...</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Запускаем. Вывод:</p>
-<cpp>
-before: 3
-what erased, i: 3
-2 - no
-3 - yes
-----------------
-after: 2
-what erased, i: 1
-what erased, i: 3
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="nl">before:</span> <span class="mi">3</span>
+<span class="n">what</span> <span class="n">erased</span><span class="p">,</span> <span class="n">i</span><span class="o">:</span> <span class="mi">3</span>
+<span class="mi">2</span> <span class="o">-</span> <span class="n">no</span>
+<span class="mi">3</span> <span class="o">-</span> <span class="n">yes</span>
+<span class="o">----------------</span>
+<span class="nl">after:</span> <span class="mi">2</span>
+<span class="n">what</span> <span class="n">erased</span><span class="p">,</span> <span class="n">i</span><span class="o">:</span> <span class="mi">1</span>
+<span class="n">what</span> <span class="n">erased</span><span class="p">,</span> <span class="n">i</span><span class="o">:</span> <span class="mi">3</span>
+</code></pre></div>
 
 <p>Ещё глупее. Если объект со значением 3 удаляется, то почему же он остался в контейнере? Однако вы можете быть уверены - объекта со значением 3 уже нет (деструктор не обманывает). Если не верите - попробуйте обратиться к нему, и вас ожидает неприятный сюрприз…</p>
 
@@ -266,25 +266,25 @@ what erased, i: 3
 
 <p>Оказывается, использовать <strong>изменяющие</strong> стандартные алгоритмы совместно с ptr_container нельзя! Вместо этого необходимо использовать <em>встроенные</em> алгоритмы.
 Определим более читабельный предикат в структуре А и перепишем алгоритм.</p>
-<cpp>
-struct A {
-    A( int ii ) : i( ii ) {}
-    int i;
-    bool operator==( int ii ) { return ii == i; }
-    bool correspond( int ii ) { return ii == i; }
-};
 
-int main() {
-    typedef boost::ptr_vector&lt; A &gt; V;
-    V v;
-    v.push_back( new A( 1 ) );
-    v.push_back( new A( 2 ) );
-    v.push_back( new A( 3 ) );
-    v.erase_if( boost::bind( A::correspond, _1, 2 ) );
-    // Будьте уверены - теперь работает правильно. 
-    return 0;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">A</span> <span class="p">{</span>
+    <span class="n">A</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ii</span> <span class="p">)</span> <span class="o">:</span> <span class="n">i</span><span class="p">(</span> <span class="n">ii</span> <span class="p">)</span> <span class="p">{}</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ii</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ii</span> <span class="o">==</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">correspond</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ii</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ii</span> <span class="o">==</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">ptr_vector</span><span class="o">&lt;</span> <span class="n">A</span> <span class="o">&gt;</span> <span class="n">V</span><span class="p">;</span>
+    <span class="n">V</span> <span class="n">v</span><span class="p">;</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">A</span><span class="p">(</span> <span class="mi">3</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">erase_if</span><span class="p">(</span> <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span> <span class="n">A</span><span class="o">::</span><span class="n">correspond</span><span class="p">,</span> <span class="n">_1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="c1">// Будьте уверены - теперь работает правильно. </span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Итак, используя библиотеку, будьте внимательны, и не пренебрегайте документацией.</p>
 

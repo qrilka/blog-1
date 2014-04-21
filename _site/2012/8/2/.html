@@ -146,40 +146,41 @@
         <p>Эта задача возникала передо мною часто. А сейчас, в коде Style Revisor, я вдруг… передумал.</p>
 
 <p>Каждый языковой плагин содержит ряд функторов, отвечающих за языковые конструкции. Скажем, функтор <strong>if_else</strong> отвечает за конструкцию <tt>if-else</tt>, функтор <strong>for</strong> - за конструкцию <tt>for</tt>, и т.д. И мой канонический подход был раньше таким:</p>
-<cpp>
-struct plugin::implementation {
-    implementation() {
-        // Итак, наполняю контейнер заранее,
-        // причём все типы сохраняемых функторов являются
-        // наследниками от типа language_structure, для удобства.
-        structures.push_back( new if_else_structure() );
-        structures.push_back( new do_while_structure() );
-        // и т.д...
-    }
-private:
-    boost::ptr_vector <language_structure> structures;
-public:
-    void revise() {
-        for( auto structure : structures ) {
-            structure.some_work( /*  */ );
-        }
-    }
-};
-Ну и потом я вдруг подумал: а зачем мне заранее сохранять функторы-обработчики, если можно использовать их на месте и без этого?
 
-Разумеется, если каждый из функторов-обработчиков был бы сложным в создании - тогда да: заранее создал, сохранил указатель - и работай. Но если каждый из этих функторов является <em>чистым</em>, тогда это совершенно не нужно:
-<cpp>
-struct plugin::implementation {
-public:
-    void revise() {
-        for( auto structure : structures ) {
-            if_else_structure{}.some_work( /*  */ );
-            do_while_structure{}.some_work( /*  */ );
-        }
-    }
-};
-</cpp>То есть прямо тут, в месте использования, создаю функторы, использую и сразу удаляю. Зачем заранее-то их сохранять, беспокоясь о жизненном цикле, месте инициализации и т.п?
-</language_structure></cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">plugin</span><span class="o">::</span><span class="n">implementation</span> <span class="p">{</span>
+    <span class="n">implementation</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Итак, наполняю контейнер заранее,</span>
+        <span class="c1">// причём все типы сохраняемых функторов являются</span>
+        <span class="c1">// наследниками от типа language_structure, для удобства.</span>
+        <span class="n">structures</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">if_else_structure</span><span class="p">()</span> <span class="p">);</span>
+        <span class="n">structures</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">do_while_structure</span><span class="p">()</span> <span class="p">);</span>
+        <span class="c1">// и т.д...</span>
+    <span class="p">}</span>
+<span class="nl">private:</span>
+    <span class="n">boost</span><span class="o">::</span><span class="n">ptr_vector</span> <span class="o">&lt;</span><span class="n">language_structure</span><span class="o">&gt;</span> <span class="n">structures</span><span class="p">;</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="nf">revise</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span> <span class="k">auto</span> <span class="n">structure</span> <span class="o">:</span> <span class="n">structures</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="n">structure</span><span class="p">.</span><span class="n">some_work</span><span class="p">(</span> <span class="cm">/*  */</span> <span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Ну и потом я вдруг подумал: а зачем мне заранее сохранять функторы-обработчики, если можно использовать их на месте и без этого?</p>
+
+<p>Разумеется, если каждый из функторов-обработчиков был бы сложным в создании - тогда да: заранее создал, сохранил указатель - и работай. Но если каждый из этих функторов является <em>чистым</em>, тогда это совершенно не нужно:</p>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">plugin</span><span class="o">::</span><span class="n">implementation</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">revise</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span> <span class="k">auto</span> <span class="n">structure</span> <span class="o">:</span> <span class="n">structures</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="n">if_else_structure</span><span class="p">{}.</span><span class="n">some_work</span><span class="p">(</span> <span class="cm">/*  */</span> <span class="p">);</span>
+            <span class="n">do_while_structure</span><span class="p">{}.</span><span class="n">some_work</span><span class="p">(</span> <span class="cm">/*  */</span> <span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>То есть прямо тут, в месте использования, создаю функторы, использую и сразу удаляю. Зачем заранее-то их сохранять, беспокоясь о жизненном цикле, месте инициализации и т.п?</p>
 
         
       </div><!-- /.entry-content -->

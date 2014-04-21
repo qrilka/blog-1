@@ -147,13 +147,13 @@
 
 <p>Всем хорошо известно правило разделения реализации на более мелкие фрагменты.
 Но как быть, если наш класс <strong>A</strong> использует обобщенную реализацию в лице приватного класса <strong>B</strong>? т.е. что в данном случае важнее: 1)разделение?, 2)сокрытие деталей?</p>
-<cpp>
-class A {
-   class B {};
-public:
-   ...
-};
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+   <span class="k">class</span> <span class="nc">B</span> <span class="p">{};</span>
+<span class="nl">public:</span>
+   <span class="p">...</span>
+<span class="p">};</span>
+</code></pre></div>
 
 <p>Я в данном случае мыслю так: т.к. класс <strong>B</strong> не используется никем кроме <strong>A</strong> - то реализовать его внутри декларации класса <strong>A</strong>.</p>
 

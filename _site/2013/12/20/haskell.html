@@ -164,15 +164,13 @@
 
 <p>Представим себе, что нам нужна функция, принимающая некое целочисленное значение и возвращающая квадрат этого значения. Причём функция именно в том самом, математическом смысле. Как бы мы могли это отобразить? Примерно так:</p>
 
-<cpp>
-5 -&gt; f -&gt; 25
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="mi">5</span> <span class="o">-&gt;</span> <span class="n">f</span> <span class="o">-&gt;</span> <span class="mi">25</span>
+</code></pre></div>
 
 <p>Итак, подаём на вход значение 5, а на выходе получаем 25. Проще некуда. Но как же нам записать внутренности функции <code>f</code>? Ну, например, так:</p>
 
-<cpp>
-5 -&gt; (x * x) -&gt; 25
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="mi">5</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mi">25</span>
+</code></pre></div>
 
 <p>Тут тоже всё ясно: поданный на вход аргумент умножается сам на себя. </p>
 
@@ -212,9 +210,8 @@ x*x
 
 <p>Итак, вот наша функция в Haskell:</p>
 
-<hs>
-\x -&gt; x*x
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">\</span><span class="n">x</span> <span class="ow">-&gt;</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+</code></pre></div>
 
 <p>Ну, что я говорил? Прямое сходство. Ведь даже обратный слэш вначале подходит как нельзя лучше: рассматривайте его как “спинку” буквы λ. Фактически, единственное отличие - это замена точки стрелочкой, потому что символ ‘<code>-&gt;</code>’ присущ языку Haskell как признак (любой) функции. Нда-с, сразу чувствуется, что язык Haskell создал математик.</p>
 
@@ -224,17 +221,15 @@ x*x
 
 <p>Идея λ-функции базируется на принципе “аппликации” (application), или “применения”. Это означает, что λ-функции не вызывают, а применяют (или, если хотите, прикладывают) к аргументу. Знаю, это звучит странновато для уха программистов из мира C, потому что там аргумент “прикладывают” к функции, но в математике договорились на таком определении. Поэтому запись вида:</p>
 
-<cpp>
-f a
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">f</span> <span class="n">a</span>
+</code></pre></div>
 
 <p>принято читать так: применение функции <code>f</code> к аргументу <code>a</code>.</p>
 
 <p>Вот как это выглядит в Haskell:</p>
 
-<hs>
-(\x -&gt; x*x) 5
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="p">(</span><span class="nf">\</span><span class="n">x</span> <span class="ow">-&gt;</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="mi">5</span>
+</code></pre></div>
 
 <p>Как видите, тут тоже прямое сходство с математической записью. Выражение в скобках - это уже знакомое нам λ-выражение. Оно “порождает” λ-функцию, которая сразу же применяется (прикладывается) к аргументу 5, результатом чего и явится значение 25.</p>
 
@@ -254,53 +249,48 @@ f a
 
 <p>И потому работа с нашей функцией возведения в квадрат, применительно к языку C, могла бы выглядеть так:</p>
 
-<cpp>
-int f( int i ) {
-    return i * i;
-}
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">f</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
 
-int main() {
-    printf( "%d", f( 5 ) );
-}
-</cpp>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span> <span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span> <span class="mi">5</span> <span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Мы подготовили нашу “глобальную подпрограмму”, в которую чуть позже зайдём через вызов (фактически - через разыменование указателя <code>f</code>).</p>
 
 <p>А вот как это выглядело бы на Haskell:</p>
 
-<hs>
-main =
-    putStrLn (show ((\x -&gt; x * x) 5))
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span>
+    <span class="n">putStrLn</span> <span class="p">(</span><span class="n">show</span> <span class="p">((</span><span class="nf">\</span><span class="n">x</span> <span class="ow">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
 
 <p>Как видите, мы ничего не готовим заранее. Напротив, мы <em>создаём</em> функцию (или, если хотите, функциональный объект) локально и непосредственно перед использованием. Создаём - и сразу апплицируем его к аргументу 5.</p>
 
 <p>Для большей простоты и похожести на нашу функцию мы можем написать и так:</p>
 
-<hs>
-main =
-    do putStrLn (show (f 5))
-    where f = (\x -&gt; x*x)
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span>
+    <span class="kr">do</span> <span class="n">putStrLn</span> <span class="p">(</span><span class="n">show</span> <span class="p">(</span><span class="n">f</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="kr">where</span> <span class="n">f</span> <span class="ow">=</span> <span class="p">(</span><span class="nf">\</span><span class="n">x</span> <span class="ow">-&gt;</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Выражение</p>
 
-<hs>
-    where f = (\x -&gt; x*x)
-</hs>
+<div class="highlight"><pre><code class="haskell">    <span class="kr">where</span> <span class="n">f</span> <span class="ow">=</span> <span class="p">(</span><span class="nf">\</span><span class="n">x</span> <span class="ow">-&gt;</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
 
 <p>это не присваивание (напомню, в Haskell его нет), это как бы ассоциация. Мы вводим локальный псевдоним для λ-функции и называем его <code>f</code>.</p>
 
 <p>Вы можете спросить меня, мол, какова же реальная польза от λ-функции, если у нас есть функция обыкновенная? Ведь мы могли бы написать и так:</p>
 
-<hs>
-f :: Integer -&gt; Integer
-f x =
-    x * x
+<div class="highlight"><pre><code class="haskell"><span class="nf">f</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="kt">Integer</span>
+<span class="nf">f</span> <span class="n">x</span> <span class="ow">=</span>
+    <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
 
-main =
-    putStrLn (show (f 5))
-</hs>
+<span class="nf">main</span> <span class="ow">=</span>
+    <span class="n">putStrLn</span> <span class="p">(</span><span class="n">show</span> <span class="p">(</span><span class="n">f</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
 
 <p>Тут всё как обычно: мы определили функцию <code>f</code> заранее, а потом апплицировали её к аргументу 5.</p>
 
@@ -308,12 +298,11 @@ main =
 
 <p>Анонимность λ-функции также видится мне преимуществом, по крайней мере в ряде случаев. Если действие, совершаемое с помощью конкретной λ-функции, тривиально (и может быть понято из её “тела”, как в случае с функцией возведения в квадрат) - зачем же нам придумывать имя? Мы можем спокойно обойтись без него. Однако, в том случае, когда λ-функция нужна нам во многих местах кода, мы можем, во избежание дубляжа, “определить” λ-функцию глобально. Делается это в нашем случае так:</p>
 
-<hs>
-f = \x -&gt; x * x
+<div class="highlight"><pre><code class="haskell"><span class="nf">f</span> <span class="ow">=</span> <span class="nf">\</span><span class="n">x</span> <span class="ow">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
 
-main =
-    do putStrLn (show ((f 5) + (f 6)))
-</hs>
+<span class="nf">main</span> <span class="ow">=</span>
+    <span class="kr">do</span> <span class="n">putStrLn</span> <span class="p">(</span><span class="n">show</span> <span class="p">((</span><span class="n">f</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">f</span> <span class="mi">6</span><span class="p">)))</span>
+</code></pre></div>
 
 <p>Как видите, мы “определили” нашу функцию глобально и ассоциировали её с выражением <code>f</code>. Теперь мы можем многократно использовать это выражение в коде, для апплицирования его к различным аргументам (в данном случае к 5 и к 6).</p>
 

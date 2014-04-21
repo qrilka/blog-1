@@ -13,4 +13,4 @@ You know what it means OK? This world famous acronym formed from two words "all 
 
 So, whenever you see button "OK", you'll actually see a button that says "all right". Hmm, er... Well, what kind of action will be done when you click on button "all right"? OK is not a verb, nor anything similar to the verb. "All right" is statement, not an action.
 
-In fact, label "OK" doesn't explain what this button do. So label "OK" is bad. It was bad at Windows 95, it is bad for now. I believe label "OK" always can (and must) be replaced by better alternative. <strong>Always</strong>.
+In fact, label "OK" doesn't explain what this button do. So label "OK" is bad. It was bad at Windows 95, it is bad for now. I believe label "OK" always can (and must) be replaced by better alternative. **Always**.

@@ -144,19 +144,18 @@
       </footer>
       <div class="entry-content">
         <p>Чтобы не повторяться, нам требуется импортировать следующие модули:</p>
-<hs>
-import System.Time
-import Data.Time
-import Data.Time.Clock.POSIX
-</hs>
 
-<hs>
-main = do
-    time_local_with_microseconds &lt;- getZonedTime
-    time_UTC_with_microseconds &lt;- getCurrentTime
-    print time_local_with_microseconds
-    print time_UTC_with_microseconds
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kr">import</span> <span class="nn">System.Time</span>
+<span class="kr">import</span> <span class="nn">Data.Time</span>
+<span class="kr">import</span> <span class="nn">Data.Time.Clock.POSIX</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
+    <span class="n">time_local_with_microseconds</span> <span class="ow">&lt;-</span> <span class="n">getZonedTime</span>
+    <span class="n">time_UTC_with_microseconds</span> <span class="ow">&lt;-</span> <span class="n">getCurrentTime</span>
+    <span class="n">print</span> <span class="n">time_local_with_microseconds</span>
+    <span class="n">print</span> <span class="n">time_UTC_with_microseconds</span>
+</code></pre></div>
 <p>Классический вывод текущего времени с датой вида:</p>
 <pre>
 2012-04-27 21:51:06.927989 AMT
@@ -164,21 +163,21 @@ main = do
 </pre>
 
 <p>Кстати, временнУю зону можно получить так:</p>
-<hs>
-main = do
-    time_zone &lt;- getCurrentTimeZone
-    print time_zone
-</hs>
+
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
+    <span class="n">time_zone</span> <span class="ow">&lt;-</span> <span class="n">getCurrentTimeZone</span>
+    <span class="n">print</span> <span class="n">time_zone</span>
+</code></pre></div>
 <p>Возвращает международный код временнОй зоны, в моём случае - AMT (армянское время, UTC + 4).</p>
 
 <p>А вот так мы получаем названия текущих месяца и дня недели:</p>
-<hs>
-main = do
-    clock_time &lt;- getClockTime
-    calendar_time &lt;- toCalendarTime clock_time
-    print (ctMonth calendar_time)
-    print (ctWDay calendar_time)
-</hs>
+
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
+    <span class="n">clock_time</span> <span class="ow">&lt;-</span> <span class="n">getClockTime</span>
+    <span class="n">calendar_time</span> <span class="ow">&lt;-</span> <span class="n">toCalendarTime</span> <span class="n">clock_time</span>
+    <span class="n">print</span> <span class="p">(</span><span class="n">ctMonth</span> <span class="n">calendar_time</span><span class="p">)</span>
+    <span class="n">print</span> <span class="p">(</span><span class="n">ctWDay</span> <span class="n">calendar_time</span><span class="p">)</span>
+</code></pre></div>
 <p>Вывод:</p>
 <pre>
 April
@@ -186,11 +185,11 @@ Friday
 </pre>
 
 <p>Ну и POSIX-время:</p>
-<hs>
-main = do
-    canonical_POSIX_with_microseconds &lt;- getPOSIXTime
-    print canonical_POSIX_with_microseconds
-</hs>
+
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
+    <span class="n">canonical_POSIX_with_microseconds</span> <span class="ow">&lt;-</span> <span class="n">getPOSIXTime</span>
+    <span class="n">print</span> <span class="n">canonical_POSIX_with_microseconds</span>
+</code></pre></div>
 <p>Вывод будет такой:</p>
 <pre>
 1335552608.411988s

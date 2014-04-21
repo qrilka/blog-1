@@ -146,20 +146,20 @@
         <p>Итак, опять эта ошибка… Я уж думал, что никогда больше не наступлю на эти грабли, однако вездесущий copy-paste опять сыграл со мною свою гадкую шутку…</p>
 
 <p>Итак, кусочек кода из Style Revisor, разбирающего Objective-C-шную конструкцию <strong>for…in</strong> :</p>
-<cpp>
-// ...
-        auto open_round_bracket_it( formatable.begin() + open_round_bracket_position );
-        open_round_bracket_it -= multibyte_ASCII_offset(   formatable.begin()
-                                                         , open_round_bracket_it
-                                                         , traits );
 
-        from_begin_to_variable_expr.erase(   from_begin_to_variable_expr.begin()
-                                           , open_round_bracket_it );
+<div class="highlight"><pre><code class="cpp"><span class="c1">// ...</span>
+        <span class="k">auto</span> <span class="nf">open_round_bracket_it</span><span class="p">(</span> <span class="n">formatable</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="n">open_round_bracket_position</span> <span class="p">);</span>
+        <span class="n">open_round_bracket_it</span> <span class="o">-=</span> <span class="n">multibyte_ASCII_offset</span><span class="p">(</span>   <span class="n">formatable</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span>
+                                                         <span class="p">,</span> <span class="n">open_round_bracket_it</span>
+                                                         <span class="p">,</span> <span class="n">traits</span> <span class="p">);</span>
+
+        <span class="n">from_begin_to_variable_expr</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span>   <span class="n">from_begin_to_variable_expr</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span>
+                                           <span class="p">,</span> <span class="n">open_round_bracket_it</span> <span class="p">);</span>
         
-        replacer += first_with_comments
-                    + from_begin_to_variable_expr;
-// ...
-</cpp>
+        <span class="n">replacer</span> <span class="o">+=</span> <span class="n">first_with_comments</span>
+                    <span class="o">+</span> <span class="n">from_begin_to_variable_expr</span><span class="p">;</span>
+<span class="c1">// ...</span>
+</code></pre></div>
 <p>Ну и глючит это хозяйство, причём “нипадецки”: вылезли какие-то дичайшие сдвиги строк в файле, причём с поломкой кодировки.</p>
 
 <p>Ну и в чём же причина? Да проста как две копейки! Алгоритму <strong>erase</strong> в качестве второго аргумента передаётся итератор, указывающий на <em>другую</em> строку.</p>

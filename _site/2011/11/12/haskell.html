@@ -146,11 +146,11 @@
         <p>Итак, понадобилось нам узнать операционную систему и архитектуру компьютера, на котором выполняется программа. Зачастую, кстати, это очень нужная информация. Выведем имя ОС и архитектуры через запятую, чтоб красивше было.</p>
 
 <p>Решение на Haskell:</p>
-<hs>
-import System.Info
 
-main = print (os ++ ", " ++ arch)
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kr">import</span> <span class="nn">System.Info</span>
+
+<span class="nf">main</span> <span class="ow">=</span> <span class="n">print</span> <span class="p">(</span><span class="n">os</span> <span class="o">++</span> <span class="s">&quot;, &quot;</span> <span class="o">++</span> <span class="n">arch</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Вывод на моём компьютере:</p>
 <pre>

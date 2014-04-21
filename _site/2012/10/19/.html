@@ -146,14 +146,14 @@
         <p>Навеяло… Прочитал тут одну статью (желающие могут ознакомиться <strong><a href="http://habrahabr.ru/post/147927/">здесь</a></strong>), про парадигму ООП. Вы, очевидно, в курсе, что парадигма ООП в последние годы подвергается серьёзной критике. Дошло уже до того, что сама идея объекта названа фундаментально ошибочной. Ну и, как обычно, критика сия порождает тонны холиваров как в РуНете, так и во всём остальном Нете.</p>
 
 <p>А я взглянул на это с другой стороны…. Вот, скажем, такой код:</p>
-<cpp>
-sregex part_1_regex( traits_of_file const&amp; traits ) {
-    return convert( "sizeof" ).based_on( traits )
-           &gt;&gt; indent()
-           &gt;&gt; convert( "(" ).based_on( traits )
-           &gt;&gt; indent();
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">sregex</span> <span class="nf">part_1_regex</span><span class="p">(</span> <span class="n">traits_of_file</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">traits</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">convert</span><span class="p">(</span> <span class="s">&quot;sizeof&quot;</span> <span class="p">).</span><span class="n">based_on</span><span class="p">(</span> <span class="n">traits</span> <span class="p">)</span>
+           <span class="o">&gt;&gt;</span> <span class="n">indent</span><span class="p">()</span>
+           <span class="o">&gt;&gt;</span> <span class="n">convert</span><span class="p">(</span> <span class="s">&quot;(&quot;</span> <span class="p">).</span><span class="n">based_on</span><span class="p">(</span> <span class="n">traits</span> <span class="p">)</span>
+           <span class="o">&gt;&gt;</span> <span class="n">indent</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Как бы вы охарактеризовали его с точки зрения парадигм? Это что, ООП? Ну вроде бы да, ведь в функцию в качестве единственного аргумента передаётся объект типа <strong>traits_of_file</strong>. С другой стороны, в теле функции присутствует функтор, следовательно пахнет уже ФП. Кроме того, функции indent() возвращают объекты типа <strong>boost::xpressive::sregex</strong>, но мы не видим эти объекты, они присутствуют тут как бы незримо. И в довершении мы возвращаем безымянный объект того же типа <strong>boost::xpressive::regex</strong>…</p>
 
 <p>Можно было бы сказать: “Здесь имеют место различные парадигмы”. И это действительно так, мы видим тут три парадигмы (включая старую добрую процедурную), но я подумал о другом… Друзья, а какая, собственно, разница? Какая разница, ООП тут, или ФП, или ещё чего-нибудь? Зачем вообще нужны эти дополнительные характеристики?</p>

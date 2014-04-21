@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://denisshevchenko.github.io/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/" />
-<updated>2014-04-21T12:48:14+04:00</updated>
+<updated>2014-04-21T13:35:00+04:00</updated>
 <id>http://denisshevchenko.github.io/blog/</id>
 <author>
   <name>Денис Шевченко</name>
@@ -149,19 +149,18 @@
   <content type="html">&lt;!--break--&gt;
 &lt;p&gt;Итак, есть у нас следующий код:&lt;/p&gt;
 
-&lt;cpp&gt;
-class worker {
-    unsigned int m_id;
-public:
-    unsigned int get_id() const {
-        return m_id;
-    }
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;worker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     
-    void set_id( unsigned int new_id ) {
-        m_id = new_id;
-    }
-};
-&lt;/cpp&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;set_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;m_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Перед нами - канонические геттер и сеттер. Первый &lt;em&gt;просто&lt;/em&gt; возвращает значение идентификатора рабочего, второй - &lt;em&gt;просто&lt;/em&gt; устанавливает это значение.&lt;/p&gt;
 
@@ -169,68 +168,65 @@ public:
 
 &lt;p&gt;Сравним:&lt;/p&gt;
 
-&lt;cpp&gt;
-struct worker {
-    unsigned int id;
-};
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Суть не изменилась, а код стал короче и проще.&lt;/p&gt;
 
 &lt;p&gt;Зачем мне прятать поле и при этом предоставлять две функции, открывающие доступ к нему? Это бессмысленно. К тому же на каждое поле мне придётся предоставлять по паре геттер-сеттер, и в большинстве случаев это будет два объявления и две реализации. Сравните это:&lt;/p&gt;
 
-&lt;cpp&gt;
-class worker {
-    unsigned int m_id;
-    std::string m_name;
-    std::string m_section;
-public:
-    unsigned int get_id() const;
-    void set_id( unsigned int new_id );
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;worker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;set_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-    std::string get_name() const;
-    void set_name( const std::string&amp;amp; new_name );
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;set_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-    std::string get_section() const;
-    void set_section( const std::string&amp;amp; new_section );
-};
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;set_section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_section&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 
-// Где-то в .cpp-шнике
+&lt;span class=&quot;c1&quot;&gt;// Где-то в .cpp-шнике&lt;/span&gt;
 
-unsigned int worker::get_id() const {
-    return m_id;
-}
+&lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     
-void worker::set_id( unsigned int new_id ) {
-    m_id = new_id;
-}
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;m_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-std::string worker::get_name() const {
-    return m_name;
-}
+&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     
-void worker::set_name( const std::string&amp;amp; new_name ) {
-    m_name = new_name;
-}
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;m_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-std::string worker::get_section() const {
-    return m_section;
-}
+&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     
-void worker::set_section( const std::string&amp;amp; new_section ) {
-    m_section = new_section;
-}
-&lt;/cpp&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_section&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;m_section&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;и это:&lt;/p&gt;
 
-&lt;cpp&gt;
-struct worker {
-    unsigned int id;
-    std::string name;
-    std::string section;
-};
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;worker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Фундаментальная проблема канонических геттеров и сеттеров в том, что они раздувают мой код и привносят в него ненужную сложность, при этом ничего не давая мне взамен. А почему же этих геттеров и сеттеров полно в 99% всех C++-проектов? Виной тому - маниакальная страсть закрывать поля просто потому, что “в соответствии с принципом инкапсуляции данные должны быть сокрыты”.&lt;/p&gt;
 
@@ -309,11 +305,10 @@ struct worker {
 
 &lt;p&gt;Итак, C++:&lt;/p&gt;
 
-&lt;cpp&gt;
-int main() {
-    int код = 1;
-    std::cerr &amp;lt;&amp;lt; код &amp;lt;&amp;lt; std::endl;
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;код&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cerr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;код&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;К счастью, или к сожалению, сей код не компилируется, и ошибка компиляции вполне ожидаемая:&lt;/p&gt;
 
@@ -323,29 +318,26 @@ stray &#39;\320&#39; in program
 
 &lt;p&gt;А теперь, ради эксперимента, попробуем на Haskell:&lt;/p&gt;
 
-&lt;hs&gt;
-больше_чем :: Integer -&amp;gt; Integer -&amp;gt; Bool
-больше_чем a b = a &amp;gt; b
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;err&quot;&gt;больше&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;чем&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Bool&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;больше&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;чем&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
 
-main = print( 10 `больше_чем` 2 )
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;больше&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;чем&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Вы не поверите, но это компилируется и работает! Не знаю, хорошо это или плохо, но русскоязычное имя функции допустимо, в том числе и в инфиксной форме, как здесь.&lt;/p&gt;
 
 &lt;p&gt;Кроме того, я могу использовать русские буквы в имени типа:&lt;/p&gt;
 
-&lt;hs&gt;
-data IP_адрес = IP_адрес String
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IP_&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;адрес&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IP_&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;адрес&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;И это тоже работает! А как вам такое:&lt;/p&gt;
 
-&lt;hs&gt;
-type Строка = String
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Строка&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
 
-class Машина a where
-    номер :: a -&amp;gt; Строка
-&lt;/hs&gt;
+&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Машина&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;номер&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Строка&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Я чуть со стула не упал! Друзья, я не поверил своим глаза (как, вероятно, не верите и вы), но это работает! Ещё сегодня утром я был бы готов поспорить, что такое невозможно. Но, как видим, и невозможное возможно…&lt;/p&gt;
 
@@ -410,42 +402,38 @@ class Машина a where
 
 &lt;p&gt;Определим функцию деления двух чисел:&lt;/p&gt;
 
-&lt;hs&gt;
-divide :: Double -&amp;gt; Double -&amp;gt; Double
-divide arg1 arg2 = arg1 / arg2
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt;
 
-main =
-    putStrLn (show (divide 10.03 2.1))
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Итак, мы определили функцию, принимающую два значения типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt; и возвращающую результат деления первого на второе. Всё предельно просто, не так ли? На самом деле, не так…&lt;/p&gt;
 
 &lt;p&gt;Если мы посмотрим “пот капот” вызова этой функции:&lt;/p&gt;
 
-&lt;hs&gt;
-divide 10.03 2.1
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;то узнаем, что вызов этой функции происходит &lt;em&gt;в два этапа&lt;/em&gt;:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Функция &lt;code&gt;divide&lt;/code&gt; применяется к первому аргументу &lt;code&gt;10.03&lt;/code&gt;, вычисляется и возвращает &lt;em&gt;функцию&lt;/em&gt; типа &lt;code&gt;Double -&amp;gt; Double&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Функция &lt;code&gt;divide&lt;/code&gt; применяется к первому аргументу &lt;code&gt;10.03&lt;/code&gt;, вычисляется и возвращает *функцию* типа &lt;code&gt;Double -&amp;gt; Double&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;Эта возвращённая функция применяется ко второму аргументу &lt;code&gt;2.1&lt;/code&gt;, вычисляется и возвращает конечное значение 4.776190476190476.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;На самом деле мы могли бы более явно отразить эту “двуэтапность”, переписав вызов так:&lt;/p&gt;
 
-&lt;hs&gt;
-(divide 10.03) 2.1
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Понимаете, да? Функция всегда применяется только к одному аргументу: сначала к 10.03, а потом возвращённая первым вызовом функция применяется к 2.1.&lt;/p&gt;
 
 &lt;p&gt;Именно поэтому строка объявления такой функции содержит &lt;em&gt;две&lt;/em&gt; стрелочки вместо одной:&lt;/p&gt;
 
-&lt;hs&gt;
-divide :: Double -&amp;gt; Double -&amp;gt; Double
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Мы помним, что символ стрелочки говорит нам о функции. Так вот здесь мы видим &lt;em&gt;две&lt;/em&gt; стрелочки именно потому, что вызов этой функции происходит в два этапа. И поэтому, строго говоря, неправильно читать это объявление так:&lt;/p&gt;
 
@@ -457,33 +445,29 @@ divide :: Double -&amp;gt; Double -&amp;gt; Double
 
 &lt;p&gt;Более того, это правильное прочтение объявления можно было бы отразить явно и в самом объявлении! Вот так:&lt;/p&gt;
 
-&lt;hs&gt;
-divide :: Double -&amp;gt; (Double -&amp;gt; Double)
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Теперь мы явно видим, что на первом этапе происходит вызов функции от одного аргумента, возвращающей функцию типа &lt;strong&gt;&lt;code&gt;Double -&amp;gt; Double&lt;/code&gt;&lt;/strong&gt;, а на втором этапе происходит уже вызов этой (возвращённой на первом этапе) функции.&lt;/p&gt;
 
 &lt;p&gt;По аналогии, если бы у нас была функция, принимающая три аргумента:&lt;/p&gt;
 
-&lt;hs&gt;
-total_sum :: Double -&amp;gt; Double -&amp;gt; Double -&amp;gt; Double
-total_sum arg1 arg2 arg3 = arg1 + arg2 + arg3
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg3&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg3&lt;/span&gt;
 
-main =
-    putStrLn (show (total_sum 10.03 2.1 45.7))
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;45.7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;то её вызов на самом деле проходил бы &lt;em&gt;в три этапа&lt;/em&gt;, и чтобы явно отразить это, мы могли бы переписать её объявление так:&lt;/p&gt;
 
-&lt;hs&gt;
-total_sum :: Double -&amp;gt; (Double -&amp;gt; (Double -&amp;gt; Double))
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;а её вызов - так:&lt;/p&gt;
 
-&lt;hs&gt;
-((total_sum 10.03) 2.1) 45.7
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;45.7&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;А теперь нам нужно уточнить одну важную деталь.&lt;/p&gt;
 
@@ -495,33 +479,30 @@ total_sum :: Double -&amp;gt; (Double -&amp;gt; (Double -&amp;gt; Double))
 
 &lt;p&gt;Представим себе, что наша функция &lt;code&gt;divide&lt;/code&gt; была бы апплицирована (применена) не к двум, а только к одному аргументу. Тогда это выглядело бы так:&lt;/p&gt;
 
-&lt;hs&gt;
-main = 
-    let temporary_function = divide 10.03 -- &quot;запомнили&quot; первый
-    in 
-    putStrLn (show (temporary_function 2.1)) -- получили второй!
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temporary_function&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- &amp;quot;запомнили&amp;quot; первый&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temporary_function&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- получили второй!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Вот теперь всё встало на свои места. Здесь наглядно показано, что же на самом деле означает вызов вида:&lt;/p&gt;
 
-&lt;hs&gt;
-(divide 10.03) 2.1
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;В результате первого вызова, когда мы применили функцию &lt;code&gt;divide&lt;/code&gt; лишь к одному (первому) аргументу, мы ещё не можем получить результат деления, потому что второго-то аргумента мы функции ещё не дали! Вместо этого мы получили как бы временную (промежуточную) λ-функцию, которую мы для наглядности ассоциировали с выражением &lt;code&gt;temporary_function&lt;/code&gt;. Эта временная λ-функция как бы запомнила значение первого аргумента, и когда мы применили её уже ко второму аргументу, то в результате мы уже получили итоговый результат деления.&lt;/p&gt;
 
 &lt;p&gt;По аналогии, вызов нашей функции &lt;code&gt;total_sum&lt;/code&gt;, который, как мы помним, происходит в три этапа, можно разложить так:&lt;/p&gt;
 
-&lt;hs&gt;
-total_sum :: Double -&amp;gt; Double -&amp;gt; Double -&amp;gt; Double
-total_sum arg1 arg2 arg3 = arg1 + arg2 + arg3
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg3&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg3&lt;/span&gt;
 
-main =
-    let first_function = total_sum 1.0 -- &quot;запомнили&quot; первый
-        second_function = first_function 2.0 -- &quot;запомнили&quot; второй
-    in
-    putStrLn (show (second_function 3.0)) -- получили третий!
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_function&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- &amp;quot;запомнили&amp;quot; первый&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;second_function&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_function&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- &amp;quot;запомнили&amp;quot; второй&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second_function&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- получили третий!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;То есть в процессе вызова у нас появилось уже две промежуточные λ-функции, каждая из которых принимала лишь один аргумент и как бы запоминала его. И только тогда, когда вторая промежуточная λ-функция была апплицирована к третьему аргументу (который и оказался последним необходимым для нас), мы и получаем итоговую сумму.&lt;/p&gt;
 
@@ -537,70 +518,67 @@ main =
 
 &lt;p&gt;А чтобы разобраться в том, как всё это работает на практике, и понять реальную пользу от ФВП, давайте разберём небольшой пример.&lt;/p&gt;
 
-&lt;hs&gt;
-type Login = String
-type Password = String
-type AvatarURL = String
-type UserId = Integer
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Integer&lt;/span&gt;
 
-user_info :: Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
-user_info login password avatar_URL user_id =
-    &quot;Full info about user @&quot; ++ (show user_id) ++ &quot;:&quot; ++
-    &quot;\n login: &quot; ++ login ++
-    &quot;\n password: &quot; ++ password ++
-    &quot;\n avatar URL: &quot; ++ avatar_URL
+&lt;span class=&quot;nf&quot;&gt;user_info&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;user_info&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;login&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;avatar_URL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&amp;quot;Full info about user @&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; login: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;login&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; password: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; avatar URL: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;avatar_URL&lt;/span&gt;
 
-type EmptyInfo = Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
-type WithLogin = Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
-type AndWithPassword = AvatarURL -&amp;gt; UserId -&amp;gt; String
-type AndWithAvatarURL = UserId -&amp;gt; String
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;EmptyInfo&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithAvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
 
-store_login_in :: EmptyInfo -&amp;gt; UserId -&amp;gt; WithLogin
-store_login_in empty_info user_id =
-    empty_info &quot;denis&quot;
-    -- В реальности логин будет получен 
-    -- в соответствии с переданным user_id
+&lt;span class=&quot;nf&quot;&gt;store_login_in&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;EmptyInfo&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;store_login_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;empty_info&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;empty_info&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;denis&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;-- В реальности логин будет получен &lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;-- в соответствии с переданным user_id&lt;/span&gt;
 
-store_password_in :: WithLogin -&amp;gt; UserId -&amp;gt; AndWithPassword
-store_password_in info_with_login user_id =
-    info_with_login &quot;123456789abc&quot;
-    -- В реальности пароль будет получен 
-    -- в соответствии с переданным user_id
+&lt;span class=&quot;nf&quot;&gt;store_password_in&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;store_password_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;123456789abc&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;-- В реальности пароль будет получен &lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;-- в соответствии с переданным user_id&lt;/span&gt;
 
-store_avatar_URL_in :: AndWithPassword -&amp;gt; UserId -&amp;gt; AndWithAvatarURL
-store_avatar_URL_in info_with_password user_id =
-    info_with_password &quot;http://dshevchenko.biz/denis_avatar.png&quot;
-    -- В реальности URL будет получен 
-    -- в соответствии с переданным user_id
+&lt;span class=&quot;nf&quot;&gt;store_avatar_URL_in&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithAvatarURL&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;store_avatar_URL_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://dshevchenko.biz/denis_avatar.png&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;-- В реальности URL будет получен &lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;-- в соответствии с переданным user_id&lt;/span&gt;
 
-main =
-    let user_id = 1234
-        info_with_login = store_login_in user_info 
-                                         user_id
-        info_with_password = store_password_in info_with_login 
-                                               user_id
-        info_with_avatar_URL = store_avatar_URL_in info_with_password 
-                                                   user_id
-        full_info_about_user = info_with_avatar_URL user_id
-    in
-    putStrLn full_info_about_user
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1234&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_login_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_info&lt;/span&gt; 
+                                         &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_password_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; 
+                                               &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;info_with_avatar_URL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_avatar_URL_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; 
+                                                   &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;full_info_about_user&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_avatar_URL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;full_info_about_user&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Красиво, не так ли? Давайте разберём это хозяйство по косточкам…&lt;/p&gt;
 
 &lt;p&gt;Во-первых, новая для нас конструкция вида:&lt;/p&gt;
 
-&lt;hs&gt;
-type Login = String
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Очевидно, вы уже догадались, что это всего лишь добавление псевдонима для (уже известного) типа. Теперь вместо типа &lt;strong&gt;&lt;code&gt;String&lt;/code&gt;&lt;/strong&gt; можно использовать идентификатор &lt;code&gt;Login&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Далее мы определили простую функцию вида:&lt;/p&gt;
 
-&lt;hs&gt;
-user_info :: Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;user_info&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Тут всё просто: функция &lt;code&gt;user_info&lt;/code&gt; ожидает на вход логин, пароль, адрес аватара и идентификатор пользователя, а на выходе выдаёт некую результирующую строку.&lt;/p&gt;
 
@@ -608,56 +586,50 @@ user_info :: Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp
 
 &lt;p&gt;Обратите внимание на следующие псевдонимы:&lt;/p&gt;
 
-&lt;hs&gt;
-type EmptyInfo = Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
-type WithLogin = Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
-type AndWithPassword = AvatarURL -&amp;gt; UserId -&amp;gt; String
-type AndWithAvatarURL = UserId -&amp;gt; String
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;EmptyInfo&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithAvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Каждый из них вводит упрощающее имя для функционального типа, образованного от типа функции &lt;code&gt;user_info&lt;/code&gt;. Обратите внимание: каждый последующий тип ожидает на один аргумент меньше, чем предыдущий тип. Чтобы было понятнее, изобразим это с соответствующими сдвигами:&lt;/p&gt;
 
-&lt;hs&gt;
-EmptyInfo = Login -&amp;gt; Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
-WithLogin =          Password -&amp;gt; AvatarURL -&amp;gt; UserId -&amp;gt; String
-AndWithPassword =                AvatarURL -&amp;gt; UserId -&amp;gt; String
-AndWithAvatarURL =                            UserId -&amp;gt; String
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kt&quot;&gt;EmptyInfo&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;          &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;                &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;AndWithAvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;                            &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Каждый из этих псевдонимов задаёт сигнатуру для (очередной) промежуточной λ-функции, и нужно это, как вы уже догадались, для упомянутого выше частичного применения функции &lt;code&gt;user_info&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Рассмотрим первый вызов:&lt;/p&gt;
 
-&lt;hs&gt;
-        info_with_login = store_login_in user_info 
-                                         user_id
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;        &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_login_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_info&lt;/span&gt; 
+                                         &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Здесь мы передаём функцию &lt;code&gt;user_info&lt;/code&gt; в качестве первого аргумента функции &lt;code&gt;store_login_in&lt;/code&gt;, внутри которой мы апплицируем переданную функцию &lt;code&gt;user_info&lt;/code&gt; к единственному аргументу, а именно к логину (потому что функция &lt;code&gt;store_login_in&lt;/code&gt; знает только о том, откуда и как получить логин). Соответственно, на выходе из функции &lt;code&gt;store_login_in&lt;/code&gt; мы получаем первую промежуточную λ-функцию, в которой мы как бы сохранили (store) значение логина (именно поэтому сигнатура этой λ-функции названа &lt;code&gt;WithLogin&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;Далее следует вызов:&lt;/p&gt;
 
-&lt;hs&gt;
-        info_with_password = store_password_in info_with_login 
-                                               user_id
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;        &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_password_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; 
+                                               &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Здесь мы передаём нашу промежуточную λ-функцию (в которой мы как бы сохранили значение логина) в качестве первого аргумента функции &lt;code&gt;store_password_in&lt;/code&gt;. Эта функция, в свою очередь, апплицирует переданную ей λ-функцию к единственному аргументу, а именно к паролю (ибо функция &lt;code&gt;store_password_in&lt;/code&gt;, как вы уже поняли, умеет доставать только пароль). Таким образом, на выходе из функции &lt;code&gt;store_password_in&lt;/code&gt; мы имеем вторую промежуточную λ-функцию, в которой как бы сохранены уже два значения (полученный на предыдущем вызове логин и на этом вызове - пароль), именно поэтому сигнатура этой λ-функции носит имя &lt;code&gt;AndWithPassword&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;То же самое справедливо и для следующего вызова:&lt;/p&gt;
 
-&lt;hs&gt;
-        info_with_avatar_URL = store_avatar_URL_in info_with_password 
-                                                   user_id
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;        &lt;span class=&quot;n&quot;&gt;info_with_avatar_URL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_avatar_URL_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; 
+                                                   &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;На выходе из функции &lt;code&gt;store_avatar_URL_in&lt;/code&gt; мы получаем третью λ-функцию, в которой как бы сохранены уже три значения: логин, пароль и путь к аватару.&lt;/p&gt;
 
 &lt;p&gt;В итоге всё завершается апплицированием этой третьей λ-функции к последнему нужному аргументу, а именно к идентификатору пользователя:&lt;/p&gt;
 
-&lt;hs&gt;
-        full_info_about_user = info_with_avatar_URL user_id
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;        &lt;span class=&quot;n&quot;&gt;full_info_about_user&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_avatar_URL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Именно здесь и происходит наконец “полноценный” вызов функции &lt;code&gt;user_info&lt;/code&gt;, в результате которого мы получаем и выводим на экран результирующую строку следующего вида:&lt;/p&gt;
 
@@ -690,64 +662,57 @@ Full info about user @1234:
   <content type="html">&lt;!--break--&gt;
 &lt;p&gt;Как мы уже знаем, вызов чистой функции выглядит так:&lt;/p&gt;
 
-&lt;hs&gt;
-name arg1 arg2 ... argN
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argN&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Это соответствует идее апплицирования: мы применяем функцию &lt;code&gt;name&lt;/code&gt; к списку аргументов. Однако в математике существует и другая модель функции, а именно инфиксная модель. Если вы никогда не слышали это слово - не беспокойтесь, вы постоянно используете эту модель. Классический пример:&lt;/p&gt;
 
-&lt;hs&gt;
-1 + 2
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;В данном случае у нас есть функция сложения, отражённая символом &lt;code&gt;+&lt;/code&gt;, которая принимает на вход два аргумента. Но если бы мы хотели записать этот вызов неинфиксным, классическим способом, то получилось бы вот что:&lt;/p&gt;
 
-&lt;hs&gt;
-(+) 1 2
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Всё как обычно: мы апплицируем функцию &lt;code&gt;(+)&lt;/code&gt; к двум аргументам. Однако предыдущая форма записи гораздо привычнее для нас, и при этом она значительно читабельнее.&lt;/p&gt;
 
 &lt;p&gt;Так вот и наши собственные функции можно вызывать как классическим способом, так и инфиксным. Например:&lt;/p&gt;
 
-&lt;hs&gt;
-full_address :: String -&amp;gt; Int -&amp;gt; String
-full_address host port = 
-    host ++ &quot;:&quot; ++ (show port)
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;full_address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;full_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-main =
-    do putStrLn (full_address host port)
-    where host = &quot;127.0.0.1&quot;
-          port = 80
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;full_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Здесь мы определили функцию, принимающую строку, соответствующую IP-адресу, и целое число, соответствующее порту, и возвращающую строку с полным адресом (включающую хост и порт вместе). Как видите, мы вызвали её классическим способом. Но мы можем вызвать её и инфиксным способом. Для этого достаточно при вызове заключить имя функции в обратные одинарные кавычки (этот символ располагается обычно на клавише с тильдой). Выглядит это так:&lt;/p&gt;
 
-&lt;hs&gt;
-main =
-    do putStrLn (host `full_address` port)
-    where host = &quot;127.0.0.1&quot;
-          port = 80
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;full_address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;В инфиксной форме мы, как и со знаком сложения, заключаем имя функции &lt;em&gt;между&lt;/em&gt; аргументами.&lt;/p&gt;
 
 &lt;p&gt;Давайте переименуем функцию для бОльшей литературности:&lt;/p&gt;
 
-&lt;hs&gt;
-with :: String -&amp;gt; Int -&amp;gt; String
-with host port = 
-    host ++ &quot;:&quot; ++ (show port)
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;В этом случае инфиксная запись будет выглядеть значительно более привлекательно:&lt;/p&gt;
 
-&lt;hs&gt;
-main =
-    do putStrLn (host `with` port)
-    where host = &quot;127.0.0.1&quot;
-          port = 80
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Довольно-таки симпатишно вышло. &lt;/p&gt;
 
@@ -818,14 +783,13 @@ Updating documentation index /Users/dshevchenko/Library/Haskell/doc/index.html
 
 &lt;p&gt;Открываем конфигурационный &lt;code&gt;.cabal&lt;/code&gt;-файл (помните про такой, не так ли?), находящийся в корне нашего проекта, и дописываем наш только что установленный пакет:&lt;/p&gt;
 
-&lt;hs&gt;
-executable Haskell
-    main-is:         main.hs            
-    other-modules:   Haq
-    hs-source-dirs:  src 
-                     src/utils
-    build-depends:   base == 4.6.*, filemanip
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;executable&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Haskell&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;            
+    &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;modules&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;kt&quot;&gt;Haq&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;src&lt;/span&gt; 
+                     &lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utils&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depends&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;4.6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filemanip&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Как видите, мы просто дописали в параметр &lt;code&gt;build-depends&lt;/code&gt; название нового пакета. Обратите внимание, что имена пакетов в этом параметре указываются через запятую, это важно.&lt;/p&gt;
 
@@ -845,9 +809,8 @@ src/main.hs:3:8:
 
 &lt;p&gt;А теперь открываем наш файл (например, &lt;code&gt;main.hs&lt;/code&gt;) и дописываем в его верхней части следующую строку:&lt;/p&gt;
 
-&lt;hs&gt;
-import System.FilePath.Find
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.FilePath.Find&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Этой инструкцией мы импортировали конкретный модуль из установленного пакета. Теперь мы сможем использовать содержимое этого модуля в нашем проекте.&lt;/p&gt;
 
@@ -892,48 +855,42 @@ cabal build
 
 &lt;p&gt;Начинается всё с объявления функции:&lt;/p&gt;
 
-&lt;hs&gt;
-simple_sum :: Int -&amp;gt; Int
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Перед нами - объявление выражения. До символа &lt;code&gt;::&lt;/code&gt; указывается имя выражения, а после - тип выражения. &lt;/p&gt;
 
-&lt;hs&gt;
-simple_sum :: Int -&amp;gt; Int
-|        |    |        |
-   имя           тип
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+   &lt;span class=&quot;err&quot;&gt;имя&lt;/span&gt;           &lt;span class=&quot;err&quot;&gt;тип&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Итак, перед нами выражение с именем &lt;code&gt;simple_sum&lt;/code&gt;, имеющее тип функции. Пусть вас не смущают эти слова: в Haskell функция - это тоже тип. Но откуда же мы знаем, что тип этого выражения представляет собой именно функцию? Давайте рассмотрим описание типа подробнее:&lt;/p&gt;
 
-&lt;hs&gt;
-Int -&amp;gt; Int
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Обратите внимание на стрелочку. Именно эта стрелочка и говорит нам о том, что перед нами функция. Слева от неё указан тип единственного аргумента функции (в данном случае это стандартный тип &lt;strong&gt;&lt;code&gt;Int&lt;/code&gt;&lt;/strong&gt;), а справа от неё - тип выходного выражения (тот же &lt;strong&gt;&lt;code&gt;Int&lt;/code&gt;&lt;/strong&gt;). Саму же стрелочку можно воспринимать как ментальное указание на поток информации через функцию - от входа к выходу, слева направо.&lt;/p&gt;
 
 &lt;p&gt;В силу того, что чистая функция в Haskell является математической, невозможно написать аналоги вот таких C-шных функций:&lt;/p&gt;
 
-&lt;cpp&gt;
-void f();
-int f();
-void f( int i );
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Чистая функция в Haskell обязана иметь входной аргумент (хотя бы один) и выходное значение. Почему? Потому что это отражает суть математической функции: что-то &lt;em&gt;обязательно&lt;/em&gt; подаём на вход и что-то &lt;em&gt;обязательно&lt;/em&gt; получаем на выходе.&lt;/p&gt;
 
 &lt;p&gt;Кстати, о количестве аргументнов. Разумеется, чистая функция может принимать несколько аргументов. В этом случае её тип будет выглядеть так:&lt;/p&gt;
 
-&lt;hs&gt;
-Int -&amp;gt; Int -&amp;gt; Int
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Я понимаю, выглядит чуток странно, но читать это очень просто: ищем последнюю по счёту (самую правую) стрелочку - она-то и будет тем самым разделителем: слева от неё идёт список типов аргументов, справа - тип возвращаемого выражения:&lt;/p&gt;
 
-&lt;hs&gt;
-Int -&amp;gt; Int -&amp;gt; Int -&amp;gt; Int
-типы аргументов  |  | тип того, что будет на выходе 
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;типы&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;аргументов&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;тип&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;того&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;что&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;будет&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;на&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;выходе&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Итак, с объявлением разобрались. Идём дальше.&lt;/p&gt;
 
@@ -943,22 +900,19 @@ Int -&amp;gt; Int -&amp;gt; Int -&amp;gt; Int
 
 &lt;p&gt;Итак, сразу после объявления пишем тело функции:&lt;/p&gt;
 
-&lt;hs&gt;
-simple_sum :: Int -&amp;gt; Int
-simple_sum value = value + value
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Рассмотрим его подробнее:&lt;/p&gt;
 
-&lt;hs&gt;
-simple_sum value = value + value
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Здесь ментальным разделителем является знак равенства. Напоминаю, что в Haskell нет оператора присваивания, поэтому знак равенства здесь - это именно &lt;em&gt;знак равенства&lt;/em&gt;, как в математике. Скелет данного выражения можно представить так:&lt;/p&gt;
 
-&lt;hs&gt;
-name arguments = body_expression
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arguments&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;body_expression&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Здесь:&lt;/p&gt;
 
@@ -974,9 +928,8 @@ name arguments = body_expression
 
 &lt;p&gt;Теперь нашу функцию можно вызывать с аргументом 4 (или, как привычно говорить в мире ФП, апплицировать функцию к аргументу 4):&lt;/p&gt;
 
-&lt;hs&gt;
-main = putStrLn (show (simple_sum 4))
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;В ответ получаем ожидаемое значение:&lt;/p&gt;
 
@@ -996,51 +949,46 @@ main = putStrLn (show (simple_sum 4))
 
 &lt;p&gt;Чтобы стало понятнее, приведу пример:&lt;/p&gt;
 
-&lt;hs&gt;
-indicate :: String -&amp;gt; String
-indicate address = 
-    if address == &quot;127.0.0.1&quot;
-    then
-        &quot;localhost&quot;
-    else 
-        address
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;then&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt; 
+        &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Эта функция принимает единственный аргумент типа &lt;strong&gt;&lt;code&gt;String&lt;/code&gt;&lt;/strong&gt;, соответствующий некоему IP-адресу. В теле функции происходит проверка аргумента на равенство адресу “127.0.0.1”, в результате мы оказываемся в одной из двух логических ветвей. Если бы это была функция на C++, это выглядело бы примерно так:&lt;/p&gt;
 
-&lt;cpp&gt;
-std::string indicate( const std::string&amp;amp; address ) {
-    if( address == &quot;127.0.0.1&quot; ) {
-        return &quot;localhost&quot;;
-    } else {
-        return address;
-    }
-}
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indicate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Обратите внимание, что мы явно указали две точки выхода из функции. Но в Haskell это не нужно, потому что когда мы окажемся в одной из двух логических ветвей, то выражение, на котором мы окажемся, оно и будет возвращено.&lt;/p&gt;
 
 &lt;p&gt;А чтобы стало совсем понятно, перепишем тело этой функции для того, чтобы избавиться от выражения &lt;strong&gt;&lt;code&gt;if then else&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;hs&gt;
-indicate :: String -&amp;gt; String
-indicate &quot;127.0.0.1&quot; = &quot;localhost&quot;
-indicate address = address
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Мы вводим вместо одного тела два, для каждого из которых мы определяем свою зависимость. Мы как бы говорим: “Если входной аргумент будет равен “127.0.0.1”, то пусть возвращаемым функцией значением будет строка “localhost”, если же аргумент будет какой-либо другой, то пусть возвращаемым функцией значением будет сам этот аргумент.” Следовательно, когда компилятор увидит вызов этой функции в коде, он просто &lt;em&gt;подставит&lt;/em&gt; на место этого вызова соответствующее выражение: либо строку “localhost”, либо фактически переданный аргумент.&lt;/p&gt;
 
 &lt;p&gt;Теперь всё встало на свои места: явно определять точку выхода из чистой функции в Haskell не нужно потому, что конечное выражение в теле этой функции просто заменит собой вызов функции. То есть если написано так:&lt;/p&gt;
 
-&lt;hs&gt;
-main = putStrLn (indicate &quot;127.0.0.1&quot;)
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;то это то же самое, что было бы написано так:&lt;/p&gt;
 
-&lt;hs&gt;
-main = putStrLn &quot;localhost&quot;
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;потому что компилятор, вычислив внутренности функции, просто заменит место вызова конечным (итоговым) выражением.&lt;/p&gt;
 
@@ -1048,41 +996,37 @@ main = putStrLn &quot;localhost&quot;
 
 &lt;p&gt;Очень полезно бывает ввести некое локальное значение в теле функции, например, для избавления от дубляжа кода или от магических чисел. Например, у нас есть такая функция:&lt;/p&gt;
 
-&lt;hs&gt;
-prepare_length :: Double -&amp;gt; Double
-prepare_length line = 
-    line * 0.4959
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.4959&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Итак, мы готовим длину некой линии путём умножения её первоначальной длины на поправочный коэффициент. Но перед нами - магическое число, а это очень плохо. Добавлять комментарий - это не лучшее решение. Поэтому добавим локальное поясняющее выражение:&lt;/p&gt;
 
-&lt;hs&gt;
-prepare_length :: Double -&amp;gt; Double
-prepare_length line = 
-    line * coefficient
-    where coefficient = 0.4959
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.4959&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Красиво, не так ли? Ключевое слово &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt; вводит локальное выражение, которое можно использовать в теле функции. Разумеется, локальных выражений может быть несколько:&lt;/p&gt;
 
-&lt;hs&gt;
-prepare_length :: Double -&amp;gt; Double
-prepare_length line = 
-    line * coefficient - correction
-    where coefficient = 0.4959
-          correction = 0.0012
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.4959&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0012&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Есть ещё один способ ввести локальное вспомогательное выражение, с помощью ключевого слова &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt;. На примере нашей последней функции это выглядит так:&lt;/p&gt;
 
-&lt;hs&gt;
-prepare_length :: Double -&amp;gt; Double
-prepare_length line = 
-    let coefficient = 12.4959
-        correction = 0.0012
-    in
-    line * coefficient - correction
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.4959&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0012&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Общая модель такая: &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt; &lt;code&gt;bindings&lt;/code&gt; &lt;strong&gt;&lt;code&gt;in&lt;/code&gt;&lt;/strong&gt; &lt;code&gt;expression&lt;/code&gt;.&lt;/p&gt;
 
@@ -1092,14 +1036,13 @@ prepare_length line =
 
 &lt;p&gt;Во-вторых, выражение, введённое ключевым словом &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt;, всегда видимо в любой точке тела функции, в то время как выражение, введённое ключевым словом &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt;, может быть “супер-локальным”. Например:&lt;/p&gt;
 
-&lt;hs&gt;
-prepare_length :: Double -&amp;gt; Double
-prepare_length line = 
-    let coefficient = 12.4959
-        correction = 0.0012
-    in
-    line * coefficient - correction - (let s = 10.9 in s + 1) - s
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.4959&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0012&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.9&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Понимаю, пример несколько надуманный, но всё-таки… Здесь мы ввели выражение с именем &lt;code&gt;s&lt;/code&gt;, которое действует только внутри круглых скобок. Именно поэтому пример этот не скомпилируется, ведь второе выражение &lt;code&gt;s&lt;/code&gt; находится уже не в скобках, и поэтому компилятор вполне справедливо возмутится:&lt;/p&gt;
 
@@ -1115,12 +1058,11 @@ src/main.hs:43:61: Not in scope: `s&#39;
 
 &lt;p&gt;Общепринятой практикой является объявлять функцию и тут же определять её. И несмотря на то, что мы &lt;em&gt;можем&lt;/em&gt; написать так:&lt;/p&gt;
 
-&lt;hs&gt;
-prepare_length line = 
-    let coefficient = 12.4959
-    in
-    line * coefficient
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.4959&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;делать так не рекомендуется, поскольку определение функции становится как бы беднее, ведь сигнатура типов аргументов и возвращаемого выражения помогает лучше понять функцию.&lt;/p&gt;
 
@@ -1166,15 +1108,13 @@ prepare_length line =
 
 &lt;p&gt;Представим себе, что нам нужна функция, принимающая некое целочисленное значение и возвращающая квадрат этого значения. Причём функция именно в том самом, математическом смысле. Как бы мы могли это отобразить? Примерно так:&lt;/p&gt;
 
-&lt;cpp&gt;
-5 -&amp;gt; f -&amp;gt; 25
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Итак, подаём на вход значение 5, а на выходе получаем 25. Проще некуда. Но как же нам записать внутренности функции &lt;code&gt;f&lt;/code&gt;? Ну, например, так:&lt;/p&gt;
 
-&lt;cpp&gt;
-5 -&amp;gt; (x * x) -&amp;gt; 25
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Тут тоже всё ясно: поданный на вход аргумент умножается сам на себя. &lt;/p&gt;
 
@@ -1214,9 +1154,8 @@ x*x
 
 &lt;p&gt;Итак, вот наша функция в Haskell:&lt;/p&gt;
 
-&lt;hs&gt;
-\x -&amp;gt; x*x
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Ну, что я говорил? Прямое сходство. Ведь даже обратный слэш вначале подходит как нельзя лучше: рассматривайте его как “спинку” буквы λ. Фактически, единственное отличие - это замена точки стрелочкой, потому что символ ‘&lt;code&gt;-&amp;gt;&lt;/code&gt;’ присущ языку Haskell как признак (любой) функции. Нда-с, сразу чувствуется, что язык Haskell создал математик.&lt;/p&gt;
 
@@ -1226,17 +1165,15 @@ x*x
 
 &lt;p&gt;Идея λ-функции базируется на принципе “аппликации” (application), или “применения”. Это означает, что λ-функции не вызывают, а применяют (или, если хотите, прикладывают) к аргументу. Знаю, это звучит странновато для уха программистов из мира C, потому что там аргумент “прикладывают” к функции, но в математике договорились на таком определении. Поэтому запись вида:&lt;/p&gt;
 
-&lt;cpp&gt;
-f a
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;принято читать так: применение функции &lt;code&gt;f&lt;/code&gt; к аргументу &lt;code&gt;a&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Вот как это выглядит в Haskell:&lt;/p&gt;
 
-&lt;hs&gt;
-(\x -&amp;gt; x*x) 5
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Как видите, тут тоже прямое сходство с математической записью. Выражение в скобках - это уже знакомое нам λ-выражение. Оно “порождает” λ-функцию, которая сразу же применяется (прикладывается) к аргументу 5, результатом чего и явится значение 25.&lt;/p&gt;
 
@@ -1256,53 +1193,48 @@ f a
 
 &lt;p&gt;И потому работа с нашей функцией возведения в квадрат, применительно к языку C, могла бы выглядеть так:&lt;/p&gt;
 
-&lt;cpp&gt;
-int f( int i ) {
-    return i * i;
-}
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-int main() {
-    printf( &quot;%d&quot;, f( 5 ) );
-}
-&lt;/cpp&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;%d&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Мы подготовили нашу “глобальную подпрограмму”, в которую чуть позже зайдём через вызов (фактически - через разыменование указателя &lt;code&gt;f&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;А вот как это выглядело бы на Haskell:&lt;/p&gt;
 
-&lt;hs&gt;
-main =
-    putStrLn (show ((\x -&amp;gt; x * x) 5))
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Как видите, мы ничего не готовим заранее. Напротив, мы &lt;em&gt;создаём&lt;/em&gt; функцию (или, если хотите, функциональный объект) локально и непосредственно перед использованием. Создаём - и сразу апплицируем его к аргументу 5.&lt;/p&gt;
 
 &lt;p&gt;Для большей простоты и похожести на нашу функцию мы можем написать и так:&lt;/p&gt;
 
-&lt;hs&gt;
-main =
-    do putStrLn (show (f 5))
-    where f = (\x -&amp;gt; x*x)
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Выражение&lt;/p&gt;
 
-&lt;hs&gt;
-    where f = (\x -&amp;gt; x*x)
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;это не присваивание (напомню, в Haskell его нет), это как бы ассоциация. Мы вводим локальный псевдоним для λ-функции и называем его &lt;code&gt;f&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Вы можете спросить меня, мол, какова же реальная польза от λ-функции, если у нас есть функция обыкновенная? Ведь мы могли бы написать и так:&lt;/p&gt;
 
-&lt;hs&gt;
-f :: Integer -&amp;gt; Integer
-f x =
-    x * x
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Integer&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
 
-main =
-    putStrLn (show (f 5))
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Тут всё как обычно: мы определили функцию &lt;code&gt;f&lt;/code&gt; заранее, а потом апплицировали её к аргументу 5.&lt;/p&gt;
 
@@ -1310,12 +1242,11 @@ main =
 
 &lt;p&gt;Анонимность λ-функции также видится мне преимуществом, по крайней мере в ряде случаев. Если действие, совершаемое с помощью конкретной λ-функции, тривиально (и может быть понято из её “тела”, как в случае с функцией возведения в квадрат) - зачем же нам придумывать имя? Мы можем спокойно обойтись без него. Однако, в том случае, когда λ-функция нужна нам во многих местах кода, мы можем, во избежание дубляжа, “определить” λ-функцию глобально. Делается это в нашем случае так:&lt;/p&gt;
 
-&lt;hs&gt;
-f = \x -&amp;gt; x * x
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
 
-main =
-    do putStrLn (show ((f 5) + (f 6)))
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Как видите, мы “определили” нашу функцию глобально и ассоциировали её с выражением &lt;code&gt;f&lt;/code&gt;. Теперь мы можем многократно использовать это выражение в коде, для апплицирования его к различным аргументам (в данном случае к 5 и к 6).&lt;/p&gt;
 
@@ -1361,9 +1292,9 @@ main =
 &lt;p&gt;В языке Haskell есть три ключевых слова, используемые при определении собственных типов. И слова эти могут, скажем так, смутить программистов, пришедших из мира C++. Вот эти слова:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code&gt;data&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code&gt;class&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code&gt;instance&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;**&lt;code&gt;data&lt;/code&gt;**&lt;/li&gt;
+  &lt;li&gt;**&lt;code&gt;class&lt;/code&gt;**&lt;/li&gt;
+  &lt;li&gt;**&lt;code&gt;instance&lt;/code&gt;**&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Ключевое слово &lt;strong&gt;&lt;code&gt;data&lt;/code&gt;&lt;/strong&gt; служит для определения пользовательского типа (естественно, оно служит также и для определения всех стандартных типов Haskell, но сейчас это не столь важно).&lt;/p&gt;
@@ -1372,15 +1303,14 @@ main =
 
 &lt;p&gt;В языке C++ понятия “тип” и “класс” фактически взаимозаменяемы, потому что ключевое слово &lt;strong&gt;&lt;code&gt;class&lt;/code&gt;&lt;/strong&gt; как раз и используется для определения пользовательских типов. Если мы написали:&lt;/p&gt;
 
-&lt;cpp&gt;
-class IP_address {
-    // ...
-};
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 
-int main() {
-    IP_address address;
-}
-&lt;/cpp&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;что это означает? Мы определили класс &lt;code&gt;IP_address&lt;/code&gt;, но при этом мы определили и пользовательский тип &lt;code&gt;IP_address&lt;/code&gt;. :) Однако в языке Haskell всё иначе. А чтобы моё объяснение было более понятным, сразу перейдём к практическому примеру.&lt;/p&gt;
 
@@ -1388,23 +1318,20 @@ int main() {
 
 &lt;p&gt;Для начала определим собственный тип &lt;code&gt;IP_address&lt;/code&gt;:&lt;/p&gt;
 
-&lt;hs&gt;
-data IP_address = IP_address String
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Готово. Перед нами простейший пользовательский тип. Объект этого типа фактически будет представлять собою значение стандартного типа &lt;code&gt;String&lt;/code&gt; с меткой &lt;code&gt;IP_address&lt;/code&gt;. &lt;/p&gt;
 
 &lt;p&gt;Вы спросите, что такое метка? Рассматривайте метку как пояснительный идентификатор. Многие типы (в частности, стандартные типы) не имеют метки, поэтому их можно инициализировать значениями без пояснений. Например, если у нас есть некая функция, принимающая значение типа &lt;code&gt;Int&lt;/code&gt; в качестве аргумента, то при её вызове мы будем писать так:&lt;/p&gt;
 
-&lt;hs&gt;
-show 6
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Однако если эта функция в качестве аргумента принимает объект типа &lt;code&gt;IP_address&lt;/code&gt;, то мы должны явно указать это при её вызове:&lt;/p&gt;
 
-&lt;hs&gt;
-show (IP_address &quot;127.0.0.1&quot;)
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Выражение &lt;code&gt;(IP_address &quot;127.0.0.1&quot;)&lt;/code&gt; породит объект типа &lt;code&gt;IP_address&lt;/code&gt;, “содержащий в себе” строку со значением “127.0.0.1”.&lt;/p&gt;
 
@@ -1412,9 +1339,8 @@ show (IP_address &quot;127.0.0.1&quot;)
 
 &lt;p&gt;Обратите внимание, что имя типа не может начинаться с маленькой буквы. Поэтому такой код:&lt;/p&gt;
 
-&lt;hs&gt;
-data ip_address = ip_address String
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ip_address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ip_address&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;будет неизбежно отвергнут компилятором.&lt;/p&gt;
 
@@ -1426,10 +1352,9 @@ data ip_address = ip_address String
 
 &lt;p&gt;Например, в стандартной библиотеке Haskell есть класс типов &lt;code&gt;Show&lt;/code&gt;. Он обобщает все типы, объекты которых могут быть “показаны” (то есть отображены в виде строки). Как именно обобщает, спросите вы? Через общие методы. Вот определение класса &lt;code&gt;Show&lt;/code&gt;:&lt;/p&gt;
 
-&lt;hs&gt;
-class Show a where
-    show :: a -&amp;gt; String
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Show&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Как видите, тут присутствует один-единственный метод &lt;code&gt;show&lt;/code&gt;, принимающий в качестве аргумента объект некоторого типа &lt;code&gt;a&lt;/code&gt; и возвращающий некоторое строковое отображение этого объекта.&lt;/p&gt;
 
@@ -1441,37 +1366,34 @@ class Show a where
 
 &lt;p&gt;Если класс типов &lt;code&gt;Show&lt;/code&gt; - это абстракция для типов, объекты которых можно “показать”, то экземпляр этого класса представляет собой реальное объяснение о том, &lt;em&gt;как&lt;/em&gt; можно “показать” объект того или иного типа. То есть если мы хотим объяснить, как можно “показать” объект типа &lt;code&gt;IP_address&lt;/code&gt;, мы должны создать экземпляр класса типов &lt;code&gt;Show&lt;/code&gt; для типа &lt;code&gt;IP_address&lt;/code&gt;. Сделаем же это:&lt;/p&gt;
 
-&lt;hs&gt;
-instance Show IP_address where
-    show (IP_address address) = 
-        if address == &quot;127.0.0.1&quot;
-        then 
-            &quot;localhost&quot;
-        else 
-            address
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Show&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+        &lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;kr&quot;&gt;then&lt;/span&gt; 
+            &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Как видите, мы использовали ключевое слово &lt;code&gt;instance&lt;/code&gt;, а обобщённый тип &lt;code&gt;a&lt;/code&gt; заменён здесь на наш конкретный тип &lt;code&gt;IP_address&lt;/code&gt;. А дальше следует конкретное определение метода &lt;code&gt;show&lt;/code&gt; для нашего типа. Таким образом, класс типов можно рассматривать примерно как чистый интерфейс в C++ (с чисто виртуальными функциями), а экземпляр класса типов - как определение этих чисто виртуальных функций для конкретного типа.&lt;/p&gt;
 
 &lt;p&gt;Взглянем ещё раз на определение метода &lt;code&gt;show&lt;/code&gt;:&lt;/p&gt;
 
-&lt;hs&gt;
-    show (IP_address address) =
-        if address == &quot;127.0.0.1&quot;
-        then 
-            &quot;localhost&quot;
-        else 
-            address
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;    &lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
+        &lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;kr&quot;&gt;then&lt;/span&gt; 
+            &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Первая строка показывает, что метод &lt;code&gt;show&lt;/code&gt; принимает объект типа &lt;code&gt;IP_address&lt;/code&gt;, который в свою очередь будет “порождён” выражением вида &lt;code&gt;(IP_address address)&lt;/code&gt;, например, как в примере выше, выражением &lt;code&gt;IP_address &quot;127.0.0.1&quot;&lt;/code&gt;. Далее следует простое условие, выводящее слово &lt;code&gt;localhost&lt;/code&gt; в случае значения адреса 127.0.0.1.&lt;/p&gt;
 
 &lt;p&gt;А теперь мы можем использовать всё это хозяйство следующим образом:&lt;/p&gt;
 
-&lt;hs&gt;
-main = 
-    putStrLn (show (IP_address &quot;127.0.0.1&quot;))
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Теперь-то уж метод &lt;code&gt;show&lt;/code&gt; прекрасно знает, как именно “показать” наш объект типа &lt;code&gt;IP_address&lt;/code&gt;, поэтому мы получим ожидаемый вывод:&lt;/p&gt;
 
@@ -1481,11 +1403,10 @@ localhost
 
 &lt;p&gt;Если же мы напишем так:&lt;/p&gt;
 
-&lt;hs&gt;
-main = 
-    -- IP-адрес google.com ;-)
-    putStrLn (show (IP_address &quot;46.19.98.158&quot;))
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
+    &lt;span class=&quot;c1&quot;&gt;-- IP-адрес google.com ;-)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;46.19.98.158&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;то результат столь же ожидаем:&lt;/p&gt;
 
@@ -1515,11 +1436,10 @@ main =
 
 &lt;p&gt;Haskell имеет статическую проверку типов. Это означает, что тип каждого выражения в программе обязательно проверяется на стадии компиляции. Более того, Haskell весьма строг по отношению к типам, чего, к сожалению, нельзя сказать о C-подобных языках. Дело в том, что в C или C++ допустимо неявное приведение одного типа к другому. Например, так:&lt;/p&gt;
 
-&lt;cpp&gt;
-int f() {
-    return 12.9;
-}
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Компилятор C или C++ не только проглотит это, но даже не обмолвится ни единым предупреждением (в том числе и при использовании флага &lt;code&gt;-Wall&lt;/code&gt;), при этом аккуратно отбросив дробную часть, ведь тип возращаемого значения будет незримо приведён к &lt;code&gt;int&lt;/code&gt;. В Haskell подобный код не имеет ни малейших шансов пройти компиляцию: нужно вернуть &lt;code&gt;int&lt;/code&gt; - будь добр предоставить выражение, имеющее (в конечном итоге) тип &lt;code&gt;int&lt;/code&gt;.&lt;/p&gt;
 
@@ -1527,23 +1447,20 @@ int f() {
 
 &lt;p&gt;В Haskell применяется принцип автоматического выведения типов, что позволяет программисту не указывать тип выражения явно. Похожий подход используется в C++11 с использованием ключевого слова &lt;code&gt;auto&lt;/code&gt;:&lt;/p&gt;
 
-&lt;cpp&gt;
-auto i = 12;
-&lt;/cpp&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Но в Haskell пишут ещё проще:&lt;/p&gt;
 
-&lt;hs&gt;
-i = 12
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Компилятор сам поймёт, что тип выражения &lt;code&gt;i&lt;/code&gt; - это именно &lt;code&gt;Integer&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Впрочем, при желании программист &lt;em&gt;может&lt;/em&gt; указать тип выражения явно (иногда это бывает полезно, в частности, при отладке и для большей самодокументируемости кода). Например, если я напишу так:&lt;/p&gt;
 
-&lt;hs&gt;
-let i = 12 :: Double
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;то тип &lt;code&gt;i&lt;/code&gt; будет уже &lt;code&gt;Double&lt;/code&gt;.&lt;/p&gt;
 
@@ -1603,14 +1520,13 @@ let i = 12 :: Double
 
 &lt;p&gt;Открываем этот файл и пишем в нём, например, это:&lt;/p&gt;
 
-&lt;hs&gt;
-import System.Environment
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Environment&lt;/span&gt;
  
-main :: IO ()
-main = getArgs &amp;gt;&amp;gt;= print . haqify . head
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IO&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getArgs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;haqify&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
  
-haqify s = &quot;Haq! &quot; ++ s
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;haqify&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Haq! &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Сохраняем, закрываем, а потом выполняем в терминале простую команду:&lt;/p&gt;
 
@@ -1696,33 +1612,31 @@ Warning: unknown license type, you must put a copy in LICENSE yourself.
 
 &lt;p&gt;Первый нам не так интересен, потому что (в соответствии с официальным руководством) редактировать этот файл руками нам придётся очень редко. А вот второй файл весьма любопытен. Откроем его и посмотрим:&lt;/p&gt;
 
-&lt;hs&gt;
-name:                Haskell
-version:             0.1.0.0
-synopsis:            Learn project
--- description:         
-license:             MIT
-license-file:        LICENSE
-author:              Denis Shevchenko
-maintainer:          me@dshevchenko.biz
--- copyright:           
--- category:            
-build-type:          Simple
-cabal-version:       &amp;gt;=1.8
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;                &lt;span class=&quot;kt&quot;&gt;Haskell&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;             &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;synopsis&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;            &lt;span class=&quot;kt&quot;&gt;Learn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;project&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- description:         &lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;             &lt;span class=&quot;kt&quot;&gt;MIT&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;        &lt;span class=&quot;kt&quot;&gt;LICENSE&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;              &lt;span class=&quot;kt&quot;&gt;Denis&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Shevchenko&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;maintainer&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;          &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dshevchenko&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;biz&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- copyright:           &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;-- category:            &lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;          &lt;span class=&quot;kt&quot;&gt;Simple&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;cabal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;
 
-executable Haskell
-  main-is:           main.hs            
-  -- other-modules:       
-  build-depends:     base ==4.6.*
-&lt;/hs&gt;
+&lt;span class=&quot;nf&quot;&gt;executable&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Haskell&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;           &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;            
+  &lt;span class=&quot;c1&quot;&gt;-- other-modules:       &lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depends&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;4.6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Как видите, этот файл представляет собой некий аналог Makefile для системы cabal. Тут уже сохранены те самые значения, которые мы вводили в процессе вышеупомянутого диалога.&lt;/p&gt;
 
 &lt;p&gt;Обращаю ваше внимание на то, что в этом сгенерированном файле изначально строка:&lt;/p&gt;
 
-&lt;hs&gt;
-  main-is:
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;  &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;закомментирована. Вам необходимо раскомментировать её и прописать имя файла, содержащего функцию main, в нашем случае это main.hs. Если вы этого не сделаете, получите ошибку вида:&lt;/p&gt;
 
@@ -1740,12 +1654,11 @@ cabal configure
 
 &lt;p&gt;Обратите внимание на последнюю часть файла Haskell.cabal:&lt;/p&gt;
 
-&lt;hs&gt;
-executable Haskell
-  main-is:           main.hs            
-  -- other-modules:       
-  build-depends:     base ==4.6.*
-&lt;/hs&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;executable&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Haskell&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;           &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;            
+  &lt;span class=&quot;c1&quot;&gt;-- other-modules:       &lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depends&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;4.6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Видите отступ в два пробела перед тремя последними строками? Оказывается, это не просто так. Если мы уберём этот отступ, то получим такую ошибку:&lt;/p&gt;
 

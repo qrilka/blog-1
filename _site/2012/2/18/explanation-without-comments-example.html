@@ -144,56 +144,62 @@
       </footer>
       <div class="entry-content">
         <p>So, we have a function:</p>
-<cpp>
-void set_margins( int left, int top, int right, int bottom );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="nf">set_margins</span><span class="p">(</span> <span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">top</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">,</span> <span class="kt">int</span> <span class="n">bottom</span> <span class="p">);</span>
+</code></pre></div>
+
 <p>However, The most likely example of call of such function will be:</p>
-<cpp>
-placer-&gt;set_margins( 2, 2, 2, 2 );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">placer</span><span class="o">-&gt;</span><span class="n">set_margins</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="p">);</span>
+</code></pre></div>
+
 <p>Hmm… That’s problem of “magical numbers”. We may forget where is bottom margin and where is top margin. But we don’t want to remember declaration of this function. </p>
 
 <p>So, what we can do?</p>
 
 <p>First solution, canonical:</p>
-<cpp>
-constexpr int left   = 2;
-constexpr int top    = 2;
-constexpr int right  = 2;
-constexpr int bottom = 2;
-placer-&gt;set_margins( left, top, right, bottom );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">constexpr</span> <span class="kt">int</span> <span class="n">left</span>   <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">constexpr</span> <span class="kt">int</span> <span class="n">top</span>    <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">constexpr</span> <span class="kt">int</span> <span class="n">right</span>  <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">constexpr</span> <span class="kt">int</span> <span class="n">bottom</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">placer</span><span class="o">-&gt;</span><span class="n">set_margins</span><span class="p">(</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">bottom</span> <span class="p">);</span>
+</code></pre></div>
+
 <p>So, it’s not bad. But if we have to call this function few times in one scope - well, it’s not convenient.</p>
 
 <p>Second solution, not so good:</p>
-<cpp>
-placer-&gt;set_margins(   2 // left
-                     , 2 // top
-                     , 2 // right
-                     , 2 // bottom 
-                   );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">placer</span><span class="o">-&gt;</span><span class="n">set_margins</span><span class="p">(</span>   <span class="mi">2</span> <span class="c1">// left</span>
+                     <span class="p">,</span> <span class="mi">2</span> <span class="c1">// top</span>
+                     <span class="p">,</span> <span class="mi">2</span> <span class="c1">// right</span>
+                     <span class="p">,</span> <span class="mi">2</span> <span class="c1">// bottom </span>
+                   <span class="p">);</span>
+</code></pre></div>
+
 <p>Comments… Well, I don’t recommend this solution.</p>
 
 <p>Third solution, original:</p>
-<cpp>
-inline constexpr int left  ( int const px ) { return px; }
-inline constexpr int top   ( int const px ) { return px; }
-inline constexpr int right ( int const px ) { return px; }
-inline constexpr int bottom( int const px ) { return px; }
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kr">inline</span> <span class="n">constexpr</span> <span class="kt">int</span> <span class="nf">left</span>  <span class="p">(</span> <span class="kt">int</span> <span class="k">const</span> <span class="n">px</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">px</span><span class="p">;</span> <span class="p">}</span>
+<span class="kr">inline</span> <span class="n">constexpr</span> <span class="kt">int</span> <span class="nf">top</span>   <span class="p">(</span> <span class="kt">int</span> <span class="k">const</span> <span class="n">px</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">px</span><span class="p">;</span> <span class="p">}</span>
+<span class="kr">inline</span> <span class="n">constexpr</span> <span class="kt">int</span> <span class="nf">right</span> <span class="p">(</span> <span class="kt">int</span> <span class="k">const</span> <span class="n">px</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">px</span><span class="p">;</span> <span class="p">}</span>
+<span class="kr">inline</span> <span class="n">constexpr</span> <span class="kt">int</span> <span class="nf">bottom</span><span class="p">(</span> <span class="kt">int</span> <span class="k">const</span> <span class="n">px</span> <span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">px</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>
+
 <p>So, we define four functions that just returns argument, nothing more. But now we can write like this:</p>
-<cpp>
-placer-&gt;set_margins(   left( 2 )
-                     , top( 2 )
-                     , right( 2 )
-                     , bottom( 2 ) );
-// In the same scope...
-placer-&gt;set_margins(   left( 3 )
-                     , top( 5 )
-                     , right( 4 )
-                     , bottom( 4 ) );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">placer</span><span class="o">-&gt;</span><span class="n">set_margins</span><span class="p">(</span>   <span class="n">left</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span>
+                     <span class="p">,</span> <span class="n">top</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span>
+                     <span class="p">,</span> <span class="n">right</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span>
+                     <span class="p">,</span> <span class="n">bottom</span><span class="p">(</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">);</span>
+<span class="c1">// In the same scope...</span>
+<span class="n">placer</span><span class="o">-&gt;</span><span class="n">set_margins</span><span class="p">(</span>   <span class="n">left</span><span class="p">(</span> <span class="mi">3</span> <span class="p">)</span>
+                     <span class="p">,</span> <span class="n">top</span><span class="p">(</span> <span class="mi">5</span> <span class="p">)</span>
+                     <span class="p">,</span> <span class="n">right</span><span class="p">(</span> <span class="mi">4</span> <span class="p">)</span>
+                     <span class="p">,</span> <span class="n">bottom</span><span class="p">(</span> <span class="mi">4</span> <span class="p">)</span> <span class="p">);</span>
+</code></pre></div>
+
 <p>The result is a short code without variables, without naming conflicts, very easy readable and without comments. In addition, due to use <strong>constexpr</strong> we didn’t lose in efficiency in the execution.</p>
 
 <p>In my opinion, beautiful.</p>

@@ -148,73 +148,66 @@
 
 <p>Первая функция выглядит так:</p>
 
-<cpp>
-value_type* data() noexcept;
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">value_type</span><span class="o">*</span> <span class="n">data</span><span class="p">()</span> <span class="n">noexcept</span><span class="p">;</span>
+</code></pre></div>
 
 <p>Суть её очень проста: она возвращает указатель непосредственно на сырой C-шный массив, скрываемый под капотом вектора. Использовать её просто:</p>
 
-<cpp>
-void f( int arr[] ) {
-    arr[ 0 ] = -1;
-}
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="nf">f</span><span class="p">(</span> <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">arr</span><span class="p">[</span> <span class="mi">0</span> <span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
 
-int main() {
-    std::vector&lt; int &gt; v{ 1, 2, 3 };
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
 
-    int* arr = v.data();
+    <span class="kt">int</span><span class="o">*</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
 
-    arr[ 1 ] = 12;
-    f( v.data() );
+    <span class="n">arr</span><span class="p">[</span> <span class="mi">1</span> <span class="p">]</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="n">f</span><span class="p">(</span> <span class="n">v</span><span class="p">.</span><span class="n">data</span><span class="p">()</span> <span class="p">);</span>
 
-    assert( v[ 1 ] == 12 );
-    assert( v[ 0 ] == -1 );
-}
-</cpp>
+    <span class="n">assert</span><span class="p">(</span> <span class="n">v</span><span class="p">[</span> <span class="mi">1</span> <span class="p">]</span> <span class="o">==</span> <span class="mi">12</span> <span class="p">);</span>
+    <span class="n">assert</span><span class="p">(</span> <span class="n">v</span><span class="p">[</span> <span class="mi">0</span> <span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Как видите, мы можем манипулировать данными, хранящимися в вектора, через прямой доступ к сырому массиву. Весьма удобно для интеграции кода с C-шным кодом (например, когда некая функция принимает указатель на массив).</p>
 
 <p>Вторая новая функция в векторе выглядит так:</p>
 
-<cpp>
-template <class... args="">
-  void emplace_back (Args&amp;&amp;... args);
+<div class="highlight"><pre><code class="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">...</span> <span class="n">Args</span><span class="o">&gt;</span>
+  <span class="kt">void</span> <span class="n">emplace_back</span> <span class="p">(</span><span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">);</span>
+</code></pre></div>
 
+<p>Странное имя происходит от слова “emplacement”, то есть “установка на место”. Как видим, здесь используется variadic template (также являющийся одним из нововведений в C++11), а это значит что перед нами переменный набор аргументов. Суть этой функции очень проста: она добавляет объект в конец вектора подобно функции push_back(), за тем лишь исключением, что push_back() принимает уже готовый объект, а emplace_back() принимает аргументы, необходимые для создания нового объекта для помещения оного в конец вектора, и создаёт его сама:</p>
 
-Странное имя происходит от слова "emplacement", то есть "установка на место". Как видим, здесь используется variadic template (также являющийся одним из нововведений в C++11), а это значит что перед нами переменный набор аргументов. Суть этой функции очень проста: она добавляет объект в конец вектора подобно функции push_back(), за тем лишь исключением, что push_back() принимает уже готовый объект, а emplace_back() принимает аргументы, необходимые для создания нового объекта для помещения оного в конец вектора, и создаёт его сама:
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">S</span> <span class="p">{</span>
+    <span class="k">explicit</span> <span class="n">S</span><span class="p">(</span> <span class="kt">char</span> <span class="n">c</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">length</span> <span class="p">)</span> <span class="o">:</span>
+            <span class="n">s0</span><span class="p">(</span> <span class="n">length</span><span class="p">,</span> <span class="n">c</span> <span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s0</span><span class="p">;</span>
+<span class="p">};</span>
 
-<cpp>
-struct S {
-    explicit S( char c, size_t length ) :
-            s0( length, c ) {}
-private:
-    std::string s0;
-};
-
-int main() {
-    std::vector&lt; S &gt; v;
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">S</span> <span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span>
     
-    v.push_back( S( 'a', 10 ) );
-    v.emplace_back( 'a', 10 );
-}
-</cpp>
+    <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="n">S</span><span class="p">(</span> <span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="mi">10</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span> <span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="mi">10</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 
-Видите, да? В первом случае мы должны сами создать объект (пусть даже и in-place) с последующей передачей оного, а во втором случае функция берёт создание нового объекта на себя.
+<p>Видите, да? В первом случае мы должны сами создать объект (пусть даже и in-place) с последующей передачей оного, а во втором случае функция берёт создание нового объекта на себя.</p>
 
-Насколько это полезно? Ну, не скажу что это какой-то прорыв, но в ряде случаев я предпочёл бы emplace_back(). И дело не только в том, что кода получается чуток меньше, чем при использовании push_back(). Дело в том, что функция emplace_back() изолирует код от типа добавляемого значения. Ведь если у нас есть десять строк вида:
+<p>Насколько это полезно? Ну, не скажу что это какой-то прорыв, но в ряде случаев я предпочёл бы emplace_back(). И дело не только в том, что кода получается чуток меньше, чем при использовании push_back(). Дело в том, что функция emplace_back() изолирует код от типа добавляемого значения. Ведь если у нас есть десять строк вида:</p>
 
-<cpp>
-v.push_back( S( 'a', 10 ) );
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="n">S</span><span class="p">(</span> <span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="mi">10</span> <span class="p">)</span> <span class="p">);</span>
+</code></pre></div>
 
-и тип S будет, например, переименован, то нам придётся переписывать все эти десять строк кода. Но если мы пишем так:
+<p>и тип S будет, например, переименован, то нам придётся переписывать все эти десять строк кода. Но если мы пишем так:</p>
 
-<cpp>
-v.emplace_back( 'a', 10 );
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">v</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span> <span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="mi">10</span> <span class="p">);</span>
+</code></pre></div>
 
-то мы привязаны лишь к списку аргументов конструктора, не более чем. Таким образом мы получаем код, который легче рефакторить.
-</class...></cpp>
+<p>то мы привязаны лишь к списку аргументов конструктора, не более чем. Таким образом мы получаем код, который легче рефакторить.</p>
 
         
       </div><!-- /.entry-content -->

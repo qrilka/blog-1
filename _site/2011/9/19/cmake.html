@@ -152,11 +152,10 @@
 
 <p>В-третьих, я так и не смог разобраться, как сделать так, чтобы при установке динамической библиотеки автоматически создавались символически ссылки в соответствии с Unix-традицией:</p>
 
-<cpp>
-lib_my_lib.so       -&gt; lib_my_lib.so.1.0
-lib_my_lib.so.1.0   -&gt; lib_my_lib.so.1.0.0
-lib_my_lib.so.1.0.0
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">lib_my_lib</span><span class="p">.</span><span class="n">so</span>       <span class="o">-&gt;</span> <span class="n">lib_my_lib</span><span class="p">.</span><span class="n">so</span><span class="mf">.1.0</span>
+<span class="n">lib_my_lib</span><span class="p">.</span><span class="n">so</span><span class="mf">.1.0</span>   <span class="o">-&gt;</span> <span class="n">lib_my_lib</span><span class="p">.</span><span class="n">so</span><span class="mf">.1.0.0</span>
+<span class="n">lib_my_lib</span><span class="p">.</span><span class="n">so</span><span class="mf">.1.0.0</span>
+</code></pre></div>
 
 <p>Я знаю, что Boost Build умеет это делать, но не понял как.</p>
 
@@ -166,150 +165,152 @@ lib_my_lib.so.1.0.0
 
 <p>Дабы избавить вас от мук поиска, привожу здесь два таких CMakeLists.txt-файла, с подробными пояснениями. Сразу уточнение: файлы учитывают принятую мною структуру “базовых папок” проекта:</p>
 
-<cpp>- my_program
-    - build     # Папка с файлом CMakeLists.txt.
-                # Здесь же будут помещены объектые файлы и сам файл программы.
-    - src       # Папка с исходными файлами программы. 
-                # Может содержать в себе подпапки произвольной вложенности.</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="o">-</span> <span class="n">my_program</span>
+    <span class="o">-</span> <span class="n">build</span>     <span class="err">#</span> <span class="err">Папка</span> <span class="err">с</span> <span class="err">файлом</span> <span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span>
+                <span class="err">#</span> <span class="err">Здесь</span> <span class="err">же</span> <span class="err">будут</span> <span class="err">помещены</span> <span class="err">объектые</span> <span class="err">файлы</span> <span class="err">и</span> <span class="err">сам</span> <span class="err">файл</span> <span class="err">программы</span><span class="p">.</span>
+    <span class="o">-</span> <span class="n">src</span>       <span class="err">#</span> <span class="err">Папка</span> <span class="err">с</span> <span class="err">исходными</span> <span class="err">файлами</span> <span class="err">программы</span><span class="p">.</span> 
+                <span class="err">#</span> <span class="err">Может</span> <span class="err">содержать</span> <span class="err">в</span> <span class="err">себе</span> <span class="err">подпапки</span> <span class="err">произвольной</span> <span class="err">вложенности</span><span class="p">.</span>
+</code></pre></div>
 
-<cpp>- my_lib
-    - build     # Папка с файлом CMakeLists.txt. 
-                # Здесь же будут помещены объектые файлы и сам файл библиотеки.
-    - include   # Папка с заголовочными файлами библиотеки, 
-                # предназначенными для последующей установки и использования программами.
-    - srс       # Папка с исходными библиотеки программы. 
-                # Может содержать в себе подпапки произвольной вложенности.</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="o">-</span> <span class="n">my_lib</span>
+    <span class="o">-</span> <span class="n">build</span>     <span class="err">#</span> <span class="err">Папка</span> <span class="err">с</span> <span class="err">файлом</span> <span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span> 
+                <span class="err">#</span> <span class="err">Здесь</span> <span class="err">же</span> <span class="err">будут</span> <span class="err">помещены</span> <span class="err">объектые</span> <span class="err">файлы</span> <span class="err">и</span> <span class="err">сам</span> <span class="err">файл</span> <span class="err">библиотеки</span><span class="p">.</span>
+    <span class="o">-</span> <span class="n">include</span>   <span class="err">#</span> <span class="err">Папка</span> <span class="err">с</span> <span class="err">заголовочными</span> <span class="err">файлами</span> <span class="err">библиотеки</span><span class="p">,</span> 
+                <span class="err">#</span> <span class="err">предназначенными</span> <span class="err">для</span> <span class="err">последующей</span> <span class="err">установки</span> <span class="err">и</span> <span class="err">использования</span> <span class="err">программами</span><span class="p">.</span>
+    <span class="o">-</span> <span class="n">sr</span><span class="err">с</span>       <span class="err">#</span> <span class="err">Папка</span> <span class="err">с</span> <span class="err">исходными</span> <span class="err">библиотеки</span> <span class="err">программы</span><span class="p">.</span> 
+                <span class="err">#</span> <span class="err">Может</span> <span class="err">содержать</span> <span class="err">в</span> <span class="err">себе</span> <span class="err">подпапки</span> <span class="err">произвольной</span> <span class="err">вложенности</span><span class="p">.</span>
+</code></pre></div>
+
 <p>Примеры составлены на основе моих рабочих программ, так что не сомневайтесь - всё заработает. Итак, по порядку.
 <br /></p>
 <h2>Программа</h2>
 
-<cpp>
-# Сборочный файл для программы my_program
+<div class="highlight"><pre><code class="cpp"><span class="cp"># Сборочный файл для программы my_program</span>
 
-# Минимальная версия CMake, младше нельзя.
-cmake_minimum_required( VERSION 2.6 )
+<span class="cp"># Минимальная версия CMake, младше нельзя.</span>
+<span class="n">cmake_minimum_required</span><span class="p">(</span> <span class="n">VERSION</span> <span class="mf">2.6</span> <span class="p">)</span>
 
-# Устанавливаем значение переменной BIN
-set( BIN my_program )
-# Имя проекта у нас соответствует имени программы.
-project( ${BIN} )
+<span class="cp"># Устанавливаем значение переменной BIN</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">BIN</span> <span class="n">my_program</span> <span class="p">)</span>
+<span class="cp"># Имя проекта у нас соответствует имени программы.</span>
+<span class="n">project</span><span class="p">(</span> <span class="err">$</span><span class="p">{</span><span class="n">BIN</span><span class="p">}</span> <span class="p">)</span>
 
-# Устанавливаем корневой путь к папке с исходниками программы.
-set( SOURCE_ROOT ../src )
+<span class="cp"># Устанавливаем корневой путь к папке с исходниками программы.</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">SOURCE_ROOT</span> <span class="p">..</span><span class="o">/</span><span class="n">src</span> <span class="p">)</span>
 
-# Очень полезная функция. По умолчанию имена файлов с исходниками
-# нужно перечислять явно. Мне это кажется совершенно неудобным (особенно
-# если файлов много). Поэтому я использую эту функцию.
-# Она (рекурсивно) просматривает исходники (начиная от корневого пути,
-# указанного выше) и собирает имена всех файлов, имеющих классическое
-# разрешение, такие как .cpp, .cxx и т.п.
-# В итоге формируется список всех найденных файлов и сохраняется в переменной
-# SOURCES
-aux_source_directory( ${SOURCE_ROOT} SOURCES )
+<span class="cp"># Очень полезная функция. По умолчанию имена файлов с исходниками</span>
+<span class="cp"># нужно перечислять явно. Мне это кажется совершенно неудобным (особенно</span>
+<span class="cp"># если файлов много). Поэтому я использую эту функцию.</span>
+<span class="cp"># Она (рекурсивно) просматривает исходники (начиная от корневого пути,</span>
+<span class="cp"># указанного выше) и собирает имена всех файлов, имеющих классическое</span>
+<span class="cp"># разрешение, такие как .cpp, .cxx и т.п.</span>
+<span class="cp"># В итоге формируется список всех найденных файлов и сохраняется в переменной</span>
+<span class="cp"># SOURCES</span>
+<span class="n">aux_source_directory</span><span class="p">(</span> <span class="err">$</span><span class="p">{</span><span class="n">SOURCE_ROOT</span><span class="p">}</span> <span class="n">SOURCES</span> <span class="p">)</span>
 
-# Указываем пути, где искать заголовочники, дополнительно к стандартным путям.
-include_directories( "/my/addition/path/to/headers"
-                     "${SOURCE_ROOT}" )
+<span class="cp"># Указываем пути, где искать заголовочники, дополнительно к стандартным путям.</span>
+<span class="n">include_directories</span><span class="p">(</span> <span class="s">&quot;/my/addition/path/to/headers&quot;</span>
+                     <span class="s">&quot;${SOURCE_ROOT}&quot;</span> <span class="p">)</span>
 
-# Устанавливаем путь, куда будет скопирован исполняемый файл при выполнении
-# команды 'make install'.
-set( INSTALL_PATH /usr/local/bin/ )
+<span class="cp"># Устанавливаем путь, куда будет скопирован исполняемый файл при выполнении</span>
+<span class="cp"># команды &#39;make install&#39;.</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">INSTALL_PATH</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span> <span class="p">)</span>
 
-# Указываем пути, где искать сторонние динамически библиотеки. Эти пути будут
-# просмотрены в дополнение к умолчальными системным путям.
-link_directories( "/my/addition/path/to/lib" )
+<span class="cp"># Указываем пути, где искать сторонние динамически библиотеки. Эти пути будут</span>
+<span class="cp"># просмотрены в дополнение к умолчальными системным путям.</span>
+<span class="n">link_directories</span><span class="p">(</span> <span class="s">&quot;/my/addition/path/to/lib&quot;</span> <span class="p">)</span>
 
-# Перечисляем необходимые сторонние динамические библиотеки и сохраняем
-# их список в переменной REQUIRED_LIBRARIES.
-# Поиск этих библиотек будет произведён как по стандартным системным путям, 
-# так и по указанным выше (с помощью функции link_directories).
-set( REQUIRED_LIBRARIES
-		my_addition_lib
-		boost_thread 
-		boost_system )
+<span class="cp"># Перечисляем необходимые сторонние динамические библиотеки и сохраняем</span>
+<span class="cp"># их список в переменной REQUIRED_LIBRARIES.</span>
+<span class="cp"># Поиск этих библиотек будет произведён как по стандартным системным путям, </span>
+<span class="cp"># так и по указанным выше (с помощью функции link_directories).</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">REQUIRED_LIBRARIES</span>
+		<span class="n">my_addition_lib</span>
+		<span class="n">boost_thread</span> 
+		<span class="n">boost_system</span> <span class="p">)</span>
 
-# Устанавливаем флаги компилятора (причём никаких скрытых флагов, только эти).
-set( CMAKE_CXX_FLAGS "-O0 -Wall -pedantic -std=c++0x" ) 
+<span class="cp"># Устанавливаем флаги компилятора (причём никаких скрытых флагов, только эти).</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">CMAKE_CXX_FLAGS</span> <span class="s">&quot;-O0 -Wall -pedantic -std=c++0x&quot;</span> <span class="p">)</span> 
 
-# Собираем исполняемый файл с именем my_program.
-add_executable( ${BIN} ${SOURCES} )
-# Компонуем собранную программу с необходимыми динамическими библиотеками.
-target_link_libraries( ${BIN} ${REQUIRED_LIBRARIES} )
+<span class="cp"># Собираем исполняемый файл с именем my_program.</span>
+<span class="n">add_executable</span><span class="p">(</span> <span class="err">$</span><span class="p">{</span><span class="n">BIN</span><span class="p">}</span> <span class="err">$</span><span class="p">{</span><span class="n">SOURCES</span><span class="p">}</span> <span class="p">)</span>
+<span class="cp"># Компонуем собранную программу с необходимыми динамическими библиотеками.</span>
+<span class="n">target_link_libraries</span><span class="p">(</span> <span class="err">$</span><span class="p">{</span><span class="n">BIN</span><span class="p">}</span> <span class="err">$</span><span class="p">{</span><span class="n">REQUIRED_LIBRARIES</span><span class="p">}</span> <span class="p">)</span>
 
-# Установка. Это действие будет активировано при выполнении команды 'make install'.
-install( TARGETS ${BIN} DESTINATION ${INSTALL_PATH} )
-</cpp>
+<span class="cp"># Установка. Это действие будет активировано при выполнении команды &#39;make install&#39;.</span>
+<span class="n">install</span><span class="p">(</span> <span class="n">TARGETS</span> <span class="err">$</span><span class="p">{</span><span class="n">BIN</span><span class="p">}</span> <span class="n">DESTINATION</span> <span class="err">$</span><span class="p">{</span><span class="n">INSTALL_PATH</span><span class="p">}</span> <span class="p">)</span>
+</code></pre></div>
 
 <p>Всё. На мой взгляд, чрезвычайно понятный синтаксис, и даже комментарии не особо нужны.
 <br /></p>
 <h2>Динамическая библиотека</h2>
-<cpp>
-# Сборочный файл для библиотеки my_lib
 
-# См. выше.
-cmake_minimum_required( VERSION 2.6 ) 
+<div class="highlight"><pre><code class="cpp"><span class="cp"># Сборочный файл для библиотеки my_lib</span>
 
-# Устанавливаем значение переменной LIB
-set( LIB my_lib ) 
-# Имя проекта у нас соответствует имени библиотеки.
-project( ${LIB} ) 
+<span class="cp"># См. выше.</span>
+<span class="n">cmake_minimum_required</span><span class="p">(</span> <span class="n">VERSION</span> <span class="mf">2.6</span> <span class="p">)</span> 
 
-# Устанавливаем версии библиотеки. В данном случае собранная библиотека будет иметь версию
-# 1.0.0, а первая символическая ссылка на неё будет иметь версию 1.0.
-set( MAJOR_VERSION 1.0.0 )
-set( MINOR_VERSION 1.0 )
+<span class="cp"># Устанавливаем значение переменной LIB</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">LIB</span> <span class="n">my_lib</span> <span class="p">)</span> 
+<span class="cp"># Имя проекта у нас соответствует имени библиотеки.</span>
+<span class="n">project</span><span class="p">(</span> <span class="err">$</span><span class="p">{</span><span class="n">LIB</span><span class="p">}</span> <span class="p">)</span> 
 
-# Устанавливаем корневые пути к папками с исходниками библиотеки и 
-# к заголовочникам для установки.
-set( SOURCE_ROOT ../src )
-set( HEADERS ../include )
+<span class="cp"># Устанавливаем версии библиотеки. В данном случае собранная библиотека будет иметь версию</span>
+<span class="cp"># 1.0.0, а первая символическая ссылка на неё будет иметь версию 1.0.</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">MAJOR_VERSION</span> <span class="mf">1.0.0</span> <span class="p">)</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">MINOR_VERSION</span> <span class="mf">1.0</span> <span class="p">)</span>
 
-# См. выше.
-aux_source_directory( ${SOURCE_ROOT} SOURCES )
-# См. выше.
-include_directories( "${HEADERS}"
-                     "${SOURCE_ROOT}"
-                     "/my/addition/path/to/headers" )
+<span class="cp"># Устанавливаем корневые пути к папками с исходниками библиотеки и </span>
+<span class="cp"># к заголовочникам для установки.</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">SOURCE_ROOT</span> <span class="p">..</span><span class="o">/</span><span class="n">src</span> <span class="p">)</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">HEADERS</span> <span class="p">..</span><span class="o">/</span><span class="n">include</span> <span class="p">)</span>
 
-# См. выше.
-set( LIB_INSTALL_PATH /usr/local/lib )
-# Устанавливаем путь установки заголовочных файлов библиотеки.
-set( HEADERS_INSTALL_PATH /usr/local/include/my_lib )
-# См. выше.
-link_directories( "${LIB_INSTALL_PATH}" )
+<span class="cp"># См. выше.</span>
+<span class="n">aux_source_directory</span><span class="p">(</span> <span class="err">$</span><span class="p">{</span><span class="n">SOURCE_ROOT</span><span class="p">}</span> <span class="n">SOURCES</span> <span class="p">)</span>
+<span class="cp"># См. выше.</span>
+<span class="n">include_directories</span><span class="p">(</span> <span class="s">&quot;${HEADERS}&quot;</span>
+                     <span class="s">&quot;${SOURCE_ROOT}&quot;</span>
+                     <span class="s">&quot;/my/addition/path/to/headers&quot;</span> <span class="p">)</span>
 
-# См. выше.
-set( REQUIRED_LIBRARIES 
-		my_addition_lib
-		boost_thread 
-		boost_system )
+<span class="cp"># См. выше.</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">LIB_INSTALL_PATH</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="p">)</span>
+<span class="cp"># Устанавливаем путь установки заголовочных файлов библиотеки.</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">HEADERS_INSTALL_PATH</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">my_lib</span> <span class="p">)</span>
+<span class="cp"># См. выше.</span>
+<span class="n">link_directories</span><span class="p">(</span> <span class="s">&quot;${LIB_INSTALL_PATH}&quot;</span> <span class="p">)</span>
 
-# См. выше.
-set( CMAKE_CXX_FLAGS "-O0 -Wall -pedantic -std=c++0x" )
+<span class="cp"># См. выше.</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">REQUIRED_LIBRARIES</span> 
+		<span class="n">my_addition_lib</span>
+		<span class="n">boost_thread</span> 
+		<span class="n">boost_system</span> <span class="p">)</span>
 
-# Собираем динамическую библиотеку.
-add_library( ${LIB} SHARED ${SOURCES} )
-# См. выше.
-target_link_libraries( ${LIB} ${REQUIRED_LIBRARIES} )
+<span class="cp"># См. выше.</span>
+<span class="n">set</span><span class="p">(</span> <span class="n">CMAKE_CXX_FLAGS</span> <span class="s">&quot;-O0 -Wall -pedantic -std=c++0x&quot;</span> <span class="p">)</span>
 
-# Создаём символические ссылки. Учитывая указанные выше версии, результат будет
-# таким:
-# lib_my_lib.so       -&gt; lib_my_lib.so.1.0
-# lib_my_lib.so.1.0   -&gt; lib_my_lib.so.1.0.0
-# lib_my_lib.so.1.0.0
-# Это действие будет активировано при выполнении команды 'make install'.
-set_target_properties( ${LIB} PROPERTIES 
-                              VERSION ${MAJOR_VERSION} 
-                              SOVERSION ${MINOR_VERSION} )
+<span class="cp"># Собираем динамическую библиотеку.</span>
+<span class="n">add_library</span><span class="p">(</span> <span class="err">$</span><span class="p">{</span><span class="n">LIB</span><span class="p">}</span> <span class="n">SHARED</span> <span class="err">$</span><span class="p">{</span><span class="n">SOURCES</span><span class="p">}</span> <span class="p">)</span>
+<span class="cp"># См. выше.</span>
+<span class="n">target_link_libraries</span><span class="p">(</span> <span class="err">$</span><span class="p">{</span><span class="n">LIB</span><span class="p">}</span> <span class="err">$</span><span class="p">{</span><span class="n">REQUIRED_LIBRARIES</span><span class="p">}</span> <span class="p">)</span>
 
-# Установка. Это действие будет активировано при выполнении команды 'make install'.
-install( TARGETS ${LIB} DESTINATION ${LIB_INSTALL_PATH} )
-# Берём из папки ${HEADERS} все файлы с расширением .hpp и копируем их в 
-# ${HEADERS_INSTALL_PATH}.
-install( DIRECTORY ${HEADERS}/
-         DESTINATION ${HEADERS_INSTALL_PATH}
-         FILES_MATCHING PATTERN "*.hpp" )
-</cpp>
+<span class="cp"># Создаём символические ссылки. Учитывая указанные выше версии, результат будет</span>
+<span class="cp"># таким:</span>
+<span class="cp"># lib_my_lib.so       -&gt; lib_my_lib.so.1.0</span>
+<span class="cp"># lib_my_lib.so.1.0   -&gt; lib_my_lib.so.1.0.0</span>
+<span class="cp"># lib_my_lib.so.1.0.0</span>
+<span class="cp"># Это действие будет активировано при выполнении команды &#39;make install&#39;.</span>
+<span class="n">set_target_properties</span><span class="p">(</span> <span class="err">$</span><span class="p">{</span><span class="n">LIB</span><span class="p">}</span> <span class="n">PROPERTIES</span> 
+                              <span class="n">VERSION</span> <span class="err">$</span><span class="p">{</span><span class="n">MAJOR_VERSION</span><span class="p">}</span> 
+                              <span class="n">SOVERSION</span> <span class="err">$</span><span class="p">{</span><span class="n">MINOR_VERSION</span><span class="p">}</span> <span class="p">)</span>
+
+<span class="cp"># Установка. Это действие будет активировано при выполнении команды &#39;make install&#39;.</span>
+<span class="n">install</span><span class="p">(</span> <span class="n">TARGETS</span> <span class="err">$</span><span class="p">{</span><span class="n">LIB</span><span class="p">}</span> <span class="n">DESTINATION</span> <span class="err">$</span><span class="p">{</span><span class="n">LIB_INSTALL_PATH</span><span class="p">}</span> <span class="p">)</span>
+<span class="cp"># Берём из папки ${HEADERS} все файлы с расширением .hpp и копируем их в </span>
+<span class="cp"># ${HEADERS_INSTALL_PATH}.</span>
+<span class="n">install</span><span class="p">(</span> <span class="n">DIRECTORY</span> <span class="err">$</span><span class="p">{</span><span class="n">HEADERS</span><span class="p">}</span><span class="o">/</span>
+         <span class="n">DESTINATION</span> <span class="err">$</span><span class="p">{</span><span class="n">HEADERS_INSTALL_PATH</span><span class="p">}</span>
+         <span class="n">FILES_MATCHING</span> <span class="n">PATTERN</span> <span class="s">&quot;*.hpp&quot;</span> <span class="p">)</span>
+</code></pre></div>
 
 <p>Всё. Проще, на мой взгляд, придумать сложно…
 <br /></p>

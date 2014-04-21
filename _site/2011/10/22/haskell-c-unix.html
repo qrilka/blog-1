@@ -150,32 +150,29 @@
 
 <p>Наиболее красивое и компактное решение на C++, которое я знаю, выглядит так:</p>
 
-<cpp>
-#include <iostream>
-#include <fstream>
-#include <iterator>
-#include <algorithm>
+<div class="highlight"><pre><code class="cpp"><span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &lt;fstream&gt;</span>
+<span class="cp">#include &lt;iterator&gt;</span>
+<span class="cp">#include &lt;algorithm&gt;</span>
 
-int main() {
-    std::ifstream my_file( "/home/denis/test" );
-    typedef std::istreambuf_iterator<char> ReadIterator;
-    typedef std::ostream_iterator<char>    WriteIterator;
-    std::copy(   ReadIterator( my_file )
-               , ReadIterator()
-               , WriteIterator( std::cout ) );
-}
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">ifstream</span> <span class="n">my_file</span><span class="p">(</span> <span class="s">&quot;/home/denis/test&quot;</span> <span class="p">);</span>
+    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">ReadIterator</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span>    <span class="n">WriteIterator</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span>   <span class="n">ReadIterator</span><span class="p">(</span> <span class="n">my_file</span> <span class="p">)</span>
+               <span class="p">,</span> <span class="n">ReadIterator</span><span class="p">()</span>
+               <span class="p">,</span> <span class="n">WriteIterator</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 
+<p>А вот решение на Haskell:</p>
 
-А вот решение на Haskell:
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span> <span class="n">putStr</span> <span class="o">=&lt;&lt;</span> <span class="n">readFile</span> <span class="s">&quot;/home/denis/test&quot;</span> 
+</code></pre></div>
 
-<hs>
-main = putStr =&lt;&lt; readFile "/home/denis/test" 
-</hs>
+<p>Хм… Я не знаю, какое из этих двух решений более эффективное в плане выполнения (не проверял), но в плане простоты восприятия кода вердикт очевиден: решение на Haskell лучше. Дело не в том, что оно компактнее, нет. Самое главное в том, что оно проще. Решение на C++ подразумевает знакомство читателя с концепцией итератора. А решение на Haskell не содержит ничего лишнего, а значит, оно находится на более высоком уровне абстракции. Элегантно и в истинном духе Unix.</p>
 
-Хм... Я не знаю, какое из этих двух решений более эффективное в плане выполнения (не проверял), но в плане простоты восприятия кода вердикт очевиден: решение на Haskell лучше. Дело не в том, что оно компактнее, нет. Самое главное в том, что оно проще. Решение на C++ подразумевает знакомство читателя с концепцией итератора. А решение на Haskell не содержит ничего лишнего, а значит, оно находится на более высоком уровне абстракции. Элегантно и в истинном духе Unix.
-
-А вы как думаете?
-</char></char></algorithm></iterator></fstream></iostream></cpp>
+<p>А вы как думаете?</p>
 
         
       </div><!-- /.entry-content -->

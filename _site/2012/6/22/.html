@@ -147,18 +147,18 @@
 
 <p>В общем, исключения не ловятся. Всё примитивно: в функторе кидается <strong>std::runtime</strong>, на вызывающей стороне - полиморфный перехват оного по <strong>std::exception</strong>.</p>
 
-<cpp>
-void update_list() {
-    try {
-         kernel().supported_formatting_styles(); // Здесь кидатеся std::runtime_error...
-    } catch( std::exception const&amp; exc ) {
-         // Не знаю почему, но исключение не задерживается здесь...
-         report_about_problem( exc.what() ); 
-         return;
-    }
-    // ... а вместо этого благополучно летит дальше...
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="nf">update_list</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">try</span> <span class="p">{</span>
+         <span class="n">kernel</span><span class="p">().</span><span class="n">supported_formatting_styles</span><span class="p">();</span> <span class="c1">// Здесь кидатеся std::runtime_error...</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">exc</span> <span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// Не знаю почему, но исключение не задерживается здесь...</span>
+         <span class="n">report_about_problem</span><span class="p">(</span> <span class="n">exc</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="p">);</span> 
+         <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// ... а вместо этого благополучно летит дальше...</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>В итоге исключение благополучно покидает ВСЕ стеки, и приложение ложится с terminate…</p>
 
 <p>Убейте меня, но причину не вижу. Пробовал всё: и перехват по конкретному типу, и по трём точкам (чтобы игнорировать тип исключения) - не помогает.</p>

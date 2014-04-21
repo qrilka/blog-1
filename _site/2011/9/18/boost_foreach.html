@@ -146,38 +146,40 @@
         <!--break-->
 <p>При переборе контейнера возвращается ссылка на текущий элемент. Но что происходит потом? 
 Имеем код…</p>
-<cpp>
-class A {
-public:
-    A() { /* */ }
-    A( const A&amp; ) { /* Копирование может быть дорогостоящим... */ }
-private:
-    // Нечто важное...
-public:
-    void set_some_value(); // Важная операция!
-    // ...
-};
 
-// Можно и простой STL-контейнер...
-boost::ptr_vector&lt; A &gt; va;       // При переборе возвращает ссылку на хранимый объект.
-va.push_back( new A() ); // A0
-// ...
-va.push_back( new A() ); // An
+<div class="highlight"><pre><code class="cpp"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* */</span> <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span> <span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* Копирование может быть дорогостоящим... */</span> <span class="p">}</span>
+<span class="nl">private:</span>
+    <span class="c1">// Нечто важное...</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">set_some_value</span><span class="p">();</span> <span class="c1">// Важная операция!</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
 
-BOOST_FOREACH ( A a, va ) {
-    a.set_some_value(); // Изменяем содержимое, но - вот незадача! - содержимое временной копии!
-    // или...
-    &a; // Что-то делаем с адресом, но с адресом временной копии!
-}
-</cpp>
+<span class="c1">// Можно и простой STL-контейнер...</span>
+<span class="n">boost</span><span class="o">::</span><span class="n">ptr_vector</span><span class="o">&lt;</span> <span class="n">A</span> <span class="o">&gt;</span> <span class="n">va</span><span class="p">;</span>       <span class="c1">// При переборе возвращает ссылку на хранимый объект.</span>
+<span class="n">va</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">A</span><span class="p">()</span> <span class="p">);</span> <span class="c1">// A0</span>
+<span class="c1">// ...</span>
+<span class="n">va</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="k">new</span> <span class="n">A</span><span class="p">()</span> <span class="p">);</span> <span class="c1">// An</span>
+
+<span class="n">BOOST_FOREACH</span> <span class="p">(</span> <span class="n">A</span> <span class="n">a</span><span class="p">,</span> <span class="n">va</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">set_some_value</span><span class="p">();</span> <span class="c1">// Изменяем содержимое, но - вот незадача! - содержимое временной копии!</span>
+    <span class="c1">// или...</span>
+    <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span> <span class="c1">// Что-то делаем с адресом, но с адресом временной копии!</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Итак, казус. Мы хотим работать не с копиями (и тем более не с их адресами), а с самими объектами. Решение простое:</p>
-<cpp>
-BOOST_FOREACH ( A&amp; a, va ) {   // Работаем со ссылкой, никакой временной копии.
-    a.set_some_value(); // Ура, изменяем содержимое объекта!
-    // или...
-    &a; // Что-то делаем с адресом объекта, всё в порядке!
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">BOOST_FOREACH</span> <span class="p">(</span> <span class="n">A</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="n">va</span> <span class="p">)</span> <span class="p">{</span>   <span class="c1">// Работаем со ссылкой, никакой временной копии.</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">set_some_value</span><span class="p">();</span> <span class="c1">// Ура, изменяем содержимое объекта!</span>
+    <span class="c1">// или...</span>
+    <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span> <span class="c1">// Что-то делаем с адресом объекта, всё в порядке!</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>В этом случае мы убиваем двух зайцев. Во-первых, работаем не с временными копиями, а с самими объектами (или их адресами, что иногда бывает нужно), а во-вторых, не допускаем копирования на каждой итерации, потому что здесь имеет место присваивание возвращённой разыменованным итератором ссылки другой ссылке, и копирующий конструктор класса A не будет вызываться.</p>
 
 <p>Кстати, последний довод не такой уж и пустяковый, особенно если представит ситуацию, когда в копирующем конструкторе выделяется динамическая память и количество элементов в контейнере va измеряется несколькими миллионами. :)</p>

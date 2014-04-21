@@ -146,13 +146,13 @@
         <p>Продолжая своё изучение фукционального программирования, я неожиданно для себя самого осознал, что чистый функтор/функция, <ins>отражающий математическую модель</ins>, является наиболее простым решением.</p>
 
 <p>Известно, что <em>“математическое понятие функции выражает интуитивное представление о том, как одна величина полностью определяет значение другой величины.”</em> Пример:</p>
-<cpp>
-struct square {
-    int operator()( int const i ) const {
-        return i * i;
-    }
-};
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">square</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="k">operator</span><span class="p">()(</span> <span class="kt">int</span> <span class="k">const</span> <span class="n">i</span> <span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>Итак, вот простейший случай чистого функтора, отражающего математическую модель: результат использования этого функтора будет зависеть только от входного значения. Всегда.</p>
 
 <p>И вот я подумал: а ведь это же чрезвычайно удобно! Если результат вызова функции полностью определён входными значениями, то:</p>
@@ -165,39 +165,39 @@ struct square {
 <p>Поэтому чем больше подобных функторов/функций будет в программе, тем легче оная станет.</p>
 
 <p>Ну вот, скажем, такой пример:</p>
-<cpp>
-struct storage {
-    storage() :
-            m_capacity( 0 ) {
-        obtain_capacity();
-    }
-private:
-    size_t m_capacity;
-private:
-    void obtain_capacity() {
-        size_t obtained_capacity = 0;
-        // Получаем откуда-то извне ёмкость...
-        m_capacity = obtained_capacity;
-    }
-};
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">storage</span> <span class="p">{</span>
+    <span class="n">storage</span><span class="p">()</span> <span class="o">:</span>
+            <span class="n">m_capacity</span><span class="p">(</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">obtain_capacity</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="nl">private:</span>
+    <span class="kt">size_t</span> <span class="n">m_capacity</span><span class="p">;</span>
+<span class="nl">private:</span>
+    <span class="kt">void</span> <span class="nf">obtain_capacity</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">size_t</span> <span class="n">obtained_capacity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="c1">// Получаем откуда-то извне ёмкость...</span>
+        <span class="n">m_capacity</span> <span class="o">=</span> <span class="n">obtained_capacity</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>Итак, вот нам канонический побочный эффект: функция внутри себя изменяет то, что находится вне её. Если же подобных функций десять, или тридцать, то отслеживание побочных эффектов ощутимо усложняется. Горький опыт ловли багов убедителен…</p>
 
 <p>А что если написать так:</p>
-<cpp>
-struct storage {
-    storage() :
-            m_capacity( obtain_capacity() ) {}
-private:
-    size_t m_capacity;
-private:
-    size_t obtain_capacity() const {
-        size_t obtained_capacity = 0;
-        // Получаем откуда-то извне ёмкость...
-        return obtained_capacity;
-    }
-};
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">storage</span> <span class="p">{</span>
+    <span class="n">storage</span><span class="p">()</span> <span class="o">:</span>
+            <span class="n">m_capacity</span><span class="p">(</span> <span class="n">obtain_capacity</span><span class="p">()</span> <span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+    <span class="kt">size_t</span> <span class="n">m_capacity</span><span class="p">;</span>
+<span class="nl">private:</span>
+    <span class="kt">size_t</span> <span class="n">obtain_capacity</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="kt">size_t</span> <span class="n">obtained_capacity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="c1">// Получаем откуда-то извне ёмкость...</span>
+        <span class="k">return</span> <span class="n">obtained_capacity</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>Смотрите, мы изолировали функцию obtain_capacity от этого побочного эффекта. И это упростило функцию (а чаще всего это позволит нам вообще вынести её в отдельный чистый функтор).</p>
 
 <p>Вот из таких мелочей и состоит простота…</p>

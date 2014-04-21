@@ -148,11 +148,10 @@
 
 <p>Итак, имеется код:</p>
 
-<cpp>
-int main() {
-    std::cerr &lt;&lt; "Code name is "Bird"." &lt;&lt; std::endl;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Code name is &quot;</span><span class="n">Bird</span><span class="s">&quot;.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Разумеется, сей код не скомпилируется. Да, мы хотели вывести строку вида:</p>
 
@@ -164,15 +163,13 @@ Code name is "Bird".
 
 <p>В этом случае кавычки вокруг слова Bird необходимо экранировать бэкслэшем:</p>
 
-<cpp>
-    std::cerr &lt;&lt; "Code name is \"Bird\"." &lt;&lt; std::endl;
-</cpp>
+<div class="highlight"><pre><code class="cpp">    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Code name is </span><span class="se">\&quot;</span><span class="s">Bird</span><span class="se">\&quot;</span><span class="s">.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
 
 <p>Но, как мы знаем, в Комитете по стандартизации C++ сидят люди довольно-таки ленивые, и пришла им в голову мысль о том, как не писать все эти обратные слэши. И вот до чего они додумались:</p>
 
-<cpp>
-    std::cerr &lt;&lt; R"(Code name is "Bird".)" &lt;&lt; std::endl;
-</cpp>
+<div class="highlight"><pre><code class="cpp">    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="n">R</span><span class="s">&quot;(Code name is &quot;</span><span class="n">Bird</span><span class="s">&quot;.)&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
 
 <p>В этом случае мы получим именно то, что нам было нужно:</p>
 
@@ -182,15 +179,13 @@ Code name is "Bird".
 
 <p>Перед нами тот самый “сырой строковый литерал”, об этом сигнализирует буква R вначале. Общее правило таково:</p>
 
-<cpp>
-R"(...)"
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">R</span><span class="s">&quot;(...)&quot;</span>
+</code></pre></div>
 
 <p>Всё то, что <em>между</em> круглыми скобками (исключая оные) - это и есть сырой литерал. Почему сырой? Потому что все символы в нём воспринимаются “как есть”, и экранировать ничего не нужно:</p>
 
-<cpp>
-    std::cerr &lt;&lt; R"(single " quote)" &lt;&lt; std::endl;
-</cpp>
+<div class="highlight"><pre><code class="cpp">    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="n">R</span><span class="s">&quot;(single &quot;</span> <span class="n">quote</span><span class="p">)</span><span class="s">&quot; &lt;&lt; std::endl;</span>
+</code></pre></div>
 
 <p>Вывод будет корректным, несмотря на нарушение симметрии двойных кавычек, а всё потому, что вторая по счёту кавычка теперь воспринимается “как есть”, ибо она является частью сырого литерала.</p>
 
@@ -202,44 +197,41 @@ R"(...)"
 
 <p>Допустим, нам нужно сформировать кусочек HTML-кода веб-страницы следующего вида:</p>
 
-<cpp>
-<head>
-<meta charset="UTF-8" />
-<title>Source code formatter for Mac | StrictCode</title>
-<link rel="pingback" href="http://strictcodeapp.com/xmlrpc.php" />
-<script type="text/javascript">
-document.documentElement.className = 'js';
-</script>
-</head>
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Source</span> <span class="n">code</span> <span class="n">formatter</span> <span class="k">for</span> <span class="n">Mac</span> <span class="o">|</span> <span class="n">StrictCode</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s">&quot;pingback&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;http://strictcodeapp.com/xmlrpc.php&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">script</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+<span class="n">document</span><span class="p">.</span><span class="n">documentElement</span><span class="p">.</span><span class="n">className</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">js</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+</code></pre></div>
 
 <p>Для получения нормального результата мы должны написать так:</p>
 
-<cpp>
-std::string page( "<head>\n\
-&lt;meta charset=\"UTF-8\" /&gt;\n\
-<title>Source code formatter for Mac | StrictCode</title>\n\
-&lt;link rel=\"pingback\" href=\"http://strictcodeapp.com/xmlrpc.php\" /&gt;\n\
-&lt;script type=\"text/javascript\"&gt;\n\
-document.documentElement.className = 'js';\n\
-\n\
-</head>" );
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">page</span><span class="p">(</span> <span class="s">&quot;&lt;head&gt;</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">&lt;meta charset=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">&lt;title&gt;Source code formatter for Mac | StrictCode&lt;/title&gt;</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">&lt;link rel=</span><span class="se">\&quot;</span><span class="s">pingback</span><span class="se">\&quot;</span><span class="s"> href=</span><span class="se">\&quot;</span><span class="s">http://strictcodeapp.com/xmlrpc.php</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">&lt;script type=</span><span class="se">\&quot;</span><span class="s">text/javascript</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">document.documentElement.className = &#39;js&#39;;</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">&lt;/script&gt;</span><span class="se">\n</span><span class="s">\</span>
+<span class="s">&lt;/head&gt;&quot;</span> <span class="p">);</span>
+</code></pre></div>
 
 <p>Мы экранировали все внутренние двойные кавычки, расставили ‘\n’ для переноса строки, да ещё и расставили конкатенирующие бэкслэши для соединения литерала воедино.</p>
 
 <p>А теперь представьте себе, что код этой страницы был бы раз в десять больше. Расставлять вручную все эти бэкслэши ну совсем не хочется. Хочется просто скопировать код откуда-нибудь и вставить себе в файл. Тут-то и приходят на помощь сырые литералы:</p>
 
-<cpp>
-std::string page( R"(<head>
-<meta charset="UTF-8" />
-<title>Source code formatter for Mac | StrictCode</title>
-<link rel="pingback" href="http://strictcodeapp.com/xmlrpc.php" />
-<script type="text/javascript">
-document.documentElement.className = 'js';
-</script>
-</head>)" );
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">page</span><span class="p">(</span> <span class="n">R</span><span class="s">&quot;(&lt;head&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Source</span> <span class="n">code</span> <span class="n">formatter</span> <span class="k">for</span> <span class="n">Mac</span> <span class="o">|</span> <span class="n">StrictCode</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s">&quot;pingback&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;http://strictcodeapp.com/xmlrpc.php&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">script</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+<span class="n">document</span><span class="p">.</span><span class="n">documentElement</span><span class="p">.</span><span class="n">className</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">js</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span><span class="p">)</span><span class="s">&quot; );</span>
+</code></pre></div>
 
 <p>Мы просто указали, что сие есть сырой литерал. Всё! Никакого экранирования, никаких ‘\n’ и никакой конкатенации, вывод будет именно таким, как мы и хотели.</p>
 
@@ -271,43 +263,39 @@ document.documentElement.className = 'js';
 
 <p>Вспомним пример из документации к <strong><a href="http://www.boost.org/doc/libs/1_54_0/libs/regex/doc/html/boost_regex/introduction_and_overview.html">Boost.Regex</a></strong>:</p>
 
-<cpp>
-bool validate_card_format( const std::string&amp; s ) {
-   static const std::regex e( "(\d{4}[- ]){3}\d{4}" );
-   return std::regex_match(s, e);
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">bool</span> <span class="nf">validate_card_format</span><span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span> <span class="p">)</span> <span class="p">{</span>
+   <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">regex</span> <span class="n">e</span><span class="p">(</span> <span class="s">&quot;(\d{4}[- ]){3}\d{4}&quot;</span> <span class="p">);</span>
+   <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">regex_match</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>При внимательном рассмотрении вы можете заметить, что в коде допущена ошибка. Во-первых, компилятор ругнётся на то, что не знает комбинацию ‘\d’, а во-вторых, само выражение работать не будет, потому что бэкслэш не экранирован. Необходимо написать так:</p>
 
-<cpp>
-   static const std::regex e( "(\\d{4}[- ]){3}\\d{4}" );
-</cpp>
+<div class="highlight"><pre><code class="cpp">   <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">regex</span> <span class="n">e</span><span class="p">(</span> <span class="s">&quot;(</span><span class="se">\\</span><span class="s">d{4}[- ]){3}</span><span class="se">\\</span><span class="s">d{4}&quot;</span> <span class="p">);</span>
+</code></pre></div>
 
 <p>Но с сырым литералом можно написать напрямую:</p>
 
-<cpp>
-    static const std::regex e( R"((\d{4}[- ]){3}\d{4})" );
-</cpp>
+<div class="highlight"><pre><code class="cpp">    <span class="k">static</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">regex</span> <span class="n">e</span><span class="p">(</span> <span class="n">R</span><span class="s">&quot;((\d{4}[- ]){3}\d{4})&quot;</span> <span class="p">);</span>
+</code></pre></div>
 
 <p>А теперь представьте себе, что выражение будет вот такого размера:</p>
 
-<cpp>
-"(^[[:blank:]]*#(?:[^\\\\\\n]|\\\\[^\\n[:punct:][:word:]]*[\\n[:punct:][:word:]])*)|"
-"(//[^\\n]*|/\\*.*?\\*/)|"
-"\\&lt;([+-]?(?:(?:0x[[:xdigit:]]+)|(?:(?:[[:digit:]]*\\.)"
-"?[[:digit:]]+(?:[eE][+-]?[[:digit:]]+)?))u?(?:(?:int(?:8|16|32|64))|L)?)\\&gt;|"
-"('(?:[^\\\\']|\\\\.)*'|\"(?:[^\\\\\"]|\\\\.)*\")|"
-"\\&lt;(__asm|__cdecl|__declspec|__export|__far16|__fastcall|__fortran|__import"
-"|__pascal|__rtti|__stdcall|_asm|_cdecl|__except|_export|_far16|_fastcall"
-"|__finally|_fortran|_import|_pascal|_stdcall|__thread|__try|asm|auto|bool"
-"|break|case|catch|cdecl|char|class|const|const_cast|continue|default|delete"
-"|do|double|dynamic_cast|else|enum|explicit|extern|false|float|for|friend|goto"
-"|if|inline|int|long|mutable|namespace|new|operator|pascal|private|protected"
-"|public|register|reinterpret_cast|return|short|signed|sizeof|static|static_cast"
-"|struct|switch|template|this|throw|true|try|typedef|typeid|typename|union|unsigned"
-"|using|virtual|void|volatile|wchar_t|while)\\&gt;"
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="s">&quot;(^[[:blank:]]*#(?:[^</span><span class="se">\\\\\\</span><span class="s">n]|</span><span class="se">\\\\</span><span class="s">[^</span><span class="se">\\</span><span class="s">n[:punct:][:word:]]*[</span><span class="se">\\</span><span class="s">n[:punct:][:word:]])*)|&quot;</span>
+<span class="s">&quot;(//[^</span><span class="se">\\</span><span class="s">n]*|/</span><span class="se">\\</span><span class="s">*.*?</span><span class="se">\\</span><span class="s">*/)|&quot;</span>
+<span class="s">&quot;</span><span class="se">\\</span><span class="s">&lt;([+-]?(?:(?:0x[[:xdigit:]]+)|(?:(?:[[:digit:]]*</span><span class="se">\\</span><span class="s">.)&quot;</span>
+<span class="s">&quot;?[[:digit:]]+(?:[eE][+-]?[[:digit:]]+)?))u?(?:(?:int(?:8|16|32|64))|L)?)</span><span class="se">\\</span><span class="s">&gt;|&quot;</span>
+<span class="s">&quot;(&#39;(?:[^</span><span class="se">\\\\</span><span class="s">&#39;]|</span><span class="se">\\\\</span><span class="s">.)*&#39;|</span><span class="se">\&quot;</span><span class="s">(?:[^</span><span class="se">\\\\\&quot;</span><span class="s">]|</span><span class="se">\\\\</span><span class="s">.)*</span><span class="se">\&quot;</span><span class="s">)|&quot;</span>
+<span class="s">&quot;</span><span class="se">\\</span><span class="s">&lt;(__asm|__cdecl|__declspec|__export|__far16|__fastcall|__fortran|__import&quot;</span>
+<span class="s">&quot;|__pascal|__rtti|__stdcall|_asm|_cdecl|__except|_export|_far16|_fastcall&quot;</span>
+<span class="s">&quot;|__finally|_fortran|_import|_pascal|_stdcall|__thread|__try|asm|auto|bool&quot;</span>
+<span class="s">&quot;|break|case|catch|cdecl|char|class|const|const_cast|continue|default|delete&quot;</span>
+<span class="s">&quot;|do|double|dynamic_cast|else|enum|explicit|extern|false|float|for|friend|goto&quot;</span>
+<span class="s">&quot;|if|inline|int|long|mutable|namespace|new|operator|pascal|private|protected&quot;</span>
+<span class="s">&quot;|public|register|reinterpret_cast|return|short|signed|sizeof|static|static_cast&quot;</span>
+<span class="s">&quot;|struct|switch|template|this|throw|true|try|typedef|typeid|typename|union|unsigned&quot;</span>
+<span class="s">&quot;|using|virtual|void|volatile|wchar_t|while)</span><span class="se">\\</span><span class="s">&gt;&quot;</span>
+</code></pre></div>
 
 <p>Нехило, правда? А ведь это пример из <strong><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2146.html#Motivating">реальной программы</a></strong>. Представьте себе, что нам нужно скопировать подобное заготовленное выражение к себе в код, а потом корректно расставить все эти экранирующие бэкслэши. В этом случае сырые литералы представляются чрезвычайно полезным инструментом.</p>
 

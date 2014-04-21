@@ -146,47 +146,43 @@
         <!--break-->
 <p>Представим, что у нас есть такая функция:</p>
 
-<cpp>
-template <typename number="">
-std::string as_binary( const Number number ) {
-    std::string representation;
-    // Представляем number в бинарно-строковом виде, не важно как...
-    return representation;
-}
+<div class="highlight"><pre><code class="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Number</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">as_binary</span><span class="p">(</span> <span class="k">const</span> <span class="n">Number</span> <span class="n">number</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">representation</span><span class="p">;</span>
+    <span class="c1">// Представляем number в бинарно-строковом виде, не важно как...</span>
+    <span class="k">return</span> <span class="n">representation</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
+<p>Но у нас есть техническое ограничение: функция <strong>as_binary()</strong> не может принимать очень большое число, а только <strong>int</strong> или меньше. Как оградить функцию от случайной передачи чрезмерно больших чисел?</p>
 
-Но у нас есть техническое ограничение: функция <strong>as_binary()</strong> не может принимать очень большое число, а только <strong>int</strong> или меньше. Как оградить функцию от случайной передачи чрезмерно больших чисел?
+<p>Классическое решение - с помощью assert().</p>
 
-Классическое решение - с помощью assert().
+<div class="highlight"><pre><code class="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Number</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">as_binary</span><span class="p">(</span> <span class="k">const</span> <span class="n">Number</span> <span class="n">number</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">assert</span> <span class="p">(</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="s">&quot;Sorry, too big number!&quot;</span> <span class="p">)</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">representation</span><span class="p">;</span>
+    <span class="c1">// Представляем number в бинарно-строковом виде, не важно как...</span>
+    <span class="k">return</span> <span class="n">representation</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-<cpp>
-template <typename number="">
-std::string as_binary( const Number number ) {
-    assert ( sizeof (T) &lt;= sizeof (int) &amp;&amp; "Sorry, too big number!" )
-    std::string representation;
-    // Представляем number в бинарно-строковом виде, не важно как...
-    return representation;
-}
+<p>Ну, или с помощью BOOST_ASSERT, не суть важно. Важно то, что у этого решения есть один минус - такая проверка работает только на стадии выполнения программы. А мы знаем, что обнаружить ошибку на стадии компиляции гораздо предпочтительнее.</p>
 
+<p>На помощь нам приходит <strong>static_assert</strong>.</p>
 
-Ну, или с помощью BOOST_ASSERT, не суть важно. Важно то, что у этого решения есть один минус - такая проверка работает только на стадии выполнения программы. А мы знаем, что обнаружить ошибку на стадии компиляции гораздо предпочтительнее.
+<div class="highlight"><pre><code class="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Number</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">as_binary</span><span class="p">(</span> <span class="k">const</span> <span class="n">Number</span> <span class="n">number</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">static_assert</span> <span class="p">(</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">),</span> <span class="s">&quot;Sorry, too big number!&quot;</span> <span class="p">)</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">representation</span><span class="p">;</span>
+    <span class="c1">// Представляем number в бинарно-строковом виде, не важно как...</span>
+    <span class="k">return</span> <span class="n">representation</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-На помощь нам приходит <strong>static_assert</strong>.
+<p>Выражение <strong>static_assert</strong> принимает условие (которое, разумеется, можно проверить на стадии компиляции), а также строковый литерал (который будет выведен в случае невыполнения этого условия). Просто, понятно и полезно.</p>
 
-<cpp>
-template <typename number="">
-std::string as_binary( const Number number ) {
-    static_assert ( sizeof (T) &lt;= sizeof (int), "Sorry, too big number!" )
-    std::string representation;
-    // Представляем number в бинарно-строковом виде, не важно как...
-    return representation;
-}
-
-
-Выражение <strong>static_assert</strong> принимает условие (которое, разумеется, можно проверить на стадии компиляции), а также строковый литерал (который будет выведен в случае невыполнения этого условия). Просто, понятно и полезно.
-
-<em>P.S. Разумеется, есть важное "НО": пока шаблон функции as_binary() не инстанцирован, static_assert не сработает. Иными словами, если мы нигде в коде не вызвали эту функцию, то и проверка не произойдёт. Хотя если проверка находится, скажем, в простой функции, то, поскольку её код полноценно компилируется независимо от того, используется ли функция в коде, проверка гарантированно произойдёт.</em>
-</typename></cpp></typename></cpp></typename></cpp>
+<p><em>P.S. Разумеется, есть важное “НО”: пока шаблон функции as_binary() не инстанцирован, static_assert не сработает. Иными словами, если мы нигде в коде не вызвали эту функцию, то и проверка не произойдёт. Хотя если проверка находится, скажем, в простой функции, то, поскольку её код полноценно компилируется независимо от того, используется ли функция в коде, проверка гарантированно произойдёт.</em></p>
 
         
       </div><!-- /.entry-content -->

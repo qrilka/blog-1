@@ -8,29 +8,29 @@ categories:
   0L7QstCw0L3QuNC1
 ---
 So, we have some function for writing to log. For example:
-<cpp>
+{% highlight cpp %}
 report_about <inactive_sessions>();
-</cpp>
+{% endhighlight %}
 
 We can read this string as text "directly":
-<cpp>
+{% highlight cpp %}
 report about inactive sessions
-</cpp>
+{% endhighlight %}
 
 And now look at the implementation of this function. So:
-<cpp>
+{% highlight cpp %}
 template <typename What>
 inline void report_about() {
     // ...
     What{} .happened() >> log;
 }
-</cpp>
+{% endhighlight %}
 
-Not so important where <strong>log</strong> come from and what type of <strong>log</strong>, it's details. Most likely, we'll have to report not only about inactive sessions, but about other things too. So type of policy (strategy) must implement the function happened() - tada, message about what happened go into log. Now read this as text "directly":
-<cpp>
+Not so important where **log** come from and what type of **log**, it's details. Most likely, we'll have to report not only about inactive sessions, but about other things too. So type of policy (strategy) must implement the function happened() - tada, message about what happened go into log. Now read this as text "directly":
+{% highlight cpp %}
 What happened >> log
-</cpp>
+{% endhighlight %}
 
 Trifle, but nice
 
-<em>P.S. The "mirror form" of stream-operator should be familiar to my readers in previous issues.</em>
+*P.S. The "mirror form" of stream-operator should be familiar to my readers in previous issues.*

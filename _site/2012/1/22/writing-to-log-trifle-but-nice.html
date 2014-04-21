@@ -144,33 +144,32 @@
       </footer>
       <div class="entry-content">
         <p>So, we have some function for writing to log. For example:</p>
-<cpp>
-report_about <inactive_sessions>();
 
+<div class="highlight"><pre><code class="cpp"><span class="n">report_about</span> <span class="o">&lt;</span><span class="n">inactive_sessions</span><span class="o">&gt;</span><span class="p">();</span>
+</code></pre></div>
 
-We can read this string as text "directly":
-<cpp>
-report about inactive sessions
-</cpp>
+<p>We can read this string as text “directly”:</p>
 
-And now look at the implementation of this function. So:
-<cpp>
-template <typename what="">
-inline void report_about() {
-    // ...
-    What{} .happened() &gt;&gt; log;
-}
+<div class="highlight"><pre><code class="cpp"><span class="n">report</span> <span class="n">about</span> <span class="n">inactive</span> <span class="n">sessions</span>
+</code></pre></div>
 
+<p>And now look at the implementation of this function. So:</p>
 
-Not so important where <strong>log</strong> come from and what type of <strong>log</strong>, it's details. Most likely, we'll have to report not only about inactive sessions, but about other things too. So type of policy (strategy) must implement the function happened() - tada, message about what happened go into log. Now read this as text "directly":
-<cpp>
-What happened &gt;&gt; log
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">What</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="kt">void</span> <span class="n">report_about</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="n">What</span><span class="p">{}</span> <span class="p">.</span><span class="n">happened</span><span class="p">()</span> <span class="o">&gt;&gt;</span> <span class="n">log</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-Trifle, but nice
+<p>Not so important where <strong>log</strong> come from and what type of <strong>log</strong>, it’s details. Most likely, we’ll have to report not only about inactive sessions, but about other things too. So type of policy (strategy) must implement the function happened() - tada, message about what happened go into log. Now read this as text “directly”:</p>
 
-<em>P.S. The "mirror form" of stream-operator should be familiar to my readers in previous issues.</em>
-</typename></cpp></inactive_sessions></cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">What</span> <span class="n">happened</span> <span class="o">&gt;&gt;</span> <span class="n">log</span>
+</code></pre></div>
+
+<p>Trifle, but nice</p>
+
+<p><em>P.S. The “mirror form” of stream-operator should be familiar to my readers in previous issues.</em></p>
 
         
       </div><!-- /.entry-content -->

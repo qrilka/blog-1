@@ -144,18 +144,18 @@
       </footer>
       <div class="entry-content">
         <p>Переопределённая функция, отвечает за подсветку ключевых слов в переданном извне куске текста.</p>
-<cpp>
-void editor_highlighter::highlightBlock( QString const&amp; text ) {
-    QTextCharFormat keywords_format;
-    keywords_format.setFontWeight( QFont::Bold );
-    auto keywords( kernel.list_of_keywords_of_current_language() );
-    highlight( this, keywords ).based_on( keywords_format ).in_this( text );
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="n">editor_highlighter</span><span class="o">::</span><span class="n">highlightBlock</span><span class="p">(</span> <span class="n">QString</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">text</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">QTextCharFormat</span> <span class="n">keywords_format</span><span class="p">;</span>
+    <span class="n">keywords_format</span><span class="p">.</span><span class="n">setFontWeight</span><span class="p">(</span> <span class="n">QFont</span><span class="o">::</span><span class="n">Bold</span> <span class="p">);</span>
+    <span class="k">auto</span> <span class="nf">keywords</span><span class="p">(</span> <span class="n">kernel</span><span class="p">.</span><span class="n">list_of_keywords_of_current_language</span><span class="p">()</span> <span class="p">);</span>
+    <span class="n">highlight</span><span class="p">(</span> <span class="k">this</span><span class="p">,</span> <span class="n">keywords</span> <span class="p">).</span><span class="n">based_on</span><span class="p">(</span> <span class="n">keywords_format</span> <span class="p">).</span><span class="n">in_this</span><span class="p">(</span> <span class="n">text</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Обратите внимание на последнюю строку. Функтору <strong>highlight</strong> необходимо было передать указатель <strong>this</strong>, и здесь это сделано в литературной манере:</p>
-<cpp>
-    highlight this keywords...
-</cpp>
+
+<div class="highlight"><pre><code class="cpp">    <span class="n">highlight</span> <span class="k">this</span> <span class="n">keywords</span><span class="p">...</span>
+</code></pre></div>
 <p>То есть слово <strong>this</strong> не только явилось указателем на текущий класс, но и сыграло литературную роль именно как английское слово “this”. Мне очень понравилось такое решение. </p>
 
 

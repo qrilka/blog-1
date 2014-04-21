@@ -148,44 +148,44 @@
 <p>Style Revisor можно запустить как в консольном, так и в графическом режимах. Логика предельно проста: если запускаешь без аргументов командной строки, запускается графический режим, в противном случае - консольный.</p>
 
 <p>Ну, думаю, всё просто:</p>
-<cpp>
-bool program_starts_in_GUI_mode( int const arguments_quantity ) {
-    return 1 == arguments_quantity;
-}
 
-int main(   int   arguments_quantity
-          , char* arguments[] ) {
-    if( program_starts_in_GUI_mode(   arguments_quantity
-                                    , arguments ) ) {
-        QApplication application(   arguments_quantity
-                                  , arguments );
-        GUI::main_window a_main_window;
-        a_main_window.show();
-        return application.exec();
-    }
+<div class="highlight"><pre><code class="cpp"><span class="kt">bool</span> <span class="nf">program_starts_in_GUI_mode</span><span class="p">(</span> <span class="kt">int</span> <span class="k">const</span> <span class="n">arguments_quantity</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">arguments_quantity</span><span class="p">;</span>
+<span class="p">}</span>
 
-    return console::runner{}(   arguments_quantity
-                              , arguments );
-}
-</cpp>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span>   <span class="kt">int</span>   <span class="n">arguments_quantity</span>
+          <span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">arguments</span><span class="p">[]</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">program_starts_in_GUI_mode</span><span class="p">(</span>   <span class="n">arguments_quantity</span>
+                                    <span class="p">,</span> <span class="n">arguments</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">QApplication</span> <span class="n">application</span><span class="p">(</span>   <span class="n">arguments_quantity</span>
+                                  <span class="p">,</span> <span class="n">arguments</span> <span class="p">);</span>
+        <span class="n">GUI</span><span class="o">::</span><span class="n">main_window</span> <span class="n">a_main_window</span><span class="p">;</span>
+        <span class="n">a_main_window</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">application</span><span class="p">.</span><span class="n">exec</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">console</span><span class="o">::</span><span class="n">runner</span><span class="p">{}(</span>   <span class="n">arguments_quantity</span>
+                              <span class="p">,</span> <span class="n">arguments</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Поскольку один аргумент (являющийся именем самой программы) присутствует всегда, я к этому и привязался.</p>
 
 <p>А в процессе отладки я запускал приложение из командной строки, ну и всё прекрасно работало: если запускал так:</p>
-<cpp>
-$ Style\ Revisor.app/Contents/MacOS/Style\ Revisor
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="err">$</span> <span class="n">Style</span><span class="err">\</span> <span class="n">Revisor</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">Style</span><span class="err">\</span> <span class="n">Revisor</span>
+</code></pre></div>
 <p>открывалось окно, если же так:</p>
-<cpp>
-$ Style\ Revisor.app/Contents/MacOS/Style\ Revisor -h
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="err">$</span> <span class="n">Style</span><span class="err">\</span> <span class="n">Revisor</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">MacOS</span><span class="o">/</span><span class="n">Style</span><span class="err">\</span> <span class="n">Revisor</span> <span class="o">-</span><span class="n">h</span>
+</code></pre></div>
 <p>то продолжал работать в консоли.</p>
 
 <p>А потом вдруг решил запустить в графическом режиме, причём “стандартным” способом: двойным кликом по иконке. То есть так, как будет запускать пользователь.</p>
 
 <p>Кликаю - не запускается. Вернее, запускается и тут же вылетает. Ломаю голову, что же такое… А потом, в ходе экспериментов, оказалось, что количество передаваемых процессу аргументов при “стандартном” способе запуска равно 2. Не понял, подумал я, откуда там второй взялся-то? Решил поглядеть. В итоге вижу, что в качестве второго аргумента передаётся строка вида:</p>
-<cpp>
--psn_0_3576681
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="o">-</span><span class="n">psn_0_3576681</span>
+</code></pre></div>
 <p>Ну а Гугл расставил всё на свои места. Оказывается, при “стандартном” запуске процессу передаётся (вторым обязательным аргументом) Process Serial Number (как я понял, аналог PID).</p>
 
 <p>Так что вот… Всё-таки полезно на разных платформах поиграться…</p>

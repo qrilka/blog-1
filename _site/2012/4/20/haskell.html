@@ -144,19 +144,19 @@
       </footer>
       <div class="entry-content">
         <p>За основу взят пример из книги “Real World Haskell”, переработано мною:</p>
-<hs>
-import System.IO
-import Data.Char(toUpper)
 
-main :: IO ()
-main = do
-       pure_text &lt;- readFile "/home/denis/input"
-       let converted_text = convert_to_upper_case pure_text
-       writeFile "/home/denis/output" converted_text
+<div class="highlight"><pre><code class="haskell"><span class="kr">import</span> <span class="nn">System.IO</span>
+<span class="kr">import</span> <span class="nn">Data.Char</span><span class="p">(</span><span class="n">toUpper</span><span class="p">)</span>
 
-convert_to_upper_case :: String -&gt; String
-convert_to_upper_case = map toUpper
-</hs>
+<span class="nf">main</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="nb">()</span>
+<span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
+       <span class="n">pure_text</span> <span class="ow">&lt;-</span> <span class="n">readFile</span> <span class="s">&quot;/home/denis/input&quot;</span>
+       <span class="kr">let</span> <span class="n">converted_text</span> <span class="ow">=</span> <span class="n">convert_to_upper_case</span> <span class="n">pure_text</span>
+       <span class="n">writeFile</span> <span class="s">&quot;/home/denis/output&quot;</span> <span class="n">converted_text</span>
+
+<span class="nf">convert_to_upper_case</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="nf">convert_to_upper_case</span> <span class="ow">=</span> <span class="n">map</span> <span class="n">toUpper</span>
+</code></pre></div>
 <p>Предельно лаконичное решение: читаем текст из файла <strong>input</strong>, затем конвертируем его символы в верхний регистр и записываем это хозяйство в файл <strong>output</strong>.</p>
 
 <p>Три строчки, понятные без всяких комментариев. Круто!</p>

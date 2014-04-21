@@ -146,37 +146,37 @@
         <p>Не так давно открыл для себя эту маленькую, но полезную возможность. Слышал о ней давно, но потом забыл, а тут вдруг неожиданно вспомнил и решил применить в своём коде.</p>
 
 <p>Итак, есть у нас класс:</p>
-<cpp>
-class check {
-public:
-    explicit check( std::string const&amp; path ) :
-              a_path( path )
-            , /* А тут инициализация других членов-данных...
-               */ {}
-    explicit check( QString const&amp; path ) :
-              a_path( path.toStdString() ) 
-            , /* А тут инициализация других членов-данных...
-               */ {}
-private:
-    std::string const a_path;
-    // Другие члены-данные...
-};
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">class</span> <span class="nc">check</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="k">explicit</span> <span class="n">check</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">path</span> <span class="p">)</span> <span class="o">:</span>
+              <span class="n">a_path</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span>
+            <span class="p">,</span> <span class="cm">/* А тут инициализация других членов-данных...</span>
+<span class="cm">               */</span> <span class="p">{}</span>
+    <span class="k">explicit</span> <span class="n">check</span><span class="p">(</span> <span class="n">QString</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">path</span> <span class="p">)</span> <span class="o">:</span>
+              <span class="n">a_path</span><span class="p">(</span> <span class="n">path</span><span class="p">.</span><span class="n">toStdString</span><span class="p">()</span> <span class="p">)</span> 
+            <span class="p">,</span> <span class="cm">/* А тут инициализация других членов-данных...</span>
+<span class="cm">               */</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span> <span class="n">a_path</span><span class="p">;</span>
+    <span class="c1">// Другие члены-данные...</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>Итак, для простоты использования конструктор перегружен двумя типами строк. Проблема такого подхода в том, что список инициализации других членов-данных нужно повторять дважды. Если же конструктор будет перегружен ещё одним типом - уже трижды повторять, и так далее. Некрасивое решение.</p>
 
 <p>Более красивым решением являются делегирующие конструкторы.</p>
-<cpp>
-class check {
-public:
-    explicit check( std::string const&amp; path ) :
-              a_path( path )
-            , /* А тут инициализация других членов-данных...
-               */ {}
-    explicit check( QString const&amp; path ) :
-            check( path.toStdString() ) {}
-...
-};
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">class</span> <span class="nc">check</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="k">explicit</span> <span class="n">check</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">path</span> <span class="p">)</span> <span class="o">:</span>
+              <span class="n">a_path</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span>
+            <span class="p">,</span> <span class="cm">/* А тут инициализация других членов-данных...</span>
+<span class="cm">               */</span> <span class="p">{}</span>
+    <span class="k">explicit</span> <span class="n">check</span><span class="p">(</span> <span class="n">QString</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">path</span> <span class="p">)</span> <span class="o">:</span>
+            <span class="n">check</span><span class="p">(</span> <span class="n">path</span><span class="p">.</span><span class="n">toStdString</span><span class="p">()</span> <span class="p">)</span> <span class="p">{}</span>
+<span class="p">...</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>Суть предельно ясна: один из конструкторов делегирует инициализацию другому, приводя тип своего аргумента к виду, понятному этому другому. В этом случае то, что происходит в списке инициализации, уже не повторяется.</p>
 
 <p>Ещё один элегантный и простой способ борьбы с дубляжом кода - в нашу копилку.</p>

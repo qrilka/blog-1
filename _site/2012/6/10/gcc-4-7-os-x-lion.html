@@ -150,22 +150,22 @@
 <p>Ну, начну с того, что собирал я GCC не совсем правильно. Вернее, не тем способом, который рекомендуют разработчики GCC. Оказывается, скачивать и отдельно устанавливать библиотеки GMP, MPC и MPFR <em>не нужно</em>! Почему? Потому что GCC, как оказалось, умеет делать это самостоятельно. Кроме того, конфигурировал я тоже не совсем правильно. Итак, по порядку…</p>
 
 <p>Скачиваем gcc-4.7.0.tar.bz2, распаковываем и заходим внутрь:</p>
-<cpp>
-cd gcc-4.7.0
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">cd</span> <span class="n">gcc</span><span class="o">-</span><span class="mf">4.7.0</span>
+</code></pre></div>
 <p>А вот теперь следуем простым инструкциям, взятым <strong><a href="http://gcc.gnu.org/wiki/InstallingGCC">отсюда</a></strong>. Итак:</p>
-<cpp>
-./contrib/download_prerequisites
-cd ..
-mkdir gcc_build
-cd gcc_build
-/Users/dshevchenko/Downloads/gcc-4.7.0/configure --prefix=/Users/dshevchenko/Tools/GCC 
-make
-make install
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="p">.</span><span class="o">/</span><span class="n">contrib</span><span class="o">/</span><span class="n">download_prerequisites</span>
+<span class="n">cd</span> <span class="p">..</span>
+<span class="n">mkdir</span> <span class="n">gcc_build</span>
+<span class="n">cd</span> <span class="n">gcc_build</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">dshevchenko</span><span class="o">/</span><span class="n">Downloads</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.7.0</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">Users</span><span class="o">/</span><span class="n">dshevchenko</span><span class="o">/</span><span class="n">Tools</span><span class="o">/</span><span class="n">GCC</span> 
+<span class="n">make</span>
+<span class="n">make</span> <span class="n">install</span>
+</code></pre></div>
 <p>Итак, в первой строке запускается небольшой скрипт, автоматически загружающий нужные версии MPFR, MPC и GMP и распаковывающий их архивы. Суть в том, что ставить эти библиотеки отдельно не нужно, поскольку в этом случае могут возникнуть проблемы с путями к ним (динамический линковщик ругается). Если же они скачиваются с помощью данного скрипта, то собираюсь и линкуются <em>статически</em>, и вам уже не придётся об этом беспокоиться.</p>
 
-<p>Далее, обращаю ваше внимание, мы <strong>выходим</strong> из gcc-4.7.0. Оказывается, это важный пункт, поскольку в официальной документации к GCC указано:<strong> “крайне не рекомендуем конфигурировать и собирать GCC, находясь внутри дерева исходников GCC или в одной из подпапок”</strong>. Нужно обязательно извне! Честно признаться, я так и не понял, почему это столь важно (ведь на Debian я собирал, находясь в корне gcc-4.7.0, и всё было ОК), но раз рекомендуется, так и сделаем.</p>
+<p>Далее, обращаю ваше внимание, мы <strong>выходим</strong> из gcc-4.7.0. Оказывается, это важный пункт, поскольку в официальной документации к GCC указано:** “крайне не рекомендуем конфигурировать и собирать GCC, находясь внутри дерева исходников GCC или в одной из подпапок”**. Нужно обязательно извне! Честно признаться, я так и не понял, почему это столь важно (ведь на Debian я собирал, находясь в корне gcc-4.7.0, и всё было ОК), но раз рекомендуется, так и сделаем.</p>
 
 <p>Обращаю ваше внимание и на то, что в конфигурации мы указали лишь <strong>–prefix</strong>, а опции <strong>–with-mpc</strong>, <strong>–with-gmp</strong> и <strong>–with-mpfr</strong> нам уже, естественно, не нужны.</p>
 
@@ -174,29 +174,29 @@ make install
 <h4>Подводный камень.</h4>
 
 <p>К сожалению, компиляция вскоре прерывается со следующей ошибкой:</p>
-<cpp>
-checking for suffix of object files... configure: error: 
-in `/Users/dshevchenko/Downloads/gcc_build/x86_64-apple-darwin11.4.0/libgcc':
-configure: error: cannot compute suffix of object files: cannot compile
-See `config.log' for more details.
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">checking</span> <span class="k">for</span> <span class="n">suffix</span> <span class="n">of</span> <span class="n">object</span> <span class="n">files</span><span class="p">...</span> <span class="n">configure</span><span class="o">:</span> <span class="n">error</span><span class="o">:</span> 
+<span class="n">in</span> <span class="err">`</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">dshevchenko</span><span class="o">/</span><span class="n">Downloads</span><span class="o">/</span><span class="n">gcc_build</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">apple</span><span class="o">-</span><span class="n">darwin11</span><span class="mf">.4.0</span><span class="o">/</span><span class="n">libgcc</span><span class="err">&#39;</span><span class="o">:</span>
+<span class="nl">configure:</span> <span class="n">error</span><span class="o">:</span> <span class="n">cannot</span> <span class="n">compute</span> <span class="n">suffix</span> <span class="n">of</span> <span class="n">object</span> <span class="n">files</span><span class="o">:</span> <span class="n">cannot</span> <span class="n">compile</span>
+<span class="n">See</span> <span class="err">`</span><span class="n">config</span><span class="p">.</span><span class="n">log</span><span class="err">&#39;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">details</span><span class="p">.</span>
+</code></pre></div>
 <p>Каноническая причина этой странной ошибки сводится к тому, что динамический линковщик не видит те самые служебные библиотеки GMP, MPC и/или MPFR. Но ведь мы собрали их статически, следовательно, причина в другом.</p>
 
 <p>Дооооолгое гугление и блуждание по спискам рассылки, stackoverflow.com и различным форумам натолкнули меня на <strong><a href="http://comments.gmane.org/gmane.comp.gcc.bugs/327499">эту</a></strong> страницу, а потом - на <strong><a href="http://llvm.org/bugs/show_bug.cgi?id=9571">эту</a></strong>. В общем, там имеет место один баг в Apple-вском llvm-gcc-4.2.1, и многие спотыкались об него.</p>
 
 <p>Решение оказалось неожиданно простым: необходимо определить две переменны среды:</p>
-<cpp>
-export CC=gcc-4.2
-export CXX=g++-4.2
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">export</span> <span class="n">CC</span><span class="o">=</span><span class="n">gcc</span><span class="o">-</span><span class="mf">4.2</span>
+<span class="k">export</span> <span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++-</span><span class="mf">4.2</span>
+</code></pre></div>
 <p>Не знаю почему, но компиляция успешно продолжится. Наберитесь терпения…</p>
 
 <p>Итак, всё готово, затем мы делаем make install - и всё ок.</p>
 
 <p>Далее необходимо определить переменную среды DYLD_LIBRARY_PATH. В моём случае это:</p>
-<cpp>
-export DYLD_LIBRARY_PATH=/Users/dshevchenko/Tools/GCC/lib
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">export</span> <span class="n">DYLD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">Users</span><span class="o">/</span><span class="n">dshevchenko</span><span class="o">/</span><span class="n">Tools</span><span class="o">/</span><span class="n">GCC</span><span class="o">/</span><span class="n">lib</span>
+</code></pre></div>
 <p>Это нужно для того, чтобы при компиляции моих программ компилятор подцеплял свежесобранную стандартную библиотеку, поскольку пути, указанные в переменной DYLD_LIBRARY_PATH, просматриваются динамическим линковщиком <strong>прежде</strong> стандартных путей, что чрезвычайно удобно.</p>
 
 <p>А теперь облегчённо вздохнём - и наслаждается GCC 4.7.0 на нашем Льве.</p>

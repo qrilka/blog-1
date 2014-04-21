@@ -152,59 +152,56 @@
 
 <h4>1. На C++11.</h4>
 
-<cpp>
-#include <iostream>
-#include <string>
-#include <map>
+<div class="highlight"><pre><code class="cpp"><span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &lt;string&gt;</span>
+<span class="cp">#include &lt;map&gt;</span>
 
-typedef std::map &lt;std::string, std::string&gt; Names;
+<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">map</span> <span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">Names</span><span class="p">;</span>
 
-int main() {
-    Names names
-        {   {"Ivan",   "Ivanov"}
-          , {"Fedor",  "Fedorov"}
-          , {"Stepan", "Stepanov"}
-        };
-    std::cout &lt;&lt; "What is your name?" &lt;&lt; std::endl;
-    std::string first_name;
-    std::cin &gt;&gt; first_name;
-    const auto it = names.find( first_name );
-    if ( it != names.end() )
-        std::cout &lt;&lt; "Hello, mister " &lt;&lt; it-&gt;second &lt;&lt; std::endl;
-    else
-        std::cout &lt;&lt; "Sorry, I don't know you..." &lt;&lt; std::endl;
-}
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Names</span> <span class="n">names</span>
+        <span class="p">{</span>   <span class="p">{</span><span class="s">&quot;Ivan&quot;</span><span class="p">,</span>   <span class="s">&quot;Ivanov&quot;</span><span class="p">}</span>
+          <span class="p">,</span> <span class="p">{</span><span class="s">&quot;Fedor&quot;</span><span class="p">,</span>  <span class="s">&quot;Fedorov&quot;</span><span class="p">}</span>
+          <span class="p">,</span> <span class="p">{</span><span class="s">&quot;Stepan&quot;</span><span class="p">,</span> <span class="s">&quot;Stepanov&quot;</span><span class="p">}</span>
+        <span class="p">};</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;What is your name?&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">first_name</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">first_name</span><span class="p">;</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">names</span><span class="p">.</span><span class="n">find</span><span class="p">(</span> <span class="n">first_name</span> <span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">names</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello, mister &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Sorry, I don&#39;t know you...&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-
-Можно было бы и через operator[], но в данном случае это не важно.
+<p>Можно было бы и через operator[], но в данном случае это не важно.</p>
 
 <h4>2. На Haskell</h4>
 
-<hs>
-module Main where
+<div class="highlight"><pre><code class="haskell"><span class="kr">module</span> <span class="nn">Main</span> <span class="kr">where</span>
  
-import qualified Data.Map as Names
+<span class="kr">import</span> <span class="k">qualified</span> <span class="nn">Data.Map</span> <span class="k">as</span> <span class="n">Names</span>
  
-names = Names.fromList
-    [   ("Ivan",   "Ivanov")
-      , ("Fedor",  "Fedorov")
-      , ("Stepan", "Stepanov") 
-    ]
+<span class="nf">names</span> <span class="ow">=</span> <span class="kt">Names</span><span class="o">.</span><span class="n">fromList</span>
+    <span class="p">[</span>   <span class="p">(</span><span class="s">&quot;Ivan&quot;</span><span class="p">,</span>   <span class="s">&quot;Ivanov&quot;</span><span class="p">)</span>
+      <span class="p">,</span> <span class="p">(</span><span class="s">&quot;Fedor&quot;</span><span class="p">,</span>  <span class="s">&quot;Fedorov&quot;</span><span class="p">)</span>
+      <span class="p">,</span> <span class="p">(</span><span class="s">&quot;Stepan&quot;</span><span class="p">,</span> <span class="s">&quot;Stepanov&quot;</span><span class="p">)</span> 
+    <span class="p">]</span>
  
-main = do putStrLn "What is your name?"
-          first_name &lt;- getLine
-          case Names.lookup first_name names of
-              Just last_name -&gt; do putStr "Hello, mister "
-                                   print last_name
-              Nothing        -&gt; putStrLn "Sorry, I don't know you..."
-</hs>
+<span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span> <span class="n">putStrLn</span> <span class="s">&quot;What is your name?&quot;</span>
+          <span class="n">first_name</span> <span class="ow">&lt;-</span> <span class="n">getLine</span>
+          <span class="kr">case</span> <span class="kt">Names</span><span class="o">.</span><span class="n">lookup</span> <span class="n">first_name</span> <span class="n">names</span> <span class="kr">of</span>
+              <span class="kt">Just</span> <span class="n">last_name</span> <span class="ow">-&gt;</span> <span class="kr">do</span> <span class="n">putStr</span> <span class="s">&quot;Hello, mister &quot;</span>
+                                   <span class="n">print</span> <span class="n">last_name</span>
+              <span class="kt">Nothing</span>        <span class="ow">-&gt;</span> <span class="n">putStrLn</span> <span class="s">&quot;Sorry, I don&#39;t know you...&quot;</span>
+</code></pre></div>
 
-Ну и как вам? Прочтите второй пример, и я не поверю вам, если вы скажете, что он непонятен. Лично мне - предельно понятен. Да, синтакстические особенности, конечно, сразу бросаются в глаза, но мысль автора не вызывает сомнений.
+<p>Ну и как вам? Прочтите второй пример, и я не поверю вам, если вы скажете, что он непонятен. Лично мне - предельно понятен. Да, синтакстические особенности, конечно, сразу бросаются в глаза, но мысль автора не вызывает сомнений.</p>
 
-На самом деле, цель, конечно же, не в том, чтобы сравнивать эти решения в контексте "лучше/хуже" (и уж точно не в том, чтобы подсчитывать количество строчек кода в этих примерах), а в том, чтобы наглядно показать, что Haskell - реальный инструмент для реального программирования. Да, этот пример очень простой, но он повседневный, а не академический. 
+<p>На самом деле, цель, конечно же, не в том, чтобы сравнивать эти решения в контексте “лучше/хуже” (и уж точно не в том, чтобы подсчитывать количество строчек кода в этих примерах), а в том, чтобы наглядно показать, что Haskell - реальный инструмент для реального программирования. Да, этот пример очень простой, но он повседневный, а не академический. </p>
 
-<em>P.S. И лично мне очень жаль, что такое множество статей о функциональном программировании не содержат вот таких простых и нужных примеров...</em>
-</map></string></iostream></cpp>
+<p><em>P.S. И лично мне очень жаль, что такое множество статей о функциональном программировании не содержат вот таких простых и нужных примеров…</em></p>
 
         
       </div><!-- /.entry-content -->

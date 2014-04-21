@@ -146,25 +146,25 @@
         <p>Увы и ах, но испльзование некоторых из библиотек Boost недопустимо в Objective-C++ коде, как я смог убедиться в этом буквально вчера.</p>
 
 <p>У меня в коде приложения StrictCode использовалась Boost.Xpressive. И в процессе переноса парсингового кода из Ревизора вдруг вылетела (в огромных количествах) следующая ошибка:</p>
-<cpp>
-/usr/local/include/boost/fusion/container/list/cons_fwd.hpp:13:5: Declaration of anonymous struct must be a definition
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="n">fusion</span><span class="o">/</span><span class="n">container</span><span class="o">/</span><span class="n">list</span><span class="o">/</span><span class="n">cons_fwd</span><span class="p">.</span><span class="n">hpp</span><span class="o">:</span><span class="mi">13</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span> <span class="n">Declaration</span> <span class="n">of</span> <span class="n">anonymous</span> <span class="k">struct</span> <span class="n">must</span> <span class="n">be</span> <span class="n">a</span> <span class="n">definition</span>
+</code></pre></div>
 
 <p>А вот и проблемный код:</p>
-<cpp>
-namespace boost { namespace fusion
-{
-    struct nil;      &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; Ругается на эту строчку...
 
-    template &lt;typename Car, typename Cdr = nil&gt;
-    struct cons;
-}}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">namespace</span> <span class="n">boost</span> <span class="p">{</span> <span class="k">namespace</span> <span class="n">fusion</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">nil</span><span class="p">;</span>      <span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="err">Ругается</span> <span class="err">на</span> <span class="err">эту</span> <span class="err">строчку</span><span class="p">...</span>
 
-<p>Ну, казалось бы, а в чём проблема?<strong> struct nil </strong>предварительно объявляется, как это часто делается в С++. А проблема в том, что слово <strong>nil</strong> в языке Objective-C является одним из ключевых. Естественно, компилятор не может это проглотить, как скажем, не смог бы проглотить строку вида:</p>
-<cpp>
-struct void;
-</cpp>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Car</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Cdr</span> <span class="o">=</span> <span class="n">nil</span><span class="o">&gt;</span>
+    <span class="k">struct</span> <span class="n">cons</span><span class="p">;</span>
+<span class="p">}}</span>
+</code></pre></div>
+
+<p>Ну, казалось бы, а в чём проблема?** struct nil <strong>предварительно объявляется, как это часто делается в С++. А проблема в том, что слово **nil</strong> в языке Objective-C является одним из ключевых. Естественно, компилятор не может это проглотить, как скажем, не смог бы проглотить строку вида:</p>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="kt">void</span><span class="p">;</span>
+</code></pre></div>
 
 <p>Кто же в этом виноват? Да никто. Авторы библиотек Boost не обязаны ориентироваться на ключевые слова других языков… </p>
 
@@ -176,7 +176,7 @@ struct void;
         <a href="http://denisshevchenko.github.io/blog/2013/6/6/objective-c.html" class="btn" title="Итак, Objective-C...">Предыдущий</a>
       
       
-        <a href="http://denisshevchenko.github.io/blog/2013/6/25/video-post.html" class="btn" title="A Post with a Video">Следующий</a>
+        <a href="http://denisshevchenko.github.io/blog/2013/7/24/sparkle.html" class="btn" title="Sparkle: давняя проблема и простое решение">Следующий</a>
       
     </nav><!-- /.pagination -->
   </article>

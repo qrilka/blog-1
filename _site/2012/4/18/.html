@@ -144,28 +144,28 @@
       </footer>
       <div class="entry-content">
         <p>Итак:</p>
-<cpp>
-struct disk {
-    disk() :
-        m_name( "disk storage" ) {}
-private:
-    std::string const m_name;
-public:
-    std::string name() const {
-        return m_name;
-    }
-};
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">disk</span> <span class="p">{</span>
+    <span class="n">disk</span><span class="p">()</span> <span class="o">:</span>
+        <span class="n">m_name</span><span class="p">(</span> <span class="s">&quot;disk storage&quot;</span> <span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="k">const</span> <span class="n">m_name</span><span class="p">;</span>
+<span class="nl">public:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">m_name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>Итак, имя доступно через disk::name().</p>
 
 <p>Теперь второй вариант:</p>
-<cpp>
-struct disk {
-    std::string name() const {
-        return "disk storage";
-    }
-};
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">disk</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;disk storage&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>Возникает вопрос: какой вариант лучше?</p>
 
 <p>Любопытно, что в абсолютно подавляющем большинстве учебников по C++ рассматривается вариант, подобный первому. Объясняется это императивной привычкой: мол, сначала мы создаём объект, а затем используем его.</p>

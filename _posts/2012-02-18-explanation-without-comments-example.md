@@ -9,46 +9,46 @@ categories:
 - c++11
 ---
 So, we have a function:
-<cpp>
+{% highlight cpp %}
 void set_margins( int left, int top, int right, int bottom );
-</cpp>
+{% endhighlight %}
 However, The most likely example of call of such function will be:
-<cpp>
+{% highlight cpp %}
 placer->set_margins( 2, 2, 2, 2 );
-</cpp>
+{% endhighlight %}
 Hmm... That's problem of "magical numbers". We may forget where is bottom margin and where is top margin. But we don't want to remember declaration of this function. 
 
 So, what we can do?
 
 First solution, canonical:
-<cpp>
+{% highlight cpp %}
 constexpr int left   = 2;
 constexpr int top    = 2;
 constexpr int right  = 2;
 constexpr int bottom = 2;
 placer->set_margins( left, top, right, bottom );
-</cpp>
+{% endhighlight %}
 So, it's not bad. But if we have to call this function few times in one scope - well, it's not convenient.
 
 Second solution, not so good:
-<cpp>
+{% highlight cpp %}
 placer->set_margins(   2 // left
                      , 2 // top
                      , 2 // right
                      , 2 // bottom 
                    );
-</cpp>
+{% endhighlight %}
 Comments... Well, I don't recommend this solution.
 
 Third solution, original:
-<cpp>
+{% highlight cpp %}
 inline constexpr int left  ( int const px ) { return px; }
 inline constexpr int top   ( int const px ) { return px; }
 inline constexpr int right ( int const px ) { return px; }
 inline constexpr int bottom( int const px ) { return px; }
-</cpp>
+{% endhighlight %}
 So, we define four functions that just returns argument, nothing more. But now we can write like this:
-<cpp>
+{% highlight cpp %}
 placer->set_margins(   left( 2 )
                      , top( 2 )
                      , right( 2 )
@@ -58,7 +58,7 @@ placer->set_margins(   left( 3 )
                      , top( 5 )
                      , right( 4 )
                      , bottom( 4 ) );
-</cpp>
-The result is a short code without variables, without naming conflicts, very easy readable and without comments. In addition, due to use <strong>constexpr</strong> we didn't lose in efficiency in the execution.
+{% endhighlight %}
+The result is a short code without variables, without naming conflicts, very easy readable and without comments. In addition, due to use **constexpr** we didn't lose in efficiency in the execution.
 
 In my opinion, beautiful.

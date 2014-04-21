@@ -12,24 +12,24 @@ categories:
 
 Допустим, у нас есть вектор строк, и нам необходимо получить конкатенированную строку на выходе. Пишем:
 
-<cpp>
+{% highlight cpp %}
 std::vector< std::string > v{ "aaa", "bbb", "ccc" };
 std::string sum_of_strings = boost::accumulate( v, "" );
-</cpp>
+{% endhighlight %}
 
 По (распространённой) привычке мы задали пустыми кавычками пустую строку, чтобы на выходе получить только фактическую сумму строк в контейнере, без всяких инициализационных значений. И ждём, что у нас всё заработает. Ну-ну...
 
 Вот определение этого алгоритма:
 
-<cpp>
+{% highlight cpp %}
 template <class InputIterator, class T>
 T accumulate ( InputIterator first, InputIterator last, T init );
-</cpp>
+{% endhighlight %}
 
 И что же мы задали (в примере выше) в качестве типа T? Правильно, const char*. А нам-то ведь нужна строка. Так что правильно написать так:
 
-<cpp>
+{% highlight cpp %}
 std::string sum_of_strings = boost::accumulate( v, std::string() );
-</cpp>
+{% endhighlight %}
 
 Вот теперь всё ок.

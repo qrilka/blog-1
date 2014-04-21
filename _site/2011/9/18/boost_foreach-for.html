@@ -147,52 +147,55 @@
 <p>Итак, что же использовать? Проведём честный анализ. Критерия будет два: удобство кода (во всех смыслах слова) и эффективность его выполнения.</p>
 
 <p>Во всех примерах для простоты будем использовать ставший уже классикой <strong>std::vector&lt; int &gt;</strong> и его typedef-псевдоним:</p>
-<cpp>
-typedef std::vector&lt; int &gt; V;
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">V</span><span class="p">;</span>
+</code></pre></div>
 
 <h3>Удобство кода</h3>
 
 <p>Сравним:</p>
-<cpp>
-V v;
-for ( V::iterator it = v.begin(); it != v.end(); ++it ) {
-    std::cout &lt;&lt; *it &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">V</span> <span class="n">v</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span> <span class="n">V</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>и</p>
-<cpp>
-V v;
-BOOST_FOREACH ( int i, v ) {
-    std::cout &lt;&lt; i &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">V</span> <span class="n">v</span><span class="p">;</span>
+<span class="n">BOOST_FOREACH</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Режьте меня на части, но я убеждён: второй код удобнее первого. Добавим typedef-улучшение:</p>
-<cpp>
-V v;
-typedef V::iterator Vit;
-for ( Vit it = v.begin(); it != v.end(); ++it ) {
-    std::cout &lt;&lt; *it &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">V</span> <span class="n">v</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">V</span><span class="o">::</span><span class="n">iterator</span> <span class="n">Vit</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span> <span class="n">Vit</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Лучше, но код возрос на одну строку.</p>
 
 <p>Однако дело, конечно, не в typedef и не в том, что цикл for требует чуть большего по объёму кода. Дело в том, что в итеративном цикле легче допустить ошибку. Например:</p>
-<cpp>
-V v;
-typedef V::iterator Vit;
-for ( Vit it = v.begin(); it != v.begin(); ++it ) {
-    std::cout &lt;&lt; *it &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">V</span> <span class="n">v</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">V</span><span class="o">::</span><span class="n">iterator</span> <span class="n">Vit</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span> <span class="n">Vit</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="o">++</span><span class="n">it</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>или</p>
-<cpp>
-V v;
-typedef V::iterator Vit;
-for ( Vit it = v.begin(); it != v2.end(); ++it ) {
-    std::cout &lt;&lt; *it &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">V</span> <span class="n">v</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">V</span><span class="o">::</span><span class="n">iterator</span> <span class="n">Vit</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span> <span class="n">Vit</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v2</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">it</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>В первом случае мы передали один и тот же итератор v.begin(), а во втором случае в наш код влез другой контейнер v2 (из той же области видимости, и того же типа). Компилятор не покажет вам этих проблем, поскольку это не проблемы языка, это ваши проблемы.</p>
 
 <p>Скажете, что вы никогда не допустите таких глупых ошибок? Ну-ну, я тоже так думал когда-то… :)</p>
@@ -207,42 +210,45 @@ for ( Vit it = v.begin(); it != v2.end(); ++it ) {
 
 <p>Однако вопрос эффективности может быть действительно важен. Его и рассмотрим.</p>
 
-<p>Проведём серию экспериментов. Используемая система: </p>
+<p>Проведём серию экспериментов. Используемая система:</p>
+
 <ul>
- <li>Debian Linux 6.0 amd64</li>
- <li>Corei3 M-370 2.4 ГГц</li>
- <li>g++ 4.4.5</li>
+  <li>Debian Linux 6.0 amd64</li>
+  <li>Corei3 M-370 2.4 ГГц</li>
+  <li>g++ 4.4.5</li>
 </ul>
+
 <p>Итак:</p>
-<cpp>
-typedef std::vector&lt; int &gt; V;
 
-inline void time_stamp() {
-    using namespace boost::posix_time;
-    std::cout &lt;&lt; to_simple_string( microsec_clock::universal_time() ) &lt;&lt; std::endl; 
-}
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">V</span><span class="p">;</span>
 
-inline void fill_container( V&amp; v ) {
-    const size_t max = 10000000;
-    for ( size_t i = 0; i &lt; max; ++i ) {
-        v.push_back( i );
-    }
-    BOOST_ASSERT ( max == v.size() );
-}
+<span class="kr">inline</span> <span class="kt">void</span> <span class="nf">time_stamp</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">to_simple_string</span><span class="p">(</span> <span class="n">microsec_clock</span><span class="o">::</span><span class="n">universal_time</span><span class="p">()</span> <span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> 
+<span class="p">}</span>
 
-int main() {
-    V v;
-    fill_container( v );
+<span class="kr">inline</span> <span class="kt">void</span> <span class="nf">fill_container</span><span class="p">(</span> <span class="n">V</span><span class="o">&amp;</span> <span class="n">v</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">size_t</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="n">i</span> <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">BOOST_ASSERT</span> <span class="p">(</span> <span class="n">max</span> <span class="o">==</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">V</span> <span class="n">v</span><span class="p">;</span>
+    <span class="n">fill_container</span><span class="p">(</span> <span class="n">v</span> <span class="p">);</span>
     
-    time_stamp();
-    BOOST_FOREACH ( int i, v ) {
-        const int ii = i; // Ну, хоть какая-то работа...
-    }
-    time_stamp();
+    <span class="n">time_stamp</span><span class="p">();</span>
+    <span class="n">BOOST_FOREACH</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">int</span> <span class="n">ii</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="c1">// Ну, хоть какая-то работа...</span>
+    <span class="p">}</span>
+    <span class="n">time_stamp</span><span class="p">();</span>
 
-    return 0;
-}
-</cpp>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Вывод этого кода:
 2011-Mar-15 08:01:04.421968
 2011-Mar-15 08:01:04.842156</p>
@@ -250,21 +256,22 @@ int main() {
 <p>При повторении запусков выясняю среднее огрублённое время цикла: <strong>421 мс</strong>.</p>
 
 <p>Теперь изменим код цикла:</p>
-<cpp>
-...
-int main() {
-    V v;
-    fill_container( v );
-    
-    time_stamp();
-    for ( V::iterator it = v.begin(); it != v.end(); ++it ) {
-        const int ii = i; // Ну, хоть какая-то работа...
-    }
-    time_stamp();
 
-    return 0;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="p">...</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">V</span> <span class="n">v</span><span class="p">;</span>
+    <span class="n">fill_container</span><span class="p">(</span> <span class="n">v</span> <span class="p">);</span>
+    
+    <span class="n">time_stamp</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="n">V</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">int</span> <span class="n">ii</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="c1">// Ну, хоть какая-то работа...</span>
+    <span class="p">}</span>
+    <span class="n">time_stamp</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Вывод этого кода:
 2011-Mar-15 08:26:21.014594
 2011-Mar-15 08:26:21.244632</p>

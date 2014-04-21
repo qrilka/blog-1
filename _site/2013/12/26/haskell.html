@@ -162,42 +162,38 @@
 
 <p>Определим функцию деления двух чисел:</p>
 
-<hs>
-divide :: Double -&gt; Double -&gt; Double
-divide arg1 arg2 = arg1 / arg2
+<div class="highlight"><pre><code class="haskell"><span class="nf">divide</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+<span class="nf">divide</span> <span class="n">arg1</span> <span class="n">arg2</span> <span class="ow">=</span> <span class="n">arg1</span> <span class="o">/</span> <span class="n">arg2</span>
 
-main =
-    putStrLn (show (divide 10.03 2.1))
-</hs>
+<span class="nf">main</span> <span class="ow">=</span>
+    <span class="n">putStrLn</span> <span class="p">(</span><span class="n">show</span> <span class="p">(</span><span class="n">divide</span> <span class="mf">10.03</span> <span class="mf">2.1</span><span class="p">))</span>
+</code></pre></div>
 
 <p>Итак, мы определили функцию, принимающую два значения типа <strong><code>Double</code></strong> и возвращающую результат деления первого на второе. Всё предельно просто, не так ли? На самом деле, не так…</p>
 
 <p>Если мы посмотрим “пот капот” вызова этой функции:</p>
 
-<hs>
-divide 10.03 2.1
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">divide</span> <span class="mf">10.03</span> <span class="mf">2.1</span>
+</code></pre></div>
 
 <p>то узнаем, что вызов этой функции происходит <em>в два этапа</em>:</p>
 
 <ol>
-  <li>Функция <code>divide</code> применяется к первому аргументу <code>10.03</code>, вычисляется и возвращает <em>функцию</em> типа <code>Double -&gt; Double</code>.</li>
+  <li>Функция <code>divide</code> применяется к первому аргументу <code>10.03</code>, вычисляется и возвращает *функцию* типа <code>Double -&gt; Double</code>.</li>
   <li>Эта возвращённая функция применяется ко второму аргументу <code>2.1</code>, вычисляется и возвращает конечное значение 4.776190476190476.</li>
 </ol>
 
 <p>На самом деле мы могли бы более явно отразить эту “двуэтапность”, переписав вызов так:</p>
 
-<hs>
-(divide 10.03) 2.1
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="p">(</span><span class="n">divide</span> <span class="mf">10.03</span><span class="p">)</span> <span class="mf">2.1</span>
+</code></pre></div>
 
 <p>Понимаете, да? Функция всегда применяется только к одному аргументу: сначала к 10.03, а потом возвращённая первым вызовом функция применяется к 2.1.</p>
 
 <p>Именно поэтому строка объявления такой функции содержит <em>две</em> стрелочки вместо одной:</p>
 
-<hs>
-divide :: Double -&gt; Double -&gt; Double
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">divide</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+</code></pre></div>
 
 <p>Мы помним, что символ стрелочки говорит нам о функции. Так вот здесь мы видим <em>две</em> стрелочки именно потому, что вызов этой функции происходит в два этапа. И поэтому, строго говоря, неправильно читать это объявление так:</p>
 
@@ -209,33 +205,29 @@ divide :: Double -&gt; Double -&gt; Double
 
 <p>Более того, это правильное прочтение объявления можно было бы отразить явно и в самом объявлении! Вот так:</p>
 
-<hs>
-divide :: Double -&gt; (Double -&gt; Double)
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">divide</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Теперь мы явно видим, что на первом этапе происходит вызов функции от одного аргумента, возвращающей функцию типа <strong><code>Double -&gt; Double</code></strong>, а на втором этапе происходит уже вызов этой (возвращённой на первом этапе) функции.</p>
 
 <p>По аналогии, если бы у нас была функция, принимающая три аргумента:</p>
 
-<hs>
-total_sum :: Double -&gt; Double -&gt; Double -&gt; Double
-total_sum arg1 arg2 arg3 = arg1 + arg2 + arg3
+<div class="highlight"><pre><code class="haskell"><span class="nf">total_sum</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+<span class="nf">total_sum</span> <span class="n">arg1</span> <span class="n">arg2</span> <span class="n">arg3</span> <span class="ow">=</span> <span class="n">arg1</span> <span class="o">+</span> <span class="n">arg2</span> <span class="o">+</span> <span class="n">arg3</span>
 
-main =
-    putStrLn (show (total_sum 10.03 2.1 45.7))
-</hs>
+<span class="nf">main</span> <span class="ow">=</span>
+    <span class="n">putStrLn</span> <span class="p">(</span><span class="n">show</span> <span class="p">(</span><span class="n">total_sum</span> <span class="mf">10.03</span> <span class="mf">2.1</span> <span class="mf">45.7</span><span class="p">))</span>
+</code></pre></div>
 
 <p>то её вызов на самом деле проходил бы <em>в три этапа</em>, и чтобы явно отразить это, мы могли бы переписать её объявление так:</p>
 
-<hs>
-total_sum :: Double -&gt; (Double -&gt; (Double -&gt; Double))
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">total_sum</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span><span class="p">))</span>
+</code></pre></div>
 
 <p>а её вызов - так:</p>
 
-<hs>
-((total_sum 10.03) 2.1) 45.7
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="p">((</span><span class="n">total_sum</span> <span class="mf">10.03</span><span class="p">)</span> <span class="mf">2.1</span><span class="p">)</span> <span class="mf">45.7</span>
+</code></pre></div>
 
 <p>А теперь нам нужно уточнить одну важную деталь.</p>
 
@@ -247,33 +239,30 @@ total_sum :: Double -&gt; (Double -&gt; (Double -&gt; Double))
 
 <p>Представим себе, что наша функция <code>divide</code> была бы апплицирована (применена) не к двум, а только к одному аргументу. Тогда это выглядело бы так:</p>
 
-<hs>
-main = 
-    let temporary_function = divide 10.03 -- "запомнили" первый
-    in 
-    putStrLn (show (temporary_function 2.1)) -- получили второй!
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">main</span> <span class="ow">=</span> 
+    <span class="kr">let</span> <span class="n">temporary_function</span> <span class="ow">=</span> <span class="n">divide</span> <span class="mf">10.03</span> <span class="c1">-- &quot;запомнили&quot; первый</span>
+    <span class="kr">in</span> 
+    <span class="n">putStrLn</span> <span class="p">(</span><span class="n">show</span> <span class="p">(</span><span class="n">temporary_function</span> <span class="mf">2.1</span><span class="p">))</span> <span class="c1">-- получили второй!</span>
+</code></pre></div>
 
 <p>Вот теперь всё встало на свои места. Здесь наглядно показано, что же на самом деле означает вызов вида:</p>
 
-<hs>
-(divide 10.03) 2.1
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="p">(</span><span class="n">divide</span> <span class="mf">10.03</span><span class="p">)</span> <span class="mf">2.1</span>
+</code></pre></div>
 
 <p>В результате первого вызова, когда мы применили функцию <code>divide</code> лишь к одному (первому) аргументу, мы ещё не можем получить результат деления, потому что второго-то аргумента мы функции ещё не дали! Вместо этого мы получили как бы временную (промежуточную) λ-функцию, которую мы для наглядности ассоциировали с выражением <code>temporary_function</code>. Эта временная λ-функция как бы запомнила значение первого аргумента, и когда мы применили её уже ко второму аргументу, то в результате мы уже получили итоговый результат деления.</p>
 
 <p>По аналогии, вызов нашей функции <code>total_sum</code>, который, как мы помним, происходит в три этапа, можно разложить так:</p>
 
-<hs>
-total_sum :: Double -&gt; Double -&gt; Double -&gt; Double
-total_sum arg1 arg2 arg3 = arg1 + arg2 + arg3
+<div class="highlight"><pre><code class="haskell"><span class="nf">total_sum</span> <span class="ow">::</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span> <span class="ow">-&gt;</span> <span class="kt">Double</span>
+<span class="nf">total_sum</span> <span class="n">arg1</span> <span class="n">arg2</span> <span class="n">arg3</span> <span class="ow">=</span> <span class="n">arg1</span> <span class="o">+</span> <span class="n">arg2</span> <span class="o">+</span> <span class="n">arg3</span>
 
-main =
-    let first_function = total_sum 1.0 -- "запомнили" первый
-        second_function = first_function 2.0 -- "запомнили" второй
-    in
-    putStrLn (show (second_function 3.0)) -- получили третий!
-</hs>
+<span class="nf">main</span> <span class="ow">=</span>
+    <span class="kr">let</span> <span class="n">first_function</span> <span class="ow">=</span> <span class="n">total_sum</span> <span class="mf">1.0</span> <span class="c1">-- &quot;запомнили&quot; первый</span>
+        <span class="n">second_function</span> <span class="ow">=</span> <span class="n">first_function</span> <span class="mf">2.0</span> <span class="c1">-- &quot;запомнили&quot; второй</span>
+    <span class="kr">in</span>
+    <span class="n">putStrLn</span> <span class="p">(</span><span class="n">show</span> <span class="p">(</span><span class="n">second_function</span> <span class="mf">3.0</span><span class="p">))</span> <span class="c1">-- получили третий!</span>
+</code></pre></div>
 
 <p>То есть в процессе вызова у нас появилось уже две промежуточные λ-функции, каждая из которых принимала лишь один аргумент и как бы запоминала его. И только тогда, когда вторая промежуточная λ-функция была апплицирована к третьему аргументу (который и оказался последним необходимым для нас), мы и получаем итоговую сумму.</p>
 
@@ -289,70 +278,67 @@ main =
 
 <p>А чтобы разобраться в том, как всё это работает на практике, и понять реальную пользу от ФВП, давайте разберём небольшой пример.</p>
 
-<hs>
-type Login = String
-type Password = String
-type AvatarURL = String
-type UserId = Integer
+<div class="highlight"><pre><code class="haskell"><span class="kr">type</span> <span class="kt">Login</span> <span class="ow">=</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">Password</span> <span class="ow">=</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">AvatarURL</span> <span class="ow">=</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">UserId</span> <span class="ow">=</span> <span class="kt">Integer</span>
 
-user_info :: Login -&gt; Password -&gt; AvatarURL -&gt; UserId -&gt; String
-user_info login password avatar_URL user_id =
-    "Full info about user @" ++ (show user_id) ++ ":" ++
-    "\n login: " ++ login ++
-    "\n password: " ++ password ++
-    "\n avatar URL: " ++ avatar_URL
+<span class="nf">user_info</span> <span class="ow">::</span> <span class="kt">Login</span> <span class="ow">-&gt;</span> <span class="kt">Password</span> <span class="ow">-&gt;</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="nf">user_info</span> <span class="n">login</span> <span class="n">password</span> <span class="n">avatar_URL</span> <span class="n">user_id</span> <span class="ow">=</span>
+    <span class="s">&quot;Full info about user @&quot;</span> <span class="o">++</span> <span class="p">(</span><span class="n">show</span> <span class="n">user_id</span><span class="p">)</span> <span class="o">++</span> <span class="s">&quot;:&quot;</span> <span class="o">++</span>
+    <span class="s">&quot;</span><span class="se">\n</span><span class="s"> login: &quot;</span> <span class="o">++</span> <span class="n">login</span> <span class="o">++</span>
+    <span class="s">&quot;</span><span class="se">\n</span><span class="s"> password: &quot;</span> <span class="o">++</span> <span class="n">password</span> <span class="o">++</span>
+    <span class="s">&quot;</span><span class="se">\n</span><span class="s"> avatar URL: &quot;</span> <span class="o">++</span> <span class="n">avatar_URL</span>
 
-type EmptyInfo = Login -&gt; Password -&gt; AvatarURL -&gt; UserId -&gt; String
-type WithLogin = Password -&gt; AvatarURL -&gt; UserId -&gt; String
-type AndWithPassword = AvatarURL -&gt; UserId -&gt; String
-type AndWithAvatarURL = UserId -&gt; String
+<span class="kr">type</span> <span class="kt">EmptyInfo</span> <span class="ow">=</span> <span class="kt">Login</span> <span class="ow">-&gt;</span> <span class="kt">Password</span> <span class="ow">-&gt;</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">WithLogin</span> <span class="ow">=</span> <span class="kt">Password</span> <span class="ow">-&gt;</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">AndWithPassword</span> <span class="ow">=</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">AndWithAvatarURL</span> <span class="ow">=</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
 
-store_login_in :: EmptyInfo -&gt; UserId -&gt; WithLogin
-store_login_in empty_info user_id =
-    empty_info "denis"
-    -- В реальности логин будет получен 
-    -- в соответствии с переданным user_id
+<span class="nf">store_login_in</span> <span class="ow">::</span> <span class="kt">EmptyInfo</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">WithLogin</span>
+<span class="nf">store_login_in</span> <span class="n">empty_info</span> <span class="n">user_id</span> <span class="ow">=</span>
+    <span class="n">empty_info</span> <span class="s">&quot;denis&quot;</span>
+    <span class="c1">-- В реальности логин будет получен </span>
+    <span class="c1">-- в соответствии с переданным user_id</span>
 
-store_password_in :: WithLogin -&gt; UserId -&gt; AndWithPassword
-store_password_in info_with_login user_id =
-    info_with_login "123456789abc"
-    -- В реальности пароль будет получен 
-    -- в соответствии с переданным user_id
+<span class="nf">store_password_in</span> <span class="ow">::</span> <span class="kt">WithLogin</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">AndWithPassword</span>
+<span class="nf">store_password_in</span> <span class="n">info_with_login</span> <span class="n">user_id</span> <span class="ow">=</span>
+    <span class="n">info_with_login</span> <span class="s">&quot;123456789abc&quot;</span>
+    <span class="c1">-- В реальности пароль будет получен </span>
+    <span class="c1">-- в соответствии с переданным user_id</span>
 
-store_avatar_URL_in :: AndWithPassword -&gt; UserId -&gt; AndWithAvatarURL
-store_avatar_URL_in info_with_password user_id =
-    info_with_password "http://dshevchenko.biz/denis_avatar.png"
-    -- В реальности URL будет получен 
-    -- в соответствии с переданным user_id
+<span class="nf">store_avatar_URL_in</span> <span class="ow">::</span> <span class="kt">AndWithPassword</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">AndWithAvatarURL</span>
+<span class="nf">store_avatar_URL_in</span> <span class="n">info_with_password</span> <span class="n">user_id</span> <span class="ow">=</span>
+    <span class="n">info_with_password</span> <span class="s">&quot;http://dshevchenko.biz/denis_avatar.png&quot;</span>
+    <span class="c1">-- В реальности URL будет получен </span>
+    <span class="c1">-- в соответствии с переданным user_id</span>
 
-main =
-    let user_id = 1234
-        info_with_login = store_login_in user_info 
-                                         user_id
-        info_with_password = store_password_in info_with_login 
-                                               user_id
-        info_with_avatar_URL = store_avatar_URL_in info_with_password 
-                                                   user_id
-        full_info_about_user = info_with_avatar_URL user_id
-    in
-    putStrLn full_info_about_user
-</hs>
+<span class="nf">main</span> <span class="ow">=</span>
+    <span class="kr">let</span> <span class="n">user_id</span> <span class="ow">=</span> <span class="mi">1234</span>
+        <span class="n">info_with_login</span> <span class="ow">=</span> <span class="n">store_login_in</span> <span class="n">user_info</span> 
+                                         <span class="n">user_id</span>
+        <span class="n">info_with_password</span> <span class="ow">=</span> <span class="n">store_password_in</span> <span class="n">info_with_login</span> 
+                                               <span class="n">user_id</span>
+        <span class="n">info_with_avatar_URL</span> <span class="ow">=</span> <span class="n">store_avatar_URL_in</span> <span class="n">info_with_password</span> 
+                                                   <span class="n">user_id</span>
+        <span class="n">full_info_about_user</span> <span class="ow">=</span> <span class="n">info_with_avatar_URL</span> <span class="n">user_id</span>
+    <span class="kr">in</span>
+    <span class="n">putStrLn</span> <span class="n">full_info_about_user</span>
+</code></pre></div>
 
 <p>Красиво, не так ли? Давайте разберём это хозяйство по косточкам…</p>
 
 <p>Во-первых, новая для нас конструкция вида:</p>
 
-<hs>
-type Login = String
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kr">type</span> <span class="kt">Login</span> <span class="ow">=</span> <span class="kt">String</span>
+</code></pre></div>
 
 <p>Очевидно, вы уже догадались, что это всего лишь добавление псевдонима для (уже известного) типа. Теперь вместо типа <strong><code>String</code></strong> можно использовать идентификатор <code>Login</code>.</p>
 
 <p>Далее мы определили простую функцию вида:</p>
 
-<hs>
-user_info :: Login -&gt; Password -&gt; AvatarURL -&gt; UserId -&gt; String
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">user_info</span> <span class="ow">::</span> <span class="kt">Login</span> <span class="ow">-&gt;</span> <span class="kt">Password</span> <span class="ow">-&gt;</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+</code></pre></div>
 
 <p>Тут всё просто: функция <code>user_info</code> ожидает на вход логин, пароль, адрес аватара и идентификатор пользователя, а на выходе выдаёт некую результирующую строку.</p>
 
@@ -360,56 +346,50 @@ user_info :: Login -&gt; Password -&gt; AvatarURL -&gt; UserId -&gt; String
 
 <p>Обратите внимание на следующие псевдонимы:</p>
 
-<hs>
-type EmptyInfo = Login -&gt; Password -&gt; AvatarURL -&gt; UserId -&gt; String
-type WithLogin = Password -&gt; AvatarURL -&gt; UserId -&gt; String
-type AndWithPassword = AvatarURL -&gt; UserId -&gt; String
-type AndWithAvatarURL = UserId -&gt; String
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kr">type</span> <span class="kt">EmptyInfo</span> <span class="ow">=</span> <span class="kt">Login</span> <span class="ow">-&gt;</span> <span class="kt">Password</span> <span class="ow">-&gt;</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">WithLogin</span> <span class="ow">=</span> <span class="kt">Password</span> <span class="ow">-&gt;</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">AndWithPassword</span> <span class="ow">=</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">AndWithAvatarURL</span> <span class="ow">=</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+</code></pre></div>
 
 <p>Каждый из них вводит упрощающее имя для функционального типа, образованного от типа функции <code>user_info</code>. Обратите внимание: каждый последующий тип ожидает на один аргумент меньше, чем предыдущий тип. Чтобы было понятнее, изобразим это с соответствующими сдвигами:</p>
 
-<hs>
-EmptyInfo = Login -&gt; Password -&gt; AvatarURL -&gt; UserId -&gt; String
-WithLogin =          Password -&gt; AvatarURL -&gt; UserId -&gt; String
-AndWithPassword =                AvatarURL -&gt; UserId -&gt; String
-AndWithAvatarURL =                            UserId -&gt; String
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kt">EmptyInfo</span> <span class="ow">=</span> <span class="kt">Login</span> <span class="ow">-&gt;</span> <span class="kt">Password</span> <span class="ow">-&gt;</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="kt">WithLogin</span> <span class="ow">=</span>          <span class="kt">Password</span> <span class="ow">-&gt;</span> <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="kt">AndWithPassword</span> <span class="ow">=</span>                <span class="kt">AvatarURL</span> <span class="ow">-&gt;</span> <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="kt">AndWithAvatarURL</span> <span class="ow">=</span>                            <span class="kt">UserId</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+</code></pre></div>
 
 <p>Каждый из этих псевдонимов задаёт сигнатуру для (очередной) промежуточной λ-функции, и нужно это, как вы уже догадались, для упомянутого выше частичного применения функции <code>user_info</code>.</p>
 
 <p>Рассмотрим первый вызов:</p>
 
-<hs>
-        info_with_login = store_login_in user_info 
-                                         user_id
-</hs>
+<div class="highlight"><pre><code class="haskell">        <span class="n">info_with_login</span> <span class="ow">=</span> <span class="n">store_login_in</span> <span class="n">user_info</span> 
+                                         <span class="n">user_id</span>
+</code></pre></div>
 
 <p>Здесь мы передаём функцию <code>user_info</code> в качестве первого аргумента функции <code>store_login_in</code>, внутри которой мы апплицируем переданную функцию <code>user_info</code> к единственному аргументу, а именно к логину (потому что функция <code>store_login_in</code> знает только о том, откуда и как получить логин). Соответственно, на выходе из функции <code>store_login_in</code> мы получаем первую промежуточную λ-функцию, в которой мы как бы сохранили (store) значение логина (именно поэтому сигнатура этой λ-функции названа <code>WithLogin</code>).</p>
 
 <p>Далее следует вызов:</p>
 
-<hs>
-        info_with_password = store_password_in info_with_login 
-                                               user_id
-</hs>
+<div class="highlight"><pre><code class="haskell">        <span class="n">info_with_password</span> <span class="ow">=</span> <span class="n">store_password_in</span> <span class="n">info_with_login</span> 
+                                               <span class="n">user_id</span>
+</code></pre></div>
 
 <p>Здесь мы передаём нашу промежуточную λ-функцию (в которой мы как бы сохранили значение логина) в качестве первого аргумента функции <code>store_password_in</code>. Эта функция, в свою очередь, апплицирует переданную ей λ-функцию к единственному аргументу, а именно к паролю (ибо функция <code>store_password_in</code>, как вы уже поняли, умеет доставать только пароль). Таким образом, на выходе из функции <code>store_password_in</code> мы имеем вторую промежуточную λ-функцию, в которой как бы сохранены уже два значения (полученный на предыдущем вызове логин и на этом вызове - пароль), именно поэтому сигнатура этой λ-функции носит имя <code>AndWithPassword</code>.</p>
 
 <p>То же самое справедливо и для следующего вызова:</p>
 
-<hs>
-        info_with_avatar_URL = store_avatar_URL_in info_with_password 
-                                                   user_id
-</hs>
+<div class="highlight"><pre><code class="haskell">        <span class="n">info_with_avatar_URL</span> <span class="ow">=</span> <span class="n">store_avatar_URL_in</span> <span class="n">info_with_password</span> 
+                                                   <span class="n">user_id</span>
+</code></pre></div>
 
 <p>На выходе из функции <code>store_avatar_URL_in</code> мы получаем третью λ-функцию, в которой как бы сохранены уже три значения: логин, пароль и путь к аватару.</p>
 
 <p>В итоге всё завершается апплицированием этой третьей λ-функции к последнему нужному аргументу, а именно к идентификатору пользователя:</p>
 
-<hs>
-        full_info_about_user = info_with_avatar_URL user_id
-</hs>
+<div class="highlight"><pre><code class="haskell">        <span class="n">full_info_about_user</span> <span class="ow">=</span> <span class="n">info_with_avatar_URL</span> <span class="n">user_id</span>
+</code></pre></div>
 
 <p>Именно здесь и происходит наконец “полноценный” вызов функции <code>user_info</code>, в результате которого мы получаем и выводим на экран результирующую строку следующего вида:</p>
 

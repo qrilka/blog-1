@@ -148,11 +148,10 @@
 
 <p>Haskell имеет статическую проверку типов. Это означает, что тип каждого выражения в программе обязательно проверяется на стадии компиляции. Более того, Haskell весьма строг по отношению к типам, чего, к сожалению, нельзя сказать о C-подобных языках. Дело в том, что в C или C++ допустимо неявное приведение одного типа к другому. Например, так:</p>
 
-<cpp>
-int f() {
-    return 12.9;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mf">12.9</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Компилятор C или C++ не только проглотит это, но даже не обмолвится ни единым предупреждением (в том числе и при использовании флага <code>-Wall</code>), при этом аккуратно отбросив дробную часть, ведь тип возращаемого значения будет незримо приведён к <code>int</code>. В Haskell подобный код не имеет ни малейших шансов пройти компиляцию: нужно вернуть <code>int</code> - будь добр предоставить выражение, имеющее (в конечном итоге) тип <code>int</code>.</p>
 
@@ -160,23 +159,20 @@ int f() {
 
 <p>В Haskell применяется принцип автоматического выведения типов, что позволяет программисту не указывать тип выражения явно. Похожий подход используется в C++11 с использованием ключевого слова <code>auto</code>:</p>
 
-<cpp>
-auto i = 12;
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+</code></pre></div>
 
 <p>Но в Haskell пишут ещё проще:</p>
 
-<hs>
-i = 12
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="nf">i</span> <span class="ow">=</span> <span class="mi">12</span>
+</code></pre></div>
 
 <p>Компилятор сам поймёт, что тип выражения <code>i</code> - это именно <code>Integer</code>.</p>
 
 <p>Впрочем, при желании программист <em>может</em> указать тип выражения явно (иногда это бывает полезно, в частности, при отладке и для большей самодокументируемости кода). Например, если я напишу так:</p>
 
-<hs>
-let i = 12 :: Double
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kr">let</span> <span class="n">i</span> <span class="ow">=</span> <span class="mi">12</span> <span class="ow">::</span> <span class="kt">Double</span>
+</code></pre></div>
 
 <p>то тип <code>i</code> будет уже <code>Double</code>.</p>
 

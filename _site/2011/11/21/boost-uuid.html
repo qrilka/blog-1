@@ -145,24 +145,25 @@
       <div class="entry-content">
         <!--break-->
 <p>Итак, пример:</p>
-<cpp>
-int main() {
-    boost::uuids::uuid u;
-    std::cout &lt;&lt; u &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">boost</span><span class="o">::</span><span class="n">uuids</span><span class="o">::</span><span class="n">uuid</span> <span class="n">u</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">u</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>И что же у нас на экран выведется? К сожалению, мусор, случайный хлам.</p>
 
 <p>Совершенно непонятно, о чём думали авторы этой библиотеки… Неужели было сложно сделать так:</p>
-<cpp>
-    if ( u.empty() )
-        std::cerr &lt;&lt; "Empty UUID!" &lt;&lt; std::endl;
-</cpp>
+
+<div class="highlight"><pre><code class="cpp">    <span class="k">if</span> <span class="p">(</span> <span class="n">u</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Empty UUID!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
 <p>или так:</p>
-<cpp>
-    if ( !u )
-        std::cerr &lt;&lt; "Empty UUID!" &lt;&lt; std::endl;
-</cpp>
+
+<div class="highlight"><pre><code class="cpp">    <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">u</span> <span class="p">)</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Empty UUID!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+
 <p>Получается, что если мне в функцию передали UUID, то у меня даже нет возможности узнать, был ли он нормально проинициализирован!</p>
 
 <p>Нда, несолидно, совсем несолидно…</p>

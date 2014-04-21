@@ -144,53 +144,58 @@
       </footer>
       <div class="entry-content">
         <p>Допустим, мы видим такое письмо:</p>
-<cpp>
-while( not_all( small_messages ).was_sended() ) {
-    next_from( small_messages ) &gt;&gt; port;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">while</span><span class="p">(</span> <span class="n">not_all</span><span class="p">(</span> <span class="n">small_messages</span> <span class="p">).</span><span class="n">was_sended</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">next_from</span><span class="p">(</span> <span class="n">small_messages</span> <span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">port</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Итак, одного взгляда достаточно, чтобы понять: здесь осуществляется поочерёдная отправка малых сообщений в порт до тех пор, пока оные имеются. Опустим детали о типе порта и формате сообщений, сейчас это не важно. Важно то, что такое письмо понятно любому. Сразу. Без пояснений.</p>
 
 <p>Впрочем, давайте разберёмся, стоит ли игра свеч. Допустим, <strong>small_messages</strong> - это контейнер типа std::queue, и мы, запихнув в него N-ное число сообщений, теперь циклически вытаскиваем их по одному. Но разве в этом случае не проще ли было написать так:</p>
-<cpp>
-while( !small_messages.empty() ) {
-    small_messages.front() &gt;&gt; port;
-    small_messages.pop();
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">while</span><span class="p">(</span> <span class="o">!</span><span class="n">small_messages</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">small_messages</span><span class="p">.</span><span class="n">front</span><span class="p">()</span> <span class="o">&gt;&gt;</span> <span class="n">port</span><span class="p">;</span>
+    <span class="n">small_messages</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Да, проще. Написать проще. Воспринять - чуть сложнее.</p>
 
 <p>О-о, я уже слышу возгласы: “Да ты что, Денис, с ума сошёл? Да в таком элементарном цикле даже новичок разберётся!” Да, вы правы, разобраться в таком цикле <em>несложно</em>. Однако разобраться в моём варианте <em>проще</em>. <em>Объективно проще</em>.</p>
 
 <p>Поясню. Взглянем на первую строку:</p>
-<cpp>
-while( !small_messages.empty() )
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">while</span><span class="p">(</span> <span class="o">!</span><span class="n">small_messages</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="p">)</span>
+</code></pre></div>
+
 <p>О чём говорит нам эта строка? “До тех пор, пока контейнер сообщений не пуст…” И что? К сожалению, в этой строке нет никакого намёка на то, <em>что же</em> происходит до тех пор, пока контейнер сообщений не пуст. Однако если мы взглянем на предложенный мною вариант:</p>
-<cpp>
-while( not_all( small_messages ).was_sended() )
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">while</span><span class="p">(</span> <span class="n">not_all</span><span class="p">(</span> <span class="n">small_messages</span> <span class="p">).</span><span class="n">was_sended</span><span class="p">()</span> <span class="p">)</span>
+</code></pre></div>
+
 <p>то сразу же прочтём: “До тех пор, пока не все сообщения отправлены…” Ага, раз не все отправлены - значит, в цикле продолжится отправка. Предельно понятно, причём сразу.</p>
 
 <p>Реализация “литературных элементов” предельно проста:</p>
-<cpp>
-struct not_all {
-    explicit not_all( messages const&amp; a_messages ) :
-            messages_for_sending( a_messages ) {}
-private:
-    messages const&amp; messages_for_sending;
-public:
-    bool was_sended() const {
-        return !messages_for_sending.empty();
-    }
-};
 
-inline message next_from( messages&amp; a_messages ) {
-    auto const next_message( a_messages.front() );
-    a_messages.pop();
-    return next_message;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">not_all</span> <span class="p">{</span>
+    <span class="k">explicit</span> <span class="n">not_all</span><span class="p">(</span> <span class="n">messages</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">a_messages</span> <span class="p">)</span> <span class="o">:</span>
+            <span class="n">messages_for_sending</span><span class="p">(</span> <span class="n">a_messages</span> <span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+    <span class="n">messages</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">messages_for_sending</span><span class="p">;</span>
+<span class="nl">public:</span>
+    <span class="kt">bool</span> <span class="nf">was_sended</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">!</span><span class="n">messages_for_sending</span><span class="p">.</span><span class="n">empty</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kr">inline</span> <span class="n">message</span> <span class="nf">next_from</span><span class="p">(</span> <span class="n">messages</span><span class="o">&amp;</span> <span class="n">a_messages</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="k">const</span> <span class="n">next_message</span><span class="p">(</span> <span class="n">a_messages</span><span class="p">.</span><span class="n">front</span><span class="p">()</span> <span class="p">);</span>
+    <span class="n">a_messages</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">next_message</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 
         
       </div><!-- /.entry-content -->

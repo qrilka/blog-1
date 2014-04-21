@@ -147,33 +147,34 @@
 <p>Итак, сподобившись-таки поставить <strong>g++ 4.6.0</strong> (подробности <strong><a href="http://dshevchenko.biz/ru/content/gcc-два-компилятора-вместе">тут</a></strong>), я решил испытать новый <strong>range for</strong> цикл и проверить его эффективность.</p>
 
 <p>Итак, имеем код:</p>
-<cpp>
-int main() {
-    std::vector&lt; unsigned long int &gt; v;
-    for ( size_t i = 0; i &lt; 10000000; ++i ) {
-        v.push_back( i );
-    }
-    BOOST_ASSERT ( 10000000 == v.size() );
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10000000</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span> <span class="n">i</span> <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">BOOST_ASSERT</span> <span class="p">(</span> <span class="mi">10000000</span> <span class="o">==</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">);</span>
     
-    // Начало временнОго замера 1.
-    BOOST_FOREACH ( auto i, v ) {
-        const unsigned long int ii = i; // Условная работа.
-    }
-    // Конец временнОго замера 1.
+    <span class="c1">// Начало временнОго замера 1.</span>
+    <span class="n">BOOST_FOREACH</span> <span class="p">(</span> <span class="k">auto</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">int</span> <span class="n">ii</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="c1">// Условная работа.</span>
+    <span class="p">}</span>
+    <span class="c1">// Конец временнОго замера 1.</span>
 
-    // Начало временнОго замера 2.
-    for ( auto it = v.begin(); it != v.end(); ++it ) {
-        const unsigned long int ii = *it; // Условная работа.
-    }
-    // Конец временнОго замера 2.
+    <span class="c1">// Начало временнОго замера 2.</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">int</span> <span class="n">ii</span> <span class="o">=</span> <span class="o">*</span><span class="n">it</span><span class="p">;</span> <span class="c1">// Условная работа.</span>
+    <span class="p">}</span>
+    <span class="c1">// Конец временнОго замера 2.</span>
 
-    // Начало временнОго замера 3.
-    for ( auto i : v ) {
-        const unsigned long int ii = i; // Условная работа.
-    }
-    // Конец временнОго замера 3.
-}
-</cpp>
+    <span class="c1">// Начало временнОго замера 3.</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="k">auto</span> <span class="n">i</span> <span class="o">:</span> <span class="n">v</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">int</span> <span class="n">ii</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="c1">// Условная работа.</span>
+    <span class="p">}</span>
+    <span class="c1">// Конец временнОго замера 3.</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Итак, результаты замеров следующие (огрублённые):</p>
 <pre>
 1. 390 мс

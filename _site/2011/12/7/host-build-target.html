@@ -145,27 +145,27 @@
       <div class="entry-content">
         <p>постоянно путаюсь в host/build/target, по этому, запишу :)</p>
 
-<cpp>
-build == host           --&gt; нативная компиляция
-build != host           --&gt; кросскомпиляция
-build == host == target --&gt; нативная компиляция для нативной цели
-build == host != target --&gt; нативная компиляция для целевой архитектуры
-build != host != target --&gt; Канадский кросс [1]
-build != host == target --&gt; кросскомпиляция для нативной цели
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">build</span> <span class="o">==</span> <span class="n">host</span>           <span class="o">--&gt;</span> <span class="err">нативная</span> <span class="err">компиляция</span>
+<span class="n">build</span> <span class="o">!=</span> <span class="n">host</span>           <span class="o">--&gt;</span> <span class="err">кросскомпиляция</span>
+<span class="n">build</span> <span class="o">==</span> <span class="n">host</span> <span class="o">==</span> <span class="n">target</span> <span class="o">--&gt;</span> <span class="err">нативная</span> <span class="err">компиляция</span> <span class="err">для</span> <span class="err">нативной</span> <span class="err">цели</span>
+<span class="n">build</span> <span class="o">==</span> <span class="n">host</span> <span class="o">!=</span> <span class="n">target</span> <span class="o">--&gt;</span> <span class="err">нативная</span> <span class="err">компиляция</span> <span class="err">для</span> <span class="err">целевой</span> <span class="err">архитектуры</span>
+<span class="n">build</span> <span class="o">!=</span> <span class="n">host</span> <span class="o">!=</span> <span class="n">target</span> <span class="o">--&gt;</span> <span class="err">Канадский</span> <span class="err">кросс</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">build</span> <span class="o">!=</span> <span class="n">host</span> <span class="o">==</span> <span class="n">target</span> <span class="o">--&gt;</span> <span class="err">кросскомпиляция</span> <span class="err">для</span> <span class="err">нативной</span> <span class="err">цели</span>
+</code></pre></div>
+
 <p>где:</p>
-<cpp>
-build  --&gt; архитектура на которой собираю
-host   --&gt; архитектура на которой будет выполняться полученный компилятор
-target --&gt; архитектура для которой полученный компилятор будет создавать
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">build</span>  <span class="o">--&gt;</span> <span class="err">архитектура</span> <span class="err">на</span> <span class="err">которой</span> <span class="err">собираю</span>
+<span class="n">host</span>   <span class="o">--&gt;</span> <span class="err">архитектура</span> <span class="err">на</span> <span class="err">которой</span> <span class="err">будет</span> <span class="err">выполняться</span> <span class="err">полученный</span> <span class="err">компилятор</span>
+<span class="n">target</span> <span class="o">--&gt;</span> <span class="err">архитектура</span> <span class="err">для</span> <span class="err">которой</span> <span class="err">полученный</span> <span class="err">компилятор</span> <span class="err">будет</span> <span class="err">создавать</span>
+</code></pre></div>
 
 <p>пример сборки компилятора в linux, который будет работать на венде, и создавать бинари для мака:</p>
-<cpp>
-build: i686-pc-linux-gnu
-host: i686-pc-mingw32
-target: darwin10-osx
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="nl">build:</span> <span class="n">i686</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span>
+<span class="nl">host:</span> <span class="n">i686</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">mingw32</span>
+<span class="nl">target:</span> <span class="n">darwin10</span><span class="o">-</span><span class="n">osx</span>
+</code></pre></div>
 
 <p>и еще несколько примеров найденных с помощью гугления:
 <img src="http://clip2net.com/clip/m47996/1330323361-clip-18kb.png" alt="text" /></p>

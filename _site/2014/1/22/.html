@@ -149,11 +149,10 @@
 
 <p>Итак, C++:</p>
 
-<cpp>
-int main() {
-    int код = 1;
-    std::cerr &lt;&lt; код &lt;&lt; std::endl;
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="err">код</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="err">код</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
 
 <p>К счастью, или к сожалению, сей код не компилируется, и ошибка компиляции вполне ожидаемая:</p>
 
@@ -163,29 +162,26 @@ stray '\320' in program
 
 <p>А теперь, ради эксперимента, попробуем на Haskell:</p>
 
-<hs>
-больше_чем :: Integer -&gt; Integer -&gt; Bool
-больше_чем a b = a &gt; b
+<div class="highlight"><pre><code class="haskell"><span class="err">больше</span><span class="kr">_</span><span class="err">чем</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="kt">Bool</span>
+<span class="err">больше</span><span class="kr">_</span><span class="err">чем</span> <span class="n">a</span> <span class="n">b</span> <span class="ow">=</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>
 
-main = print( 10 `больше_чем` 2 )
-</hs>
+<span class="nf">main</span> <span class="ow">=</span> <span class="n">print</span><span class="p">(</span> <span class="mi">10</span> <span class="p">`</span><span class="err">больше</span><span class="kr">_</span><span class="err">чем</span><span class="p">`</span> <span class="mi">2</span> <span class="p">)</span>
+</code></pre></div>
 
 <p>Вы не поверите, но это компилируется и работает! Не знаю, хорошо это или плохо, но русскоязычное имя функции допустимо, в том числе и в инфиксной форме, как здесь.</p>
 
 <p>Кроме того, я могу использовать русские буквы в имени типа:</p>
 
-<hs>
-data IP_адрес = IP_адрес String
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kr">data</span> <span class="kt">IP_</span><span class="err">адрес</span> <span class="ow">=</span> <span class="kt">IP_</span><span class="err">адрес</span> <span class="kt">String</span>
+</code></pre></div>
 
 <p>И это тоже работает! А как вам такое:</p>
 
-<hs>
-type Строка = String
+<div class="highlight"><pre><code class="haskell"><span class="kr">type</span> <span class="err">Строка</span> <span class="ow">=</span> <span class="kt">String</span>
 
-class Машина a where
-    номер :: a -&gt; Строка
-</hs>
+<span class="kr">class</span> <span class="err">Машина</span> <span class="n">a</span> <span class="kr">where</span>
+    <span class="err">номер</span> <span class="ow">::</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="err">Строка</span>
+</code></pre></div>
 
 <p>Я чуть со стула не упал! Друзья, я не поверил своим глаза (как, вероятно, не верите и вы), но это работает! Ещё сегодня утром я был бы готов поспорить, что такое невозможно. Но, как видим, и невозможное возможно…</p>
 

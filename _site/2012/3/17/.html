@@ -144,33 +144,33 @@
       </footer>
       <div class="entry-content">
         <p>Как вы уже знаете, Style Revisor сможет работать в командной строке. Вот маленький кусочек кода, отвечающий за вывод на консоль сообщения о некой проблеме.</p>
-<cpp>
-template <typename what="">
-inline void console_report_about( What const&amp; happened ) {
-    std::cerr &lt;&lt; "Something wrong: " &lt;&lt; happened() &lt;&lt; std::endl;
-}
 
+<div class="highlight"><pre><code class="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">What</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="kt">void</span> <span class="n">console_report_about</span><span class="p">(</span> <span class="n">What</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">happened</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Something wrong: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">happened</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
-А вызов выглядит так:
-<cpp>
-if( unknown_arguments_exists_in( probably_valid_arguments ) ) {
-    console_report_about( unknown_argument{} );
-}
-</cpp>
+<p>А вызов выглядит так:</p>
 
-Хочу отметить литературность письма. Прочтём сердцевину как текст:
+<div class="highlight"><pre><code class="cpp"><span class="k">if</span><span class="p">(</span> <span class="n">unknown_arguments_exists_in</span><span class="p">(</span> <span class="n">probably_valid_arguments</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">console_report_about</span><span class="p">(</span> <span class="n">unknown_argument</span><span class="p">{}</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Хочу отметить литературность письма. Прочтём сердцевину как текст:</p>
 <pre>
     console report about What happened
         Something wrong happened 
 }
-</pre>и вызов также:
+</pre>
+<p>и вызов также:</p>
 <pre>
 if unknown arguments exists in probably valid arguments
     console report about unknown argument
 </pre>
 
-По-моему, симпатишно...
-</typename></cpp>
+<p>По-моему, симпатишно…</p>
 
         
       </div><!-- /.entry-content -->

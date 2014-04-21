@@ -144,53 +144,58 @@
       </footer>
       <div class="entry-content">
         <p>Well, imagine you see such letter:</p>
-<cpp>
-while( not_all( small_messages ).was_sended() ) {
-    next_from( small_messages ) &gt;&gt; port;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">while</span><span class="p">(</span> <span class="n">not_all</span><span class="p">(</span> <span class="n">small_messages</span> <span class="p">).</span><span class="n">was_sended</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">next_from</span><span class="p">(</span> <span class="n">small_messages</span> <span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">port</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>So, there is sequential sending of small messages into port, until messages exists. We omit details about port’s type and about message format, it doesn’t matter. Important that this letter is clear for anyone. Immediately. Without explanation.</p>
 
 <p>However… Suppose <strong>small_messages</strong> is a container of type std::queue. But in this case easier to write like this:</p>
-<cpp>
-while( !small_messages.empty() ) {
-    small_messages.front() &gt;&gt; port;
-    small_messages.pop();
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">while</span><span class="p">(</span> <span class="o">!</span><span class="n">small_messages</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">small_messages</span><span class="p">.</span><span class="n">front</span><span class="p">()</span> <span class="o">&gt;&gt;</span> <span class="n">port</span><span class="p">;</span>
+    <span class="n">small_messages</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Yes, it’s easier. Easier to write. But little harder to understand.</p>
 
 <p>Oh, I can already hear the screams: “Are you crazy, Denis?? Even novice can understand such simple loop!” Yes, you are right, such loop is <em>not so hard</em> to understand, but my variant is <em>objective easier</em>. </p>
 
 <p>I’ll explain. Take a look at the first line:</p>
-<cpp>
-while( !small_messages.empty() )
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">while</span><span class="p">(</span> <span class="o">!</span><span class="n">small_messages</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="p">)</span>
+</code></pre></div>
+
 <p>What is this line talking about? “While messages container is not empty…” And what? Unfortunately, this line is not provide us any information about <em>what will be</em> while messages container is not empty. But if we look at my variant:</p>
-<cpp>
-while( not_all( small_messages ).was_sended() )
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">while</span><span class="p">(</span> <span class="n">not_all</span><span class="p">(</span> <span class="n">small_messages</span> <span class="p">).</span><span class="n">was_sended</span><span class="p">()</span> <span class="p">)</span>
+</code></pre></div>
+
 <p>we’ll read: “While not all messages was sended…” Yeah, if not all sent - the loop will continue to send. Extremely clear.</p>
 
 <p>Implementation of “literary elements” is very simple:</p>
-<cpp>
-struct not_all {
-    explicit not_all( messages const&amp; a_messages ) :
-            messages_for_sending( a_messages ) {}
-private:
-    messages const&amp; messages_for_sending;
-public:
-    bool was_sended() const {
-        return !messages_for_sending.empty();
-    }
-};
 
-inline message next_from( messages&amp; a_messages ) {
-    auto const next_message( a_messages.front() );
-    a_messages.pop();
-    return next_message;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">not_all</span> <span class="p">{</span>
+    <span class="k">explicit</span> <span class="n">not_all</span><span class="p">(</span> <span class="n">messages</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">a_messages</span> <span class="p">)</span> <span class="o">:</span>
+            <span class="n">messages_for_sending</span><span class="p">(</span> <span class="n">a_messages</span> <span class="p">)</span> <span class="p">{}</span>
+<span class="nl">private:</span>
+    <span class="n">messages</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">messages_for_sending</span><span class="p">;</span>
+<span class="nl">public:</span>
+    <span class="kt">bool</span> <span class="nf">was_sended</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">!</span><span class="n">messages_for_sending</span><span class="p">.</span><span class="n">empty</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kr">inline</span> <span class="n">message</span> <span class="nf">next_from</span><span class="p">(</span> <span class="n">messages</span><span class="o">&amp;</span> <span class="n">a_messages</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="k">const</span> <span class="n">next_message</span><span class="p">(</span> <span class="n">a_messages</span><span class="p">.</span><span class="n">front</span><span class="p">()</span> <span class="p">);</span>
+    <span class="n">a_messages</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">next_message</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 
         
       </div><!-- /.entry-content -->

@@ -168,8 +168,8 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2<br /></p>
 
 <p>Захожу в папку <strong>gcc-4.6.0</strong>, полученную при распаковке <strong>gcc-g++-4.6.0.tar.bz2</strong> и вижу там две папки: <strong>gcc</strong> и <strong>libstdc++-v3</strong>. Теперь:</p>
 <ol>
- <li>папку <strong>libstdc++-v3</strong> копирую в корень папки <strong>gcc-4.6.0</strong>, полученной при распаковке <strong>gcc-core-4.6.0.tar.bz2</strong>.</li>
- <li>в папке gcc берём папку cp и копируем её в подпапку gcc папки <strong>gcc-4.6.0</strong>, полученной при распаковке <strong>gcc-core-4.6.0.tar.bz2</strong>.</li>
+ <li>папку **libstdc++-v3** копирую в корень папки **gcc-4.6.0**, полученной при распаковке **gcc-core-4.6.0.tar.bz2**.</li>
+ <li>в папке gcc берём папку cp и копируем её в подпапку gcc папки **gcc-4.6.0**, полученной при распаковке **gcc-core-4.6.0.tar.bz2**.</li>
 </ol>
 <p>Итак, мы получили одну папку <strong>gcc-4.6.0</strong>, в которой есть всё необходимое для сборки. Та папка <strong>gcc-4.6.0</strong>, которая была получена их архива <strong>gcc-g++-4.6.0.tar.bz2</strong>, нам больше не нужна.<br /></p>
 <h3>Сборка служебных библиотек</h3>
@@ -179,22 +179,33 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2<br /></p>
 <p>Более того, важен порядок их сборки, поскольку они зависят друг от друга.</p>
 
 <p>Первой собираем GMP. Не забываем указать упомянутый выше префикс установки:</p>
-<cpp>$ ./configure --prefix=INSTALL_PATH</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=</span><span class="n">INSTALL_PATH</span>
+</code></pre></div>
+
 <p>Потом make и make install.</p>
 
 <p>Далее собираем MPFR. Указываем установочный префикс и путь к (уже) установленной GMP:</p>
-<cpp>$ ./configure --prefix=INSTALL_PATH --with-gmp=INSTALL_PATH</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=</span><span class="n">INSTALL_PATH</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">gmp</span><span class="o">=</span><span class="n">INSTALL_PATH</span>
+</code></pre></div>
+
 <p>Потом make и make install.</p>
 
 <p>Последней собираем MPC. Указываем установочный префикс, а также пути к (уже) установленным GMP и MPFR:</p>
-<cpp>$ ./configure --prefix=INSTALL_PATH --with-gmp=INSTALL_PATH --with-mpfr=INSTALL_PATH</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=</span><span class="n">INSTALL_PATH</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">gmp</span><span class="o">=</span><span class="n">INSTALL_PATH</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">mpfr</span><span class="o">=</span><span class="n">INSTALL_PATH</span>
+</code></pre></div>
+
 <p>Потом make и make install.</p>
 
 <p>Итак, служебные библиотеки собраны.<br /></p>
 <h3>Сборка компилятора</h3>
 
 <p>Указываем установочный префикс и пути к (уже) установленным служебным библиотекам:</p>
-<cpp>$ ./configure --prefix=INSTALL_PATH --with-gmp=INSTALL_PATH --with-mpfr=INSTALL_PATH --with-mpc=INSTALL_PATH</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=</span><span class="n">INSTALL_PATH</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">gmp</span><span class="o">=</span><span class="n">INSTALL_PATH</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">mpfr</span><span class="o">=</span><span class="n">INSTALL_PATH</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">mpc</span><span class="o">=</span><span class="n">INSTALL_PATH</span>
+</code></pre></div>
 
 <p>Далее make. Начинается компиляция компилятора (приколько звучит).<br /></p>
 <h3>Подводный камень №1</h3>
@@ -236,14 +247,13 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2<br /></p>
 
 <p>Ну что ж, сборка и настройка завершена. В подтверждение этому попробуем скомпилировать программу с новейшими возможностями стандарта. В частности, проверим range for. Разумеется, необходимо также указать флаг <strong>-std=c++0x</strong>, всё-таки поддержка нового стандарта носит (формально) экспериментальный характер.</p>
 
-<cpp>
-int main() {
-    std::vector&lt; int &gt; v = { 1, 2, 3 };
-    for ( auto i : v ) {
-        std::cout &lt;&lt; i &lt;&lt; std::endl;
-    }
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="k">auto</span> <span class="n">i</span> <span class="o">:</span> <span class="n">v</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Итак, как видите, всё работает. Теперь в нашей системе есть два компилятора, и мы можем продолжить наши эксперименты с новейшими возможностями C++0x.</p>
 

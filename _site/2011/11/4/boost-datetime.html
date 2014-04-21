@@ -147,13 +147,13 @@
 <p>В нашем проекте мы столкнулись с проблемой, когда в объекте <strong>boost::posix_time::ptime</strong> в определённой ситуации появлялся мусор. Я разобрался, и вот что обнаружил.</p>
 
 <p>Итак, простой пример:</p>
-<cpp>
-int main() {
-    using namespace boost::posix_time;
-    ptime tm( time_from_string( "2011-01-01 00:00:00" ) );
-    std::cout &lt;&lt; tm &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="p">;</span>
+    <span class="n">ptime</span> <span class="n">tm</span><span class="p">(</span> <span class="n">time_from_string</span><span class="p">(</span> <span class="s">&quot;2011-01-01 00:00:00&quot;</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">tm</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Вывод:</p>
 <pre>
@@ -161,13 +161,13 @@ int main() {
 </pre>
 
 <p>Всё нормально. Но что будет, если мы не зададим время <em>явно</em>?</p>
-<cpp>
-int main() {
-    using namespace boost::posix_time;
-    ptime tm( time_from_string( "2011-01-01" ) );
-    std::cout &lt;&lt; tm &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="p">;</span>
+    <span class="n">ptime</span> <span class="n">tm</span><span class="p">(</span> <span class="n">time_from_string</span><span class="p">(</span> <span class="s">&quot;2011-01-01&quot;</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">tm</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>На моём компьютере вывод оказался таким:</p>
 <pre>
@@ -177,13 +177,13 @@ int main() {
 <p>Э-э… В высшей степени странный результат… Оказывается, время задавать <em>необходимо</em>. Но пусть бы тогда библиотека хоть исключение выкидывала, это по крайней мере заметно. А тут молча имеем какой-то мусор. </p>
 
 <p>Более того, тот же казус имеем и с другим способом:</p>
-<cpp>
-int main() {
-    using namespace boost::posix_time;
-    ptime tm( from_iso_string( "20110101T000000" ) );
-    std::cout &lt;&lt; tm &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="p">;</span>
+    <span class="n">ptime</span> <span class="n">tm</span><span class="p">(</span> <span class="n">from_iso_string</span><span class="p">(</span> <span class="s">&quot;20110101T000000&quot;</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">tm</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Вывод:</p>
 <pre>
@@ -191,13 +191,14 @@ int main() {
 </pre>
 
 <p>Опять-таки всё в порядке. Но если без времени:</p>
-<cpp>
-int main() {
-    using namespace boost::posix_time;
-    ptime tm( from_iso_string( "20110101" ) );
-    std::cout &lt;&lt; tm &lt;&lt; std::endl;
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">boost</span><span class="o">::</span><span class="n">posix_time</span><span class="p">;</span>
+    <span class="n">ptime</span> <span class="n">tm</span><span class="p">(</span> <span class="n">from_iso_string</span><span class="p">(</span> <span class="s">&quot;20110101&quot;</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">tm</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>то вывод получаем не менее странный:</p>
 <pre>
 2011-Jan-01 20:11:01.100000

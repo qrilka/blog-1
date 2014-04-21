@@ -144,12 +144,12 @@
       </footer>
       <div class="entry-content">
         <p>Представим себе, что нам нужно обработать нажатие на кнопку в Qt. В этом случае сигнал клика связывается с обработчиком:</p>
-<cpp>
-connect(   button
-         , SIGNAL( clicked() )
-         , handler
-         , SLOT( button_was_clicked() ) );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="n">connect</span><span class="p">(</span>   <span class="n">button</span>
+         <span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">clicked</span><span class="p">()</span> <span class="p">)</span>
+         <span class="p">,</span> <span class="n">handler</span>
+         <span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span> <span class="n">button_was_clicked</span><span class="p">()</span> <span class="p">)</span> <span class="p">);</span>
+</code></pre></div>
 <p>Здесь активная сторона (кнопка) <em>сообщает</em> посредством сигнала некой обрабатывающей стороне о событии нажатия. Но сигнал также можно использовать и для <em>запроса</em> данных <strong>от</strong> обрабатывающей стороны. Весьма полезная возможность, упрощающая код.</p>
 
 <p>В Style Revisor есть кнопка <strong>Go!</strong>, запускающая процесс форматирования. Когда пользователь нажимает её, в обработчике клика происходит запрос к прочим виджетам с целью сбора информации о выбранном пользователем языке программирования, стиле форматирования и т.д (поскольку этой информацией обладают только эти виджеты и никто кроме них). Ну и по старой привычке я использовал (почти) канонический подход: на стадии инициализации внутри обработчика нажатия на эту кнопку я сохранял указатели на нужные виджеты, чтобы потом иметь возможность к ним обратиться, мол, какой там язык пользователь выбрал? Сигналы же я использовал исключительно для одностороннего оповещения о некотором действии пользователя. А теперь - не только…</p>
@@ -157,25 +157,25 @@ connect(   button
 <p>Теперь я использую сигналы и для запроса данных от обрабатывающей стороны. Мысль предельно проста: если в качестве аргумента сигнала я могу передать нечто по <strong>константной</strong> ссылке, то могу и по <strong>неконстантной</strong>. А следовательно, можно получить это нечто от обрабатывающей стороны, а не только сообщить ей нечто.</p>
 
 <p>Поэтому теперь я на стадии инициализации создаю “цепочку” из сигналов от запрашивающей стороны к ответчику, а потом запрашивающий сигнал идёт до ответчика, а тот, обрабатывая его, передаёт нечто через неконстантную ссылку вовне, то есть - к запрашивающей стороне. Всё просто.</p>
-<cpp>
-void start() {
-    QString extensions;
-    emit a_parent-&gt;obtain_filename_extensions( extensions );
-    // А здесь в extensions уже лежит строка, полученная 
-    // откуда-то извне, то есть от ответчика.
-}
-...
-connect(   start
-         , SIGNAL( obtain_filename_extensions( QString&amp; /* where_to_place_it */ ) )
-         , a_parent
-         , SIGNAL( obtain_filename_extensions( QString&amp; /* where_to_place_it */ ) ) );
-...
-// И так далее сигнал передаётся по цепочке до ответчика.
-connect(   this
-         , SIGNAL( obtain_filename_extensions( QString&amp; /* where_to_place_it */ ) )
-         , list
-         , SLOT( obtain_filename_extensions( QString&amp; /* where_to_place_it */ ) ) );
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">QString</span> <span class="n">extensions</span><span class="p">;</span>
+    <span class="n">emit</span> <span class="n">a_parent</span><span class="o">-&gt;</span><span class="n">obtain_filename_extensions</span><span class="p">(</span> <span class="n">extensions</span> <span class="p">);</span>
+    <span class="c1">// А здесь в extensions уже лежит строка, полученная </span>
+    <span class="c1">// откуда-то извне, то есть от ответчика.</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="n">connect</span><span class="p">(</span>   <span class="n">start</span>
+         <span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">obtain_filename_extensions</span><span class="p">(</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="cm">/* where_to_place_it */</span> <span class="p">)</span> <span class="p">)</span>
+         <span class="p">,</span> <span class="n">a_parent</span>
+         <span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">obtain_filename_extensions</span><span class="p">(</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="cm">/* where_to_place_it */</span> <span class="p">)</span> <span class="p">)</span> <span class="p">);</span>
+<span class="p">...</span>
+<span class="c1">// И так далее сигнал передаётся по цепочке до ответчика.</span>
+<span class="n">connect</span><span class="p">(</span>   <span class="k">this</span>
+         <span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span> <span class="n">obtain_filename_extensions</span><span class="p">(</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="cm">/* where_to_place_it */</span> <span class="p">)</span> <span class="p">)</span>
+         <span class="p">,</span> <span class="n">list</span>
+         <span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span> <span class="n">obtain_filename_extensions</span><span class="p">(</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="cm">/* where_to_place_it */</span> <span class="p">)</span> <span class="p">)</span> <span class="p">);</span>
+</code></pre></div>
 <p>А ответчик уже кладёт в where_to_place_it нужную строку, которая имеется только у него.</p>
 
         

@@ -146,29 +146,26 @@
         <!--break-->
 <p>Смотрите:</p>
 
-<cpp>
-    if ( This( document ).has_invalid <encoding>() )
-        report_about_invalid <encoding>(). in( document );
+<div class="highlight"><pre><code class="cpp">    <span class="k">if</span> <span class="p">(</span> <span class="n">This</span><span class="p">(</span> <span class="n">document</span> <span class="p">).</span><span class="n">has_invalid</span> <span class="o">&lt;</span><span class="n">encoding</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">report_about_invalid</span> <span class="o">&lt;</span><span class="n">encoding</span><span class="o">&gt;</span><span class="p">().</span> <span class="n">in</span><span class="p">(</span> <span class="n">document</span> <span class="p">);</span>
+</code></pre></div>
 
+<p>Читаем как текст:</p>
 
-Читаем как текст:
-
-<cpp>
-    If   this  document   has invalid  encoding -
-        report about invalid  encoding     in  document.
+<div class="highlight"><pre><code class="cpp">    <span class="n">If</span>   <span class="k">this</span>  <span class="n">document</span>   <span class="n">has</span> <span class="n">invalid</span>  <span class="n">encoding</span> <span class="o">-</span>
+        <span class="n">report</span> <span class="n">about</span> <span class="n">invalid</span>  <span class="n">encoding</span>     <span class="n">in</span>  <span class="n">document</span><span class="p">.</span>
     
-    if ( This( document ).has_invalid <encoding>() )
-        report_about_invalid <encoding>(). in( document );
+    <span class="k">if</span> <span class="p">(</span> <span class="n">This</span><span class="p">(</span> <span class="n">document</span> <span class="p">).</span><span class="n">has_invalid</span> <span class="o">&lt;</span><span class="n">encoding</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">)</span>
+        <span class="n">report_about_invalid</span> <span class="o">&lt;</span><span class="n">encoding</span><span class="o">&gt;</span><span class="p">().</span> <span class="n">in</span><span class="p">(</span> <span class="n">document</span> <span class="p">);</span>
+</code></pre></div>
 
+<p>НЕ ДУМАТЬ о том, как это реализовано! :) Думать о смысле! :)</p>
 
-НЕ ДУМАТЬ о том, как это реализовано! :) Думать о смысле! :)
+<p>Ну а если серьёзно, то взгляните на это решение. Предикат, свидетельствующий о неверной кодировке текстового документа, состоит как бы из двух частей. И сделано это именно для естественного прочтения.</p>
 
-Ну а если серьёзно, то взгляните на это решение. Предикат, свидетельствующий о неверной кодировке текстового документа, состоит как бы из двух частей. И сделано это именно для естественного прочтения.
+<p>Имя This, разумеется, должно начинаться с большой буквы, ключевые слова всё-таки нужно учитывать. Также обратите внимание на то, что document - это объект, а encoding - тип для шаблонизации. Последнее соответствует концепции программирования на основе политик (или стратегий). Это может дать весьма гибкую структуру.</p>
 
-Имя This, разумеется, должно начинаться с большой буквы, ключевые слова всё-таки нужно учитывать. Также обратите внимание на то, что document - это объект, а encoding - тип для шаблонизации. Последнее соответствует концепции программирования на основе политик (или стратегий). Это может дать весьма гибкую структуру.
-
-Но опять-таки, детали реализации не так важны, важна суть этого "программного письма".
-</encoding></encoding></cpp></encoding></encoding></cpp>
+<p>Но опять-таки, детали реализации не так важны, важна суть этого “программного письма”.</p>
 
         
       </div><!-- /.entry-content -->

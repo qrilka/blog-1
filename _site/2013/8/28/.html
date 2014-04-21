@@ -149,44 +149,44 @@
 <p>Речь пойдёт о создании и манипулировании объектами пользовательских типов. Почему пользовательских? Потому что с типами <strong>int</strong> и ему подобными и так всё понятно: они мгновенно создаются, столь же мгновенно и безопасно копируются, да и вообще проблем с ними как правило не возникает. Поэтому говорить будем именно о типах, созданных пользователем.</p>
 
 <p>Известно, что в C++ объект пользовательского типа может быть создан самыми разными способами:</p>
-<cpp>
-class My {
-    // ...
-};
 
-My my_global; // Можно так...
+<div class="highlight"><pre><code class="cpp"><span class="k">class</span> <span class="nc">My</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">};</span>
 
-int main() {
-    My my; // Можно так...
-    My* my_in_heap( new My() ); // Или так...
-    static My my_static; // Или даже так...
-}
-</cpp>
+<span class="n">My</span> <span class="n">my_global</span><span class="p">;</span> <span class="c1">// Можно так...</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">My</span> <span class="n">my</span><span class="p">;</span> <span class="c1">// Можно так...</span>
+    <span class="n">My</span><span class="o">*</span> <span class="n">my_in_heap</span><span class="p">(</span> <span class="k">new</span> <span class="n">My</span><span class="p">()</span> <span class="p">);</span> <span class="c1">// Или так...</span>
+    <span class="k">static</span> <span class="n">My</span> <span class="n">my_static</span><span class="p">;</span> <span class="c1">// Или даже так...</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>В общем, как хотим так и создаём. Гибкость с большой буквы. А теперь вопрос: чем является эта гибкость, благом или злом? И чтобы ответить на этот вопрос, мы должны рассмотреть <em>использование</em> созданного объекта. А использовать этот самый объект в C++ можно тоже различными способами:</p>
-<cpp>
-void by_value( My m ) { /* Передаём по значению... */ }
 
-void by_ptr( My* m ) { /* Передаём по указателю... */ }
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="nf">by_value</span><span class="p">(</span> <span class="n">My</span> <span class="n">m</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* Передаём по значению... */</span> <span class="p">}</span>
 
-void by_classic_cref( const My&amp; m ) { /* Передаём по классической константной ссылке... */ }
+<span class="kt">void</span> <span class="nf">by_ptr</span><span class="p">(</span> <span class="n">My</span><span class="o">*</span> <span class="n">m</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* Передаём по указателю... */</span> <span class="p">}</span>
 
-void by_classic_ref( My&amp; m ) { /* Передаём по классической ссылке... */ }
+<span class="kt">void</span> <span class="nf">by_classic_cref</span><span class="p">(</span> <span class="k">const</span> <span class="n">My</span><span class="o">&amp;</span> <span class="n">m</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* Передаём по классической константной ссылке... */</span> <span class="p">}</span>
 
-My return_by_value() {
-    My my;
-    return my; // Возвращаем по значению...
-}
+<span class="kt">void</span> <span class="nf">by_classic_ref</span><span class="p">(</span> <span class="n">My</span><span class="o">&amp;</span> <span class="n">m</span> <span class="p">)</span> <span class="p">{</span> <span class="cm">/* Передаём по классической ссылке... */</span> <span class="p">}</span>
 
-My&amp; return_by_classic_ref() {
-    My my;
-    return my; // Глупо, но ведь можно...
-}
+<span class="n">My</span> <span class="nf">return_by_value</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">My</span> <span class="n">my</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">my</span><span class="p">;</span> <span class="c1">// Возвращаем по значению...</span>
+<span class="p">}</span>
 
-My* return_by_ptr() {
-    return new My(); // Возвращаем по указателю...
-}
-</cpp>
+<span class="n">My</span><span class="o">&amp;</span> <span class="n">return_by_classic_ref</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">My</span> <span class="n">my</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">my</span><span class="p">;</span> <span class="c1">// Глупо, но ведь можно...</span>
+<span class="p">}</span>
+
+<span class="n">My</span><span class="o">*</span> <span class="n">return_by_ptr</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">My</span><span class="p">();</span> <span class="c1">// Возвращаем по указателю...</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>И тут тоже сплошная гибкость.</p>
 
@@ -269,7 +269,7 @@ static void testMessages(Message* m1, Message* m2) {
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://denisshevchenko.github.io/blog/2013/8/16/code-highlighting-post.html" class="btn" title="Syntax Highlighting Post">Предыдущий</a>
+        <a href="http://denisshevchenko.github.io/blog/2013/8/16/.html" class="btn" title="Товары и услуги">Предыдущий</a>
       
       
         <a href="http://denisshevchenko.github.io/blog/2013/9/11/.html" class="btn" title="Об удалёнке: когда сознание отстаёт от технологий...">Следующий</a>

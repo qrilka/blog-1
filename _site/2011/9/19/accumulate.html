@@ -150,25 +150,22 @@
 
 <p>Допустим, у нас есть вектор строк, и нам необходимо получить конкатенированную строку на выходе. Пишем:</p>
 
-<cpp>
-std::vector&lt; std::string &gt; v{ "aaa", "bbb", "ccc" };
-std::string sum_of_strings = boost::accumulate( v, "" );
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="s">&quot;aaa&quot;</span><span class="p">,</span> <span class="s">&quot;bbb&quot;</span><span class="p">,</span> <span class="s">&quot;ccc&quot;</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">sum_of_strings</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">accumulate</span><span class="p">(</span> <span class="n">v</span><span class="p">,</span> <span class="s">&quot;&quot;</span> <span class="p">);</span>
+</code></pre></div>
 
 <p>По (распространённой) привычке мы задали пустыми кавычками пустую строку, чтобы на выходе получить только фактическую сумму строк в контейнере, без всяких инициализационных значений. И ждём, что у нас всё заработает. Ну-ну…</p>
 
 <p>Вот определение этого алгоритма:</p>
 
-<cpp>
-template &lt;class InputIterator, class T&gt;
-T accumulate ( InputIterator first, InputIterator last, T init );
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">InputIterator</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">T</span> <span class="n">accumulate</span> <span class="p">(</span> <span class="n">InputIterator</span> <span class="n">first</span><span class="p">,</span> <span class="n">InputIterator</span> <span class="n">last</span><span class="p">,</span> <span class="n">T</span> <span class="n">init</span> <span class="p">);</span>
+</code></pre></div>
 
 <p>И что же мы задали (в примере выше) в качестве типа T? Правильно, const char*. А нам-то ведь нужна строка. Так что правильно написать так:</p>
 
-<cpp>
-std::string sum_of_strings = boost::accumulate( v, std::string() );
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">sum_of_strings</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">accumulate</span><span class="p">(</span> <span class="n">v</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">()</span> <span class="p">);</span>
+</code></pre></div>
 
 <p>Вот теперь всё ок.</p>
 

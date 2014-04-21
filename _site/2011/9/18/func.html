@@ -146,24 +146,23 @@
         <!--break-->
 <p>Друзья!</p>
 
-<p>Для реализации трассировки, или же просто для сообщения о месте возникшего исключения часто требуется вывести (на консоль, или в log-файл) имя текущей функции. В стандарте С99 для этой цели был определён макрос <strong><strong>func</strong></strong>. Но мы ведь с вами программисты С++, так почему бы не воспользоваться С++-средствами?</p>
+<p>Для реализации трассировки, или же просто для сообщения о месте возникшего исключения часто требуется вывести (на консоль, или в log-файл) имя текущей функции. В стандарте С99 для этой цели был определён макрос <strong>__func__</strong>. Но мы ведь с вами программисты С++, так почему бы не воспользоваться С++-средствами?</p>
 
 <p>К счастью, таковые имеются.</p>
 
 <p>Знакомьтесь: макрос <strong>BOOST_CURRENT_FUNCTION</strong>. Вставляете его в функцию - и получаете её полное имя. Именно полное, и в этом преимущество перед <strong>func</strong>. Судите сами…</p>
 
-<cpp>
-namespace Some {
-    class Test {
-    public:
-        int func( int&amp; ir, bool some_flag = false ) {
-            // Нечто полезное
-            std::cout &lt;&lt; __func__ &lt;&lt; std::endl;
-            std::cout &lt;&lt; BOOST_CURRENT_FUNCTION &lt;&lt; std::endl;
-        }
-    };
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">namespace</span> <span class="n">Some</span> <span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Test</span> <span class="p">{</span>
+    <span class="nl">public:</span>
+        <span class="kt">int</span> <span class="n">func</span><span class="p">(</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">ir</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">some_flag</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Нечто полезное</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">__func__</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">BOOST_CURRENT_FUNCTION</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>При вызове функции func() в первом случае выведется
 <strong>func</strong>

@@ -151,34 +151,33 @@
 <p>Сегодня рассмотрим первую проблему - область видимости значений.</p>
 
 <p>Итак:</p>
-<cpp>
-enum error {
-      file_not_found
-    , cannot_open
-    , invalid_coding
-};
 
-int main() {
-    error e = file_not_found;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">enum</span> <span class="n">error</span> <span class="p">{</span>
+      <span class="n">file_not_found</span>
+    <span class="p">,</span> <span class="n">cannot_open</span>
+    <span class="p">,</span> <span class="n">invalid_coding</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">error</span> <span class="n">e</span> <span class="o">=</span> <span class="n">file_not_found</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Как видим, конкретное значение <strong>file_not_found</strong> принадлежит внешнему по отношению к enum пространству имён. Значит, если <strong>enum error</strong> определён в глобальном пространстве имён, то и его значения будут глобальны. Это не очень хорошо, хотя бы только потому, что возможен конфликт между именами в разных enum:</p>
 
-<cpp>
-enum error {
-      file_not_found
-    , cannot_open
-    , invalid_coding
-};
+<div class="highlight"><pre><code class="cpp"><span class="k">enum</span> <span class="n">error</span> <span class="p">{</span>
+      <span class="n">file_not_found</span>
+    <span class="p">,</span> <span class="n">cannot_open</span>
+    <span class="p">,</span> <span class="n">invalid_coding</span>
+<span class="p">};</span>
 
-// Где-то в другом месте...
-enum error2 {
-	  file_not_found
-	, cannot_open
-	, invalid_coding
-};
-</cpp>
+<span class="c1">// Где-то в другом месте...</span>
+<span class="k">enum</span> <span class="n">error2</span> <span class="p">{</span>
+	  <span class="n">file_not_found</span>
+	<span class="p">,</span> <span class="n">cannot_open</span>
+	<span class="p">,</span> <span class="n">invalid_coding</span>
+<span class="p">};</span>
+</code></pre></div>
 
 <p>Компилятор ругнётся, и правильно сделает:
 error: conflicting declaration ‘file_not_found’
@@ -186,28 +185,26 @@ error: ‘file_not_found’ has a previous declaration as ‘error file_not_foun
 
 <p>Класс-перечисление решает эту проблему.</p>
 
-<cpp>
-enum class error {   // Мы просто добавили слово class после enum, только и всего.
-    file_not_found
-    , cannot_open
-    , invalid_coding
-};
+<div class="highlight"><pre><code class="cpp"><span class="k">enum</span> <span class="k">class</span> <span class="nc">error</span> <span class="p">{</span>   <span class="c1">// Мы просто добавили слово class после enum, только и всего.</span>
+    <span class="n">file_not_found</span>
+    <span class="p">,</span> <span class="n">cannot_open</span>
+    <span class="p">,</span> <span class="n">invalid_coding</span>
+<span class="p">};</span>
 
-int main() {
-    error e = error::file_not_found;
-}
-</cpp>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">error</span> <span class="n">e</span> <span class="o">=</span> <span class="n">error</span><span class="o">::</span><span class="n">file_not_found</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Как видим, значение <strong>file_not_found</strong> теперь принадлежит области видимости <strong>error</strong>, и это гораздо логичнее.</p>
 
 <p>Понятно, что конфликта имён уже нет:</p>
 
-<cpp>
-int main() {
-    error e   = error::file_not_found;
-    error2 e2 = error2::file_not_found;
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">error</span> <span class="n">e</span>   <span class="o">=</span> <span class="n">error</span><span class="o">::</span><span class="n">file_not_found</span><span class="p">;</span>
+    <span class="n">error2</span> <span class="n">e2</span> <span class="o">=</span> <span class="n">error2</span><span class="o">::</span><span class="n">file_not_found</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Подобное решение делает код безопаснее и яснее для восприятия.</p>
 

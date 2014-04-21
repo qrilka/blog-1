@@ -144,21 +144,21 @@
       </footer>
       <div class="entry-content">
         <p>Итак, вот небольшая шуточная программка, проверяющая введённый пользователем путь:</p>
-<hs>
-import System.Directory
 
-main = do
-    putStrLn "Введите какой-нибудь путь: "
-    inputed_path &lt;- getLine
-    such_file_exists &lt;- doesFileExist inputed_path
-    if such_file_exists 
-        then putStrLn "Ага, вижу такой файл!"
-        else do 
-            such_directory_exists &lt;- doesDirectoryExist inputed_path
-            if such_directory_exists
-                then putStrLn "Вижу, но это не файл, это директория!"
-                else putStrLn "Хм... К сожалению, такого не вижу..."
-</hs>
+<div class="highlight"><pre><code class="haskell"><span class="kr">import</span> <span class="nn">System.Directory</span>
+
+<span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
+    <span class="n">putStrLn</span> <span class="s">&quot;Введите какой-нибудь путь: &quot;</span>
+    <span class="n">inputed_path</span> <span class="ow">&lt;-</span> <span class="n">getLine</span>
+    <span class="n">such_file_exists</span> <span class="ow">&lt;-</span> <span class="n">doesFileExist</span> <span class="n">inputed_path</span>
+    <span class="kr">if</span> <span class="n">such_file_exists</span> 
+        <span class="kr">then</span> <span class="n">putStrLn</span> <span class="s">&quot;Ага, вижу такой файл!&quot;</span>
+        <span class="kr">else</span> <span class="kr">do</span> 
+            <span class="n">such_directory_exists</span> <span class="ow">&lt;-</span> <span class="n">doesDirectoryExist</span> <span class="n">inputed_path</span>
+            <span class="kr">if</span> <span class="n">such_directory_exists</span>
+                <span class="kr">then</span> <span class="n">putStrLn</span> <span class="s">&quot;Вижу, но это не файл, это директория!&quot;</span>
+                <span class="kr">else</span> <span class="n">putStrLn</span> <span class="s">&quot;Хм... К сожалению, такого не вижу...&quot;</span>
+</code></pre></div>
 <p>Опять-таки, для красоты использованы русские строки. Разумеется, эта программа работает и для путей, содержащих не-ASCII символы.</p>
 
         

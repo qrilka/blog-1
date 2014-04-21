@@ -150,48 +150,52 @@
 
 <p>Давайте взглянем на самый первый пример использования первой Assign (желающие ознакомиться лично - <a href="http://www.boost.org/doc/libs/1_46_1/libs/assign/doc/index.html"><strong>сюда</strong></a>):</p>
 
-<cpp>
-vector<int> v; 
-v += 1,2,3,4,5,6,7,8,9;
+<div class="highlight"><pre><code class="cpp"><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span> 
+<span class="n">v</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">;</span>
 
-map&lt;string,int&gt; m; 
-insert( m )( "Bar", 1 )( "Foo", 2 );
+<span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">m</span><span class="p">;</span> 
+<span class="n">insert</span><span class="p">(</span> <span class="n">m</span> <span class="p">)(</span> <span class="s">&quot;Bar&quot;</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)(</span> <span class="s">&quot;Foo&quot;</span><span class="p">,</span> <span class="mi">2</span> <span class="p">);</span>
+</code></pre></div>
 
+<p>Согласитесь, что даже без чтения остальной документации <em>любой</em> программист, имеющий хоть какой-то опыт работы с vector и map, поймёт этот код. Знаете почему? Потому что этот код простой. Я подчёркиваю: он простой даже для новичка. </p>
 
-Согласитесь, что даже без чтения остальной документации <em>любой</em> программист, имеющий хоть какой-то опыт работы с vector и map, поймёт этот код. Знаете почему? Потому что этот код простой. Я подчёркиваю: он простой даже для новичка. 
+<p>Более того, этот новичок сможет начать использовать такую библиотеку <em>сразу же</em>, и ему не потребуется изучать всю документацию для этого. Это и есть то, что я называю: “библиотека, упрощающая жизнь программиста”.</p>
 
-Более того, этот новичок сможет начать использовать такую библиотеку <em>сразу же</em>, и ему не потребуется изучать всю документацию для этого. Это и есть то, что я называю: "библиотека, упрощающая жизнь программиста".
+<p>А теперь взглянем на самый первый пример использования Assign 2.0 (он <strong><a href="http://svn.boost.org/svn/boost/sandbox/assign_v2/libs/assign/v2/doc/html/index.html">тут</a></strong>):</p>
 
-А теперь взглянем на самый первый пример использования Assign 2.0 (он <strong><a href="http://svn.boost.org/svn/boost/sandbox/assign_v2/libs/assign/v2/doc/html/index.html">тут</a></strong>):
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">map_</span><span class="p">;</span> <span class="n">map_</span> <span class="n">cal</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">map_</span><span class="o">::</span><span class="n">value_type</span> <span class="n">p_</span><span class="p">;</span>
 
-<cpp>
-typedef std::map&lt;std::string, int&gt; map_; map_ cal;
-typedef map_::value_type p_;
+<span class="n">boost</span><span class="o">::</span><span class="n">for_each</span><span class="p">(</span>
+    <span class="n">cal</span> <span class="o">|</span> <span class="n">do_csv_put</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span> <span class="s">&quot;jan&quot;</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="s">&quot;feb&quot;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="s">&quot;mar&quot;</span><span class="p">,</span> <span class="mi">31</span> <span class="p">),</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span>
+        <span class="o">&lt;&lt;</span> <span class="n">lambda</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">p_</span><span class="o">::</span><span class="n">first</span><span class="p">,</span> <span class="n">lambda</span><span class="o">::</span><span class="n">_1</span> <span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;:&#39;</span>
+        <span class="o">&lt;&lt;</span> <span class="n">lambda</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">p_</span><span class="o">::</span><span class="n">second</span><span class="p">,</span> <span class="n">lambda</span><span class="o">::</span> <span class="n">_1</span> <span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span>
+<span class="p">);</span> <span class="c1">// prints jan:31 feb:28 mar:31</span>
+</code></pre></div>
 
-boost::for_each(
-    cal | do_csv_put&lt;2&gt;( "jan", 31, "feb", 28, "mar", 31 ),
-    std::cout
-        &lt;&lt; lambda::bind( &amp;p_::first, lambda::_1 ) &lt;&lt; ':'
-        &lt;&lt; lambda::bind( &amp;p_::second, lambda:: _1 ) &lt;&lt; ' '
-); // prints jan:31 feb:28 mar:31
-</cpp>
+<p>Э-э… Хм…  </p>
 
-Э-э... Хм...  
+<p>Друзья, режьте меня на части, но я всё равно буду утверждать, что такой код отпугнёт новичка. Знаете почему? Потому что этот код сложный.</p>
 
-Друзья, режьте меня на части, но я всё равно буду утверждать, что такой код отпугнёт новичка. Знаете почему? Потому что этот код сложный.
+<table>
+  <tbody>
+    <tr>
+      <td>Вдумайтесь: это ведь самый первый и простейший пример, а-ля “Hello world”. Человек, который не знает, что такое lambda::bind и не знакомый с концепцией адаптеров (отражённной здесь перегруженным operator</td>
+      <td>) увидит это и подумает: “Ёлки-палки, если это - простейший пример, то что же там дальше?! И это библиотека для упрощения работы с контейнерами?!” Получается, такому человеку придётся хотя бы поверхностно познакомиться с лямбда-выражениями (и с Boost.Lambda в частности) только лишь для того, чтобы понять первый пример!</td>
+    </tr>
+  </tbody>
+</table>
 
-Вдумайтесь: это ведь самый первый и простейший пример, а-ля "Hello world". Человек, который не знает, что такое lambda::bind и не знакомый с концепцией адаптеров (отражённной здесь перегруженным operator|) увидит это и подумает: "Ёлки-палки, если это - простейший пример, то что же там дальше?! И это библиотека для упрощения работы с контейнерами?!" Получается, такому человеку придётся хотя бы поверхностно познакомиться с лямбда-выражениями (и с Boost.Lambda в частности) только лишь для того, чтобы понять первый пример!
+<p>Я понимаю, есть библиотеки, который трудно начать использовать <em>сразу</em>. Spirit, MPL, Proto и некоторые другие действительно требуют достаточно глубокой подготовки. Но эти библиотеки являются серьёзными инструментами, и они вовсе не предназначены для того, чтобы их начали использовать через пару минут после установки Boost. Понятно, что если человек собирается создавать собственный DSEL на основе Proto, то он должен обладать достаточно глубокими знаниями C++, и ему, разумеется, придётся изучить документацию к Proto весьма глубоко.</p>
 
-Я понимаю, есть библиотеки, который трудно начать использовать <em>сразу</em>. Spirit, MPL, Proto и некоторые другие действительно требуют достаточно глубокой подготовки. Но эти библиотеки являются серьёзными инструментами, и они вовсе не предназначены для того, чтобы их начали использовать через пару минут после установки Boost. Понятно, что если человек собирается создавать собственный DSEL на основе Proto, то он должен обладать достаточно глубокими знаниями C++, и ему, разумеется, придётся изучить документацию к Proto весьма глубоко.
+<p>Однако такие библиотеки, как Assign, именно для того и предназначены, чтобы их можно было использовать <em>сразу</em>, и чтобы высокой квалификации для этого не требовалось. Это те библиотеки, с которых начнёт новичок и по которым этот новичок будет судить о Boost в целом. И вот представьте себе, как он читает аннотацию к Assign:</p>
 
-Однако такие библиотеки, как Assign, именно для того и предназначены, чтобы их можно было использовать <em>сразу</em>, и чтобы высокой квалификации для этого не требовалось. Это те библиотеки, с которых начнёт новичок и по которым этот новичок будет судить о Boost в целом. И вот представьте себе, как он читает аннотацию к Assign:
+<p><strong>Filling containers with constant or generated data has never been easier.</strong></p>
 
-<strong>Filling containers with constant or generated data has never been easier.</strong>
+<p>Чего-чего? Никогда не было проще? Вы что, издеваетесь? Я вспоминаю себя при освоении Assign первой версии, и если бы мне <em>тогда</em> дали Assign 2.0, я бы ужаснулся.</p>
 
-Чего-чего? Никогда не было проще? Вы что, издеваетесь? Я вспоминаю себя при освоении Assign первой версии, и если бы мне <em>тогда</em> дали Assign 2.0, я бы ужаснулся.
-
-По моему мнению, авторы Assign 2.0 пошли куда-то не туда. Библиотека, предназначенная, по сути, лишь для того, чтобы упростить вставку элементов в контейнер, обязана быть простой. В противном случае зачем она нужна?
-</int></cpp>
+<p>По моему мнению, авторы Assign 2.0 пошли куда-то не туда. Библиотека, предназначенная, по сути, лишь для того, чтобы упростить вставку элементов в контейнер, обязана быть простой. В противном случае зачем она нужна?</p>
 
         
       </div><!-- /.entry-content -->

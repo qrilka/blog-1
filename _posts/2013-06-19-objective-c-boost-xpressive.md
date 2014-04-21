@@ -9,12 +9,12 @@ categories:
 Увы и ах, но испльзование некоторых из библиотек Boost недопустимо в Objective-C++ коде, как я смог убедиться в этом буквально вчера.
 
 У меня в коде приложения StrictCode использовалась Boost.Xpressive. И в процессе переноса парсингового кода из Ревизора вдруг вылетела (в огромных количествах) следующая ошибка:
-<cpp>
+{% highlight cpp %}
 /usr/local/include/boost/fusion/container/list/cons_fwd.hpp:13:5: Declaration of anonymous struct must be a definition
-</cpp>
+{% endhighlight %}
 
 А вот и проблемный код:
-<cpp>
+{% highlight cpp %}
 namespace boost { namespace fusion
 {
     struct nil;      <<<<<<<<<<< Ругается на эту строчку...
@@ -22,11 +22,11 @@ namespace boost { namespace fusion
     template <typename Car, typename Cdr = nil>
     struct cons;
 }}
-</cpp>
+{% endhighlight %}
 
-Ну, казалось бы, а в чём проблема?<strong> struct nil </strong>предварительно объявляется, как это часто делается в С++. А проблема в том, что слово <strong>nil</strong> в языке Objective-C является одним из ключевых. Естественно, компилятор не может это проглотить, как скажем, не смог бы проглотить строку вида:
-<cpp>
+Ну, казалось бы, а в чём проблема?** struct nil **предварительно объявляется, как это часто делается в С++. А проблема в том, что слово **nil** в языке Objective-C является одним из ключевых. Естественно, компилятор не может это проглотить, как скажем, не смог бы проглотить строку вида:
+{% highlight cpp %}
 struct void;
-</cpp>
+{% endhighlight %}
 
 Кто же в этом виноват? Да никто. Авторы библиотек Boost не обязаны ориентироваться на ключевые слова других языков... 

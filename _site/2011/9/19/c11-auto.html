@@ -148,74 +148,76 @@
 <h3>Аргументы</h3>
 
 <p>Имеем код:</p>
-<cpp>
-void f( auto i ) {
-    // Некая работа с i.
-}
 
-int main() {
-    const int i = 123;
-    f( i );
-    // ...
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="nf">f</span><span class="p">(</span> <span class="k">auto</span> <span class="n">i</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Некая работа с i.</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+    <span class="n">f</span><span class="p">(</span> <span class="n">i</span> <span class="p">);</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>К сожалению, такая конструкция работать не будет, компиляция кода функции <strong>f()</strong> прервётся с ошибкой. </p>
 
 <p>Даже если мы напишем так:</p>
-<cpp>
-void f( const auto&amp; i ) {
-    // Некая работа с i.
-}
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="kt">void</span> <span class="nf">f</span><span class="p">(</span> <span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="n">i</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Некая работа с i.</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>то опять получим ту же ошибку.</p>
 
 <p>Причина проста: ключевое слово auto - это обобщение, и оно должно быть заменено на конкретный тип на этапе компиляции. И когда компилятор доходит до кода функции <strong>f()</strong>, то видит лишь обобщение в виде auto, а это приводит его в смущение, ведь он не знает конкретный тип объекта, который будет передан функции в качестве аргумента. В этом аспекте auto отличается от параметра шаблона функции.<br /></p>
 <h3>Возвращаемое значение</h3>
 
 <p>Итак:</p>
-<cpp>
-auto f() {
-    return 123;
-}
 
-int main() {
-    const int i = f();
-    // ...
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">auto</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">123</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">f</span><span class="p">();</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>И опять нас поджидает разочарование - компиляция прервётся с ошибкой.</p>
 
 <p>Причина та же: компилятор, доходя до объявления функции f(), не знает, значение какого типа будет возвращено из функции.</p>
 
 <p>Но компилятору можно подсказать:</p>
-<cpp>
-auto f() -&gt; int {
-    return 123;
-}
 
-int main() {
-    const int i = f();
-    // ...
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">auto</span> <span class="n">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">123</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">f</span><span class="p">();</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Да, синтаксис странный, это одно из нововведений C++0x. В данном случае после объявления функции мы указываем <strong>’-&gt; int’</strong>, показывая тем самым, что функция возвращает значение типа int. В данном случае практическая ценность подобного кода весьма условна, это лишь пример.<br /></p>
 <h3>Шаблоны функций</h3>
 
 <p>auto можно использовать в шаблонах функций:</p>
-<cpp>
-template&lt; typename T &gt;
-void f() {
-    // Присваиваем переменной a то значение, которое вернёт умолчальный конструктор типа T.
-    const auto a = T();
-    BOOST_ASSERT ( typeid( a ) == typeid( T ) );
-    std::cout &lt;&lt; a &lt;&lt; std::endl;
-}
 
-int main() {
-    f&lt; int &gt;();
-    // ...
-}
-</cpp>
+<div class="highlight"><pre><code class="cpp"><span class="k">template</span><span class="o">&lt;</span> <span class="k">typename</span> <span class="n">T</span> <span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">f</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Присваиваем переменной a то значение, которое вернёт умолчальный конструктор типа T.</span>
+    <span class="k">const</span> <span class="k">auto</span> <span class="n">a</span> <span class="o">=</span> <span class="n">T</span><span class="p">();</span>
+    <span class="n">BOOST_ASSERT</span> <span class="p">(</span> <span class="k">typeid</span><span class="p">(</span> <span class="n">a</span> <span class="p">)</span> <span class="o">==</span> <span class="k">typeid</span><span class="p">(</span> <span class="n">T</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">f</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span><span class="p">();</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <p>Код вернёт 0, как и ожидалось.<br /></p>
 <h3>Выводы</h3>
 <p>Ну, выводы просты: C++0x auto предоставляет некоторую обобщённость и в функциях, но мы должны помнить, что чудес не бывает.</p>

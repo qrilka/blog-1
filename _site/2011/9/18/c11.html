@@ -145,62 +145,64 @@
       <div class="entry-content">
         <!--break-->
 <p>Итак, вот как это будет выглядеть.</p>
-<cpp>
-typedef std::vector&lt; int &gt; V;
-V v = { 1, 2, 3 };
 
-// Вложенный контейнер - так же...
-std::vector&lt; V &gt; v2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">V</span><span class="p">;</span>
+<span class="n">V</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
 
-// Так же...
-std::set&lt; int &gt; v = { 1, 2, 3 };
-std::list&lt; int &gt; v = { 10, 20, 30 };
-std::deque&lt; int &gt; v = { 1, 2, 3 };
+<span class="c1">// Вложенный контейнер - так же...</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">V</span> <span class="o">&gt;</span> <span class="n">v2</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span> <span class="p">}</span> <span class="p">};</span>
 
-// Ассоциативный контейнер - тоже красиво...
-std::map&lt; int, std::string &gt; m = { { 1, "a" }, { 2, "b" }, { 3, "c" } };
+<span class="c1">// Так же...</span>
+<span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
 
-// А вот с std::bitset, std::queue, std::priority_queue, std::stack 
-// такая штука не проходит, ошибка компиляции.
-</cpp>
+<span class="c1">// Ассоциативный контейнер - тоже красиво...</span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span> <span class="kt">int</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;a&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;b&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;c&quot;</span> <span class="p">}</span> <span class="p">};</span>
+
+<span class="c1">// А вот с std::bitset, std::queue, std::priority_queue, std::stack </span>
+<span class="c1">// такая штука не проходит, ошибка компиляции.</span>
+</code></pre></div>
+
 <p>Кстати, оператор присваивания необязателен, поэтому можно написать так:</p>
-<cpp>
-typedef std::vector&lt; int &gt; V;
-V v{ 1, 2, 3 };
-std::vector&lt; V &gt; v2{ { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-std::set&lt; int &gt; v{ 1, 2, 3 };
-std::list&lt; int &gt; v{ 10, 20, 30 };
-std::deque&lt; int &gt; v{ 1, 2, 3 };
-std::map&lt; int, std::string &gt; m{ { 1, "a" }, { 2, "b" }, { 3, "c" } };
-</cpp>
+
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">V</span><span class="p">;</span>
+<span class="n">V</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="n">V</span> <span class="o">&gt;</span> <span class="n">v2</span><span class="p">{</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span> <span class="p">}</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="n">v</span><span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span> <span class="kt">int</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">{</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;a&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;b&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;c&quot;</span> <span class="p">}</span> <span class="p">};</span>
+</code></pre></div>
+
 <p>Ну и понятно, что подобная красота позволит нам написать и так:</p>
-<cpp>
-typedef std::vector&lt; double &gt; Vd;
 
-inline Vd create_double_list() {
-    return { 23.4, -0.4, 456.789 };
-}
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="o">&gt;</span> <span class="n">Vd</span><span class="p">;</span>
 
-int main() {
-    Vd vd = create_double_list();
-    // И в vd - именно то, что мы и ожидаем увидеть. :-)
-    return 0;
-}
-</cpp>
+<span class="kr">inline</span> <span class="n">Vd</span> <span class="nf">create_double_list</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="mf">23.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">456.789</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Vd</span> <span class="n">vd</span> <span class="o">=</span> <span class="n">create_double_list</span><span class="p">();</span>
+    <span class="c1">// И в vd - именно то, что мы и ожидаем увидеть. :-)</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>и так:</p>
-<cpp>
-typedef std::vector&lt; double &gt; Vd;
 
-inline void process_double_list( const Vd&amp; vd ) {
-    // Как вы уже и догадались, мы получили инициализированный контейнер...
-}
+<div class="highlight"><pre><code class="cpp"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span> <span class="kt">double</span> <span class="o">&gt;</span> <span class="n">Vd</span><span class="p">;</span>
 
-int main() {
-    process_double_list( { 23.4, -0.4, 456.789 } );
+<span class="kr">inline</span> <span class="kt">void</span> <span class="nf">process_double_list</span><span class="p">(</span> <span class="k">const</span> <span class="n">Vd</span><span class="o">&amp;</span> <span class="n">vd</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Как вы уже и догадались, мы получили инициализированный контейнер...</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">process_double_list</span><span class="p">(</span> <span class="p">{</span> <span class="mf">23.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">456.789</span> <span class="p">}</span> <span class="p">);</span>
     
-    return 0;
-}
-</cpp>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Не знаю как вам, а мне нравится такое нововведение.</p>
 

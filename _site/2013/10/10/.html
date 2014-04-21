@@ -147,28 +147,27 @@
 
 <p>А что если будет вот так:</p>
 
-<cpp>
-struct A {
-    A() {
-        std::cerr &lt;&lt; "A" &lt;&lt; std::endl; 
-    }
+<div class="highlight"><pre><code class="cpp"><span class="k">struct</span> <span class="n">A</span> <span class="p">{</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;A&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> 
+    <span class="p">}</span>
     
-    ~A() { 
-        std::cerr &lt;&lt; "~A" &lt;&lt; std::endl; 
-    }
-};
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;~A&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> 
+    <span class="p">}</span>
+<span class="p">};</span>
 
-struct B : A {
-    B() { 
-        std::cerr &lt;&lt; "B" &lt;&lt; std::endl;
-        throw std::logic_error( "" );
-    }
+<span class="k">struct</span> <span class="n">B</span> <span class="o">:</span> <span class="n">A</span> <span class="p">{</span>
+    <span class="n">B</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;B&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span> <span class="s">&quot;&quot;</span> <span class="p">);</span>
+    <span class="p">}</span>
     
-    ~B() { 
-        std::cerr &lt;&lt; "~B" &lt;&lt; std::endl; 
-    }
-};
-</cpp>
+    <span class="o">~</span><span class="n">B</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;~B&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> 
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
 
 <p>Итак, имеем базовый класс A и наследник B. В конструкторе наследника возникает исключение и улетает в пресветлые дали. Деструктор наследника вызван не будет. А теперь вопрос: будет ли вызван деструктор базового класса?</p>
 
