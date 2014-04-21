@@ -1,9 +1,10 @@
 ---
 layout: post
 title: И снова про Boost.UUID
-created: 1330593717
-categories:
-- boost
+category: articles
+tags: [Boost]
+comments: true
+share: true
 ---
 Нда-с... Видимо, люди, включившие эту библиотеку в Boost, были не так внимательны, как хотелось бы.
 

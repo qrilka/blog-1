@@ -1,9 +1,10 @@
 ---
 layout: post
 title: Итак, софтверный кризис и... его решение?
-created: 1359472853
-categories:
-- haskell
+category: articles
+tags: [Haskell]
+comments: true
+share: true
 ---
 Наткнулся на любопытную статью с громким названием "Solving the Global Software Crisis". Оригинал **<a href="http://fpcomplete.com/solving_the_software_crisis/">тут</a>**. Свой вольный перевод фрагмента этой статьи предлагаю вашему вниманию. Кое-что убрал, для краткости, но главное оставил.
 

@@ -1,11 +1,12 @@
 ---
 layout: post
 title: Мудрые мысли
-categories:
-- !binary |-
-  0KTQuNC70L7RgdC+0YTQuNGP
+category: articles
+tags: [философия]
+comments: true
+share: true
 ---
-<!--break-->
+
 **Я слышу и забываю.
 Я вижу и запоминаю.
 Я делаю и понимаю.**  

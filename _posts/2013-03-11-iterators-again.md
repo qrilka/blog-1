@@ -1,12 +1,10 @@
 ---
 layout: post
 title: 'Итераторы: вновь получил по башке'
-created: 1363000337
-categories:
-- !binary |-
-  0J/RgNC+0LPRgNCw0LzQvNC40YDQvtCy0LDQvdC40LU=
-- style revisor
-- c++
+category: articles
+tags: [C++]
+comments: true
+share: true
 ---
 Итак, опять эта ошибка... Я уж думал, что никогда больше не наступлю на эти грабли, однако вездесущий copy-paste опять сыграл со мною свою гадкую шутку...
 

@@ -10,7 +10,7 @@
 <link href='http://fonts.googleapis.com/css?family=Philosopher:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <title>Haskell: собираем простейший проект &#8211; Д. Шевченко</title>
 <meta name="description" content="Программист, исследователь, писатель">
-<meta name="keywords" content="">
+<meta name="keywords" content="Haskell, cabal">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
@@ -128,7 +128,7 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"></span>
+        <span class="entry-tags"><a href="http://denisshevchenko.github.io/blog/tags/#Haskell" title="Pages tagged Haskell">Haskell</a>&nbsp;&bull;&nbsp;<a href="http://denisshevchenko.github.io/blog/tags/#cabal" title="Pages tagged cabal">cabal</a></span>
         
           <h1 class="entry-title">Haskell: собираем простейший проект</h1>
         
@@ -139,12 +139,18 @@
         <span class="entry-date date published"><time datetime="2013-11-30T00:00:00+04:00"><i class="icon-calendar-empty"></i> November 30, 2013</time></span>
         
         <span><a href="http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project.html" rel="bookmark" title="Haskell: собираем простейший проект"><i class="icon-link"></i> Вечная ссылка</a></span>
+        <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Комментарии</a></span>
         
-        
+        <span class="social-share-facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project.html" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+        <span class="social-share-twitter">
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Haskell: собираем простейший проект&url=http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project.html&via=dshevchenko_biz" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+        <span class="social-share-googleplus">
+            <a href="https://plus.google.com/share?url=http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project.html" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <!-- /.social-share -->
       </footer>
       <div class="entry-content">
-        <!--break-->
-<p>За основу я взял хорошее пошаговое руководство с <strong><a href="http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program#Structure_of_a_simple_project">официального сайта</a></strong> Haskell, и снабдил его некоторыми пояснениями. Не пугайтесь, что дальше идёт довольно много текста, потому что фактических команд, которые вам нужно будет выполнить в терминале, всего несколько. Объём этой статьи обусловлен подробностью моих комментариев. </p>
+        <p>За основу я взял хорошее пошаговое руководство с <strong><a href="http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program#Structure_of_a_simple_project">официального сайта</a></strong> Haskell, и снабдил его некоторыми пояснениями. Не пугайтесь, что дальше идёт довольно много текста, потому что фактических команд, которые вам нужно будет выполнить в терминале, всего несколько. Объём этой статьи обусловлен подробностью моих комментариев. </p>
 
 <p>Итак, подразумевается, что у вас уже установлена <strong><a href="http://www.haskell.org/platform/">Haskell Platform</a></strong>. В составе этой самой платформы присутствует мощная утилита под названием <code>cabal</code>. Не знаю как вам, а мне это название напомнило о персонаже из кровопролитной игры Mortal Kombat по имени Kabal. Впрочем, не пугайтесь, утилита эта не станет набрасываться на вас с железными крюками. Фактически она представляет собою эдакий Haskell-овский <code>make</code>. На самом деле эта утилита весьма мощная и многогранная в своих возможностях, но на данный момент просто воспринимайте её как сборочную утилиту специально для Haskell-проектов.</p>
 
@@ -352,7 +358,7 @@ dist/
 
 <p>В дальнейшем я обязательно продолжу рассказы об утилите <code>cabal</code>, но главное, что теперь вы имеете представление о том, как в Haskell создать пусть и простейший, но уже реальный проект.</p>
 
-        
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
@@ -424,7 +430,27 @@ dist/
 </script>
 
 
-	        
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>	        
 
 </body>
 </html>

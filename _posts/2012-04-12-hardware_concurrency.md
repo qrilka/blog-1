@@ -1,9 +1,10 @@
 ---
 layout: post
 title: Э-э-э... Недоделочка, однако...
-created: 1334213729
-categories:
-- c++11
+category: articles
+tags: [C++]
+comments: true
+share: true
 ---
 Столкнулся с таким вот приколом.
 

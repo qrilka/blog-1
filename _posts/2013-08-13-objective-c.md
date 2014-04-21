@@ -1,10 +1,12 @@
 ---
 layout: post
 title: 'Objective-C: длительность вызова функции'
-created: 1376380345
-categories:
-- objective-c
+category: articles
+tags: [Objective-C]
+comments: true
+share: true
 ---
+
 Итак, понадобилось мне узнать, сколько длится вызов функции. И захотелось мне (раз уж речь шла о **<a href="http://strictcodeapp.com">StrictCode</a>**) сделать это на Objective-C. Заодно и узнал этот способ.
 
 Способ, как выяснилось, оказался чрезвычайно простым (спасибо **<a href="http://stackoverflow.com/questions/2129794/iphone-objective-c-how-to-log-a-methods-execution-time-exactly-in-millisecond">StackOverflow</a>**):

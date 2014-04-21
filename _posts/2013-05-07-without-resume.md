@@ -1,12 +1,10 @@
 ---
 layout: post
 title: 'Новый способ приёма на работу: мне понравилась такая идея'
-created: 1367953268
-categories:
-- !binary |-
-  0YHQvtGE0YLQstC10YDQvdGL0Lkg0LHQuNC30L3QtdGB
-- !binary |-
-  0J/RgNC+0LPRgNCw0LzQvNC40YDQvtCy0LDQvdC40LU=
+category: articles
+tags: [IT]
+comments: true
+share: true
 ---
 Наткнулся тут на одну любопытную штуку.
 

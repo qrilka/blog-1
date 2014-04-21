@@ -1,13 +1,10 @@
 ---
 layout: post
 title: 'Консольное сообщение: маленький пример'
-created: 1331929821
-categories:
-- !binary |-
-  0KXQvtGA0L7RiNC10LUg0L/QuNGB0YzQvNC+
-- !binary |-
-  0JvQuNGC0LXRgNCw0YLRg9GA0L3QvtC1INC/0YDQvtCz0YDQsNC80LzQuNGA
-  0L7QstCw0L3QuNC1
+category: articles
+tags: [C++]
+comments: true
+share: true
 ---
 Как вы уже знаете, Style Revisor сможет работать в командной строке. Вот маленький кусочек кода, отвечающий за вывод на консоль сообщения о некой проблеме.
 {% highlight cpp %}

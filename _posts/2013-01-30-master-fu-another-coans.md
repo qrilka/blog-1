@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'Коаны Мастера Фу: ещё несколько'
-created: 1359544384
-categories:
-- !binary |-
-  0KTQuNC70L7RgdC+0YTQuNGP
+category: articles
+tags: [философия]
+comments: true
+share: true
 ---
 Не так давно нашёл несколько, неизвестных мне ранее, коанов Мастера Фу. Предлагаю вам свой вольный перевод. Ежели есть желание прочесть в оригинале - прошу **<a href="http://catb.org/~esr/writings/unix-koans/">сюда</a>**.
 

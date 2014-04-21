@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'Данные заранее: я передумал...'
-created: 1343918248
-categories:
-- !binary |-
-  0J/RgNC+0LPRgNCw0LzQvNC40YDQvtCy0LDQvdC40LU=
+category: articles
+tags: [C++]
+comments: true
+share: true
 ---
 Эта задача возникала передо мною часто. А сейчас, в коде Style Revisor, я вдруг... передумал.
 

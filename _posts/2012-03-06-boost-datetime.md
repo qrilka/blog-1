@@ -1,9 +1,10 @@
 ---
 layout: post
 title: 'Boost.DateTime: почему они не добавили эту мелочь??'
-created: 1331041040
-categories:
-- boost
+category: articles
+tags: [Boost]
+comments: true
+share: true
 ---
 Уже второй раз с этим разбираюсь, и удивляюсь...
 

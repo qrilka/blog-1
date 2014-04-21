@@ -1,9 +1,10 @@
 ---
 layout: post
 title: О кнопках активных и не совсем
-created: 1344514755
-categories:
-- gui
+category: articles
+tags: [GUI]
+comments: true
+share: true
 ---
 Кнопка - это очень хорошая вещь. Это именно тот элемент GUI, который наиболее приближен к физическому аналогу чего-то нажимаемого.
 

@@ -1,11 +1,10 @@
 ---
 layout: post
 title: К вопросу о данных класса...
-created: 1334736152
-categories:
-- !binary |-
-  0KTRg9C90LrRhtC40L7QvdCw0LvRjNC90L7QtSDQv9GA0L7Qs9GA0LDQvNC8
-  0LjRgNC+0LLQsNC90LjQtQ==
+category: articles
+tags: [C++]
+comments: true
+share: true
 ---
 Итак:
 {% highlight cpp %}

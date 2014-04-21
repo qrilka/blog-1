@@ -1,11 +1,12 @@
 ---
 layout: post
 title: Знаете, во что превращается BOOST_FOREACH?
-created: 1316416446
-categories:
-- boost
+category: articles
+tags: [Boost]
+comments: true
+share: true
 ---
-<!--break-->
+
 Недавно я узнал, во что же разворачивается макрос BOOST_FOREACH.
 
 Итак, берём простейший код:

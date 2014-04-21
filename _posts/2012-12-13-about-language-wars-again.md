@@ -1,12 +1,10 @@
 ---
 layout: post
 title: И снова о языковых войнах...
-created: 1355399647
-categories:
-- !binary |-
-  0J/RgNC+0LPRgNCw0LzQvNC40YDQvtCy0LDQvdC40LU=
-- !binary |-
-  0KTQuNC70L7RgdC+0YTQuNGP
+category: articles
+tags: [философия]
+comments: true
+share: true
 ---
 Прочитал сегодня **<a href="http://binf.livejournal.com/29465.html">заметку</a>**. Автор, как и многие, сначала хвалил C++, а потом, назвав его "негибким говном" и перейдя на другие языки, начал хвалить их...
 

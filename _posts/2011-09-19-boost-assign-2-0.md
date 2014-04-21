@@ -1,12 +1,12 @@
 ---
 layout: post
 title: 'Boost.Assign 2.0: упрощение или усложнение?'
-created: 1316416047
-categories:
-- c++
-- boost
+category: articles
+tags: [Boost]
+comments: true
+share: true
 ---
-<!--break-->
+
 Ну, во-первых, если кому-то интересно взглянуть на документацию к этому хозяйству - прошу <a href="http://svn.boost.org/svn/boost/sandbox/assign_v2/libs/assign/v2/doc/html/index.html">**сюда**</a>.
 
 А, во-вторых, давайте вспомним, зачему была нужна эта библиотека? Она нужна была для того, чтобы упростить жизнь программиста. И не просто упростить, но сделать это *быстро*.

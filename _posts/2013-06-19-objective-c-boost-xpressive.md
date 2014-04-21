@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'Objective-C и Boost.Xpressive: конфликт слов'
-created: 1371622727
-categories:
-- objective-c
-- boost
+category: articles
+tags: [Objective-C, Boost]
+comments: true
+share: true
 ---
 Увы и ах, но испльзование некоторых из библиотек Boost недопустимо в Objective-C++ коде, как я смог убедиться в этом буквально вчера.
 

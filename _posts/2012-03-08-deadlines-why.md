@@ -1,12 +1,10 @@
 ---
 layout: post
 title: Почему мы срываем сроки?
-created: 1331157312
-categories:
-- !binary |-
-  0KTQuNC70L7RgdC+0YTQuNGP
-- !binary |-
-  0J/RgNC+0LPRgNCw0LzQvNC40YDQvtCy0LDQvdC40LU=
+category: articles
+tags: [IT, софтверный бизнес]
+comments: true
+share: true
 ---
 Любой практикующий разработчик знаком с этой ситуацией: тебя спрашивают о сроках выполнения задачи, ты называешь дату - а потом срок срывается. Не важно, на несколько ли дней, недель или месяцев, это уже детали. Важно другое...
 

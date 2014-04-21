@@ -1,12 +1,10 @@
 ---
 layout: post
 title: Ответ моим друзьям
-created: 1329423903
-categories:
-- !binary |-
-  0KTQuNC70L7RgdC+0YTQuNGP
-- !binary |-
-  0YHQvtGE0YLQstC10YDQvdGL0Lkg0LHQuNC30L3QtdGB
+category: articles
+tags: [софтверный бизнес]
+comments: true
+share: true
 ---
 Уважаемые **pa23**, **niXman** и **Vernat**!
 

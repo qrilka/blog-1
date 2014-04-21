@@ -1,12 +1,10 @@
 ---
 layout: post
 title: 'Пояснение без комментариев: пример'
-created: 1329511741
-categories:
-- !binary |-
-  0JvQuNGC0LXRgNCw0YLRg9GA0L3QvtC1INC/0YDQvtCz0YDQsNC80LzQuNGA
-  0L7QstCw0L3QuNC1
-- c++11
+category: articles
+tags: [C++]
+comments: true
+share: true
 ---
 Итак, есть функция:
 {% highlight cpp %}

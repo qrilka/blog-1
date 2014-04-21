@@ -1,11 +1,12 @@
 ---
 layout: post
 title: Пользователям BOOST_FOREACH, важно...
-created: 1316355985
-categories:
-- boost
+category: articles
+tags: [Boost]
+comments: true
+share: true
 ---
-<!--break-->
+
 При переборе контейнера возвращается ссылка на текущий элемент. Но что происходит потом? 
 Имеем код...
 {% highlight cpp %}

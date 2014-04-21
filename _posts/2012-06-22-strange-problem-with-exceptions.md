@@ -1,10 +1,10 @@
 ---
 layout: post
 title: 'Проблема с исключениями: странно, но факт'
-created: 1340378493
-categories:
-- os x
-- c++
+category: articles
+tags: [C++, OS X]
+comments: true
+share: true
 ---
 Нда... Кажется, Гугловцы и Тролли были правы, когда отказались от использования C++-исключений.
 

@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Ещё один коан Мастера Фу
-created: 1379491122
-categories:
-- !binary |-
-  0KTQuNC70L7RgdC+0YTQuNGP
+category: articles
+tags: [философия]
+comments: true
+share: true
 ---
 <blockquote>
 Мастер Фу и программист-вундеркинд

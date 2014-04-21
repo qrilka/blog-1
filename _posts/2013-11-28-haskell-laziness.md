@@ -1,11 +1,12 @@
 ---
 layout: post
 title: 'Haskell: что же это за ленивые вычисления такие?'
-created: 1385616285
-categories:
-- haskell
+category: articles
+tags: [Haskell]
+comments: true
+share: true
 ---
-<!--break-->
+
 Вот формальное определение:
 
 **"Lazy evaluation is an evaluation strategy which delays the evaluation of an expression until its value is needed."**

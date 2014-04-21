@@ -1,11 +1,12 @@
 ---
 layout: post
 title: 'Haskell: и снова о типах'
-created: 1387008640
-categories:
-- haskell
+category: articles
+tags: [Haskell]
+comments: true
+share: true
 ---
-<!--break-->
+
 В языке Haskell есть три ключевых слова, используемые при определении собственных типов. И слова эти могут, скажем так, смутить программистов, пришедших из мира C++. Вот эти слова:
 
 <ul>

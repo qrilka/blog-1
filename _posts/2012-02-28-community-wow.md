@@ -1,9 +1,10 @@
 ---
 layout: post
 title: Обалдеть! Вот что значит сообщество!
-created: 1330376699
-categories:
-- style revisor
+category: articles
+tags: [IT]
+comments: true
+share: true
 ---
 Не могу не рассказать, просто не могу.
 

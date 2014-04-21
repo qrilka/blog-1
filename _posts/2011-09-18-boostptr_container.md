@@ -1,11 +1,12 @@
 ---
 layout: post
 title: Пользователям boost::ptr_container, важно!
-created: 1316355702
-categories:
-- boost
+category: articles
+tags: [Boost]
+comments: true
+share: true
 ---
-<!--break-->
+
 Недавно я потерял добрую половину рабочего дня на исправление одной хитрой ошибки при использовании boost::ptr_vector.
 
 Итак, имеется следующий код:

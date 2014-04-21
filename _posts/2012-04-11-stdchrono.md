@@ -1,9 +1,10 @@
 ---
 layout: post
 title: ВременнЫе замеры с std::chrono
-created: 1334164907
-categories:
-- c++11
+category: articles
+tags: [C++]
+comments: true
+share: true
 ---
 Стандарт C++11 ввёл новый набор классов для работы с временем, в заголовочнике <chrono>. И вот простой рецепт (спасибо сайту cplusplus.com), как измерить время работы некой функции. Достаточно часто это нужно знать.
 

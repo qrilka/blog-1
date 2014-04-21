@@ -1,13 +1,12 @@
 ---
 layout: post
 title: 'C++11: std::unordered_map против std::map'
-created: 1316413747
-categories:
-- c++11
-- !binary |-
-  0Y3RhNGE0LXQutGC0LjQstC90L7RgdGC0Yw=
+category: articles
+tags: [C++]
+comments: true
+share: true
 ---
-<!--break-->
+
 Известно, что в C++11 в пространство имён **std** внесён контейнер **unordered_map**. Для его использования необходимо включить в программу одноимённый заголовочник.
 
 Известно также и то, что поиск значения по ключу в **unordered_map** производится быстрее, чем в **map**. Но насколько быстрее? Простой эксперимент покажет нам.

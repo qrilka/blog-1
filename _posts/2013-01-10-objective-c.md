@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Итак, начал изучение Objective-C...
-created: 1357805533
-categories:
-- style revisor
-- objective-c
+category: articles
+tags: [Objective-C]
+comments: true
+share: true
 ---
 Раз уж я собрался работать с кодом Objective-C в Ревизоре, значит, нужно взглянуть на этот язык поглубже.
 

@@ -1,15 +1,10 @@
 ---
 layout: post
 title: 'О нативности интерфейса: форма и содержание'
-created: 1366139679
-categories:
-- !binary |-
-  0KTQuNC70L7RgdC+0YTQuNGP
-- !binary |-
-  0J/RgNC+0LPRgNCw0LzQvNC40YDQvtCy0LDQvdC40LU=
-- !binary |-
-  0JjQvdGC0LXRgNGE0LXQudGB
-- style revisor
+category: articles
+tags: [GUI]
+comments: true
+share: true
 ---
 Признаюсь вам честно: о нативности я думал много. И вот до чего додумался, тем и хочу поделиться.
 

@@ -10,7 +10,7 @@
 <link href='http://fonts.googleapis.com/css?family=Philosopher:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <title>GCC: два компилятора вместе &#8211; Д. Шевченко</title>
 <meta name="description" content="Программист, исследователь, писатель">
-<meta name="keywords" content="">
+<meta name="keywords" content="GCC">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
@@ -128,7 +128,7 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"></span>
+        <span class="entry-tags"><a href="http://denisshevchenko.github.io/blog/tags/#GCC" title="Pages tagged GCC">GCC</a></span>
         
           <h1 class="entry-title">GCC: два компилятора вместе</h1>
         
@@ -139,12 +139,18 @@
         <span class="entry-date date published"><time datetime="2011-09-18T00:00:00+05:00"><i class="icon-calendar-empty"></i> September 18, 2011</time></span>
         
         <span><a href="http://denisshevchenko.github.io/blog/2011/9/18/gcc.html" rel="bookmark" title="GCC: два компилятора вместе"><i class="icon-link"></i> Вечная ссылка</a></span>
+        <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Комментарии</a></span>
         
-        
+        <span class="social-share-facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://denisshevchenko.github.io/blog/2011/9/18/gcc.html" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+        <span class="social-share-twitter">
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=GCC: два компилятора вместе&url=http://denisshevchenko.github.io/blog/2011/9/18/gcc.html&via=dshevchenko_biz" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+        <span class="social-share-googleplus">
+            <a href="https://plus.google.com/share?url=http://denisshevchenko.github.io/blog/2011/9/18/gcc.html" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <!-- /.social-share -->
       </footer>
       <div class="entry-content">
-        <!--break-->
-<p>Причины, подвигшие меня к установке <strong>g++ 4.6.0</strong>, просты: поддержка C++0x. Данная версия вышла 25 марта (любопытное совпадение: именно в этот день Комитетом по стандартизации был принят FDIS), и именно этой версией поддерживается наибольшее число возможностей нового языка.</p>
+        <p>Причины, подвигшие меня к установке <strong>g++ 4.6.0</strong>, просты: поддержка C++0x. Данная версия вышла 25 марта (любопытное совпадение: именно в этот день Комитетом по стандартизации был принят FDIS), и именно этой версией поддерживается наибольшее число возможностей нового языка.</p>
 
 <p>Но в моей системе (Debain Linux Squeeze), естественно, уже стоял компилятор версии 4.4.5. Значит, нужно ставить в параллель.<br /></p>
 <h3>Что нам понадобится?</h3>
@@ -257,7 +263,7 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2<br /></p>
 
 <p>Итак, как видите, всё работает. Теперь в нашей системе есть два компилятора, и мы можем продолжить наши эксперименты с новейшими возможностями C++0x.</p>
 
-        
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
@@ -329,7 +335,27 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2<br /></p>
 </script>
 
 
-	        
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>	        
 
 </body>
 </html>
