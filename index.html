@@ -7,7 +7,7 @@ tags: [Haskell, C++, Objective-C, софтверный бизнес, литер�
 
 <ul class="post-list">
 {% for post in site.posts limit:10 %} 
-  <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span></a></article></li>
+  <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" | replace: "January", "январь" | replace: "February", "февраль" | replace: "March", "март" | replace: "April", "апрель" | replace: "May", "май" | replace: "June", "июнь" | replace: "July", "июль" | replace: "August", "август" | replace: "September", "сентябрь" | replace: "October", "октябрь" | replace: "November", "ноябрь" | replace: "December", "декабрь" }}</time></span></a></article></li>
 {% endfor %}
 </ul>
 <div style="padding-top:30px;"></div>

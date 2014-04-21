@@ -26,7 +26,7 @@ description: "Все заметки по категориям."
 		{% for post in pages_list %}
 			{% if post.title != null %}
 			{% if group == null or group == post.group %}
-			<li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}<span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span></a></li>
+			<li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}<span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" | replace: "January", "январь" | replace: "February", "февраль" | replace: "March", "март" | replace: "April", "апрель" | replace: "May", "май" | replace: "June", "июнь" | replace: "July", "июль" | replace: "August", "август" | replace: "September", "сентябрь" | replace: "October", "октябрь" | replace: "November", "ноябрь" | replace: "December", "декабрь" }}</time></span></a></li>
 			{% endif %}
 			{% endif %}
 		{% endfor %}
