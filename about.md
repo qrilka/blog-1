@@ -5,9 +5,7 @@ title: О себе
 tags: [Д.Шевченко, Haskell, C++11, Objective-C, литературное программирование, совфтверный бизнес.]
 modified: 2014-03-21
 image:
-  feature: so-simple-sample-image-4.jpg
-  credit: Michael Rose
-  creditlink: http://mademistakes.com
+  feature: me.jpg
 ---
 
 Шевченко Денис Васильевич. Программист, ищущий новое. С 2006 года дружу с кодом. Люблю Unix и Vim. В 2013 дёрнуло меня изучить Haskell, да так сильно дёрнуло, что до сих пор не отпускает.
