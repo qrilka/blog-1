@@ -4,13 +4,41 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://denisshevchenko.github.io/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/" />
-<updated>2014-04-21T23:17:22+04:00</updated>
+<updated>2014-04-22T12:28:00+04:00</updated>
 <id>http://denisshevchenko.github.io/blog/</id>
 <author>
   <name>Денис Шевченко</name>
   <uri>http://denisshevchenko.github.io/blog/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[От динамики к статике: прощай, Drupal...]]></title>
+  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2014/4/22/goodbye-drupal.html"/>
+  <id>http://denisshevchenko.github.io/blog/2014/4/22/goodbye-drupal</id>
+  <published>2014-04-22T00:00:00+04:00</published>
+  <updated>2014-04-22T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://denisshevchenko.github.io/blog</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Да, решение принято, и обжалованию уже не подлежит: Drupal уходит из моей профессиональной жизни. Четыре года я использовал эту прекрасную CMS, но теперь пришла пора попрощаться. Я окончательно убедился в том, что для моих сайтов Drupal не нужен.&lt;/p&gt;
+
+&lt;p&gt;В процессе настройки GitHub-страницы для книги я узнал о &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;. Сказать, что меня зацепило - это не сказать ничего! Слияние GitHub и Markdown - это реально круто. Ну а поскольку второй том моей книги будет написан на Markdown и жить будет также на GitHub, мне будет вдвойне удобнее.&lt;/p&gt;
+
+&lt;p&gt;Больше никаких админок, никаких БД, никаких бэкапов, паролей, обновлений и FTP. Только Vim, Markdown и Git. Добавил &lt;code&gt;.md&lt;/code&gt;-файл, затем &lt;code&gt;jekyll build&lt;/code&gt;, коммит-пуш - и новая запись уже в блоге. А блог, надо сказать, получился знатным. Во-первых, офигительно быстрым. Во-вторых, мобильно-адаптивным из коробки. В-третьих, красивым и удобным (спасибо Michael Rose и его прекрасной &lt;a href=&quot;http://mademistakes.com/articles/so-simple-jekyll-theme/&quot;&gt;So Simple Theme&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;В общем, я доволен как слон. К тому же Jekyll позволил мне довольно безболезненно импортировать сюда всё содержимое старого блога. Да, пути стали другими, но Поиск по блогу - просто отменный.&lt;/p&gt;
+
+&lt;p&gt;Да, от пользовательских аккаунтов я тоже отказался. Всё-таки для комментариев достаточно Disqus (который, кстати, тоже был прикручен к данному блогу прямо из коробки). К тому же удобно: даже если нет социальных профилей, один раз зарегистрировался на &lt;a href=&quot;http://disqus.com/&quot;&gt;Disqus&lt;/a&gt; - и можешь комментировать 100500 разных блогов.&lt;/p&gt;
+
+&lt;p&gt;И ещё… В название поста сказано “от динамики к статике”. Это мне так по душе, ведь Haskell статичен… ;-)&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2014/4/22/goodbye-drupal.html&quot;&gt;От динамики к статике: прощай, Drupal...&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt;, апрель 22, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -1488,229 +1516,6 @@ localhost
 &lt;p&gt;Что же я предлагаю? &lt;del&gt;Всем срочно перейти на Haskell&lt;/del&gt; Задуматься о перспективах. Мы видим, как меняется компьютерное железо. Но если софт не будет поспевать за железом, то он, этот софт, окажется слабым звеном в связке под названием “компьютер”. Если есть языки программирования, в которых с программиста полностью снята ответственность за работу с памятью (как это и должно быть в 21 веке), то почему бы не… Ну вы поняли…&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/12/1/about-memory.html&quot;&gt;О памяти&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt;, декабрь 01, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Haskell: собираем простейший проект]]></title>
-  <link rel="alternate" type="text/html" href="http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project.html"/>
-  <id>http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project</id>
-  <published>2013-11-30T00:00:00+04:00</published>
-  <updated>2013-11-30T00:00:00+04:00</updated>
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://denisshevchenko.github.io/blog</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;p&gt;За основу я взял хорошее пошаговое руководство с &lt;strong&gt;&lt;a href=&quot;http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program#Structure_of_a_simple_project&quot;&gt;официального сайта&lt;/a&gt;&lt;/strong&gt; Haskell, и снабдил его некоторыми пояснениями. Не пугайтесь, что дальше идёт довольно много текста, потому что фактических команд, которые вам нужно будет выполнить в терминале, всего несколько. Объём этой статьи обусловлен подробностью моих комментариев. &lt;/p&gt;
-
-&lt;p&gt;Итак, подразумевается, что у вас уже установлена &lt;strong&gt;&lt;a href=&quot;http://www.haskell.org/platform/&quot;&gt;Haskell Platform&lt;/a&gt;&lt;/strong&gt;. В составе этой самой платформы присутствует мощная утилита под названием &lt;code&gt;cabal&lt;/code&gt;. Не знаю как вам, а мне это название напомнило о персонаже из кровопролитной игры Mortal Kombat по имени Kabal. Впрочем, не пугайтесь, утилита эта не станет набрасываться на вас с железными крюками. Фактически она представляет собою эдакий Haskell-овский &lt;code&gt;make&lt;/code&gt;. На самом деле эта утилита весьма мощная и многогранная в своих возможностях, но на данный момент просто воспринимайте её как сборочную утилиту специально для Haskell-проектов.&lt;/p&gt;
-
-&lt;p&gt;Создаём папку под названием Haskell и заходим в неё. В ней мы должны создать один файл: main.hs. Это наш файл исходного кода, в нашем простейшем случае других файлов не будет.&lt;/p&gt;
-
-&lt;p&gt;Открываем этот файл и пишем в нём, например, это:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Environment&lt;/span&gt;
- 
-&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IO&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getArgs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;haqify&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;
- 
-&lt;span class=&quot;nf&quot;&gt;haqify&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Haq! &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Сохраняем, закрываем, а потом выполняем в терминале простую команду:&lt;/p&gt;
-
-&lt;bash&gt;
-cabal init
-&lt;/bash&gt;
-
-&lt;p&gt;В результате вы попадёте в интерактивный диалог, в ходе которого вам будет предложено ответить на несколько вопросов о вашем проекте:&lt;/p&gt;
-
-&lt;bash&gt;
-MacBook-Pro-Sevcenko:Haskell dshevchenko$ cabal init
-Package name? [default: Haskell] 
-Package version? [default: 0.1.0.0] 
-Please choose a license:
- * 1) (none)
-   2) GPL-2
-   3) GPL-3
-   4) LGPL-2.1
-   5) LGPL-3
-   6) BSD3
-   7) MIT
-   8) Apache-2.0
-   9) PublicDomain
-  10) AllRightsReserved
-  11) Other (specify)
-Your choice? [default: (none)] 7
-Author name? Denis Shevchenko
-Maintainer email? me@dshevchenko.biz
-Project homepage URL? 
-Project synopsis? Learn project
-Project category:
- * 1) (none)
-   2) Codec
-   3) Concurrency
-   4) Control
-   5) Data
-   6) Database
-   7) Development
-   8) Distribution
-   9) Game
-  10) Graphics
-  11) Language
-  12) Math
-  13) Network
-  14) Sound
-  15) System
-  16) Testing
-  17) Text
-  18) Web
-  19) Other (specify)
-Your choice? [default: (none)] 
-What does the package build:
-   1) Library
-   2) Executable
-Your choice? 2
-Include documentation on what each field means (y/n)? [default: n] 
-
-Guessing dependencies...
-
-Generating LICENSE...
-Warning: unknown license type, you must put a copy in LICENSE yourself.
-Generating Setup.hs...
-Generating Haskell.cabal...
-
-You may want to edit the .cabal file and add a Description field.
-&lt;/bash&gt;
-
-&lt;p&gt;В результате в вашей папке будут созданы несколько дополнительных файлов. Не знаю, почему, но с автоматическим генерированием файла LICENSE произошла проблемка. Как видим, мы получили предупреждение вида:&lt;/p&gt;
-
-&lt;bash&gt;
-Generating LICENSE...
-Warning: unknown license type, you must put a copy in LICENSE yourself.
-&lt;/bash&gt;
-
-&lt;p&gt;Совершенно непонятно, &lt;em&gt;что&lt;/em&gt; не понравилось утилите, ведь я ввёл номер лицензии 7 (что соответствует лицензии MIT) и она это проглотила, но в итоге файл LICENSE в корневой папке проекта так и не появился. Но дабы не было противоречий, просто добавьте этот файл вручную (и можете оставить его пустым).&lt;/p&gt;
-
-&lt;p&gt;Как уже было упомянуто, в корневой папке проекта появились следующие важные файлы:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Setup.hs&lt;/li&gt;
-  &lt;li&gt;Haskell.cabal&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Первый нам не так интересен, потому что (в соответствии с официальным руководством) редактировать этот файл руками нам придётся очень редко. А вот второй файл весьма любопытен. Откроем его и посмотрим:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;                &lt;span class=&quot;kt&quot;&gt;Haskell&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;             &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;synopsis&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;            &lt;span class=&quot;kt&quot;&gt;Learn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;project&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- description:         &lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;             &lt;span class=&quot;kt&quot;&gt;MIT&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;        &lt;span class=&quot;kt&quot;&gt;LICENSE&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;              &lt;span class=&quot;kt&quot;&gt;Denis&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Shevchenko&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;maintainer&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;          &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dshevchenko&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;biz&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- copyright:           &lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;-- category:            &lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;          &lt;span class=&quot;kt&quot;&gt;Simple&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;cabal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;executable&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Haskell&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;           &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;            
-  &lt;span class=&quot;c1&quot;&gt;-- other-modules:       &lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depends&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;4.6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Как видите, этот файл представляет собой некий аналог Makefile для системы cabal. Тут уже сохранены те самые значения, которые мы вводили в процессе вышеупомянутого диалога.&lt;/p&gt;
-
-&lt;p&gt;Обращаю ваше внимание на то, что в этом сгенерированном файле изначально строка:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;  &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;закомментирована. Вам необходимо раскомментировать её и прописать имя файла, содержащего функцию main, в нашем случае это main.hs. Если вы этого не сделаете, получите ошибку вида:&lt;/p&gt;
-
-&lt;bash&gt;
-Error: No &#39;Main-Is&#39; field found for executable Haskell
-&lt;/bash&gt;
-
-&lt;p&gt;Итак, после этого выполняем следующую простую команду в терминале:&lt;/p&gt;
-
-&lt;bash&gt;
-cabal configure
-&lt;/bash&gt;
-
-&lt;p&gt;В результате произойдёт конфигурирование проекта, то есть некая подготовка к фактической сборке. И тут нас ожидает следующая тонкость.&lt;/p&gt;
-
-&lt;p&gt;Обратите внимание на последнюю часть файла Haskell.cabal:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;executable&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Haskell&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;           &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;            
-  &lt;span class=&quot;c1&quot;&gt;-- other-modules:       &lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depends&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;4.6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Видите отступ в два пробела перед тремя последними строками? Оказывается, это не просто так. Если мы уберём этот отступ, то получим такую ошибку:&lt;/p&gt;
-
-&lt;bash&gt;
-cabal: Haskell.cabal:18: Construct not supported at this position: F 18
-&quot;main-is&quot; &quot;main.hs\nbuild-depends: base ==4.6.*&quot;
-&lt;/bash&gt;
-
-&lt;p&gt;Кроме того, отступ должен быть никак не меньше двух пробелов, потому что ради эксперимента я пробовал поставить отступ из одного-единственного пробела, и получил уже такую ошибку:&lt;/p&gt;
-
-&lt;bash&gt;
-cabal: Haskell.cabal:18: Parse of field &#39;main-is&#39; failed.
-&lt;/bash&gt;
-
-&lt;p&gt;В общем, два пробела. В этом случае конфигурирование пройдёт нормально.&lt;/p&gt;
-
-&lt;bash&gt;
-$ cabal configure
-Resolving dependencies...
-Configuring Haskell-0.1.0.0...
-&lt;/bash&gt;
-
-&lt;p&gt;После этого выполняем, собственно, команду сборки:&lt;/p&gt;
-
-&lt;bash&gt;
-$ cabal build
-Building Haskell-0.1.0.0...
-Preprocessing executable &#39;Haskell&#39; for Haskell-0.1.0.0...
-&lt;/bash&gt;
-
-&lt;p&gt;Всё. После этого в нашей корневой папке проекта появилась папка &lt;code&gt;dist&lt;/code&gt;. Вот её содержимое:&lt;/p&gt;
-
-&lt;bash&gt;
-dist/
-├── build
-│   ├── Haskell
-│   │   ├── Haskell    &amp;lt;&amp;lt;---- Это и есть наш исполняемый файл.
-│   │   └── Haskell-tmp
-│   │       ├── Main.hi
-│   │       └── Main.o
-│   └── autogen
-│       ├── Paths_Haskell.hs
-│       └── cabal_macros.h
-├── package.conf.inplace
-└── setup-config
-&lt;/bash&gt;
-
-&lt;p&gt;Ну вот собственно и всё. Можем запускать наше приложение:&lt;/p&gt;
-
-&lt;bash&gt;
-./dist/build/Haskell/Haskell arg1
-&lt;/bash&gt;
-
-&lt;p&gt;Вывод будет таким:&lt;/p&gt;
-
-&lt;bash&gt;
-&quot;Haq! arg1&quot;
-&lt;/bash&gt;
-
-&lt;p&gt;В дальнейшем я обязательно продолжу рассказы об утилите &lt;code&gt;cabal&lt;/code&gt;, но главное, что теперь вы имеете представление о том, как в Haskell создать пусть и простейший, но уже реальный проект.&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://denisshevchenko.github.io/blog/2013/11/30/haskell-make-project.html&quot;&gt;Haskell: собираем простейший проект&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://denisshevchenko.github.io/blog&quot;&gt;Д. Шевченко&lt;/a&gt;, ноябрь 30, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
