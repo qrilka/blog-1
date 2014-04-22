@@ -9,30 +9,30 @@
 <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Philosopher:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <title>GCC 4.7 на OS X Lion: тернистый путь... &#8211; Мысли вслух</title>
-<meta name="description" content="блог программиста C++, влюбившегося в Haskell">
+<meta name="description" content="блог C++-программиста, влюбившегося в Haskell">
 <meta name="keywords" content="GCC, OS X">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.dshevchenko.biz//images/site-logo.png">
+<meta name="twitter:image" content="http://blog.dshevchenko.biz/images/site-logo.png">
 <meta name="twitter:title" content="GCC 4.7 на OS X Lion: тернистый путь...">
-<meta name="twitter:description" content="блог программиста C++, влюбившегося в Haskell">
+<meta name="twitter:description" content="блог C++-программиста, влюбившегося в Haskell">
 <meta name="twitter:creator" content="@dshevchenko_biz">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GCC 4.7 на OS X Lion: тернистый путь...">
-<meta property="og:description" content="блог программиста C++, влюбившегося в Haskell">
-<meta property="og:url" content="http://blog.dshevchenko.biz//2012/6/10/gcc-4-7-os-x-lion.html">
+<meta property="og:description" content="блог C++-программиста, влюбившегося в Haskell">
+<meta property="og:url" content="http://blog.dshevchenko.biz/2012/6/10/gcc-4-7-os-x-lion.html">
 <meta property="og:site_name" content="Мысли вслух">
 
 
 
 
 
-<link rel="canonical" href="http://blog.dshevchenko.biz//2012/6/10/gcc-4-7-os-x-lion.html">
-<link href="http://blog.dshevchenko.biz//feed.xml" type="application/atom+xml" rel="alternate" title="Мысли вслух Feed">
+<link rel="canonical" href="http://blog.dshevchenko.biz/2012/6/10/gcc-4-7-os-x-lion.html">
+<link href="http://blog.dshevchenko.biz/feed.xml" type="application/atom+xml" rel="alternate" title="Мысли вслух Feed">
 <link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
 
 <!-- http://t.co/dKP3o1e -->
@@ -41,28 +41,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://blog.dshevchenko.biz//assets/css/main.min.css">
+<link rel="stylesheet" href="http://blog.dshevchenko.biz/assets/css/main.min.css">
 <!-- Webfonts -->
 <script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
 
 <meta http-equiv="cleartype" content="on">
 
 <!-- Load Modernizr -->
-<script src="http://blog.dshevchenko.biz//assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+<script src="http://blog.dshevchenko.biz/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://blog.dshevchenko.biz//favicon.ico">
+<link rel="shortcut icon" href="http://blog.dshevchenko.biz/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://blog.dshevchenko.biz//favicon.png">
+<link rel="shortcut icon" href="http://blog.dshevchenko.biz/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://blog.dshevchenko.biz//images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://blog.dshevchenko.biz/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://blog.dshevchenko.biz//images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://blog.dshevchenko.biz/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://blog.dshevchenko.biz//images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://blog.dshevchenko.biz/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://blog.dshevchenko.biz//images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://blog.dshevchenko.biz/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
 
@@ -74,19 +74,19 @@
 	        
 			<li>
 				
-					<a href="http://blog.dshevchenko.biz/articles/">Записи</a>
+					<a href="http://blog.dshevchenko.bizarticles/">Записи</a>
 				 
 			</li>
 	        
 			<li>
 				
-					<a href="http://blog.dshevchenko.biz/friends/">Друзья</a>
+					<a href="http://blog.dshevchenko.bizfriends/">Друзья</a>
 				 
 			</li>
 	        
 			<li>
 				
-					<a href="http://blog.dshevchenko.biz/about/">О себе</a>
+					<a href="http://blog.dshevchenko.bizabout/">О себе</a>
 				 
 			</li>
 	        
@@ -98,11 +98,11 @@
 	        
 			<li>
 				
-					<a href="http://blog.dshevchenko.biz/tags/">Метки</a>
+					<a href="http://blog.dshevchenko.biztags/">Метки</a>
 				 
 			</li>
 	        
-	        <li><a href="http://blog.dshevchenko.biz//feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+	        <li><a href="http://blog.dshevchenko.biz/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
 	        <li class="dosearch"><i class="icon-search"></i> Поиск</li>
 	    </ul>
 	</nav>
@@ -121,10 +121,10 @@
 <header class="masthead">
 	<div class="wrap">
         
-    		<a href="http://blog.dshevchenko.biz//" class="site-logo" rel="home" title="Мысли вслух"><img src="http://blog.dshevchenko.biz//images/site-logo.png" width="200" height="200" alt="Мысли вслух logo" class="animated fadeInUp"></a>
+    		<a href="http://blog.dshevchenko.biz/" class="site-logo" rel="home" title="Мысли вслух"><img src="http://blog.dshevchenko.biz/images/site-logo.png" width="200" height="200" alt="Мысли вслух logo" class="animated fadeInUp"></a>
         
-        <h1 class="site-title animated fadeIn"><a href="http://blog.dshevchenko.biz//">Мысли вслух</a></h1>
-		<h2 class="site-description animated fadeIn" itemprop="description">блог программиста C++, влюбившегося в Haskell</h2>
+        <h1 class="site-title animated fadeIn"><a href="http://blog.dshevchenko.biz/">Мысли вслух</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">блог C++-программиста, влюбившегося в Haskell</h2>
 	</div>
 </header><!-- /.masthead -->
 
@@ -134,25 +134,25 @@
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <span class="entry-tags"><a href="http://blog.dshevchenko.biz//tags/#GCC" title="Pages tagged GCC">GCC</a>&nbsp;&bull;&nbsp;<a href="http://blog.dshevchenko.biz//tags/#OS X" title="Pages tagged OS X">OS X</a></span>
+        <span class="entry-tags"><a href="http://blog.dshevchenko.biz/tags/#GCC" title="Pages tagged GCC">GCC</a>&nbsp;&bull;&nbsp;<a href="http://blog.dshevchenko.biz/tags/#OS X" title="Pages tagged OS X">OS X</a></span>
         
           <h1 class="entry-title">GCC 4.7 на OS X Lion: тернистый путь...</h1>
         
       </header>
       <footer class="entry-meta">
-        <!-- <img src="http://blog.dshevchenko.biz//images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
-        <span class="author vcard">By <span class="fn"><a href="http://blog.dshevchenko.biz//about/" title="About Денис Шевченко">Денис Шевченко</a></span></span> -->
+        <!-- <img src="http://blog.dshevchenko.biz/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://blog.dshevchenko.biz/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span> -->
         <span class="entry-date date published"><time datetime="2012-06-10T00:00:00+04:00"><i class="icon-calendar-empty"></i> июнь 10, 2012</time></span>
         
-        <span><a href="http://blog.dshevchenko.biz//2012/6/10/gcc-4-7-os-x-lion.html" rel="bookmark" title="GCC 4.7 на OS X Lion: тернистый путь..."><i class="icon-link"></i> Вечная ссылка</a></span>
+        <span><a href="http://blog.dshevchenko.biz/2012/6/10/gcc-4-7-os-x-lion.html" rel="bookmark" title="GCC 4.7 на OS X Lion: тернистый путь..."><i class="icon-link"></i> Вечная ссылка</a></span>
         <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Комментарии</a></span>
         
         <span class="social-share-facebook">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://blog.dshevchenko.biz//2012/6/10/gcc-4-7-os-x-lion.html" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://blog.dshevchenko.biz/2012/6/10/gcc-4-7-os-x-lion.html" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
         <span class="social-share-twitter">
-            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=GCC 4.7 на OS X Lion: тернистый путь...&url=http://blog.dshevchenko.biz//2012/6/10/gcc-4-7-os-x-lion.html&via=dshevchenko_biz" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=GCC 4.7 на OS X Lion: тернистый путь...&url=http://blog.dshevchenko.biz/2012/6/10/gcc-4-7-os-x-lion.html&via=dshevchenko_biz" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
         <span class="social-share-googleplus">
-            <a href="https://plus.google.com/share?url=http://blog.dshevchenko.biz//2012/6/10/gcc-4-7-os-x-lion.html" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <a href="https://plus.google.com/share?url=http://blog.dshevchenko.biz/2012/6/10/gcc-4-7-os-x-lion.html" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
             <!-- /.social-share -->
       </footer>
       <div class="entry-content">
@@ -219,10 +219,10 @@
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://blog.dshevchenko.biz//2012/6/6/about-crossplatform-development.html" class="btn" title="О кроссплатформенной разработке...">Предыдущий</a>
+        <a href="http://blog.dshevchenko.biz/2012/6/6/about-crossplatform-development.html" class="btn" title="О кроссплатформенной разработке...">Предыдущий</a>
       
       
-        <a href="http://blog.dshevchenko.biz//2012/6/22/strange-problem-with-exceptions.html" class="btn" title="Проблема с исключениями: странно, но факт">Следующий</a>
+        <a href="http://blog.dshevchenko.biz/2012/6/22/strange-problem-with-exceptions.html" class="btn" title="Проблема с исключениями: странно, но факт">Следующий</a>
       
     </nav><!-- /.pagination -->
   </article>
@@ -247,14 +247,14 @@
 </div><!-- /.footer-wrapper -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="http://blog.dshevchenko.biz//assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="http://blog.dshevchenko.biz//assets/js/scripts.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://blog.dshevchenko.biz/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://blog.dshevchenko.biz/assets/js/scripts.min.js"></script>
 
 <!-- Jekyll Simple Search option -->
 <script>
   $(document).ready(function() {
       $('.search-field').simpleJekyllSearch({
-          jsonFile : 'http://blog.dshevchenko.biz//search.json',
+          jsonFile : 'http://blog.dshevchenko.biz/search.json',
           searchResults : '.search-results',
           template : '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
           noResults: '<p>Nothing found.</p>'

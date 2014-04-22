@@ -2,26 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Мысли вслух</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz//feed.xml" />
-<link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//" />
-<updated>2014-04-22T15:57:07+04:00</updated>
-<id>http://blog.dshevchenko.biz//</id>
+<link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
+<link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
+<updated>2014-04-22T18:11:48+04:00</updated>
+<id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
-  <uri>http://blog.dshevchenko.biz//</uri>
+  <uri>http://blog.dshevchenko.biz/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[От динамики к статике: прощай, Drupal...]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/4/22/goodbye-drupal.html"/>
-  <id>http://blog.dshevchenko.biz//2014/4/22/goodbye-drupal</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/4/22/goodbye-drupal.html"/>
+  <id>http://blog.dshevchenko.biz/2014/4/22/goodbye-drupal</id>
   <published>2014-04-22T00:00:00+04:00</published>
   <updated>2014-04-22T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Да, решение принято, и обжалованию уже не подлежит: Drupal уходит из моей профессиональной жизни. Четыре года я использовал эту прекрасную CMS, но теперь пришла пора попрощаться. Я окончательно убедился в том, что для моих сайтов Drupal не нужен.&lt;/p&gt;
@@ -37,19 +37,19 @@
 &lt;p&gt;И ещё… В название поста сказано “от динамики к статике”. Это мне так по душе, ведь Haskell статичен… ;-)&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/4/22/goodbye-drupal.html&quot;&gt;От динамики к статике: прощай, Drupal...&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 22, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/4/22/goodbye-drupal.html&quot;&gt;От динамики к статике: прощай, Drupal...&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 22, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[О Haskell по-человечески: уже онлайн]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/4/14/ohaskell-online.html"/>
-  <id>http://blog.dshevchenko.biz//2014/4/14/ohaskell-online</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/4/14/ohaskell-online.html"/>
+  <id>http://blog.dshevchenko.biz/2014/4/14/ohaskell-online</id>
   <published>2014-04-14T00:00:00+04:00</published>
   <updated>2014-04-14T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Приветствую, друзья!&lt;/p&gt;
@@ -60,38 +60,38 @@
 
 &lt;p&gt;Кстати, о втором томе… Началась работа над маленьким проектом, описание которого ляжет в основу этого тома. Впрочем, работа над первым томом не завершена: он ещё будет дополнен и улучшен. Ждите новостей.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/4/14/ohaskell-online.html&quot;&gt;О Haskell по-человечески: уже онлайн&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 14, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/4/14/ohaskell-online.html&quot;&gt;О Haskell по-человечески: уже онлайн&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 14, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[GitBook: как я строил веб-книгу]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/4/7/gitbook.html"/>
-  <id>http://blog.dshevchenko.biz//2014/4/7/gitbook</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/4/7/gitbook.html"/>
+  <id>http://blog.dshevchenko.biz/2014/4/7/gitbook</id>
   <published>2014-04-07T00:00:00+04:00</published>
   <updated>2014-04-07T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Многие из читателей пожелали видеть HTML-версию моей книги. Думал я, думал - и наткнулся на прекрасный инструмент &lt;strong&gt;&lt;a href=&quot;http://www.gitbook.io/&quot;&gt;GitBook&lt;/a&gt;&lt;/strong&gt;. А что из этого вышло - читайте здесь: http://habrahabr.ru/post/218433.&lt;/p&gt;
 
 &lt;p&gt;Скоро вся книга будет доступна тут: http://denisshevchenko.github.io/ohaskell/index.html.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/4/7/gitbook.html&quot;&gt;GitBook: как я строил веб-книгу&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 07, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/4/7/gitbook.html&quot;&gt;GitBook: как я строил веб-книгу&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 07, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[О Haskell по-человечески: четвёртое издание]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/4/1/ohaskell-fourth-edition.html"/>
-  <id>http://blog.dshevchenko.biz//2014/4/1/ohaskell-fourth-edition</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/4/1/ohaskell-fourth-edition.html"/>
+  <id>http://blog.dshevchenko.biz/2014/4/1/ohaskell-fourth-edition</id>
   <published>2014-04-01T00:00:00+04:00</published>
   <updated>2014-04-01T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Итак, сегодня вышло в свет издание 0.4. Нет, это не первоапрельская шутка. Из новшеств:&lt;/p&gt;
@@ -109,19 +109,19 @@
 
 &lt;p&gt;P.S. К следующему изданию всё-таки доберусь до монадных трансформеров…&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/4/1/ohaskell-fourth-edition.html&quot;&gt;О Haskell по-человечески: четвёртое издание&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 01, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/4/1/ohaskell-fourth-edition.html&quot;&gt;О Haskell по-человечески: четвёртое издание&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 01, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[О Haskell по-человечески и по-английски!]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/3/17/ohaskell-translation.html"/>
-  <id>http://blog.dshevchenko.biz//2014/3/17/ohaskell-translation</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/3/17/ohaskell-translation.html"/>
+  <id>http://blog.dshevchenko.biz/2014/3/17/ohaskell-translation</id>
   <published>2014-03-17T00:00:00+04:00</published>
   <updated>2014-03-17T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Я в шоке, друзья!&lt;/p&gt;
@@ -134,19 +134,19 @@
 
 &lt;p&gt;Признаться, к интересу со стороны моих англоязычных коллег я не был готов. Но раз он появился - я, разумеется, подключусь к переводу. Это будет классный проект!&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/3/17/ohaskell-translation.html&quot;&gt;О Haskell по-человечески и по-английски!&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, март 17, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/3/17/ohaskell-translation.html&quot;&gt;О Haskell по-человечески и по-английски!&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, март 17, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[О Haskell по-человечески: первое издание]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/3/5/ohaskell-first-edition.html"/>
-  <id>http://blog.dshevchenko.biz//2014/3/5/ohaskell-first-edition</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/3/5/ohaskell-first-edition.html"/>
+  <id>http://blog.dshevchenko.biz/2014/3/5/ohaskell-first-edition</id>
   <published>2014-03-05T00:00:00+04:00</published>
   <updated>2014-03-05T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Готово! Первое издание моей скромной книги о Haskell вышло в свет.&lt;/p&gt;
@@ -159,19 +159,19 @@
 
 &lt;p&gt;Любые отзывы о книге, вопросы, предложения, а также разгромную критику присылайте прямиком на мою почту: me@dshevchenko.biz. Или прямо сюда, в комментариях. &lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/3/5/ohaskell-first-edition.html&quot;&gt;О Haskell по-человечески: первое издание&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, март 05, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/3/5/ohaskell-first-edition.html&quot;&gt;О Haskell по-человечески: первое издание&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, март 05, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[О геттерах и сеттерах]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/2/27/getters-and-setters.html"/>
-  <id>http://blog.dshevchenko.biz//2014/2/27/getters-and-setters</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/2/27/getters-and-setters.html"/>
+  <id>http://blog.dshevchenko.biz/2014/2/27/getters-and-setters</id>
   <published>2014-02-27T00:00:00+04:00</published>
   <updated>2014-02-27T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Итак, есть у нас следующий код:&lt;/p&gt;
@@ -265,19 +265,19 @@
 
 &lt;p&gt;Вы заметили, я всё время повторяю слово “канонические”. Речь шла только о таких геттерах и сеттерах, которые &lt;em&gt;просто&lt;/em&gt; возвращают и &lt;em&gt;просто&lt;/em&gt; изменяют. Но при этом я вполне могу оправдать сеттер, который, помимо установки значения, производит некую проверку (и кричит на всю Ивановскую в случае проблем).&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/2/27/getters-and-setters.html&quot;&gt;О геттерах и сеттерах&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, февраль 27, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/2/27/getters-and-setters.html&quot;&gt;О геттерах и сеттерах&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, февраль 27, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Об IT-книгах: пара мыслей вслух]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/2/22/it-books.html"/>
-  <id>http://blog.dshevchenko.biz//2014/2/22/it-books</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/2/22/it-books.html"/>
+  <id>http://blog.dshevchenko.biz/2014/2/22/it-books</id>
   <published>2014-02-22T00:00:00+04:00</published>
   <updated>2014-02-22T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Недавно задумался о книгах… На мой взгляд, электронная книга уже победила бумажную. Люди всё больше привыкают к мысли о том, что книга в виде файла столь же книжная, как и книга в виде бумаги и клея.&lt;/p&gt;
@@ -290,19 +290,19 @@
 
 &lt;p&gt;В общем, электронная книга - это хорошо.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/2/22/it-books.html&quot;&gt;Об IT-книгах: пара мыслей вслух&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, февраль 22, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/2/22/it-books.html&quot;&gt;Об IT-книгах: пара мыслей вслух&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, февраль 22, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[После долгого затишья...]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/2/12/after-long-silence.html"/>
-  <id>http://blog.dshevchenko.biz//2014/2/12/after-long-silence</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/2/12/after-long-silence.html"/>
+  <id>http://blog.dshevchenko.biz/2014/2/12/after-long-silence</id>
   <published>2014-02-12T00:00:00+04:00</published>
   <updated>2014-02-12T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Прошу прощения за длительное безмолвие. Все силы, свободные от основной работы, ушли на написание руководства по языку Haskell. Скоро, очень скоро оно будет готово. &lt;/p&gt;
@@ -311,19 +311,19 @@
 
 &lt;p&gt;Я окончательно увидел &lt;em&gt;ложность&lt;/em&gt; представления о Haskell как о языке сугубо академическом и невероятно трудном в освоении для простых программистов. Скажу прямо: если уж я смог разобраться - значит смогут и многие, многие другие.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/2/12/after-long-silence.html&quot;&gt;После долгого затишья...&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, февраль 12, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/2/12/after-long-silence.html&quot;&gt;После долгого затишья...&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, февраль 12, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Русские буквы в именах: невероятно, но факт]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2014/1/22/russian-letters-in-names.html"/>
-  <id>http://blog.dshevchenko.biz//2014/1/22/russian-letters-in-names</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/1/22/russian-letters-in-names.html"/>
+  <id>http://blog.dshevchenko.biz/2014/1/22/russian-letters-in-names</id>
   <published>2014-01-22T00:00:00+04:00</published>
   <updated>2014-01-22T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Случайно наткнулся на &lt;strong&gt;&lt;a href=&quot;http://eao197.blogspot.com/2014/01/progcwow-const-int-1.html&quot;&gt;одну заметку&lt;/a&gt;&lt;/strong&gt;, в которой говорится о живом коде на C++, в котором имена некоторых переменных набраны русскими буквами (в кодировке CP1251), и это компилируется!&lt;/p&gt;
@@ -370,19 +370,19 @@ stray &#39;\320&#39; in program
 
 &lt;p&gt;Впрочем, я надеюсь, вы не рассматриваете эту заметочку как призыв русифицировать свой код. :)&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2014/1/22/russian-letters-in-names.html&quot;&gt;Русские буквы в именах: невероятно, но факт&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, январь 22, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/1/22/russian-letters-in-names.html&quot;&gt;Русские буквы в именах: невероятно, но факт&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, январь 22, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Haskell: идея]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/29/haskell-idea.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/29/haskell-idea</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/29/haskell-idea.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/29/haskell-idea</id>
   <published>2013-12-29T00:00:00+04:00</published>
   <updated>2013-12-29T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;В общем, после долгих размышлений, после первичного восторга от ФП в целом и от Haskell в частности я решил внести свой посильный вклад в популяризацию Haskell среди русскоязычного IT-сообщества.&lt;/p&gt;
@@ -395,19 +395,19 @@ stray &#39;\320&#39; in program
 
 &lt;p&gt;Следите за новостями…&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/29/haskell-idea.html&quot;&gt;Haskell: идея&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 29, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/29/haskell-idea.html&quot;&gt;Haskell: идея&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 29, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Haskell: о функциях высшего порядка]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/26/haskell-higher-order-functions.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/26/haskell-higher-order-functions</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/26/haskell-higher-order-functions.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/26/haskell-higher-order-functions</id>
   <published>2013-12-26T00:00:00+04:00</published>
   <updated>2013-12-26T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Функции высшего порядка (higher-order functions) - очень важная и очень интересная особенность языка Haskell. Эта особенность основана на том постулате, что функции в Haskell - это &lt;em&gt;значения&lt;/em&gt;. Знаю, это не так легко укладывается в голове, но такова особенность функционального программирования в целом: функции являются значениями (в широком смысле этого слова). Впрочем, если вы прочитали мою прошлую заметку о чистых функциях, вас это уже не должно удивлять, потому что вы уже знаете. что вызов чистой функции в конечном итоге порождает некоторое конечное выражение (являющееся итогом вычисления всех выражений в теле этой функции), которым компилятор заменяет место вызова.&lt;/p&gt;
@@ -670,19 +670,19 @@ Full info about user @1234:
 
 &lt;p&gt;Итак, перед нами - живая демонстрация реальной пользы ФВП. Да, признаю, этот пример можно было бы упростить (в данном конкретном случае можно было обойтись без частичного применения), но цель была не в том, чтобы дать на 100% оптимальное решение, а в том чтобы продемонстрировать упомянутую выше теорию на практическом примере. И как вы смогли убедиться, эта теория лишь поначалу казалось нам страшноватой, в реальности же она достаточно проста.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/26/haskell-higher-order-functions.html&quot;&gt;Haskell: о функциях высшего порядка&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 26, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/26/haskell-higher-order-functions.html&quot;&gt;Haskell: о функциях высшего порядка&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 26, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Haskell: об инфиксных функциях]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/25/haskell-infix-functions.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/25/haskell-infix-functions</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/25/haskell-infix-functions.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/25/haskell-infix-functions</id>
   <published>2013-12-25T00:00:00+04:00</published>
   <updated>2013-12-25T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Как мы уже знаем, вызов чистой функции выглядит так:&lt;/p&gt;
@@ -743,19 +743,19 @@ Full info about user @1234:
 
 &lt;p&gt;Конечно, инфиксную запись можно считать не более чем синтаксическим сахаром, но в ряде случаев такая запись может сделать код более удобным для чтения. Впрочем, чрезмерно увлекаться “инфиксностью” не рекомендуется (также как и, скажем, перегрузкой операторов в C++).&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/25/haskell-infix-functions.html&quot;&gt;Haskell: об инфиксных функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 25, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/25/haskell-infix-functions.html&quot;&gt;Haskell: об инфиксных функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 25, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Haskell: устанавливаем пакет из Hackage]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/23/haskell-hackage.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/23/haskell-hackage</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/23/haskell-hackage.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/23/haskell-hackage</id>
   <published>2013-12-23T00:00:00+04:00</published>
   <updated>2013-12-23T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;h3&gt;Готовимся&lt;/h3&gt;
@@ -851,19 +851,19 @@ cabal build
 
 &lt;p&gt;На сегодня достаточно, но мы обязательно продолжим изучение &lt;code&gt;cabal&lt;/code&gt;, а уж к пакетам из Hackage мы будем возвращаться не раз и не два.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/23/haskell-hackage.html&quot;&gt;Haskell: устанавливаем пакет из Hackage&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 23, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/23/haskell-hackage.html&quot;&gt;Haskell: устанавливаем пакет из Hackage&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 23, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Haskell: о функциях]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/23/haskell-functions.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/23/haskell-functions</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/23/haskell-functions.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/23/haskell-functions</id>
   <published>2013-12-23T00:00:00+04:00</published>
   <updated>2013-12-23T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Если вы помните &lt;strong&gt;&lt;a href=&quot;http://dshevchenko.biz/ru/content/haskell-%D0%BE-%D0%BB%D1%8F%D0%BC%D0%B1%D0%B4%D0%B0-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F%D1%85&quot;&gt;заметку о лямбда-функциях&lt;/a&gt;&lt;/strong&gt;, математическое определение функции очень простое:&lt;/p&gt;
@@ -1095,19 +1095,19 @@ src/main.hs:43:61: Not in scope: `s&#39;
 
 &lt;p&gt;Конечно, это далеко не всё, что можно сказать о чистых функциях, но этот базис достаточен для того, чтобы понять суть чистых функций и то, как их можно использовать в своём коде. Продолжение следует…&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/23/haskell-functions.html&quot;&gt;Haskell: о функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 23, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/23/haskell-functions.html&quot;&gt;Haskell: о функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 23, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Haskell: о лямбда-функциях]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/20/haskell-lambda-functions.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/20/haskell-lambda-functions</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/20/haskell-lambda-functions.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/20/haskell-lambda-functions</id>
   <published>2013-12-20T00:00:00+04:00</published>
   <updated>2013-12-20T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Помню как в школе я довольно долго не мог понять, что же такое функция. Да, я уже решал многие задания с использованием функций, да, уже рисовал разнообразные графики (помните эти прелестные дуги на тетрадном листе в клеточку?), но при этом не мог бы объяснить ребёнку, что такое функция как &lt;em&gt;понятие&lt;/em&gt;. А памятуя о мудрых словах Эйнштейна, если вы не можете объяснить некую идею пятилетнему ребёнку, значит вы и сами её не понимаете…&lt;/p&gt;
@@ -1274,19 +1274,19 @@ x*x
 
 &lt;p&gt;Ну вот, собственно, и всё. Конечно, это далеко не вся информация о λ-функциях, но этого базиса нам пока достаточно. Продолжение следует…&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/20/haskell-lambda-functions.html&quot;&gt;Haskell: о лямбда-функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 20, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/20/haskell-lambda-functions.html&quot;&gt;Haskell: о лямбда-функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 20, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Disqus-общение: попробуем...]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/19/disqus.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/19/disqus</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/19/disqus.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/19/disqus</id>
   <published>2013-12-19T00:00:00+04:00</published>
   <updated>2013-12-19T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Друзья!&lt;/p&gt;
@@ -1295,19 +1295,19 @@ x*x
 
 &lt;p&gt;Разумеется, анонимные комментарии запрещены, ибо они суть зло. Воспользуйтесь социальными профилями (которые у вас наверняка есть) или зарегистрируйтесь в самой Disqus.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/19/disqus.html&quot;&gt;Disqus-общение: попробуем...&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 19, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/19/disqus.html&quot;&gt;Disqus-общение: попробуем...&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 19, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Haskell: и снова о типах]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/14/haskell-types-again.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/14/haskell-types-again</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/14/haskell-types-again.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/14/haskell-types-again</id>
   <published>2013-12-14T00:00:00+04:00</published>
   <updated>2013-12-14T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;В языке Haskell есть три ключевых слова, используемые при определении собственных типов. И слова эти могут, скажем так, смутить программистов, пришедших из мира C++. Вот эти слова:&lt;/p&gt;
@@ -1437,19 +1437,19 @@ localhost
 
 &lt;p&gt;Вот и всё. Теперь вы знаете о пользовательских типах в Haskell. Признаюсь, там не так всё просто, как описано выше, но самый базис вы уже освоили. Продолжение следует…&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/14/haskell-types-again.html&quot;&gt;Haskell: и снова о типах&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 14, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/14/haskell-types-again.html&quot;&gt;Haskell: и снова о типах&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 14, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Haskell: о типах]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/10/haskell-types.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/10/haskell-types</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/10/haskell-types.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/10/haskell-types</id>
   <published>2013-12-10T00:00:00+04:00</published>
   <updated>2013-12-10T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;h3&gt;Строгая статическая проверка&lt;/h3&gt;
@@ -1486,19 +1486,19 @@ localhost
 
 &lt;p&gt;Вот и всё, теперь вы знаете фундаментальные утверждения о типах в Haskell. Продолжение следует…&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/10/haskell-types.html&quot;&gt;Haskell: о типах&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 10, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/10/haskell-types.html&quot;&gt;Haskell: о типах&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 10, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[О памяти]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz//2013/12/1/about-memory.html"/>
-  <id>http://blog.dshevchenko.biz//2013/12/1/about-memory</id>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/1/about-memory.html"/>
+  <id>http://blog.dshevchenko.biz/2013/12/1/about-memory</id>
   <published>2013-12-01T00:00:00+04:00</published>
   <updated>2013-12-01T00:00:00+04:00</updated>
   <author>
     <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz/</uri>
+    <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
   <content type="html">&lt;p&gt;Мы знаем, что все сущности, которые мы так заботливо создали в процессе написания кода, при запуске процесса находят своё уютное место где-то в памяти (выделенной этому процессу операционной системой). И когда в 70-х годах прошлого века родился великий и могучий язык C, он предоставлял программисту прямой доступ к управлению этой самой памятью. Впрочем, справедливее будет сказать не “предоставлял”, а “заставлял”. Программист должен был решать, в какой памяти будет создана та или иная сущность. Программист должен был решать, когда создавать эту сущность и кто будет ответственен за её жизненный цикл. Программист должен был решать, когда и как этот ответственный должен уничтожить эту сущность. Программист должен помнить, что создать объект или массив объектов - это две большие разницы, как говорят в Одессе. И даже после всего этого программист (с той или иной частотой) получал прелестные ошибки типа segmentation fault, bus error или double free…&lt;/p&gt;
@@ -1515,7 +1515,7 @@ localhost
 
 &lt;p&gt;Что же я предлагаю? &lt;del&gt;Всем срочно перейти на Haskell&lt;/del&gt; Задуматься о перспективах. Мы видим, как меняется компьютерное железо. Но если софт не будет поспевать за железом, то он, этот софт, окажется слабым звеном в связке под названием “компьютер”. Если есть языки программирования, в которых с программиста полностью снята ответственность за работу с памятью (как это и должно быть в 21 веке), то почему бы не… Ну вы поняли…&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz//2013/12/1/about-memory.html&quot;&gt;О памяти&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz/&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 01, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/1/about-memory.html&quot;&gt;О памяти&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 01, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
