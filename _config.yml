@@ -1,5 +1,5 @@
-title:            Д. Шевченко
-description:      Программист, исследователь, писатель
+title:            Мысли вслух
+description:      блог программиста C++, влюбившегося в Haskell
 logo:             site-logo.png
 disqus_shortname: dshevchenko
 search:           true
@@ -33,16 +33,16 @@ bing_verify:
 # For external links add external: true
 links:
   - title: Записи
-    url: /articles/
+    url: articles/
   - title: Друзья
-    url: /friends/
+    url: friends/
   - title: О себе
-    url: /about/
+    url: about/
   - title: О Haskell
     url: http://ohaskell.ru
     external: true
   - title: Метки
-    url: /tags/
+    url: tags/
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Asia/Yerevan
