@@ -32,6 +32,9 @@ bing_verify:
 # Links to include in top navigation
 # For external links add external: true
 links:
+  - title: ./
+    url: http://dshevchenko.biz
+    external: true
   - title: Записи
     url: /articles/
   - title: Метки
