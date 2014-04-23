@@ -10,19 +10,11 @@
     </url>
     
     <url>
-        <loc>http://blog.dshevchenko.biz/about/</loc>
-    </url>
-    
-    <url>
         <loc>http://blog.dshevchenko.biz/articles/</loc>
     </url>
     
     <url>
         <loc>http://blog.dshevchenko.biz/feed.xml</loc>
-    </url>
-    
-    <url>
-        <loc>http://blog.dshevchenko.biz/friends/</loc>
     </url>
     
     <url>
@@ -39,10 +31,6 @@
     
     <url>
         <loc>http://blog.dshevchenko.biz/tags/</loc>
-    </url>
-    
-    <url>
-        <loc>http://blog.dshevchenko.biz/theme-setup/</loc>
     </url>
     
 

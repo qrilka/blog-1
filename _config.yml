@@ -34,13 +34,6 @@ bing_verify:
 links:
   - title: Записи
     url: /articles/
-  - title: Друзья
-    url: /friends/
-  - title: О себе
-    url: /about/
-  - title: О Haskell
-    url: http://ohaskell.ru
-    external: true
   - title: Метки
     url: /tags/
 
