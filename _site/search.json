@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "О бумажной книге: мысли и сомнения",
+		  "category"   : "articles",
+		  "url"        : "http://blog.dshevchenko.biz/2014/4/27/paper-book-thoughts.html",
+		  "date"       : "2014-04-27 00:00:00 +0400",
+		  "shortdate"  : "апрель 27, 2014"
+		} ,
+	
+		{
 		  "title"      : "От динамики к статике: прощай, Drupal...",
 		  "category"   : "articles",
 		  "url"        : "http://blog.dshevchenko.biz/2014/4/22/goodbye-drupal.html",
