@@ -4,13 +4,35 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-04-28T10:04:36+04:00</updated>
+<updated>2014-04-28T20:46:28+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
   <uri>http://blog.dshevchenko.biz/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[EaxCast: поддержим проект вместе]]></title>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/4/28/eaxcast-campaign.html"/>
+  <id>http://blog.dshevchenko.biz/2014/4/28/eaxcast-campaign</id>
+  <published>2014-04-28T00:00:00+04:00</published>
+  <updated>2014-04-28T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://blog.dshevchenko.biz</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Не так давно была запущена кампаня по сбору средств для текстовой расшифровки 2-го сезона IT-подкаста EaxCast. Я с удовольствием слушаю этот подкаст, потому что в нём есть действительно полезные вещи.&lt;/p&gt;
+
+&lt;p&gt;Итак, до конца сбора денег осталось две недели, так что вы ещё успеете. Поможем хорошему начинанию, оно того заслуживает.&lt;/p&gt;
+
+&lt;p&gt;Всем заинтересовавшимся просьба следовать &lt;a href=&quot;https://boomstarter.ru/projects/120343/tekstovaya_rasshifrovka_2-go_sezona_it-podkasta_eaxcast&quot;&gt;сюда&lt;/a&gt;.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/4/28/eaxcast-campaign.html&quot;&gt;EaxCast: поддержим проект вместе&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 28, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -1521,55 +1543,6 @@ localhost
 &lt;p&gt;Вот и всё. Теперь вы знаете о пользовательских типах в Haskell. Признаюсь, там не так всё просто, как описано выше, но самый базис вы уже освоили. Продолжение следует…&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/14/haskell-types-again.html&quot;&gt;Haskell: и снова о типах&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 14, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Haskell: о типах]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/10/haskell-types.html"/>
-  <id>http://blog.dshevchenko.biz/2013/12/10/haskell-types</id>
-  <published>2013-12-10T00:00:00+04:00</published>
-  <updated>2013-12-10T00:00:00+04:00</updated>
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;h3&gt;Строгая статическая проверка&lt;/h3&gt;
-
-&lt;p&gt;Haskell имеет статическую проверку типов. Это означает, что тип каждого выражения в программе обязательно проверяется на стадии компиляции. Более того, Haskell весьма строг по отношению к типам, чего, к сожалению, нельзя сказать о C-подобных языках. Дело в том, что в C или C++ допустимо неявное приведение одного типа к другому. Например, так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Компилятор C или C++ не только проглотит это, но даже не обмолвится ни единым предупреждением (в том числе и при использовании флага &lt;code&gt;-Wall&lt;/code&gt;), при этом аккуратно отбросив дробную часть, ведь тип возращаемого значения будет незримо приведён к &lt;code&gt;int&lt;/code&gt;. В Haskell подобный код не имеет ни малейших шансов пройти компиляцию: нужно вернуть &lt;code&gt;int&lt;/code&gt; - будь добр предоставить выражение, имеющее (в конечном итоге) тип &lt;code&gt;int&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3&gt;Автоматическое выведение&lt;/h3&gt;
-
-&lt;p&gt;В Haskell применяется принцип автоматического выведения типов, что позволяет программисту не указывать тип выражения явно. Похожий подход используется в C++11 с использованием ключевого слова &lt;code&gt;auto&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Но в Haskell пишут ещё проще:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Компилятор сам поймёт, что тип выражения &lt;code&gt;i&lt;/code&gt; - это именно &lt;code&gt;Integer&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Впрочем, при желании программист &lt;em&gt;может&lt;/em&gt; указать тип выражения явно (иногда это бывает полезно, в частности, при отладке и для большей самодокументируемости кода). Например, если я напишу так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;то тип &lt;code&gt;i&lt;/code&gt; будет уже &lt;code&gt;Double&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Вот и всё, теперь вы знаете фундаментальные утверждения о типах в Haskell. Продолжение следует…&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/10/haskell-types.html&quot;&gt;Haskell: о типах&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 10, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
