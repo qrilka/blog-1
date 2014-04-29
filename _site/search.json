@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Открыл исходники - открой и планы: waffle.io",
+		  "category"   : "articles",
+		  "url"        : "http://blog.dshevchenko.biz/2014/4/29/waffle-io.html",
+		  "date"       : "2014-04-29 00:00:00 +0400",
+		  "shortdate"  : "апрель 29, 2014"
+		} ,
+	
+		{
 		  "title"      : "EaxCast: поддержим проект вместе",
 		  "category"   : "articles",
 		  "url"        : "http://blog.dshevchenko.biz/2014/4/28/eaxcast-campaign.html",

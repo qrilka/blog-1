@@ -4,13 +4,31 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-04-28T20:46:28+04:00</updated>
+<updated>2014-04-29T11:32:34+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
   <uri>http://blog.dshevchenko.biz/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Открыл исходники - открой и планы: waffle.io]]></title>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/4/29/waffle-io.html"/>
+  <id>http://blog.dshevchenko.biz/2014/4/29/waffle-io</id>
+  <published>2014-04-29T00:00:00+04:00</published>
+  <updated>2014-04-29T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://blog.dshevchenko.biz</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Очень и очень понравился мне один сервис, привязанный к GitHub. До того понравился, что появилась &lt;a href=&quot;http://habrahabr.ru/post/221211/&quot;&gt;новая статья на Хабре&lt;/a&gt;. Рекомендую к ознакомлению, сервис и правда очень полезен и удобен.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/4/29/waffle-io.html&quot;&gt;Открыл исходники - открой и планы: waffle.io&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, апрель 29, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -1401,148 +1419,6 @@ x*x
 &lt;p&gt;Разумеется, анонимные комментарии запрещены, ибо они суть зло. Воспользуйтесь социальными профилями (которые у вас наверняка есть) или зарегистрируйтесь в самой Disqus.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/19/disqus.html&quot;&gt;Disqus-общение: попробуем...&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 19, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Haskell: и снова о типах]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/14/haskell-types-again.html"/>
-  <id>http://blog.dshevchenko.biz/2013/12/14/haskell-types-again</id>
-  <published>2013-12-14T00:00:00+04:00</published>
-  <updated>2013-12-14T00:00:00+04:00</updated>
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;p&gt;В языке Haskell есть три ключевых слова, используемые при определении собственных типов. И слова эти могут, скажем так, смутить программистов, пришедших из мира C++. Вот эти слова:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;**&lt;code&gt;data&lt;/code&gt;**&lt;/li&gt;
-  &lt;li&gt;**&lt;code&gt;class&lt;/code&gt;**&lt;/li&gt;
-  &lt;li&gt;**&lt;code&gt;instance&lt;/code&gt;**&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ключевое слово &lt;strong&gt;&lt;code&gt;data&lt;/code&gt;&lt;/strong&gt; служит для определения пользовательского типа (естественно, оно служит также и для определения всех стандартных типов Haskell, но сейчас это не столь важно).&lt;/p&gt;
-
-&lt;p&gt;Что же тогда означает слово &lt;strong&gt;&lt;code&gt;class&lt;/code&gt;&lt;/strong&gt;, спросите вы. Это слово предназначено для определения &lt;em&gt;класса типов&lt;/em&gt;. Да, я понимаю, звучит на первый взгляд странно, но идея этой концепции весьма проста.&lt;/p&gt;
-
-&lt;p&gt;В языке C++ понятия “тип” и “класс” фактически взаимозаменяемы, потому что ключевое слово &lt;strong&gt;&lt;code&gt;class&lt;/code&gt;&lt;/strong&gt; как раз и используется для определения пользовательских типов. Если мы написали:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;что это означает? Мы определили класс &lt;code&gt;IP_address&lt;/code&gt;, но при этом мы определили и пользовательский тип &lt;code&gt;IP_address&lt;/code&gt;. :) Однако в языке Haskell всё иначе. А чтобы моё объяснение было более понятным, сразу перейдём к практическому примеру.&lt;/p&gt;
-
-&lt;h3&gt;Собственный тип&lt;/h3&gt;
-
-&lt;p&gt;Для начала определим собственный тип &lt;code&gt;IP_address&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Готово. Перед нами простейший пользовательский тип. Объект этого типа фактически будет представлять собою значение стандартного типа &lt;code&gt;String&lt;/code&gt; с меткой &lt;code&gt;IP_address&lt;/code&gt;. &lt;/p&gt;
-
-&lt;p&gt;Вы спросите, что такое метка? Рассматривайте метку как пояснительный идентификатор. Многие типы (в частности, стандартные типы) не имеют метки, поэтому их можно инициализировать значениями без пояснений. Например, если у нас есть некая функция, принимающая значение типа &lt;code&gt;Int&lt;/code&gt; в качестве аргумента, то при её вызове мы будем писать так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Однако если эта функция в качестве аргумента принимает объект типа &lt;code&gt;IP_address&lt;/code&gt;, то мы должны явно указать это при её вызове:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Выражение &lt;code&gt;(IP_address &quot;127.0.0.1&quot;)&lt;/code&gt; породит объект типа &lt;code&gt;IP_address&lt;/code&gt;, “содержащий в себе” строку со значением “127.0.0.1”.&lt;/p&gt;
-
-&lt;p&gt;Кстати, метку принято ещё называть конструктором. &lt;/p&gt;
-
-&lt;p&gt;Обратите внимание, что имя типа не может начинаться с маленькой буквы. Поэтому такой код:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ip_address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ip_address&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;будет неизбежно отвергнут компилятором.&lt;/p&gt;
-
-&lt;h3&gt;Класс типов&lt;/h3&gt;
-
-&lt;p&gt;Проблема в том, что тип &lt;code&gt;IP_address&lt;/code&gt; в его нынешнем виде настолько примитивен, что не представляет для нас большого интереса (фактически, никакого интереса не представляет). Ведь мы, создав такой объект, даже не сможем вывести его на консоль. В частности, упомянутая функция &lt;code&gt;show&lt;/code&gt; (стандартная функция Haskell, выводящая переданный ей аргумент в строковом виде) с гневом отвергнет аргумент типа &lt;code&gt;IP_address&lt;/code&gt;, и правильно сделает: откуда ей знать, &lt;em&gt;как&lt;/em&gt; можно представить объект типа &lt;code&gt;IP_address&lt;/code&gt; в строковом виде? Она не узнает это до тех пор, пока мы явно ей не расскажем об этом. И вот тут-то на арену и выходят классы типов.&lt;/p&gt;
-
-&lt;p&gt;Я понимаю, в выражении “класс типов” слово “класс” невольно режет слух программисту на C++, но потерпите, дальше будет понятнее. Класс типов - это некая обобщённая категория типов, отражающая конкретные общие черты для всех этих типов.&lt;/p&gt;
-
-&lt;p&gt;Например, в стандартной библиотеке Haskell есть класс типов &lt;code&gt;Show&lt;/code&gt;. Он обобщает все типы, объекты которых могут быть “показаны” (то есть отображены в виде строки). Как именно обобщает, спросите вы? Через общие методы. Вот определение класса &lt;code&gt;Show&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Show&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Как видите, тут присутствует один-единственный метод &lt;code&gt;show&lt;/code&gt;, принимающий в качестве аргумента объект некоторого типа &lt;code&gt;a&lt;/code&gt; и возвращающий некоторое строковое отображение этого объекта.&lt;/p&gt;
-
-&lt;p&gt;Но что же такое тип &lt;code&gt;a&lt;/code&gt; в этом выражении, спросите вы. Тип &lt;code&gt;a&lt;/code&gt; - это любой тип. Рассматривайте его примерно как &lt;code&gt;T&lt;/code&gt; в строке &lt;code&gt;template&lt;typename t=&quot;&quot;&gt;&amp;lt;/code&amp;gt; в C++ или как &lt;code&gt;id&lt;/code&gt; в Objective-C. Разумеется, в данном случае речь идёт о любом типе, для которого понятие &quot;показать&quot; имеет смысл.&lt;/typename&gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Да, но каким же образом метод &lt;code&gt;show&lt;/code&gt; узнает, &lt;em&gt;как&lt;/em&gt; ему отобразить объект некоторого конкретного типа в виде строки? Он узнает это через экземпляр класса типов (звучит ещё страшнее, но наберитесь мужества).&lt;/p&gt;
-
-&lt;h3&gt;Экземпляр класса типов&lt;/h3&gt;
-
-&lt;p&gt;Если класс типов &lt;code&gt;Show&lt;/code&gt; - это абстракция для типов, объекты которых можно “показать”, то экземпляр этого класса представляет собой реальное объяснение о том, &lt;em&gt;как&lt;/em&gt; можно “показать” объект того или иного типа. То есть если мы хотим объяснить, как можно “показать” объект типа &lt;code&gt;IP_address&lt;/code&gt;, мы должны создать экземпляр класса типов &lt;code&gt;Show&lt;/code&gt; для типа &lt;code&gt;IP_address&lt;/code&gt;. Сделаем же это:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Show&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-        &lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
-        &lt;span class=&quot;kr&quot;&gt;then&lt;/span&gt; 
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
-        &lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt; 
-            &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Как видите, мы использовали ключевое слово &lt;code&gt;instance&lt;/code&gt;, а обобщённый тип &lt;code&gt;a&lt;/code&gt; заменён здесь на наш конкретный тип &lt;code&gt;IP_address&lt;/code&gt;. А дальше следует конкретное определение метода &lt;code&gt;show&lt;/code&gt; для нашего типа. Таким образом, класс типов можно рассматривать примерно как чистый интерфейс в C++ (с чисто виртуальными функциями), а экземпляр класса типов - как определение этих чисто виртуальных функций для конкретного типа.&lt;/p&gt;
-
-&lt;p&gt;Взглянем ещё раз на определение метода &lt;code&gt;show&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;    &lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-        &lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
-        &lt;span class=&quot;kr&quot;&gt;then&lt;/span&gt; 
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
-        &lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt; 
-            &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Первая строка показывает, что метод &lt;code&gt;show&lt;/code&gt; принимает объект типа &lt;code&gt;IP_address&lt;/code&gt;, который в свою очередь будет “порождён” выражением вида &lt;code&gt;(IP_address address)&lt;/code&gt;, например, как в примере выше, выражением &lt;code&gt;IP_address &quot;127.0.0.1&quot;&lt;/code&gt;. Далее следует простое условие, выводящее слово &lt;code&gt;localhost&lt;/code&gt; в случае значения адреса 127.0.0.1.&lt;/p&gt;
-
-&lt;p&gt;А теперь мы можем использовать всё это хозяйство следующим образом:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Теперь-то уж метод &lt;code&gt;show&lt;/code&gt; прекрасно знает, как именно “показать” наш объект типа &lt;code&gt;IP_address&lt;/code&gt;, поэтому мы получим ожидаемый вывод:&lt;/p&gt;
-
-&lt;bash&gt;
-localhost
-&lt;/bash&gt;
-
-&lt;p&gt;Если же мы напишем так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;c1&quot;&gt;-- IP-адрес google.com ;-)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;IP_address&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;46.19.98.158&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;то результат столь же ожидаем:&lt;/p&gt;
-
-&lt;bash&gt;
-46.19.98.158
-&lt;/bash&gt;
-
-&lt;p&gt;Вот и всё. Теперь вы знаете о пользовательских типах в Haskell. Признаюсь, там не так всё просто, как описано выше, но самый базис вы уже освоили. Продолжение следует…&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/14/haskell-types-again.html&quot;&gt;Haskell: и снова о типах&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 14, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
