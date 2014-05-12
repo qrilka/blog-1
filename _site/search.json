@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "В защиту Haskell: по следам одного Хабра-спора...",
+		  "category"   : "articles",
+		  "url"        : "http://blog.dshevchenko.biz/2014/5/11/haskell-discussion.html",
+		  "date"       : "2014-05-11 00:00:00 +0400",
+		  "shortdate"  : "май 11, 2014"
+		} ,
+	
+		{
 		  "title"      : "Открыл исходники - открой и планы: waffle.io",
 		  "category"   : "articles",
 		  "url"        : "http://blog.dshevchenko.biz/2014/4/29/waffle-io.html",
