@@ -4,13 +4,41 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-05-12T11:27:11+04:00</updated>
+<updated>2014-05-15T21:30:29+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
   <uri>http://blog.dshevchenko.biz/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Поваренная книга Haskell: начало положено]]></title>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/5/15/haskell-cookbook.html"/>
+  <id>http://blog.dshevchenko.biz/2014/5/15/haskell-cookbook</id>
+  <published>2014-05-15T00:00:00+04:00</published>
+  <updated>2014-05-15T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://blog.dshevchenko.biz</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Приветствую, друзья!&lt;/p&gt;
+
+&lt;p&gt;Рад сообщить, что поваренная книга Haskell открыта. Строго говоря, некоторые из вас об этом уже знают, поскольку &lt;a href=&quot;http://cookbook.dshevchenko.biz/&quot;&gt;ссылка&lt;/a&gt; на неё висит на главной странице уже почти неделю.&lt;/p&gt;
+
+&lt;p&gt;В своё время мне очень помогла полезная книжка по C++, называется “C++. Сборник рецептов”. Кому интересно - &lt;a href=&quot;http://www.booksgid.com/programmer/36636-c.-sbornik-receptov.html&quot;&gt;вот она&lt;/a&gt;. В ней собраны готовые рецепты для решения многих повседневных задач, стоящих перед C++-разработчиком.&lt;/p&gt;
+
+&lt;p&gt;Именно это я хочу сделать по отношению к Haskell. У каждого программиста, решившего попробовать этот язык в деле, обязательно будут возникать вопросы, мол, “а как в Haskell сделать вот это?”… А если есть вопросы - должны быть и ответы. Да, они есть на Stackoverflow, но, во-первых, они разбросаны, во-вторых, не всегда корректны, а в-третьих, зачастую неполны. Например, верный код приведён, а какие пакеты нужно установить для его работы и какие модули требуются - об этом ни слова.&lt;/p&gt;
+
+&lt;p&gt;Именно поэтому я решил создать каталог готовых и простых Haskell-рецептов для решения обыденных задач. Да, пока их мало, но потом будет значительно больше.&lt;/p&gt;
+
+&lt;p&gt;Собственно, &lt;a href=&quot;http://cookbook.dshevchenko.biz&quot;&gt;вот книга&lt;/a&gt;. Оформлена в виде блога, я счёл это удобным. Замечания и пожелания приветствуются.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/5/15/haskell-cookbook.html&quot;&gt;Поваренная книга Haskell: начало положено&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, май 15, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -1292,185 +1320,6 @@ src/main.hs:43:61: Not in scope: `s&#39;
 &lt;p&gt;Конечно, это далеко не всё, что можно сказать о чистых функциях, но этот базис достаточен для того, чтобы понять суть чистых функций и то, как их можно использовать в своём коде. Продолжение следует…&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/23/haskell-functions.html&quot;&gt;Haskell: о функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 23, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Haskell: о лямбда-функциях]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/20/haskell-lambda-functions.html"/>
-  <id>http://blog.dshevchenko.biz/2013/12/20/haskell-lambda-functions</id>
-  <published>2013-12-20T00:00:00+04:00</published>
-  <updated>2013-12-20T00:00:00+04:00</updated>
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;p&gt;Помню как в школе я довольно долго не мог понять, что же такое функция. Да, я уже решал многие задания с использованием функций, да, уже рисовал разнообразные графики (помните эти прелестные дуги на тетрадном листе в клеточку?), но при этом не мог бы объяснить ребёнку, что такое функция как &lt;em&gt;понятие&lt;/em&gt;. А памятуя о мудрых словах Эйнштейна, если вы не можете объяснить некую идею пятилетнему ребёнку, значит вы и сами её не понимаете…&lt;/p&gt;
-
-&lt;p&gt;А ведь понятие-то оказалось предельно простым:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Функция - это описание зависимости чего-то от чего-то.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Всё. Если у нас есть описание того, &lt;em&gt;как&lt;/em&gt; конкретное входное значение определяет конкретное выходное значение - значит это описание и есть функция.&lt;/p&gt;
-
-&lt;p&gt;Однако в мире языка C (и подобных ему языков) функция никогда не ассоциировалась с таким определением. Напротив, функция там есть не что иное, как &lt;em&gt;подпрограмма&lt;/em&gt;, а имя функции есть не что иное, как указатель на первую инструкцию этой подпрограммы.&lt;/p&gt;
-
-&lt;p&gt;Кроме того, функция в C является глобальной в рамках текущей единицы трансляции. И поэтому вызов функции - это как бы “глобальный &lt;strong&gt;&lt;code&gt;goto&lt;/code&gt;&lt;/strong&gt;” в её тело (с последующим возвратом из него). Именно поэтому функция в языке C не может быть безымянной, потому что иначе её невозможно было бы вызывать.&lt;/p&gt;
-
-&lt;p&gt;Всё это я напоминаю вам для того, чтобы, продолжив чтение этой заметки, вы увидели, насколько концепция λ-функций отличается от концепции функций в языке C.&lt;/p&gt;
-
-&lt;h3&gt;Так что же это за лямбды такие?&lt;/h3&gt;
-
-&lt;p&gt;В основе идеи λ-функций лежит λ-исчисление, названное так по имени этой красивой греческой буквы. У понятия λ-исчисления довольно-таки долгая академическая история, нам нет смысла её здесь разбирать по косточкам. Нас интересует лишь суть, поэтому сразу пример.&lt;/p&gt;
-
-&lt;p&gt;Представим себе, что нам нужна функция, принимающая некое целочисленное значение и возвращающая квадрат этого значения. Причём функция именно в том самом, математическом смысле. Как бы мы могли это отобразить? Примерно так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Итак, подаём на вход значение 5, а на выходе получаем 25. Проще некуда. Но как же нам записать внутренности функции &lt;code&gt;f&lt;/code&gt;? Ну, например, так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Тут тоже всё ясно: поданный на вход аргумент умножается сам на себя. &lt;/p&gt;
-
-&lt;p&gt;Ну а теперь главный вопрос: как эту функцию описать &lt;em&gt;формально&lt;/em&gt;, или &lt;em&gt;унифицированно&lt;/em&gt;? Вот тут-то на сцену и выходит λ-исчисление, ибо оно как раз и предлагает такой вот унифицированный способ записи функции. &lt;/p&gt;
-
-&lt;p&gt;Вот λ-выражение для нашей функции:&lt;/p&gt;
-
-&lt;pre&gt;
-&amp;lambda;x.x*x
-&lt;/pre&gt;
-
-&lt;p&gt;Буква λ - это признак λ-функции. А читать это выражение следует примерно так: &lt;/p&gt;
-
-&lt;p&gt;λ-функция от одного аргумента &lt;code&gt;x&lt;/code&gt;, умножающая этот аргумент сам на себя.&lt;/p&gt;
-
-&lt;p&gt;Таким образом, выражение до разделяющей точки:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;lt;pre&amp;gt;
-λx
-&amp;lt;/pre&amp;gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;это список аргументов (в данном случае он один), а выражение после разделяющей точки:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;lt;pre&amp;gt;
-x*x
-&amp;lt;/pre&amp;gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;это “тело” функции, описывающее ту самую зависимость выходного значения от значения входного.&lt;/p&gt;
-
-&lt;p&gt;Как видите, весьма простое и элегантное описание. Как говорится, ничего лишнего.&lt;/p&gt;
-
-&lt;p&gt;Обратите также внимание на то, что здесь нет имени. Особенностью λ-функции является её безымянность. Почему? Потому что имя ей не нужно. И это принципиально отличает её от функции в языке C, потому что там я могу обратиться к функции не иначе, как через её имя (даже вызов через указатель всё равно требует хотя бы единократное использование имени функции). &lt;/p&gt;
-
-&lt;h3&gt;Ну хорошо, а как это будет выглядеть в коде?&lt;/h3&gt;
-
-&lt;p&gt;λ-функции присутствуют во многих языках программирования. Но есть один язык, в котором синтаксис λ-выражения максимально приближен к приведённому здесь математическому. Угадайте с трёх раз, о каком языке я говорю… :)&lt;/p&gt;
-
-&lt;p&gt;Итак, вот наша функция в Haskell:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Ну, что я говорил? Прямое сходство. Ведь даже обратный слэш вначале подходит как нельзя лучше: рассматривайте его как “спинку” буквы λ. Фактически, единственное отличие - это замена точки стрелочкой, потому что символ ‘&lt;code&gt;-&amp;gt;&lt;/code&gt;’ присущ языку Haskell как признак (любой) функции. Нда-с, сразу чувствуется, что язык Haskell создал математик.&lt;/p&gt;
-
-&lt;p&gt;А теперь, вероятно, вас интересует, как же можно &lt;em&gt;вызывать&lt;/em&gt; такую функцию? Вероятно, мой ответ удивит вас, но λ-функции, строго говоря, не вызывают.&lt;/p&gt;
-
-&lt;p&gt;Да-да, я уже вижу расширающиеся от удивления глаза. Точно такие же были и у меня, когда я впервые прочитал об этом. Но на самом деле здесь имеет место лишь игра слов. А для того, чтобы всё встало на свои места, мы опять вынуждены на пару минут вернуться в математику.&lt;/p&gt;
-
-&lt;p&gt;Идея λ-функции базируется на принципе “аппликации” (application), или “применения”. Это означает, что λ-функции не вызывают, а применяют (или, если хотите, прикладывают) к аргументу. Знаю, это звучит странновато для уха программистов из мира C, потому что там аргумент “прикладывают” к функции, но в математике договорились на таком определении. Поэтому запись вида:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;принято читать так: применение функции &lt;code&gt;f&lt;/code&gt; к аргументу &lt;code&gt;a&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Вот как это выглядит в Haskell:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Как видите, тут тоже прямое сходство с математической записью. Выражение в скобках - это уже знакомое нам λ-выражение. Оно “порождает” λ-функцию, которая сразу же применяется (прикладывается) к аргументу 5, результатом чего и явится значение 25.&lt;/p&gt;
-
-&lt;p&gt;Таким образом, можно сказать, что перед нами - вызов λ-функции с аргументом 5, но учитывая математические корни языка Haskell, можно сказать, что перед нами - применение λ-функции к аргументу 5.&lt;/p&gt;
-
-&lt;h3&gt;Да, но какая же от всего этого польза?&lt;/h3&gt;
-
-&lt;p&gt;Действительно, пора и к практике переходить.&lt;/p&gt;
-
-&lt;p&gt;В языке C принят стандартный “круг трёх шагов” по работе с функцией:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;объявление,&lt;/li&gt;
-  &lt;li&gt;определение,&lt;/li&gt;
-  &lt;li&gt;вызов.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;И потому работа с нашей функцией возведения в квадрат, применительно к языку C, могла бы выглядеть так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;%d&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Мы подготовили нашу “глобальную подпрограмму”, в которую чуть позже зайдём через вызов (фактически - через разыменование указателя &lt;code&gt;f&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;А вот как это выглядело бы на Haskell:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Как видите, мы ничего не готовим заранее. Напротив, мы &lt;em&gt;создаём&lt;/em&gt; функцию (или, если хотите, функциональный объект) локально и непосредственно перед использованием. Создаём - и сразу апплицируем его к аргументу 5.&lt;/p&gt;
-
-&lt;p&gt;Для большей простоты и похожести на нашу функцию мы можем написать и так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Выражение&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;это не присваивание (напомню, в Haskell его нет), это как бы ассоциация. Мы вводим локальный псевдоним для λ-функции и называем его &lt;code&gt;f&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Вы можете спросить меня, мол, какова же реальная польза от λ-функции, если у нас есть функция обыкновенная? Ведь мы могли бы написать и так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Integer&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Тут всё как обычно: мы определили функцию &lt;code&gt;f&lt;/code&gt; заранее, а потом апплицировали её к аргументу 5.&lt;/p&gt;
-
-&lt;p&gt;Так вот одно из преимуществ λ-функции как раз и заключается в её локальности. Зачем нам определять (подготавливать заранее) некую “глобальную подпрограмму”, если мы можем создать и использовать её непосредственно в том месте, где она нужна? Очень часто в реальных программах случается такое, что функция определяется лишь для того, чтобы быть вызванной в одном-единственном месте. Ну и зачем же нам определяеть её “глобально”?&lt;/p&gt;
-
-&lt;p&gt;Анонимность λ-функции также видится мне преимуществом, по крайней мере в ряде случаев. Если действие, совершаемое с помощью конкретной λ-функции, тривиально (и может быть понято из её “тела”, как в случае с функцией возведения в квадрат) - зачем же нам придумывать имя? Мы можем спокойно обойтись без него. Однако, в том случае, когда λ-функция нужна нам во многих местах кода, мы можем, во избежание дубляжа, “определить” λ-функцию глобально. Делается это в нашем случае так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Как видите, мы “определили” нашу функцию глобально и ассоциировали её с выражением &lt;code&gt;f&lt;/code&gt;. Теперь мы можем многократно использовать это выражение в коде, для апплицирования его к различным аргументам (в данном случае к 5 и к 6).&lt;/p&gt;
-
-&lt;p&gt;Ну вот, собственно, и всё. Конечно, это далеко не вся информация о λ-функциях, но этого базиса нам пока достаточно. Продолжение следует…&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/20/haskell-lambda-functions.html&quot;&gt;Haskell: о лямбда-функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 20, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

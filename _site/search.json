@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Поваренная книга Haskell: начало положено",
+		  "category"   : "articles",
+		  "url"        : "http://blog.dshevchenko.biz/2014/5/15/haskell-cookbook.html",
+		  "date"       : "2014-05-15 00:00:00 +0400",
+		  "shortdate"  : "май 15, 2014"
+		} ,
+	
+		{
 		  "title"      : "В защиту Haskell: по следам одного Хабра-спора...",
 		  "category"   : "articles",
 		  "url"        : "http://blog.dshevchenko.biz/2014/5/11/haskell-discussion.html",
