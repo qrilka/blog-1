@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Монадные трансформеры: &quot;облако&quot; внутри Haskell",
+		  "category"   : "articles",
+		  "url"        : "http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html",
+		  "date"       : "2014-05-19 00:00:00 +0400",
+		  "shortdate"  : "май 19, 2014"
+		} ,
+	
+		{
 		  "title"      : "Поваренная книга Haskell: начало положено",
 		  "category"   : "articles",
 		  "url"        : "http://blog.dshevchenko.biz/2014/5/15/haskell-cookbook.html",

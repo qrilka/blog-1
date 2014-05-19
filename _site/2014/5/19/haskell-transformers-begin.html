@@ -8,30 +8,30 @@
 <link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Philosopher:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-<title>Недавние &#8211; Мысли вслух</title>
-<meta name="description" content="О программировании и простоте">
-<meta name="keywords" content="Haskell, C++, Objective-C, софтверный бизнес, литературное программирование">
+<title>Монадные трансформеры: "облако" внутри Haskell &#8211; Мысли вслух</title>
+<meta name="description" content="блог C++-программиста, влюбившегося в Haskell">
+<meta name="keywords" content="Haskell">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.dshevchenko.biz/images/site-logo.png">
-<meta name="twitter:title" content="Недавние">
-<meta name="twitter:description" content="О программировании и простоте">
+<meta name="twitter:title" content="Монадные трансформеры: "облако" внутри Haskell">
+<meta name="twitter:description" content="блог C++-программиста, влюбившегося в Haskell">
 <meta name="twitter:creator" content="@dshevchenko_biz">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Недавние">
-<meta property="og:description" content="О программировании и простоте">
-<meta property="og:url" content="http://blog.dshevchenko.biz/index.html">
+<meta property="og:title" content="Монадные трансформеры: "облако" внутри Haskell">
+<meta property="og:description" content="блог C++-программиста, влюбившегося в Haskell">
+<meta property="og:url" content="http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html">
 <meta property="og:site_name" content="Мысли вслух">
 
 <meta name="google-site-verification" content="3kcHwh5V-AOcint1jCdIfBLkmFXD6-93M_DHpVFpjUI">
 
 
 
-<link rel="canonical" href="http://blog.dshevchenko.biz/index.html">
+<link rel="canonical" href="http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html">
 <link href="http://blog.dshevchenko.biz/feed.xml" type="application/atom+xml" rel="alternate" title="Мысли вслух Feed">
 <link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
 
@@ -66,7 +66,7 @@
 
 </head>
 
-<body id="page">
+<body id="post">
 
 <div class="navigation-wrapper">
 	<nav role="navigation" id="site-nav" class="animated drop">
@@ -118,44 +118,54 @@
 
 
 <div id="main" role="main">
-  <article class="entry">
+  <article class="hentry">
     
     <div class="entry-wrapper">
       <header class="entry-header">
-        <h1 class="entry-title">Недавние</h1>
+        <span class="entry-tags"><a href="http://blog.dshevchenko.biz/tags/#Haskell" title="Pages tagged Haskell">Haskell</a></span>
+        
+          <h1 class="entry-title">Монадные трансформеры: "облако" внутри Haskell</h1>
+        
       </header>
+      <footer class="entry-meta">
+        <!-- <img src="http://blog.dshevchenko.biz/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
+        <span class="author vcard">By <span class="fn"><a href="http://blog.dshevchenko.biz/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span> -->
+        <span class="entry-date date published"><time datetime="2014-05-19T00:00:00+04:00"><i class="icon-calendar-empty"></i> май 19, 2014</time></span>
+        
+        <span><a href="http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html" rel="bookmark" title="Монадные трансформеры: "облако" внутри Haskell"><i class="icon-link"></i> Вечная ссылка</a></span>
+        <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Комментарии</a></span>
+        
+        <span class="social-share-facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+        <span class="social-share-twitter">
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Монадные трансформеры: "облако" внутри Haskell&url=http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html&via=dshevchenko_biz" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+        <span class="social-share-googleplus">
+            <a href="https://plus.google.com/share?url=http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <!-- /.social-share -->
+      </footer>
       <div class="entry-content">
-        <ul class="post-list">
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html">Монадные трансформеры: "облако" внутри Haskell <span class="entry-date"><time datetime="2014-05-19T00:00:00+04:00">май 19, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/5/15/haskell-cookbook.html">Поваренная книга Haskell: начало положено <span class="entry-date"><time datetime="2014-05-15T00:00:00+04:00">май 15, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/5/11/haskell-discussion.html">В защиту Haskell: по следам одного Хабра-спора... <span class="entry-date"><time datetime="2014-05-11T00:00:00+04:00">май 11, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/4/29/waffle-io.html">Открыл исходники - открой и планы: waffle.io <span class="entry-date"><time datetime="2014-04-29T00:00:00+04:00">апрель 29, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/4/28/eaxcast-campaign.html">EaxCast: поддержим проект вместе <span class="entry-date"><time datetime="2014-04-28T00:00:00+04:00">апрель 28, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/4/27/paper-book-thoughts.html">О бумажной книге: мысли и сомнения <span class="entry-date"><time datetime="2014-04-27T00:00:00+04:00">апрель 27, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/4/22/goodbye-drupal.html">От динамики к статике: прощай, Drupal... <span class="entry-date"><time datetime="2014-04-22T00:00:00+04:00">апрель 22, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/4/14/ohaskell-online.html">О Haskell по-человечески: уже онлайн <span class="entry-date"><time datetime="2014-04-14T00:00:00+04:00">апрель 14, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/4/7/gitbook.html">GitBook: как я строил веб-книгу <span class="entry-date"><time datetime="2014-04-07T00:00:00+04:00">апрель 07, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://blog.dshevchenko.biz/2014/4/1/ohaskell-fourth-edition.html">О Haskell по-человечески: четвёртое издание <span class="entry-date"><time datetime="2014-04-01T00:00:00+04:00">апрель 01, 2014</time></span></a></article></li>
+        <p>Доброе время суток!</p>
 
-</ul>
-<div style="padding-top:30px;"></div>
-<div style="text-align: center;">
-<div markdown="0"><a href="articles/" class="btn">Остальные</a></div>
-</div>
+<p>Я наконец-то въехал в монадные трансформеры. Механизм оказался на удивление красивым и полезным. И если <code>MaybeT</code> элегантен, то в <code>ReaderT</code> я просто влюбился.</p>
+
+<p>Традиционно считается, что освоить трансформеры тяжело. И это действительно так, поскольку большинство имеющихся разъяснений никуда не годятся. А ведь обиднее всего то, что механизм основных трансформеров изящен и действительно полезен на практике, но из-за невнятности имеющихся tutorial-ов новички проходят эту тему стороной. Я часто сталкивался с мнением, что трансформеры - это вообще самая сложная тема в Haskell.</p>
+
+<p>Рад сообщить, что в книге появились две главы, посвящённые стандартным трансформерам. А <code>ReaderT</code> меня просто покорил. Это ж прям “облачный механизм” внутри Haskell! Сейчас модно говорить об облаках, и я провёл параллель между облачными технологиями и трансформером <code>ReaderT</code>. И в самом деле, как мы закидываем документ в Google Drive, чтобы иметь к нему доступ из разных мест, так и <code>ReaderT</code> забрасывает в “общее облако” некое значение, видимое группе функций. Элегатно, компактно и удобно.</p>
+
+<p>Заинтересованы? Прошу <a href="http://ohaskell.dshevchenko.biz/ru/delicious/transformers-reader.html">сюда</a>.</p>
+
+<p>Вскоре будут добавлены главы про <code>WriterT</code> и <code>StateT</code>. Кстати, понимать суть стандартных трансформеров нужно ещё и потому, что они задействованы во многих реальных проектах.</p>
 
 
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://blog.dshevchenko.biz/2014/5/15/haskell-cookbook.html" class="btn" title="Поваренная книга Haskell: начало положено">Предыдущий</a>
+      
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -217,7 +227,27 @@
 </script>
 
 
-          
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>	        
 
 </body>
 </html>

@@ -4,13 +4,41 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-05-15T21:30:29+04:00</updated>
+<updated>2014-05-19T19:39:11+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
   <uri>http://blog.dshevchenko.biz/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Монадные трансформеры: "облако" внутри Haskell]]></title>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html"/>
+  <id>http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin</id>
+  <published>2014-05-19T00:00:00+04:00</published>
+  <updated>2014-05-19T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://blog.dshevchenko.biz</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Доброе время суток!&lt;/p&gt;
+
+&lt;p&gt;Я наконец-то въехал в монадные трансформеры. Механизм оказался на удивление красивым и полезным. И если &lt;code&gt;MaybeT&lt;/code&gt; элегантен, то в &lt;code&gt;ReaderT&lt;/code&gt; я просто влюбился.&lt;/p&gt;
+
+&lt;p&gt;Традиционно считается, что освоить трансформеры тяжело. И это действительно так, поскольку большинство имеющихся разъяснений никуда не годятся. А ведь обиднее всего то, что механизм основных трансформеров изящен и действительно полезен на практике, но из-за невнятности имеющихся tutorial-ов новички проходят эту тему стороной. Я часто сталкивался с мнением, что трансформеры - это вообще самая сложная тема в Haskell.&lt;/p&gt;
+
+&lt;p&gt;Рад сообщить, что в книге появились две главы, посвящённые стандартным трансформерам. А &lt;code&gt;ReaderT&lt;/code&gt; меня просто покорил. Это ж прям “облачный механизм” внутри Haskell! Сейчас модно говорить об облаках, и я провёл параллель между облачными технологиями и трансформером &lt;code&gt;ReaderT&lt;/code&gt;. И в самом деле, как мы закидываем документ в Google Drive, чтобы иметь к нему доступ из разных мест, так и &lt;code&gt;ReaderT&lt;/code&gt; забрасывает в “общее облако” некое значение, видимое группе функций. Элегатно, компактно и удобно.&lt;/p&gt;
+
+&lt;p&gt;Заинтересованы? Прошу &lt;a href=&quot;http://ohaskell.dshevchenko.biz/ru/delicious/transformers-reader.html&quot;&gt;сюда&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Вскоре будут добавлены главы про &lt;code&gt;WriterT&lt;/code&gt; и &lt;code&gt;StateT&lt;/code&gt;. Кстати, понимать суть стандартных трансформеров нужно ещё и потому, что они задействованы во многих реальных проектах.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html&quot;&gt;Монадные трансформеры: "облако" внутри Haskell&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, май 19, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -1076,250 +1104,6 @@ cabal build
 &lt;p&gt;На сегодня достаточно, но мы обязательно продолжим изучение &lt;code&gt;cabal&lt;/code&gt;, а уж к пакетам из Hackage мы будем возвращаться не раз и не два.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/23/haskell-hackage.html&quot;&gt;Haskell: устанавливаем пакет из Hackage&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 23, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Haskell: о функциях]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/23/haskell-functions.html"/>
-  <id>http://blog.dshevchenko.biz/2013/12/23/haskell-functions</id>
-  <published>2013-12-23T00:00:00+04:00</published>
-  <updated>2013-12-23T00:00:00+04:00</updated>
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;p&gt;Если вы помните &lt;strong&gt;&lt;a href=&quot;http://dshevchenko.biz/ru/content/haskell-%D0%BE-%D0%BB%D1%8F%D0%BC%D0%B1%D0%B4%D0%B0-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F%D1%85&quot;&gt;заметку о лямбда-функциях&lt;/a&gt;&lt;/strong&gt;, математическое определение функции очень простое:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Функция - это описание зависимости чего-то от чего-то.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Так вот чистые функции в языке Haskell - это и есть функции в математическом смысле. Они представляют собой описание того, &lt;em&gt;как&lt;/em&gt; входное выражение (или совокупность таковых) определяет выходное выражение. Именно поэтому они не имеют побочных эффектов, и если мы миллион раз подадим на вход одно и то же значение, то на выходе мы миллион раз получим один и тот же ответ.&lt;/p&gt;
-
-&lt;p&gt;А теперь за дело.&lt;/p&gt;
-
-&lt;h3&gt;Объявляем&lt;/h3&gt;
-
-&lt;p&gt;Начинается всё с объявления функции:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Перед нами - объявление выражения. До символа &lt;code&gt;::&lt;/code&gt; указывается имя выражения, а после - тип выражения. &lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-   &lt;span class=&quot;err&quot;&gt;имя&lt;/span&gt;           &lt;span class=&quot;err&quot;&gt;тип&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Итак, перед нами выражение с именем &lt;code&gt;simple_sum&lt;/code&gt;, имеющее тип функции. Пусть вас не смущают эти слова: в Haskell функция - это тоже тип. Но откуда же мы знаем, что тип этого выражения представляет собой именно функцию? Давайте рассмотрим описание типа подробнее:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Обратите внимание на стрелочку. Именно эта стрелочка и говорит нам о том, что перед нами функция. Слева от неё указан тип единственного аргумента функции (в данном случае это стандартный тип &lt;strong&gt;&lt;code&gt;Int&lt;/code&gt;&lt;/strong&gt;), а справа от неё - тип выходного выражения (тот же &lt;strong&gt;&lt;code&gt;Int&lt;/code&gt;&lt;/strong&gt;). Саму же стрелочку можно воспринимать как ментальное указание на поток информации через функцию - от входа к выходу, слева направо.&lt;/p&gt;
-
-&lt;p&gt;В силу того, что чистая функция в Haskell является математической, невозможно написать аналоги вот таких C-шных функций:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Чистая функция в Haskell обязана иметь входной аргумент (хотя бы один) и выходное значение. Почему? Потому что это отражает суть математической функции: что-то &lt;em&gt;обязательно&lt;/em&gt; подаём на вход и что-то &lt;em&gt;обязательно&lt;/em&gt; получаем на выходе.&lt;/p&gt;
-
-&lt;p&gt;Кстати, о количестве аргументнов. Разумеется, чистая функция может принимать несколько аргументов. В этом случае её тип будет выглядеть так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Я понимаю, выглядит чуток странно, но читать это очень просто: ищем последнюю по счёту (самую правую) стрелочку - она-то и будет тем самым разделителем: слева от неё идёт список типов аргументов, справа - тип возвращаемого выражения:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;типы&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;аргументов&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;тип&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;того&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;что&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;будет&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;на&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;выходе&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Итак, с объявлением разобрались. Идём дальше.&lt;/p&gt;
-
-&lt;h3&gt;Определяем&lt;/h3&gt;
-
-&lt;p&gt;Теперь функцию нужно определить. Кстати, определить нужно &lt;em&gt;обязательно&lt;/em&gt;. Известно, что в том же C++ мы можем спокойно объявить функцию и не определять её (при условии, что она никогда нигде не вызывается). В Haskell более строгий подход: если объявил - будь добр и определить, в противном случае компилятор выскажет своё недовольство.&lt;/p&gt;
-
-&lt;p&gt;Итак, сразу после объявления пишем тело функции:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Рассмотрим его подробнее:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Здесь ментальным разделителем является знак равенства. Напоминаю, что в Haskell нет оператора присваивания, поэтому знак равенства здесь - это именно &lt;em&gt;знак равенства&lt;/em&gt;, как в математике. Скелет данного выражения можно представить так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arguments&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;body_expression&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Здесь:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;name&lt;/code&gt; - имя функции.&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;arguments&lt;/code&gt; - список имён аргументов (именно имён, а не их типов).&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;body_expression&lt;/code&gt; - тело функции.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;В данном случае у нас имеется один-единственный аргумент по имени &lt;code&gt;value&lt;/code&gt;, а также имеется чрезвычайно простое тело, в котором мы просто-напросто складываем аргумент с самим собой.&lt;/p&gt;
-
-&lt;h3&gt;Вызываем&lt;/h3&gt;
-
-&lt;p&gt;Теперь нашу функцию можно вызывать с аргументом 4 (или, как привычно говорить в мире ФП, апплицировать функцию к аргументу 4):&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;simple_sum&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;В ответ получаем ожидаемое значение:&lt;/p&gt;
-
-&lt;bash&gt;
-8
-&lt;/bash&gt;
-
-&lt;h3&gt;А теперь подробнее...&lt;/h3&gt;
-
-&lt;p&gt;Естественно, всё вышесказанное - это лишь самые азы. Теперь же необходимо уточнить некоторые детали.&lt;/p&gt;
-
-&lt;h4&gt;Выход из функции&lt;/h4&gt;
-
-&lt;p&gt;В C++, если у нас есть функция с возвращаемым значением, мы обязаны где-то в её теле написать инструкцию &lt;strong&gt;&lt;code&gt;return&lt;/code&gt;&lt;/strong&gt;. Это - точка выхода из тела функции. Кроме того, мы знаем, что точек выхода из тела функции может быть сколько угодно. В Haskell же всё обстоит иначе. Во-первых, точка выхода из чистой функции может быть только одна, а во-вторых, аналога инструкции &lt;strong&gt;&lt;code&gt;return&lt;/code&gt;&lt;/strong&gt; в Haskell нету.&lt;/p&gt;
-
-&lt;p&gt;Да, я понимаю, это удивляет. Мол, а как же нам быть, если мы хотим указать точку выхода явно? Но если мы вспомним математическую природу чистой функции, то поймём, что иначе быть не может. Ведь чистая функция представляет собой описание зависимости выходного выражения от совокупности входных выражений, поэтому её тело представляет собой совокупность выражений, которые вычисляются (в некотором порядке) и в конечном итоге оставляют одно-единственное, последнее выражение. Так вот это последнее выражение и будет являться точкой выхода из функции.&lt;/p&gt;
-
-&lt;p&gt;Чтобы стало понятнее, приведу пример:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;then&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt; 
-        &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Эта функция принимает единственный аргумент типа &lt;strong&gt;&lt;code&gt;String&lt;/code&gt;&lt;/strong&gt;, соответствующий некоему IP-адресу. В теле функции происходит проверка аргумента на равенство адресу “127.0.0.1”, в результате мы оказываемся в одной из двух логических ветвей. Если бы это была функция на C++, это выглядело бы примерно так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp&quot;&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indicate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Обратите внимание, что мы явно указали две точки выхода из функции. Но в Haskell это не нужно, потому что когда мы окажемся в одной из двух логических ветвей, то выражение, на котором мы окажемся, оно и будет возвращено.&lt;/p&gt;
-
-&lt;p&gt;А чтобы стало совсем понятно, перепишем тело этой функции для того, чтобы избавиться от выражения &lt;strong&gt;&lt;code&gt;if then else&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Мы вводим вместо одного тела два, для каждого из которых мы определяем свою зависимость. Мы как бы говорим: “Если входной аргумент будет равен “127.0.0.1”, то пусть возвращаемым функцией значением будет строка “localhost”, если же аргумент будет какой-либо другой, то пусть возвращаемым функцией значением будет сам этот аргумент.” Следовательно, когда компилятор увидит вызов этой функции в коде, он просто &lt;em&gt;подставит&lt;/em&gt; на место этого вызова соответствующее выражение: либо строку “localhost”, либо фактически переданный аргумент.&lt;/p&gt;
-
-&lt;p&gt;Теперь всё встало на свои места: явно определять точку выхода из чистой функции в Haskell не нужно потому, что конечное выражение в теле этой функции просто заменит собой вызов функции. То есть если написано так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indicate&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;то это то же самое, что было бы написано так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;потому что компилятор, вычислив внутренности функции, просто заменит место вызова конечным (итоговым) выражением.&lt;/p&gt;
-
-&lt;h4&gt;Локальные выражения&lt;/h4&gt;
-
-&lt;p&gt;Очень полезно бывает ввести некое локальное значение в теле функции, например, для избавления от дубляжа кода или от магических чисел. Например, у нас есть такая функция:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.4959&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Итак, мы готовим длину некой линии путём умножения её первоначальной длины на поправочный коэффициент. Но перед нами - магическое число, а это очень плохо. Добавлять комментарий - это не лучшее решение. Поэтому добавим локальное поясняющее выражение:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.4959&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Красиво, не так ли? Ключевое слово &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt; вводит локальное выражение, которое можно использовать в теле функции. Разумеется, локальных выражений может быть несколько:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.4959&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0012&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Есть ещё один способ ввести локальное вспомогательное выражение, с помощью ключевого слова &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt;. На примере нашей последней функции это выглядит так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.4959&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0012&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Общая модель такая: &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt; &lt;code&gt;bindings&lt;/code&gt; &lt;strong&gt;&lt;code&gt;in&lt;/code&gt;&lt;/strong&gt; &lt;code&gt;expression&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Но у вас, очевидно, возник вопрос, в чём же разница между &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt; и &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt;?&lt;/p&gt;
-
-&lt;p&gt;Во-первых, выражение &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt; может быть только одно и только в конце тела функции, в то время как выражение &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt; может присутствовать многократно и в любой части тела функции.&lt;/p&gt;
-
-&lt;p&gt;Во-вторых, выражение, введённое ключевым словом &lt;strong&gt;&lt;code&gt;where&lt;/code&gt;&lt;/strong&gt;, всегда видимо в любой точке тела функции, в то время как выражение, введённое ключевым словом &lt;strong&gt;&lt;code&gt;let&lt;/code&gt;&lt;/strong&gt;, может быть “супер-локальным”. Например:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.4959&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0012&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;correction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.9&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Понимаю, пример несколько надуманный, но всё-таки… Здесь мы ввели выражение с именем &lt;code&gt;s&lt;/code&gt;, которое действует только внутри круглых скобок. Именно поэтому пример этот не скомпилируется, ведь второе выражение &lt;code&gt;s&lt;/code&gt; находится уже не в скобках, и поэтому компилятор вполне справедливо возмутится:&lt;/p&gt;
-
-&lt;bash&gt;
-[2 of 2] Compiling Main             ( src/main.hs, dist/build/Haskell/Haskell-tmp/Main.o )
-
-src/main.hs:43:61: Not in scope: `s&#39;
-&lt;/bash&gt;
-
-&lt;h4&gt;Про объявление&lt;/h4&gt;
-
-&lt;p&gt;Как вы помните, нельзя объявить функцию и при этом не определить её. А можно ли определить функцию без объявления? Отвечаю: можно, но не рекомендуется.&lt;/p&gt;
-
-&lt;p&gt;Общепринятой практикой является объявлять функцию и тут же определять её. И несмотря на то, что мы &lt;em&gt;можем&lt;/em&gt; написать так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;prepare_length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.4959&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coefficient&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;делать так не рекомендуется, поскольку определение функции становится как бы беднее, ведь сигнатура типов аргументов и возвращаемого выражения помогает лучше понять функцию.&lt;/p&gt;
-
-&lt;p&gt;К тому же в случае отсутствия объявления тип аргумента &lt;code&gt;line&lt;/code&gt; становится неопределённым, и поэтому строгость проверки этого самого типа (на стадии компиляции) снизится. Если вы делаете это &lt;em&gt;сознательно&lt;/em&gt; - три раза подумайте. Во всех же остальных случаях -  объявляйте.&lt;/p&gt;
-
-&lt;h4&gt;Вот и всё?&lt;/h4&gt;
-
-&lt;p&gt;Конечно, это далеко не всё, что можно сказать о чистых функциях, но этот базис достаточен для того, чтобы понять суть чистых функций и то, как их можно использовать в своём коде. Продолжение следует…&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/23/haskell-functions.html&quot;&gt;Haskell: о функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 23, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
