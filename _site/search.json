@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Haskell: новый сайт",
+		  "category"   : "articles",
+		  "url"        : "http://blog.dshevchenko.biz/2014/5/29/haskell-new-site.html",
+		  "date"       : "2014-05-29 00:00:00 +0400",
+		  "shortdate"  : "май 29, 2014"
+		} ,
+	
+		{
 		  "title"      : "Монадные трансформеры: &quot;облако&quot; внутри Haskell",
 		  "category"   : "articles",
 		  "url"        : "http://blog.dshevchenko.biz/2014/5/19/haskell-transformers-begin.html",

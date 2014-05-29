@@ -4,13 +4,69 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-05-19T19:39:11+04:00</updated>
+<updated>2014-05-29T21:55:56+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
   <uri>http://blog.dshevchenko.biz/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell: новый сайт]]></title>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/5/29/haskell-new-site.html"/>
+  <id>http://blog.dshevchenko.biz/2014/5/29/haskell-new-site</id>
+  <published>2014-05-29T00:00:00+04:00</published>
+  <updated>2014-05-29T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://blog.dshevchenko.biz</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Приветствую!&lt;/p&gt;
+
+&lt;p&gt;Сегодня узнал любопытную новость: Chris Done, один из серьёзных Haskell-еров, создал альтернативный сайт для языка Haskell. Напомню, что нынешний официальный сайт живёт по адресу &lt;a href=&quot;http://www.haskell.org/haskellwiki/Haskell&quot;&gt;haskell.org&lt;/a&gt;, а обновлённый вариант будет жить на &lt;a href=&quot;http://haskell-lang.org/&quot;&gt;haskell-lang.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Вот в &lt;a href=&quot;http://chrisdone.com/posts/haskell-lang&quot;&gt;этой заметке&lt;/a&gt; Крис объясняет, с чего это вдруг он решил сделать новую страницу. Но от себя могу сказать: молодец! Новая страница, во-первых, красивее, удобнее и современнее, а во-вторых, более информативная. И даже есть мобильная адаптация. На мой взгляд, новый сайт на порядок лучше старого.&lt;/p&gt;
+
+&lt;p&gt;Сейчас сайт почти пуст. Но, судя по всему, работа над ним кипит, так что ждём новостей.&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;И ещё…&lt;/h3&gt;
+
+&lt;p&gt;На reddit сразу же закипело &lt;a href=&quot;http://www.reddit.com/r/haskell/comments/26rilp/an_alternative_haskell_home_page/&quot;&gt;обсужение этой новости&lt;/a&gt;. И вот один комментарий хотелось бы процитировать. Причём он касался не столько новой страницы для языка, сколько главной проблемы освоения этого языка. И могу сказать, что подписываюсь под каждый словом!&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;IMO the biggest issue to learning Haskell by oneself is that almost all the existing library documentation require you to already be a haskell expert before you can use them, nevermind just understand them. It’s very difficult to learn “apprentice style”.&lt;/p&gt;
+
+  &lt;p&gt;What I’d really love to see is the library documentation significantly enhanced by examples of how to use them that don’t require a deep understanding of advanced concepts.&lt;/p&gt;
+
+  &lt;p&gt;For example, I can easily use hoogle to find a tcpip library (several of them) and I can look at the types and functions. But it’s incredibly difficult to put that stuff together to make a working program without a steep learning curve.&lt;/p&gt;
+
+  &lt;p&gt;Instead, give me black-box cookbook stuff that I can begin to deploy and understanding will follow over time. Right now, it’s way easier to use other languages to get the job done, even with very little knowledge. For a practicing developer, that counts for a lot.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Мой вольный перевод:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;На мой взгляд, наибольшей проблемой, с которой сталкиваются все Haskell-новички, является следующее положение: почти все существующие пакеты в Hackage снабжены такой документацией, понять которую могут лишь те, кто &lt;strong&gt;уже&lt;/strong&gt; эксперт по Haskell. Естественно, для новичков это не подходит.&lt;/p&gt;
+
+  &lt;p&gt;Чего бы я действительно хотел, так это документация к пакетам, насыщенная практическими примерами, не требующими глубокого понимания подкапотных вещей.&lt;/p&gt;
+
+  &lt;p&gt;К примеру, я могу, используя Hoogle, мгновенно найти пакет tcpip (и даже не один), и моему взору предстанет описание всех типов и функций. Однако понять, &lt;em&gt;как&lt;/em&gt; из всего это хозяйства создать нечто работающее, невероятно трудно.&lt;/p&gt;
+
+  &lt;p&gt;Да блин, дайте мне нормальную книгу рецептов, позволяющую мне сразу понять что к чему и сразу начать что-то делать. Не копаться в кишках тех или иных инструментов, а &lt;em&gt;пользоваться&lt;/em&gt; ими, как если бы они были чёрными ящиками. В настоящий момент, для успешного решения конкретных задач значительно проще использовать другие языки программирования. И это очень важно для практикующих разработчиков.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Подписываюсь! Обозначенная проблема действительно актуальна, говорю это как новичок, перекопавший уже множество пакетов из Hackage. Документация ко многим из них призвана не к тому, чтобы научить новичка &lt;em&gt;пользоваться&lt;/em&gt; пакетом, а к тому, чтобы просто перечислить все внутренние типы, классы и функции. Ну хоть бы один примерчик, ну хотя бы Hello World!&lt;/p&gt;
+
+&lt;p&gt;Да, исключения есть, но их очень мало. И это то, что отталкивает новичков от Haskell. И не потому, что они дебилы, а потому, что у них нет ни времени, ни желания копаться в кишках пакета.&lt;/p&gt;
+
+&lt;p&gt;Ну что ж, проблема обозначена, осталось лишь внести свой посильный вклад в её решение.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/5/29/haskell-new-site.html&quot;&gt;Haskell: новый сайт&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, май 29, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -996,114 +1052,6 @@ Full info about user @1234:
 &lt;p&gt;Конечно, инфиксную запись можно считать не более чем синтаксическим сахаром, но в ряде случаев такая запись может сделать код более удобным для чтения. Впрочем, чрезмерно увлекаться “инфиксностью” не рекомендуется (также как и, скажем, перегрузкой операторов в C++).&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/25/haskell-infix-functions.html&quot;&gt;Haskell: об инфиксных функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 25, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Haskell: устанавливаем пакет из Hackage]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/23/haskell-hackage.html"/>
-  <id>http://blog.dshevchenko.biz/2013/12/23/haskell-hackage</id>
-  <published>2013-12-23T00:00:00+04:00</published>
-  <updated>2013-12-23T00:00:00+04:00</updated>
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;h3&gt;Готовимся&lt;/h3&gt;
-
-&lt;p&gt;Все приведённые ниже команды выполняются в терминале из корневой папки нашего проекта.&lt;/p&gt;
-
-&lt;p&gt;Для начала выполним команду:&lt;/p&gt;
-
-&lt;bash&gt;
-cabal update
-&lt;/bash&gt;
-
-&lt;p&gt;Эта команда обновляет список пакетов из вышеупомянутого репозитория, поэтому в ответ мы мы увидим нечто подобное:&lt;/p&gt;
-
-&lt;bash&gt;
-Downloading the latest package list from hackage.haskell.org
-&lt;/bash&gt;
-
-&lt;p&gt;Чуточку терпения - и список обновлён. Рекомендуется периодически выполнять эту команду, дабы поддерживать список доступных пакетов в актуальном состоянии.&lt;/p&gt;
-
-&lt;h3&gt;Выбираем нужный пакет&lt;/h3&gt;
-
-&lt;p&gt;Заходим на страницу списка пакетов и ищем. В частности, мне понадобилось установить пакет &lt;strong&gt;&lt;a href=&quot;http://hackage.haskell.org/package/filemanip&quot;&gt;filemanip&lt;/a&gt;&lt;/strong&gt;, предназначенный для работы с файловой системой. Кстати, поиск нужных вам пакетов можно производить в &lt;strong&gt;&lt;a href=&quot;http://www.haskell.org/hoogle/&quot;&gt;Hoogle&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Устанавливаем пакет следующей командой:&lt;/p&gt;
-
-&lt;bash&gt;
-cabal install filemanip
-&lt;/bash&gt;
-
-&lt;p&gt;В ответ последует список со всякими умными строками наподобие этого:&lt;/p&gt;
-
-&lt;bash&gt;
-...
-Downloading filemanip-0.3.6.2...
-Configuring filemanip-0.3.6.2...
-Building filemanip-0.3.6.2...
-...
-Installing library in
-/Users/dshevchenko/Library/Haskell/ghc-7.6.3/lib/filemanip-0.3.6.2/lib
-Registering filemanip-0.3.6.2...
-Installed filemanip-0.3.6.2
-Updating documentation index /Users/dshevchenko/Library/Haskell/doc/index.html
-&lt;/bash&gt;
-
-&lt;p&gt;Итак, пакет установлен.&lt;/p&gt;
-
-&lt;h3&gt;Указываем пакет в .cabal-файле&lt;/h3&gt;
-
-&lt;p&gt;Открываем конфигурационный &lt;code&gt;.cabal&lt;/code&gt;-файл (помните про такой, не так ли?), находящийся в корне нашего проекта, и дописываем наш только что установленный пакет:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;executable&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Haskell&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;            
-    &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;modules&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;kt&quot;&gt;Haq&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;hs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;src&lt;/span&gt; 
-                     &lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utils&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depends&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;4.6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filemanip&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Как видите, мы просто дописали в параметр &lt;code&gt;build-depends&lt;/code&gt; название нового пакета. Обратите внимание, что имена пакетов в этом параметре указываются через запятую, это важно.&lt;/p&gt;
-
-&lt;p&gt;Если вы пропустите этот шаг, то воспользоваться каким-либо из модулей данного пакета вы, разумеется, не сможете. Напоминаю, что пакет представлен набором модулей, которые можно импортировать в ваш код (а импорт модуля, напоминаю, подобен включению файла с помощью &lt;code&gt;#include&lt;/code&gt;-директивы).&lt;/p&gt;
-
-&lt;p&gt;Впрочем, даже если вы всё-таки забудете указать установленный пакет &lt;em&gt;и при этом&lt;/em&gt; попытаетесь импортировать какие-либо из его модулей в ваш проект, компилятор вежливо поправит вас:&lt;/p&gt;
-
-&lt;bash&gt;
-src/main.hs:3:8:
-    Could not find module `System.FilePath.Find&#39;
-    It is a member of the hidden package `filemanip-0.3.6.2&#39;.
-    Perhaps you need to add `filemanip&#39; to the build-depends in your .cabal file.
-    Use -v to see a list of the files searched for.
-&lt;/bash&gt;
-
-&lt;h3&gt;Подключаем нужные модули&lt;/h3&gt;
-
-&lt;p&gt;А теперь открываем наш файл (например, &lt;code&gt;main.hs&lt;/code&gt;) и дописываем в его верхней части следующую строку:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.FilePath.Find&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Этой инструкцией мы импортировали конкретный модуль из установленного пакета. Теперь мы сможем использовать содержимое этого модуля в нашем проекте.&lt;/p&gt;
-
-&lt;p&gt;Напоследок выполним команды:&lt;/p&gt;
-
-&lt;bash&gt;
-cabal configure
-cabal build
-&lt;/bash&gt;
-
-&lt;p&gt;Готово!&lt;/p&gt;
-
-&lt;p&gt;Лично мне очень понравилась такая философия работы с пакетами. Во-первых, утилита cabal предоставляет единый централизованный способ установки пакетов, во-вторых, сама установка занимает три простейших шага (установить, прописать в &lt;code&gt;.cabal&lt;/code&gt;-файле, импортировать нужные модули), а в-третьих, я могу установить только те пакеты, которые мне реально нужны.&lt;/p&gt;
-
-&lt;p&gt;На сегодня достаточно, но мы обязательно продолжим изучение &lt;code&gt;cabal&lt;/code&gt;, а уж к пакетам из Hackage мы будем возвращаться не раз и не два.&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/23/haskell-hackage.html&quot;&gt;Haskell: устанавливаем пакет из Hackage&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 23, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
