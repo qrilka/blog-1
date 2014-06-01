@@ -4,13 +4,41 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-05-29T21:55:56+04:00</updated>
+<updated>2014-06-02T00:43:39+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
   <uri>http://blog.dshevchenko.biz/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell и Linux: не только just for fun]]></title>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/6/1/haskell-and-linux.html"/>
+  <id>http://blog.dshevchenko.biz/2014/6/1/haskell-and-linux</id>
+  <published>2014-06-01T00:00:00+04:00</published>
+  <updated>2014-06-01T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://blog.dshevchenko.biz</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Недавно провёл любопытную аналогию между Haskell и Linux. А натолкнула меня на эту аналогию заметка пятилетней давности (Изучай Haskell ради… Haskell’а)[http://habrahabr.ru/post/74164/]. Автор утверждает, что “Прагматика Haskell’а заключается в том, что он существует прежде всго для исследования… Haskell’а.”&lt;/p&gt;
+
+&lt;p&gt;Вы знаете, с чего начался Linux? Он же был студенческой поделкой. А девиз помните? “Just for fun!” То есть хобби для развлекухи, и ничего более. И поэтому люди, которые до 2000 года что-то знали о Linux, использовали его исключительно ради Linux. Эта система не была средством, она была целью. Кто-то с её помощью познавал Unix-тонкости, играясь с файловыми системами. Кто-то баловался с ядром. Кто-то настраивал сеть. В общем, кто на что горазд…&lt;/p&gt;
+
+&lt;p&gt;С тех пор минуло более 15 лет. И Linux, как и положено нормальной, зрелой операционной системе, из цели превратился в средство. Многие люди, работающий с Linux сегодня, уже не заморачиваются ни хитрым ручным разбиением диска на разделы, ни компиляцией vanilla-kernel, ни ручной установкой драйвера WiFi. Они просто ставят - и работают. Linux из развлекательной поделки стал важным (а иногда важнейшим) инструментом для многих бизнесов, в том числе бизнесов-гигантов. &lt;/p&gt;
+
+&lt;p&gt;С языком Haskell, по моему мнению, та же история. Когда-то он, как верно заметил автор вышеупомянутой статий, был целью, а вовсе не средством. Люди, соприкасающиеся с этим языком, видели в нём только объект (тех или иных) исследований, а не инструмент для решения своих повседневных задач. И коммерческое использование Haskell было такой же экзотикой, как коммерческое использование Linux в 1997 году…&lt;/p&gt;
+
+&lt;p&gt;Но всё это было давно. Сегодня, я уверен, Haskell &lt;em&gt;уже может&lt;/em&gt; из цели превратиться в средство. Причём это нисколько не унизит этот прекрасный язык. Напротив, это даст импульс к его развитию, ведь красоту и мощь этого языка наконец-то начнут оценивать не только в свете академических высот, но и в свете реального практического применения.&lt;/p&gt;
+
+&lt;p&gt;Вот такая мысль.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/6/1/haskell-and-linux.html&quot;&gt;Haskell и Linux: не только just for fun&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, июнь 01, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -979,79 +1007,6 @@ Full info about user @1234:
 &lt;p&gt;Итак, перед нами - живая демонстрация реальной пользы ФВП. Да, признаю, этот пример можно было бы упростить (в данном конкретном случае можно было обойтись без частичного применения), но цель была не в том, чтобы дать на 100% оптимальное решение, а в том чтобы продемонстрировать упомянутую выше теорию на практическом примере. И как вы смогли убедиться, эта теория лишь поначалу казалось нам страшноватой, в реальности же она достаточно проста.&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/26/haskell-higher-order-functions.html&quot;&gt;Haskell: о функциях высшего порядка&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 26, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Haskell: об инфиксных функциях]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/25/haskell-infix-functions.html"/>
-  <id>http://blog.dshevchenko.biz/2013/12/25/haskell-infix-functions</id>
-  <published>2013-12-25T00:00:00+04:00</published>
-  <updated>2013-12-25T00:00:00+04:00</updated>
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;p&gt;Как мы уже знаем, вызов чистой функции выглядит так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argN&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Это соответствует идее апплицирования: мы применяем функцию &lt;code&gt;name&lt;/code&gt; к списку аргументов. Однако в математике существует и другая модель функции, а именно инфиксная модель. Если вы никогда не слышали это слово - не беспокойтесь, вы постоянно используете эту модель. Классический пример:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;В данном случае у нас есть функция сложения, отражённая символом &lt;code&gt;+&lt;/code&gt;, которая принимает на вход два аргумента. Но если бы мы хотели записать этот вызов неинфиксным, классическим способом, то получилось бы вот что:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Всё как обычно: мы апплицируем функцию &lt;code&gt;(+)&lt;/code&gt; к двум аргументам. Однако предыдущая форма записи гораздо привычнее для нас, и при этом она значительно читабельнее.&lt;/p&gt;
-
-&lt;p&gt;Так вот и наши собственные функции можно вызывать как классическим способом, так и инфиксным. Например:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;full_address&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;full_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;full_address&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Здесь мы определили функцию, принимающую строку, соответствующую IP-адресу, и целое число, соответствующее порту, и возвращающую строку с полным адресом (включающую хост и порт вместе). Как видите, мы вызвали её классическим способом. Но мы можем вызвать её и инфиксным способом. Для этого достаточно при вызове заключить имя функции в обратные одинарные кавычки (этот символ располагается обычно на клавише с тильдой). Выглядит это так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;full_address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;В инфиксной форме мы, как и со знаком сложения, заключаем имя функции &lt;em&gt;между&lt;/em&gt; аргументами.&lt;/p&gt;
-
-&lt;p&gt;Давайте переименуем функцию для бОльшей литературности:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;В этом случае инфиксная запись будет выглядеть значительно более привлекательно:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;127.0.0.1&amp;quot;&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Довольно-таки симпатишно вышло. &lt;/p&gt;
-
-&lt;p&gt;Конечно, инфиксную запись можно считать не более чем синтаксическим сахаром, но в ряде случаев такая запись может сделать код более удобным для чтения. Впрочем, чрезмерно увлекаться “инфиксностью” не рекомендуется (также как и, скажем, перегрузкой операторов в C++).&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/25/haskell-infix-functions.html&quot;&gt;Haskell: об инфиксных функциях&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 25, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
