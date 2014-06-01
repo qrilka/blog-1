@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-06-02T00:43:39+04:00</updated>
+<updated>2014-06-02T00:45:26+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
@@ -24,7 +24,7 @@
     <uri>http://blog.dshevchenko.biz</uri>
     <email>me@dshevchenko.biz</email>
   </author>
-  <content type="html">&lt;p&gt;Недавно провёл любопытную аналогию между Haskell и Linux. А натолкнула меня на эту аналогию заметка пятилетней давности (Изучай Haskell ради… Haskell’а)[http://habrahabr.ru/post/74164/]. Автор утверждает, что “Прагматика Haskell’а заключается в том, что он существует прежде всго для исследования… Haskell’а.”&lt;/p&gt;
+  <content type="html">&lt;p&gt;Недавно провёл любопытную аналогию между Haskell и Linux. А натолкнула меня на эту аналогию заметка пятилетней давности &lt;a href=&quot;http://habrahabr.ru/post/74164/&quot;&gt;Изучай Haskell ради… Haskell’а&lt;/a&gt;. Автор утверждает, что “Прагматика Haskell’а заключается в том, что он существует прежде всго для исследования… Haskell’а.”&lt;/p&gt;
 
 &lt;p&gt;Вы знаете, с чего начался Linux? Он же был студенческой поделкой. А девиз помните? “Just for fun!” То есть хобби для развлекухи, и ничего более. И поэтому люди, которые до 2000 года что-то знали о Linux, использовали его исключительно ради Linux. Эта система не была средством, она была целью. Кто-то с её помощью познавал Unix-тонкости, играясь с файловыми системами. Кто-то баловался с ядром. Кто-то настраивал сеть. В общем, кто на что горазд…&lt;/p&gt;
 
