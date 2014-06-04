@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Пишем резюме на Haskell",
+		  "category"   : "articles",
+		  "url"        : "http://blog.dshevchenko.biz/2014/6/4/cv-in-haskell.html",
+		  "date"       : "2014-06-04 00:00:00 +0400",
+		  "shortdate"  : "июнь 04, 2014"
+		} ,
+	
+		{
 		  "title"      : "Haskell и Linux: не только just for fun",
 		  "category"   : "articles",
 		  "url"        : "http://blog.dshevchenko.biz/2014/6/1/haskell-and-linux.html",

@@ -4,13 +4,193 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-06-02T00:45:26+04:00</updated>
+<updated>2014-06-04T09:24:04+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
   <uri>http://blog.dshevchenko.biz/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Пишем резюме на Haskell]]></title>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/6/4/cv-in-haskell.html"/>
+  <id>http://blog.dshevchenko.biz/2014/6/4/cv-in-haskell</id>
+  <published>2014-06-04T00:00:00+04:00</published>
+  <updated>2014-06-04T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://blog.dshevchenko.biz</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;Вчера ночью пришло вдохновение, и решил я прикольнуться. Забегая вперёд, скажу, что прикол удался, мне и самому понравилось.&lt;/p&gt;
+
+&lt;p&gt;Короче, решил я написать своё резюме на Haskell. Знаете, как это часто бывает? Разработчики пишут резюме, в котором, помимо всего прочего, выкладывают ссылки на примеры своего кода (где-нибудь на GitHub). А я подумал, почему бы не попробовать совместить резюме и код? И вот что из этого вышло:&lt;/p&gt;
+
+&lt;p&gt;```haskell
+– Denis Shevchenko, 2014
+– CV, for Haskellers only. ;-)&lt;/p&gt;
+
+&lt;p&gt;module Main where&lt;/p&gt;
+
+&lt;p&gt;import Control.Monad.Writer.Lazy
+import Data.Functor ((&amp;lt;$&amp;gt;))
+import Data.List (dropWhileEnd)
+import Data.Char (isSpace)&lt;/p&gt;
+
+&lt;p&gt;type InfoAboutMe = String
+type InfoCloud = Writer InfoAboutMe ()
+type Years = (Int, Int)&lt;/p&gt;
+
+&lt;p&gt;showYears :: Years -&amp;gt; String
+showYears years = show (fst years) ++ “ - “ ++ show (snd years)&lt;/p&gt;
+
+&lt;p&gt;indent = “  “
+bigIndent = “    * “
+now = 2014 &lt;/p&gt;
+
+&lt;p&gt;name :: InfoCloud
+name = tell $ indent ++ “Denis Shevchenko” ++ “\n” &lt;/p&gt;
+
+&lt;p&gt;contacts :: InfoCloud
+contacts = 
+    let rawContactsLines = [“website:  http://dshevchenko.biz”,
+                            “email:    me@dshevchenko.biz”,
+                            “GitHub:   /denisshevchenko”,
+                            “Google+:  +DenisShevchenko”,
+                            “LinkedIn: /in/dshevchenkobiz”]
+        contactsLinesWithNL = (++ “\n”) &amp;lt;$&amp;gt; rawContactsLines 
+        prettyContactsLines = (bigIndent ++) &amp;lt;$&amp;gt; contactsLinesWithNL
+    in
+    tell $ concat prettyContactsLines&lt;/p&gt;
+
+&lt;p&gt;skills :: InfoCloud
+skills = do
+    tell $ “\n” ++ indent ++ “Skills: “
+    tell $ dropWhileEnd (\char -&amp;gt; char == ‘,’ || isSpace char)
+         $ concatMap (++ “, “) [“Haskell”,
+                                “C++11”,
+                                “Objective-C”,
+                                “OS X”,
+                                “Linux”,
+                                “Git”,
+                                “Cocoa”,
+                                “Network”] &lt;/p&gt;
+
+&lt;p&gt;workAtSCC :: Years -&amp;gt; InfoCloud
+workAtSCC years = 
+    tell $ bigIndent
+           ++ “Satellite Communication Center, “ 
+           ++ show (fst years) ++ “ - “ ++ show (snd years) ++ “,”
+           ++ “ C++ developer.”
+           ++ “\n”&lt;/p&gt;
+
+&lt;p&gt;workAtInfrasoft :: Years -&amp;gt; InfoCloud
+workAtInfrasoft years = 
+    tell $ bigIndent
+           ++ “Infrasoft, “ 
+           ++ showYears years ++ “,”
+           ++ “ C++ developer.”
+           ++ “\n”&lt;/p&gt;
+
+&lt;p&gt;workAtUnicommTelematics :: Years -&amp;gt; InfoCloud
+workAtUnicommTelematics years = 
+    tell $ bigIndent
+           ++ “Unicomm Telematics, “ 
+           ++ showYears years ++ “,”
+           ++ “ C++ developer.”
+           ++ “\n”&lt;/p&gt;
+
+&lt;p&gt;workAtOVSoft :: Years -&amp;gt; InfoCloud
+workAtOVSoft years = 
+    tell $ bigIndent
+           ++ “OV-Soft, “ 
+           ++ showYears years ++ “,”
+           ++ “ C++ developer.”
+           ++ “\n”&lt;/p&gt;
+
+&lt;p&gt;workAtParagonSoftware :: Years -&amp;gt; InfoCloud
+workAtParagonSoftware years = 
+    tell $ bigIndent
+           ++ “Paragon Software, “ 
+           ++ showYears years ++ “,”
+           ++ “ Senior C++ developer.”
+           ++ “\n”&lt;/p&gt;
+
+&lt;p&gt;experience :: InfoCloud
+experience = do
+    tell $ “\n\n” ++ indent ++ “Experience:\n”
+    workAtSCC (2006, 2008) 
+    » workAtInfrasoft (2008, 2009) 
+    » workAtUnicommTelematics (2009, 2011)
+    » workAtOVSoft (2011, 2012)
+    » workAtParagonSoftware (2013, now)&lt;/p&gt;
+
+&lt;p&gt;education :: Years -&amp;gt; InfoCloud
+education years = 
+    tell $ “\n\n” ++ indent ++ “Education: “
+           ++ showYears years ++ “, “
+           ++ “Moscow State Technological University &quot;Stankin&quot;”&lt;/p&gt;
+
+&lt;p&gt;openProjects :: InfoCloud
+openProjects = do
+    tell $ “\n” ++ indent ++ “Open projects:\n”
+           ++ bigIndent ++ “Thoughts: http://blog.dshevchenko.biz”
+           ++ “\n”
+           ++ bigIndent ++ “О Haskell по-человечески: http://ohaskell.dshevchenko.biz”
+           ++ “\n”
+           ++ bigIndent ++ “Haskell cookbook: http://bit.ly/1nMpWhp”
+           ++ “\n”&lt;/p&gt;
+
+&lt;p&gt;main :: IO ()
+main = 
+    let infoAboutMe = execWriter $ name
+                                   » contacts 
+                                   » skills
+                                   » education (1999, 2004)
+                                   » experience
+                                   » openProjects
+    in
+    putStrLn infoAboutMe&lt;/p&gt;
+
+&lt;p&gt;unusedTechnologies = “Microsoft”
+```&lt;/p&gt;
+
+&lt;p&gt;Прикольно, не правда ли? Вот результат:&lt;/p&gt;
+
+&lt;p&gt;```bash
+  Denis Shevchenko
+    * website:  http://dshevchenko.biz
+    * email:    me@dshevchenko.biz
+    * GitHub:   /denisshevchenko
+    * Google+:  +DenisShevchenko
+    * LinkedIn: /in/dshevchenkobiz&lt;/p&gt;
+
+&lt;p&gt;Skills: Haskell, C++11, Objective-C, OS X, Linux, Git, Cocoa, Network&lt;/p&gt;
+
+&lt;p&gt;Education: 1999 - 2004, Moscow State Technological University “Stankin”&lt;/p&gt;
+
+&lt;p&gt;Experience:
+    * Satellite Communication Center, 2006 - 2008, C++ developer.
+    * Infrasoft, 2008 - 2009, C++ developer.
+    * Unicomm Telematics, 2009 - 2011, C++ developer.
+    * OV-Soft, 2011 - 2012, C++ developer.
+    * Paragon Software, 2013 - 2014, Senior C++ developer.&lt;/p&gt;
+
+&lt;p&gt;Open projects:
+    * Thoughts: http://blog.dshevchenko.biz
+    * О Haskell по-человечески: http://ohaskell.dshevchenko.biz
+    * Haskell cookbook: http://bit.ly/1nMpWhp
+```&lt;/p&gt;
+
+&lt;p&gt;Идея была в том, чтобы отразить в этом компактном резюме мои нынешние Haskell-навыки. Скажем, можно было спокойно обойтись без &lt;code&gt;Writer&lt;/code&gt;, не так ли? Но зато сразу видно, что я имею представление о том, как работать с этим трансформером. :-) Аппликативный функтор затесался, частичное применение функции промелькнуло, работа с парой показана, и даже простая монадическая цепочка виднеется.&lt;/p&gt;
+
+&lt;p&gt;Живёт это хозяйство в моём &lt;a href=&quot;https://gist.github.com/denisshevchenko/18507de8661a45094a1e&quot;&gt;GitHub Gist&lt;/a&gt;. Уверен, в будущем туда добавятся ещё кое-какие вкусности. Скажем, программная генерация итогового текста в PDF, или ещё что-нибудь в этом роде.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/6/4/cv-in-haskell.html&quot;&gt;Пишем резюме на Haskell&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, июнь 04, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -732,281 +912,6 @@ stray &#39;\320&#39; in program
 &lt;p&gt;Следите за новостями…&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/29/haskell-idea.html&quot;&gt;Haskell: идея&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 29, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Haskell: о функциях высшего порядка]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/26/haskell-higher-order-functions.html"/>
-  <id>http://blog.dshevchenko.biz/2013/12/26/haskell-higher-order-functions</id>
-  <published>2013-12-26T00:00:00+04:00</published>
-  <updated>2013-12-26T00:00:00+04:00</updated>
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;p&gt;Функции высшего порядка (higher-order functions) - очень важная и очень интересная особенность языка Haskell. Эта особенность основана на том постулате, что функции в Haskell - это &lt;em&gt;значения&lt;/em&gt;. Знаю, это не так легко укладывается в голове, но такова особенность функционального программирования в целом: функции являются значениями (в широком смысле этого слова). Впрочем, если вы прочитали мою прошлую заметку о чистых функциях, вас это уже не должно удивлять, потому что вы уже знаете. что вызов чистой функции в конечном итоге порождает некоторое конечное выражение (являющееся итогом вычисления всех выражений в теле этой функции), которым компилятор заменяет место вызова.&lt;/p&gt;
-
-&lt;p&gt;А раз уж функции являются значениями, то их можно, во-первых, передавать другим функциям в качестве аргумента, а во-вторых, возвращать из других функций в качестве выходного значения. Так вот функция A, которая принимает некую функцию B в качестве аргумента и/или возвращает некую функцию C в качестве выходного значения, называется &lt;em&gt;функцией высшего порядка&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h3&gt;А теперь начинаем удивляться...&lt;/h3&gt;
-
-&lt;p&gt;Помните, когда я рассказывал вам о чистых функциях, было упомянуто, что такие функции могут принимать как один, так и множество аргументов. На самом деле, я обманул вас, ибо правда такова:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Функции в Haskell всегда принимают только один аргумент. Ни больше, ни меньше.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Но, простите, а как же мы смогли определить функции, принимающие два аргумента?? Отвечаю: это была хитрость. :)&lt;/p&gt;
-
-&lt;p&gt;Хитрость это называется “каррирование” (currying), иногда говорят “карринг”. Слово это знаменитое, ибо оно происходит от имени &lt;strong&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Haskell_Curry&quot;&gt;Haskell Curry&lt;/a&gt;&lt;/strong&gt;. Да-да, этот тот самый американский математик, в честь которого назвали изучаемый нами язык.&lt;/p&gt;
-
-&lt;p&gt;Каррирование - это превращение функции, принимающей множество аргументов, в функцию, принимающую все эти аргументы по одному. Что за ерунда, спросите вы. Поясняю.&lt;/p&gt;
-
-&lt;p&gt;Определим функцию деления двух чисел:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Итак, мы определили функцию, принимающую два значения типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt; и возвращающую результат деления первого на второе. Всё предельно просто, не так ли? На самом деле, не так…&lt;/p&gt;
-
-&lt;p&gt;Если мы посмотрим “пот капот” вызова этой функции:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;то узнаем, что вызов этой функции происходит &lt;em&gt;в два этапа&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Функция &lt;code&gt;divide&lt;/code&gt; применяется к первому аргументу &lt;code&gt;10.03&lt;/code&gt;, вычисляется и возвращает *функцию* типа &lt;code&gt;Double -&amp;gt; Double&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Эта возвращённая функция применяется ко второму аргументу &lt;code&gt;2.1&lt;/code&gt;, вычисляется и возвращает конечное значение 4.776190476190476.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;На самом деле мы могли бы более явно отразить эту “двуэтапность”, переписав вызов так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Понимаете, да? Функция всегда применяется только к одному аргументу: сначала к 10.03, а потом возвращённая первым вызовом функция применяется к 2.1.&lt;/p&gt;
-
-&lt;p&gt;Именно поэтому строка объявления такой функции содержит &lt;em&gt;две&lt;/em&gt; стрелочки вместо одной:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Мы помним, что символ стрелочки говорит нам о функции. Так вот здесь мы видим &lt;em&gt;две&lt;/em&gt; стрелочки именно потому, что вызов этой функции происходит в два этапа. И поэтому, строго говоря, неправильно читать это объявление так:&lt;/p&gt;
-
-&lt;p&gt;“Функция &lt;code&gt;divide&lt;/code&gt; принимает два аргумента типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt; и возвращает значение типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt;.”&lt;/p&gt;
-
-&lt;p&gt;Правильно читать так:&lt;/p&gt;
-
-&lt;p&gt;“Функция &lt;code&gt;divide&lt;/code&gt; принимает первый аргумент типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt; и возвращает функцию типа &lt;strong&gt;&lt;code&gt;Double -&amp;gt; Double&lt;/code&gt;&lt;/strong&gt;, принимающую второй аргумент типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt; и возвращающую значение типа &lt;strong&gt;&lt;code&gt;Double&lt;/code&gt;&lt;/strong&gt;.”&lt;/p&gt;
-
-&lt;p&gt;Более того, это правильное прочтение объявления можно было бы отразить явно и в самом объявлении! Вот так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Теперь мы явно видим, что на первом этапе происходит вызов функции от одного аргумента, возвращающей функцию типа &lt;strong&gt;&lt;code&gt;Double -&amp;gt; Double&lt;/code&gt;&lt;/strong&gt;, а на втором этапе происходит уже вызов этой (возвращённой на первом этапе) функции.&lt;/p&gt;
-
-&lt;p&gt;По аналогии, если бы у нас была функция, принимающая три аргумента:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg3&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg3&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;45.7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;то её вызов на самом деле проходил бы &lt;em&gt;в три этапа&lt;/em&gt;, и чтобы явно отразить это, мы могли бы переписать её объявление так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;а её вызов - так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;45.7&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;А теперь нам нужно уточнить одну важную деталь.&lt;/p&gt;
-
-&lt;h3&gt;Частичное применение функции&lt;/h3&gt;
-
-&lt;p&gt;Вспомните, что я сказал о функции &lt;code&gt;divide&lt;/code&gt;: её вызов происходит &lt;em&gt;в два этапа&lt;/em&gt;. Так вот важно понимать, что функция &lt;code&gt;divide&lt;/code&gt; вызывается &lt;em&gt;один&lt;/em&gt; раз, а не два раза! Вызов один (то есть тело этой функции выполняется единократно), просто этот вызов разделён на два шага. А чтобы понять суть этих шагов, необходимо узнать об одной важной детали: частичное применение функции. Звучит страшновато, но суть очень проста.&lt;/p&gt;
-
-&lt;p&gt;Частичное применение (partial application) функции - это такой её вызов, когда ей на вход подаются не все аргументы, которые она ожидает. И здесь нам пригодятся уже известные нам &lt;strong&gt;&lt;a href=&quot;http://dshevchenko.biz/ru/content/haskell-%D0%BE-%D0%BB%D1%8F%D0%BC%D0%B1%D0%B4%D0%B0-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F%D1%85&quot;&gt;λ-функции&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Представим себе, что наша функция &lt;code&gt;divide&lt;/code&gt; была бы апплицирована (применена) не к двум, а только к одному аргументу. Тогда это выглядело бы так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; 
-    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temporary_function&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- &amp;quot;запомнили&amp;quot; первый&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temporary_function&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- получили второй!&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Вот теперь всё встало на свои места. Здесь наглядно показано, что же на самом деле означает вызов вида:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;divide&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;В результате первого вызова, когда мы применили функцию &lt;code&gt;divide&lt;/code&gt; лишь к одному (первому) аргументу, мы ещё не можем получить результат деления, потому что второго-то аргумента мы функции ещё не дали! Вместо этого мы получили как бы временную (промежуточную) λ-функцию, которую мы для наглядности ассоциировали с выражением &lt;code&gt;temporary_function&lt;/code&gt;. Эта временная λ-функция как бы запомнила значение первого аргумента, и когда мы применили её уже ко второму аргументу, то в результате мы уже получили итоговый результат деления.&lt;/p&gt;
-
-&lt;p&gt;По аналогии, вызов нашей функции &lt;code&gt;total_sum&lt;/code&gt;, который, как мы помним, происходит в три этапа, можно разложить так:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Double&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg3&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg3&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_function&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_sum&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- &amp;quot;запомнили&amp;quot; первый&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;second_function&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first_function&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- &amp;quot;запомнили&amp;quot; второй&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second_function&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- получили третий!&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;То есть в процессе вызова у нас появилось уже две промежуточные λ-функции, каждая из которых принимала лишь один аргумент и как бы запоминала его. И только тогда, когда вторая промежуточная λ-функция была апплицирована к третьему аргументу (который и оказался последним необходимым для нас), мы и получаем итоговую сумму.&lt;/p&gt;
-
-&lt;p&gt;Разумеется, на практике вводить такие промежуточные λ-функции вам не придётся. Я лишь показал процесс каррирования на практике. Считайте, что мы просто заглянули “под капот” функции и увидели её внутреннюю “пошаговость”.&lt;/p&gt;
-
-&lt;h3&gt;&quot;Ну хорошо, а зачем всё это нужно??&quot;&lt;/h3&gt;
-
-&lt;p&gt;Резонный вопрос. На самом деле, в подавляющем большинстве случаев знать вышеизложенную информацию о каррировании функций и о частичном применении к аргументам &lt;em&gt;не нужно&lt;/em&gt;. Главное преимущество такого подхода, при котором одна функция от нескольких аргументов раскладывается на цепочку функций от одного аргумента каждая, лежит в “академическом измерении”: проводить формальные математические доказательства гораздо легче, если договориться, что каждая из вычисляемых функций всегда принимает строго один аргумент и выдаёт строго одно значение.&lt;/p&gt;
-
-&lt;p&gt;Но нас-то с вами, как программистов-практиков, гораздо больше интересует аспект практический, а не академический. И поэтому теперь мы возвращаемся к рассмотрению функций высшего порядка (далее - ФВП).&lt;/p&gt;
-
-&lt;p&gt;Формально функции &lt;code&gt;divide&lt;/code&gt; и &lt;code&gt;total_sum&lt;/code&gt; являются ФВП, в силу тех самых промежуточных λ-функций. Фактически, все функции, объявленные как принимающие более одного аргумента, являются ФВП. Но на самом деле все эти промежуточные λ-функции - это всего лишь подкапотные дела, они скрыты от наших глаз, в то время как гораздо больший интерес представляют “настоящие” ФВП, которые характеризуются именно тем, что явно объявлены как принимающие на вход реальные функциональные значения и/или возвращающие реальные функциональные значения.&lt;/p&gt;
-
-&lt;p&gt;А чтобы разобраться в том, как всё это работает на практике, и понять реальную пользу от ФВП, давайте разберём небольшой пример.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Integer&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;user_info&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;user_info&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;login&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;avatar_URL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&amp;quot;Full info about user @&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; login: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;login&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; password: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; avatar URL: &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;avatar_URL&lt;/span&gt;
-
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;EmptyInfo&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithAvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;store_login_in&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;EmptyInfo&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;store_login_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;empty_info&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;empty_info&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;denis&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;-- В реальности логин будет получен &lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;-- в соответствии с переданным user_id&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;store_password_in&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;store_password_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;123456789abc&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;-- В реальности пароль будет получен &lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;-- в соответствии с переданным user_id&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;store_avatar_URL_in&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithAvatarURL&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;store_avatar_URL_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://dshevchenko.biz/denis_avatar.png&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;-- В реальности URL будет получен &lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;-- в соответствии с переданным user_id&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1234&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_login_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_info&lt;/span&gt; 
-                                         &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_password_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; 
-                                               &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;info_with_avatar_URL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_avatar_URL_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; 
-                                                   &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;full_info_about_user&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_avatar_URL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;putStrLn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;full_info_about_user&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Красиво, не так ли? Давайте разберём это хозяйство по косточкам…&lt;/p&gt;
-
-&lt;p&gt;Во-первых, новая для нас конструкция вида:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Очевидно, вы уже догадались, что это всего лишь добавление псевдонима для (уже известного) типа. Теперь вместо типа &lt;strong&gt;&lt;code&gt;String&lt;/code&gt;&lt;/strong&gt; можно использовать идентификатор &lt;code&gt;Login&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Далее мы определили простую функцию вида:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;nf&quot;&gt;user_info&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Тут всё просто: функция &lt;code&gt;user_info&lt;/code&gt; ожидает на вход логин, пароль, адрес аватара и идентификатор пользователя, а на выходе выдаёт некую результирующую строку.&lt;/p&gt;
-
-&lt;p&gt;А вот теперь начинается самое интересное. Подразумевается, что изначально у нас имеется лишь некий идентификатор пользователя, а соответствующие этому идентификатору логин, пароль и путь к аватару нам нужно откуда-то получить. К счастью, у нас есть три функции, каждая из которых знает, откуда получить логин, пароль и путь к аватару соответственно. Причём каждая из этих трёх функций является ФВП!&lt;/p&gt;
-
-&lt;p&gt;Обратите внимание на следующие псевдонимы:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;EmptyInfo&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AndWithAvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Каждый из них вводит упрощающее имя для функционального типа, образованного от типа функции &lt;code&gt;user_info&lt;/code&gt;. Обратите внимание: каждый последующий тип ожидает на один аргумент меньше, чем предыдущий тип. Чтобы было понятнее, изобразим это с соответствующими сдвигами:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;&lt;span class=&quot;kt&quot;&gt;EmptyInfo&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;WithLogin&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;          &lt;span class=&quot;kt&quot;&gt;Password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;AndWithPassword&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;                &lt;span class=&quot;kt&quot;&gt;AvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;AndWithAvatarURL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt;                            &lt;span class=&quot;kt&quot;&gt;UserId&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Каждый из этих псевдонимов задаёт сигнатуру для (очередной) промежуточной λ-функции, и нужно это, как вы уже догадались, для упомянутого выше частичного применения функции &lt;code&gt;user_info&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Рассмотрим первый вызов:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;        &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_login_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_info&lt;/span&gt; 
-                                         &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Здесь мы передаём функцию &lt;code&gt;user_info&lt;/code&gt; в качестве первого аргумента функции &lt;code&gt;store_login_in&lt;/code&gt;, внутри которой мы апплицируем переданную функцию &lt;code&gt;user_info&lt;/code&gt; к единственному аргументу, а именно к логину (потому что функция &lt;code&gt;store_login_in&lt;/code&gt; знает только о том, откуда и как получить логин). Соответственно, на выходе из функции &lt;code&gt;store_login_in&lt;/code&gt; мы получаем первую промежуточную λ-функцию, в которой мы как бы сохранили (store) значение логина (именно поэтому сигнатура этой λ-функции названа &lt;code&gt;WithLogin&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Далее следует вызов:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;        &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_password_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_login&lt;/span&gt; 
-                                               &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Здесь мы передаём нашу промежуточную λ-функцию (в которой мы как бы сохранили значение логина) в качестве первого аргумента функции &lt;code&gt;store_password_in&lt;/code&gt;. Эта функция, в свою очередь, апплицирует переданную ей λ-функцию к единственному аргументу, а именно к паролю (ибо функция &lt;code&gt;store_password_in&lt;/code&gt;, как вы уже поняли, умеет доставать только пароль). Таким образом, на выходе из функции &lt;code&gt;store_password_in&lt;/code&gt; мы имеем вторую промежуточную λ-функцию, в которой как бы сохранены уже два значения (полученный на предыдущем вызове логин и на этом вызове - пароль), именно поэтому сигнатура этой λ-функции носит имя &lt;code&gt;AndWithPassword&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;То же самое справедливо и для следующего вызова:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;        &lt;span class=&quot;n&quot;&gt;info_with_avatar_URL&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store_avatar_URL_in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_password&lt;/span&gt; 
-                                                   &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;На выходе из функции &lt;code&gt;store_avatar_URL_in&lt;/code&gt; мы получаем третью λ-функцию, в которой как бы сохранены уже три значения: логин, пароль и путь к аватару.&lt;/p&gt;
-
-&lt;p&gt;В итоге всё завершается апплицированием этой третьей λ-функции к последнему нужному аргументу, а именно к идентификатору пользователя:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;haskell&quot;&gt;        &lt;span class=&quot;n&quot;&gt;full_info_about_user&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info_with_avatar_URL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Именно здесь и происходит наконец “полноценный” вызов функции &lt;code&gt;user_info&lt;/code&gt;, в результате которого мы получаем и выводим на экран результирующую строку следующего вида:&lt;/p&gt;
-
-&lt;bash&gt;
-Full info about user @1234:
- login: denis
- password: 123456789abc
- avatar URL: http://dshevchenko.biz/denis_avatar.png
-&lt;/bash&gt;
-
-&lt;p&gt;Таким образом, функция &lt;code&gt;user_info&lt;/code&gt; была частично апплицирована три раза (каждый раз получая очередной аргумент), и лишь на четвёртый она получила все четыре необходимых ей аргумента. Мы можем сравнить это с конвейерной цепочкой, которую прошла данная функция: на каждом шаге она получала очередной аргумент.&lt;/p&gt;
-
-&lt;p&gt;Итак, перед нами - живая демонстрация реальной пользы ФВП. Да, признаю, этот пример можно было бы упростить (в данном конкретном случае можно было обойтись без частичного применения), но цель была не в том, чтобы дать на 100% оптимальное решение, а в том чтобы продемонстрировать упомянутую выше теорию на практическом примере. И как вы смогли убедиться, эта теория лишь поначалу казалось нам страшноватой, в реальности же она достаточно проста.&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/26/haskell-higher-order-functions.html&quot;&gt;Haskell: о функциях высшего порядка&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 26, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
