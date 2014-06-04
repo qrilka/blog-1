@@ -65,7 +65,7 @@ workAtSCC :: Years -> InfoCloud
 workAtSCC years = 
     tell $ bigIndent
            ++ "Satellite Communication Center, " 
-           ++ show (fst years) ++ " - " ++ show (snd years) ++ ","
+           ++ showYears years ++ ","
            ++ " C++ developer."
            ++ "\n"
 
