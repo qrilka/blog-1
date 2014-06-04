@@ -304,6 +304,19 @@
 
 <p>Идея была в том, чтобы отразить в этом компактном резюме мои нынешние Haskell-навыки. Скажем, можно было спокойно обойтись без <code>Writer</code>, не так ли? Но зато сразу видно, что я имею представление о том, как работать с этим трансформером. :-) Аппликативный функтор затесался, частичное применение функции промелькнуло, работа с парой показана, и даже простая монадическая цепочка виднеется.</p>
 
+<p>Кроме того, я стремился к тому, чтобы, используя конструкции Haskell, отразить путь моего профессионального развития. Скажем, вот эта монадическая цепочка:</p>
+
+<div class="highlight"><pre><code class="haskell"><span class="nf">experience</span> <span class="ow">=</span> <span class="kr">do</span>
+    <span class="n">tell</span> <span class="o">$</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span> <span class="o">++</span> <span class="n">indent</span> <span class="o">++</span> <span class="s">&quot;Experience:</span><span class="se">\n</span><span class="s">&quot;</span>
+    <span class="n">workAtSCC</span> <span class="p">(</span><span class="mi">2006</span><span class="p">,</span> <span class="mi">2008</span><span class="p">)</span> 
+    <span class="o">&gt;&gt;</span> <span class="n">workAtInfrasoft</span> <span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">2009</span><span class="p">)</span> 
+    <span class="o">&gt;&gt;</span> <span class="n">workAtUnicommTelematics</span> <span class="p">(</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">2011</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">workAtOVSoft</span> <span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">workAtParagonSoftware</span> <span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
+</code></pre></div>
+
+<p>не просто перечисляет места, где я работал, но показывает их в хронологическом порядке.  </p>
+
 <p>Живёт это хозяйство в моём <a href="https://gist.github.com/denisshevchenko/18507de8661a45094a1e">GitHub Gist</a>. Уверен, в будущем туда добавятся ещё кое-какие вкусности. Скажем, программная генерация итогового текста в PDF, или ещё что-нибудь в этом роде.</p>
 
 
