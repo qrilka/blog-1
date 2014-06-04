@@ -11,7 +11,7 @@ share: true
 
 Короче, решил я написать своё резюме на Haskell. Знаете, как это часто бывает? Разработчики пишут резюме, в котором, помимо всего прочего, выкладывают ссылки на примеры своего кода (где-нибудь на GitHub). А я подумал, почему бы не попробовать совместить резюме и код? И вот что из этого вышло:
 
-```haskell
+{% highlight haskell %}
 -- Denis Shevchenko, 2014
 -- CV, for Haskellers only. ;-)
 
@@ -138,11 +138,11 @@ main =
     putStrLn infoAboutMe
 
 unusedTechnologies = "Microsoft"
-```
+{% endhighlight %}
 
 Прикольно, не правда ли? Вот результат:
 
-```bash
+{% highlight bash %}
   Denis Shevchenko
     * website:  http://dshevchenko.biz
     * email:    me@dshevchenko.biz
@@ -165,7 +165,7 @@ unusedTechnologies = "Microsoft"
     * Thoughts: http://blog.dshevchenko.biz
     * О Haskell по-человечески: http://ohaskell.dshevchenko.biz
     * Haskell cookbook: http://bit.ly/1nMpWhp
-```
+{% endhighlight %}
 
 Идея была в том, чтобы отразить в этом компактном резюме мои нынешние Haskell-навыки. Скажем, можно было спокойно обойтись без `Writer`, не так ли? Но зато сразу видно, что я имею представление о том, как работать с этим трансформером. :-) Аппликативный функтор затесался, частичное применение функции промелькнуло, работа с парой показана, и даже простая монадическая цепочка виднеется.
 

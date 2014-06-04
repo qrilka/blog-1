@@ -148,161 +148,159 @@
 
 <p>Короче, решил я написать своё резюме на Haskell. Знаете, как это часто бывает? Разработчики пишут резюме, в котором, помимо всего прочего, выкладывают ссылки на примеры своего кода (где-нибудь на GitHub). А я подумал, почему бы не попробовать совместить резюме и код? И вот что из этого вышло:</p>
 
-<p>```haskell
-– Denis Shevchenko, 2014
-– CV, for Haskellers only. ;-)</p>
+<div class="highlight"><pre><code class="haskell"><span class="c1">-- Denis Shevchenko, 2014</span>
+<span class="c1">-- CV, for Haskellers only. ;-)</span>
 
-<p>module Main where</p>
+<span class="kr">module</span> <span class="nn">Main</span> <span class="kr">where</span>
 
-<p>import Control.Monad.Writer.Lazy
-import Data.Functor ((&lt;$&gt;))
-import Data.List (dropWhileEnd)
-import Data.Char (isSpace)</p>
+<span class="kr">import</span> <span class="nn">Control.Monad.Writer.Lazy</span>
+<span class="kr">import</span> <span class="nn">Data.Functor</span> <span class="p">((</span><span class="o">&lt;$&gt;</span><span class="p">))</span>
+<span class="kr">import</span> <span class="nn">Data.List</span> <span class="p">(</span><span class="nf">dropWhileEnd</span><span class="p">)</span>
+<span class="kr">import</span> <span class="nn">Data.Char</span> <span class="p">(</span><span class="nf">isSpace</span><span class="p">)</span>
 
-<p>type InfoAboutMe = String
-type InfoCloud = Writer InfoAboutMe ()
-type Years = (Int, Int)</p>
+<span class="kr">type</span> <span class="kt">InfoAboutMe</span> <span class="ow">=</span> <span class="kt">String</span>
+<span class="kr">type</span> <span class="kt">InfoCloud</span> <span class="ow">=</span> <span class="kt">Writer</span> <span class="kt">InfoAboutMe</span> <span class="nb">()</span>
+<span class="kr">type</span> <span class="kt">Years</span> <span class="ow">=</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span>
 
-<p>showYears :: Years -&gt; String
-showYears years = show (fst years) ++ “ - “ ++ show (snd years)</p>
+<span class="nf">showYears</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
+<span class="nf">showYears</span> <span class="n">years</span> <span class="ow">=</span> <span class="n">show</span> <span class="p">(</span><span class="n">fst</span> <span class="n">years</span><span class="p">)</span> <span class="o">++</span> <span class="s">&quot; - &quot;</span> <span class="o">++</span> <span class="n">show</span> <span class="p">(</span><span class="n">snd</span> <span class="n">years</span><span class="p">)</span>
 
-<p>indent = “  “
-bigIndent = “    * “
-now = 2014 </p>
+<span class="nf">indent</span> <span class="ow">=</span> <span class="s">&quot;  &quot;</span>
+<span class="nf">bigIndent</span> <span class="ow">=</span> <span class="s">&quot;    * &quot;</span>
+<span class="nf">now</span> <span class="ow">=</span> <span class="mi">2014</span> 
 
-<p>name :: InfoCloud
-name = tell $ indent ++ “Denis Shevchenko” ++ “\n” </p>
+<span class="nf">name</span> <span class="ow">::</span> <span class="kt">InfoCloud</span>
+<span class="nf">name</span> <span class="ow">=</span> <span class="n">tell</span> <span class="o">$</span> <span class="n">indent</span> <span class="o">++</span> <span class="s">&quot;Denis Shevchenko&quot;</span> <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> 
 
-<p>contacts :: InfoCloud
-contacts = 
-    let rawContactsLines = [“website:  http://dshevchenko.biz”,
-                            “email:    me@dshevchenko.biz”,
-                            “GitHub:   /denisshevchenko”,
-                            “Google+:  +DenisShevchenko”,
-                            “LinkedIn: /in/dshevchenkobiz”]
-        contactsLinesWithNL = (++ “\n”) &lt;$&gt; rawContactsLines 
-        prettyContactsLines = (bigIndent ++) &lt;$&gt; contactsLinesWithNL
-    in
-    tell $ concat prettyContactsLines</p>
+<span class="nf">contacts</span> <span class="ow">::</span> <span class="kt">InfoCloud</span>
+<span class="nf">contacts</span> <span class="ow">=</span> 
+    <span class="kr">let</span> <span class="n">rawContactsLines</span> <span class="ow">=</span> <span class="p">[</span><span class="s">&quot;website:  http://dshevchenko.biz&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;email:    me@dshevchenko.biz&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;GitHub:   /denisshevchenko&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;Google+:  +DenisShevchenko&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;LinkedIn: /in/dshevchenkobiz&quot;</span><span class="p">]</span>
+        <span class="n">contactsLinesWithNL</span> <span class="ow">=</span> <span class="p">(</span><span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span> <span class="o">&lt;$&gt;</span> <span class="n">rawContactsLines</span> 
+        <span class="n">prettyContactsLines</span> <span class="ow">=</span> <span class="p">(</span><span class="n">bigIndent</span> <span class="o">++</span><span class="p">)</span> <span class="o">&lt;$&gt;</span> <span class="n">contactsLinesWithNL</span>
+    <span class="kr">in</span>
+    <span class="n">tell</span> <span class="o">$</span> <span class="n">concat</span> <span class="n">prettyContactsLines</span>
 
-<p>skills :: InfoCloud
-skills = do
-    tell $ “\n” ++ indent ++ “Skills: “
-    tell $ dropWhileEnd (\char -&gt; char == ‘,’ || isSpace char)
-         $ concatMap (++ “, “) [“Haskell”,
-                                “C++11”,
-                                “Objective-C”,
-                                “OS X”,
-                                “Linux”,
-                                “Git”,
-                                “Cocoa”,
-                                “Network”] </p>
+<span class="nf">skills</span> <span class="ow">::</span> <span class="kt">InfoCloud</span>
+<span class="nf">skills</span> <span class="ow">=</span> <span class="kr">do</span>
+    <span class="n">tell</span> <span class="o">$</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">++</span> <span class="n">indent</span> <span class="o">++</span> <span class="s">&quot;Skills: &quot;</span>
+    <span class="n">tell</span> <span class="o">$</span> <span class="n">dropWhileEnd</span> <span class="p">(</span><span class="nf">\</span><span class="n">char</span> <span class="ow">-&gt;</span> <span class="n">char</span> <span class="o">==</span> <span class="sc">&#39;,&#39;</span> <span class="o">||</span> <span class="n">isSpace</span> <span class="n">char</span><span class="p">)</span>
+         <span class="o">$</span> <span class="n">concatMap</span> <span class="p">(</span><span class="o">++</span> <span class="s">&quot;, &quot;</span><span class="p">)</span> <span class="p">[</span><span class="s">&quot;Haskell&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;C++11&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;Objective-C&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;OS X&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;Linux&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;Git&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;Cocoa&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;Network&quot;</span><span class="p">]</span> 
 
-<p>workAtSCC :: Years -&gt; InfoCloud
-workAtSCC years = 
-    tell $ bigIndent
-           ++ “Satellite Communication Center, “ 
-           ++ show (fst years) ++ “ - “ ++ show (snd years) ++ “,”
-           ++ “ C++ developer.”
-           ++ “\n”</p>
+<span class="nf">workAtSCC</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
+<span class="nf">workAtSCC</span> <span class="n">years</span> <span class="ow">=</span> 
+    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
+           <span class="o">++</span> <span class="s">&quot;Satellite Communication Center, &quot;</span> 
+           <span class="o">++</span> <span class="n">show</span> <span class="p">(</span><span class="n">fst</span> <span class="n">years</span><span class="p">)</span> <span class="o">++</span> <span class="s">&quot; - &quot;</span> <span class="o">++</span> <span class="n">show</span> <span class="p">(</span><span class="n">snd</span> <span class="n">years</span><span class="p">)</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
+           <span class="o">++</span> <span class="s">&quot; C++ developer.&quot;</span>
+           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
 
-<p>workAtInfrasoft :: Years -&gt; InfoCloud
-workAtInfrasoft years = 
-    tell $ bigIndent
-           ++ “Infrasoft, “ 
-           ++ showYears years ++ “,”
-           ++ “ C++ developer.”
-           ++ “\n”</p>
+<span class="nf">workAtInfrasoft</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
+<span class="nf">workAtInfrasoft</span> <span class="n">years</span> <span class="ow">=</span> 
+    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
+           <span class="o">++</span> <span class="s">&quot;Infrasoft, &quot;</span> 
+           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
+           <span class="o">++</span> <span class="s">&quot; C++ developer.&quot;</span>
+           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
 
-<p>workAtUnicommTelematics :: Years -&gt; InfoCloud
-workAtUnicommTelematics years = 
-    tell $ bigIndent
-           ++ “Unicomm Telematics, “ 
-           ++ showYears years ++ “,”
-           ++ “ C++ developer.”
-           ++ “\n”</p>
+<span class="nf">workAtUnicommTelematics</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
+<span class="nf">workAtUnicommTelematics</span> <span class="n">years</span> <span class="ow">=</span> 
+    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
+           <span class="o">++</span> <span class="s">&quot;Unicomm Telematics, &quot;</span> 
+           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
+           <span class="o">++</span> <span class="s">&quot; C++ developer.&quot;</span>
+           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
 
-<p>workAtOVSoft :: Years -&gt; InfoCloud
-workAtOVSoft years = 
-    tell $ bigIndent
-           ++ “OV-Soft, “ 
-           ++ showYears years ++ “,”
-           ++ “ C++ developer.”
-           ++ “\n”</p>
+<span class="nf">workAtOVSoft</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
+<span class="nf">workAtOVSoft</span> <span class="n">years</span> <span class="ow">=</span> 
+    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
+           <span class="o">++</span> <span class="s">&quot;OV-Soft, &quot;</span> 
+           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
+           <span class="o">++</span> <span class="s">&quot; C++ developer.&quot;</span>
+           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
 
-<p>workAtParagonSoftware :: Years -&gt; InfoCloud
-workAtParagonSoftware years = 
-    tell $ bigIndent
-           ++ “Paragon Software, “ 
-           ++ showYears years ++ “,”
-           ++ “ Senior C++ developer.”
-           ++ “\n”</p>
+<span class="nf">workAtParagonSoftware</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
+<span class="nf">workAtParagonSoftware</span> <span class="n">years</span> <span class="ow">=</span> 
+    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
+           <span class="o">++</span> <span class="s">&quot;Paragon Software, &quot;</span> 
+           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
+           <span class="o">++</span> <span class="s">&quot; Senior C++ developer.&quot;</span>
+           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
 
-<p>experience :: InfoCloud
-experience = do
-    tell $ “\n\n” ++ indent ++ “Experience:\n”
-    workAtSCC (2006, 2008) 
-    » workAtInfrasoft (2008, 2009) 
-    » workAtUnicommTelematics (2009, 2011)
-    » workAtOVSoft (2011, 2012)
-    » workAtParagonSoftware (2013, now)</p>
+<span class="nf">experience</span> <span class="ow">::</span> <span class="kt">InfoCloud</span>
+<span class="nf">experience</span> <span class="ow">=</span> <span class="kr">do</span>
+    <span class="n">tell</span> <span class="o">$</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span> <span class="o">++</span> <span class="n">indent</span> <span class="o">++</span> <span class="s">&quot;Experience:</span><span class="se">\n</span><span class="s">&quot;</span>
+    <span class="n">workAtSCC</span> <span class="p">(</span><span class="mi">2006</span><span class="p">,</span> <span class="mi">2008</span><span class="p">)</span> 
+    <span class="o">&gt;&gt;</span> <span class="n">workAtInfrasoft</span> <span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">2009</span><span class="p">)</span> 
+    <span class="o">&gt;&gt;</span> <span class="n">workAtUnicommTelematics</span> <span class="p">(</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">2011</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">workAtOVSoft</span> <span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">)</span>
+    <span class="o">&gt;&gt;</span> <span class="n">workAtParagonSoftware</span> <span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
 
-<p>education :: Years -&gt; InfoCloud
-education years = 
-    tell $ “\n\n” ++ indent ++ “Education: “
-           ++ showYears years ++ “, “
-           ++ “Moscow State Technological University "Stankin"”</p>
+<span class="nf">education</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
+<span class="nf">education</span> <span class="n">years</span> <span class="ow">=</span> 
+    <span class="n">tell</span> <span class="o">$</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span> <span class="o">++</span> <span class="n">indent</span> <span class="o">++</span> <span class="s">&quot;Education: &quot;</span>
+           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;, &quot;</span>
+           <span class="o">++</span> <span class="s">&quot;Moscow State Technological University </span><span class="se">\&quot;</span><span class="s">Stankin</span><span class="se">\&quot;</span><span class="s">&quot;</span>
 
-<p>openProjects :: InfoCloud
-openProjects = do
-    tell $ “\n” ++ indent ++ “Open projects:\n”
-           ++ bigIndent ++ “Thoughts: http://blog.dshevchenko.biz”
-           ++ “\n”
-           ++ bigIndent ++ “О Haskell по-человечески: http://ohaskell.dshevchenko.biz”
-           ++ “\n”
-           ++ bigIndent ++ “Haskell cookbook: http://bit.ly/1nMpWhp”
-           ++ “\n”</p>
+<span class="nf">openProjects</span> <span class="ow">::</span> <span class="kt">InfoCloud</span>
+<span class="nf">openProjects</span> <span class="ow">=</span> <span class="kr">do</span>
+    <span class="n">tell</span> <span class="o">$</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">++</span> <span class="n">indent</span> <span class="o">++</span> <span class="s">&quot;Open projects:</span><span class="se">\n</span><span class="s">&quot;</span>
+           <span class="o">++</span> <span class="n">bigIndent</span> <span class="o">++</span> <span class="s">&quot;Thoughts: http://blog.dshevchenko.biz&quot;</span>
+           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+           <span class="o">++</span> <span class="n">bigIndent</span> <span class="o">++</span> <span class="s">&quot;О Haskell по-человечески: http://ohaskell.dshevchenko.biz&quot;</span>
+           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+           <span class="o">++</span> <span class="n">bigIndent</span> <span class="o">++</span> <span class="s">&quot;Haskell cookbook: http://bit.ly/1nMpWhp&quot;</span>
+           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
 
-<p>main :: IO ()
-main = 
-    let infoAboutMe = execWriter $ name
-                                   » contacts 
-                                   » skills
-                                   » education (1999, 2004)
-                                   » experience
-                                   » openProjects
-    in
-    putStrLn infoAboutMe</p>
+<span class="nf">main</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="nb">()</span>
+<span class="nf">main</span> <span class="ow">=</span> 
+    <span class="kr">let</span> <span class="n">infoAboutMe</span> <span class="ow">=</span> <span class="n">execWriter</span> <span class="o">$</span> <span class="n">name</span>
+                                   <span class="o">&gt;&gt;</span> <span class="n">contacts</span> 
+                                   <span class="o">&gt;&gt;</span> <span class="n">skills</span>
+                                   <span class="o">&gt;&gt;</span> <span class="n">education</span> <span class="p">(</span><span class="mi">1999</span><span class="p">,</span> <span class="mi">2004</span><span class="p">)</span>
+                                   <span class="o">&gt;&gt;</span> <span class="n">experience</span>
+                                   <span class="o">&gt;&gt;</span> <span class="n">openProjects</span>
+    <span class="kr">in</span>
+    <span class="n">putStrLn</span> <span class="n">infoAboutMe</span>
 
-<p>unusedTechnologies = “Microsoft”
-```</p>
+<span class="nf">unusedTechnologies</span> <span class="ow">=</span> <span class="s">&quot;Microsoft&quot;</span>
+</code></pre></div>
 
 <p>Прикольно, не правда ли? Вот результат:</p>
 
-<p>```bash
-  Denis Shevchenko
+<div class="highlight"><pre><code class="bash">  Denis Shevchenko
     * website:  http://dshevchenko.biz
     * email:    me@dshevchenko.biz
     * GitHub:   /denisshevchenko
     * Google+:  +DenisShevchenko
-    * LinkedIn: /in/dshevchenkobiz</p>
+    * LinkedIn: /in/dshevchenkobiz
 
-<p>Skills: Haskell, C++11, Objective-C, OS X, Linux, Git, Cocoa, Network</p>
+  Skills: Haskell, C++11, Objective-C, OS X, Linux, Git, Cocoa, Network
 
-<p>Education: 1999 - 2004, Moscow State Technological University “Stankin”</p>
+  Education: 1999 - 2004, Moscow State Technological University <span class="s2">&quot;Stankin&quot;</span>
 
-<p>Experience:
+  Experience:
     * Satellite Communication Center, 2006 - 2008, C++ developer.
     * Infrasoft, 2008 - 2009, C++ developer.
     * Unicomm Telematics, 2009 - 2011, C++ developer.
     * OV-Soft, 2011 - 2012, C++ developer.
-    * Paragon Software, 2013 - 2014, Senior C++ developer.</p>
+    * Paragon Software, 2013 - 2014, Senior C++ developer.
 
-<p>Open projects:
+  Open projects:
     * Thoughts: http://blog.dshevchenko.biz
     * О Haskell по-человечески: http://ohaskell.dshevchenko.biz
     * Haskell cookbook: http://bit.ly/1nMpWhp
-```</p>
+</code></pre></div>
 
 <p>Идея была в том, чтобы отразить в этом компактном резюме мои нынешние Haskell-навыки. Скажем, можно было спокойно обойтись без <code>Writer</code>, не так ли? Но зато сразу видно, что я имею представление о том, как работать с этим трансформером. :-) Аппликативный функтор затесался, частичное применение функции промелькнуло, работа с парой показана, и даже простая монадическая цепочка виднеется.</p>
 
