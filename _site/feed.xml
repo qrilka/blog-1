@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-06-04T09:32:43+04:00</updated>
+<updated>2014-06-04T09:42:13+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
@@ -195,7 +195,9 @@
     &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workAtParagonSoftware&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2013&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;не просто перечисляет места, где я работал, но показывает их в хронологическом порядке.  &lt;/p&gt;
+&lt;p&gt;не просто перечисляет места, где я работал, но показывает их в хронологическом порядке.&lt;/p&gt;
+
+&lt;p&gt;Кстати, для простоты компиляции этого кода я использовал только стандартные пакеты, так что сторонних зависимостей тут нет. Я даже завёл проектик &lt;code&gt;CV&lt;/code&gt; на FP Complete, так что если вы там уже зарегистрированы, &lt;a href=&quot;https://www.fpcomplete.com/user/dshevchenko/cv1&quot;&gt;можете взглянуть&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Живёт это хозяйство в моём &lt;a href=&quot;https://gist.github.com/denisshevchenko/18507de8661a45094a1e&quot;&gt;GitHub Gist&lt;/a&gt;. Уверен, в будущем туда добавятся ещё кое-какие вкусности. Скажем, программная генерация итогового текста в PDF, или ещё что-нибудь в этом роде.&lt;/p&gt;
 
