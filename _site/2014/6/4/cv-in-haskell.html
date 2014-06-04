@@ -166,7 +166,7 @@
 <span class="kr">type</span> <span class="kt">Position</span> <span class="ow">=</span> <span class="kt">String</span>
 
 <span class="nf">showYears</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
-<span class="nf">showYears</span> <span class="n">years</span> <span class="ow">=</span> <span class="n">show</span> <span class="p">(</span><span class="n">fst</span> <span class="n">years</span><span class="p">)</span> <span class="o">++</span> <span class="s">&quot; - &quot;</span> <span class="o">++</span> <span class="n">show</span> <span class="p">(</span><span class="n">snd</span> <span class="n">years</span><span class="p">)</span>
+<span class="nf">showYears</span> <span class="n">years</span> <span class="ow">=</span> <span class="p">(</span><span class="n">show</span> <span class="o">.</span> <span class="n">fst</span> <span class="o">$</span> <span class="n">years</span><span class="p">)</span> <span class="o">++</span> <span class="s">&quot; - &quot;</span> <span class="o">++</span> <span class="p">(</span><span class="n">show</span> <span class="o">.</span> <span class="n">snd</span> <span class="o">$</span> <span class="n">years</span><span class="p">)</span>
 
 <span class="nf">indent</span> <span class="ow">=</span> <span class="s">&quot;  &quot;</span>
 <span class="nf">bigIndent</span> <span class="ow">=</span> <span class="s">&quot;    * &quot;</span>

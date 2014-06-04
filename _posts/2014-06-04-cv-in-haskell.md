@@ -30,7 +30,7 @@ type Years = (Int, Int)
 type Position = String
 
 showYears :: Years -> String
-showYears years = show (fst years) ++ " - " ++ show (snd years)
+showYears years = (show . fst $ years) ++ " - " ++ (show . snd $ years)
 
 indent = "  "
 bigIndent = "    * "
