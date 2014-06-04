@@ -117,14 +117,12 @@ education years =
            ++ "Moscow State Technological University \"Stankin\""
 
 openProjects :: InfoCloud
-openProjects = do
-    tell $ "\n" ++ indent ++ "Open projects:\n"
-           ++ bigIndent ++ "Thoughts: http://blog.dshevchenko.biz"
-           ++ "\n"
-           ++ bigIndent ++ "О Haskell по-человечески: http://ohaskell.dshevchenko.biz"
-           ++ "\n"
-           ++ bigIndent ++ "Haskell cookbook: http://bit.ly/1nMpWhp"
-           ++ "\n"
+openProjects = 
+    tell $ "\n" ++ indent ++ "Open projects:\n" ++
+           concat [bigIndent ++ aProject ++ "\n" | aProject <- projects]
+    where projects = ["Thoughts: http://blog.dshevchenko.biz",
+                      "О Haskell по-человечески: http://ohaskell.dshevchenko.biz",
+                      "Haskell cookbook: http://bit.ly/1nMpWhp"]
 
 main :: IO ()
 main = 
@@ -167,7 +165,7 @@ unusedTechnologies = "Microsoft"
     * Haskell cookbook: http://bit.ly/1nMpWhp
 {% endhighlight %}
 
-Идея была в том, чтобы отразить в этом компактном резюме мои нынешние Haskell-навыки. Скажем, можно было спокойно обойтись без `Writer`, не так ли? Но зато сразу видно, что я имею представление о том, как работать с этим трансформером. :-) Аппликативный функтор затесался, частичное применение функции промелькнуло, работа с парой показана, и даже простая монадическая цепочка виднеется.
+Идея была в том, чтобы отразить в этом компактном резюме мои нынешние Haskell-навыки. Скажем, можно было спокойно обойтись без `Writer`, не так ли? Но зато сразу видно, что я имею представление о том, как работать с этим трансформером. :-) Аппликативный функтор затесался, частичное применение функции промелькнуло, работа с парой показана, list comprehension тоже тут, и даже простая монадическая цепочка виднеется.
 
 Кроме того, я стремился к тому, чтобы, используя конструкции Haskell, отразить путь моего профессионального развития. Скажем, вот эта монадическая цепочка:
 
