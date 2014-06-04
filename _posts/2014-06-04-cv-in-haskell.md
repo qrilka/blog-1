@@ -146,11 +146,11 @@ unusedTechnologies = "Microsoft"
 {% highlight haskell %}
 experience = do
     tell $ "\n\n" ++ indent ++ "Experience:\n"
-    workAtSCC (2006, 2008) 
-    >> workAtInfrasoft (2008, 2009) 
-    >> workAtUnicommTelematics (2009, 2011)
-    >> workAtOVSoft (2011, 2012)
-    >> workAtParagonSoftware (2013, now)
+    workAt "SCC" (2006, 2008) "C++ developer" 
+    >> workAt "Infrasoft" (2008, 2009) "C++ developer"
+    >> workAt "UnicommTelematics" (2009, 2011) "C++ developer"
+    >> workAt "OVSoft" (2011, 2012) "C++ developer"
+    >> workAt "ParagonSoftware" (2013, now) "Senior C++ developer"
 {% endhighlight %}
 
 не просто перечисляет места, где я работал, но показывает их в хронологическом порядке.
