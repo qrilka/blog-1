@@ -24,13 +24,17 @@ import Data.Char (isSpace)
 
 type InfoAboutMe = String
 type InfoCloud = Writer InfoAboutMe ()
+
+type Company = String
 type Years = (Int, Int)
+type Position = String
 
 showYears :: Years -> String
 showYears years = show (fst years) ++ " - " ++ show (snd years)
 
 indent = "  "
 bigIndent = "    * "
+comma = ", "
 now = 2014 
 
 name :: InfoCloud
@@ -52,68 +56,38 @@ skills :: InfoCloud
 skills = do
     tell $ "\n" ++ indent ++ "Skills: "
     tell $ dropWhileEnd (\char -> char == ',' || isSpace char)
-         $ concatMap (++ ", ") ["Haskell",
-                                "C++11",
-                                "Objective-C",
-                                "OS X",
-                                "Linux",
-                                "Git",
-                                "Cocoa",
-                                "Network"] 
+         $ concatMap (++ comma) ["Haskell",
+                                 "C++11",
+                                 "Objective-C",
+                                 "OS X",
+                                 "Linux",
+                                 "Git",
+                                 "Cocoa",
+                                 "Network"] 
 
-workAtSCC :: Years -> InfoCloud
-workAtSCC years = 
-    tell $ bigIndent
-           ++ "Satellite Communication Center, " 
-           ++ showYears years ++ ","
-           ++ " C++ developer."
-           ++ "\n"
-
-workAtInfrasoft :: Years -> InfoCloud
-workAtInfrasoft years = 
-    tell $ bigIndent
-           ++ "Infrasoft, " 
-           ++ showYears years ++ ","
-           ++ " C++ developer."
-           ++ "\n"
-
-workAtUnicommTelematics :: Years -> InfoCloud
-workAtUnicommTelematics years = 
-    tell $ bigIndent
-           ++ "Unicomm Telematics, " 
-           ++ showYears years ++ ","
-           ++ " C++ developer."
-           ++ "\n"
-
-workAtOVSoft :: Years -> InfoCloud
-workAtOVSoft years = 
-    tell $ bigIndent
-           ++ "OV-Soft, " 
-           ++ showYears years ++ ","
-           ++ " C++ developer."
-           ++ "\n"
-
-workAtParagonSoftware :: Years -> InfoCloud
-workAtParagonSoftware years = 
-    tell $ bigIndent
-           ++ "Paragon Software, " 
-           ++ showYears years ++ ","
-           ++ " Senior C++ developer."
-           ++ "\n"
+workAt :: Company -> Years -> Position -> InfoCloud
+workAt company years position = 
+    tell $ concat [bigIndent,
+                   company,
+                   comma,
+                   showYears years,
+                   comma,
+                   position,
+                   "\n"]
 
 experience :: InfoCloud
 experience = do
     tell $ "\n\n" ++ indent ++ "Experience:\n"
-    workAtSCC (2006, 2008) 
-    >> workAtInfrasoft (2008, 2009) 
-    >> workAtUnicommTelematics (2009, 2011)
-    >> workAtOVSoft (2011, 2012)
-    >> workAtParagonSoftware (2013, now)
+    workAt "SCC" (2006, 2008) "C++ developer" 
+    >> workAt "Infrasoft" (2008, 2009) "C++ developer"
+    >> workAt "UnicommTelematics" (2009, 2011) "C++ developer"
+    >> workAt "OVSoft" (2011, 2012) "C++ developer"
+    >> workAt "ParagonSoftware" (2013, now) "Senior C++ developer"
 
 education :: Years -> InfoCloud
 education years = 
     tell $ "\n\n" ++ indent ++ "Education: "
-           ++ showYears years ++ ", "
+           ++ showYears years ++ comma
            ++ "Moscow State Technological University \"Stankin\""
 
 openProjects :: InfoCloud
@@ -184,7 +158,4 @@ experience = do
 Кстати, для простоты компиляции этого кода я использовал только стандартные пакеты, так что сторонних зависимостей тут нет. Я даже завёл проектик `CV` на FP Complete, так что если вы там уже зарегистрированы, [можете взглянуть](https://www.fpcomplete.com/user/dshevchenko/cv1).
 
 Живёт это хозяйство в моём [GitHub Gist](https://gist.github.com/denisshevchenko/18507de8661a45094a1e). Уверен, в будущем туда добавятся ещё кое-какие вкусности. Скажем, программная генерация итогового текста в PDF, или ещё что-нибудь в этом роде.
-
-
-
 

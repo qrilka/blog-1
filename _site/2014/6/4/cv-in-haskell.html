@@ -160,13 +160,17 @@
 
 <span class="kr">type</span> <span class="kt">InfoAboutMe</span> <span class="ow">=</span> <span class="kt">String</span>
 <span class="kr">type</span> <span class="kt">InfoCloud</span> <span class="ow">=</span> <span class="kt">Writer</span> <span class="kt">InfoAboutMe</span> <span class="nb">()</span>
+
+<span class="kr">type</span> <span class="kt">Company</span> <span class="ow">=</span> <span class="kt">String</span>
 <span class="kr">type</span> <span class="kt">Years</span> <span class="ow">=</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span>
+<span class="kr">type</span> <span class="kt">Position</span> <span class="ow">=</span> <span class="kt">String</span>
 
 <span class="nf">showYears</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">String</span>
 <span class="nf">showYears</span> <span class="n">years</span> <span class="ow">=</span> <span class="n">show</span> <span class="p">(</span><span class="n">fst</span> <span class="n">years</span><span class="p">)</span> <span class="o">++</span> <span class="s">&quot; - &quot;</span> <span class="o">++</span> <span class="n">show</span> <span class="p">(</span><span class="n">snd</span> <span class="n">years</span><span class="p">)</span>
 
 <span class="nf">indent</span> <span class="ow">=</span> <span class="s">&quot;  &quot;</span>
 <span class="nf">bigIndent</span> <span class="ow">=</span> <span class="s">&quot;    * &quot;</span>
+<span class="nf">comma</span> <span class="ow">=</span> <span class="s">&quot;, &quot;</span>
 <span class="nf">now</span> <span class="ow">=</span> <span class="mi">2014</span> 
 
 <span class="nf">name</span> <span class="ow">::</span> <span class="kt">InfoCloud</span>
@@ -188,68 +192,38 @@
 <span class="nf">skills</span> <span class="ow">=</span> <span class="kr">do</span>
     <span class="n">tell</span> <span class="o">$</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">++</span> <span class="n">indent</span> <span class="o">++</span> <span class="s">&quot;Skills: &quot;</span>
     <span class="n">tell</span> <span class="o">$</span> <span class="n">dropWhileEnd</span> <span class="p">(</span><span class="nf">\</span><span class="n">char</span> <span class="ow">-&gt;</span> <span class="n">char</span> <span class="o">==</span> <span class="sc">&#39;,&#39;</span> <span class="o">||</span> <span class="n">isSpace</span> <span class="n">char</span><span class="p">)</span>
-         <span class="o">$</span> <span class="n">concatMap</span> <span class="p">(</span><span class="o">++</span> <span class="s">&quot;, &quot;</span><span class="p">)</span> <span class="p">[</span><span class="s">&quot;Haskell&quot;</span><span class="p">,</span>
-                                <span class="s">&quot;C++11&quot;</span><span class="p">,</span>
-                                <span class="s">&quot;Objective-C&quot;</span><span class="p">,</span>
-                                <span class="s">&quot;OS X&quot;</span><span class="p">,</span>
-                                <span class="s">&quot;Linux&quot;</span><span class="p">,</span>
-                                <span class="s">&quot;Git&quot;</span><span class="p">,</span>
-                                <span class="s">&quot;Cocoa&quot;</span><span class="p">,</span>
-                                <span class="s">&quot;Network&quot;</span><span class="p">]</span> 
+         <span class="o">$</span> <span class="n">concatMap</span> <span class="p">(</span><span class="o">++</span> <span class="n">comma</span><span class="p">)</span> <span class="p">[</span><span class="s">&quot;Haskell&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;C++11&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;Objective-C&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;OS X&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;Linux&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;Git&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;Cocoa&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;Network&quot;</span><span class="p">]</span> 
 
-<span class="nf">workAtSCC</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
-<span class="nf">workAtSCC</span> <span class="n">years</span> <span class="ow">=</span> 
-    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
-           <span class="o">++</span> <span class="s">&quot;Satellite Communication Center, &quot;</span> 
-           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
-           <span class="o">++</span> <span class="s">&quot; C++ developer.&quot;</span>
-           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-
-<span class="nf">workAtInfrasoft</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
-<span class="nf">workAtInfrasoft</span> <span class="n">years</span> <span class="ow">=</span> 
-    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
-           <span class="o">++</span> <span class="s">&quot;Infrasoft, &quot;</span> 
-           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
-           <span class="o">++</span> <span class="s">&quot; C++ developer.&quot;</span>
-           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-
-<span class="nf">workAtUnicommTelematics</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
-<span class="nf">workAtUnicommTelematics</span> <span class="n">years</span> <span class="ow">=</span> 
-    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
-           <span class="o">++</span> <span class="s">&quot;Unicomm Telematics, &quot;</span> 
-           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
-           <span class="o">++</span> <span class="s">&quot; C++ developer.&quot;</span>
-           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-
-<span class="nf">workAtOVSoft</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
-<span class="nf">workAtOVSoft</span> <span class="n">years</span> <span class="ow">=</span> 
-    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
-           <span class="o">++</span> <span class="s">&quot;OV-Soft, &quot;</span> 
-           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
-           <span class="o">++</span> <span class="s">&quot; C++ developer.&quot;</span>
-           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-
-<span class="nf">workAtParagonSoftware</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
-<span class="nf">workAtParagonSoftware</span> <span class="n">years</span> <span class="ow">=</span> 
-    <span class="n">tell</span> <span class="o">$</span> <span class="n">bigIndent</span>
-           <span class="o">++</span> <span class="s">&quot;Paragon Software, &quot;</span> 
-           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;,&quot;</span>
-           <span class="o">++</span> <span class="s">&quot; Senior C++ developer.&quot;</span>
-           <span class="o">++</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="nf">workAt</span> <span class="ow">::</span> <span class="kt">Company</span> <span class="ow">-&gt;</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">Position</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
+<span class="nf">workAt</span> <span class="n">company</span> <span class="n">years</span> <span class="n">position</span> <span class="ow">=</span> 
+    <span class="n">tell</span> <span class="o">$</span> <span class="n">concat</span> <span class="p">[</span><span class="n">bigIndent</span><span class="p">,</span>
+                   <span class="n">company</span><span class="p">,</span>
+                   <span class="n">comma</span><span class="p">,</span>
+                   <span class="n">showYears</span> <span class="n">years</span><span class="p">,</span>
+                   <span class="n">comma</span><span class="p">,</span>
+                   <span class="n">position</span><span class="p">,</span>
+                   <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">]</span>
 
 <span class="nf">experience</span> <span class="ow">::</span> <span class="kt">InfoCloud</span>
 <span class="nf">experience</span> <span class="ow">=</span> <span class="kr">do</span>
     <span class="n">tell</span> <span class="o">$</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span> <span class="o">++</span> <span class="n">indent</span> <span class="o">++</span> <span class="s">&quot;Experience:</span><span class="se">\n</span><span class="s">&quot;</span>
-    <span class="n">workAtSCC</span> <span class="p">(</span><span class="mi">2006</span><span class="p">,</span> <span class="mi">2008</span><span class="p">)</span> 
-    <span class="o">&gt;&gt;</span> <span class="n">workAtInfrasoft</span> <span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">2009</span><span class="p">)</span> 
-    <span class="o">&gt;&gt;</span> <span class="n">workAtUnicommTelematics</span> <span class="p">(</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">2011</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">workAtOVSoft</span> <span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">)</span>
-    <span class="o">&gt;&gt;</span> <span class="n">workAtParagonSoftware</span> <span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
+    <span class="n">workAt</span> <span class="s">&quot;SCC&quot;</span> <span class="p">(</span><span class="mi">2006</span><span class="p">,</span> <span class="mi">2008</span><span class="p">)</span> <span class="s">&quot;C++ developer&quot;</span> 
+    <span class="o">&gt;&gt;</span> <span class="n">workAt</span> <span class="s">&quot;Infrasoft&quot;</span> <span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">2009</span><span class="p">)</span> <span class="s">&quot;C++ developer&quot;</span>
+    <span class="o">&gt;&gt;</span> <span class="n">workAt</span> <span class="s">&quot;UnicommTelematics&quot;</span> <span class="p">(</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">2011</span><span class="p">)</span> <span class="s">&quot;C++ developer&quot;</span>
+    <span class="o">&gt;&gt;</span> <span class="n">workAt</span> <span class="s">&quot;OVSoft&quot;</span> <span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">)</span> <span class="s">&quot;C++ developer&quot;</span>
+    <span class="o">&gt;&gt;</span> <span class="n">workAt</span> <span class="s">&quot;ParagonSoftware&quot;</span> <span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span> <span class="s">&quot;Senior C++ developer&quot;</span>
 
 <span class="nf">education</span> <span class="ow">::</span> <span class="kt">Years</span> <span class="ow">-&gt;</span> <span class="kt">InfoCloud</span>
 <span class="nf">education</span> <span class="n">years</span> <span class="ow">=</span> 
     <span class="n">tell</span> <span class="o">$</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span> <span class="o">++</span> <span class="n">indent</span> <span class="o">++</span> <span class="s">&quot;Education: &quot;</span>
-           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="s">&quot;, &quot;</span>
+           <span class="o">++</span> <span class="n">showYears</span> <span class="n">years</span> <span class="o">++</span> <span class="n">comma</span>
            <span class="o">++</span> <span class="s">&quot;Moscow State Technological University </span><span class="se">\&quot;</span><span class="s">Stankin</span><span class="se">\&quot;</span><span class="s">&quot;</span>
 
 <span class="nf">openProjects</span> <span class="ow">::</span> <span class="kt">InfoCloud</span>
