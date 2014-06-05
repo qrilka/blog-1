@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Haskell IDE от FP Complete",
+		  "category"   : "articles",
+		  "url"        : "http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html",
+		  "date"       : "2014-06-06 00:00:00 +0400",
+		  "shortdate"  : "июнь 06, 2014"
+		} ,
+	
+		{
 		  "title"      : "Пишем резюме на Haskell",
 		  "category"   : "articles",
 		  "url"        : "http://blog.dshevchenko.biz/2014/6/4/cv-in-haskell.html",

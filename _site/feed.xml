@@ -4,13 +4,33 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-06-04T16:39:10+04:00</updated>
+<updated>2014-06-06T03:23:01+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
   <uri>http://blog.dshevchenko.biz/</uri>
   <email>me@dshevchenko.biz</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Haskell IDE от FP Complete]]></title>
+  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html"/>
+  <id>http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide</id>
+  <published>2014-06-06T00:00:00+04:00</published>
+  <updated>2014-06-06T00:00:00+04:00</updated>
+  <author>
+    <name>Денис Шевченко</name>
+    <uri>http://blog.dshevchenko.biz</uri>
+    <email>me@dshevchenko.biz</email>
+  </author>
+  <content type="html">&lt;p&gt;И вновь ночная посиделка вылилась в обзор на Хабре. Добрался-таки я до Haskell-IDE от компании &lt;a href=&quot;https://www.fpcomplete.com/&quot;&gt;FP Complete&lt;/a&gt;. Инструмент, к которому я поначалу отнёсся весьма скептично, оказался весьма интересной и перспективной штукой.&lt;/p&gt;
+
+&lt;p&gt;Собственно, вот &lt;a href=&quot;http://habrahabr.ru/post/225393/&quot;&gt;обзор&lt;/a&gt;. Комментарии, как всегда, приветствуются.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html&quot;&gt;Haskell IDE от FP Complete&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, июнь 06, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -872,31 +892,6 @@ stray &#39;\320&#39; in program
 &lt;p&gt;Впрочем, я надеюсь, вы не рассматриваете эту заметочку как призыв русифицировать свой код. :)&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2014/1/22/russian-letters-in-names.html&quot;&gt;Русские буквы в именах: невероятно, но факт&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, январь 22, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Haskell: идея]]></title>
-  <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/2013/12/29/haskell-idea.html"/>
-  <id>http://blog.dshevchenko.biz/2013/12/29/haskell-idea</id>
-  <published>2013-12-29T00:00:00+04:00</published>
-  <updated>2013-12-29T00:00:00+04:00</updated>
-  <author>
-    <name>Денис Шевченко</name>
-    <uri>http://blog.dshevchenko.biz</uri>
-    <email>me@dshevchenko.biz</email>
-  </author>
-  <content type="html">&lt;p&gt;В общем, после долгих размышлений, после первичного восторга от ФП в целом и от Haskell в частности я решил внести свой посильный вклад в популяризацию Haskell среди русскоязычного IT-сообщества.&lt;/p&gt;
-
-&lt;p&gt;На мой взгляд, одним из важных препятствий на пути развития Haskell в России является очень малое количество русскоязычных руководств. Нет, руководства-то имеются, но большая их часть - это те самые, с числами Фибоначчи которые…&lt;/p&gt;
-
-&lt;p&gt;Поэтому я решил не ограничиваться рамками данного блога, а сделать отдельный сайт, посвящённый практическому руководство по языку Haskell. Цель этого руководства - пошаговое, максимально понятное и предельное практичное объяснение сущности языка Haskell и вменяемая демонстрация его реального использования.&lt;/p&gt;
-
-&lt;p&gt;И тот факт, что я, мягко выражаясь, не являюсь доцентом МФТИ, как раз является преимуществом для такой задумки! Потому что если уж я смогу разобраться с этим самым Haskell, то и многие другие тоже смогут. &lt;/p&gt;
-
-&lt;p&gt;Следите за новостями…&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;http://blog.dshevchenko.biz/2013/12/29/haskell-idea.html&quot;&gt;Haskell: идея&lt;/a&gt; опубликовано Денисом Шевченко на &lt;a href=&quot;http://blog.dshevchenko.biz&quot;&gt;Мысли вслух&lt;/a&gt;, декабрь 29, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
