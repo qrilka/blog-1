@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://blog.dshevchenko.biz/feed.xml" />
 <link rel="alternate" type="text/html" href="http://blog.dshevchenko.biz/" />
-<updated>2014-06-07T08:20:51+04:00</updated>
+<updated>2014-06-07T08:22:16+04:00</updated>
 <id>http://blog.dshevchenko.biz/</id>
 <author>
   <name>Денис Шевченко</name>
@@ -49,7 +49,7 @@
 
 &lt;p&gt;Написано это хозяство неким &lt;a href=&quot;http://shukla.io&quot;&gt;Nishant Shukla&lt;/a&gt;. Кстати, он является автором прекрасных &lt;a href=&quot;http://shuklan.com/haskell/&quot;&gt;практических лекций по Haskell&lt;/a&gt;, которые были прочтены в University of Virginia в 2013 году.&lt;/p&gt;
 
-&lt;p&gt;Электронная версия этой книги стоит $26.39. Причём объём не так велик, менее 300 страниц. И это хорошо: сразу видно, что перед нами не талмуд с водой, а нечто лаконично-практичное.&lt;/p&gt;
+&lt;p&gt;Электронная версия этой книги стоит &lt;a href=&quot;http://www.packtpub.com/haskell-data-analysis-cookbook/book&quot;&gt;$26.39&lt;/a&gt;. Причём объём не так велик, менее 300 страниц. И это хорошо: сразу видно, что перед нами не талмуд с водой, а нечто лаконично-практичное.&lt;/p&gt;
 
 &lt;p&gt;Ну, и кто там ещё пребывает в заблуждении, будто Haskell неприменим на практике? Более чем применим.&lt;/p&gt;
 
