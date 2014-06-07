@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Haskell Data Analysis Cookbook",
+		  "category"   : "articles",
+		  "url"        : "http://blog.dshevchenko.biz/2014/6/7/haskell-data-analysis-cookbook.html",
+		  "date"       : "2014-06-07 00:00:00 +0400",
+		  "shortdate"  : "июнь 07, 2014"
+		} ,
+	
+		{
 		  "title"      : "Haskell IDE от FP Complete",
 		  "category"   : "articles",
 		  "url"        : "http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html",

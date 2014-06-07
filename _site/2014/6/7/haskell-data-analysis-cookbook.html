@@ -8,30 +8,30 @@
 <link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Philosopher:400,400italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-<title>Haskell IDE от FP Complete &#8211; Мысли вслух</title>
+<title>Haskell Data Analysis Cookbook &#8211; Мысли вслух</title>
 <meta name="description" content="блог C++-программиста, влюбившегося в Haskell">
 <meta name="keywords" content="Haskell">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.dshevchenko.biz/images/site-logo.png">
-<meta name="twitter:title" content="Haskell IDE от FP Complete">
+<meta name="twitter:title" content="Haskell Data Analysis Cookbook">
 <meta name="twitter:description" content="блог C++-программиста, влюбившегося в Haskell">
 <meta name="twitter:creator" content="@dshevchenko_biz">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Haskell IDE от FP Complete">
+<meta property="og:title" content="Haskell Data Analysis Cookbook">
 <meta property="og:description" content="блог C++-программиста, влюбившегося в Haskell">
-<meta property="og:url" content="http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html">
+<meta property="og:url" content="http://blog.dshevchenko.biz/2014/6/7/haskell-data-analysis-cookbook.html">
 <meta property="og:site_name" content="Мысли вслух">
 
 <meta name="google-site-verification" content="3kcHwh5V-AOcint1jCdIfBLkmFXD6-93M_DHpVFpjUI">
 
 
 
-<link rel="canonical" href="http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html">
+<link rel="canonical" href="http://blog.dshevchenko.biz/2014/6/7/haskell-data-analysis-cookbook.html">
 <link href="http://blog.dshevchenko.biz/feed.xml" type="application/atom+xml" rel="alternate" title="Мысли вслух Feed">
 <link rel="author" href="https://google.com/+DenisShevchenko?rel=author">
 
@@ -124,29 +124,50 @@
       <header class="entry-header">
         <span class="entry-tags"><a href="http://blog.dshevchenko.biz/tags/#Haskell" title="Pages tagged Haskell">Haskell</a></span>
         
-          <h1 class="entry-title">Haskell IDE от FP Complete</h1>
+          <h1 class="entry-title">Haskell Data Analysis Cookbook</h1>
         
       </header>
       <footer class="entry-meta">
         <!-- <img src="http://blog.dshevchenko.biz/images/bio-photo.jpg" alt="Денис Шевченко photo" class="author-photo">
         <span class="author vcard">By <span class="fn"><a href="http://blog.dshevchenko.biz/about/" title="About Денис Шевченко">Денис Шевченко</a></span></span> -->
-        <span class="entry-date date published"><time datetime="2014-06-06T00:00:00+04:00"><i class="icon-calendar-empty"></i> июнь 06, 2014</time></span>
+        <span class="entry-date date published"><time datetime="2014-06-07T00:00:00+04:00"><i class="icon-calendar-empty"></i> июнь 07, 2014</time></span>
         
-        <span><a href="http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html" rel="bookmark" title="Haskell IDE от FP Complete"><i class="icon-link"></i> Вечная ссылка</a></span>
+        <span><a href="http://blog.dshevchenko.biz/2014/6/7/haskell-data-analysis-cookbook.html" rel="bookmark" title="Haskell Data Analysis Cookbook"><i class="icon-link"></i> Вечная ссылка</a></span>
         <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Комментарии</a></span>
         
         <span class="social-share-facebook">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://blog.dshevchenko.biz/2014/6/7/haskell-data-analysis-cookbook.html" title="Share on Facebook" itemprop="Facebook"><i class="icon-facebook-sign"></i> Like</a></span>
         <span class="social-share-twitter">
-            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Haskell IDE от FP Complete&url=http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html&via=dshevchenko_biz" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
+            <a href="https://twitter.com/intent/tweet?hashtags=articles&text=Haskell Data Analysis Cookbook&url=http://blog.dshevchenko.biz/2014/6/7/haskell-data-analysis-cookbook.html&via=dshevchenko_biz" title="Share on Twitter" itemprop="Twitter"><i class="icon-twitter-sign"></i> Tweet</a></span>
         <span class="social-share-googleplus">
-            <a href="https://plus.google.com/share?url=http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
+            <a href="https://plus.google.com/share?url=http://blog.dshevchenko.biz/2014/6/7/haskell-data-analysis-cookbook.html" title="Share on Google Plus" itemprop="GooglePlus"><i class="icon-google-plus-sign"></i> +1</a></span>
             <!-- /.social-share -->
       </footer>
       <div class="entry-content">
-        <p>И вновь ночная посиделка вылилась в обзор на Хабре. Добрался-таки я до Haskell-IDE от компании <a href="https://www.fpcomplete.com/">FP Complete</a>. Инструмент, к которому я поначалу отнёсся весьма скептично, оказался весьма интересной и перспективной штукой.</p>
+        <p>Вот уж действительно, Real World Haskell. Только что узнал о потрясающей книге <a href="http://haskelldata.com/">“Haskell Data Analysis Cookbook”</a>. Слоган не мог не привлечь моё внимание: “Over 130 Practical Recipes For Data Analysis and Machine Learning”.</p>
 
-<p>Собственно, вот <a href="http://habrahabr.ru/post/225393/">обзор</a>. Комментарии, как всегда, приветствуются.</p>
+<p>Короче, это что-то типа моей <a href="http://cookbook.dshevchenko.biz/">поваренной книги</a>, только значительно более серьёзное и заточенное под работу с данными. Причём под работой с данными подразумеваются чуть ли не все возможные вариации. Судите сами:</p>
+
+<ol>
+  <li>Работа с файлами.</li>
+  <li>CSV, JSON, XML, HTML.</li>
+  <li>MongoDB.</li>
+  <li>Всевозможные манипуляции со строками.</li>
+  <li>Деревья.</li>
+  <li>Графы.</li>
+  <li>Статистика.</li>
+  <li>Параллелизм.</li>
+  <li>Анализ данных в реальном времени.</li>
+  <li>Визуализация данных.</li>
+</ol>
+
+<p>Там много разных неизвестных мне терминов, так что за подробностями <a href="http://haskelldata.com/">сюда</a>.</p>
+
+<p>Написано это хозяство неким Nishant Shukla, автором прекрасных <a href="http://shuklan.com/haskell/">практических лекций по Haskell</a>, которые были прочтены в University of Virginia в 2013 году.</p>
+
+<p>Электронная версия этой книги стоит $26.39.</p>
+
+<p>Ну, кто там ещё пребывает в заблуждении, будто Haskell неприменим на практике? Более чем применим.</p>
 
 
         <div id="disqus_thread"></div><!-- /#disqus_thread -->
@@ -154,10 +175,8 @@
     </div><!-- /.entry-wrapper -->
     <nav class="pagination" role="navigation">
       
-        <a href="http://blog.dshevchenko.biz/2014/6/4/cv-in-haskell.html" class="btn" title="Пишем резюме на Haskell">Предыдущий</a>
+        <a href="http://blog.dshevchenko.biz/2014/6/6/haskell-fp-ide.html" class="btn" title="Haskell IDE от FP Complete">Предыдущий</a>
       
-      
-        <a href="http://blog.dshevchenko.biz/2014/6/7/haskell-data-analysis-cookbook.html" class="btn" title="Haskell Data Analysis Cookbook">Следующий</a>
       
     </nav><!-- /.pagination -->
   </article>
