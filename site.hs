@@ -4,7 +4,6 @@ import Data.Monoid ((<>), mconcat)
 import Data.List.Split (splitOn)
 import Data.List (intersperse, isSuffixOf)
 import System.FilePath (combine, splitExtension, takeFileName)
-
 import Hakyll
 --------------------------------------------------------------------------------
 
@@ -16,7 +15,7 @@ main = hakyll $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
-
+    
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
@@ -31,7 +30,29 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
+   
+    create ["404.html"] $ do
+        route idRoute
+        compile $ makeItem "" >>= loadAndApplyTemplate "templates/404.html" postCtx
+                              >>= loadAndApplyTemplate "templates/default.html" postCtx
+                              >>= relativizeUrls
+   
+    create [".htaccess"] $ do
+        route idRoute
+        compile $ makeItem "" >>= loadAndApplyTemplate "templates/htaccess" defaultContext
 
+    match "README.md" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match "CNAME" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    create [".nojekyll"] $ do
+        route   idRoute
+        compile copyFileCompiler
+    
     create ["archive.html"] $ do
         route idRoute
         compile $ do
