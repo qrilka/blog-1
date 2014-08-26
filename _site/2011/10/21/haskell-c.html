@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Haskell и C++: сравним решения?</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Haskell и C++: сравним решения?</h1>
+
+            <div class="info">
+    (2011, 10, 21)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<!--break-->
+<p>Итак, предлагаю вашему вниманию реальный пример использования языка Haskell. Именно этот простой пример показал мне, что функциональное программирование - реальность, а не баловство горстки фанатов.</p>
+<p>Задача простая: программа приглашает пользователя ввести своё имя, и если такое имеется, она привествует пользователя по фамилии, в противном же случае извиняется и говорит, мол, не знаю вас.</p>
+<p>Для интереса сравним два решения: первое - на C++11, второе - на Haskell. Для полноты сравнения привожу полные файлы.</p>
+<h4>
+<ol style="list-style-type: decimal">
+<li>На C++11.
+</h4>
+</li>
+</ol>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;iostream&gt;</span>
+<span class="ot">#include &lt;string&gt;</span>
+<span class="ot">#include &lt;map&gt;</span>
+
+<span class="kw">typedef</span> std::map &lt;std::string, std::string&gt; Names;
+
+<span class="dt">int</span> main() {
+    Names names
+        {   {<span class="st">&quot;Ivan&quot;</span>,   <span class="st">&quot;Ivanov&quot;</span>}
+          , {<span class="st">&quot;Fedor&quot;</span>,  <span class="st">&quot;Fedorov&quot;</span>}
+          , {<span class="st">&quot;Stepan&quot;</span>, <span class="st">&quot;Stepanov&quot;</span>}
+        };
+    std::cout &lt;&lt; <span class="st">&quot;What is your name?&quot;</span> &lt;&lt; std::endl;
+    std::string first_name;
+    std::cin &gt;&gt; first_name;
+    <span class="dt">const</span> <span class="kw">auto</span> it = names.find( first_name );
+    <span class="kw">if</span> ( it != names.end() )
+        std::cout &lt;&lt; <span class="st">&quot;Hello, mister &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; std::endl;
+    <span class="kw">else</span>
+        std::cout &lt;&lt; <span class="st">&quot;Sorry, I don't know you...&quot;</span> &lt;&lt; std::endl;
+}</code></pre>
+<p>Можно было бы и через operator[], но в данном случае это не важно.</p>
+<h4>
+<ol start="2" style="list-style-type: decimal">
+<li>На Haskell
+</h4>
+</li>
+</ol>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">module</span> <span class="dt">Main</span> <span class="kw">where</span>
+ 
+<span class="kw">import qualified</span> <span class="dt">Data.Map</span> <span class="kw">as</span> <span class="dt">Names</span>
+ 
+names <span class="fu">=</span> Names.fromList
+    [   (<span class="st">&quot;Ivan&quot;</span>,   <span class="st">&quot;Ivanov&quot;</span>)
+      , (<span class="st">&quot;Fedor&quot;</span>,  <span class="st">&quot;Fedorov&quot;</span>)
+      , (<span class="st">&quot;Stepan&quot;</span>, <span class="st">&quot;Stepanov&quot;</span>) 
+    ]
+ 
+main <span class="fu">=</span> <span class="kw">do</span> putStrLn <span class="st">&quot;What is your name?&quot;</span>
+          first_name <span class="ot">&lt;-</span> getLine
+          <span class="kw">case</span> Names.lookup first_name names <span class="kw">of</span>
+              <span class="dt">Just</span> last_name <span class="ot">-&gt;</span> <span class="kw">do</span> putStr <span class="st">&quot;Hello, mister &quot;</span>
+                                   print last_name
+              <span class="dt">Nothing</span>        <span class="ot">-&gt;</span> putStrLn <span class="st">&quot;Sorry, I don't know you...&quot;</span></code></pre>
+<p>Ну и как вам? Прочтите второй пример, и я не поверю вам, если вы скажете, что он непонятен. Лично мне - предельно понятен. Да, синтакстические особенности, конечно, сразу бросаются в глаза, но мысль автора не вызывает сомнений.</p>
+<p>На самом деле, цель, конечно же, не в том, чтобы сравнивать эти решения в контексте “лучше/хуже” (и уж точно не в том, чтобы подсчитывать количество строчек кода в этих примерах), а в том, чтобы наглядно показать, что Haskell - реальный инструмент для реального программирования. Да, этот пример очень простой, но он повседневный, а не академический.</p>
+<p><em>P.S. И лично мне очень жаль, что такое множество статей о функциональном программировании не содержат вот таких простых и нужных примеров…</em></p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>

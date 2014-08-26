@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Языки программирования и парадокс Blub</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Языки программирования и парадокс Blub</h1>
+
+            <div class="info">
+    (2011, 10, 25)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<!--break-->
+<p>Представим себе некий сегмент ПО (чтобы сравнивать языки не вообще, а именно в контексте разработки ПО для конкретного сегмента) и несколько языков программирования для разработки в этом сегменте. Назовём их А, Б, В, Г и Д. Важно уточнить, что языки А, Б, В, Г и Д расположены в порядке от слабейшего к сильнейшему (по неким объективным критериям).</p>
+<p>Допустим, у нас есть некий программист, Петя, использующий язык В. Он не использует (и не собирается использовать) языки А и Б. Для него очевидно: А - это нечто слишком низкоуровневое, а Б - это слабый язык, на котором вообще непонятно как писать что-либо полезное (ещё бы, ведь там нет X*).</p>
+<p>Так вот до тех пор, пока Петя смотрит на языки А и Б, он чётко понимает, что смотрит “вниз” пирамиды. Более того: он объективно видит слабости языков А и Б, поскольку в языках А и Б действительно отсутствуют возможности, используемые Петей (а значит, возможности, привычные для него).</p>
+<p>Однако если Петя посмотрит на языки Г и Д, он не поймёт, что смотрит “вверх” пирамиды. Всё, что он увидит - это какие-то странные, непонятные языки. Естественно, Петя попытается сравнить языки Г и Д с языком В, однако при этом он отбросит все “странные и/или непонятные и/или ненужные штуковины” языков Г и Д. Иначе Петя поступить и не сможет, ведь как разработчик он <em>думает</em> на языке В.</p>
+<p>Любопытно и то, что другой программист, Ваня, использующий язык Г, точно также посмотрит на язык В. Ведь В ниже чем Г. Как же можно написать что-либо полезное на этом В (ещё бы, ведь там нет Y**).</p>
+<p>Поэтому лишь третий программист, Дима, использующий наиболее мощный язык Д, способен объективно увидеть все различия между всеми пятью языками. А вот мнению Пети и Вани в этом вопросе доверять, к сожалению, нельзя, поскольку в силу вступает тот самый парадокс: Петя и Ваня удовлетворены выбранными ими языками, и эти языки определяют то, как они думают о программировании <em>вообще</em>.</p>
+<p>Понимаете, в чём суть? <em>Язык программирования влияет на мышление программиста</em>. Более того: если один и тот же язык используется много лет подряд - он начинает формировать этого программиста, формировать его в<em>и</em>дение программных систем, формировать его философию разработки. Именно поэтому он кажется этому программисту таким понятным, таким естественным, таким правильным языком.</p>
+<p>Вот потому-то жёсткая привязка к единственному языку в определённом смысле слова ограничивает программиста. Мне в этом плане очень понравился следующий афоризм: <strong>“Границы моего языка - это границы моего мира”</strong>. Язык очень тесно связан с мышлением, и это касается как ествественных языков, так и языков программирования.</p>
+<p>Нда, есть над чем подумать… ______________________________</p>
+<ul>
+<li>X - некая возможность, имеющаяся в языке В и отсутствующая в языке Б и ниже. ** Y - некая возможность, имеющаяся в языке Г и отсутствующая в языке В и ниже.</li>
+</ul>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>

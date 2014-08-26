@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>О сложности С++ замолвим слово... Ещё раз...</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>О сложности С++ замолвим слово... Ещё раз...</h1>
+
+            <div class="info">
+    (2013, 08, 28)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Сегодня прочёл одну <strong><a href="http://blog.greaterthanzero.com/post/58482859780/c-and-the-culture-of-complexity">заметку</a></strong> под названием “C++ and the Culture of Complexity”. Суть её в том, что С++ избыточно сложен в сравнении со многим современными языками программирования. Ну и на волне этой заметки я хотел бы поразмышлять об одном аспекте, который сразу же бросился мне в глаза при изучении Objective-C.</p>
+<p>Речь пойдёт о создании и манипулировании объектами пользовательских типов. Почему пользовательских? Потому что с типами <strong>int</strong> и ему подобными и так всё понятно: они мгновенно создаются, столь же мгновенно и безопасно копируются, да и вообще проблем с ними как правило не возникает. Поэтому говорить будем именно о типах, созданных пользователем.</p>
+<p>Известно, что в C++ объект пользовательского типа может быть создан самыми разными способами:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">class</span> My {
+    <span class="co">// ...</span>
+};
+
+My my_global; <span class="co">// Можно так...</span>
+
+<span class="dt">int</span> main() {
+    My my; <span class="co">// Можно так...</span>
+    My* my_in_heap( <span class="kw">new</span> My() ); <span class="co">// Или так...</span>
+    <span class="dt">static</span> My my_static; <span class="co">// Или даже так...</span>
+}</code></pre>
+<p>В общем, как хотим так и создаём. Гибкость с большой буквы. А теперь вопрос: чем является эта гибкость, благом или злом? И чтобы ответить на этот вопрос, мы должны рассмотреть <em>использование</em> созданного объекта. А использовать этот самый объект в C++ можно тоже различными способами:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> by_value( My m ) { <span class="co">/* Передаём по значению... */</span> }
+
+<span class="dt">void</span> by_ptr( My* m ) { <span class="co">/* Передаём по указателю... */</span> }
+
+<span class="dt">void</span> by_classic_cref( <span class="dt">const</span> My&amp; m ) { <span class="co">/* Передаём по классической константной ссылке... */</span> }
+
+<span class="dt">void</span> by_classic_ref( My&amp; m ) { <span class="co">/* Передаём по классической ссылке... */</span> }
+
+My return_by_value() {
+    My my;
+    <span class="kw">return</span> my; <span class="co">// Возвращаем по значению...</span>
+}
+
+My&amp; return_by_classic_ref() {
+    My my;
+    <span class="kw">return</span> my; <span class="co">// Глупо, но ведь можно...</span>
+}
+
+My* return_by_ptr() {
+    <span class="kw">return</span> <span class="kw">new</span> My(); <span class="co">// Возвращаем по указателю...</span>
+}</code></pre>
+<p>И тут тоже сплошная гибкость.</p>
+<p>С одной стороны, это хорошо. Например, если пользовательский тип относительно прост (уровня несложной С-подобной структуры), то его создание в стеке займёт меньше времени чем в куче. Конечно, в реальности эта разница (особенно на современном компьютере) никак себя не проявит, но если вдруг объект нужно создавать и уничтожать, скажем, миллион раз в секунду, то об этом можно задуматься…</p>
+<p>С другой же стороны, использование объекта разными способами влечёт (вернее, может повлечь) за собой несколько мааааленьких сложностей, таких как побочное копирование или мёртвая ссылка. Передаёте по значению - получите <del>ненужную</del> временную копию. Возвращаете по ссылке объект, который (уже) разрушен - получите проблемы с памятью. К тому же, говоря о копировании, нельзя не вспомнить копирующий конструктор, и едва ли есть хотя бы один программист С++, избежавший проблем с этим зверем. :)</p>
+<p>Да, я знаю классический ответ, ибо и сам многократно так отвечал: <em>“Будьте внимательней! Если вам не нужна временная копия - передавайте объект по ссылке. Если вам нужно правильное глубокое копирование - определяйте собственный копирующий конструктор.”</em> Однако в суровой реальности мы все наступали на эти грабли (лично я наступал на них неоднократно). Казалось бы, разве мы не знаем о том, что нужно быть внимательным? Разве мы не знаем разницу между передачей по значению и по ссылке? Конечно знаем. Но…</p>
+<p>Но давайте задумаемся: а нужна ли сия вышеупомянутая гибкость? Лично я прихожу к выводу, что не нужна.</p>
+<p>Во-первых, практику создания и использования объекта по значению, по ссылке и по указателю необходимо изучать <em>всем</em> новичкам С++, таким образом время изучения языка увеличивается (только не говорите мне, что эту тему новичок освоит за пару дней). Во-вторых, ошибки в этой области зачастую не могут быть обнаружены компилятором (впрочем, при флаге -pedantic могут всплывать вспомогательные предупреждения). И в-третьих, эта гибкость привносит в язык <del>ненужную</del> избыточную сложность.</p>
+<p>Почему избыточную? Потому что можно обойтись и без неё. Пример тому - Objective-C. Известно, что как C++, так и Objective-C переняли многие черты своего общего предка - языка С. Но создатели Objective-C кое-что упростили.</p>
+<p>Для меня было приятным сюрпризом узнать, что в Objective-C объект невстроенного типа невозможно создать иначе, как в куче. Таким образом, мы имеем только указатель, и работать с объектом мы можем исключительно через него. Принимаем - по указателю, возвращаем - по указателю. Сначала мне показалось это не очень гибким, но потом я понял, что это даже хорошо.</p>
+<p>Более того, при попытке нарушить этот принцип разработчик незамедлительно получает ошибку. Не предупреждение, которое можно не заметить или проигнорировать, но именно ошибку. <m> <span class="citation">@interface</span> Message -(void) check: (NSString) header; <span class="citation">@end</span></p>
+<p><span class="citation">@implementation</span> Message -(void) check: (NSString) header { // Какой-то код… } <span class="citation">@end</span> </m></p>
+<p>Здесь мы определяем собственный тип <strong>Message</strong>, один из методов которого принимает в качестве аргумента объект типа <strong>NSString</strong> (стандартная строка). Как видите, метод принимает строку по значению. В результате получаем ошибку:</p>
+<p><strong>Interface type ‘NSString’ cannot be passed by value; did you forget * in ‘NSString’?</strong></p>
+<p>Не просто ошибка, но и сразу же подсказка к её исправлению. Та же ситуация при попытке вернуть по значению: <m> <span class="citation">@interface</span> Message -(NSString) header; <span class="citation">@end</span></p>
+<p><span class="citation">@implementation</span> Message -(NSString) header { // Какой-то код… } <span class="citation">@end</span> </m></p>
+<p>Компилятор грозно сообщает:</p>
+<p><strong>Interface type ‘NSString’ cannot be returned by value; did you forget * in ‘NSString’?</strong></p>
+<p>Попробуем неправильно создать объект: <m> static void testMessage() { Message m; // Создаём в стеке… Ну-ну… } </m></p>
+<p>В этом случае компилятор опять даст нам по башке:</p>
+<p><strong>Interface type cannot be statically allocated</strong></p>
+<p>Таким образом, работаем только с указателем, и никак иначе. Ссылок же в Objective-C нет и вовсе. Да и с копированием тоже всё строго: <m> static void testMessages(Message* m1, Message* m2) { <em>m1 = </em>m2; // Разыменовываем указатели с попыткой присвоения? Ну-ну… } </m></p>
+<p>И вновь - ошибка:</p>
+<p><strong>Cannot assign to class object (‘Message’ invalid)</strong></p>
+<p>То есть никакого неправильного копирования объекта не может быть в принципе. Кстати, понятие “копирующий конструктор” языку Objective-C тоже незнакомо…</p>
+<p>К чему это я? Да к тому, что единый способ создания объекта (а именно в куче) и единый способ работы с ним (исключительно по указателю) видится мне значительно лучшей альтернативой той гибкости, которую предлагает C++.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>

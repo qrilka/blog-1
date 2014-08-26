@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>while-цикл: проще некуда</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>while-цикл: проще некуда</h1>
+
+            <div class="info">
+    (2012, 02, 02)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Допустим, мы видим такое письмо:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">while</span>( not_all( small_messages ).was_sended() ) {
+    next_from( small_messages ) &gt;&gt; port;
+}</code></pre>
+<p>Итак, одного взгляда достаточно, чтобы понять: здесь осуществляется поочерёдная отправка малых сообщений в порт до тех пор, пока оные имеются. Опустим детали о типе порта и формате сообщений, сейчас это не важно. Важно то, что такое письмо понятно любому. Сразу. Без пояснений.</p>
+<p>Впрочем, давайте разберёмся, стоит ли игра свеч. Допустим, <strong>small_messages</strong> - это контейнер типа std::queue, и мы, запихнув в него N-ное число сообщений, теперь циклически вытаскиваем их по одному. Но разве в этом случае не проще ли было написать так:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">while</span>( !small_messages.empty() ) {
+    small_messages.front() &gt;&gt; port;
+    small_messages.pop();
+}</code></pre>
+<p>Да, проще. Написать проще. Воспринять - чуть сложнее.</p>
+<p>О-о, я уже слышу возгласы: “Да ты что, Денис, с ума сошёл? Да в таком элементарном цикле даже новичок разберётся!” Да, вы правы, разобраться в таком цикле <em>несложно</em>. Однако разобраться в моём варианте <em>проще</em>. <em>Объективно проще</em>.</p>
+<p>Поясню. Взглянем на первую строку:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">while</span>( !small_messages.empty() )</code></pre>
+<p>О чём говорит нам эта строка? “До тех пор, пока контейнер сообщений не пуст…” И что? К сожалению, в этой строке нет никакого намёка на то, <em>что же</em> происходит до тех пор, пока контейнер сообщений не пуст. Однако если мы взглянем на предложенный мною вариант:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">while</span>( not_all( small_messages ).was_sended() )</code></pre>
+<p>то сразу же прочтём: “До тех пор, пока не все сообщения отправлены…” Ага, раз не все отправлены - значит, в цикле продолжится отправка. Предельно понятно, причём сразу.</p>
+<p>Реализация “литературных элементов” предельно проста:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">struct</span> not_all {
+    <span class="kw">explicit</span> not_all( messages <span class="dt">const</span>&amp; a_messages ) :
+            messages_for_sending( a_messages ) {}
+<span class="kw">private</span>:
+    messages <span class="dt">const</span>&amp; messages_for_sending;
+<span class="kw">public</span>:
+    <span class="dt">bool</span> was_sended() <span class="dt">const</span> {
+        <span class="kw">return</span> !messages_for_sending.empty();
+    }
+};
+
+<span class="kw">inline</span> message next_from( messages&amp; a_messages ) {
+    <span class="kw">auto</span> <span class="dt">const</span> next_message( a_messages.front() );
+    a_messages.pop();
+    <span class="kw">return</span> next_message;
+}</code></pre>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>
