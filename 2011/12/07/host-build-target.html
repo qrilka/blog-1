@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Кросскомпиляция - host/build/target ?</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Кросскомпиляция - host/build/target ?</h1>
+
+            <div class="info">
+    (2011, 12, 07)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>постоянно путаюсь в host/build/target, по этому, запишу :)</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">build == host           --&gt; нативная компиляция
+build != host           --&gt; кросскомпиляция
+build == host == target --&gt; нативная компиляция для нативной цели
+build == host != target --&gt; нативная компиляция для целевой архитектуры
+build != host != target --&gt; Канадский кросс [<span class="dv">1</span>]
+build != host == target --&gt; кросскомпиляция для нативной цели</code></pre>
+<p>где:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">build  --&gt; архитектура на которой собираю
+host   --&gt; архитектура на которой будет выполняться полученный компилятор
+target --&gt; архитектура для которой полученный компилятор будет создавать</code></pre>
+<p>пример сборки компилятора в linux, который будет работать на венде, и создавать бинари для мака:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">build: i686-pc-<span class="ot">linux</span>-gnu
+host: i686-pc-mingw32
+target: darwin10-osx</code></pre>
+<p>и еще несколько примеров найденных с помощью гугления: <img src="http://clip2net.com/clip/m47996/1330323361-clip-18kb.png" alt="text" /></p>
+<p>надеюсь, хоть тут я ничего не попутал %)</p>
+<p>[1] http://airs.com/ian/configure/configure_6.html http://en.wikipedia.org/wiki/Cross_compiler#Canadian_Cross</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>

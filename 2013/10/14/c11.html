@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>C++11: новое в векторе</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>C++11: новое в векторе</h1>
+
+            <div class="info">
+    (2013, 10, 14)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Как известно, C++11 добавил несколько новых функций-членов в старый добрый std::vector. О двух из них я хочу вам поведать.</p>
+<p>Первая функция выглядит так:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">value_type* data() <span class="kw">noexcept</span>;</code></pre>
+<p>Суть её очень проста: она возвращает указатель непосредственно на сырой C-шный массив, скрываемый под капотом вектора. Использовать её просто:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">void</span> f( <span class="dt">int</span> arr[] ) {
+    arr[ <span class="dv">0</span> ] = <span class="dv">-1</span>;
+}
+
+<span class="dt">int</span> main() {
+    std::vector&lt; <span class="dt">int</span> &gt; v{ <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span> };
+
+    <span class="dt">int</span>* arr = v.data();
+
+    arr[ <span class="dv">1</span> ] = <span class="dv">12</span>;
+    f( v.data() );
+
+    assert( v[ <span class="dv">1</span> ] == <span class="dv">12</span> );
+    assert( v[ <span class="dv">0</span> ] == <span class="dv">-1</span> );
+}</code></pre>
+<p>Как видите, мы можем манипулировать данными, хранящимися в вектора, через прямой доступ к сырому массиву. Весьма удобно для интеграции кода с C-шным кодом (например, когда некая функция принимает указатель на массив).</p>
+<p>Вторая новая функция в векторе выглядит так:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">template</span> &lt;<span class="kw">class</span>... Args&gt;
+  <span class="dt">void</span> emplace_back (Args&amp;&amp;... args);</code></pre>
+<p>Странное имя происходит от слова “emplacement”, то есть “установка на место”. Как видим, здесь используется variadic template (также являющийся одним из нововведений в C++11), а это значит что перед нами переменный набор аргументов. Суть этой функции очень проста: она добавляет объект в конец вектора подобно функции push_back(), за тем лишь исключением, что push_back() принимает уже готовый объект, а emplace_back() принимает аргументы, необходимые для создания нового объекта для помещения оного в конец вектора, и создаёт его сама:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">struct</span> S {
+    <span class="kw">explicit</span> S( <span class="dt">char</span> c, size_t length ) :
+            s0( length, c ) {}
+<span class="kw">private</span>:
+    std::string s0;
+};
+
+<span class="dt">int</span> main() {
+    std::vector&lt; S &gt; v;
+    
+    v.push_back( S( <span class="st">'a'</span>, <span class="dv">10</span> ) );
+    v.emplace_back( <span class="st">'a'</span>, <span class="dv">10</span> );
+}</code></pre>
+<p>Видите, да? В первом случае мы должны сами создать объект (пусть даже и in-place) с последующей передачей оного, а во втором случае функция берёт создание нового объекта на себя.</p>
+<p>Насколько это полезно? Ну, не скажу что это какой-то прорыв, но в ряде случаев я предпочёл бы emplace_back(). И дело не только в том, что кода получается чуток меньше, чем при использовании push_back(). Дело в том, что функция emplace_back() изолирует код от типа добавляемого значения. Ведь если у нас есть десять строк вида:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">v.push_back( S( <span class="st">'a'</span>, <span class="dv">10</span> ) );</code></pre>
+<p>и тип S будет, например, переименован, то нам придётся переписывать все эти десять строк кода. Но если мы пишем так:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">v.emplace_back( <span class="st">'a'</span>, <span class="dv">10</span> );</code></pre>
+<p>то мы привязаны лишь к списку аргументов конструктора, не более чем. Таким образом мы получаем код, который легче рефакторить.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>

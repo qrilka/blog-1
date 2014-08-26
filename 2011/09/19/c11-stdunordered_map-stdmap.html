@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>C++11: std::unordered_map против std::map</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>C++11: std::unordered_map против std::map</h1>
+
+            <div class="info">
+    (2011, 09, 19)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Известно, что в C++11 в пространство имён <strong>std</strong> внесён контейнер <strong>unordered_map</strong>. Для его использования необходимо включить в программу одноимённый заголовочник.</p>
+<p>Известно также и то, что поиск значения по ключу в <strong>unordered_map</strong> производится быстрее, чем в <strong>map</strong>. Но насколько быстрее? Простой эксперимент покажет нам.</p>
+<p>Итак:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;map&gt;</span>
+<span class="ot">#include &lt;unordered_map&gt;</span>
+
+<span class="kw">template</span>&lt; <span class="kw">typename</span> T &gt;
+<span class="dt">void</span> fill( T&amp; cont ) {
+    <span class="dt">const</span> size_t test_size = <span class="dv">1000000</span>;
+    <span class="kw">for</span> ( size_t i = <span class="dv">0</span>; i &lt; test_size; ++i ) {
+        cont.insert( { i, <span class="st">&quot;a&quot;</span> } );
+    }
+    BOOST_ASSERT ( test_size == cont.size() );
+}
+
+<span class="dt">int</span> main() {
+    std::map&lt; <span class="dt">int</span>, std::string &gt;           m;
+    std::unordered_map&lt; <span class="dt">int</span>, std::string &gt; um;
+    
+    fill( m );
+    fill( um );
+    
+    <span class="co">// Использую поиск через at(), как наиболее часто используемый способ доступа к элементу.</span>
+    <span class="co">// Для простоты замера использую поиск в цикле.    </span>
+
+    <span class="dt">const</span> size_t test_key = <span class="dv">98798</span>;
+    
+    time_stamp();
+    <span class="kw">for</span> ( size_t i = <span class="dv">0</span>; i &lt; <span class="dv">100000</span>; ++i ) {
+        <span class="dt">const</span> std::string value1 = m.at( test_key );
+    }
+    time_stamp();
+
+    time_stamp();
+    <span class="kw">for</span> ( size_t i = <span class="dv">0</span>; i &lt; <span class="dv">100000</span>; ++i ) {
+        <span class="dt">const</span> std::string value2 = um.at( test_key );
+    }
+    time_stamp();
+}</code></pre>
+<p>Вывод: 2011-Apr-07 04:35:15.257240 2011-Apr-07 04:35:15.313906 2011-Apr-07 04:35:15.313945 2011-Apr-07 04:35:15.320404</p>
+<p>Итак, огрублённо имеем <strong>56</strong> мс против <strong>6</strong> мс. Ну что ж, впечатляет: доступ к элементу в <strong>unordered_map</strong> быстрее приблизительно в 9 раз.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>

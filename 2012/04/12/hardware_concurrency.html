@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Э-э-э... Недоделочка, однако...</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Э-э-э... Недоделочка, однако...</h1>
+
+            <div class="info">
+    (2012, 04, 12)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Столкнулся с таким вот приколом.</p>
+<p>В классе std::thread определена статическая функция hardware_concurrency(), возвращающая число потоков в привязке к железу. То есть то количество потоков, которое на текущем железе может (теоретически) выполняться <em>физически</em> одновременно.</p>
+<p>Ну я пробую: {% highlight cpp %} int main() { std::cout &lt;&lt; std::thread::hardware_concurrency() &lt;&lt; std::endl; } {% endhighlight %} Результат - 0.</p>
+<p>Э-э, не понял… Как это ноль? У меня Core i3 с четырьмя ядрами (ну, на самом деле, конечно же, с двумя, но Linux показывает как будто четыре).</p>
+<p>В boost::thread такая функция также имеется, пробую её: {% highlight cpp %} int main() { std::cout &lt;&lt; boost::thread::hardware_concurrency() &lt;&lt; std::endl; } {% endhighlight %} Результат - 4, как и ожидалось.</p>
+Почему же в стандартном потоке такая бяка? Лезу в стандарт, читаю:
+<pre>
+30.3.1.6   thread static members       
+unsigned hardware_concurrency() noexcept;
+ 
+Returns: The number of hardware thread contexts. [ Note: This value 
+should only be considered to be a hint. — end note ] If this value 
+is not computable or well defined an implementation should return 0.
+</pre>
+
+<p>Ага, вроде понятно. Ну, решил глянуть в файл &lt;thread&gt; - а там вообще весело: {% highlight cpp %} // Returns a value that hints at the number of hardware thread contexts. static unsigned int hardware_concurrency() { return 0; } {% endhighlight %} Просто и ясно! :)</p>
+<p>В общем, недоделочка…</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>

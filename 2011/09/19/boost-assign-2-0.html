@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Boost.Assign 2.0: упрощение или усложнение?</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Boost.Assign 2.0: упрощение или усложнение?</h1>
+
+            <div class="info">
+    (2011, 09, 19)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Ну, во-первых, если кому-то интересно взглянуть на документацию к этому хозяйству - прошу <a href="http://svn.boost.org/svn/boost/sandbox/assign_v2/libs/assign/v2/doc/html/index.html"><strong>сюда</strong></a>.</p>
+<p>А, во-вторых, давайте вспомним, зачему была нужна эта библиотека? Она нужна была для того, чтобы упростить жизнь программиста. И не просто упростить, но сделать это <em>быстро</em>.</p>
+<p>Давайте взглянем на самый первый пример использования первой Assign (желающие ознакомиться лично - <a href="http://www.boost.org/doc/libs/1_46_1/libs/assign/doc/index.html"><strong>сюда</strong></a>):</p>
+<p>{% highlight cpp %} vector<int> v; v += 1,2,3,4,5,6,7,8,9;</p>
+<p>map<string,int> m; insert( m )( “Bar”, 1 )( “Foo”, 2 ); {% endhighlight %}</p>
+<p>Согласитесь, что даже без чтения остальной документации <em>любой</em> программист, имеющий хоть какой-то опыт работы с vector и map, поймёт этот код. Знаете почему? Потому что этот код простой. Я подчёркиваю: он простой даже для новичка.</p>
+<p>Более того, этот новичок сможет начать использовать такую библиотеку <em>сразу же</em>, и ему не потребуется изучать всю документацию для этого. Это и есть то, что я называю: “библиотека, упрощающая жизнь программиста”.</p>
+<p>А теперь взглянем на самый первый пример использования Assign 2.0 (он <strong><a href="http://svn.boost.org/svn/boost/sandbox/assign_v2/libs/assign/v2/doc/html/index.html">тут</a></strong>):</p>
+<p>{% highlight cpp %} typedef std::map<std::string, int> map_; map_ cal; typedef map_::value_type p_;</p>
+<p>boost::for_each( cal | do_csv_put&lt;2&gt;( “jan”, 31, “feb”, 28, “mar”, 31 ), std::cout &lt;&lt; lambda::bind( &amp;p_::first, lambda::<em>1 ) &lt;&lt; ‘:’ &lt;&lt; lambda::bind( &amp;p</em>::second, lambda:: _1 ) &lt;&lt; ‘’ ); // prints jan:31 feb:28 mar:31 {% endhighlight %}</p>
+<p>Э-э… Хм…</p>
+<p>Друзья, режьте меня на части, но я всё равно буду утверждать, что такой код отпугнёт новичка. Знаете почему? Потому что этот код сложный.</p>
+<p>Вдумайтесь: это ведь самый первый и простейший пример, а-ля “Hello world”. Человек, который не знает, что такое lambda::bind и не знакомый с концепцией адаптеров (отражённной здесь перегруженным <code>operator|</code>) увидит это и подумает: “Ёлки-палки, если это - простейший пример, то что же там дальше?! И это библиотека для упрощения работы с контейнерами?!” Получается, такому человеку придётся хотя бы поверхностно познакомиться с лямбда-выражениями (и с Boost.Lambda в частности) только лишь для того, чтобы понять первый пример!</p>
+<p>Я понимаю, есть библиотеки, который трудно начать использовать <em>сразу</em>. Spirit, MPL, Proto и некоторые другие действительно требуют достаточно глубокой подготовки. Но эти библиотеки являются серьёзными инструментами, и они вовсе не предназначены для того, чтобы их начали использовать через пару минут после установки Boost. Понятно, что если человек собирается создавать собственный DSEL на основе Proto, то он должен обладать достаточно глубокими знаниями C++, и ему, разумеется, придётся изучить документацию к Proto весьма глубоко.</p>
+<p>Однако такие библиотеки, как Assign, именно для того и предназначены, чтобы их можно было использовать <em>сразу</em>, и чтобы высокой квалификации для этого не требовалось. Это те библиотеки, с которых начнёт новичок и по которым этот новичок будет судить о Boost в целом. И вот представьте себе, как он читает аннотацию к Assign:</p>
+<p><strong>Filling containers with constant or generated data has never been easier.</strong></p>
+<p>Чего-чего? Никогда не было проще? Вы что, издеваетесь? Я вспоминаю себя при освоении Assign первой версии, и если бы мне <em>тогда</em> дали Assign 2.0, я бы ужаснулся.</p>
+<p>По моему мнению, авторы Assign 2.0 пошли куда-то не туда. Библиотека, предназначенная, по сути, лишь для того, чтобы упростить вставку элементов в контейнер, обязана быть простой. В противном случае зачем она нужна?</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>

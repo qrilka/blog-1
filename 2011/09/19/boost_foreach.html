@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Знаете, во что превращается BOOST_FOREACH?</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Знаете, во что превращается BOOST_FOREACH?</h1>
+
+            <div class="info">
+    (2011, 09, 19)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Недавно я узнал, во что же разворачивается макрос BOOST_FOREACH.</p>
+<p>Итак, берём простейший код:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="ot">#include &lt;boost/foreach.hpp&gt;</span>
+<span class="ot">#include &lt;vector&gt;</span>
+
+<span class="dt">int</span> main() {
+    std::vector&lt;<span class="dt">int</span>&gt; v;
+    BOOST_FOREACH ( <span class="dt">int</span> i, v ) {
+        <span class="co">// Оставим тело пустым, оно нам не нужно сейчас...</span>
+    }
+    <span class="kw">return</span> <span class="dv">0</span>;
+}</code></pre>
+<p>сохраняем его как main.cpp и скармливаем его препроцессору напрямую:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="er">$</span> cpp main.cpp</code></pre>
+<p>И если вычленить из вывода только развёрнутый BOOST_FOREACH, то мы увидим следующее:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">if</span> (boost::foreach_detail_::auto_any_t _foreach_col6 = boost::foreach_detail_::contain( (v) , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::or_( boost::foreach_detail_::and_( boost::foreach_detail_::not_(boost::foreach_detail_::is_array_(v)) , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::is_rvalue_( (<span class="kw">true</span> ? boost::foreach_detail_::make_probe(v) : (v)), <span class="dv">0</span>))) , boost::foreach_detail_::and_( boost::foreach_detail_::not_(boost_foreach_is_noncopyable( boost::foreach_detail_::to_ptr(v) , boost_foreach_argument_dependent_lookup_hack_value)) , boost_foreach_is_lightweight_proxy( boost::foreach_detail_::to_ptr(v) , boost_foreach_argument_dependent_lookup_hack_value)))))) {} <span class="kw">else</span> <span class="kw">if</span> (boost::foreach_detail_::auto_any_t _foreach_cur6 = boost::foreach_detail_::begin( _foreach_col6 , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::encode_type(v, boost::foreach_detail_::is_const_(v))) , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::or_( boost::foreach_detail_::and_( boost::foreach_detail_::not_(boost::foreach_detail_::is_array_(v)) , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::is_rvalue_( (<span class="kw">true</span> ? boost::foreach_detail_::make_probe(v) : (v)), <span class="dv">0</span>))) , boost::foreach_detail_::and_( boost::foreach_detail_::not_(boost_foreach_is_noncopyable( boost::foreach_detail_::to_ptr(v) , boost_foreach_argument_dependent_lookup_hack_value)) , boost_foreach_is_lightweight_proxy( boost::foreach_detail_::to_ptr(v) , boost_foreach_argument_dependent_lookup_hack_value)))))) {} <span class="kw">else</span> <span class="kw">if</span> (boost::foreach_detail_::auto_any_t _foreach_end6 = boost::foreach_detail_::end( _foreach_col6 , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::encode_type(v, boost::foreach_detail_::is_const_(v))) , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::or_( boost::foreach_detail_::and_( boost::foreach_detail_::not_(boost::foreach_detail_::is_array_(v)) , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::is_rvalue_( (<span class="kw">true</span> ? boost::foreach_detail_::make_probe(v) : (v)), <span class="dv">0</span>))) , boost::foreach_detail_::and_( boost::foreach_detail_::not_(boost_foreach_is_noncopyable( boost::foreach_detail_::to_ptr(v) , boost_foreach_argument_dependent_lookup_hack_value)) , boost_foreach_is_lightweight_proxy( boost::foreach_detail_::to_ptr(v) , boost_foreach_argument_dependent_lookup_hack_value)))))) {} <span class="kw">else</span> <span class="kw">for</span> (<span class="dt">bool</span> _foreach_continue6 = <span class="kw">true</span>; _foreach_continue6 &amp;&amp; !boost::foreach_detail_::done( _foreach_cur6 , _foreach_end6 , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::encode_type(v, boost::foreach_detail_::is_const_(v)))); _foreach_continue6 ? boost::foreach_detail_::next( _foreach_cur6 , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::encode_type(v, boost::foreach_detail_::is_const_(v)))) : (<span class="dt">void</span>)<span class="dv">0</span>) <span class="kw">if</span> (boost::foreach_detail_::set_false(_foreach_continue6)) {} <span class="kw">else</span> <span class="kw">for</span> (<span class="dt">int</span> i = boost::foreach_detail_::deref( _foreach_cur6 , (<span class="kw">true</span> ? <span class="dv">0</span> : boost::foreach_detail_::encode_type(v, boost::foreach_detail_::is_const_(v)))); !_foreach_continue6; _foreach_continue6 = <span class="kw">true</span>) {
+    <span class="co">// Здесь должно было быть тело цикла, но мы оставили его пустым...</span>
+ }</code></pre>
+<p>Выглядит впечатляюще! Но знаете, друзья, я, когда это увидел, ничуть не охладел к BOOST_FOREACH. Да, он разврорачивается в монстроподобную строку. Ну и что? Мне-то что с этого? В моём коде никогда не было проблем с BOOST_FOREACH, он всегда работает именно так, как я ожидаю.</p>
+<p>Так что использовал, использую и буду использовать впредь. Ну а вы - решайте сами. :)</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>

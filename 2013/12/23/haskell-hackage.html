@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Haskell: устанавливаем пакет из Hackage</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../../../" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="../../../archive.html">Архив</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Haskell: устанавливаем пакет из Hackage</h1>
+
+            <div class="info">
+    (2013, 12, 23)
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<h3>
+Готовимся
+</h3>
+
+<p>Все приведённые ниже команды выполняются в терминале из корневой папки нашего проекта.</p>
+<p>Для начала выполним команду:</p>
+<p><bash> cabal update </bash></p>
+<p>Эта команда обновляет список пакетов из вышеупомянутого репозитория, поэтому в ответ мы мы увидим нечто подобное:</p>
+<p><bash> Downloading the latest package list from hackage.haskell.org </bash></p>
+<p>Чуточку терпения - и список обновлён. Рекомендуется периодически выполнять эту команду, дабы поддерживать список доступных пакетов в актуальном состоянии.</p>
+<h3>
+Выбираем нужный пакет
+</h3>
+
+<p>Заходим на страницу списка пакетов и ищем. В частности, мне понадобилось установить пакет <strong><a href="http://hackage.haskell.org/package/filemanip">filemanip</a></strong>, предназначенный для работы с файловой системой. Кстати, поиск нужных вам пакетов можно производить в <strong><a href="http://www.haskell.org/hoogle/">Hoogle</a></strong>.</p>
+<p>Устанавливаем пакет следующей командой:</p>
+<p><bash> cabal install filemanip </bash></p>
+<p>В ответ последует список со всякими умными строками наподобие этого:</p>
+<p><bash> … Downloading filemanip-0.3.6.2… Configuring filemanip-0.3.6.2… Building filemanip-0.3.6.2… … Installing library in /Users/dshevchenko/Library/Haskell/ghc-7.6.3/lib/filemanip-0.3.6.2/lib Registering filemanip-0.3.6.2… Installed filemanip-0.3.6.2 Updating documentation index /Users/dshevchenko/Library/Haskell/doc/index.html </bash></p>
+<p>Итак, пакет установлен.</p>
+<h3>
+Указываем пакет в .cabal-файле
+</h3>
+
+<p>Открываем конфигурационный <code>.cabal</code>-файл (помните про такой, не так ли?), находящийся в корне нашего проекта, и дописываем наш только что установленный пакет:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">executable <span class="dt">Haskell</span>
+    main<span class="fu">-</span>is<span class="fu">:</span>         main<span class="fu">.</span>hs            
+    other<span class="fu">-</span>modules<span class="fu">:</span>   <span class="dt">Haq</span>
+    hs<span class="fu">-</span>source<span class="fu">-</span>dirs<span class="fu">:</span>  src 
+                     src<span class="fu">/</span>utils
+    build<span class="fu">-</span>depends<span class="fu">:</span>   base <span class="fu">==</span> <span class="dv">4</span><span class="fu">.</span><span class="dv">6</span><span class="fu">.*</span>, filemanip</code></pre>
+<p>Как видите, мы просто дописали в параметр <code>build-depends</code> название нового пакета. Обратите внимание, что имена пакетов в этом параметре указываются через запятую, это важно.</p>
+<p>Если вы пропустите этот шаг, то воспользоваться каким-либо из модулей данного пакета вы, разумеется, не сможете. Напоминаю, что пакет представлен набором модулей, которые можно импортировать в ваш код (а импорт модуля, напоминаю, подобен включению файла с помощью <code>#include</code>-директивы).</p>
+<p>Впрочем, даже если вы всё-таки забудете указать установленный пакет <em>и при этом</em> попытаетесь импортировать какие-либо из его модулей в ваш проект, компилятор вежливо поправит вас:</p>
+<p><bash> src/main.hs:3:8: Could not find module <code>System.FilePath.Find'     It is a member of the hidden package</code>filemanip-0.3.6.2’. Perhaps you need to add `filemanip’ to the build-depends in your .cabal file. Use -v to see a list of the files searched for. </bash></p>
+<h3>
+Подключаем нужные модули
+</h3>
+
+<p>А теперь открываем наш файл (например, <code>main.hs</code>) и дописываем в его верхней части следующую строку:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">System.FilePath.Find</span></code></pre>
+<p>Этой инструкцией мы импортировали конкретный модуль из установленного пакета. Теперь мы сможем использовать содержимое этого модуля в нашем проекте.</p>
+<p>Напоследок выполним команды:</p>
+<p><bash> cabal configure cabal build </bash></p>
+<p>Готово!</p>
+<p>Лично мне очень понравилась такая философия работы с пакетами. Во-первых, утилита cabal предоставляет единый централизованный способ установки пакетов, во-вторых, сама установка занимает три простейших шага (установить, прописать в <code>.cabal</code>-файле, импортировать нужные модули), а в-третьих, я могу установить только те пакеты, которые мне реально нужны.</p>
+<p>На сегодня достаточно, но мы обязательно продолжим изучение <code>cabal</code>, а уж к пакетам из Hackage мы будем возвращаться не раз и не два.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+    </body>
+</html>
