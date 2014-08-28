@@ -53,24 +53,25 @@ main = hakyll $ do
         route idRoute
         compile $ makeItem "" >>= loadAndApplyTemplate "templates/htaccess" defaultContext
 
+    -- Строим теги из заметок...
+    tags <- buildTags "posts/*" (fromCapture "tags/*.html")
+
     -- Обрабатываем все заметки...
     match "posts/*" $ do
-        route $ removePostsDirectoryFromURLs 
-                `composeRoutes` 
-                directorizeDate 
-                `composeRoutes` 
+        route $ removePostsDirectoryFromURLs `composeRoutes`
+                directorizeDate `composeRoutes`
                 setExtension "html"
         -- Используем pandocCompiler, потому что все заметки
         -- написаны на Markdown, и их необходимо превратить в html...
-        compile $ pandocCompiler >>= loadAndApplyTemplate "templates/post.html"    postContext
-                                 >>= loadAndApplyTemplate "templates/default.html" postContext
+        compile $ pandocCompiler >>= loadAndApplyTemplate "templates/post.html" (postContext tags)
+                                 >>= loadAndApplyTemplate "templates/default.html" (postContext tags)
                                  >>= relativizeUrls
     
     -- Создаём страницу 404 и применяем к ней шаблон стандартной страницы...
     create ["404.html"] $ do
         route idRoute
-        compile $ makeItem "" >>= loadAndApplyTemplate "templates/404.html" postContext
-                              >>= loadAndApplyTemplate "templates/default.html" postContext
+        compile $ makeItem "" >>= loadAndApplyTemplate "templates/404.html" (postContext tags)
+                              >>= loadAndApplyTemplate "templates/default.html" (postContext tags)
                               >>= relativizeUrls
 
     -- Создаём страницу всех заметок...
@@ -78,7 +79,7 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
-            let archiveContext = mconcat [ listField "posts" postContext (return posts) 
+            let archiveContext = mconcat [ listField "posts" (postContext tags) (return posts) 
                                          , constField "title" "Архив"                   
                                          , defaultContext
                                          ]
@@ -92,28 +93,42 @@ main = hakyll $ do
         route   idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
-            let sitemapContext = mconcat [ listField "entries" postContext (return posts)
+            let sitemapContext = mconcat [ listField "entries" (postContext tags) (return posts)
                                          , constField "host" host
                                          , defaultContext
                                          ]
 
-            makeItem "" >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapContext
+            makeItem "" >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapContext 
 
     --
+--    tagsRules tags $ \tag pattern -> do
+--        let title = "Posts tagged " ++ tag
+
+--        route niceRoute
+--        compile $ do
+--          posts <- recentFirst =<< loadAll pattern
+--          let ctx = constField "title" title <>
+--                    listField "posts" (postCtx tags) (return posts) <>
+--                    defaultContext
+
+--          makeItem ""
+--            >>= loadAndApplyTemplate "templates/tag.html" ctx
+--            >>= loadAndApplyTemplate "templates/default.html" ctx
+--            >>= relativizeUrls
 --    create ["tags.html"] $ do
 --        route idRoute
 --        compile $ do
 --            tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 --            renderTagCloud 12.0 36.0 tags
     
-    -- Feed
+    -- Настраиваем RSS feed...
     create ["feed.xml"] $ do
         route idRoute
         compile $ do
-            let feedContext = mconcat [ postContext 
+            let feedContext = mconcat [ (postContext tags) 
                                       , constField "description" "This is the post description"
                                       ]
-
+            -- Учитываем 10 последних заметок...
             posts <- fmap (take 10) . recentFirst =<< loadAll "posts/*"
             renderRss myFeedConfiguration feedContext posts
 
@@ -121,9 +136,10 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
+            -- Показываем 7 последних заметок...
             posts <- fmap (take 7) . recentFirst =<< loadAll "posts/*"
-            let indexContext = mconcat [ listField "posts" postContext (return posts) 
-                                       , constField "title" "Мысли и опыт"        
+            let indexContext = mconcat [ listField "posts" (postContext tags) (return posts) 
+                                       , constField "title" "Мысли и опыт"
                                        , defaultContext
                                        ]
 
@@ -131,6 +147,19 @@ main = hakyll $ do
                             >>= loadAndApplyTemplate "templates/default.html" indexContext
                             >>= relativizeUrls
     
+    -- Создаём страницу для меток...
+    create ["tags.html"] $ do
+        route idRoute
+        compile $ do
+            let tagsContext = mconcat [ constField "title" "О чём беседуем"
+                                      , field "tagsCloud" (\_ -> renderTagCloud 100 300 tags)
+                                      , defaultContext
+                                      ]
+            
+            makeItem "" >>= loadAndApplyTemplate "templates/tags.html" tagsContext
+                        >>= loadAndApplyTemplate "templates/default.html" tagsContext
+                        >>= relativizeUrls
+
     -- Готовим все шаблоны из каталога templates...
     match "templates/*" $ compile templateCompiler
 
@@ -149,9 +178,10 @@ directorizeDate = customRoute (\i -> directorize $ toFilePath i)
 removePostsDirectoryFromURLs :: Routes
 removePostsDirectoryFromURLs = gsubRoute "posts/" (const "")
 
-postContext :: Context String
-postContext = mconcat [ constField "host" host
-                      , dateField "date" "(%Y, %m, %d)"
-                      , defaultContext
-                      ]
+postContext :: Tags -> Context String
+postContext tags = mconcat [ constField "host" host
+                           , dateField "date" "(%Y, %m, %d)"
+                           , tagsField "tags" tags
+                           , defaultContext
+                           ]
 
