@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=cyrillic-ext,latin);
-@import url(http://fonts.googleapis.com/css?family=Bad+Script&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Neucha&subset=latin,cyrillic);
 @import url(http://fonts.googleapis.com/css?family=Fira+Mono:400,700&subset=latin,latin-ext); 
 
 body {
@@ -79,6 +79,7 @@ div#hakyll_mark {
 }
 
 div#tags_cloud {
+    font-family: 'Neucha';
     text-align: center;
 }
 
@@ -138,6 +139,8 @@ div.info {
 
 div#tags_of_post {
     text-align: left;
+    font-family: 'Neucha';
+    font-size: 21px;
 }
 
 .post-list {
