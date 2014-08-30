@@ -47,4 +47,7 @@ git commit -a -m "$COMMIT_MESSAGE"
 echo "Заливаем на GitHub Pages..."
 git push origin gh-pages
 
+echo "Возвращаемся в мастер..."
+git checkout master
+
 echo "Готово!"
