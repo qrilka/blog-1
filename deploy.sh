@@ -23,7 +23,7 @@ fi
 COMMIT_MESSAGE=$1
 
 echo "Заливаем в мастер..."
-git commit -a -m $COMMIT_MESSAGE
+git commit -a -m "$COMMIT_MESSAGE"
 git push origin master
 
 echo "Собираем новую версию сайта..."
@@ -42,7 +42,7 @@ cp -R /tmp/_site/* .
 
 echo "Учитываем все последние новшества..."
 git add .
-git commit -a -m $COMMIT_MESSAGE
+git commit -a -m "$COMMIT_MESSAGE"
 
 echo "Заливаем на GitHub Pages..."
 git push origin gh-pages
