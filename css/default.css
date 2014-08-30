@@ -136,6 +136,10 @@ div.info {
     text-align: center;
 }
 
+div#tags_of_post {
+    text-align: left;
+}
+
 .post-list {
     padding: 0px;
     margin: 0px;

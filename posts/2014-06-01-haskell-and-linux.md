@@ -1,6 +1,6 @@
 ---
 title: Haskell и Linux: не только just for fun
-tags: Haskell, linux
+tags: Haskell, Linux
 ---
 
 Недавно провёл любопытную аналогию между Haskell и Linux. А натолкнула меня на эту аналогию заметка пятилетней давности [Изучай Haskell ради... Haskell'а](http://habrahabr.ru/post/74164/). Автор утверждает, что "Прагматика Haskell'а заключается в том, что он существует прежде всго для исследования... Haskell'а."

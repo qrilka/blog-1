@@ -1,6 +1,6 @@
 ---
 title: Последние версии GCC в Windows!
-tags: GCC
+tags: gcc
 ---
 
 Всем интересующимся последними версиями компилятора GCC (такими как 4.6 и даже 4.7) для работы в Windows, уверен, будет интересно взглянуть вот сюда: http://code.google.com/p/mingw-builds/downloads/list.
