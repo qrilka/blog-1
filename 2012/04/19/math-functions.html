@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>К вопросу о математических функциях...</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -31,10 +28,20 @@
     (2012, 04, 19)
 </div>
 
+<div id="tags_of_post">
+    <a href="../../../tags/C%252B%252B.html">C++</a>
+</div>
+
 <div style="padding-top: 20px;"></div>
 
 <p>Продолжая своё изучение фукционального программирования, я неожиданно для себя самого осознал, что чистый функтор/функция, <ins>отражающий математическую модель</ins>, является наиболее простым решением.</p>
-<p>Известно, что <em>“математическое понятие функции выражает интуитивное представление о том, как одна величина полностью определяет значение другой величины.”</em> Пример: {% highlight cpp %} struct square { int operator()( int const i ) const { return i * i; } }; {% endhighlight %}Итак, вот простейший случай чистого функтора, отражающего математическую модель: результат использования этого функтора будет зависеть только от входного значения. Всегда.</p>
+<p>Известно, что <em>“математическое понятие функции выражает интуитивное представление о том, как одна величина полностью определяет значение другой величины.”</em> Пример:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">struct</span> square {
+    <span class="dt">int</span> <span class="kw">operator</span>()( <span class="dt">int</span> <span class="dt">const</span> i ) <span class="dt">const</span> {
+        <span class="kw">return</span> i * i;
+    }
+};</code></pre>
+<p>Итак, вот простейший случай чистого функтора, отражающего математическую модель: результат использования этого функтора будет зависеть только от входного значения. Всегда.</p>
 И вот я подумал: а ведь это же чрезвычайно удобно! Если результат вызова функции полностью определён входными значениями, то:
 <ol>
   <li>
@@ -49,8 +56,36 @@
 </ol>
 
 <p>Поэтому чем больше подобных функторов/функций будет в программе, тем легче оная станет.</p>
-<p>Ну вот, скажем, такой пример: {% highlight cpp %} struct storage { storage() : m_capacity( 0 ) { obtain_capacity(); } private: size_t m_capacity; private: void obtain_capacity() { size_t obtained_capacity = 0; // Получаем откуда-то извне ёмкость… m_capacity = obtained_capacity; } }; {% endhighlight %}Итак, вот нам канонический побочный эффект: функция внутри себя изменяет то, что находится вне её. Если же подобных функций десять, или тридцать, то отслеживание побочных эффектов ощутимо усложняется. Горький опыт ловли багов убедителен…</p>
-<p>А что если написать так: {% highlight cpp %} struct storage { storage() : m_capacity( obtain_capacity() ) {} private: size_t m_capacity; private: size_t obtain_capacity() const { size_t obtained_capacity = 0; // Получаем откуда-то извне ёмкость… return obtained_capacity; } }; {% endhighlight %}Смотрите, мы изолировали функцию obtain_capacity от этого побочного эффекта. И это упростило функцию (а чаще всего это позволит нам вообще вынести её в отдельный чистый функтор).</p>
+<p>Ну вот, скажем, такой пример:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">struct</span> storage {
+    storage() :
+            m_capacity( <span class="dv">0</span> ) {
+        obtain_capacity();
+    }
+<span class="kw">private</span>:
+    size_t m_capacity;
+<span class="kw">private</span>:
+    <span class="dt">void</span> obtain_capacity() {
+        size_t obtained_capacity = <span class="dv">0</span>;
+        <span class="co">// Получаем откуда-то извне ёмкость...</span>
+        m_capacity = obtained_capacity;
+    }
+};</code></pre>
+<p>Итак, вот нам канонический побочный эффект: функция внутри себя изменяет то, что находится вне её. Если же подобных функций десять, или тридцать, то отслеживание побочных эффектов ощутимо усложняется. Горький опыт ловли багов убедителен…</p>
+<p>А что если написать так:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">struct</span> storage {
+    storage() :
+            m_capacity( obtain_capacity() ) {}
+<span class="kw">private</span>:
+    size_t m_capacity;
+<span class="kw">private</span>:
+    size_t obtain_capacity() <span class="dt">const</span> {
+        size_t obtained_capacity = <span class="dv">0</span>;
+        <span class="co">// Получаем откуда-то извне ёмкость...</span>
+        <span class="kw">return</span> obtained_capacity;
+    }
+};</code></pre>
+<p>Смотрите, мы изолировали функцию obtain_capacity от этого побочного эффекта. И это упростило функцию (а чаще всего это позволит нам вообще вынести её в отдельный чистый функтор).</p>
 <p>Вот из таких мелочей и состоит простота…</p>
 
 <div id="disqus_thread"></div>

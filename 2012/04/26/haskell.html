@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Haskell и файловая система: проверяем путь</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -31,10 +28,27 @@
     (2012, 04, 26)
 </div>
 
+<div id="tags_of_post">
+    <a href="../../../tags/Haskell.html">Haskell</a>
+</div>
+
 <div style="padding-top: 20px;"></div>
 
-<p>Итак, вот небольшая шуточная программка, проверяющая введённый пользователем путь: {% highlight haskell %} import System.Directory</p>
-<p>main = do putStrLn “Введите какой-нибудь путь:” inputed_path &lt;- getLine such_file_exists &lt;- doesFileExist inputed_path if such_file_exists then putStrLn “Ага, вижу такой файл!” else do such_directory_exists &lt;- doesDirectoryExist inputed_path if such_directory_exists then putStrLn “Вижу, но это не файл, это директория!” else putStrLn “Хм… К сожалению, такого не вижу…” {% endhighlight %}Опять-таки, для красоты использованы русские строки. Разумеется, эта программа работает и для путей, содержащих не-ASCII символы.</p>
+<p>Итак, вот небольшая шуточная программка, проверяющая введённый пользователем путь:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">System.Directory</span>
+
+main <span class="fu">=</span> <span class="kw">do</span>
+    putStrLn <span class="st">&quot;Введите какой-нибудь путь: &quot;</span>
+    inputed_path <span class="ot">&lt;-</span> getLine
+    such_file_exists <span class="ot">&lt;-</span> doesFileExist inputed_path
+    <span class="kw">if</span> such_file_exists 
+        <span class="kw">then</span> putStrLn <span class="st">&quot;Ага, вижу такой файл!&quot;</span>
+        <span class="kw">else</span> <span class="kw">do</span> 
+            such_directory_exists <span class="ot">&lt;-</span> doesDirectoryExist inputed_path
+            <span class="kw">if</span> such_directory_exists
+                <span class="kw">then</span> putStrLn <span class="st">&quot;Вижу, но это не файл, это директория!&quot;</span>
+                <span class="kw">else</span> putStrLn <span class="st">&quot;Хм... К сожалению, такого не вижу...&quot;</span></code></pre>
+<p>Опять-таки, для красоты использованы русские строки. Разумеется, эта программа работает и для путей, содержащих не-ASCII символы.</p>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

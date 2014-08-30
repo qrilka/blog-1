@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>ВременнЫе замеры с std::chrono</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -31,13 +28,34 @@
     (2012, 04, 11)
 </div>
 
+<div id="tags_of_post">
+    <a href="../../../tags/C%252B%252B11.html">C++11</a>
+</div>
+
 <div style="padding-top: 20px;"></div>
 
 <p>Стандарт C++11 ввёл новый набор классов для работы с временем, в заголовочнике <chrono>. И вот простой рецепт (спасибо сайту cplusplus.com), как измерить время работы некой функции. Достаточно часто это нужно знать.</p>
-<p>Итак: {% highlight cpp %} typedef std::chrono::duration <int> seconds;</p>
-<p>void for_second() { std::this_thread::sleep_for( seconds( 1 ) ); }</p>
-<p>int main() { using namespace std::chrono; auto begin = high_resolution_clock::now(); for_second(); auto end = high_resolution_clock::now(); std::cout &lt;&lt; duration_cast <milliseconds>( end - begin ).count() &lt;&lt; std::endl ; } {% endhighlight %} Таким образом, мы сразу получаем количество милисекунд, прошедших за время вызова функции.</p>
-<p>Если нужен замер поточнее, можем использовать микросекунды: {% highlight cpp %} duration_cast <microseconds>( end - begin ).count() {% endhighlight %}и даже наносекунды: {% highlight cpp %} duration_cast <nanoseconds>( end - begin ).count() {% endhighlight %}</p>
+<p>Итак:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">typedef</span> std::chrono::duration &lt;<span class="dt">int</span>&gt; seconds;
+
+<span class="dt">void</span> for_second() {
+    std::this_thread::sleep_for( seconds( <span class="dv">1</span> ) );
+}
+
+<span class="dt">int</span> main() {
+    <span class="kw">using</span> <span class="kw">namespace</span> std::chrono;
+    <span class="kw">auto</span> begin = high_resolution_clock::now();
+    for_second();
+    <span class="kw">auto</span> end = high_resolution_clock::now();
+    std::cout &lt;&lt; duration_cast &lt;milliseconds&gt;( end - begin ).count() 
+              &lt;&lt; std::endl
+              ;
+}</code></pre>
+<p>Таким образом, мы сразу получаем количество милисекунд, прошедших за время вызова функции.</p>
+<p>Если нужен замер поточнее, можем использовать микросекунды:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">duration_cast &lt;microseconds&gt;( end - begin ).count() </code></pre>
+<p>и даже наносекунды:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp">duration_cast &lt;nanoseconds&gt;( end - begin ).count() </code></pre>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

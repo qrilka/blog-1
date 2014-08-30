@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>К вопросу о данных класса...</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -31,10 +28,31 @@
     (2012, 04, 18)
 </div>
 
+<div id="tags_of_post">
+    <a href="../../../tags/C%252B%252B.html">C++</a>
+</div>
+
 <div style="padding-top: 20px;"></div>
 
-<p>Итак: {% highlight cpp %} struct disk { disk() : m_name( “disk storage” ) {} private: std::string const m_name; public: std::string name() const { return m_name; } }; {% endhighlight %}Итак, имя доступно через disk::name().</p>
-<p>Теперь второй вариант: {% highlight cpp %} struct disk { std::string name() const { return “disk storage”; } }; {% endhighlight %}Возникает вопрос: какой вариант лучше?</p>
+<p>Итак:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">struct</span> disk {
+    disk() :
+        m_name( <span class="st">&quot;disk storage&quot;</span> ) {}
+<span class="kw">private</span>:
+    std::string <span class="dt">const</span> m_name;
+<span class="kw">public</span>:
+    std::string name() <span class="dt">const</span> {
+        <span class="kw">return</span> m_name;
+    }
+};</code></pre>
+<p>Итак, имя доступно через disk::name().</p>
+<p>Теперь второй вариант:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">struct</span> disk {
+    std::string name() <span class="dt">const</span> {
+        <span class="kw">return</span> <span class="st">&quot;disk storage&quot;</span>;
+    }
+};</code></pre>
+<p>Возникает вопрос: какой вариант лучше?</p>
 <p>Любопытно, что в абсолютно подавляющем большинстве учебников по C++ рассматривается вариант, подобный первому. Объясняется это императивной привычкой: мол, сначала мы создаём объект, а затем используем его.</p>
 <p>Однако я утверждаю, что второй вариант лучше. Значительно лучше. И даже не потому, что кода меньше (хотя это тоже плюс), но главным образом потому, что он логичнее.</p>
 <p>Зачем подготавливать имя заранее? Не лучше ли предоставлять его лишь тогда, когда оно необходимо? Ведь функция disk::name() может вообще не вызываться, а следовательно, первый вариант создаёт имя абсолютно напрасно. Второй же вариант предоставляет имя только по необходимости. Если же disk::name() вообще ни разу не вызвали - значит, имя никому не понадобилось. А если так - зачем его было создавать и где-то хранить?</p>

@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Haskell и время: пробуем</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -31,28 +28,45 @@
     (2012, 04, 27)
 </div>
 
+<div id="tags_of_post">
+    <a href="../../../tags/Haskell.html">Haskell</a>
+</div>
+
 <div style="padding-top: 20px;"></div>
 
-<p>Чтобы не повторяться, нам требуется импортировать следующие модули: {% highlight haskell %} import System.Time import Data.Time import Data.Time.Clock.POSIX {% endhighlight %}</p>
-{% highlight haskell %} main = do time_local_with_microseconds &lt;- getZonedTime time_UTC_with_microseconds &lt;- getCurrentTime print time_local_with_microseconds print time_UTC_with_microseconds {% endhighlight %}Классический вывод текущего времени с датой вида:
-<pre>
-2012-04-27 21:51:06.927989 AMT
-2012-04-27 17:51:06.928164 UTC
-</pre>
-
-<p>Кстати, временнУю зону можно получить так: {% highlight haskell %} main = do time_zone &lt;- getCurrentTimeZone print time_zone {% endhighlight %}Возвращает международный код временнОй зоны, в моём случае - AMT (армянское время, UTC + 4).</p>
-А вот так мы получаем названия текущих месяца и дня недели: {% highlight haskell %} main = do clock_time &lt;- getClockTime calendar_time &lt;- toCalendarTime clock_time print (ctMonth calendar_time) print (ctWDay calendar_time) {% endhighlight %}Вывод:
-<pre>
-April
-Friday
-</pre>
-
-Ну и POSIX-время: {% highlight haskell %} main = do canonical_POSIX_with_microseconds &lt;- getPOSIXTime print canonical_POSIX_with_microseconds {% endhighlight %}Вывод будет такой:
-<pre>
-1335552608.411988s
-</pre>
-
-
+<p>Чтобы не повторяться, нам требуется импортировать следующие модули:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">System.Time</span>
+<span class="kw">import </span><span class="dt">Data.Time</span>
+<span class="kw">import </span><span class="dt">Data.Time.Clock.POSIX</span></code></pre>
+<p>Теперь:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">main <span class="fu">=</span> <span class="kw">do</span>
+    time_local_with_microseconds <span class="ot">&lt;-</span> getZonedTime
+    time_UTC_with_microseconds <span class="ot">&lt;-</span> getCurrentTime
+    print time_local_with_microseconds
+    print time_UTC_with_microseconds</code></pre>
+<p>Классический вывод текущего времени с датой вида:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">2012-04-27</span> 21:51:06.927989 AMT
+<span class="kw">2012-04-27</span> 17:51:06.928164 UTC</code></pre>
+<p>Кстати, временнУю зону можно получить так:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">main <span class="fu">=</span> <span class="kw">do</span>
+    time_zone <span class="ot">&lt;-</span> getCurrentTimeZone
+    print time_zone</code></pre>
+<p>Возвращает международный код временнОй зоны, в моём случае - AMT (армянское время, UTC + 4).</p>
+<p>А вот так мы получаем названия текущих месяца и дня недели:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">main <span class="fu">=</span> <span class="kw">do</span>
+    clock_time <span class="ot">&lt;-</span> getClockTime
+    calendar_time <span class="ot">&lt;-</span> toCalendarTime clock_time
+    print (ctMonth calendar_time)
+    print (ctWDay calendar_time)</code></pre>
+<p>Вывод:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">April</span>
+<span class="kw">Friday</span></code></pre>
+<p>Ну и POSIX-время:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">main <span class="fu">=</span> <span class="kw">do</span>
+    canonical_POSIX_with_microseconds <span class="ot">&lt;-</span> getPOSIXTime
+    print canonical_POSIX_with_microseconds</code></pre>
+<p>Вывод будет такой:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">1335552608.411988s</span></code></pre>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

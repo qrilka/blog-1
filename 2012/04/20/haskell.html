@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Красота Haskell: конвертируем текст из файла</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -31,11 +28,25 @@
     (2012, 04, 20)
 </div>
 
+<div id="tags_of_post">
+    <a href="../../../tags/Haskell.html">Haskell</a>
+</div>
+
 <div style="padding-top: 20px;"></div>
 
-<p>За основу взят пример из книги “Real World Haskell”, переработано мною: {% highlight haskell %} import System.IO import Data.Char(toUpper)</p>
-<p>main :: IO () main = do pure_text &lt;- readFile “/home/denis/input” let converted_text = convert_to_upper_case pure_text writeFile “/home/denis/output” converted_text</p>
-<p>convert_to_upper_case :: String -&gt; String convert_to_upper_case = map toUpper {% endhighlight %}Предельно лаконичное решение: читаем текст из файла <strong>input</strong>, затем конвертируем его символы в верхний регистр и записываем это хозяйство в файл <strong>output</strong>.</p>
+<p>За основу взят пример из книги “Real World Haskell”, переработано мною:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">System.IO</span>
+<span class="kw">import </span><span class="dt">Data.Char</span>(toUpper)
+
+<span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span> <span class="kw">do</span>
+       pure_text <span class="ot">&lt;-</span> readFile <span class="st">&quot;/home/denis/input&quot;</span>
+       <span class="kw">let</span> converted_text <span class="fu">=</span> convert_to_upper_case pure_text
+       writeFile <span class="st">&quot;/home/denis/output&quot;</span> converted_text
+
+<span class="ot">convert_to_upper_case ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
+convert_to_upper_case <span class="fu">=</span> map toUpper</code></pre>
+<p>Предельно лаконичное решение: читаем текст из файла <strong>input</strong>, затем конвертируем его символы в верхний регистр и записываем это хозяйство в файл <strong>output</strong>.</p>
 <p>Три строчки, понятные без всяких комментариев. Круто!</p>
 
 <div id="disqus_thread"></div>

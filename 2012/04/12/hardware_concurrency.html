@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Э-э-э... Недоделочка, однако...</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -31,13 +28,25 @@
     (2012, 04, 12)
 </div>
 
+<div id="tags_of_post">
+    <a href="../../../tags/C%252B%252B.html">C++</a>
+</div>
+
 <div style="padding-top: 20px;"></div>
 
 <p>Столкнулся с таким вот приколом.</p>
 <p>В классе std::thread определена статическая функция hardware_concurrency(), возвращающая число потоков в привязке к железу. То есть то количество потоков, которое на текущем железе может (теоретически) выполняться <em>физически</em> одновременно.</p>
-<p>Ну я пробую: {% highlight cpp %} int main() { std::cout &lt;&lt; std::thread::hardware_concurrency() &lt;&lt; std::endl; } {% endhighlight %} Результат - 0.</p>
+<p>Ну я пробую:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> main() {
+   std::cout &lt;&lt; std::thread::hardware_concurrency() &lt;&lt; std::endl;
+}</code></pre>
+<p>Результат - 0.</p>
 <p>Э-э, не понял… Как это ноль? У меня Core i3 с четырьмя ядрами (ну, на самом деле, конечно же, с двумя, но Linux показывает как будто четыре).</p>
-<p>В boost::thread такая функция также имеется, пробую её: {% highlight cpp %} int main() { std::cout &lt;&lt; boost::thread::hardware_concurrency() &lt;&lt; std::endl; } {% endhighlight %} Результат - 4, как и ожидалось.</p>
+<p>В boost::thread такая функция также имеется, пробую её:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> main() {
+   std::cout &lt;&lt; boost::thread::hardware_concurrency() &lt;&lt; std::endl;
+}</code></pre>
+<p>Результат - 4, как и ожидалось.</p>
 Почему же в стандартном потоке такая бяка? Лезу в стандарт, читаю:
 <pre>
 30.3.1.6   thread static members       
@@ -48,7 +57,10 @@ should only be considered to be a hint. — end note ] If this value
 is not computable or well defined an implementation should return 0.
 </pre>
 
-<p>Ага, вроде понятно. Ну, решил глянуть в файл &lt;thread&gt; - а там вообще весело: {% highlight cpp %} // Returns a value that hints at the number of hardware thread contexts. static unsigned int hardware_concurrency() { return 0; } {% endhighlight %} Просто и ясно! :)</p>
+<p>Ага, вроде понятно. Ну, решил глянуть в файл &lt;thread&gt; - а там вообще весело:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="co">// Returns a value that hints at the number of hardware thread contexts.</span>
+<span class="dt">static</span> <span class="dt">unsigned</span> <span class="dt">int</span> hardware_concurrency() { <span class="kw">return</span> <span class="dv">0</span>; }</code></pre>
+<p>Просто и ясно! :)</p>
 <p>В общем, недоделочка…</p>
 
 <div id="disqus_thread"></div>

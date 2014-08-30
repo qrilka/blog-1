@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Консольное сообщение: маленький пример</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -31,10 +28,21 @@
     (2012, 03, 17)
 </div>
 
+<div id="tags_of_post">
+    <a href="../../../tags/C%252B%252B.html">C++</a>
+</div>
+
 <div style="padding-top: 20px;"></div>
 
-<p>Как вы уже знаете, Style Revisor сможет работать в командной строке. Вот маленький кусочек кода, отвечающий за вывод на консоль сообщения о некой проблеме. {% highlight cpp %} template <typename What> inline void console_report_about( What const&amp; happened ) { std::cerr &lt;&lt; “Something wrong:” &lt;&lt; happened() &lt;&lt; std::endl; } {% endhighlight %}</p>
-<p>А вызов выглядит так: {% highlight cpp %} if( unknown_arguments_exists_in( probably_valid_arguments ) ) { console_report_about( unknown_argument{} ); } {% endhighlight %}</p>
+<p>Как вы уже знаете, Style Revisor сможет работать в командной строке. Вот маленький кусочек кода, отвечающий за вывод на консоль сообщения о некой проблеме.</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">template</span> &lt;<span class="kw">typename</span> What&gt;
+<span class="kw">inline</span> <span class="dt">void</span> console_report_about( What <span class="dt">const</span>&amp; happened ) {
+    std::cerr &lt;&lt; <span class="st">&quot;Something wrong: &quot;</span> &lt;&lt; happened() &lt;&lt; std::endl;
+}</code></pre>
+<p>А вызов выглядит так:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">if</span>( unknown_arguments_exists_in( probably_valid_arguments ) ) {
+    console_report_about( unknown_argument{} );
+}</code></pre>
 Хочу отметить литературность письма. Прочтём сердцевину как текст:
 <pre>
     console report about What happened

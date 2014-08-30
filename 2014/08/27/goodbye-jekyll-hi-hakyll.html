@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Прощай, Jekyll... Приветствую, Hakyll!</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -31,12 +28,16 @@
     (2014, 08, 27)
 </div>
 
+<div id="tags_of_post">
+    <a href="../../../tags/Hakyll.html">Hakyll</a>, <a href="../../../tags/Jekyll.html">Jekyll</a>
+</div>
+
 <div style="padding-top: 20px;"></div>
 
 <p>Доброго всем времени суток. После продолжительной паузы (обусловленной рабочими дедлайнами и семейными заботами) спешу продолжить делиться с вами моими мыслями о разработке и иже с нею. Но сегодня расскажу пару слов о том, что удивило вас, когда вы зашли сегодня на эту страницу.</p>
 <p>Да, это наконец-то произошло: блог переехал с <a href="http://jekyllrb.com">Jekyll</a> на <a href="http://jaspervdj.be/hakyll/">Hakyll</a>. Я давно этого хотел, но руки никак не доходили. А недавно появилась пара окошек (относительно) свободного времени - и я решился. К счастью, переезд отнял меньше времени и сил, нежели я предполагал. Jekyll - это прекрасный инструмент, и я многим его рекомендую, но лично мне Hakyll пришёлся ближе к сердцу. Впрочем, как и в случае с Haskell, это была любовь <em>со второго</em> взгляда.</p>
 <h2 id="о-чём-идёт-речь">О чём идёт речь?</h2>
-<p>Воспринимайте Hakyll как Jekyll специально для Haskell-истов. С технической точки зрения это библиотека, <a href="https://hackage.haskell.org/package/hakyll">живущая в Hackage</a>, предназначенная для генерации статического сайта из markdown-статей. Впрочем, поддерживается не только markdown, но меня остальные форматы в данной ситуации не интересовали.</p>
+<p>Воспринимайте Hakyll как “Jekyll специально для Haskell-истов”. С технической точки зрения это библиотека, <a href="https://hackage.haskell.org/package/hakyll">живущая в Hackage</a>, предназначенная для генерации статического сайта из markdown-статей. Впрочем, поддерживается не только markdown, но меня остальные форматы в данной ситуации не интересовали.</p>
 <p>Понятно, что сама библиотека не способна что-либо сгенерить, поэтому нам потребуется программа. И в этом фундаментальное отличие от Jekyll: создавая сайт на Jekyll, вам вовсе не обязательно влезать в Ruby-код, однако в случае с Hakyll вам нужно написать свою небольшую программу, использующую упомянутую библиотеку, затем скомпилировать эту программу нашим любимым <code>ghc</code>, а затем запустить её. Тут-то и появится наш великолепный сайт.</p>
 <h2 id="плюсы">Плюсы</h2>
 <p>Прежде всего, скорость генерации. Тут Jekyll, как говорится, нервно курит в сторонке: увеличение производительности, по моим наблюдениям, составляет процентов 500, если не больше. Впрочем, это ничуть не удивляет: весьма шустрый компилируемый язык в сравнении с далеко не самым шустрым интерпретируемым языком всегда выиграет.</p>

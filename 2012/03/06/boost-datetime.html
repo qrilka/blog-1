@@ -4,13 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Boost.DateTime: почему они не добавили эту мелочь??</title>
+        
         <link rel="stylesheet" type="text/css" href="http://blog.dshevchenko.biz/css/default.css" />
-
-        <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700⊂=cyrillic-ext,latin" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Anonymous+Pro⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Bad+Script⊂=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Fira+Mono:400,700⊂=latin,latin-ext" rel="stylesheet" type="text/css">
-
         <link rel="icon" type="image/x-icon" href="http://blog.dshevchenko.biz/images/favicon.ico" />
     </head>
     <body>
@@ -20,7 +15,9 @@
             </div>
             <div id="navigation">
                 <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">Архив</a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
             </div>
         </div>
 
@@ -29,6 +26,10 @@
 
             <div class="info">
     (2012, 03, 06)
+</div>
+
+<div id="tags_of_post">
+    <a href="../../../tags/boost.html">boost</a>
 </div>
 
 <div style="padding-top: 20px;"></div>
@@ -43,7 +44,14 @@ The seconds held in the time_t are added to a time point of 1970-Jan-01.
 <p>Ну что ж, красиво. Однако мне нужна функция <strong>to_time_t</strong>, делающая как раз обратное. Нету. Искал долго - нету и всё.</p>
 <p>Однако в примерах вижу раздельчик <strong>Seconds Since Epoch</strong> - и пример с разницей time_duration.</p>
 <p>Ну уж могли бы и сами дописать. Ведь это весьма частая задача, я имею в виду конвертацию <em>В</em> time_t, а не только <em>ИЗ</em> него.</p>
-<p>Ну что ж, если гора не идёт к Магомету… Пишем за них: {% highlight cpp %} inline time_t to_time_t( boost::posix_time::ptime const&amp; a_posix_time ) { boost::posix_time::ptime const time_since_epoch( boost::gregorian::date( 1970, 1, 1 ) ); return boost::posix_time::time_duration( a_posix_time - time_since_epoch ) .total_seconds(); } {% endhighlight %} и используем.</p>
+<p>Ну что ж, если гора не идёт к Магомету… Пишем за них:</p>
+<pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">inline</span> time_t to_time_t( boost::posix_time::ptime <span class="dt">const</span>&amp; a_posix_time ) {
+    boost::posix_time::ptime <span class="dt">const</span> time_since_epoch( 
+            boost::gregorian::date( <span class="dv">1970</span>, <span class="dv">1</span>, <span class="dv">1</span> ) );
+    <span class="kw">return</span> boost::posix_time::time_duration( a_posix_time - time_since_epoch )
+           .total_seconds();
+}</code></pre>
+<p>и используем.</p>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
