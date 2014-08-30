@@ -219,13 +219,16 @@ pre.sourceCode span.fu { color: #06287e; }
 pre.sourceCode span.re { }
 pre.sourceCode span.er { color: red; font-weight: bold; }
 
-.sourceCode code {
+pre.sourceCode {
     font-family: 'Menlo', 'Monaco', monospace !important;
-    font-size: 85% !important;
+    font-size: 75% !important;
     border: 1px solid #CBE32D; /* Параметры границы */
     border-radius: 3px;
     background: #F3FAB6; /* Цвет фона */
     padding: 7px; /* Поля вокруг текста */
 }
 
+.sourceCode code {
+    font-family: 'Menlo', 'Monaco', monospace !important;
+}
 
