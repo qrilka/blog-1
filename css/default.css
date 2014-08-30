@@ -1,3 +1,7 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=cyrillic-ext,latin);
+@import url(http://fonts.googleapis.com/css?family=Bad+Script&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Fira+Mono:400,700&subset=latin,latin-ext); 
+
 body {
     color: black;
     font-size: 19px;
@@ -72,6 +76,10 @@ div#hakyll_mark {
     text-align: right; 
     font-size: 16px;
     padding-top: 4px;
+}
+
+div#tags_cloud {
+    text-align: center;
 }
 
 span#twitter {
@@ -215,4 +223,5 @@ pre.sourceCode {
     background: #F3FAB6; /* Цвет фона */
     padding: 7px; /* Поля вокруг текста */
 }
+
 

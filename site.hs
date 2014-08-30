@@ -102,7 +102,10 @@ main = hakyll $ do
 
             makeItem "" >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapContext 
     
-    --
+    -- Подготавливаем "ссылочность" тегов: благодаря этому блоку
+    -- каждый из тегов будет ссылкой, ведущей к списку заметок, 
+    -- помеченных соответствующим тегом. Это относится как к облаку тегов,
+    -- так и к персональным тегам в заметках.
     tagsRules tags $ \tag pattern -> do
         let title = "Все заметки по теме `" ++ tag ++ "`"
         route idRoute
