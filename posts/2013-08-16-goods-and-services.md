@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Товары и услуги
-category: articles
-tags: [софтверный бизнес]
-comments: true
-share: true
+tags: софтверный бизнес
 ---
 
 Вот, решил изложить своё нынешнее в**И**дение идеи платного софта.

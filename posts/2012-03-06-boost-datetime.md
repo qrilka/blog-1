@@ -1,11 +1,8 @@
 ---
-layout: post
 title: Boost.DateTime: почему они не добавили эту мелочь??
-category: articles
-tags: [Boost]
-comments: true
-share: true
+tags: boost
 ---
+
 Уже второй раз с этим разбираюсь, и удивляюсь...
 
 Итак, открываю документацию к **boost::posix_time**. Читаю:
@@ -21,12 +18,12 @@ The seconds held in the time_t are added to a time point of 1970-Jan-01.
 Ну уж могли бы и сами дописать. Ведь это весьма частая задача, я имею в виду конвертацию *В* time_t, а не только *ИЗ* него.
 
 Ну что ж, если гора не идёт к Магомету... Пишем за них:
-{% highlight cpp %}
+```cpp
 inline time_t to_time_t( boost::posix_time::ptime const& a_posix_time ) {
     boost::posix_time::ptime const time_since_epoch( 
             boost::gregorian::date( 1970, 1, 1 ) );
     return boost::posix_time::time_duration( a_posix_time - time_since_epoch )
            .total_seconds();
 }
-{% endhighlight %}
+```
 и используем.

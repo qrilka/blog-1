@@ -1,10 +1,6 @@
 ---
-layout: post
 title: BOOST_FOREACH или for
-category: articles
-tags: [Boost, C++, эффективность]
-comments: true
-share: true
+tags: boost, C++, эффективность
 ---
 
 Итак, что же использовать? Проведём честный анализ. Критерия будет два: удобство кода (во всех смыслах слова) и эффективность его выполнения.

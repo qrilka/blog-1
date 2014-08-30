@@ -1,11 +1,8 @@
 ---
-layout: post
 title: О Haskell по-человечески: четвёртое издание
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
+
 Итак, сегодня вышло в свет издание 0.4. Нет, это не первоапрельская шутка. Из новшеств:
 
 <ul>

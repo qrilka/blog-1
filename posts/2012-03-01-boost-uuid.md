@@ -1,11 +1,8 @@
 ---
-layout: post
 title: И снова про Boost.UUID
-category: articles
-tags: [Boost]
-comments: true
-share: true
+tags: boost
 ---
+
 Нда-с... Видимо, люди, включившие эту библиотеку в Boost, были не так внимательны, как хотелось бы.
 
 Итак, только что обнаружил ошибку в их документации. В классе **boost::uuids::uuid** имеется такой предикат:

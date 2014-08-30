@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Boost.Assign 2.0: упрощение или усложнение?
-category: articles
-tags: [Boost]
-comments: true
-share: true
+tags: boost
 ---
 
 Ну, во-первых, если кому-то интересно взглянуть на документацию к этому хозяйству - прошу <a href="http://svn.boost.org/svn/boost/sandbox/assign_v2/libs/assign/v2/doc/html/index.html">**сюда**</a>.

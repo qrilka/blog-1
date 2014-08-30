@@ -1,15 +1,12 @@
 ---
-layout: post
 title: ВременнЫе замеры с std::chrono
-category: articles
-tags: C++
-comments: true
-share: true
+tags: C++11
 ---
+
 Стандарт C++11 ввёл новый набор классов для работы с временем, в заголовочнике <chrono>. И вот простой рецепт (спасибо сайту cplusplus.com), как измерить время работы некой функции. Достаточно часто это нужно знать.
 
 Итак:
-{% highlight cpp %}
+```cpp
 typedef std::chrono::duration <int> seconds;
 
 void for_second() {
@@ -25,13 +22,14 @@ int main() {
               << std::endl
               ;
 }
-{% endhighlight %}
+```
 Таким образом, мы сразу получаем количество милисекунд, прошедших за время вызова функции.
 
 Если нужен замер поточнее, можем использовать микросекунды:
-{% highlight cpp %}
+```cpp
 duration_cast <microseconds>( end - begin ).count() 
-{% endhighlight %}и даже наносекунды:
-{% highlight cpp %}
+```
+и даже наносекунды:
+```cpp
 duration_cast <nanoseconds>( end - begin ).count() 
-{% endhighlight %}
+```

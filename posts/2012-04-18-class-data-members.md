@@ -1,13 +1,10 @@
 ---
-layout: post
 title: К вопросу о данных класса...
-category: articles
 tags: C++
-comments: true
-share: true
 ---
+
 Итак:
-{% highlight cpp %}
+```cpp
 struct disk {
     disk() :
         m_name( "disk storage" ) {}
@@ -18,16 +15,20 @@ public:
         return m_name;
     }
 };
-{% endhighlight %}Итак, имя доступно через disk::name().
+```
+
+Итак, имя доступно через disk::name().
 
 Теперь второй вариант:
-{% highlight cpp %}
+```cpp
 struct disk {
     std::string name() const {
         return "disk storage";
     }
 };
-{% endhighlight %}Возникает вопрос: какой вариант лучше?
+```
+
+Возникает вопрос: какой вариант лучше?
 
 Любопытно, что в абсолютно подавляющем большинстве учебников по C++ рассматривается вариант, подобный первому. Объясняется это императивной привычкой: мол, сначала мы создаём объект, а затем используем его.
 

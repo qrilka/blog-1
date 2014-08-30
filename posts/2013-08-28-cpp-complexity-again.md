@@ -1,10 +1,6 @@
 ---
-layout: post
 title: О сложности С++ замолвим слово... Ещё раз...
-category: articles
-tags: [C++, Objective-C]
-comments: true
-share: true
+tags: C++, Objective-C
 ---
 
 Сегодня прочёл одну **<a href="http://blog.greaterthanzero.com/post/58482859780/c-and-the-culture-of-complexity">заметку</a>** под названием "C++ and the Culture of Complexity". Суть её в том, что С++ избыточно сложен в сравнении со многим современными языками программирования. Ну и на волне этой заметки я хотел бы поразмышлять об одном аспекте, который сразу же бросился мне в глаза при изучении Objective-C.

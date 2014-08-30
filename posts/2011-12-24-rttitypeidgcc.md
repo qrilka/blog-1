@@ -1,9 +1,8 @@
 ---
-layout: post
 title: RTTI+typeid+GCC
-created: 1324742428
 tags: gcc
 ---
+
 Наверняка для многих не секрет то, что GCC манглит(<a href="http://en.wikipedia.org/wiki/Name_mangling#Name_mangling_in_C.2B.2B">name mangling</a>) имена идентификаторов. Но на оборот, наверняка для многих является секретом то, что такие идентификаторы можно расшифровать.
 
 <a href="http://liveworkspace.org/code/b7dff0c2e0f7cd795562734eda8c68f2">Изначальный пример</a>:

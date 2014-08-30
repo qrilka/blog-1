@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Objective-C: длительность вызова функции
-category: articles
-tags: [Objective-C]
-comments: true
-share: true
+tags: Objective-C
 ---
 
 Итак, понадобилось мне узнать, сколько длится вызов функции. И захотелось мне (раз уж речь шла о **<a href="http://strictcodeapp.com">StrictCode</a>**) сделать это на Objective-C. Заодно и узнал этот способ.

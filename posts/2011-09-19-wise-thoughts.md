@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Мудрые мысли
-category: articles
-tags: [философия]
-comments: true
-share: true
+tags: философия
 ---
 
 **Я слышу и забываю.

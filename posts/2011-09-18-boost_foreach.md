@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Пользователям BOOST_FOREACH, важно...
-category: articles
-tags: [Boost]
-comments: true
-share: true
+tags: boost
 ---
 
 При переборе контейнера возвращается ссылка на текущий элемент. Но что происходит потом? 

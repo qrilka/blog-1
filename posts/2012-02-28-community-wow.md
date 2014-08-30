@@ -1,11 +1,8 @@
 ---
-layout: post
 title: Обалдеть! Вот что значит сообщество!
-category: articles
-tags: [IT]
-comments: true
-share: true
+tags: IT
 ---
+
 Не могу не рассказать, просто не могу.
 
 Итак, как вы уже знаете, открылся сайт моей программы http://style-revisor.com. Ну, сообщил я об этой новости в Твиттеры, Гугл-плюсы и прочее, и вот один из моих коллег, **<a href="http://codalogic.com/lmx">Pete Cordell</a>**, оказал мне большую услугу.

@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell Data Analysis Cookbook
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 Вот уж действительно, Real World Haskell. Только что узнал о потрясающей книге ["Haskell Data Analysis Cookbook"](http://haskelldata.com/). Слоган не мог не привлечь моё внимание:

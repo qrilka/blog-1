@@ -1,11 +1,8 @@
 ---
-layout: post
 title: О Haskell по-человечески: уже онлайн
-category: articles
-tags: [Haskell, GitBook]
-comments: true
-share: true
+tags: Haskell, GitBook
 ---
+
 Приветствую, друзья!
 
 Рад сообщить, что моя книга теперь уютно живёт **<a href="http://ohaskell.ru/fst">онлайн</a>**. Я чуток подкорректировал **<a href="https://github.com/GitbookIO/gitbook/tree/master/theme">умолчальную тему</a>**, убрав из неё всё лишнее. Получилось лаконично, симпатично и мобильно-адаптивно.

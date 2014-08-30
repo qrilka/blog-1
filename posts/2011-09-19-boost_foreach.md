@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Знаете, во что превращается BOOST_FOREACH?
-category: articles
-tags: [Boost]
-comments: true
-share: true
+tags: boost
 ---
 
 Недавно я узнал, во что же разворачивается макрос BOOST_FOREACH.

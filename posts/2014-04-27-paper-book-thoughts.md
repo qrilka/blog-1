@@ -1,10 +1,6 @@
 ---
-layout: post
 title: О бумажной книге: мысли и сомнения
-category: articles
-tags: [книги, Haskell]
-comments: true
-share: true
+tags: книги, Haskell
 ---
 
 Доброе время суток, друзья!

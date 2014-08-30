@@ -1,7 +1,5 @@
 ---
-layout: post
 title: Boost.DateTime: логический баг...
-created: 1320418150
 tags: boost
 ---
 

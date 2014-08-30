@@ -1,10 +1,6 @@
 ---
-layout: post
 title: К вопросу о продолжительности изучения языков...
-category: articles
-tags: [Haskell, C++, C]
-comments: true
-share: true
+tags: Haskell, C++, C
 ---
 Не поленился и заглянул в стандарты языков C, C++ и Haskell, дабы оценить их объём. Справедливости ради использовал лишь самые последние стандарты:
 <ul>

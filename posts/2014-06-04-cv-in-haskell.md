@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Пишем резюме на Haskell
-category: articles
-tags: [Haskell, прикол]
-comments: true
-share: true
+tags: Haskell, прикол
 ---
 
 Вчера ночью пришло вдохновение, и решил я прикольнуться. Забегая вперёд, скажу, что прикол удался, мне и самому понравилось.

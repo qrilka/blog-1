@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell: о типах
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 <h3>Строгая статическая проверка</h3>

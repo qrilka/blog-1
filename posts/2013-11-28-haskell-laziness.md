@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell: что же это за ленивые вычисления такие?
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 Вот формальное определение:

@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell: новый сайт
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 Приветствую!

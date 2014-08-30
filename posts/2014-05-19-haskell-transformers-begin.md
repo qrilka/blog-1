@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Монадные трансформеры: "облако" внутри Haskell
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 Доброе время суток!

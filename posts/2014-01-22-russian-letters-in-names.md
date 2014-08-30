@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Русские буквы в именах: невероятно, но факт
-category: articles
-tags: [Haskell, C++]
-comments: true
-share: true
+tags: Haskell, C++
 ---
 
 Случайно наткнулся на **<a href="http://eao197.blogspot.com/2014/01/progcwow-const-int-1.html">одну заметку</a>**, в которой говорится о живом коде на C++, в котором имена некоторых переменных набраны русскими буквами (в кодировке CP1251), и это компилируется!

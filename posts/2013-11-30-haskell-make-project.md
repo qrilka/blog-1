@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell: собираем простейший проект
-category: articles
-tags: [Haskell, cabal]
-comments: true
-share: true
+tags: Haskell, cabal
 ---
 
 За основу я взял хорошее пошаговое руководство с **<a href="http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program#Structure_of_a_simple_project">официального сайта</a>** Haskell, и снабдил его некоторыми пояснениями. Не пугайтесь, что дальше идёт довольно много текста, потому что фактических команд, которые вам нужно будет выполнить в терминале, всего несколько. Объём этой статьи обусловлен подробностью моих комментариев. 

@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Итак, Objective-C...
-category: articles
-tags: [Objective-C]
-comments: true
-share: true
+tags: Objective-C
 ---
 
 Итак, Objective-C... Язык, созданный компанией Apple уже много лет назад, впитавший в себя дух старого доброго C и Smalltalk...

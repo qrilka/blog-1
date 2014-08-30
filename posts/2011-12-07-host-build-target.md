@@ -1,8 +1,8 @@
 ---
-layout: post
 title: Кросскомпиляция - host/build/target ?
-created: 1323215902
+tags: кросскомпиляция
 ---
+
 постоянно путаюсь в host/build/target, по этому, запишу :)
 
 ```cpp

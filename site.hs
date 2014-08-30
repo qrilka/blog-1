@@ -1,21 +1,21 @@
---------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import Data.Monoid (mconcat)
 import Data.List.Split (splitOn)
 import Data.List (intersperse, isSuffixOf)
 import System.FilePath (combine, splitExtension, takeFileName)
-import Hakyll
---------------------------------------------------------------------------------
+import Network.HTTP (urlEncode)
 
-host :: String
-host = "http://blog.dshevchenko.biz"
+import Hakyll
+
+hostOfBlog :: String
+hostOfBlog = "http://blog.dshevchenko.biz"
 
 myFeedConfiguration :: FeedConfiguration
 myFeedConfiguration = FeedConfiguration { feedTitle       = "Д. Шевченко"
                                         , feedDescription = "Мысли и опыт"
                                         , feedAuthorName  = "Денис Шевченко"
                                         , feedAuthorEmail = "me@dshevchenko.biz"
-                                        , feedRoot        = host
+                                        , feedRoot        = hostOfBlog
                                         }
 
 main :: IO ()
@@ -35,26 +35,27 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
     
-    -- Просто копируем файл CNAME, нужный для поддержки 
-    -- собственного dns на GitHub Pages...
+    -- Просто копируем файл CNAME, необходимый для 
+    -- поддержки собственного dns на GitHub Pages...
     match "CNAME" $ do
         route   idRoute
         compile copyFileCompiler
 
     -- Создаём файл .nojekyll и просто копируем его.
     -- Он необходим для того, чтобы сообщить GitHub Pages
-    -- о том, что этот сайт не на Jekyll...
+    -- о том, что этот сайт (к сожалению или к счастью) не на Jekyll...
     create [".nojekyll"] $ do
         route   idRoute
         compile copyFileCompiler
 
-    -- Создаём .htaccess и применяем к нему специальный шаблон...
+    -- Создаём .htaccess и применяем к нему заготовленный шаблон...
     create [".htaccess"] $ do
         route idRoute
         compile $ makeItem "" >>= loadAndApplyTemplate "templates/htaccess" defaultContext
 
     -- Строим теги из заметок...
-    tags <- buildTags "posts/*" (fromCapture "tags/*.html")
+    -- urlEncode используется для корректного формирования не-ASCII меток... 
+    tags <- buildTags "posts/*" (fromCapture "tags/*.html" . urlEncode)
 
     -- Обрабатываем все заметки...
     match "posts/*" $ do
@@ -62,12 +63,12 @@ main = hakyll $ do
                 directorizeDate `composeRoutes`
                 setExtension "html"
         -- Используем pandocCompiler, потому что все заметки
-        -- написаны на Markdown, и их необходимо превратить в html...
+        -- написаны на Markdown, и pandoc необходим, чтобы превратить их в html...
         compile $ pandocCompiler >>= loadAndApplyTemplate "templates/post.html" (postContext tags)
                                  >>= loadAndApplyTemplate "templates/default.html" (postContext tags)
                                  >>= relativizeUrls
     
-    -- Создаём страницу 404 и применяем к ней шаблон стандартной страницы...
+    -- Создаём страницу 404 и применяем к ней шаблон стандартной страницы, а также собственную заготовку...
     create ["404.html"] $ do
         route idRoute
         compile $ makeItem "" >>= loadAndApplyTemplate "templates/404.html" (postContext tags)
@@ -78,6 +79,7 @@ main = hakyll $ do
     create ["archive.html"] $ do
         route idRoute
         compile $ do
+            -- Берём все заметки, начиная с самой поздней...
             posts <- recentFirst =<< loadAll "posts/*"
             let archiveContext = mconcat [ listField "posts" (postContext tags) (return posts) 
                                          , constField "title" "Архив"                   
@@ -94,32 +96,26 @@ main = hakyll $ do
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let sitemapContext = mconcat [ listField "entries" (postContext tags) (return posts)
-                                         , constField "host" host
+                                         , constField "host" hostOfBlog
                                          , defaultContext
                                          ]
 
             makeItem "" >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapContext 
-
+    
     --
---    tagsRules tags $ \tag pattern -> do
---        let title = "Posts tagged " ++ tag
+    tagsRules tags $ \tag pattern -> do
+        let title = "Все заметки по теме `" ++ tag ++ "`"
+        route idRoute
+        compile $ do
+            posts <- recentFirst =<< loadAll pattern
+            let taggedPostsContext = mconcat [ listField "posts" (postContext tags) (return posts)
+                                             , constField "title" title
+                                             , defaultContext
+                                             ]
 
---        route niceRoute
---        compile $ do
---          posts <- recentFirst =<< loadAll pattern
---          let ctx = constField "title" title <>
---                    listField "posts" (postCtx tags) (return posts) <>
---                    defaultContext
-
---          makeItem ""
---            >>= loadAndApplyTemplate "templates/tag.html" ctx
---            >>= loadAndApplyTemplate "templates/default.html" ctx
---            >>= relativizeUrls
---    create ["tags.html"] $ do
---        route idRoute
---        compile $ do
---            tags <- buildTags "posts/*" (fromCapture "tags/*.html")
---            renderTagCloud 12.0 36.0 tags
+            makeItem "" >>= loadAndApplyTemplate "templates/posts.html" taggedPostsContext 
+                        >>= loadAndApplyTemplate "templates/default.html" taggedPostsContext
+                        >>= relativizeUrls
     
     -- Настраиваем RSS feed...
     create ["feed.xml"] $ do
@@ -151,8 +147,13 @@ main = hakyll $ do
     create ["tags.html"] $ do
         route idRoute
         compile $ do
-            let tagsContext = mconcat [ constField "title" "О чём беседуем"
-                                      , field "tagsCloud" (\_ -> renderTagCloud 100 300 tags)
+            let smallestFontSizeInPercent = 110
+                biggestFontSizeInPercent = 330
+                renderedCloud = \_ -> renderTagCloud smallestFontSizeInPercent 
+                                                     biggestFontSizeInPercent
+                                                     tags
+                tagsContext = mconcat [ constField "title" "О чём беседуем"
+                                      , field "tagsCloud" renderedCloud
                                       , defaultContext
                                       ]
             
@@ -179,9 +180,9 @@ removePostsDirectoryFromURLs :: Routes
 removePostsDirectoryFromURLs = gsubRoute "posts/" (const "")
 
 postContext :: Tags -> Context String
-postContext tags = mconcat [ constField "host" host
-                           , dateField "date" "(%Y, %m, %d)"
-                           , tagsField "tags" tags
+postContext tags = mconcat [ constField "host" hostOfBlog
+                           , dateField "date" "(%Y, %m, %d)" -- Дата будет выглядеть как (2014, 08, 27)
+                           , tagsField "postTags" tags
                            , defaultContext
                            ]
 

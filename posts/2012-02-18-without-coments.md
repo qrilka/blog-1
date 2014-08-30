@@ -1,11 +1,8 @@
 ---
-layout: post
 title: Пояснение без комментариев: пример
-category: articles
-tags: [C++]
-comments: true
-share: true
+tags: C++
 ---
+
 Итак, есть функция:
 ```cpp
 void set_margins( int left, int top, int right, int bottom );

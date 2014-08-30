@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell: идея
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 В общем, после долгих размышлений, после первичного восторга от ФП в целом и от Haskell в частности я решил внести свой посильный вклад в популяризацию Haskell среди русскоязычного IT-сообщества.

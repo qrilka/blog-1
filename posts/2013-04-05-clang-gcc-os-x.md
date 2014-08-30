@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Clang вместо GCC на OS X: первый опыт
-category: articles
-tags: [GCC, Clang]
-comments: true
-share: true
+tags: gcc, clang
 ---
 
 В общем, не GCC единым жив программист...

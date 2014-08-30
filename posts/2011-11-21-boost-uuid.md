@@ -1,10 +1,8 @@
 ---
-layout: post
 title: Boost.UUID: досадная оплошность
-created: 1321883708
 tags: boost
 ---
-<!--break-->
+
 Итак, пример:
 ```cpp
 int main() {

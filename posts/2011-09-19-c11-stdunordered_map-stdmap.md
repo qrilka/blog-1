@@ -1,10 +1,6 @@
 ---
-layout: post
 title: C++11: std::unordered_map против std::map
-category: articles
-tags: [C++]
-comments: true
-share: true
+tags: C++11
 ---
 
 Известно, что в C++11 в пространство имён **std** внесён контейнер **unordered_map**. Для его использования необходимо включить в программу одноимённый заголовочник.

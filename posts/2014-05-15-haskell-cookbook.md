@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Поваренная книга Haskell: начало положено
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 Приветствую, друзья!

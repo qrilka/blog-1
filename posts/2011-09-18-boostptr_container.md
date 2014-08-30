@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Пользователям boost::ptr_container, важно!
-category: articles
-tags: [Boost]
-comments: true
-share: true
+tags: boost
 ---
 
 Недавно я потерял добрую половину рабочего дня на исправление одной хитрой ошибки при использовании boost::ptr_vector.

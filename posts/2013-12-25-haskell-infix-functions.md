@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell: об инфиксных функциях
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 Как мы уже знаем, вызов чистой функции выглядит так:

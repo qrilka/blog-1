@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell: устанавливаем пакет из Hackage
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 <h3>Готовимся</h3>

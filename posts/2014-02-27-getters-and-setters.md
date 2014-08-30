@@ -1,10 +1,6 @@
 ---
-layout: post
 title: О геттерах и сеттерах
-category: articles
-tags: [C++]
-comments: true
-share: true
+tags: C++
 ---
 
 Итак, есть у нас следующий код:

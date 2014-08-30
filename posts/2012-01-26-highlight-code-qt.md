@@ -1,11 +1,8 @@
 ---
-layout: post
 title: Синтаксическая подсветка в Qt: кусочек
-category: articles
 tags: Qt
-comments: true
-share: true
 ---
+
 Переопределённая функция, отвечает за подсветку ключевых слов в переданном извне куске текста.
 ```cpp
 void editor_highlighter::highlightBlock( QString const& text ) {

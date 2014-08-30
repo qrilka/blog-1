@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell: и снова о типах
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 В языке Haskell есть три ключевых слова, используемые при определении собственных типов. И слова эти могут, скажем так, смутить программистов, пришедших из мира C++. Вот эти слова:

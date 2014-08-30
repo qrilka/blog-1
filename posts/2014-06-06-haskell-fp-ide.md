@@ -1,10 +1,6 @@
 ---
-layout: post
 title: Haskell IDE от FP Complete
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
 
 И вновь ночная посиделка вылилась в обзор на Хабре. Добрался-таки я до Haskell-IDE от компании [FP Complete](https://www.fpcomplete.com/). Инструмент, к которому я поначалу отнёсся весьма скептично, оказался весьма интересной и перспективной штукой.

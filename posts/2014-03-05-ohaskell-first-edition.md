@@ -1,11 +1,8 @@
 ---
-layout: post
 title: О Haskell по-человечески: первое издание
-category: articles
-tags: [Haskell]
-comments: true
-share: true
+tags: Haskell
 ---
+
 Готово! Первое издание моей скромной книги о Haskell вышло в свет.
 
 Живёт оно тут: http://ohaskell.ru.

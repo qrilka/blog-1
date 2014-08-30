@@ -1,11 +1,8 @@
 ---
-layout: post
 title: Objective-C и Boost.Xpressive: конфликт слов
-category: articles
-tags: [Objective-C, Boost]
-comments: true
-share: true
+tags: Objective-C, boost
 ---
+
 Увы и ах, но испльзование некоторых из библиотек Boost недопустимо в Objective-C++ коде, как я смог убедиться в этом буквально вчера.
 
 У меня в коде приложения StrictCode использовалась Boost.Xpressive. И в процессе переноса парсингового кода из Ревизора вдруг вылетела (в огромных количествах) следующая ошибка:

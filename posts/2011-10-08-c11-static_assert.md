@@ -1,10 +1,8 @@
 ---
-layout: post
 title: C++11: static_assert
-created: 1318068225
-tags: static_assert, c++11
+tags: static_assert, C++11
 ---
-<!--break-->
+
 Представим, что у нас есть такая функция:
 
 ```cpp

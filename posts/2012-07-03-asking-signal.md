@@ -1,11 +1,8 @@
 ---
-layout: post
 title: Запрашивающий сигнал
-category: articles
-tags: [Qt, C++]
-comments: true
-share: true
+tags: Qt, C++
 ---
+
 Представим себе, что нам нужно обработать нажатие на кнопку в Qt. В этом случае сигнал клика связывается с обработчиком:
 ```cpp
 connect(   button
