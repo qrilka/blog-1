@@ -1,6 +1,7 @@
 ---
 title: Haskell Data Analysis Cookbook
 tags: Haskell
+description: Пара слов об очередной новой книге, посвящённой использованию Haskell в реальном мире.
 ---
 
 Вот уж действительно, Real World Haskell. Только что узнал о потрясающей книге ["Haskell Data Analysis Cookbook"](http://haskelldata.com/). Слоган не мог не привлечь моё внимание:

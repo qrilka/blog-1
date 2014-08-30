@@ -124,8 +124,8 @@ main = hakyll $ do
     create ["feed.xml"] $ do
         route idRoute
         compile $ do
-            let feedContext = mconcat [ (postContext tags) 
-                                      , constField "description" "This is the post description"
+            let feedContext = mconcat [ postContext tags
+                                      , constField "description" ""
                                       ]
             -- Учитываем 10 последних заметок...
             posts <- fmap (take 10) . recentFirst =<< loadAll "posts/*"
