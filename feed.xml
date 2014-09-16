@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Wed, 27 Aug 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Tue, 16 Sep 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Разработка СППР по диагностике эпилепсии</title>
+    <link>http://blog.dshevchenko.biz/2014/09/16/sppr-crowdfunding.html</link>
+    <description><![CDATA[Разработка Системы помощи принятия решений (СППР) по диагностике судорожного синдрома.]]></description>
+    <pubDate>Tue, 16 Sep 2014 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2014/09/16/sppr-crowdfunding.html</guid>
+</item>
+<item>
     <title>Прощай, Jekyll... Приветствую, Hakyll!</title>
     <link>http://blog.dshevchenko.biz/2014/08/27/goodbye-jekyll-hi-hakyll.html</link>
     <description><![CDATA[О переходе с прекрасного Jekyll на блистательный Hakyll.]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[Низкоуровневости и Haskell. Значит, если байтиками нельзя жонглировать, значит язык плохой? Ну-ну...]]></description>
     <pubDate>Sun, 11 May 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/05/11/haskell-discussion.html</guid>
-</item>
-<item>
-    <title>Открыл исходники - открой и планы: waffle.io</title>
-    <link>http://blog.dshevchenko.biz/2014/04/29/waffle-io.html</link>
-    <description><![CDATA[О прекрасном и удобном сервисе waffle.io. Настоятельно рекомендую к ознакомлению.]]></description>
-    <pubDate>Tue, 29 Apr 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/04/29/waffle-io.html</guid>
 </item>
 
     </channel> 
