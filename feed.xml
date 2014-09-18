@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 16 Sep 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 18 Sep 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>С GitBook на... Hakyll</title>
+    <link>http://blog.dshevchenko.biz/2014/09/18/from-gitbook-to-hakyll.html</link>
+    <description><![CDATA[Книга "О Haskell по-человечески" теперь создаётся не в GitBook, а с помощью... Hakyll.]]></description>
+    <pubDate>Thu, 18 Sep 2014 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2014/09/18/from-gitbook-to-hakyll.html</guid>
+</item>
+<item>
     <title>Разработка СППР по диагностике эпилепсии</title>
     <link>http://blog.dshevchenko.biz/2014/09/16/sppr-crowdfunding.html</link>
     <description><![CDATA[Разработка Системы помощи принятия решений (СППР) по диагностике судорожного синдрома.]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[Кратких и актуальных примеров для Haskell так не хватает. Решил внести свой посильный вклад в исправление этой досадной оплошности...]]></description>
     <pubDate>Thu, 15 May 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/05/15/haskell-cookbook.html</guid>
-</item>
-<item>
-    <title>В защиту Haskell: по следам одного Хабра-спора...</title>
-    <link>http://blog.dshevchenko.biz/2014/05/11/haskell-discussion.html</link>
-    <description><![CDATA[Низкоуровневости и Haskell. Значит, если байтиками нельзя жонглировать, значит язык плохой? Ну-ну...]]></description>
-    <pubDate>Sun, 11 May 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/05/11/haskell-discussion.html</guid>
 </item>
 
     </channel> 
