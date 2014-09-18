@@ -24,7 +24,7 @@ COMMIT_MESSAGE=$1
 
 echo "Заливаем в мастер..."
 git commit -a -m "$COMMIT_MESSAGE"
-git push origin master
+git push -f origin master
 
 echo "Собираем новую версию сайта..."
 ghc site.hs
@@ -45,7 +45,7 @@ git add .
 git commit -a -m "$COMMIT_MESSAGE"
 
 echo "Заливаем на GitHub Pages..."
-git push origin gh-pages
+git push -f origin gh-pages
 
 echo "Возвращаемся в мастер..."
 git checkout master
