@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 30 Sep 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Mon, 06 Oct 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Хабр: здравствуй и прощай</title>
+    <link>http://blog.dshevchenko.biz/2014/10/06/habr-goodbye.html</link>
+    <description><![CDATA[На прошлой неделе я распрощался с Хабром. Насовсем. О причинах такого решения - далее.]]></description>
+    <pubDate>Mon, 06 Oct 2014 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2014/10/06/habr-goodbye.html</guid>
+</item>
+<item>
     <title>О Haskell по-человечески: немного вопросов и ответов</title>
     <link>http://blog.dshevchenko.biz/2014/09/30/ohaskell-answer.html</link>
     <description><![CDATA[Один из моих читателей задал несколько заслуживающих внимания вопросов, касаетельно книги. Я решил ответить на них здесь, на тот случай, если у кого-то возникли такие же...]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[Linux из поделки для гиков превратился в эффективный рабочий инструмент огромного числа людей. Полагаю, что Haskell (и ФП в целом) ждёт такой же путь...]]></description>
     <pubDate>Sun, 01 Jun 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/06/01/haskell-and-linux.html</guid>
-</item>
-<item>
-    <title>Haskell: новый сайт</title>
-    <link>http://blog.dshevchenko.biz/2014/05/29/haskell-new-site.html</link>
-    <description><![CDATA[О новом официальном сайте для языка Haskell. Выглядит очень неплохо, свежо.]]></description>
-    <pubDate>Thu, 29 May 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/05/29/haskell-new-site.html</guid>
 </item>
 
     </channel> 
