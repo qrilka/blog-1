@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Mon, 06 Oct 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Wed, 10 Dec 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>О Haskell по-человечески: продолжение?</title>
+    <link>http://blog.dshevchenko.biz/2014/12/10/ohaskell-continue.html</link>
+    <description><![CDATA[Я принял решение: второго тома не будет. Но продолжение будет. В этой заметке - объяснение.]]></description>
+    <pubDate>Wed, 10 Dec 2014 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2014/12/10/ohaskell-continue.html</guid>
+</item>
+<item>
     <title>Хабр: здравствуй и прощай</title>
     <link>http://blog.dshevchenko.biz/2014/10/06/habr-goodbye.html</link>
     <description><![CDATA[На прошлой неделе я распрощался с Хабром. Насовсем. О причинах такого решения - далее.]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[Знания языка программирования, отражённые непосредственно в тесте резюме? А почему бы и нет?]]></description>
     <pubDate>Wed, 04 Jun 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/06/04/cv-in-haskell.html</guid>
-</item>
-<item>
-    <title>Haskell и Linux: не только just for fun</title>
-    <link>http://blog.dshevchenko.biz/2014/06/01/haskell-and-linux.html</link>
-    <description><![CDATA[Linux из поделки для гиков превратился в эффективный рабочий инструмент огромного числа людей. Полагаю, что Haskell (и ФП в целом) ждёт такой же путь...]]></description>
-    <pubDate>Sun, 01 Jun 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/06/01/haskell-and-linux.html</guid>
 </item>
 
     </channel> 
