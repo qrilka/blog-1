@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Wed, 10 Dec 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 13 Dec 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Buildbot: CI-инструмент, который мне понравился</title>
+    <link>http://blog.dshevchenko.biz/2014/12/13/buildbot-hello-world.html</link>
+    <description><![CDATA[Buildbot - это CI-инструмент, который мне понравился. Расскажу о том, как его вкусно приготовить.]]></description>
+    <pubDate>Sat, 13 Dec 2014 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2014/12/13/buildbot-hello-world.html</guid>
+</item>
+<item>
     <title>О Haskell по-человечески: продолжение?</title>
     <link>http://blog.dshevchenko.biz/2014/12/10/ohaskell-continue.html</link>
     <description><![CDATA[Я принял решение: второго тома не будет. Но продолжение будет. В этой заметке - объяснение.]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[Об облачной IDE от FP Complete. Весьма многообещающая штука, на мой взгляд.]]></description>
     <pubDate>Fri, 06 Jun 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/06/06/haskell-fp-ide.html</guid>
-</item>
-<item>
-    <title>Пишем резюме на Haskell</title>
-    <link>http://blog.dshevchenko.biz/2014/06/04/cv-in-haskell.html</link>
-    <description><![CDATA[Знания языка программирования, отражённые непосредственно в тесте резюме? А почему бы и нет?]]></description>
-    <pubDate>Wed, 04 Jun 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/06/04/cv-in-haskell.html</guid>
 </item>
 
     </channel> 
