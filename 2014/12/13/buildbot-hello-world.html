@@ -95,15 +95,14 @@ $ <span class="kw">buildslave</span> start tmp/slave_beta/
 $ <span class="kw">buildslave</span> start tmp/slave_rc/
 $ <span class="kw">buildslave</span> start tmp/slave_stable/</code></pre>
 <p>Готово. По умолчанию, веб-интерфейс доступна через порт 8010, поэтому набираем в браузере <code>http://localhost:8010</code> и любуемся. Да, интерфейс очень прост, но зато понятен.</p>
-<h2 id="настоящая-настройка">Настоящая настройка</h2>
+<h2 id="знакомимся-с-проектом">Знакомимся с проектом</h2>
 <p>Естественно, на данный момент система не представляет для нас никакой ценности. Пришла пора поглужбе разобраться в конфигурационном файле.</p>
-<h3 id="знакомимся-с-проектом">Знакомимся с проектом</h3>
 <p>Прежде всего познакомим Buildbot с нашим проектом. Откроем файл <code>~/tmp/mhelper_buildmaster/master.cfg</code> и найдём в нём секцию <code>PROJECT IDENTITY</code>. Пишем:</p>
 <pre class="sourceCode python"><code class="sourceCode python">c[<span class="st">'title'</span>] = <span class="st">&quot;My project's real name&quot;</span>
 c[<span class="st">'titleURL'</span>] = <span class="st">&quot;http://my-project.com&quot;</span></code></pre>
 <p>Кстати, если по какой-то причине нас не устраивает умолчальный порт <code>8010</code> (например, у меня он был уже занят), то в этой же секции указываем другой:</p>
 <pre class="sourceCode python"><code class="sourceCode python">c[<span class="st">'buildbotURL'</span>] = <span class="st">&quot;http://localhost:8020/&quot;</span></code></pre>
-<h3 id="указываем-пользователей">Указываем пользователей</h3>
+<h2 id="указываем-пользователей">Указываем пользователей</h2>
 <p>Очевидно, что работать с нашей системой должны лишь те, кому это позволено. Укажем наших будущих пользователей-разработчиков. Находим секцию <code>STATUS TARGETS</code> и меняем там следующее:</p>
 <pre class="sourceCode python"><code class="sourceCode python">users = [(<span class="st">&quot;denis.shevchenko&quot;</span>,<span class="st">&quot;super_password&quot;</span>)]
 
@@ -128,7 +127,7 @@ c[<span class="st">'status'</span>].append(html.WebStatus(http_port=<span class=
 <pre class="sourceCode python"><code class="sourceCode python">c[<span class="st">'status'</span>].append(html.WebStatus(http_port=<span class="dv">8020</span>, authz=authz_cfg))</code></pre>
 <p>Видите значение <code>http_port</code>? Если необходимо, измените его в соответствие со значением порта в параметре <code>c['buildbotURL']</code>.</p>
 <p>Теперь пользователи, зайдя на главную страницу сервиса, смогут авторизоваться, введя указанные здесь логин и пароль в верхнем правом углу.</p>
-<h3 id="указываем-наши-исходники">Указываем наши исходники</h3>
+<h2 id="указываем-наши-исходники">Указываем наши исходники</h2>
 <p>Используемый мною CI-воркфлоу предельно прост: <code>git push</code> в соответствующую ветку, и ассоциированный с нею стенд автоматически обновляется.</p>
 <p>Например, для версии <code>alpha</code> есть стенд <code>http://alpha.my-service.com</code>. Таким образом, чтобы пересобрать этот стенд, нужно запушить изменения в одноимённую ветку <code>alpha</code> (далее я подразумеваю, что репозиторий у вас уже есть и упомянутые здесь ветки уже созданы).</p>
 <p>Теперь находим секцию <code>CHANGESOURCES</code> и пишем там следующее:</p>
@@ -144,7 +143,7 @@ git_poller = GitPoller(repourl = <span class="st">'git@localhost:service/mhelper
 c[<span class="st">'change_source'</span>] = [git_poller]</code></pre>
 <p><code>git_poller</code> - наш верный сторожевой пёс. Каждый 60 секунд он опрашивает четыре ветки в нашем репозитории.</p>
 <p>Обратите внимание на необычный URL репозитория <code>git@localhost:service/mhelper.git</code>. Дело в том, что мой репозиторий уютно живёт в <a href="https://about.gitlab.com">GitLab</a>, а этот GitLab физически установлен на той же разработческой виртуалке, где и Buildbot. Поэтому я создал беспарольный ssh-ключик, добавил его в GitLab (через его веб-интерфейс), и теперь пользователь <code>denis</code> имеет право выполнять команды для работы с репозиторием от имени пользователя <code>git</code>. Напомню, что пользователь <code>git</code> автоматически создаётся при установке GitLab.</p>
-<h3 id="планировщики">Планировщики</h3>
+<h2 id="планировщики">Планировщики</h2>
 <p>Теперь находим секцию <code>SCHEDULERS</code> и пишем:</p>
 <pre class="sourceCode python"><code class="sourceCode python">alpha_scheduler = SingleBranchScheduler(name = <span class="st">&quot;alpha_scheduler&quot;</span>,
                                         change_filter = <span class="dt">filter</span>.ChangeFilter(branch = <span class="st">'alpha'</span>),
@@ -168,7 +167,7 @@ stable_scheduler = SingleBranchScheduler(name = <span class="st">&quot;stable_sc
 
 c[<span class="st">'schedulers'</span>] = [alpha_scheduler, beta_scheduler, rc_scheduler, stable_scheduler]</code></pre>
 <p>Здесь мы создаём четыре планировщика. Каждый из них работает со своей версией (веткой), и связан со своим билдером.</p>
-<h3 id="сборщики">Сборщики</h3>
+<h2 id="сборщики">Сборщики</h2>
 <p>Итак, мы дошли до самого интересного. Находим секцию <code>BUILDERS</code> и пишем:</p>
 <pre class="sourceCode python"><code class="sourceCode python">alpha_factory = BuildFactory()
 alpha_factory.addStep(ShellCommand(command = [<span class="st">&quot;mhelper_update.sh&quot;</span>, <span class="st">&quot;alpha&quot;</span>]))
@@ -202,10 +201,10 @@ stable_builder = BuilderConfig(name = <span class="st">&quot;stable_builder&quot
 
 c[<span class="st">'builders'</span>] = [alpha_builder, beta_builder, rc_builder, stable_builder]</code></pre>
 <p>Звенья цепи, как видите, наконец-то собираются воедино. Каждый из сборщиков связан, во-первых, со своей сборочной фабрикой, а во-вторых, со своим слугой. Например, сборщик <code>alpha_builder</code> связан с фабрикой <code>alpha_factory</code> и со слугой <code>slave_alpha</code>. Таким образом, shell-команда, добавленная в качестве сборочного шага в фабрику <code>alpha_factory</code>, будет выполнена силами слуги <code>slave_alpha</code>. Того самого слуги, которого мы создали в самом начале.</p>
-<h3 id="о-скрипте">О скрипте</h3>
+<h2 id="о-скрипте">О скрипте</h2>
 <p>Как вы уже догадались, выполнение скрипта <code>mhelper_update.sh</code> как раз и делает всю фактическую работу по обновлению нашего веб-приложения. Разумеется, можно было обойтись и без него, ведь скрипт есть набор shell-команд, и весь этот набор можно было включить в наши сборочные фабрики. Однако я как-то привык работать с отдельным скриптом. Во-первых, так конфигурационный файл сильно упрощается, а во-вторых, в крайнем случае (ну мало ли что) всегда можно обновить приложение и без CI, запустив этот скрипт вручную. Весьма удобно.</p>
 <p>Содержимое этого скрипта стандартно: берём исходники приложения из нужной ветки, компилируем (в моём случае речь идёт о Yesod-приложении), затем копируем исполняемый файл вместе со статическими файлами на другую, рабочую виртуалку, после чего перезапускаем там процесс. Всё просто.</p>
-<h3 id="выводы">Выводы</h3>
+<h2 id="выводы">Выводы</h2>
 <p>Вот и весь наш CI. Пушим в ветку - через минуту получаем обновлённый веб-стенд. В общем, этот Buildbot мне очень понравился. Конечно, веб-интерфейс бы ему покрасивше - цены б ему не было. А возможностей у него реально много. То, что описано в данной статье - это так, Hello World. Подробности ищите <a href="http://docs.buildbot.net/current/index.html">здесь</a>.</p>
 
 <div id="disqus_thread"></div>
