@@ -61,7 +61,7 @@ $ <span class="kw">buildbot</span> create-master tmp/mhelper_buildmaster</code><
 $ <span class="kw">mv</span> master.cfg.sample master.cfg</code></pre>
 <p>Файл <code>master.cfg</code> - это единственный конфигурационный файл нашего CI-инструмента. К его редактированию мы вернёмся чуток позже.</p>
 <h2 id="создаём-слуг">Создаём слуг</h2>
-<p>Моё веб-приложение представлено четырьмя независящими друг от друга стендами. Эти стенды ассоциированы с привычным для программистов жизненным циклом, выраженным в версиях (<code>alpha</code>, <code>beta</code>, <code>rc</code> и <code>stable</code>).</p>
+<p>Моё веб-приложение представлено четырьмя независящими друг от друга стендами. Эти стенды ассоциированы с привычным для программистов жизненным циклом, выраженным в версиях (<code>alpha</code>, <code>beta</code>, <code>rc</code> и <code>stable</code>). Например, версия <code>alpha</code> развёрнута на стенде <code>http://alpha.my-service.com</code>.</p>
 <p>В связи с такой схемой я решил, что логично будет создать четыре слуги вместо одного. Итак:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span>
 $ <span class="kw">sudo</span> easy_install buildbot-slave
@@ -129,7 +129,7 @@ c[<span class="st">'status'</span>].append(html.WebStatus(http_port=<span class=
 <p>Теперь пользователи, зайдя на главную страницу сервиса, смогут авторизоваться, введя указанные здесь логин и пароль в верхнем правом углу.</p>
 <h2 id="указываем-наши-исходники">Указываем наши исходники</h2>
 <p>Используемый мною CI-воркфлоу предельно прост: <code>git push</code> в соответствующую ветку, и ассоциированный с нею стенд автоматически обновляется.</p>
-<p>Например, для версии <code>alpha</code> есть стенд <code>http://alpha.my-service.com</code>. Таким образом, чтобы пересобрать этот стенд, нужно запушить изменения в одноимённую ветку <code>alpha</code> (далее я подразумеваю, что репозиторий у вас уже есть и упомянутые здесь ветки уже созданы).</p>
+<p>Например, с версией <code>alpha</code> ассоциирован стенд <code>http://alpha.my-service.com</code>. Таким образом, чтобы пересобрать этот стенд, нужно запушить изменения в ветку <code>alpha</code> (далее я подразумеваю, что репозиторий у вас уже есть и упомянутые здесь ветки уже созданы).</p>
 <p>Теперь находим секцию <code>CHANGESOURCES</code> и пишем там следующее:</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> buildbot.changes.gitpoller <span class="ch">import</span> GitPoller
 
