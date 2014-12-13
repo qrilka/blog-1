@@ -73,8 +73,8 @@ $ <span class="kw">buildslave</span> create-slave tmp/slave_stable localhost:998
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">buildslave</span> create-slave tmp/slave_alpha localhost:9989 slave_alpha slave_alpha!</code></pre>
 <p>Первый аргумент - это базовый каталог слуги, в данном случае <code>~/tmp/slave_alpha/</code>. Вторым аргументом задаётся точка подключения к (уже созданному нами) хозяину. По умолчанию хозяин доступен на <code>localhost</code> через порт <code>9989</code> (при желании порт можно будет изменить). Третий аргумент - имя (логин) слуги, <code>slave_alpha</code>. Четвёртым аргументом идёт пароль слуги, в данном случае <code>slave_alpha!</code>. Как вы уже поняли, имя и пароль слуги используются для того, чтобы аутентифицировать слугу в глазах хозяина.</p>
 <h2 id="первичная-настройка-хозяина">Первичная настройка хозяина</h2>
-<p>Помните файл <code>~/tmp/mhelper_buildmaster/master.cfg</code>? Пришла пора взяться за него. Что мне понравилось в Buildbot, так это то, что у него один-единственный конфигурационный файл, в котором задаётся всё, что нам понадобится для работы.</p>
-<p>Откроем его и найдём в нём секцию <code>BUILDSLAVES</code>. В ней задан список слуг, начинающийся с команды:</p>
+<p>Помните файл <code>~/tmp/mhelper_buildmaster/master.cfg</code>? Пришла пора взяться за него. Что мне понравилось в Buildbot, так это то, что у него один-единственный конфигурационный файл, в котором задаётся всё, что нам понадобится для работы. Да, при желании один конфиг можно разбить на несколько (путём включения вспомогательных конфигов в корневой), но я решил не заморачиваться с такой схемой.</p>
+<p>Откроем файл и найдём в нём секцию <code>BUILDSLAVES</code>, в которой задан список слуг, начинающийся с команды:</p>
 <pre class="sourceCode python"><code class="sourceCode python">c[<span class="st">'slaves'</span>] = ...</code></pre>
 <p>В нашем случае, учитывая четырёх созданных слуг, эта строка будет выглядеть так:</p>
 <pre class="sourceCode python"><code class="sourceCode python">c[<span class="st">'slaves'</span>] = [BuildSlave(<span class="st">&quot;slave_alpha&quot;</span>, <span class="st">&quot;slave_alpha!&quot;</span>),
@@ -89,12 +89,12 @@ $ <span class="kw">buildbot</span> reconfig tmp/mhelper_buildmaster</code></pre>
 <h2 id="первый-запуск">Первый запуск</h2>
 <p>Запускаем хозяина:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">buildbot</span> start tmp/mhelper_buildmaster/</code></pre>
-<p>Хозяин ожил, пришло время запустить наших слуг:</p>
+<p>Хозяин ожил, теперь запускаем наших слуг:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">buildslave</span> start tmp/slave_alpha/
 $ <span class="kw">buildslave</span> start tmp/slave_beta/
 $ <span class="kw">buildslave</span> start tmp/slave_rc/
 $ <span class="kw">buildslave</span> start tmp/slave_stable/</code></pre>
-<p>Готово. По умолчанию, веб-интерфейс доступна через порт 8010, поэтому набираем в браузере <code>http://localhost:8010</code> и любуемся. Да, интерфейс очень прост, но зато понятен.</p>
+<p>Готово. По умолчанию, веб-интерфейс доступна через порт <code>8010</code>, поэтому набираем в браузере <code>http://localhost:8010</code> и любуемся. Да, интерфейс очень простой, но зато понятный.</p>
 <h2 id="знакомимся-с-проектом">Знакомимся с проектом</h2>
 <p>Естественно, на данный момент система не представляет для нас никакой ценности. Пришла пора поглужбе разобраться в конфигурационном файле.</p>
 <p>Прежде всего познакомим Buildbot с нашим проектом. Откроем файл <code>~/tmp/mhelper_buildmaster/master.cfg</code> и найдём в нём секцию <code>PROJECT IDENTITY</code>. Пишем:</p>
@@ -128,8 +128,7 @@ c[<span class="st">'status'</span>].append(html.WebStatus(http_port=<span class=
 <p>Видите значение <code>http_port</code>? Если необходимо, измените его в соответствие со значением порта в параметре <code>c['buildbotURL']</code>.</p>
 <p>Теперь пользователи, зайдя на главную страницу сервиса, смогут авторизоваться, введя указанные здесь логин и пароль в верхнем правом углу.</p>
 <h2 id="указываем-наши-исходники">Указываем наши исходники</h2>
-<p>Используемый мною CI-воркфлоу предельно прост: <code>git push</code> в соответствующую ветку, и ассоциированный с нею стенд автоматически обновляется.</p>
-<p>Например, с версией <code>alpha</code> ассоциирован стенд <code>http://alpha.my-service.com</code>. Таким образом, чтобы пересобрать этот стенд, нужно запушить изменения в ветку <code>alpha</code> (далее я подразумеваю, что репозиторий у вас уже есть и упомянутые здесь ветки уже созданы).</p>
+<p>Используемый мною CI-воркфлоу предельно прост: <code>git push</code> в соответствующую ветку, и ассоциированный с нею стенд автоматически обновляется. Например, чтобы пересобрать стенд <code>http://alpha.my-service.com</code>, необходимо запушить изменения в ветку <code>alpha</code> (далее я подразумеваю, что репозиторий у вас уже есть и упомянутые здесь ветки уже созданы).</p>
 <p>Теперь находим секцию <code>CHANGESOURCES</code> и пишем там следующее:</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> buildbot.changes.gitpoller <span class="ch">import</span> GitPoller
 
@@ -166,7 +165,7 @@ stable_scheduler = SingleBranchScheduler(name = <span class="st">&quot;stable_sc
                             		 builderNames = [<span class="st">&quot;stable_builder&quot;</span>])
 
 c[<span class="st">'schedulers'</span>] = [alpha_scheduler, beta_scheduler, rc_scheduler, stable_scheduler]</code></pre>
-<p>Здесь мы создаём четыре планировщика. Каждый из них работает со своей версией (веткой), и связан со своим билдером.</p>
+<p>Здесь мы создаём четыре планировщика. Каждый из них работает со своей версией (веткой), и связан со своим сборщиком.</p>
 <h2 id="сборщики">Сборщики</h2>
 <p>Итак, мы дошли до самого интересного. Находим секцию <code>BUILDERS</code> и пишем:</p>
 <pre class="sourceCode python"><code class="sourceCode python">alpha_factory = BuildFactory()
@@ -204,6 +203,11 @@ c[<span class="st">'builders'</span>] = [alpha_builder, beta_builder, rc_builder
 <h2 id="о-скрипте">О скрипте</h2>
 <p>Как вы уже догадались, выполнение скрипта <code>mhelper_update.sh</code> как раз и делает всю фактическую работу по обновлению нашего веб-приложения. Разумеется, можно было обойтись и без него, ведь скрипт есть набор shell-команд, и весь этот набор можно было включить в наши сборочные фабрики. Однако я как-то привык работать с отдельным скриптом. Во-первых, так конфигурационный файл сильно упрощается, а во-вторых, в крайнем случае (ну мало ли что) всегда можно обновить приложение и без CI, запустив этот скрипт вручную. Весьма удобно.</p>
 <p>Содержимое этого скрипта стандартно: берём исходники приложения из нужной ветки, компилируем (в моём случае речь идёт о Yesod-приложении), затем копируем исполняемый файл вместе со статическими файлами на другую, рабочую виртуалку, после чего перезапускаем там процесс. Всё просто.</p>
+<p>Кстати, обратите внимание на то, что скрипт вызывается без указания пути к нему. То есть просто:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">mhelper_update.sh</span> alpha</code></pre>
+<p>Я специально сделал так, чтобы этот скрипт (являющийся частью репозитория моего приложения) был доступен из любого места. Дело в том, что если мы напишем так:</p>
+<pre class="sourceCode python"><code class="sourceCode python">ShellCommand(command = [<span class="st">&quot;/some/path/to/mhelper_update.sh&quot;</span>, <span class="st">&quot;stable&quot;</span>])</code></pre>
+<p>Buildbot воспринимает данный путь как относительный, а не как абсолютный! В качестве корня он по умолчанию подразумевает отправную точку внутри своей структуры в каталоге <code>~/tmp/</code>. Помню, я достаточно долго разбирался в этом вопросе, но потом решил идти напролом: указал корень моего репозитория в <code>PATH</code> - и вуаля, исполняемый скрит виден отовсюду.</p>
 <h2 id="выводы">Выводы</h2>
 <p>Вот и весь наш CI. Пушим в ветку - через минуту получаем обновлённый веб-стенд. В общем, этот Buildbot мне очень понравился. Конечно, веб-интерфейс бы ему покрасивше - цены б ему не было. А возможностей у него реально много. То, что описано в данной статье - это так, Hello World. Подробности ищите <a href="http://docs.buildbot.net/current/index.html">здесь</a>.</p>
 
