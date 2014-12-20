@@ -192,7 +192,7 @@ $ ./webhs Development -p 3001
 
 Так заработает. Но можно просто запустить из того места, где `config` уже лежит:
 
-```build
+```bash
 ./dist/build/webhs/webhs Development -p 3001
 ```
 
