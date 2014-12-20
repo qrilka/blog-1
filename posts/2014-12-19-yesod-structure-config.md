@@ -80,17 +80,17 @@ Default: &defaults
   #analytics: UA-YOURCODE
 
 Development:
-  port: 3010
+  port: 3001
   approot: "http://dev.my-service.com"
   <<: *defaults
 
 Testing:
-  port: 3020
+  port: 3002
   approot: "http://test.my-service.com"
   <<: *defaults
 
 Staging:
-  port: 3030
+  port: 3003
   approot: "http://stage.my-service.com"
   <<: *defaults
 
