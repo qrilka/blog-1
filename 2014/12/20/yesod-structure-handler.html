@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -73,6 +77,12 @@ postHomeR <span class="fu">=</span> <span class="kw">do</span>
 <p>Но вы спросите, а где же определены соответствующие обработчики? Ведь для ресурса <code>HomeR</code> есть файл <code>Handler/Home.hs</code>, однако файлов <code>Handler/Favicon.hs</code> и <code>Handler/Robots.hs</code> мы не видим. А всё очень просто: соответствующие обработчики уже определены внутри нашего проекта.</p>
 <p>Дело в том, что Yesod делает за нас кое-какие рутинные операции. Согласитесь, файлы <code>favicon.ico</code> и <code>robots.txt</code> нужны в любом веб-приложении. Ну а раз они нужны, Yesod создаёт их за нас автоматически. Нам остаётся только лишь заменить <code>config/favicon.ico</code> и подредактировать, при необходимости, содержимое <code>config/robots.txt</code>.</p>
 <p>Ну что ж, первое знакомство с обработчиками прошло успешно. Разумеется, в следующих заметках мы узнаем о них ещё много интересного.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

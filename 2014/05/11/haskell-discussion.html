@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -72,6 +76,12 @@
 <p>И вот сижу я и думаю - а почему, собственно, это такая проблема? Понятно, что где-то под капотом Haskell есть системные функции, написанные на старом добром C, и именно эти функции выполняют всю низкоуровневую работу. Но мне-то зачем об этом знать? Я, как программист-практик, знать этого не хочу, да и не обязан. Разумеется, в процессе выполненения кода, выводящего текст на консоль, происходит многократное изменение различных программных состояний, но мне до этого нет никакого дела. Если всё это под капотом, пусть там и остаётся, а я лучше буду думать о моих задачах, а не о том, как там байтики записываются.</p>
 <p>И я считаю, это очень хорошо и правильно, что вся низкоуровневая работа делегируется коду, написанному на языке C. Вы что думаете, в том же C++ память выделяется оператором <code>new</code>? Нет, она выделяется старой доброй <code>malloc</code>, а <code>new</code> есть не более чем удобный синтаксический сахар. Значит ли это, что мы не должны пользоваться оператором <code>new</code>? Едва ли…</p>
 <p>Так что в наших процессорах байтики пусть записываются направо и налево, а мы, живущие в 2014 году, позволим себе думать уже не о байтиках, а о других вещах.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -87,6 +91,12 @@
 <p>По моему убеждению, здесь имеет место логическая ошибка. Ведь если мы задали лишь дату (то есть конкретные сутки конкретного месяца конкретного года), но не указали время, то вполне логично предположить, что мы имели в виду <em><ins>начало</ins></em> этих суток, то есть 00:00:00. Поэтому в случае <em>отсутствия</em> времени никакого исключения быть, по-хорошему, не должно, а вместо него должен подставляться момент начала суток. Так почему же этого не происходит?</p>
 <p>А всё просто. Дело в том, что в реализациях функций <strong>time_from_string()</strong> и <strong>from_iso_string()</strong> предполагается, что разделитель (в первом случае - пробел, а во втором случае - буква T) даты и времени присутствует <em>всегда</em>. И поэтому никакой проверки наличия этого разделителя не производится. Жаль.</p>
 <p>Так что, друзья, знайте об этом баге и будьте внимательны.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

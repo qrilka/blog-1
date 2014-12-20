@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -64,6 +68,12 @@ std::string as_binary( <span class="dt">const</span> Number number ) {
 }</code></pre>
 <p>Выражение <strong>static_assert</strong> принимает условие (которое, разумеется, можно проверить на стадии компиляции), а также строковый литерал (который будет выведен в случае невыполнения этого условия). Просто, понятно и полезно.</p>
 <p><em>P.S. Разумеется, есть важное “НО”: пока шаблон функции as_binary() не инстанцирован, static_assert не сработает. Иными словами, если мы нигде в коде не вызвали эту функцию, то и проверка не произойдёт. Хотя если проверка находится, скажем, в простой функции, то, поскольку её код полноценно компилируется независимо от того, используется ли функция в коде, проверка гарантированно произойдёт.</em></p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

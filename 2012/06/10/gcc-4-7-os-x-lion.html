@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -69,6 +73,12 @@ make install</code></pre>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="kw">export</span> DYLD_LIBRARY_PATH=/Users/dshevchenko/Tools/GCC/lib</code></pre>
 <p>Это нужно для того, чтобы при компиляции моих программ компилятор подцеплял свежесобранную стандартную библиотеку, поскольку пути, указанные в переменной DYLD_LIBRARY_PATH, просматриваются динамическим линковщиком <strong>прежде</strong> стандартных путей, что чрезвычайно удобно.</p>
 <p>А теперь облегчённо вздохнём - и наслаждается GCC 4.7.0 на нашем Льве.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

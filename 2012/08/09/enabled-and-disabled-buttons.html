@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -44,6 +48,12 @@
 <p>Во-вторых, такое решение плохо для разработчика. Ну ведь чего проще: отслеживай по сигналам нужное событие и в зависимости от него делай кнопку enable или disable. Нет, наш брат не ищет лёгких путей: оставит кнопку активной, а если пользователь нажмёт на неё не тогда, когда нужно - тогда будет отрисовано окно с большим-пребольшим ВАРНИНГОМ и КРАСНЫМ КРЕСТИКОМ, мол, ты чего жмёшь, нельзя же! В итоге имеем больше кода и (потенциально) меньше надёжности.</p>
 <p>К сожалению, несмотря на все доводы, я вновь и вновь сталкиваюсь с приложениями, где кнопки активны когда нужно и не нужно… Ведь кроме сомнений активность кнопок может явно вводить пользователя в заблуждение. Скажем, пара кнопок “Undo/Redo”. Если я открыл приложение и НИЧЕГО НЕ СДЕЛАВ вижу кнопку Undo активной - я в замешательстве. Ага, ничего ещё не сделал, а мне уже предлагают что-то отменить…</p>
 <p>Друзья, не повторяйте этих ошибок.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

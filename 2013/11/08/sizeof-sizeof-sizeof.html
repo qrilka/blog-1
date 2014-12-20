@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -158,6 +162,12 @@ enum
 }</code></pre>
 <p>Да, я знаю, размер такого рода типов нужен нам редко. Очень редко. Можно даже сказать, вообще не нужен. И всё же вот результат:</p>
 <p><bash> std::valarray<char>: 16 ————————— std::thread: 8 ————————— std::basic_regex<char, std::regex_traits<char> &gt;: 32 ————————— std::basic_ifstream<char, std::char_traits<char> &gt;: 904 std::basic_ofstream<char, std::char_traits<char> &gt;: 896 std::basic_fstream<char, std::char_traits<char> &gt;: 912 std::basic_filebuf<char, std::char_traits<char> &gt;: 624 ————————— std::istream: 280 std::ostream: 272 std::iostream: 288 ————————— std::basic_istringstream<char, std::char_traits<char>, std::allocator<char> &gt;: 360 std::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> &gt;: 352 std::basic_stringstream<char, std::char_traits<char>, std::allocator<char> &gt;: 368 std::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> &gt;: 80 </bash></p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

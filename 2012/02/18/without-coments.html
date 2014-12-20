@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -73,6 +77,12 @@ placer-&gt;set_margins(   left( <span class="dv">3</span> )
                      , bottom( <span class="dv">4</span> ) );</code></pre>
 <p>В итоге мы получаем короткое письмо без промежуточных переменных, без конфликтов имён, понятное с первого прочтения и при этом не использующее комментарии. Кроме того, из-за использования <strong>constexpr</strong> мы совершенно не теряем в эффективности на стадии выполнения.</p>
 <p>По-моему, красиво.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -128,6 +132,12 @@ BOOST_FOREACH ( <span class="dt">int</span> i, v ) {
 <p>НО! Учтите, что цикл состоял из десяти миллионов итераций. Значит, время <strong>одной</strong> итерации в первом случае составил 42 нс, а во втором - 23 нс. То есть проигрыш одной итерации - менее 20 нс.</p>
 <p>Вывод: при переборе действительно больших контейнеров, особенно когда время перебора критично, BOOST_FOREACH в проигрыше. Но для перебора (критически важного по скорости) лучше использовать стандартные алгоритмы, а не циклы.</p>
 <p>Поэтому для большинства случаев BOOST_FOREACH - однозначно лучший выбор.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

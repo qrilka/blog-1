@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -57,6 +61,12 @@
 <pre class="sourceCode haskell"><code class="sourceCode haskell">main <span class="fu">=</span> putStr <span class="fu">=&lt;&lt;</span> readFile <span class="st">&quot;/home/denis/test&quot;</span> </code></pre>
 <p>Хм… Я не знаю, какое из этих двух решений более эффективное в плане выполнения (не проверял), но в плане простоты восприятия кода вердикт очевиден: решение на Haskell лучше. Дело не в том, что оно компактнее, нет. Самое главное в том, что оно проще. Решение на C++ подразумевает знакомство читателя с концепцией итератора. А решение на Haskell не содержит ничего лишнего, а значит, оно находится на более высоком уровне абстракции. Элегантно и в истинном духе Unix.</p>
 <p>А вы как думаете?</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

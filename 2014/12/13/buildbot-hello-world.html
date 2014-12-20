@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -210,6 +214,12 @@ c[<span class="st">'builders'</span>] = [alpha_builder, beta_builder, rc_builder
 <p>Buildbot воспринимает данный путь как относительный, а не как абсолютный! В качестве корня он по умолчанию подразумевает отправную точку внутри своей структуры в каталоге <code>~/tmp/</code>. Помню, я достаточно долго разбирался в этом вопросе, но потом решил идти напролом: указал корень моего репозитория в <code>PATH</code> - и вуаля, исполняемый скрит виден отовсюду.</p>
 <h2 id="выводы">Выводы</h2>
 <p>Вот и весь наш CI. Пушим в ветку - через минуту получаем обновлённый веб-стенд. В общем, этот Buildbot мне очень понравился. Конечно, веб-интерфейс бы ему покрасивше - цены б ему не было. А возможностей у него реально много. То, что описано в данной статье - это так, Hello World. Подробности ищите <a href="http://docs.buildbot.net/current/index.html">здесь</a>.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

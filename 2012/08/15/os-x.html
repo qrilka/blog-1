@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -67,6 +71,12 @@
 <p>А потом вдруг решил запустить в графическом режиме, причём “стандартным” способом: двойным кликом по иконке. То есть так, как будет запускать пользователь.</p>
 <p>Кликаю - не запускается. Вернее, запускается и тут же вылетает. Ломаю голову, что же такое… А потом, в ходе экспериментов, оказалось, что количество передаваемых процессу аргументов при “стандартном” способе запуска равно 2. Не понял, подумал я, откуда там второй взялся-то? Решил поглядеть. В итоге вижу, что в качестве второго аргумента передаётся строка вида: <code>cpp -psn_0_3576681</code>Ну а Гугл расставил всё на свои места. Оказывается, при “стандартном” запуске процессу передаётся (вторым обязательным аргументом) Process Serial Number (как я понял, аналог PID).</p>
 <p>Так что вот… Всё-таки полезно на разных платформах поиграться…</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

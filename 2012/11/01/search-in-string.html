@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -67,6 +71,12 @@
 <p>Ну казалось бы, что может быть проще? В обоих случаях получаем итератор на начало нужной нам подстроки.</p>
 <p>Как вы думаете, какой код выполняется быстрее? Я бы удивлён результатами: первый вариант оказался быстрее, причём значительно! Во втором случае имеем в среднем 6900 мкс (худший результат на моём компьютере - 7188 мкс), в то время как в первом - 2900 мкс (худший результат - 3383 мкс).</p>
 <p>Вот тебе и канонический поиск…</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

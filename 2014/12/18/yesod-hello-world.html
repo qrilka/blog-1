@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -100,6 +104,12 @@ $ <span class="kw">cabal</span> install</code></pre>
 <p>Здесь следует указать среду <code>Development</code> и, если нужно, порт. И всё запустится точно так же.</p>
 <p>Но вы спросите меня, а как же веб-сервер? Ведь запросы на <code>http://localhost:3001</code> должен кто-то принимать, не так ли? Совершенно верно, но для первого знакомства нам не понадобится ни наш любимый <code>nginx</code>, ни его братья. Наше приложение уже содержит в себе свой собственный веб-сервер. Называется он <code>warp</code>. Его можно использовать и как отдельный, легковесный http-сервер, но в Yesod-приложении он уже и так есть. Разумеется, если вы хотите, чтобы поверх него работал, например, <code>nginx</code>, вы можете сделать простое перенаправление на <code>localhost:3001</code>. Именно так я сделал на моём продакшн-сервере.</p>
 <p>Ну что ж, для первой заметки достаточно. В следующей заметке мы поговорим о структуре нашего проекта.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

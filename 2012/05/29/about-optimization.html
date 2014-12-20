@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -46,6 +50,12 @@
 <p>Во-первых, пользователь не заметит эту разницу, как бы внимательно он ни смотрел на экран. Таким образом, с точки зрения пользователя ценность нашей оптимизации равна нулю. Без палочки.</p>
 <p>Во-вторых, во имя данной оптимизации мы (неизбежно) усложнили код. Как именно? Ну, скажем, заранее создали, настроили и сохранили виджет диалога, чтобы по клику на кнопку лишь отрисовать его. Или ввели некий буфер данных, предназначенных для отображения в диалоге, или ещё как-то. А что это означает? Это означает, что код стал (потенциально) менее надёжным. В нём стало (потенциально) проще допустить ошибку. В нём стало (потенциально) труднее искать ошибку. Его стало (потенциально) сложнее сопровождать.</p>
 <p>И что же в итоге? В итоге мы усложнили код ценою выигрыша, о котором пользователь даже не узнает! Таким образом, можно смело констатировать: <strong>подобного рода оптимизация объективно вредна, поскольку не только не улучшает, но ухудшает приложение</strong>.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

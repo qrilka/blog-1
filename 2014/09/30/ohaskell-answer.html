@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -111,6 +115,12 @@
 <p>И благодаря тому, что внутри этого ящичка сохранено первое значение, здесь и происходит маленькое волшебство: функция <code>black_box</code> берёт сохранённое в ней значение <code>10.03</code> и переданное ей значение <code>2.1</code> и наконец-то совершает нужное нам деление, возвращая результат оного в виде числа типа <code>Double</code>. В этом и заключается магия каррирования: сколько бы аргументов ни принимала исходная фукнция, её вызов всегда сводится к пошаговому накапливанию значений аргументов, через механизм частичного применения. И только после того, как были накоплены <em>все</em> необходимые значения, происходит, собственно, вызов функции (то есть производится та реальная работа, ради которой эта функция и была создана).</p>
 <p>Вы спросите, а как именно происходит это накопление? Ведь если вызов <code>divide</code> произошёл в два этапа, то где и как было сохранено первое значение <code>10.03</code> между этими этапами? Отвечаю: это неважно. Всё это, по сути, подкапотные дела, о которых программист не обязан ни заботиться, ни даже знать. Что говорит нам сигнатура функции <code>divide</code>? Что она работает с двумя значениями. Передали ей два значения - и получаем результат деления. Дело сделано.</p>
 <p>Ещё раз напоминаю, что ваши вопросы и пожелания очень важны для развития книги. Так что не стесняемся и спрашиваем. Можно лично мне, а можно в комментариях.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -97,6 +101,12 @@ My* return_by_ptr() {
 <p><strong>Cannot assign to class object (‘Message’ invalid)</strong></p>
 <p>То есть никакого неправильного копирования объекта не может быть в принципе. Кстати, понятие “копирующий конструктор” языку Objective-C тоже незнакомо…</p>
 <p>К чему это я? Да к тому, что единый способ создания объекта (а именно в куче) и единый способ работы с ним (исключительно по указателю) видится мне значительно лучшей альтернативой той гибкости, которую предлагает C++.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

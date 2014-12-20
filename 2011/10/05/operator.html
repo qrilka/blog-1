@@ -7,6 +7,10 @@
         
         <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
         <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -42,6 +46,12 @@
 <p>Не важно, где создан и что из себя представляет объект <strong>text</strong>, не важно, где определён тип <strong>Base64</strong>. Важно другое: перед нами функтор без operator().</p>
 <p>Классический вид функтора (или, как его ещё называют, функционального объекта) - класс с одним (или более) перегруженным operator(). Действительно, как же без этого оператора можно обойтись, если объект планируется “вызывать”? Причём неважно, будет ли функтор использоваться in-place, или же объект сначала будет создан, а потом где-то использован - обращение к функтору идёт через operator(). Это классика.</p>
 <p>Но где есть классика, есть и модерн. Ведь <strong>суть</strong> функтора не в operator(), а в том, что он отражает действие подобно тому, как это делает функция. Вот наше действие: <em>конвертировать текст в Base64 и вывести результат в стандартный вывод</em>. Зачем же тут operator()?</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dshevchenko_biz" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share"></div>
+</div>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
