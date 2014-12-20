@@ -66,27 +66,28 @@
 <span class="kw">models</span>         
 <span class="kw">routes</span>         
 <span class="kw">settings.yml</span></code></pre>
-<p>Полагаю, назначение файлов <code>favicon.ico</code> и <code>robots.txt</code> вопросов не вызывает, не правда ли? С файлом <code>postgresql.yml</code> вы уже познакомились, когда настраивали параметры доступа приложения к Postgres. Вглянем на содержимое важного файла <code>settings.yml</code>:</p>
+<p>Полагаю, назначение файлов <code>favicon.ico</code> и <code>robots.txt</code> вопросов не вызывает, не правда ли? С файлом <code>postgresql.yml</code> вы уже познакомились, когда настраивали параметры доступа приложения к Postgres.</p>
 <h2 id="сетевая-конфигурация">Сетевая конфигурация</h2>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Default</span>: <span class="kw">&amp;defaults</span>
-  <span class="kw">host</span>: <span class="st">&quot;*4&quot;</span> <span class="co"># any IPv4 host</span>
-  <span class="kw">port</span>: 3000
-  <span class="kw">approot</span>: <span class="st">&quot;http://localhost:3000&quot;</span>
-  <span class="kw">copyright</span>: Insert copyright statement here
+<p>Вглянем на содержимое важного файла <code>settings.yml</code>:</p>
+<pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">Default:</span> <span class="dt">&amp;defaults</span>
+  <span class="fu">host:</span> <span class="st">&quot;*4&quot;</span><span class="er"> # any IPv4 host</span>
+  <span class="fu">port:</span> 3000
+  <span class="fu">approot:</span> <span class="st">&quot;http://localhost:3000&quot;</span>
+  <span class="fu">copyright:</span> Insert copyright statement here
   <span class="co">#analytics: UA-YOURCODE</span>
 
-<span class="kw">Development</span>:
-  &lt;&lt;: *defaul<span class="kw">ts</span>
+<span class="fu">Development:</span>
+  <span class="fu">&lt;&lt;:</span> <span class="dt">*defaults</span>
 
-Te<span class="kw">sting</span>:
-  &lt;&lt;: *defaults
+<span class="fu">Testing:</span>
+  <span class="fu">&lt;&lt;:</span> <span class="dt">*defaults</span>
 
-Sta<span class="kw">ging</span>:
-  &lt;&lt;: *defaults
+<span class="fu">Staging:</span>
+  <span class="fu">&lt;&lt;:</span> <span class="dt">*defaults</span>
 
-Production:
-  #approot: &quot;http://www.example.com&quot;
-  &lt;&lt;: *defaults</code></pre>
+<span class="fu">Production:</span>
+  <span class="co">#approot: &quot;http://www.example.com&quot;</span>
+  <span class="fu">&lt;&lt;:</span> <span class="dt">*defaults</span></code></pre>
 <p>Помните, в <a href>прошлой заметке</a> я упомянул о том, что приложение можно запустить не через <code>yesod devel</code>, а непосредственно? И там упоминались четыре возможные окружения: <code>Development</code>, <code>Testing</code>, <code>Staging</code> и <code>Production</code>. Полагаю, теперь, когда вы увидели содержимое файла <code>settings.yml</code>, всё встало на свои места: для каждого из окружений мы можем задать свои сетевые параметры. Например, можно переопределить значение параметра <code>approot</code>, чтобы различные версии нашего приложения ассоциировали себя с разными URL-ами, и то же самое можно сделать с параметрами <code>host</code> и <code>port</code>. Вот возможный результат:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Default</span>: <span class="kw">&amp;defaults</span>
   <span class="kw">host</span>: <span class="st">&quot;127.0.0.1&quot;</span>
