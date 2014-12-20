@@ -38,7 +38,7 @@
 <div style="padding-top: 20px;"></div>
 
 <p>Приветствую!</p>
-<p>После первого знакомства с Yesod пришла пора заглянуть внутрь нашего проекта. Должны же мы узнать, что сделала команда <code>yesod init</code>, не так ли? Давайте же заглянем в корень:</p>
+<p>После <a href="http://blog.dshevchenko.biz/2014/12/18/yesod-hello-world.html">первого знакомства</a> с Yesod пришла пора заглянуть внутрь нашего проекта. Должны же мы узнать, что сделала команда <code>yesod init</code>, не так ли? Давайте же заглянем в корень:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Application.hs</span>
 <span class="kw">Foundation.hs</span> 
 <span class="kw">Model.hs</span>       
@@ -88,7 +88,7 @@
 <span class="fu">Production:</span>
   <span class="co">#approot: &quot;http://www.example.com&quot;</span>
   <span class="fu">&lt;&lt;:</span> <span class="dt">*defaults</span></code></pre>
-<p>Помните, в <a href>прошлой заметке</a> я упомянул о том, что приложение можно запустить не через <code>yesod devel</code>, а непосредственно? И там упоминались четыре возможные окружения: <code>Development</code>, <code>Testing</code>, <code>Staging</code> и <code>Production</code>. Полагаю, теперь, когда вы увидели содержимое файла <code>settings.yml</code>, всё встало на свои места: для каждого из окружений мы можем задать свои сетевые параметры. Например, можно переопределить значение параметра <code>approot</code>, чтобы различные версии нашего приложения ассоциировали себя с разными URL-ами, и то же самое можно сделать с параметрами <code>host</code> и <code>port</code>. Вот возможный результат:</p>
+<p>Помните, в <a href="http://blog.dshevchenko.biz/2014/12/18/yesod-hello-world.html">прошлой заметке</a> я упомянул о том, что приложение можно запустить не через <code>yesod devel</code>, а непосредственно? И там упоминались четыре возможные окружения: <code>Development</code>, <code>Testing</code>, <code>Staging</code> и <code>Production</code>. Полагаю, теперь, когда вы увидели содержимое файла <code>settings.yml</code>, всё встало на свои места: для каждого из окружений мы можем задать свои сетевые параметры. Например, можно переопределить значение параметра <code>approot</code>, чтобы различные версии нашего приложения ассоциировали себя с разными URL-ами, и то же самое можно сделать с параметрами <code>host</code> и <code>port</code>. Вот возможный результат:</p>
 <pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">Default:</span> <span class="dt">&amp;defaults</span>
   <span class="fu">host:</span> <span class="st">&quot;127.0.0.1&quot;</span>
   <span class="co">#analytics: UA-YOURCODE</span>
