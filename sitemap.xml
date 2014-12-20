@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
+        <loc>http://blog.dshevchenko.biz/2014/12/20/yesod-structure-handler.html</loc>
+    </url>
+
+    <url>
+        <loc>http://blog.dshevchenko.biz/2014/12/19/yesod-structure-config.html</loc>
+    </url>
+
+    <url>
+        <loc>http://blog.dshevchenko.biz/2014/12/18/yesod-hello-world.html</loc>
+    </url>
+
+    <url>
         <loc>http://blog.dshevchenko.biz/2014/12/13/buildbot-hello-world.html</loc>
     </url>
 
