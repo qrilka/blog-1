@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 21 Dec 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Mon, 22 Dec 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Структура Yesod-проекта: остальное</title>
+    <link>http://blog.dshevchenko.biz/2014/12/22/yesod-structure-others.html</link>
+    <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Изучаем структуру нашего проекта. Осталось ещё кое-что...]]></description>
+    <pubDate>Mon, 22 Dec 2014 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2014/12/22/yesod-structure-others.html</guid>
+</item>
+<item>
     <title>Структура Yesod-проекта: шаблоны</title>
     <link>http://blog.dshevchenko.biz/2014/12/21/yesod-structure-templates.html</link>
     <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Продлжаем изучение структуры нашего проекта. На очереди - шаблоны страниц.]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[Система Поддержки Принятия Решения уже развивается. Что это будет, глазами программиста.]]></description>
     <pubDate>Wed, 24 Sep 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/09/24/sppr-my-view.html</guid>
-</item>
-<item>
-    <title>С GitBook на... Hakyll</title>
-    <link>http://blog.dshevchenko.biz/2014/09/18/from-gitbook-to-hakyll.html</link>
-    <description><![CDATA[Книга "О Haskell по-человечески" теперь создаётся не в GitBook, а с помощью... Hakyll.]]></description>
-    <pubDate>Thu, 18 Sep 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/09/18/from-gitbook-to-hakyll.html</guid>
 </item>
 
     </channel> 
