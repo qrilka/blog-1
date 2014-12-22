@@ -18,16 +18,16 @@ description: Yesod - это мощный веб-фреймворк, написа
 
 ```bash
 static/
-├── css
-│   └── bootstrap.css
-└── fonts
-    ├── glyphicons-halflings-regular.eot
-    ├── glyphicons-halflings-regular.svg
-    ├── glyphicons-halflings-regular.ttf
-    └── glyphicons-halflings-regular.woff
+    css/
+        bootstrap.css
+    fonts/
+        glyphicons-halflings-regular.eot
+        glyphicons-halflings-regular.svg
+        glyphicons-halflings-regular.ttf
+        glyphicons-halflings-regular.woff
 ```
 
-Ба, знакомые все лица! Именно в этом каталоге лежат все наши сторонние стили, скрипты и шрифты. Как видите, сюда уже включен наш любимый Bootstrap, но об этом мы поговорим в будущих заметках. Скажу лишь, что использовать Bootstrap в Yesod-проекте очень легко.
+Ба, знакомые все лица! Именно в этом каталоге лежат сторонние стили, скрипты и шрифты. Как видите, сюда уже включен наш любимый Bootstrap, но об этом мы поговорим в будущих заметках. Скажу лишь, что использовать Bootstrap в Yesod-проекте очень легко.
 
 ## Интернационализация
 
