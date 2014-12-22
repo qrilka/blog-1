@@ -48,14 +48,14 @@
 <h2 id="статика">Статика</h2>
 <p>Заглянем внутрь каталога <code>static</code>:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">static/</span>
-├── <span class="kw">css</span>
-│   └── <span class="kw">bootstrap.css</span>
-└── <span class="kw">fonts</span>
-    ├── <span class="kw">glyphicons-halflings-regular.eot</span>
-    ├── <span class="kw">glyphicons-halflings-regular.svg</span>
-    ├── <span class="kw">glyphicons-halflings-regular.ttf</span>
-    └── <span class="kw">glyphicons-halflings-regular.woff</span></code></pre>
-<p>Ба, знакомые все лица! Именно в этом каталоге лежат все наши сторонние стили, скрипты и шрифты. Как видите, сюда уже включен наш любимый Bootstrap, но об этом мы поговорим в будущих заметках. Скажу лишь, что использовать Bootstrap в Yesod-проекте очень легко.</p>
+    <span class="kw">css/</span>
+        <span class="kw">bootstrap.css</span>
+    <span class="kw">fonts/</span>
+        <span class="kw">glyphicons-halflings-regular.eot</span>
+        <span class="kw">glyphicons-halflings-regular.svg</span>
+        <span class="kw">glyphicons-halflings-regular.ttf</span>
+        <span class="kw">glyphicons-halflings-regular.woff</span></code></pre>
+<p>Ба, знакомые все лица! Именно в этом каталоге лежат сторонние стили, скрипты и шрифты. Как видите, сюда уже включен наш любимый Bootstrap, но об этом мы поговорим в будущих заметках. Скажу лишь, что использовать Bootstrap в Yesod-проекте очень легко.</p>
 <h2 id="интернационализация">Интернационализация</h2>
 <p>Веб-приложения для реального мира редко говорят лишь по-английски, а для многих современных веб-проектов интернационализация вообще рассматривается как нечто, само собою разумееющееся. Разработчики Yesod прекрасно знают это, поэтому в корне проекта вы найдёте каталог <code>messages</code>. Сейчас в нашем проекте этот каталог содержит один-единственный файл, <code>en.msg</code>. Откроем его:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Hello</span>: Hello</code></pre>
