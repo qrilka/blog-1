@@ -57,8 +57,8 @@ description: Yesod - это мощный веб-фреймворк, написа
 то HTML получится такой:
 
 ```html
-<div .register>
-    <div .just-centered>
+<div class="register">
+    <div class="just-centered">
         <h4>Ещё нет профиля?<h4>
     </div>
 </div>
@@ -75,8 +75,8 @@ description: Yesod - это мощный веб-фреймворк, написа
 и HTML получится таким:
 
 ```html
-<div .register></div>
-<div .just-centered>
+<div class="register"></div>
+<div class="just-centered">
     <h4>Ещё нет профиля?<h4>
 </div>
 ```
