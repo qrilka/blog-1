@@ -59,7 +59,7 @@ description: Yesod - это мощный веб-фреймворк, написа
 ```html
 <div class="register">
     <div class="just-centered">
-        <h4>Ещё нет профиля?<h4>
+        <h4>Ещё нет профиля?</h4>
     </div>
 </div>
 ```
@@ -77,7 +77,7 @@ description: Yesod - это мощный веб-фреймворк, написа
 ```html
 <div class="register"></div>
 <div class="just-centered">
-    <h4>Ещё нет профиля?<h4>
+    <h4>Ещё нет профиля?</h4>
 </div>
 ```
 
