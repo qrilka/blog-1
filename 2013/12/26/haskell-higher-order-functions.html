@@ -46,7 +46,6 @@
 <h3>
 А теперь начинаем удивляться…
 </h3>
-
 <p>Помните, когда я рассказывал вам о чистых функциях, было упомянуто, что такие функции могут принимать как один, так и множество аргументов. На самом деле, я обманул вас, ибо правда такова:</p>
 <p><strong>Функции в Haskell всегда принимают только один аргумент. Ни больше, ни меньше.</strong></p>
 <p>Но, простите, а как же мы смогли определить функции, принимающие два аргумента?? Отвечаю: это была хитрость. :)</p>
@@ -57,22 +56,21 @@
 divide arg1 arg2 <span class="fu">=</span> arg1 <span class="fu">/</span> arg2
 
 main <span class="fu">=</span>
-    putStrLn (show (divide <span class="dv">10</span><span class="fu">.</span><span class="dv">03</span> <span class="dv">2</span><span class="fu">.</span><span class="dv">1</span>))</code></pre>
+    putStrLn (show (divide <span class="fl">10.03</span> <span class="fl">2.1</span>))</code></pre>
 <p>Итак, мы определили функцию, принимающую два значения типа <strong><code>Double</code></strong> и возвращающую результат деления первого на второе. Всё предельно просто, не так ли? На самом деле, не так…</p>
 <p>Если мы посмотрим “пот капот” вызова этой функции:</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">divide <span class="dv">10</span><span class="fu">.</span><span class="dv">03</span> <span class="dv">2</span><span class="fu">.</span><span class="dv">1</span></code></pre>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">divide <span class="fl">10.03</span> <span class="fl">2.1</span></code></pre>
 <p>то узнаем, что вызов этой функции происходит <em>в два этапа</em>:</p>
 <ol>
-  <li>
+<li>
 Функция <code>divide</code> применяется к первому аргументу <code>10.03</code>, вычисляется и возвращает <em>функцию</em> типа <code>Double -&gt; Double</code>.
 </li>
-  <li>
+<li>
 Эта возвращённая функция применяется ко второму аргументу <code>2.1</code>, вычисляется и возвращает конечное значение 4.776190476190476.
 </li>
 </ol>
-
 <p>На самом деле мы могли бы более явно отразить эту “двуэтапность”, переписав вызов так:</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">(divide <span class="dv">10</span><span class="fu">.</span><span class="dv">03</span>) <span class="dv">2</span><span class="fu">.</span><span class="dv">1</span></code></pre>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">(divide <span class="fl">10.03</span>) <span class="fl">2.1</span></code></pre>
 <p>Понимаете, да? Функция всегда применяется только к одному аргументу: сначала к 10.03, а потом возвращённая первым вызовом функция применяется к 2.1.</p>
 <p>Именно поэтому строка объявления такой функции содержит <em>две</em> стрелочки вместо одной:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">divide ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span></code></pre>
@@ -88,41 +86,39 @@ main <span class="fu">=</span>
 total_sum arg1 arg2 arg3 <span class="fu">=</span> arg1 <span class="fu">+</span> arg2 <span class="fu">+</span> arg3
 
 main <span class="fu">=</span>
-    putStrLn (show (total_sum <span class="dv">10</span><span class="fu">.</span><span class="dv">03</span> <span class="dv">2</span><span class="fu">.</span><span class="dv">1</span> <span class="dv">45</span><span class="fu">.</span><span class="dv">7</span>))</code></pre>
+    putStrLn (show (total_sum <span class="fl">10.03</span> <span class="fl">2.1</span> <span class="fl">45.7</span>))</code></pre>
 <p>то её вызов на самом деле проходил бы <em>в три этапа</em>, и чтобы явно отразить это, мы могли бы переписать её объявление так:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">total_sum ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> (<span class="dt">Double</span> <span class="ot">-&gt;</span> (<span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span>))</code></pre>
 <p>а её вызов - так:</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">((total_sum <span class="dv">10</span><span class="fu">.</span><span class="dv">03</span>) <span class="dv">2</span><span class="fu">.</span><span class="dv">1</span>) <span class="dv">45</span><span class="fu">.</span><span class="dv">7</span></code></pre>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">((total_sum <span class="fl">10.03</span>) <span class="fl">2.1</span>) <span class="fl">45.7</span></code></pre>
 <p>А теперь нам нужно уточнить одну важную деталь.</p>
 <h3>
 Частичное применение функции
 </h3>
-
 <p>Вспомните, что я сказал о функции <code>divide</code>: её вызов происходит <em>в два этапа</em>. Так вот важно понимать, что функция <code>divide</code> вызывается <em>один</em> раз, а не два раза! Вызов один (то есть тело этой функции выполняется единократно), просто этот вызов разделён на два шага. А чтобы понять суть этих шагов, необходимо узнать об одной важной детали: частичное применение функции. Звучит страшновато, но суть очень проста.</p>
 <p>Частичное применение (partial application) функции - это такой её вызов, когда ей на вход подаются не все аргументы, которые она ожидает. И здесь нам пригодятся уже известные нам <strong><a href="http://dshevchenko.biz/ru/content/haskell-%D0%BE-%D0%BB%D1%8F%D0%BC%D0%B1%D0%B4%D0%B0-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F%D1%85">λ-функции</a></strong>.</p>
 <p>Представим себе, что наша функция <code>divide</code> была бы апплицирована (применена) не к двум, а только к одному аргументу. Тогда это выглядело бы так:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">main <span class="fu">=</span> 
-    <span class="kw">let</span> temporary_function <span class="fu">=</span> divide <span class="dv">10</span><span class="fu">.</span><span class="dv">03</span> <span class="co">-- &quot;запомнили&quot; первый</span>
+    <span class="kw">let</span> temporary_function <span class="fu">=</span> divide <span class="fl">10.03</span> <span class="co">-- &quot;запомнили&quot; первый</span>
     <span class="kw">in</span> 
-    putStrLn (show (temporary_function <span class="dv">2</span><span class="fu">.</span><span class="dv">1</span>)) <span class="co">-- получили второй!</span></code></pre>
+    putStrLn (show (temporary_function <span class="fl">2.1</span>)) <span class="co">-- получили второй!</span></code></pre>
 <p>Вот теперь всё встало на свои места. Здесь наглядно показано, что же на самом деле означает вызов вида:</p>
-<pre class="sourceCode haskell"><code class="sourceCode haskell">(divide <span class="dv">10</span><span class="fu">.</span><span class="dv">03</span>) <span class="dv">2</span><span class="fu">.</span><span class="dv">1</span></code></pre>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">(divide <span class="fl">10.03</span>) <span class="fl">2.1</span></code></pre>
 <p>В результате первого вызова, когда мы применили функцию <code>divide</code> лишь к одному (первому) аргументу, мы ещё не можем получить результат деления, потому что второго-то аргумента мы функции ещё не дали! Вместо этого мы получили как бы временную (промежуточную) λ-функцию, которую мы для наглядности ассоциировали с выражением <code>temporary_function</code>. Эта временная λ-функция как бы запомнила значение первого аргумента, и когда мы применили её уже ко второму аргументу, то в результате мы уже получили итоговый результат деления.</p>
 <p>По аналогии, вызов нашей функции <code>total_sum</code>, который, как мы помним, происходит в три этапа, можно разложить так:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">total_sum ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span>
 total_sum arg1 arg2 arg3 <span class="fu">=</span> arg1 <span class="fu">+</span> arg2 <span class="fu">+</span> arg3
 
 main <span class="fu">=</span>
-    <span class="kw">let</span> first_function <span class="fu">=</span> total_sum <span class="dv">1</span><span class="fu">.</span><span class="dv">0</span> <span class="co">-- &quot;запомнили&quot; первый</span>
-        second_function <span class="fu">=</span> first_function <span class="dv">2</span><span class="fu">.</span><span class="dv">0</span> <span class="co">-- &quot;запомнили&quot; второй</span>
+    <span class="kw">let</span> first_function <span class="fu">=</span> total_sum <span class="fl">1.0</span> <span class="co">-- &quot;запомнили&quot; первый</span>
+        second_function <span class="fu">=</span> first_function <span class="fl">2.0</span> <span class="co">-- &quot;запомнили&quot; второй</span>
     <span class="kw">in</span>
-    putStrLn (show (second_function <span class="dv">3</span><span class="fu">.</span><span class="dv">0</span>)) <span class="co">-- получили третий!</span></code></pre>
+    putStrLn (show (second_function <span class="fl">3.0</span>)) <span class="co">-- получили третий!</span></code></pre>
 <p>То есть в процессе вызова у нас появилось уже две промежуточные λ-функции, каждая из которых принимала лишь один аргумент и как бы запоминала его. И только тогда, когда вторая промежуточная λ-функция была апплицирована к третьему аргументу (который и оказался последним необходимым для нас), мы и получаем итоговую сумму.</p>
 <p>Разумеется, на практике вводить такие промежуточные λ-функции вам не придётся. Я лишь показал процесс каррирования на практике. Считайте, что мы просто заглянули “под капот” функции и увидели её внутреннюю “пошаговость”.</p>
 <h3>
 “Ну хорошо, а зачем всё это нужно??”
 </h3>
-
 <p>Резонный вопрос. На самом деле, в подавляющем большинстве случаев знать вышеизложенную информацию о каррировании функций и о частичном применении к аргументам <em>не нужно</em>. Главное преимущество такого подхода, при котором одна функция от нескольких аргументов раскладывается на цепочку функций от одного аргумента каждая, лежит в “академическом измерении”: проводить формальные математические доказательства гораздо легче, если договориться, что каждая из вычисляемых функций всегда принимает строго один аргумент и выдаёт строго одно значение.</p>
 <p>Но нас-то с вами, как программистов-практиков, гораздо больше интересует аспект практический, а не академический. И поэтому теперь мы возвращаемся к рассмотрению функций высшего порядка (далее - ФВП).</p>
 <p>Формально функции <code>divide</code> и <code>total_sum</code> являются ФВП, в силу тех самых промежуточных λ-функций. Фактически, все функции, объявленные как принимающие более одного аргумента, являются ФВП. Но на самом деле все эти промежуточные λ-функции - это всего лишь подкапотные дела, они скрыты от наших глаз, в то время как гораздо больший интерес представляют “настоящие” ФВП, которые характеризуются именно тем, что явно объявлены как принимающие на вход реальные функциональные значения и/или возвращающие реальные функциональные значения.</p>
@@ -240,7 +236,7 @@ main <span class="fu">=</span>
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

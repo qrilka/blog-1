@@ -46,7 +46,6 @@
 <h3>
 Что нам понадобится?
 </h3>
-
 <p>Собственно, сам компилятор. Напомню, что GCC - это семейство компиляторов для разных языков. Но нас интересует только С++, поэтому скачиваем следующие пакеты:</p>
 <pre><code>ftp://ftp.gnu.org/gnu/gcc/gcc-4.6.0/gcc-core-4.6.0.tar.bz2 - ядро компилятора.
 ftp://ftp.gnu.org/gnu/gcc/gcc-4.6.0/gcc-g++-4.6.0.tar.bz2 - собственно g++.</code></pre>
@@ -57,19 +56,17 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2&lt;br/&gt;</code></p
 <h3>
 Подготовка пути
 </h3>
-
 Кладём все архивы в некую папку, она будет корнем установки нового компилятора. В моей системе это /home/denis/Distros/GCC/. Этот путь будет использован в качестве установочного префикса при сборке. Для краткости далее будем именовать его <strong>INSTALL_PATH</strong>.<br />
 <h3>
 Подготовка компилятора
 </h3>
-
 <p>Распаковываем <strong>gcc-core-4.6.0.tar.bz2</strong> и получаем папку <strong>gcc-4.6.0</strong>. А вот теперь есть одна хитрость. Дело в том, что когда мы распакуем <strong>gcc-g++-4.6.0.tar.bz2</strong>, то получится такая же папка <strong>gcc-4.6.0</strong>. Поэтому я разношу их при распаковке в разные места.</p>
 Захожу в папку <strong>gcc-4.6.0</strong>, полученную при распаковке <strong>gcc-g++-4.6.0.tar.bz2</strong> и вижу там две папки: <strong>gcc</strong> и <strong>libstdc++-v3</strong>. Теперь:
 <ol>
- <li>
+<li>
 папку <strong>libstdc++-v3</strong> копирую в корень папки <strong>gcc-4.6.0</strong>, полученной при распаковке <strong>gcc-core-4.6.0.tar.bz2</strong>.
 </li>
- <li>
+<li>
 в папке gcc берём папку cp и копируем её в подпапку gcc папки <strong>gcc-4.6.0</strong>, полученной при распаковке <strong>gcc-core-4.6.0.tar.bz2</strong>.
 </li>
 </ol>
@@ -77,7 +74,6 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2&lt;br/&gt;</code></p
 <h3>
 Сборка служебных библиотек
 </h3>
-
 <p>Теперь распаковываем архивы трёх вышеупомянутых служебных библиотек. Их необходимо собрать и установить <strong><em>перед</em></strong> сборкой компилятора.</p>
 <p>Более того, важен порядок их сборки, поскольку они зависят друг от друга.</p>
 <p>Первой собираем GMP. Не забываем указать упомянутый выше префикс установки:</p>
@@ -93,26 +89,22 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2&lt;br/&gt;</code></p
 <h3>
 Сборка компилятора
 </h3>
-
 <p>Указываем установочный префикс и пути к (уже) установленным служебным библиотекам:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">./configure</span> --prefix=INSTALL_PATH --with-gmp=INSTALL_PATH --with-mpfr=INSTALL_PATH --with-mpc=INSTALL_PATH</code></pre>
 Далее make. Начинается компиляция компилятора (приколько звучит).<br />
 <h3>
 Подводный камень №1
 </h3>
-
 <p>Вы думаете, что всё скомпилируется и готово? Не тут-то было. Компиляция прервётся с ошибкой. А причина в том, что мы забыли передать путь к служебным библиотекам линковщику, а в процессе сборки они понадобятся. Поэтому пропишем путь INSTALL_PATH/lib в <strong>/etc/ld.so.conf</strong>. Не забываем выполнить магическое <strong>ldconfig</strong>.</p>
 После этого снова make. Компиляция продолжится.<br />
 <h3>
 Подводный камень №2
 </h3>
-
 <p>Ну теперь-то всё? Нет, не всё. Если у вас 64-разрядная система (как у меня), то компиляция снова прервётся. Причина в отсутствии файла <strong>/usr/include/gnu/stubs-32.h</strong>. Если вы посмотрите, то файл stubs-64.h имеется, а stubs-32.h отсутствует. Чтобы это исправить, необходимо установить пакет <strong>libc6-dev-i386</strong>. В репозитории Debian такой имеется. После этого требуемый файл появится.</p>
 После этого снова make. Компиляция продолжится.<br />
 <h3>
 Подводный камень №3
 </h3>
-
 <p>Итак, компиляция завершена. К слову сказать, займёт она довольно много времени. На моей системе с Corei3 2.4Ггц и 2 Гб DDR3 памяти компиляция забрала часа полтора.</p>
 <p>После этого вы делаете make install. И в INSTALL_PATH появятся несколько дополнительных папок, такие как lib32, lib64, bin, libexec, share.</p>
 <p>И вот вы, в предвкушении испытаний, пишете свой hello world и скармливаете его новому компилятору. Компиляция проходит успешно, только вот запустить программу не удастся. Причина проста: стандартная библиотека.</p>
@@ -132,7 +124,6 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2&lt;br/&gt;</code></p
 <h3>
 Завершение
 </h3>
-
 <p>Ну что ж, сборка и настройка завершена. В подтверждение этому попробуем скомпилировать программу с новейшими возможностями стандарта. В частности, проверим range for. Разумеется, необходимо также указать флаг <strong>-std=c++0x</strong>, всё-таки поддержка нового стандарта носит (формально) экспериментальный характер.</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> main() {
     std::vector&lt; <span class="dt">int</span> &gt; v = { <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span> };
@@ -168,7 +159,7 @@ ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2&lt;br/&gt;</code></p
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

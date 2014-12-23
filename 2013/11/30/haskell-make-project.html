@@ -63,17 +63,16 @@ haqify s <span class="fu">=</span> <span class="st">&quot;Haq! &quot;</span> <sp
 <p>Совершенно непонятно, <em>что</em> не понравилось утилите, ведь я ввёл номер лицензии 7 (что соответствует лицензии MIT) и она это проглотила, но в итоге файл LICENSE в корневой папке проекта так и не появился. Но дабы не было противоречий, просто добавьте этот файл вручную (и можете оставить его пустым).</p>
 <p>Как уже было упомянуто, в корневой папке проекта появились следующие важные файлы:</p>
 <ul>
-  <li>
+<li>
 Setup.hs
 </li>
-  <li>
+<li>
 Haskell.cabal
 </li>
 </ul>
-
 <p>Первый нам не так интересен, потому что (в соответствии с официальным руководством) редактировать этот файл руками нам придётся очень редко. А вот второй файл весьма любопытен. Откроем его и посмотрим:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">name<span class="fu">:</span>                <span class="dt">Haskell</span>
-version<span class="fu">:</span>             <span class="dv">0</span><span class="fu">.</span><span class="dv">1</span><span class="fu">.</span><span class="dv">0</span><span class="fu">.</span><span class="dv">0</span>
+version<span class="fu">:</span>             <span class="fl">0.1</span><span class="fu">.</span><span class="fl">0.0</span>
 synopsis<span class="fu">:</span>            <span class="dt">Learn</span> project
 <span class="co">-- description:         </span>
 license<span class="fu">:</span>             <span class="dt">MIT</span>
@@ -83,12 +82,12 @@ maintainer<span class="fu">:</span>          me<span class="fu">@</span>dshevche
 <span class="co">-- copyright:           </span>
 <span class="co">-- category:            </span>
 build<span class="fu">-</span><span class="kw">type</span><span class="fu">:</span>          <span class="dt">Simple</span>
-cabal<span class="fu">-</span>version<span class="fu">:</span>       <span class="fu">&gt;=</span><span class="dv">1</span><span class="fu">.</span><span class="dv">8</span>
+cabal<span class="fu">-</span>version<span class="fu">:</span>       <span class="fu">&gt;=</span><span class="fl">1.8</span>
 
 executable <span class="dt">Haskell</span>
   main<span class="fu">-</span>is<span class="fu">:</span>           main<span class="fu">.</span>hs            
   <span class="co">-- other-modules:       </span>
-  build<span class="fu">-</span>depends<span class="fu">:</span>     base <span class="fu">==</span><span class="dv">4</span><span class="fu">.</span><span class="dv">6</span><span class="fu">.*</span></code></pre>
+  build<span class="fu">-</span>depends<span class="fu">:</span>     base <span class="fu">==</span><span class="fl">4.6</span><span class="fu">.*</span></code></pre>
 <p>Как видите, этот файл представляет собой некий аналог Makefile для системы cabal. Тут уже сохранены те самые значения, которые мы вводили в процессе вышеупомянутого диалога.</p>
 <p>Обращаю ваше внимание на то, что в этом сгенерированном файле изначально строка:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">  main<span class="fu">-</span>is<span class="fu">:</span></code></pre>
@@ -101,7 +100,7 @@ executable <span class="dt">Haskell</span>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">executable <span class="dt">Haskell</span>
   main<span class="fu">-</span>is<span class="fu">:</span>           main<span class="fu">.</span>hs            
   <span class="co">-- other-modules:       </span>
-  build<span class="fu">-</span>depends<span class="fu">:</span>     base <span class="fu">==</span><span class="dv">4</span><span class="fu">.</span><span class="dv">6</span><span class="fu">.*</span></code></pre>
+  build<span class="fu">-</span>depends<span class="fu">:</span>     base <span class="fu">==</span><span class="fl">4.6</span><span class="fu">.*</span></code></pre>
 <p>Видите отступ в два пробела перед тремя последними строками? Оказывается, это не просто так. Если мы уберём этот отступ, то получим такую ошибку:</p>
 <p><bash> cabal: Haskell.cabal:18: Construct not supported at this position: F 18 “main-is” “main.hs-depends: base ==4.6.*&quot; </bash></p>
 <p>Кроме того, отступ должен быть никак не меньше двух пробелов, потому что ради эксперимента я пробовал поставить отступ из одного-единственного пробела, и получил уже такую ошибку:</p>
@@ -144,7 +143,7 @@ executable <span class="dt">Haskell</span>
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

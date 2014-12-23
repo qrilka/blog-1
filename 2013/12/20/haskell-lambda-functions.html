@@ -51,7 +51,6 @@
 <h3>
 Так что же это за лямбды такие?
 </h3>
-
 <p>В основе идеи λ-функций лежит λ-исчисление, названное так по имени этой красивой греческой буквы. У понятия λ-исчисления довольно-таки долгая академическая история, нам нет смысла её здесь разбирать по косточкам. Нас интересует лишь суть, поэтому сразу пример.</p>
 <p>Представим себе, что нам нужна функция, принимающая некое целочисленное значение и возвращающая квадрат этого значения. Причём функция именно в том самом, математическом смысле. Как бы мы могли это отобразить? Примерно так:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">5</span> -&gt; f -&gt; <span class="dv">25</span></code></pre>
@@ -61,15 +60,14 @@
 <p>Ну а теперь главный вопрос: как эту функцию описать <em>формально</em>, или <em>унифицированно</em>? Вот тут-то на сцену и выходит λ-исчисление, ибо оно как раз и предлагает такой вот унифицированный способ записи функции.</p>
 <p>Вот λ-выражение для нашей функции:</p>
 <pre>
-λx.x*x
+&lambda;x.x*x
 </pre>
-
 <p>Буква λ - это признак λ-функции. А читать это выражение следует примерно так:</p>
 <p>λ-функция от одного аргумента <code>x</code>, умножающая этот аргумент сам на себя.</p>
 <p>Таким образом, выражение до разделяющей точки:</p>
 **
 <pre>
-λx
+&lambda;x
 </pre>
 <p>**</p>
 <p>это список аргументов (в данном случае он один), а выражение после разделяющей точки:</p>
@@ -84,7 +82,6 @@ x*x
 <h3>
 Ну хорошо, а как это будет выглядеть в коде?
 </h3>
-
 <p>λ-функции присутствуют во многих языках программирования. Но есть один язык, в котором синтаксис λ-выражения максимально приближен к приведённому здесь математическому. Угадайте с трёх раз, о каком языке я говорю… :)</p>
 <p>Итак, вот наша функция в Haskell:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">\x <span class="ot">-&gt;</span> x<span class="fu">*</span>x</code></pre>
@@ -101,21 +98,19 @@ x*x
 <h3>
 Да, но какая же от всего этого польза?
 </h3>
-
 <p>Действительно, пора и к практике переходить.</p>
 <p>В языке C принят стандартный “круг трёх шагов” по работе с функцией:</p>
 <ol>
-  <li>
+<li>
 объявление,
 </li>
-  <li>
+<li>
 определение,
 </li>
-  <li>
+<li>
 вызов.
 </li>
 </ol>
-
 <p>И потому работа с нашей функцией возведения в квадрат, применительно к языку C, могла бы выглядеть так:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> f( <span class="dt">int</span> i ) {
     <span class="kw">return</span> i * i;
@@ -179,7 +174,7 @@ main <span class="fu">=</span>
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

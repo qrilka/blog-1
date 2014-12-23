@@ -44,7 +44,6 @@
 <h3>
 Готовимся
 </h3>
-
 <p>Все приведённые ниже команды выполняются в терминале из корневой папки нашего проекта.</p>
 <p>Для начала выполним команду:</p>
 <p><bash> cabal update </bash></p>
@@ -54,7 +53,6 @@
 <h3>
 Выбираем нужный пакет
 </h3>
-
 <p>Заходим на страницу списка пакетов и ищем. В частности, мне понадобилось установить пакет <strong><a href="http://hackage.haskell.org/package/filemanip">filemanip</a></strong>, предназначенный для работы с файловой системой. Кстати, поиск нужных вам пакетов можно производить в <strong><a href="http://www.haskell.org/hoogle/">Hoogle</a></strong>.</p>
 <p>Устанавливаем пакет следующей командой:</p>
 <p><bash> cabal install filemanip </bash></p>
@@ -64,14 +62,13 @@
 <h3>
 Указываем пакет в .cabal-файле
 </h3>
-
 <p>Открываем конфигурационный <code>.cabal</code>-файл (помните про такой, не так ли?), находящийся в корне нашего проекта, и дописываем наш только что установленный пакет:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">executable <span class="dt">Haskell</span>
     main<span class="fu">-</span>is<span class="fu">:</span>         main<span class="fu">.</span>hs            
     other<span class="fu">-</span>modules<span class="fu">:</span>   <span class="dt">Haq</span>
     hs<span class="fu">-</span>source<span class="fu">-</span>dirs<span class="fu">:</span>  src 
                      src<span class="fu">/</span>utils
-    build<span class="fu">-</span>depends<span class="fu">:</span>   base <span class="fu">==</span> <span class="dv">4</span><span class="fu">.</span><span class="dv">6</span><span class="fu">.*</span>, filemanip</code></pre>
+    build<span class="fu">-</span>depends<span class="fu">:</span>   base <span class="fu">==</span> <span class="fl">4.6</span><span class="fu">.*</span>, filemanip</code></pre>
 <p>Как видите, мы просто дописали в параметр <code>build-depends</code> название нового пакета. Обратите внимание, что имена пакетов в этом параметре указываются через запятую, это важно.</p>
 <p>Если вы пропустите этот шаг, то воспользоваться каким-либо из модулей данного пакета вы, разумеется, не сможете. Напоминаю, что пакет представлен набором модулей, которые можно импортировать в ваш код (а импорт модуля, напоминаю, подобен включению файла с помощью <code>#include</code>-директивы).</p>
 <p>Впрочем, даже если вы всё-таки забудете указать установленный пакет <em>и при этом</em> попытаетесь импортировать какие-либо из его модулей в ваш проект, компилятор вежливо поправит вас:</p>
@@ -79,7 +76,6 @@
 <h3>
 Подключаем нужные модули
 </h3>
-
 <p>А теперь открываем наш файл (например, <code>main.hs</code>) и дописываем в его верхней части следующую строку:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">System.FilePath.Find</span></code></pre>
 <p>Этой инструкцией мы импортировали конкретный модуль из установленного пакета. Теперь мы сможем использовать содержимое этого модуля в нашем проекте.</p>
@@ -115,7 +111,7 @@
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

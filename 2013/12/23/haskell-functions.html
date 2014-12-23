@@ -48,7 +48,6 @@
 <h3>
 Объявляем
 </h3>
-
 <p>Начинается всё с объявления функции:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">simple_sum ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code></pre>
 <p>Перед нами - объявление выражения. До символа <code>::</code> указывается имя выражения, а после - тип выражения.</p>
@@ -70,7 +69,6 @@
 <h3>
 Определяем
 </h3>
-
 <p>Теперь функцию нужно определить. Кстати, определить нужно <em>обязательно</em>. Известно, что в том же C++ мы можем спокойно объявить функцию и не определять её (при условии, что она никогда нигде не вызывается). В Haskell более строгий подход: если объявил - будь добр и определить, в противном случае компилятор выскажет своё недовольство.</p>
 <p>Итак, сразу после объявления пишем тело функции:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">simple_sum ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>
@@ -81,22 +79,20 @@ simple_sum value <span class="fu">=</span> value <span class="fu">+</span> value
 <pre class="sourceCode haskell"><code class="sourceCode haskell">name arguments <span class="fu">=</span> body_expression</code></pre>
 <p>Здесь:</p>
 <ul>
-  <li>
+<li>
 <code>name</code> - имя функции.
 </li>
-  <li>
+<li>
 <code>arguments</code> - список имён аргументов (именно имён, а не их типов).
 </li>
-  <li>
+<li>
 <code>body_expression</code> - тело функции.
 </li>
 </ul>
-
 <p>В данном случае у нас имеется один-единственный аргумент по имени <code>value</code>, а также имеется чрезвычайно простое тело, в котором мы просто-напросто складываем аргумент с самим собой.</p>
 <h3>
 Вызываем
 </h3>
-
 <p>Теперь нашу функцию можно вызывать с аргументом 4 (или, как привычно говорить в мире ФП, апплицировать функцию к аргументу 4):</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">main <span class="fu">=</span> putStrLn (show (simple_sum <span class="dv">4</span>))</code></pre>
 <p>В ответ получаем ожидаемое значение:</p>
@@ -104,12 +100,10 @@ simple_sum value <span class="fu">=</span> value <span class="fu">+</span> value
 <h3>
 А теперь подробнее…
 </h3>
-
 <p>Естественно, всё вышесказанное - это лишь самые азы. Теперь же необходимо уточнить некоторые детали.</p>
 <h4>
 Выход из функции
 </h4>
-
 <p>В C++, если у нас есть функция с возвращаемым значением, мы обязаны где-то в её теле написать инструкцию <strong><code>return</code></strong>. Это - точка выхода из тела функции. Кроме того, мы знаем, что точек выхода из тела функции может быть сколько угодно. В Haskell же всё обстоит иначе. Во-первых, точка выхода из чистой функции может быть только одна, а во-вторых, аналога инструкции <strong><code>return</code></strong> в Haskell нету.</p>
 <p>Да, я понимаю, это удивляет. Мол, а как же нам быть, если мы хотим указать точку выхода явно? Но если мы вспомним математическую природу чистой функции, то поймём, что иначе быть не может. Ведь чистая функция представляет собой описание зависимости выходного выражения от совокупности входных выражений, поэтому её тело представляет собой совокупность выражений, которые вычисляются (в некотором порядке) и в конечном итоге оставляют одно-единственное, последнее выражение. Так вот это последнее выражение и будет являться точкой выхода из функции.</p>
 <p>Чтобы стало понятнее, приведу пример:</p>
@@ -136,27 +130,26 @@ indicate address <span class="fu">=</span> address</code></pre>
 <h4>
 Локальные выражения
 </h4>
-
 <p>Очень полезно бывает ввести некое локальное значение в теле функции, например, для избавления от дубляжа кода или от магических чисел. Например, у нас есть такая функция:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">prepare_length ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span>
 prepare_length line <span class="fu">=</span> 
-    line <span class="fu">*</span> <span class="dv">0</span><span class="fu">.</span><span class="dv">4959</span></code></pre>
+    line <span class="fu">*</span> <span class="fl">0.4959</span></code></pre>
 <p>Итак, мы готовим длину некой линии путём умножения её первоначальной длины на поправочный коэффициент. Но перед нами - магическое число, а это очень плохо. Добавлять комментарий - это не лучшее решение. Поэтому добавим локальное поясняющее выражение:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">prepare_length ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span>
 prepare_length line <span class="fu">=</span> 
     line <span class="fu">*</span> coefficient
-    <span class="kw">where</span> coefficient <span class="fu">=</span> <span class="dv">0</span><span class="fu">.</span><span class="dv">4959</span></code></pre>
+    <span class="kw">where</span> coefficient <span class="fu">=</span> <span class="fl">0.4959</span></code></pre>
 <p>Красиво, не так ли? Ключевое слово <strong><code>where</code></strong> вводит локальное выражение, которое можно использовать в теле функции. Разумеется, локальных выражений может быть несколько:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">prepare_length ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span>
 prepare_length line <span class="fu">=</span> 
     line <span class="fu">*</span> coefficient <span class="fu">-</span> correction
-    <span class="kw">where</span> coefficient <span class="fu">=</span> <span class="dv">0</span><span class="fu">.</span><span class="dv">4959</span>
-          correction <span class="fu">=</span> <span class="dv">0</span><span class="fu">.</span><span class="dv">0012</span></code></pre>
+    <span class="kw">where</span> coefficient <span class="fu">=</span> <span class="fl">0.4959</span>
+          correction <span class="fu">=</span> <span class="fl">0.0012</span></code></pre>
 <p>Есть ещё один способ ввести локальное вспомогательное выражение, с помощью ключевого слова <strong><code>let</code></strong>. На примере нашей последней функции это выглядит так:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">prepare_length ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span>
 prepare_length line <span class="fu">=</span> 
-    <span class="kw">let</span> coefficient <span class="fu">=</span> <span class="dv">12</span><span class="fu">.</span><span class="dv">4959</span>
-        correction <span class="fu">=</span> <span class="dv">0</span><span class="fu">.</span><span class="dv">0012</span>
+    <span class="kw">let</span> coefficient <span class="fu">=</span> <span class="fl">12.4959</span>
+        correction <span class="fu">=</span> <span class="fl">0.0012</span>
     <span class="kw">in</span>
     line <span class="fu">*</span> coefficient <span class="fu">-</span> correction</code></pre>
 <p>Общая модель такая: <strong><code>let</code></strong> <code>bindings</code> <strong><code>in</code></strong> <code>expression</code>.</p>
@@ -165,21 +158,20 @@ prepare_length line <span class="fu">=</span>
 <p>Во-вторых, выражение, введённое ключевым словом <strong><code>where</code></strong>, всегда видимо в любой точке тела функции, в то время как выражение, введённое ключевым словом <strong><code>let</code></strong>, может быть “супер-локальным”. Например:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">prepare_length ::</span> <span class="dt">Double</span> <span class="ot">-&gt;</span> <span class="dt">Double</span>
 prepare_length line <span class="fu">=</span> 
-    <span class="kw">let</span> coefficient <span class="fu">=</span> <span class="dv">12</span><span class="fu">.</span><span class="dv">4959</span>
-        correction <span class="fu">=</span> <span class="dv">0</span><span class="fu">.</span><span class="dv">0012</span>
+    <span class="kw">let</span> coefficient <span class="fu">=</span> <span class="fl">12.4959</span>
+        correction <span class="fu">=</span> <span class="fl">0.0012</span>
     <span class="kw">in</span>
-    line <span class="fu">*</span> coefficient <span class="fu">-</span> correction <span class="fu">-</span> (<span class="kw">let</span> s <span class="fu">=</span> <span class="dv">10</span><span class="fu">.</span><span class="dv">9</span> <span class="kw">in</span> s <span class="fu">+</span> <span class="dv">1</span>) <span class="fu">-</span> s</code></pre>
+    line <span class="fu">*</span> coefficient <span class="fu">-</span> correction <span class="fu">-</span> (<span class="kw">let</span> s <span class="fu">=</span> <span class="fl">10.9</span> <span class="kw">in</span> s <span class="fu">+</span> <span class="dv">1</span>) <span class="fu">-</span> s</code></pre>
 <p>Понимаю, пример несколько надуманный, но всё-таки… Здесь мы ввели выражение с именем <code>s</code>, которое действует только внутри круглых скобок. Именно поэтому пример этот не скомпилируется, ведь второе выражение <code>s</code> находится уже не в скобках, и поэтому компилятор вполне справедливо возмутится:</p>
 <p><bash> [2 of 2] Compiling Main ( src/main.hs, dist/build/Haskell/Haskell-tmp/Main.o )</p>
 <p>src/main.hs:43:61: Not in scope: `s’ </bash></p>
 <h4>
 Про объявление
 </h4>
-
 <p>Как вы помните, нельзя объявить функцию и при этом не определить её. А можно ли определить функцию без объявления? Отвечаю: можно, но не рекомендуется.</p>
 <p>Общепринятой практикой является объявлять функцию и тут же определять её. И несмотря на то, что мы <em>можем</em> написать так:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell">prepare_length line <span class="fu">=</span> 
-    <span class="kw">let</span> coefficient <span class="fu">=</span> <span class="dv">12</span><span class="fu">.</span><span class="dv">4959</span>
+    <span class="kw">let</span> coefficient <span class="fu">=</span> <span class="fl">12.4959</span>
     <span class="kw">in</span>
     line <span class="fu">*</span> coefficient</code></pre>
 <p>делать так не рекомендуется, поскольку определение функции становится как бы беднее, ведь сигнатура типов аргументов и возвращаемого выражения помогает лучше понять функцию.</p>
@@ -187,7 +179,6 @@ prepare_length line <span class="fu">=</span>
 <h4>
 Вот и всё?
 </h4>
-
 <p>Конечно, это далеко не всё, что можно сказать о чистых функциях, но этот базис достаточен для того, чтобы понять суть чистых функций и то, как их можно использовать в своём коде. Продолжение следует…</p>
 
 <div id="socialButtons">
@@ -216,7 +207,7 @@ prepare_length line <span class="fu">=</span>
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

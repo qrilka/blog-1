@@ -47,7 +47,6 @@
 <h3>
 Удобство кода
 </h3>
-
 <p>Сравним: <code>cpp V v; for ( V::iterator it = v.begin(); it != v.end(); ++it ) {     std::cout &lt;&lt; *it &lt;&lt; std::endl; }</code>и</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp">V v;
 BOOST_FOREACH ( <span class="dt">int</span> i, v ) {
@@ -72,7 +71,6 @@ BOOST_FOREACH ( <span class="dt">int</span> i, v ) {
 <h3>
 Эффективность выполнения
 </h3>
-
 <p>Итак, с красотой кода разобрались, но что со временем выполнения? Некоторые говорят, мол, в силу того, что BOOST_FOREACH - это макрос, он разворачивается на стадии препроцессирования в монстроподобную конструкцию и, мол, как это ужасно.</p>
 <p>Ну, во-первых, во что он там разворачивается - это не мои заботы, об этом пусть думает компилятор. Увеличивается размер исполняемого файла? Ну и пусть увеличивается, для меня это не проблема.</p>
 <p>Однако вопрос эффективности может быть действительно важен. Его и рассмотрим.</p>
@@ -159,7 +157,7 @@ BOOST_FOREACH ( <span class="dt">int</span> i, v ) {
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

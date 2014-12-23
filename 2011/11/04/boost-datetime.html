@@ -52,7 +52,6 @@
 <pre>
 2011-Jan-01 00:00:00
 </pre>
-
 <p>Всё нормально. Но что будет, если мы не зададим время <em>явно</em>?</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> main() {
     <span class="kw">using</span> <span class="kw">namespace</span> boost::posix_time;
@@ -63,7 +62,6 @@
 <pre>
 2011-Mar-25 19:01:01
 </pre>
-
 <p>Э-э… В высшей степени странный результат… Оказывается, время задавать <em>необходимо</em>. Но пусть бы тогда библиотека хоть исключение выкидывала, это по крайней мере заметно. А тут молча имеем какой-то мусор.</p>
 <p>Более того, тот же казус имеем и с другим способом:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> main() {
@@ -75,7 +73,6 @@
 <pre>
 2011-Jan-01 00:00:00
 </pre>
-
 <p>Опять-таки всё в порядке. Но если без времени:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">int</span> main() {
     <span class="kw">using</span> <span class="kw">namespace</span> boost::posix_time;
@@ -86,7 +83,6 @@
 <pre>
 2011-Jan-01 20:11:01.100000
 </pre>
-
 <p>Значит, и тут время необходимо задавать. Но и тут никакого исключения, а лишь молчаливый мусор… Причём ошибки ISO-формата тут нет, 20110101 - это нормальная дата в соответствии с ISO 8601.</p>
 <p>По моему убеждению, здесь имеет место логическая ошибка. Ведь если мы задали лишь дату (то есть конкретные сутки конкретного месяца конкретного года), но не указали время, то вполне логично предположить, что мы имели в виду <em><ins>начало</ins></em> этих суток, то есть 00:00:00. Поэтому в случае <em>отсутствия</em> времени никакого исключения быть, по-хорошему, не должно, а вместо него должен подставляться момент начала суток. Так почему же этого не происходит?</p>
 <p>А всё просто. Дело в том, что в реализациях функций <strong>time_from_string()</strong> и <strong>from_iso_string()</strong> предполагается, что разделитель (в первом случае - пробел, а во втором случае - буква T) даты и времени присутствует <em>всегда</em>. И поэтому никакой проверки наличия этого разделителя не производится. Жаль.</p>
@@ -118,7 +114,7 @@
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

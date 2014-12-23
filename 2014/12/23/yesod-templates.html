@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Yesod: Гамлет и прочие</title>
+        
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+        <div id="wrapper_2">
+        
+        <div id="header">
+            <div id="logo">
+                <a href="http://blog.dshevchenko.biz" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Yesod: Гамлет и прочие</h1>
+
+            <div class="info">
+    (2014, 12, 23)
+</div>
+
+<div id="tags_of_post">
+    <a href="../../../tags/Yesod.html">Yesod</a>, <a href="../../../tags/Haskell.html">Haskell</a>
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Приветствую!</p>
+<p>Как вы <a href="http://blog.dshevchenko.biz/2014/12/21/yesod-structure-templates.html">уже знаете</a>, в корне Yesod-проекта имеется каталог <code>templates</code>, содержащий шаблоны, в которых уютно расположились наши HTML, CSS и JS. Пришло время узнать обо всём об этом подробнее.</p>
+<h2 id="гамлет">Гамлет</h2>
+<p>Шаблоны с расширением <code>.hamlet</code> - самые главные, ведь именно в них живёт HTML. Впрочем, не совсем обыкновенный HTML. Те из вас, кто знаком с Ruby on Rails, наверняка знают о <a href="http://slim-lang.com">Slim</a>. Так вот Hamlet - это что-то в том же духе. Вот простейший пример:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.centered</span><span class="kw">&gt;</span>
+    Привет, это Hamlet, мета-язык для создания HTML!</code></pre>
+<p>После сборки нашего проекта этот код превратится в следующий HTML:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;centered&quot;</span><span class="kw">&gt;</span>
+    Привет, это Hamlet, мета-язык для создания HTML!
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<p>А теперь о деталях.</p>
+<h3 id="теги">Теги</h3>
+<p>Как вы заметили, в Hamlet-коде не нужно закрывать теги, это будет сделано за нас аватоматически. И на мой взгляд, это чрезвычайно удобно. Ведь если не нужно вручную закрывать тег, то мы не сможем ни забыть этого сделать, ни сделать это криво. Взгляните:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.register</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span> <span class="er">.just-centered</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;h4&gt;</span>Ещё нет профиля?
+ 
+        <span class="kw">&lt;div</span> <span class="er">.register-button</span><span class="kw">&gt;</span>
+            <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">button</span>
+                    <span class="er">.btn</span>
+                    <span class="er">.btn-primary</span>
+                    <span class="er">.btn-lg</span>
+                    <span class="er">#registerButton</span>
+<span class="ot">                    data-toggle=</span><span class="st">modal</span>
+<span class="ot">                    data-target=</span><span class="st">#registerForm</span><span class="kw">&gt;</span>Зарегистрируйтесь</code></pre>
+<p>Но вы спросите, а как же задаётся вложенность тегов, если нет закрывающих? Очень просто: через отступы. В этом плане синтаксис Hamlet похож на синтаксис Haskell: отступы имееют значение. Поэтому если мы напишем так:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.register</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span> <span class="er">.just-centered</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;h4&gt;</span>Ещё нет профиля?</code></pre>
+<p>то HTML получится такой:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.register</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span> <span class="er">.just-centered</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;h4&gt;</span>Ещё нет профиля?<span class="kw">&lt;h4&gt;</span>
+    <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<p>Однако стоит нам убрать отступ:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.register</span><span class="kw">&gt;</span>
+<span class="kw">&lt;div</span> <span class="er">.just-centered</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h4&gt;</span>Ещё нет профиля?</code></pre>
+<p>и HTML получится таким:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.register</span><span class="kw">&gt;&lt;/div&gt;</span>
+<span class="kw">&lt;div</span> <span class="er">.just-centered</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h4&gt;</span>Ещё нет профиля?<span class="kw">&lt;h4&gt;</span>
+<span class="kw">&lt;/div&gt;</span></code></pre>
+<p>Кто-то скажет, мол, не такая уж и большая выгода получается: в чистом HTML-коде нужно внимательно следить за симметрией открывающих/закрывающих тегов, а в Hamlet нужно столь же внимательно следить за отступами. Но тут уж, как говорится, на ваш выбор. Лично мне больше нравятся отступы, ведь, работая с Haskell, я уже и так привык к их важности.</p>
+<h3 id="классы-и-идентификаторы">Классы и идентификаторы</h3>
+<p>Имена CSS-классов и идентификаторов задаются точно так же, как в самом CSS: классы через точку, а идентификаторы - через хэш. Во-первых, это сокращает код, а во-вторых, имена классов и идентификаторов можно не заключать в кавычки. Согласитесь, вот так:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.register</span><span class="kw">&gt;</span></code></pre>
+<p>выглядит красивее, нежели так:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;register&quot;</span><span class="kw">&gt;</span></code></pre>
+<h3 id="кавычки">Кавычки</h3>
+<p>Как было сказано выше, в Hamlet кавычки можно опускать, за исключением случаев, когда они необходимы (например, при наличии пробелов в идентификаторе). Поэтому в коде моей Bootstrap-овской кнопки я пишу так:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;button</span> <span class="er">...</span><span class="ot"> data-toggle=</span><span class="st">modal</span></code></pre>
+<p>а не так:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;button</span> <span class="er">...</span><span class="ot"> data-toggle=</span><span class="st">&quot;modal&quot;</span></code></pre>
+<h3 id="haskell-примочки">Haskell-примочки</h3>
+<p>Мы можем запихнуть в Hamlet-код ряд особых программных конструкций, таких как условия, <code>Maybe</code>, <code>forall</code> и <code>case</code>. Более того, мы можем даже чистый Haskell использовать внутри Hamlet-кода. Однако писать об этом подробно сейчас я не стану, ведь всё это мы рассмотрим в будущих заметках, когда приступим к написанию реальных кусочков нашего проекта.</p>
+<h3 id="интернационализация">Интернационализация</h3>
+<p>Как я и обещал, в одной из будущих заметок мы подробно обсудим вопрос интернационализации нашего веб-приложения. А сейчас скажу следующее: Hamlet позволяет очень легко использовать мультиязыковой текст, заданный в каталоге <code>messages</code>.</p>
+<h2 id="луций">Луций</h2>
+<p>Lucius - это мета-язык, предназначенный для написания CSS. Без стилей, сами понимаете, никуда, однако с Луцием всё значительно проще, нежели с Гамлетом. Как правило, шаблоны с расширением <code>.lucius</code> включают в себя самый обыкновенный CSS. Правда, есть несколько вкусностей.</p>
+<h3 id="вложенность">Вложенность</h3>
+<p>Стилевые секции в Lucius могут быть вложенными. Таким образом, вместо того, чтобы писать так:</p>
+<pre class="sourceCode css"><code class="sourceCode css">article code <span class="kw">{</span> <span class="kw">background-color:</span> <span class="dt">#eee</span><span class="kw">;</span> <span class="kw">}</span>
+article p <span class="kw">{</span> <span class="kw">text-indent:</span> <span class="dt">1.5em</span><span class="kw">;</span> <span class="kw">}</span>
+article a <span class="kw">{</span> <span class="kw">text-decoration:</span> <span class="dt">none</span><span class="kw">;</span> <span class="kw">}</span></code></pre>
+<p>мы можем написать так:</p>
+<pre class="sourceCode css"><code class="sourceCode css">article <span class="kw">{</span>
+    <span class="er">code</span> <span class="er">{</span> <span class="kw">background-color:</span> <span class="dt">#eee</span><span class="kw">;</span> <span class="kw">}</span>
+    p <span class="kw">{</span> <span class="kw">text-indent:</span> <span class="dt">1.5em</span><span class="kw">;</span> <span class="kw">}</span>
+    a <span class="kw">{</span> <span class="kw">text-decoration:</span> <span class="dt">none</span><span class="kw">;</span> <span class="kw">}</span>
+}</code></pre>
+<h3 id="переменные">Переменные</h3>
+<p>Во избежание дубляжа, можно использовать особые переменные внутри <code>.lucius</code>-файлов. Например:</p>
+<pre class="sourceCode css"><code class="sourceCode css">@bigSpace<span class="dv">:</span> 100px;
+
+<span class="fl">.register-block</span> <span class="kw">{</span> 
+    <span class="kw">padding-top:</span> #{bigSpace<span class="kw">}</span>;
+}
+
+<span class="fl">.login-block</span> <span class="kw">{</span> 
+    <span class="kw">padding-top:</span> #{bigSpace<span class="kw">}</span>;
+}</code></pre>
+<p>По мере продвижения по нашему проекту мы увидим всё это в действии.</p>
+<h2 id="юлий">Юлий</h2>
+<p>С Julius всё совсем просто. Шаблоны с расширением <code>.julius</code> содержат в себе нативный JS. Правда, там можно использовать несколько Haskell-овских примочек, но их значительно меньше, нежели в Hamlet. Поэтому пока воспринимайте <code>.julius</code>-файлы как обычные <code>.js</code>-файлы.</p>
+<p>Ну вот собственно и всё. В последующих заметках всё, о чём было сказано выше, оживёт и заиграет. И в частности, вскоре мы узнаем об одной из фундаментальных концепций Yesod - о виджете.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+        </div>
+        </div>
+    </body>
+</html>

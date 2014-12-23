@@ -61,7 +61,6 @@ make install</code></pre>
 <h4>
 Подводный камень.
 </h4>
-
 <p>К сожалению, компиляция вскоре прерывается со следующей ошибкой: <code>cpp checking for suffix of object files... configure: error:  in `/Users/dshevchenko/Downloads/gcc_build/x86_64-apple-darwin11.4.0/libgcc': configure: error: cannot compute suffix of object files: cannot compile See `config.log' for more details.</code>Каноническая причина этой странной ошибки сводится к тому, что динамический линковщик не видит те самые служебные библиотеки GMP, MPC и/или MPFR. Но ведь мы собрали их статически, следовательно, причина в другом.</p>
 <p>Дооооолгое гугление и блуждание по спискам рассылки, stackoverflow.com и различным форумам натолкнули меня на <strong><a href="http://comments.gmane.org/gmane.comp.gcc.bugs/327499">эту</a></strong> страницу, а потом - на <strong><a href="http://llvm.org/bugs/show_bug.cgi?id=9571">эту</a></strong>. В общем, там имеет место один баг в Apple-вском llvm-gcc-4.2.1, и многие спотыкались об него.</p>
 <p>Решение оказалось неожиданно простым: необходимо определить две переменны среды:</p>
@@ -100,7 +99,7 @@ make install</code></pre>
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

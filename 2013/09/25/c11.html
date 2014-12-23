@@ -65,7 +65,6 @@
 <h3>
 Работа с текстами
 </h3>
-
 <p>Допустим, нам нужно сформировать кусочек HTML-кода веб-страницы следующего вида:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp">&lt;head&gt;
 &lt;meta charset=<span class="st">&quot;UTF-8&quot;</span> /&gt;
@@ -77,13 +76,13 @@ document.documentElement.className = <span class="st">'js'</span>;
 &lt;/head&gt;</code></pre>
 <p>Для получения нормального результата мы должны написать так:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp">std::string page( <span class="st">&quot;&lt;head&gt;</span><span class="ch">\n</span><span class="st">\</span>
-&lt;meta charset=\<span class="st">&quot;UTF-8</span><span class="ch">\&quot;</span><span class="st"> /&gt;</span><span class="ch">\n</span><span class="st">\</span>
-&lt;title&gt;Source code formatter <span class="kw">for</span> Mac | StrictCode&lt;/title&gt;\n\
-&lt;link rel=\<span class="st">&quot;pingback</span><span class="ch">\&quot;</span><span class="st"> href=</span><span class="ch">\&quot;</span><span class="st">http://strictcodeapp.com/xmlrpc.php</span><span class="ch">\&quot;</span><span class="st"> /&gt;</span><span class="ch">\n</span><span class="st">\</span>
-&lt;script type=\<span class="st">&quot;text/javascript</span><span class="ch">\&quot;</span><span class="st">&gt;</span><span class="ch">\n</span><span class="st">\</span>
-document.documentElement.className = <span class="st">'js'</span>;\n\
-&lt;/script&gt;\n\
-&lt;/head&gt;<span class="st">&quot; );</span></code></pre>
+<span class="st">&lt;meta charset=</span><span class="ch">\&quot;</span><span class="st">UTF-8</span><span class="ch">\&quot;</span><span class="st"> /&gt;</span><span class="ch">\n</span><span class="st">\</span>
+<span class="st">&lt;title&gt;Source code formatter for Mac | StrictCode&lt;/title&gt;</span><span class="ch">\n</span><span class="st">\</span>
+<span class="st">&lt;link rel=</span><span class="ch">\&quot;</span><span class="st">pingback</span><span class="ch">\&quot;</span><span class="st"> href=</span><span class="ch">\&quot;</span><span class="st">http://strictcodeapp.com/xmlrpc.php</span><span class="ch">\&quot;</span><span class="st"> /&gt;</span><span class="ch">\n</span><span class="st">\</span>
+<span class="st">&lt;script type=</span><span class="ch">\&quot;</span><span class="st">text/javascript</span><span class="ch">\&quot;</span><span class="st">&gt;</span><span class="ch">\n</span><span class="st">\</span>
+<span class="st">document.documentElement.className = 'js';</span><span class="ch">\n</span><span class="st">\</span>
+<span class="st">&lt;/script&gt;</span><span class="ch">\n</span><span class="st">\</span>
+<span class="st">&lt;/head&gt;&quot;</span> );</code></pre>
 <p>Мы экранировали все внутренние двойные кавычки, расставили ‘’ для переноса строки, да ещё и расставили конкатенирующие бэкслэши для соединения литерала воедино.</p>
 <p>А теперь представьте себе, что код этой страницы был бы раз в десять больше. Расставлять вручную все эти бэкслэши ну совсем не хочется. Хочется просто скопировать код откуда-нибудь и вставить себе в файл. Тут-то и приходят на помощь сырые литералы:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp">std::string page( <span class="st">R&quot;(&lt;head&gt;</span>
@@ -100,50 +99,48 @@ document.documentElement.className = <span class="st">'js'</span>;\n\
 <h3>
 Регулярные выражения
 </h3>
-
 <p>Ещё одна область применения сырых литералов - регулярные выражения. Как известно, есть несколько символов, которые в теле регулярного выражения несут специальный смысл. В частности, по синтаксису Perl, вот они:</p>
 <ol>
-  <li>
+<li>
 <code>.</code>
 </li>
-  <li>
+<li>
 <code>[</code>
 </li>
-  <li>
+<li>
 <code>{</code>
 </li>
-  <li>
+<li>
 <code>}</code>
 </li>
-  <li>
+<li>
 <code>(</code>
 </li>
-  <li>
+<li>
 <code>)</code>
 </li>
-  <li>
+<li>
 <code>&lt;/code&gt;
 </li>
-  <li>
+<li>
 <code>*</code>
 </li>
-  <li>
+<li>
 <code>+</code>
 </li>
-  <li>
+<li>
 <code>?</code>
 </li>
-  <li>
+<li>
 <code>|</code>
 </li>
-  <li>
+<li>
 <code>^</code>
 </li>
-  <li>
+<li>
 <code>$</code>
 </li>
 </ol>
-
 <p>Естественно, если мне нужно использовать любой из этих символов сам по себе, мне опять-таки нужно его экранировать.</p>
 <p>Вспомним пример из документации к <strong><a href="http://www.boost.org/doc/libs/1_54_0/libs/regex/doc/html/boost_regex/introduction_and_overview.html">Boost.Regex</a></strong>:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">bool</span> validate_card_format( <span class="dt">const</span> std::string&amp; s ) {
@@ -173,7 +170,6 @@ document.documentElement.className = <span class="st">'js'</span>;\n\
 <h3>
 Ну и что же мы имеем в итоге?
 </h3>
-
 <p>Мы имеем чрезвычайно полезный механизм, который (в ряде случаев) может сэкономить нам кучу времени. Помню, как я работал с разными протоколами и заготовками строк. Если бы мне тогда был доступен этот механизм, я был бы очень и очень рад.</p>
 
 <div id="socialButtons">
@@ -202,7 +198,7 @@ document.documentElement.className = <span class="st">'js'</span>;\n\
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

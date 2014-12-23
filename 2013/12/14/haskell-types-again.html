@@ -43,17 +43,16 @@
 
 <p>В языке Haskell есть три ключевых слова, используемые при определении собственных типов. И слова эти могут, скажем так, смутить программистов, пришедших из мира C++. Вот эти слова:</p>
 <ul>
-  <li>
+<li>
 <strong><code>data</code></strong>
 </li>
-  <li>
+<li>
 <strong><code>class</code></strong>
 </li>
-  <li>
+<li>
 <strong><code>instance</code></strong>
 </li>
 </ul>
-
 <p>Ключевое слово <strong><code>data</code></strong> служит для определения пользовательского типа (естественно, оно служит также и для определения всех стандартных типов Haskell, но сейчас это не столь важно).</p>
 <p>Что же тогда означает слово <strong><code>class</code></strong>, спросите вы. Это слово предназначено для определения <em>класса типов</em>. Да, я понимаю, звучит на первый взгляд странно, но идея этой концепции весьма проста.</p>
 <p>В языке C++ понятия “тип” и “класс” фактически взаимозаменяемы, потому что ключевое слово <strong><code>class</code></strong> как раз и используется для определения пользовательских типов. Если мы написали:</p>
@@ -68,7 +67,6 @@
 <h3>
 Собственный тип
 </h3>
-
 <p>Для начала определим собственный тип <code>IP_address</code>:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">IP_address</span> <span class="fu">=</span> <span class="dt">IP_address</span> <span class="dt">String</span></code></pre>
 <p>Готово. Перед нами простейший пользовательский тип. Объект этого типа фактически будет представлять собою значение стандартного типа <code>String</code> с меткой <code>IP_address</code>.</p>
@@ -84,7 +82,6 @@
 <h3>
 Класс типов
 </h3>
-
 <p>Проблема в том, что тип <code>IP_address</code> в его нынешнем виде настолько примитивен, что не представляет для нас большого интереса (фактически, никакого интереса не представляет). Ведь мы, создав такой объект, даже не сможем вывести его на консоль. В частности, упомянутая функция <code>show</code> (стандартная функция Haskell, выводящая переданный ей аргумент в строковом виде) с гневом отвергнет аргумент типа <code>IP_address</code>, и правильно сделает: откуда ей знать, <em>как</em> можно представить объект типа <code>IP_address</code> в строковом виде? Она не узнает это до тех пор, пока мы явно ей не расскажем об этом. И вот тут-то на арену и выходят классы типов.</p>
 <p>Я понимаю, в выражении “класс типов” слово “класс” невольно режет слух программисту на C++, но потерпите, дальше будет понятнее. Класс типов - это некая обобщённая категория типов, отражающая конкретные общие черты для всех этих типов.</p>
 <p>Например, в стандартной библиотеке Haskell есть класс типов <code>Show</code>. Он обобщает все типы, объекты которых могут быть “показаны” (то есть отображены в виде строки). Как именно обобщает, спросите вы? Через общие методы. Вот определение класса <code>Show</code>:</p>
@@ -96,7 +93,6 @@
 <h3>
 Экземпляр класса типов
 </h3>
-
 <p>Если класс типов <code>Show</code> - это абстракция для типов, объекты которых можно “показать”, то экземпляр этого класса представляет собой реальное объяснение о том, <em>как</em> можно “показать” объект того или иного типа. То есть если мы хотим объяснить, как можно “показать” объект типа <code>IP_address</code>, мы должны создать экземпляр класса типов <code>Show</code> для типа <code>IP_address</code>. Сделаем же это:</p>
 <pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">IP_address</span> <span class="kw">where</span>
     show (<span class="dt">IP_address</span> address) <span class="fu">=</span> 
@@ -153,7 +149,7 @@
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>

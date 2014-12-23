@@ -63,29 +63,27 @@
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dv">12_px</span>;</code></pre>
 <p>Здесь значение 12 передаётся литералу в качестве единственного аргумента типа unsigned long long. Вы спросите, почему именно <strong>unsigned long long</strong>? Дело в том, что набор типов для определяемого пользователем литерала строго определён, а именно:</p>
 <ol>
-  <li>
+<li>
 <code>operator“” name ( unsigned long long n ) …</code>
 </li>
-  <li>
+<li>
 <code>operator“” name ( long double d ) …</code>
 </li>
-  <li>
+<li>
 <code>operator“” name ( char c ) …</code>
 </li>
-  <li>
+<li>
 <code>operator“” name ( const char* str, size_t sz ) …</code>
 </li>
-  <li>
+<li>
 <code>operator“” name ( const char* cstr ) …</code>
 </li>
 </ol>
-
 <p>При попытке определить аргумент с другим типом (например, с <strong>int</strong>) компилятор грозно сообщит:</p>
 <p><bash> ’constexpr int operator“” _px(int)’ has invalid argument list </bash></p>
 <h3>
 Практическое применение
 </h3>
-
 <p>Ну, самое первое и самое простое применение уже было продемонстрировано выше - пользовательский литерал может избавить нас от магических чисел:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="fl">90.</span><span class="dv">0_degrees</span>;
 <span class="dv">1200_km</span>;
@@ -122,7 +120,6 @@ placer-&gt;set_margins(   <span class="dv">3_px_at_left</span>
 <h3>
 Будьте аккуратны с форматированием
 </h3>
-
 <p>Обращаю ваше внимание на то, что с форматированием при использовании пользовательских литералов нужно быть чуток внимательным.</p>
 <p>Во-первых, при определении:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp">std::string operator<span class="st">&quot;&quot;_as_ISO</span>( <span class="dt">const</span> <span class="dt">char</span>* date, size_t length ) ...</code></pre>
@@ -131,12 +128,11 @@ placer-&gt;set_margins(   <span class="dv">3_px_at_left</span>
 <p>Во-вторых, при использовании:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="st">&quot;2013-Jan-20 23:59:59&quot;</span> _as_ISO;</code></pre>
 <p>Здесь, напротив, мы добавили пробел перед именем литерала. Но компилятор и тут заупрямится:</p>
-<p><bash> expected ‘;’ before ‘<em>as</em>ISO’ </bash></p>
+<p><bash> expected ‘;’ before ’_as_ISO’ </bash></p>
 <p>Таким образом, там - строго с пробелом, а тут - исключительно без пробела.</p>
 <h3>
 Конвенция имени
 </h3>
-
 <p>Вы, очевидно, обратили внимание на то, что имя литерала везде начинается со знака подчёркивания? На самом деле я могу и не использовать его:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp">std::string <span class="er">operator&quot;&quot; as_ISO</span>( <span class="dt">const</span> <span class="dt">char</span>* date, size_t length ) ...</code></pre>
 <p>И код скомпилируется, однако с предупреждением:</p>
@@ -150,7 +146,6 @@ placer-&gt;set_margins(   <span class="dv">3_px_at_left</span>
 <h3>
 Ну и что же мы имеем в итоге?
 </h3>
-
 <p>В итоге мы имеем вкусный синтаксический сахар. Лично я считаю этот механизм весьма полезным, хотя конечно далеко не самым значимым из нововведений C++11. Сама идея перегрузки (любого) оператора подразумевает лишь украшение кода, не более чем. Да, красиво, да, короче, но увлекаться этим не надо.</p>
 <p>Например, я видел такой пример:</p>
 <pre class="sourceCode cpp"><code class="sourceCode cpp"><span class="dt">long</span> <span class="dt">double</span> <span class="kw">operator</span><span class="st">&quot;&quot;</span> _deg( <span class="dt">long</span> <span class="dt">double</span> d )
@@ -188,7 +183,7 @@ placer-&gt;set_margins(   <span class="dv">3_px_at_left</span>
         
         <div id="footer">
             <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>, <span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>, <span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>, <span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>, <span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
             </div>
             <div id="hakyll_mark">
                 Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
