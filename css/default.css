@@ -205,11 +205,11 @@ a:hover {
     border-bottom: 1px #999 solid;
 }
 
-div#post-title {
+.post-title {
     float:left;
 }
 
-div#post-date {
+.post-date {
     text-align: right;
     color: #888;
     font-size: 14px;
