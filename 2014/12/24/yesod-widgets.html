@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Yesod: виджеты</title>
+        
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+        <div id="wrapper_2">
+        
+        <div id="header">
+            <div id="logo">
+                <a href="http://blog.dshevchenko.biz" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Yesod: виджеты</h1>
+
+            <div class="info">
+    (2014, 12, 24)
+</div>
+
+<div id="tags_of_post">
+    <a href="../../../tags/Yesod.html">Yesod</a>, <a href="../../../tags/Haskell.html">Haskell</a>
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Приветствую!</p>
+<p>В <a href="http://blog.dshevchenko.biz/2014/12/23/yesod-templates.html">прошлой заметке</a> мы поближе познакомились с Yesod-шаблонами. Теперь мы готовы рассмотреть одну из фундаментальных идей в Yesod, а именно идею виджета (widget).</p>
+<h2 id="не-просто-xml">Не просто XML</h2>
+<p>Задумаемся: что такое по сути своей HTML-страница? Это не более чем XML-строка, а если ещё проще, совокупность вложенных тегов с некимтекстовым содержимым. Всё. Но с другой стороны, заходя на сайт, неужели мы смотрим на его главную страницу как на XML-строку? Едва ли. Страница предстаёт нашему взору не как совокупность каких-то тегов, а как совокупность понятных нам частей: вот вверху слева расположен логотип, а вверху справа - главное меню, вот боковая колонка, вот форма подписки на новости, а вот подвал с меткой об авторских правах и контактными ссылками.</p>
+<p>Авторы Yesod не захотели иметь дело с XML-строкой, а потому ввели простое и важное понятие “виджет”. Виджет - это некая (более-менее завершённая) часть веб-страницы. Таким образом, страница - это уже не множество XML-тегов, это совокупность виджетов. Главное меню - виджет, форма регистрации - виджет, блок социальных кнопок - виджет, подвал - виджет, и так далее. Главное преимущество такого подхода - разделение. А мы с вами знаем, что разделение большой монолитной сущности на систему малых сущностей - это мощное оружие в борьбе со сложностью. Оперируя виджетами, мы легко можем компоновать из них страницы любой сложности.</p>
+<h2 id="шаблоны-как-части-виджетов">Шаблоны как части виджетов</h2>
+<p>Пришла пора открыть правду: уже известные нам шаблоны <code>.hamlet</code>, <code>.lucius</code> и <code>.julius</code> - это составные кирпичики виджетов. Подчёркиваю: виджетов, а не страниц! Из шаблонов строятся виджеты, а из виджетов - страницы. Впрочем, простая страница может состоять и из одного-единственного виджета.</p>
+<p>Вот почему в <a href="(http://blog.dshevchenko.biz/2014/12/21/yesod-structure-templates.html)">одной из предыдущих заметок</a> я привёл следующий пример структуры из каталога <code>templates</code>:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">templates/</span>
+    <span class="kw">home/</span>
+        <span class="kw">login/</span>
+            <span class="kw">login.hamlet</span>
+            <span class="kw">login.julius</span>
+            <span class="kw">login.lucius</span>
+        <span class="kw">register/</span>
+            <span class="kw">register.hamlet</span>
+            <span class="kw">register.julius</span>
+            <span class="kw">register.lucius</span>
+        <span class="kw">socialLogin/</span>
+            <span class="kw">socialLogin.hamlet</span>
+            <span class="kw">socialLogin.julius</span>
+            <span class="kw">socialLogin.lucius</span></code></pre>
+<p>Теперь всё встало на свои места: домашняя страница (<code>home</code>) представлена тремя виджетами (<code>login</code>, <code>register</code>, <code>socialLogin</code>), каждый из которых построен из трёх шаблонов.</p>
+<p>Таким образом, мы уже не думаем об HTML-коде домашней страницы или об общем JS-скрипте для домашней страницы. Вместо этого мы думаем об HTML-коде для формы входа, о CSS-стилях для группы кнопок социального логина и о JS-валидаторе для формы регистрации. Уже нет монолита (страницы), а есть понятные нашему разуму блоки (виджеты). Разумеется, в процессе сборки нашего проекта всё это превращается в некие монолитные HTML/CSS/JS, но нам с вами беспокоиться об этом уже не нужно, об этом позаботится Yesod.</p>
+<h2 id="использование-виджетов">Использование виджетов</h2>
+<p>Итак, как же использовать эти самые виджеты? Чтобы это понять, откроем уже известный нам файл <code>Handler/Home.hs</code> и перепишем обработчик <code>GET</code>-запросов к главной странице следующим образом:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">getHomeR ::</span> <span class="dt">Handler</span> <span class="dt">Html</span>
+getHomeR <span class="fu">=</span> defaultLayout <span class="fu">$</span> <span class="kw">do</span>
+    setTitle <span class="st">&quot;Welcome to Yesod!&quot;</span>
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)</code></pre>
+<p>Обратите внимание на странного вида строку:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)</code></pre>
+<p>Это и есть ответ на наш вопрос. Самым распространённым и простым способом использования виджетов является функция <code>widgetFile</code>. Но вы спросите, почему она заключена в скобки со знаком доллара впереди? Причина в том, что эта строка, строго говоря, не является Haskell-кодом. Это шаблонный код, превращающийся в реальный Haskell в процессе сборки проекта. Сейчас нам необязательно знать, как всё это работает, поэтому двигаемся дальше.</p>
+<p>Функция <code>widgetFile</code> принимает единственный аргумент, являющийся именем виджета. По договорённости в Yesod имя виджета совпадает с именами шаблонов, составляющих данный виджет. Именно поэтому мы указываем имя “homepage”, поскольку данный виджет представлен тремя одноимёнными файлами, расположенными в каталоге <code>templates</code>. Таким образом, главная страница состоит из одного-единственного виджета. Если же мы хотим составить эту страницу из трёх упомянутых выше виджетов, мы просто указываем полные файловые пути до них (начиная от корня каталога <code>templates</code>):</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">getHomeR ::</span> <span class="dt">Handler</span> <span class="dt">Html</span>
+getHomeR <span class="fu">=</span> defaultLayout <span class="fu">$</span> <span class="kw">do</span>
+    setTitle <span class="st">&quot;Welcome to Yesod!&quot;</span>
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;home/login/login&quot;</span>)
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;home/socialLogin/socialLogin&quot;</span>)
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;home/register/register&quot;</span>)</code></pre>
+<p>Как вы уже догадались, функция <code>widgetFile</code>, получая название виджета, сама находит соответствующие шаблонные файлы и вытаскивает из них содержимое. И как вы видите, скомпоновать страницу из нескольких виджетов проще простого, нужно лишь перечислить их друг за другом. ## Умолчальная обёртка</p>
+<p>Взглянем ещё раз на функцию <code>getHomeR</code>:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">getHomeR ::</span> <span class="dt">Handler</span> <span class="dt">Html</span>
+getHomeR <span class="fu">=</span> defaultLayout <span class="fu">$</span> <span class="kw">do</span>
+    setTitle <span class="st">&quot;Welcome to Yesod!&quot;</span>
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)</code></pre>
+<p>Назначение функции <code>setTitle</code>, полагаю, понятно с первого взгляда: она устанавливает заголовок страницы, отображающийся на текущей вкладке нашего браузера. А что же такое <code>defaultLayout</code>?</p>
+<p>Заглянем в каталог <code>templates</code> и вспомним файл <code>default-layout-wrapper.hamlet</code>. Как вы уже знаете, этот файл представляет собой общий HTML-скелет для всех (или, по крайней мере, многих) страниц. Так вот функция <code>defaultLayout</code> и является обёрткой для нашей страницы: она берёт виджет “homepage” и заворачивает его в умолчальный HTML-скелет, возвращая готовый HTML-код страницы. Именно поэтому, создавая виджет “homepage”, мы думаем исключительно об этом виджете, абстрагируясь от общих, умолчальных HTML-аспектов.</p>
+<p>Разумеется, мы можем создать несколько HTML-скелетов для разных групп страниц нашего веб-приложения, но это тема для отдельного разговора.</p>
+<h2 id="вперёд">Вперёд!</h2>
+<p>Настало время потрогать наш единственный виджет, и начнём мы с файла <code>homepage.hamlet</code>. Откроем его и напишем в нём следующее:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.centered</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>Я - единственный виджет этой страницы!</code></pre>
+<p>Теперь откроем <code>homepage.lucius</code> и напишем в нём:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.centered</span> <span class="kw">{</span>
+    <span class="kw">text-align:</span> <span class="dt">center</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<p>А вот файл <code>homepage.julius</code> нам пока не нужен, поэтому просто очистим его содержимое, сохраним и закроем.</p>
+<p>Теперь выполняем знакомую нам команду:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">yesod</span> devel -p 3001</code></pre>
+<p>Проект будет пересобран и запущен на <code>localhost:3001</code>. Заходим - и перед нами наша отцентрированная фраза, как мы и ожидали. В данном случае вся страница представлена одним виджетом, но мы могли бы сделать и так:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">getHomeR ::</span> <span class="dt">Handler</span> <span class="dt">Html</span>
+getHomeR <span class="fu">=</span> defaultLayout <span class="fu">$</span> <span class="kw">do</span>
+    setTitle <span class="st">&quot;Welcome to Yesod!&quot;</span>
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)</code></pre>
+<p>Если пересобрать проект и взглянуть на страницу, мы увидим четыре фразы, выровненные по центру, потому что главная страница теперь составлена из четырёх виджетов.</p>
+<h2 id="разделяй-и-властвуй">Разделяй и властвуй</h2>
+<p>Разумеется, мы могли бы вынести класс <code>.centered</code> в некий глобальный стилевой файл (и позже я покажу как это сделать), но зачем? Если виджет воспринимается как нечто целостное и некие стили предназначены лишь для этого виджета - пусть эти стили и хранятся только в его <code>.lucius</code>-шаблоне. Ведь наша цель - разбить монолитность, а не наращивать её. Впрочем, если класс <code>.centered</code> планируется использовать и в других виджетах - тогда другое дело, мы должны вынести его в некое общее место (и кстати, сделать это можно разными способами).</p>
+<p>То же относится и к JS. Мы можем хранить JS-функции, специфичные для виджета, в его <code>.julius</code>-шаблоне (и это правильный путь), а можем вынести в некий глобальный JS-файл. Позже мы увидим, как это сделать.</p>
+<p>Собственно, на этом можно закончить. Вышеизложенного уже достаточно для того, чтобы начать что-то творить, хотя в будущих заметках мы увидим, что с виджетами не всё так просто.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+        </div>
+        </div>
+    </body>
+</html>

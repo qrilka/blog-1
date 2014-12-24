@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 23 Dec 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Wed, 24 Dec 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Yesod: виджеты</title>
+    <link>http://blog.dshevchenko.biz/2014/12/24/yesod-widgets.html</link>
+    <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Сегодня поговорим о важной концепции Yesod - о виджете.]]></description>
+    <pubDate>Wed, 24 Dec 2014 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2014/12/24/yesod-widgets.html</guid>
+</item>
+<item>
     <title>Yesod: Гамлет и прочие</title>
     <link>http://blog.dshevchenko.biz/2014/12/23/yesod-templates.html</link>
     <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Сегодня продробнее рассмотрим уже известные нам веб-шаблоны.]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[На прошлой неделе я распрощался с Хабром. Насовсем. О причинах такого решения - далее.]]></description>
     <pubDate>Mon, 06 Oct 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/10/06/habr-goodbye.html</guid>
-</item>
-<item>
-    <title>О Haskell по-человечески: немного вопросов и ответов</title>
-    <link>http://blog.dshevchenko.biz/2014/09/30/ohaskell-answer.html</link>
-    <description><![CDATA[Один из моих читателей задал несколько заслуживающих внимания вопросов, касаетельно книги. Я решил ответить на них здесь, на тот случай, если у кого-то возникли такие же...]]></description>
-    <pubDate>Tue, 30 Sep 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/09/30/ohaskell-answer.html</guid>
 </item>
 
     </channel> 
