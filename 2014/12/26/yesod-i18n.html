@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Yesod: и17я</title>
+        
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+        <div id="wrapper_2">
+        
+        <div id="header">
+            <div id="logo">
+                <a href="http://blog.dshevchenko.biz" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Yesod: и17я</h1>
+
+            <div class="info">
+    (2014, 12, 26)
+</div>
+
+<div id="tags_of_post">
+    <a href="../../../tags/Yesod.html">Yesod</a>, <a href="../../../tags/Haskell.html">Haskell</a>
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Приветствую!</p>
+<p>Сегодня поговорим об интернационализации, одном из важнейших аспектов современных веб-решений. Как вы уже знаете, в корне проекте расположен каталог <code>messages</code>, содержащий языковые файлы. Далее предполагается, что нас интересуют два языка, английский и русский.</p>
+<h2 id="ключи-и-переводы">Ключи и переводы</h2>
+<p>Итак, давайте чуток расширим содержимое файла <code>messages/en.msg</code> и напишем в нём следующее:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Hello</span>:      Hello
+<span class="kw">Welcome</span>:    Welcome to Yesod!</code></pre>
+<p>ну и в файл <code>messages/ru.msg</code> напишем, соответственно, это:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Hello</span>:      Привет
+<span class="kw">Welcome</span>:    Добро пожаловать в Yesod!</code></pre>
+<p>Теперь у нас есть два i18n-ключа, <code>Hello</code> и <code>Welcome</code>, с каждым из которых ассоциировано по два перевода. Это избавляет нас от дубляжа кода в наших виджетах. Не знаю как вы, но я не очень люблю веб-решения, многоязычность которых реализуется дубляжом (и, соответственно, отражается языковой меткой в URL страниц). А ведь это канонический подход многих веб-систем: для каждой страницы создаются N экземпляров, где N соответствует числу языков. И когда я обращаюсь, скажем, к <code>http://site.com/ru/page</code>, получаю русский вариант страницы <code>page</code>, а когда вместо <code>ru</code> пишется <code>en</code> - тогда английский вариант.</p>
+<p>В Yesod всё элегантнее и проще. Никакого дубляжа страниц здесь нет, ведь в коде страниц используются только ключи, а конкретный перевод подставляется на место ключа динамически, в зависимости от текущего языка. Поэтому при переключении языка URL страницы не меняется, а текстовое содержимое просто переписывается. Выглядит изящно.</p>
+<h2 id="использование">Использование</h2>
+<p>Теперь давайте, наконец, поймём, как же использовать ключи в нашем коде. Основное правило: ключ используется с обязательным префиксом <code>Msg</code>. То есть ключ <code>Hello</code> будет фигурировать в коде как <code>MsgHello</code>, а ключ <code>Welcome</code> - как <code>MsgWelcome</code>. Запомнить легко: все ключи, заданные в каталоге <code>messages</code>, предваряются префиксом <code>Msg</code>.</p>
+<p>Теперь к делу.</p>
+<h3 id="заголовки">Заголовки</h3>
+<p>Откроем файл <code>Handler/Home.hs</code> и найдём нашу функцию <code>getHomeR</code>:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">getHomeR ::</span> <span class="dt">Handler</span> <span class="dt">Html</span>
+getHomeR <span class="fu">=</span> defaultLayout <span class="fu">$</span> <span class="kw">do</span>    
+    setTitle <span class="st">&quot;Welcome To Yesod!&quot;</span>
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)</code></pre>
+<p>Уже известная нам функция <code>setTitle</code> устанавливает заголовок страницы. Но здесь заголовок прописан явно, на английском языке. Давайте же исправим это:</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">getHomeR ::</span> <span class="dt">Handler</span> <span class="dt">Html</span>
+getHomeR <span class="fu">=</span> defaultLayout <span class="fu">$</span> <span class="kw">do</span>
+    setTitleI <span class="dt">MsgWelcome</span>
+    <span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)</code></pre>
+<p>Предельно просто. Функция <code>setTitleI</code> - это i18n-аналог функции <code>setTitle</code>. Мы передаём ей уже не явный текст, а имеющийся ключ. И теперь, когда текущим языком страницы будет английский, заголовок будет отображён как “Welcome to Yesod!”, а если русский - тогда как “Добро пожаловать в Yesod!”.</p>
+<h3 id="hamlet">Hamlet</h3>
+<p>Перейдём к HTML-скелету. Откроем файл <code>templates/homepage.hamlet</code>:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.centered</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>Я - единственный виджет этой страницы!</code></pre>
+<p>Единственный контент этого виджета задан по-русски, и это опять-таки не то, чего мы хотим. Добавим новый ключ. В файле <code>messages/en.msg</code> пропишем это:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Hello</span>:      Hello
+<span class="kw">Welcome</span>:    Welcome to Yesod!
+<span class="kw">HomeMainH</span>:  I<span class="st">'m a single widget of this page!</span></code></pre>
+<p>а в файле <code>messages/ru.msg</code> - это:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Hello</span>:      Привет
+<span class="kw">Welcome</span>:    Добро пожаловать в Yesod!
+<span class="kw">HomeMainH</span>:  Я - единственный виджет этой страницы!</code></pre>
+<p>Теперь возвращаемся к <code>templates/homepage.hamlet</code> и пишем:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.centered</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>_{MsgHomeMainH}</code></pre>
+<p>Как видите, тут тоже всё очень просто. Снова наш ключ с префиксом <code>Msg</code>, только на этот раз он заключён между символами <code>_{</code> и <code>}</code>.</p>
+<p>Таким образом, учитывая тот факт, что ключу может соответствовать и аббревиатура, и слово, и фраза, и предложение и даже целый текст, мы можем гибко составлять из них корректные переводы для наших страниц (учитывающие падежи, числа и т.п). Вот, собственно, и всё.</p>
+<p>Но внимательный читатель обязательно спросит меня: “В заметке несколько раз был упомянут текущий язык страницы. А как же нам установить этот текущий язык?” Прекрасный вопрос, но это мы обсудим в одной из будущих заметок.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+        </div>
+        </div>
+    </body>
+</html>

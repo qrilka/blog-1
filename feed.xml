@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Wed, 24 Dec 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Fri, 26 Dec 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Yesod: и17я</title>
+    <link>http://blog.dshevchenko.biz/2014/12/26/yesod-i18n.html</link>
+    <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Сегодня чуть подробнее поговорим об интернационализации.]]></description>
+    <pubDate>Fri, 26 Dec 2014 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2014/12/26/yesod-i18n.html</guid>
+</item>
+<item>
     <title>Yesod: виджеты</title>
     <link>http://blog.dshevchenko.biz/2014/12/24/yesod-widgets.html</link>
     <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Сегодня поговорим о важной концепции Yesod - о виджете.]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[Я принял решение: второго тома не будет. Но продолжение будет. В этой заметке - объяснение.]]></description>
     <pubDate>Wed, 10 Dec 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/12/10/ohaskell-continue.html</guid>
-</item>
-<item>
-    <title>Хабр: здравствуй и прощай</title>
-    <link>http://blog.dshevchenko.biz/2014/10/06/habr-goodbye.html</link>
-    <description><![CDATA[На прошлой неделе я распрощался с Хабром. Насовсем. О причинах такого решения - далее.]]></description>
-    <pubDate>Mon, 06 Oct 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/10/06/habr-goodbye.html</guid>
 </item>
 
     </channel> 
