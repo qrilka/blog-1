@@ -66,7 +66,7 @@ getHomeR <span class="fu">=</span> defaultLayout <span class="fu">$</span> <span
 getHomeR <span class="fu">=</span> defaultLayout <span class="fu">$</span> <span class="kw">do</span>
     setTitleI <span class="dt">MsgWelcome</span>
     <span class="fu">$</span>(widgetFile <span class="st">&quot;homepage&quot;</span>)</code></pre>
-<p>Предельно просто. Функция <code>setTitleI</code> - это i18n-аналог функции <code>setTitle</code>. Мы передаём ей уже не явный текст, а имеющийся ключ. И теперь, когда текущим языком страницы будет английский, заголовок будет отображён как “Welcome to Yesod!”, а если русский - тогда как “Добро пожаловать в Yesod!”.</p>
+<p>Предельно просто. Функция <code>setTitleI</code> - это i18n-аналог функции <code>setTitle</code> (отсюда и суффикс <code>I</code>). Мы передаём ей уже не явный текст, а имеющийся ключ. Таким образом, когда текущим языком страницы будет английский, заголовок будет отображён как “Welcome to Yesod!”, а если русский - тогда как “Добро пожаловать в Yesod!”.</p>
 <h3 id="hamlet">Hamlet</h3>
 <p>Перейдём к HTML-скелету. Откроем файл <code>templates/homepage.hamlet</code>:</p>
 <pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span> <span class="er">.centered</span><span class="kw">&gt;</span>
