@@ -27,7 +27,7 @@ description: Yesod - это мощный веб-фреймворк, написа
 
 ```bash
 $ cabal update
-$ cabal install yesod-bin yesod-platform
+$ cabal install yesod-bin alex happy
 ```
 
 Установка этого пакета потянет за собой ооооочень много других пакетиков, так что наберитесь терпения: их установка займёт на среднем современном ноутбуке минут 15.
