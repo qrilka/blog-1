@@ -102,13 +102,13 @@
 </ol>
 <p>Рассмотрим эти шаги на примере разворачивания версии <code>alpha</code>:</p>
 <ol style="list-style-type: decimal">
-<li>git checkout –force alpha &amp;&amp; git pull origin alpha</li>
-<li>cabal clean &amp;&amp; cabal configure &amp;&amp; cabal build</li>
-<li>scp -r ~/webhs/static/* denis@service.com:/srv/www/webhs/alpha/static/</li>
-<li>ssh denis@service.com “./webhs_ctl.sh alpha stop”</li>
-<li>ssh denis@service.com “rm -f /srv/www/webhs/alpha/bin/webhs-alpha 2&gt; /dev/null”</li>
-<li>scp ~/webhs/dist/build/webhs/webhs denis@service.com:/srv/www/webhs/alpha/bin/webhs-alpha</li>
-<li>ssh denis@service.com “./webhs_ctl.sh alpha start”</li>
+<li><code>git checkout --force alpha &amp;&amp; git pull origin alpha</code></li>
+<li><code>cabal clean &amp;&amp; cabal configure &amp;&amp; cabal build</code></li>
+<li><code>scp -r ~/webhs/static/* denis@service.com:/srv/www/webhs/alpha/static/</code></li>
+<li><code>ssh denis@service.com &quot;./webhs_ctl.sh alpha stop&quot;</code></li>
+<li><code>ssh denis@service.com &quot;rm -f /srv/www/webhs/alpha/bin/webhs-alpha 2&gt; /dev/null&quot;</code></li>
+<li><code>scp ~/webhs/dist/build/webhs/webhs denis@service.com:/srv/www/webhs/alpha/bin/webhs-alpha</code></li>
+<li><code>ssh denis@service.com &quot;./webhs_ctl.sh alpha start&quot;</code></li>
 </ol>
 <p>Пара пояснений.</p>
 <p>Во-первых, напомню, что такого вида строка:</p>
