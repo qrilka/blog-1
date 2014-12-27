@@ -85,15 +85,19 @@ description: Yesod - это мощный веб-фреймворк, написа
 6. Копирование нового исполняемого файла на рабочий сервер.
 7. Старт нового процесса нашего приложения на рабочем сервере.
 
-Рассмотрим эти шаги на примере разворачивания версии `alpha`:
+Рассмотрим эти шаги на примере разворачивания версии `alpha`. Вот каким может быть такой скрипт:
 
-1. `git checkout --force alpha && git pull origin alpha` 
-2. `cabal clean && cabal configure && cabal build`
-3. `scp -r ~/webhs/static/* denis@service.com:/srv/www/webhs/alpha/static/`
-4. `ssh denis@service.com "./webhs_ctl.sh alpha stop"`
-5. `ssh denis@service.com "rm -f /srv/www/webhs/alpha/bin/webhs-alpha 2> /dev/null"`
-6. `scp ~/webhs/dist/build/webhs/webhs denis@service.com:/srv/www/webhs/alpha/bin/webhs-alpha`
-7. `ssh denis@service.com "./webhs_ctl.sh alpha start"` 
+```bash
+#!/bin/bash
+
+git checkout --force alpha && git pull origin alpha
+cabal clean && cabal configure && cabal build
+scp -r ~/webhs/static/* denis@service.com:/srv/www/webhs/alpha/static/
+ssh denis@service.com "./webhs_ctl.sh alpha stop"
+ssh denis@service.com "rm -f /srv/www/webhs/alpha/bin/webhs-alpha 2> /dev/null"
+scp ~/webhs/dist/build/webhs/webhs denis@service.com:/srv/www/webhs/alpha/bin/webhs-alpha
+ssh denis@service.com "./webhs_ctl.sh alpha start"
+```
 
 Пара пояснений.
 
