@@ -87,13 +87,13 @@ description: Yesod - это мощный веб-фреймворк, написа
 
 Рассмотрим эти шаги на примере разворачивания версии `alpha`:
 
-1. git checkout --force alpha && git pull origin alpha 
-2. cabal clean && cabal configure && cabal build 
-3. scp -r ~/webhs/static/* denis@service.com:/srv/www/webhs/alpha/static/
-4. ssh denis@service.com "./webhs_ctl.sh alpha stop"
-5. ssh denis@service.com "rm -f /srv/www/webhs/alpha/bin/webhs-alpha 2> /dev/null"
-6. scp ~/webhs/dist/build/webhs/webhs denis@service.com:/srv/www/webhs/alpha/bin/webhs-alpha
-7. ssh denis@service.com "./webhs_ctl.sh alpha start" 
+1. `git checkout --force alpha && git pull origin alpha` 
+2. `cabal clean && cabal configure && cabal build`
+3. `scp -r ~/webhs/static/* denis@service.com:/srv/www/webhs/alpha/static/`
+4. `ssh denis@service.com "./webhs_ctl.sh alpha stop"`
+5. `ssh denis@service.com "rm -f /srv/www/webhs/alpha/bin/webhs-alpha 2> /dev/null"`
+6. `scp ~/webhs/dist/build/webhs/webhs denis@service.com:/srv/www/webhs/alpha/bin/webhs-alpha`
+7. `ssh denis@service.com "./webhs_ctl.sh alpha start"` 
 
 Пара пояснений.
 
