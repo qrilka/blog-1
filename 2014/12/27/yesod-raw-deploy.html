@@ -100,16 +100,16 @@
 <li>Копирование нового исполняемого файла на рабочий сервер.</li>
 <li>Старт нового процесса нашего приложения на рабочем сервере.</li>
 </ol>
-<p>Рассмотрим эти шаги на примере разворачивания версии <code>alpha</code>:</p>
-<ol style="list-style-type: decimal">
-<li><code>git checkout --force alpha &amp;&amp; git pull origin alpha</code></li>
-<li><code>cabal clean &amp;&amp; cabal configure &amp;&amp; cabal build</code></li>
-<li><code>scp -r ~/webhs/static/* denis@service.com:/srv/www/webhs/alpha/static/</code></li>
-<li><code>ssh denis@service.com &quot;./webhs_ctl.sh alpha stop&quot;</code></li>
-<li><code>ssh denis@service.com &quot;rm -f /srv/www/webhs/alpha/bin/webhs-alpha 2&gt; /dev/null&quot;</code></li>
-<li><code>scp ~/webhs/dist/build/webhs/webhs denis@service.com:/srv/www/webhs/alpha/bin/webhs-alpha</code></li>
-<li><code>ssh denis@service.com &quot;./webhs_ctl.sh alpha start&quot;</code></li>
-</ol>
+<p>Рассмотрим эти шаги на примере разворачивания версии <code>alpha</code>. Вот каким может быть такой скрипт:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
+
+<span class="kw">git</span> checkout --force alpha <span class="kw">&amp;&amp;</span> <span class="kw">git</span> pull origin alpha
+<span class="kw">cabal</span> clean <span class="kw">&amp;&amp;</span> <span class="kw">cabal</span> configure <span class="kw">&amp;&amp;</span> <span class="kw">cabal</span> build
+<span class="kw">scp</span> -r ~/webhs/static/* denis@service.com:/srv/www/webhs/alpha/static/
+<span class="kw">ssh</span> denis@service.com <span class="st">&quot;./webhs_ctl.sh alpha stop&quot;</span>
+<span class="kw">ssh</span> denis@service.com <span class="st">&quot;rm -f /srv/www/webhs/alpha/bin/webhs-alpha 2&gt; /dev/null&quot;</span>
+<span class="kw">scp</span> ~/webhs/dist/build/webhs/webhs denis@service.com:/srv/www/webhs/alpha/bin/webhs-alpha
+<span class="kw">ssh</span> denis@service.com <span class="st">&quot;./webhs_ctl.sh alpha start&quot;</span></code></pre>
 <p>Пара пояснений.</p>
 <p>Во-первых, напомню, что такого вида строка:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">ssh</span> denis@service.com <span class="st">&quot;COMMAND&quot;</span></code></pre>
