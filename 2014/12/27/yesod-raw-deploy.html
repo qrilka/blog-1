@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Yesod: разворачиваем приложение без Keter</title>
+        
+        <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
+        <link rel="icon" type="image/x-icon" href="../../../images/favicon.ico" />
+
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            {lang: 'ru'}
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+        <div id="wrapper_2">
+        
+        <div id="header">
+            <div id="logo">
+                <a href="http://blog.dshevchenko.biz" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+            </div>
+            <div id="navigation">
+                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
+                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
+                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
+                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Yesod: разворачиваем приложение без Keter</h1>
+
+            <div class="info">
+    (2014, 12, 27)
+</div>
+
+<div id="tags_of_post">
+    <a href="../../../tags/Yesod.html">Yesod</a>, <a href="../../../tags/Haskell.html">Haskell</a>
+</div>
+
+<div style="padding-top: 20px;"></div>
+
+<p>Приветствую!</p>
+<p>Говорить о разработке веб-приложения, не упомянув о его конечном разворачивании (deployment) - это так же асбурдно, как изучать работу с браузером на компьютере, не подключенном к интернету. Вот об этом мы сегодня и поговорим.</p>
+<p>Развернуть Yesod-приложение можно двумя базовыми способами: с использованием <a href="https://github.com/snoyberg/keter/">Keter</a> и без него. И хотя автор Yesod позиционирует Keter как умолчальный инструмент для разворачивания, в этой заметке мы рассмотрим “сырое” разворачивание, без Keter или каких-либо иных сторонних средств.</p>
+<p>Описываемый ниже способ предельно прост, прозрачен, однако не лишён недостатков.</p>
+<h2 id="сценарий">Сценарий</h2>
+<p>Как вы уже знаете из предыдущих заметок, после сборки нашего Yesod-проекта в каталоге <code>dist/build/webhs/</code> появился исполняемый файл <code>webhs</code>. Этот файл удобен тем, что не тянет за собой никаких специфических Haskell-зависимостей, поэтому, будучи собранным на одной системе, он может быть запущен на другой такой же системе. А это именно то, что нам нужно!</p>
+<p>Далее подразумевается следующий сценарий (кстати, <a href="http://www.yesodweb.com/book/deploying-your-webapp#deploying-your-webapp_compiling">рекомендуемый автором</a> Yesod):</p>
+<ol style="list-style-type: decimal">
+<li>Есть разработческий сервер, на котором установлена Haskell Platform и Yesod.</li>
+<li>Есть рабочий сервер, на котором есть только необходимая для работы приложения инфраструктура (веб-сервер и СУБД).</li>
+</ol>
+<p>В моём случае оба эти сервера работают под Ubuntu 14.04.1, а на рабочем сервере установлен Nginx и PostgreSQL.</p>
+<h2 id="подготовка-рабочего-сервера">Подготовка рабочего сервера</h2>
+<p>Создаём рабочий каталог, в котором будет жить наше приложение. Скажем, <code>/srv/www/webhs</code>. В нём создаём ещё три каталога:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">/srv/www/webhs/</span>
+    <span class="kw">bin/</span>
+    <span class="kw">config/</span>
+    <span class="kw">static/</span></code></pre>
+<p>Каталог <code>bin</code> предназначен для исполняемого файла <code>webhs</code>, каталог <code>config</code> - это копия каталога <code>config</code> в корне нашего проекта, а каталог <code>static</code> - это копия каталога <code>static</code> там же.</p>
+<p>Теперь по поводу веб-сервера. Тут всё просто: классическая модель перенаправления. Например, в моём случае (а возможно, и в вашем) приложение представлено четырьмя веб-стендами, поэтому получается нечто подобное:</p>
+<ol style="list-style-type: decimal">
+<li>Запросы, поступающие на <code>http://alpha.my-service.com</code>, перенаправляются на <code>localhost:3001</code>.</li>
+<li>Запросы, поступающие на <code>http://beta.my-service.com</code>, перенаправляются на <code>localhost:3002</code>.</li>
+<li>Запросы, поступающие на <code>http://rc.my-service.com</code>, перенаправляются на <code>localhost:3003</code>.</li>
+<li>Запросы, поступающие на <code>http://my-service.com</code>, перенаправляются на <code>localhost:3004</code>.</li>
+</ol>
+<p>Соответственно, порты с <code>3001</code> по <code>3004</code> - это те самые порты, которые заданы в файле <code>config/settings.yml</code>. Именно их будут слушать четыре версии нашего приложения.</p>
+<p>Ну и по поводу Postgres всё совсем просто: создаём пользователя и БД, соответствующие указанным в файле <code>config/postgresql.yml</code>.</p>
+<h2 id="стенды">Стенды</h2>
+<p>Как уже было упомянуто, наше приложение представлено четырьмя версиями, работающими на четырёх стендах. Для удобства можно расширить рабочий каталог, предоставив для каждой из версий свою квартирку:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">/srv/www/webhs/</span>
+    <span class="kw">alpha/</span>
+        <span class="kw">bin/</span>
+        <span class="kw">config/</span>
+        <span class="kw">static/</span>
+    <span class="kw">beta/</span>
+        <span class="kw">bin/</span>
+        <span class="kw">config/</span>
+        <span class="kw">static/</span>
+    <span class="kw">rc/</span>
+        <span class="kw">bin/</span>
+        <span class="kw">config/</span>
+        <span class="kw">static/</span>
+    <span class="kw">stable/</span>
+        <span class="kw">bin/</span>
+        <span class="kw">config/</span>
+        <span class="kw">static/</span></code></pre>
+<p>Полагаю, тут всё понятно без комментариев.</p>
+<h2 id="вперёд">Вперёд!</h2>
+<p>После того, как мы запушили изменения в соответствующую версионную ветку, запускается наш CI-механизм (ведь у вас есть такой, не правда ли?). В моём случае это <a href="http://blog.dshevchenko.biz/2014/12/13/buildbot-hello-world.html">рассмотренный ранее</a> Buildbot. Он дёргает скрипт в корне репозитория проекта. Пусть в нашем случае это будет <code>webhs_update.sh</code>. Внутри этого скрипта совершаются следующие шаги:</p>
+<ol style="list-style-type: decimal">
+<li>Взятие исходников проекта из соответствующей версионной ветки.</li>
+<li>Сборка проекта.</li>
+<li>Копирование каталога <code>static</code> в уже известное нам место на рабочем сервере.</li>
+<li>Остановка старого процесса нашего приложения на рабочем сервере.</li>
+<li>Удаление старого исполняемого файла нашего приложения на рабочем сервере.</li>
+<li>Копирование нового исполняемого файла на рабочий сервер.</li>
+<li>Старт нового процесса нашего приложения на рабочем сервере.</li>
+</ol>
+<p>Рассмотрим эти шаги на примере разворачивания версии <code>alpha</code>:</p>
+<ol style="list-style-type: decimal">
+<li>git checkout –force alpha &amp;&amp; git pull origin alpha</li>
+<li>cabal clean &amp;&amp; cabal configure &amp;&amp; cabal build</li>
+<li>scp -r ~/webhs/static/* denis@service.com:/srv/www/webhs/alpha/static/</li>
+<li>ssh denis@service.com “./webhs_ctl.sh alpha stop”</li>
+<li>ssh denis@service.com “rm -f /srv/www/webhs/alpha/bin/webhs-alpha 2&gt; /dev/null”</li>
+<li>scp ~/webhs/dist/build/webhs/webhs denis@service.com:/srv/www/webhs/alpha/bin/webhs-alpha</li>
+<li>ssh denis@service.com “./webhs_ctl.sh alpha start”</li>
+</ol>
+<p>Пара пояснений.</p>
+<p>Во-первых, напомню, что такого вида строка:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">ssh</span> denis@service.com <span class="st">&quot;COMMAND&quot;</span></code></pre>
+<p>запускает команду <code>COMMAND</code> на рабочем сервере в домашнем каталоге пользователя <code>denis</code>. Во-вторых, подразумевается, что у вас уже есть ssh-ключ, дающий право на ssh-копирование с разработческого сервера на рабочий. А в-третьих, здесь упоминается некий скрипт <code>webhs_ctl.sh</code>, уже лежащий в вашем домашнем каталоге на рабочем сервере. Пара слов об этом.</p>
+<h2 id="управляющий-скрипт">Управляющий скрипт</h2>
+<p>Строго говоря, можно было бы обойтись и без него, но лично мне так удобнее. В домашнем каталоге рабочего сервера делаем:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">touch</span> webhs_ctl.sh
+$ <span class="kw">chmod</span> +x webhs_ctl.sh</code></pre>
+<p>Этот скрипт может принимать два аргумента: имя стенда (<code>alpha</code>, <code>beta</code>, <code>rc</code> и <code>stable</code>) и команду (<code>stop</code>, <code>start</code> и <code>restart</code>). Поэтому для запуска процесса для alpha-стенда мы делаем так:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">./webhs_ctl.sh</span> alpha start</code></pre>
+<p>Соответственно, внутри этого скрипта, после разбора аргументов, осуществляется либо запуск процесса нашего приложения, либо его останов. С остановом всё просто, можно использовать команду <code>killall</code> с передачей ему имени нашего исполняемого файла. А вот с запуском чуток посложнее будет.</p>
+<p>Если интересно, вот возможный вариант такого скрипта: https://gist.github.com/denisshevchenko/1d529775493bc153bf33.</p>
+<h2 id="демонизация">Демонизация</h2>
+<p>Разумеется, наш процесс должен быть демоном. Следовательно, мы не можем запустить наше приложение просто так:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> /srv/www/webhs/alpha
+$ <span class="kw">bin/webhs-alpha</span> Development</code></pre>
+<p>Нужно как-то демонизировать наш процесс, дабы отвязать его от текущего терминала. Сделать это можно по-разному, например через команду <code>start-stop-daemon</code> или <code>nohup</code>. Я выбрал <code>nohup</code>, и после долгих исканий по Сети я сформировал такой вариант:</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">nohup</span> bin/webhs-alpha Development <span class="kw">&gt;</span> /dev/null <span class="kw">2&gt;&amp;1</span> <span class="kw">&amp;</span></code></pre>
+<p>Такая команда обеспечивает запуск процесса и полноценное отвязывание оного от терминала, с нормальным завершением самой этой команды. Кстати, я напоминаю, что запускать процесс нужно не из каталога <code>bin</code>, а из каталога уровнем выше, то есть из той точки, в которой лежит каталог <code>config</code>.</p>
+<h2 id="вот-и-всё">Вот и всё</h2>
+<p>Ну что ж, о “сыром” разворачивании без Keter достаточно. Плюс такого способа в том, что он предельно прост и совершенно прозрачен. Однако есть и существенный минус: если процесс нашего приложения (по тем или иным причинам) умрёт, некому будет его воскресить. А у Keter, скажу забегая вперёд, есть автоматический мониторинг за процессом, что очень полезно для production-среды. Поэтому о Keter обязательно поговорим в одной из следующих заметок.</p>
+
+<div id="socialButtons">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ru">Твитнуть</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+        </div>
+        
+        <div id="footer">
+            <div id="social">
+                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
+            </div>
+            <div id="hakyll_mark">
+                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
+            </div>
+        </div>
+        
+        <div id="search_form">
+            <script>
+              (function() {
+                var cx = '007697214108744450483:ccjauglh7ao';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+        </div>
+        </div>
+    </body>
+</html>

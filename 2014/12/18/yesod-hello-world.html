@@ -56,7 +56,7 @@
 <h2 id="готовимся">Готовимся</h2>
 <p>Разумеется, нам нужны пакеты семейства <code>yesod</code>. Начнём:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cabal</span> update
-$ <span class="kw">cabal</span> install yesod-bin yesod-platform</code></pre>
+$ <span class="kw">cabal</span> install yesod-bin alex happy</code></pre>
 <p>Установка этого пакета потянет за собой ооооочень много других пакетиков, так что наберитесь терпения: их установка займёт на среднем современном ноутбуке минут 15.</p>
 <p>После того, как всё готово, упростим себе жизнь: пропишем пути к новым утилитам в нашу <code>PATH</code>, дабы было удобнее. Откроем файл <code>~/.bashrc</code> и добавим в него строку наподобие такой:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">export</span> <span class="ot">PATH=$PATH</span>:<span class="ot">$HOME</span>/.cabal/bin</code></pre>
