@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 27 Dec 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Mon, 29 Dec 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Haskell: вопрос о русскоязычном ресурсе</title>
+    <link>http://blog.dshevchenko.biz/2014/12/29/haskell-ru-place.html</link>
+    <description><![CDATA[Этот вопрос назрел давно: нужен ли русскоязычный ресурс, целиком и полностью посвящённый языку Haskell? Мои две копейки.]]></description>
+    <pubDate>Mon, 29 Dec 2014 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2014/12/29/haskell-ru-place.html</guid>
+</item>
+<item>
     <title>Yesod: разворачиваем приложение без Keter</title>
     <link>http://blog.dshevchenko.biz/2014/12/27/yesod-raw-deploy.html</link>
     <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Сегодня поговорим о разворачивании нашего приложения без использования Keter.]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Мне выпала радость использовать этот инструмент, и сегодня поговорим о начале начал.]]></description>
     <pubDate>Thu, 18 Dec 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/12/18/yesod-hello-world.html</guid>
-</item>
-<item>
-    <title>Buildbot: CI-инструмент, который мне понравился</title>
-    <link>http://blog.dshevchenko.biz/2014/12/13/buildbot-hello-world.html</link>
-    <description><![CDATA[Buildbot - это CI-инструмент, который мне понравился. Расскажу о том, как его вкусно приготовить.]]></description>
-    <pubDate>Sat, 13 Dec 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/12/13/buildbot-hello-world.html</guid>
 </item>
 
     </channel> 
