@@ -1,7 +1,7 @@
 {-
     Модуль, отвечающий за построение XML-карты сайта.
-    https://github.com/denisshevchenko/ruhaskell
-    Все права принадлежат русскоязычному сообществу Haskell-разработчиков, 2015 г.
+    https://github.com/denisshevchenko/blog
+    Все права принадлежат Денису Шевченко, 2011-2015 г.
 -}
 
 {-# LANGUAGE OverloadedStrings #-}

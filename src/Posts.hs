@@ -1,7 +1,7 @@
 {-
     Модуль, отвечающий за преобразование статей и в формирование корректных путей к ним.
-    https://github.com/denisshevchenko/ruhaskell
-    Все права принадлежат русскоязычному сообществу Haskell-разработчиков, 2015 г.
+    https://github.com/denisshevchenko/blog
+    Все права принадлежат Денису Шевченко, 2011-2015 г.
 -}
 
 {-# LANGUAGE OverloadedStrings #-}
