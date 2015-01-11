@@ -18,8 +18,8 @@ import Control.Monad.Reader
 import Hakyll
 
 feedConfiguration :: FeedConfiguration
-feedConfiguration = FeedConfiguration { feedTitle       = "ruHaskell"
-                                      , feedDescription = "Русскоязычное сообщество Haskell-разработчиков"
+feedConfiguration = FeedConfiguration { feedTitle       = "Д. Шевченко"
+                                      , feedDescription = "Мысли и опыт"
                                       , feedAuthorName  = "Денис Шевченко"
                                       , feedAuthorEmail = "me@dshevchenko.biz"
                                       , feedRoot        = aHost

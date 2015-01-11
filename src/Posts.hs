@@ -18,6 +18,9 @@ import Misc                 (TagsReader)
 import Control.Monad.Reader
 import Hakyll
 
+removePostsDirectoryFromURLs :: Routes
+removePostsDirectoryFromURLs = gsubRoute "posts/" (const "")
+
 -- Дата публикации будет отражена в URL в виде подкаталогов.
 directorizeDate :: Routes
 directorizeDate = customRoute (\i -> directorize $ toFilePath i)
@@ -35,7 +38,8 @@ createPosts = do
     tagsAndAuthors <- ask
     -- Берём все файлы из каталога posts.
     lift $ match "posts/**" $ do
-        route $ directorizeDate `composeRoutes`
+        route $ removePostsDirectoryFromURLs `composeRoutes`
+                directorizeDate `composeRoutes`
                 setExtension "html"
         -- Для превращения Markdown в HTML используем pandocCompiler.
         compile $ pandocCompiler >>= loadAndApplyTemplate "templates/post.html" (postContext tagsAndAuthors)

@@ -24,7 +24,7 @@ createPageWithAllPosts = do
         compile $ do
             allPosts <- recentFirst =<< loadAll "posts/**"
             let archiveContext = mconcat [ listField "posts" (postContext tagsAndAuthors) (return allPosts) 
-                                         , constField "title" "Архив статей"                   
+                                         , constField "title" "Архив"                   
                                          , defaultContext
                                          ]
 
