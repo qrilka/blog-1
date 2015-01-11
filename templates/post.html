@@ -1,12 +1,25 @@
-<div class="info">
-    $date$
-</div>
+<h1>$title$</h1>
 
-<div id="tags_of_post">
-    $postTags$
-</div>
+<div class="row">
+    <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4">
+        <div class="post-info">
+            <strong>let</strong> author&nbsp;&nbsp;&nbsp;= "$postAuthor$"<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= "$date$"<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;category = "$postCategory$"<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;tags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= [$postTags$]
+        </div>
+    </div>
 
-<div style="padding-top: 20px;"></div>
+    <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4"></div>
+  
+    <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4">
+        $if(hrefToOriginal)$
+            <div class="href-to-original">
+                <a href="$hrefToOriginal$" target="_blank">Оригинал <span class="fa fa-external-link"></span></a>
+            </div>
+        $endif$
+    </div>
+</div>
 
 $body$
 
@@ -19,7 +32,7 @@ $body$
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'dshevchenko'; // required: replace example with your forum shortname
+    var disqus_shortname = 'ruhaskell'; // required: replace example with your forum shortname
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
@@ -29,5 +42,4 @@ $body$
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     
