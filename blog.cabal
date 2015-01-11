@@ -28,7 +28,6 @@ executable blog
                        XMLMap  
                        Archive  
                        IndexPage
-                       Links
                        Misc 
 
   other-extensions:    OverloadedStrings

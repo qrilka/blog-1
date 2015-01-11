@@ -18,13 +18,13 @@ import Hakyll
 
 createIndexPage :: TagsReader
 createIndexPage = do
-    tagsAndAuthors <- ask
+    tags <- ask
     lift $ create ["index.html"] $ do
         route idRoute
         compile $ do
             -- На главной странице будет отражено 7 последних публикаций.
             last7Posts <- fmap (take 7) . recentFirst =<< loadAll "posts/**"
-            let indexContext = mconcat [ listField "posts" (postContext tagsAndAuthors) (return last7Posts) 
+            let indexContext = mconcat [ listField "posts" (postContext tags) (return last7Posts) 
                                        , constField "title" "Мысли и опыт"
                                        , defaultContext
                                        ]

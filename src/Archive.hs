@@ -18,12 +18,12 @@ import Hakyll
 
 createPageWithAllPosts :: TagsReader
 createPageWithAllPosts = do
-    tagsAndAuthors <- ask
+    tags <- ask
     lift $ create ["archive.html"] $ do
         route idRoute
         compile $ do
             allPosts <- recentFirst =<< loadAll "posts/**"
-            let archiveContext = mconcat [ listField "posts" (postContext tagsAndAuthors) (return allPosts) 
+            let archiveContext = mconcat [ listField "posts" (postContext tags) (return allPosts) 
                                          , constField "title" "Архив"                   
                                          , defaultContext
                                          ]

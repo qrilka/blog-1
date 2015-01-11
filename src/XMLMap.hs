@@ -19,12 +19,12 @@ import Hakyll
 
 createXMLMap :: TagsReader
 createXMLMap = do
-    tagsAndAuthors <- ask
+    tags <- ask
     lift $ create ["sitemap.xml"] $ do
         route idRoute
         compile $ do
             allPosts <- recentFirst =<< loadAll "posts/**"
-            let sitemapContext = mconcat [ listField "entries" (postContext tagsAndAuthors) (return allPosts)
+            let sitemapContext = mconcat [ listField "entries" (postContext tags) (return allPosts)
                                          , constField "host" aHost
                                          , defaultContext
                                          ]

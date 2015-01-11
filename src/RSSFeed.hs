@@ -28,11 +28,11 @@ feedConfiguration = FeedConfiguration { feedTitle       = "Д. Шевченко"
 -- Формируем стандартную RSS-ленту, на основе последних 10 публикаций.
 setupRSSFeed :: TagsReader
 setupRSSFeed = do
-    tagsAndAuthors <- ask
+    tags <- ask
     lift $ create ["feed.xml"] $ do
         route idRoute
         compile $ do
-            let feedContext = mconcat [ postContext tagsAndAuthors
+            let feedContext = mconcat [ postContext tags
                                       , constField "description" ""
                                       ]
             -- Учитываем 10 последних статей.

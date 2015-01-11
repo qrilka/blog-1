@@ -12,19 +12,12 @@ import Copiers              (justCopy, justCreateAndCopy, justCompressAndCopy)
 import RSSFeed              (setupRSSFeed)
 import Posts                (createPosts)
 import Tags                 (createPageWithAllTags,
-                             createPageWithAllCategories,
-                             createPageWithAllAuthors,
                              convertTagsToLinks,
-                             convertCategoriesToLinks,
-                             convertAuthorsToLinks,
-                             buildPostsTags,
-                             buildPostsAuthors,
-                             buildPostsCategories)
+                             buildPostsTags)
 import XMLMap               (createXMLMap)
 import Archive              (createPageWithAllPosts)
 import Misc                 (prepareAllTemplates)
 import IndexPage            (createIndexPage)
-import Links                (createPageWithExternalLinks)
 import Control.Monad.Reader (runReaderT)
 import Hakyll
 
@@ -38,22 +31,15 @@ main = hakyll $ do
     
     prepareAllTemplates
     
-    -- Извлекаем названия тегов, категорий, а также имена авторов из всех публикаций.
-    tags        <- buildPostsTags
-    categories  <- buildPostsCategories 
-    authors     <- buildPostsAuthors
+    -- Извлекаем названия тегов из всех публикаций.
+    tags <- buildPostsTags
 
-    -- Теги и имена авторов нужны всем, поэтому для удобства запускаем читателя.
+    -- Теги нужны всем, поэтому для удобства запускаем читателя.
     runReaderT (createPosts
                 >> createPageWithAllPosts
                 >> createPageWithAllTags
-                >> createPageWithAllCategories
-                >> createPageWithAllAuthors
                 >> convertTagsToLinks
-                >> convertCategoriesToLinks
-                >> convertAuthorsToLinks
                 >> createXMLMap
                 >> setupRSSFeed
-                >> createIndexPage
-                >> createPageWithExternalLinks) [tags, categories, authors]
+                >> createIndexPage) tags
 

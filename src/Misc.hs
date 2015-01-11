@@ -9,10 +9,7 @@
 module Misc (
     aHost,
     prepareAllTemplates,
-    getNameOfAuthor,
-    TagsAndAuthors,
-    TagsReader,
-    getRussianNameOfCategory
+    TagsReader
 ) where
 
 import Control.Monad.Reader
@@ -27,32 +24,6 @@ aHost = "http://blog.dshevchenko.biz"
 prepareAllTemplates :: Rules ()
 prepareAllTemplates = match "templates/*" $ compile templateCompiler
 
--- Читательское "облако" с тематическими тегами, категориями и именами авторов статей.
-type TagsAndAuthors = [Tags]
-type TagsReader = ReaderT TagsAndAuthors Rules ()
-
--- Извлекает из статьи значение атрибута `author`.
-getNameOfAuthor :: MonadMetadata m => Identifier -> m [String]
-getNameOfAuthor identifier = do
-    -- Собираем атрибуты статьи в обычный ассоциативный контейнер.
-    metadata <- getMetadata identifier
-    let maybeAuthor = M.lookup "author" metadata
-    return $ case maybeAuthor of
-        -- Поразумевается, что у статьи всегда один автор, а не несколько.
-        Nothing -> ["Не указан"]
-        Just nameOfAuthor -> [trim nameOfAuthor]
-
--- Имена категорий извлекаются из файлового пути, поэтому они всегда английские.
--- Это не очень красиво, поэтому мы формируем словарь русских имён для категорий.
-russianNamesOfCategories :: M.Map String String
-russianNamesOfCategories = M.fromList[ ("web",      "Веб")
-                                     , ("tasks",    "Задачи")
-                                     , ("projects", "Проекты")
-                                     ]
-
-getRussianNameOfCategory :: String -> String
-getRussianNameOfCategory englishName = 
-    case (M.lookup englishName russianNamesOfCategories) of
-        Nothing   -> englishName
-        Just name -> name
+-- Читательское "облако" с тематическими тегами.
+type TagsReader = ReaderT Tags Rules ()
 

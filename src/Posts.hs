@@ -35,15 +35,15 @@ directorizeDate = customRoute (\i -> directorize $ toFilePath i)
 
 createPosts :: TagsReader
 createPosts = do
-    tagsAndAuthors <- ask
+    tags <- ask
     -- Берём все файлы из каталога posts.
     lift $ match "posts/**" $ do
         route $ removePostsDirectoryFromURLs `composeRoutes`
                 directorizeDate `composeRoutes`
                 setExtension "html"
         -- Для превращения Markdown в HTML используем pandocCompiler.
-        compile $ pandocCompiler >>= loadAndApplyTemplate "templates/post.html" (postContext tagsAndAuthors)
-                                 >>= loadAndApplyTemplate "templates/default.html" (postContext tagsAndAuthors)
+        compile $ pandocCompiler >>= loadAndApplyTemplate "templates/post.html" (postContext tags)
+                                 >>= loadAndApplyTemplate "templates/default.html" (postContext tags)
                                  >>= relativizeUrls
     return ()
 
