@@ -13,7 +13,6 @@ module Misc (
 ) where
 
 import Control.Monad.Reader
-import qualified Data.Map as M
 import Hakyll
 
 -- Данный URL останется актуальным до тех пор, пока сайт будет жить на GitHub Pages.

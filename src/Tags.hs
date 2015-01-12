@@ -13,7 +13,7 @@ module Tags (
 ) where
 
 import Data.Monoid          (mconcat)
-import Data.List            (intersperse, isInfixOf)
+import Data.List            (intersperse)
 import Network.HTTP         (urlEncode)
 import Context              (postContext)
 import Misc                 (TagsReader)

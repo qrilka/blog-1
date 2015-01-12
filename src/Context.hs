@@ -11,7 +11,6 @@ module Context (
 ) where
 
 import Data.Monoid      (mconcat)
-import Data.List        (intersperse)
 import System.Locale    
 import Misc             (aHost)
 import Hakyll
