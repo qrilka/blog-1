@@ -5,7 +5,7 @@ body {
     color: black;
     font-size: 17px;
     font-family: 'PT Sans', sans-serif;
-    background: #f5f3ee;
+    background: #DDF6F5;
     padding-top: 70px;
 }
 
@@ -327,8 +327,8 @@ a:hover {
 
 .gsc-control-cse {
     font-family: Arial, sans-serif;
-    border-color: #f5f3ee !important;
-    background-color: #f5f3ee !important;
+    border-color: #DDF6F5 !important;
+    background-color: #DDF6F5 !important;
 }
 
 div#searchForm {
