@@ -1,52 +1,99 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>О чём беседуем</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content>
+        <meta name="author" content="Денис Шевченко">
+        <link rel="icon" href="./static/images/favicon.ico">
+
+        <title>Темы публикаций</title>
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+        <link href="./static/css/default.css" rel="stylesheet">
         
-        <link rel="stylesheet" type="text/css" href="./css/default.css" />
-        <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+        <script>
+          window.___gcfg = {
+            lang: 'ru'
+          };
+        </script>
 
         <script src="https://apis.google.com/js/platform.js" async defer>
-            {lang: 'ru'}
         </script>
     </head>
-    <body>
-        <div id="wrapper">
-        <div id="wrapper_2">
-        
-        <div id="header">
-            <div id="logo">
-                <a href="http://blog.dshevchenko.biz" title="Домой">Д. Шевченко</a><span class="logo-note">Программист, исследователь, писатель</span>
+
+  <body>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-58217738-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <div id="logo">
+                <a class="navbar-brand" href="./" title="Домой">
+                  Мысли и опыт
+                </a>
+              </div>
             </div>
-            <div id="navigation">
-                <a href="http://dshevchenko.biz" title="К корневому сайту"><span id="root_link">cd /</span></a>
-                <a href="http://blog.dshevchenko.biz/archive.html">АРХИВ</a>
-                <a href="http://blog.dshevchenko.biz/tags.html">ТЕМЫ</a>
-                <a href="http://blog.dshevchenko.biz/feed.xml">RSS</a>
+            
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="./tags.html">Темы</a></li>
+                <li><a href="./archive.html">Архив</a></li>
+                <li><a href="./feed.xml">RSS</a></li>
+              </ul>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://dshevchenko.biz" target="_blank">root</a></li>
+              </ul>
             </div>
-        </div>
+          </div>
+        </nav>
 
         <div id="content">
-            <h1>О чём беседуем</h1>
+            <h1>Темы публикаций</h1>
 
-            <div id="tags_cloud">
-    <a style="font-size: 110%" href="./tags/Apple.html">Apple</a> <a style="font-size: 110%" href="./tags/Buildbot.html">Buildbot</a> <a style="font-size: 123%" href="./tags/C.html">C</a> <a style="font-size: 275%" href="./tags/C%252B%252B.html">C++</a> <a style="font-size: 169%" href="./tags/C%252B%252B11.html">C++11</a> <a style="font-size: 110%" href="./tags/CI.html">CI</a> <a style="font-size: 110%" href="./tags/CMake.html">CMake</a> <a style="font-size: 110%" href="./tags/Cocoa.html">Cocoa</a> <a style="font-size: 110%" href="./tags/Drupal.html">Drupal</a> <a style="font-size: 128%" href="./tags/GUI.html">GUI</a> <a style="font-size: 119%" href="./tags/GitBook.html">GitBook</a> <a style="font-size: 114%" href="./tags/GitHub.html">GitHub</a> <a style="font-size: 114%" href="./tags/Hakyll.html">Hakyll</a> <a style="font-size: 325%" href="./tags/Haskell.html">Haskell</a> <a style="font-size: 174%" href="./tags/IT.html">IT</a> <a style="font-size: 114%" href="./tags/Jekyll.html">Jekyll</a> <a style="font-size: 119%" href="./tags/Linux.html">Linux</a> <a style="font-size: 132%" href="./tags/OS%2520X.html">OS X</a> <a style="font-size: 128%" href="./tags/Objective-C.html">Objective-C</a> <a style="font-size: 114%" href="./tags/Qt.html">Qt</a> <a style="font-size: 110%" href="./tags/Qt5.html">Qt5</a> <a style="font-size: 110%" href="./tags/Sparkle.html">Sparkle</a> <a style="font-size: 114%" href="./tags/Vim.html">Vim</a> <a style="font-size: 110%" href="./tags/Xcode.html">Xcode</a> <a style="font-size: 146%" href="./tags/Yesod.html">Yesod</a> <a style="font-size: 178%" href="./tags/boost.html">boost</a> <a style="font-size: 110%" href="./tags/cabal.html">cabal</a> <a style="font-size: 110%" href="./tags/clang.html">clang</a> <a style="font-size: 110%" href="./tags/disqus.html">disqus</a> <a style="font-size: 128%" href="./tags/gcc.html">gcc</a> <a style="font-size: 110%" href="./tags/static_assert.html">static_assert</a> <a style="font-size: 110%" href="./tags/waffle.io.html">waffle.io</a> <a style="font-size: 114%" href="./tags/%25D0%25A1%25D0%259F%25D0%259F%25D0%25A0.html">СППР</a> <a style="font-size: 110%" href="./tags/%25D0%25A5%25D0%25B0%25D0%25B1%25D1%2580%25D0%25B0%25D1%2585%25D0%25B0%25D0%25B1%25D1%2580.html">Хабрахабр</a> <a style="font-size: 114%" href="./tags/%25D0%25B8%25D1%2582%25D0%25BE%25D0%25B3%25D0%25B8.html">итоги</a> <a style="font-size: 110%" href="./tags/%25D0%25BA%25D0%25BD%25D0%25B8%25D0%25B3%25D0%25B0.html">книга</a> <a style="font-size: 123%" href="./tags/%25D0%25BA%25D0%25BD%25D0%25B8%25D0%25B3%25D0%25B8.html">книги</a> <a style="font-size: 110%" href="./tags/%25D0%25BA%25D1%2580%25D0%25B0%25D1%2583%25D0%25B4%25D1%2584%25D0%25B0%25D0%25BD%25D0%25B4%25D0%25B8%25D0%25BD%25D0%25B3.html">краудфандинг</a> <a style="font-size: 110%" href="./tags/%25D0%25BA%25D1%2580%25D0%25BE%25D1%2581%25D1%2581%25D0%25BA%25D0%25BE%25D0%25BC%25D0%25BF%25D0%25B8%25D0%25BB%25D1%258F%25D1%2586%25D0%25B8%25D1%258F.html">кросскомпиляция</a> <a style="font-size: 110%" href="./tags/%25D0%25BF%25D1%2580%25D0%25B8%25D0%25BA%25D0%25BE%25D0%25BB.html">прикол</a> <a style="font-size: 160%" href="./tags/%25D1%2581%25D0%25BE%25D1%2584%25D1%2582%25D0%25B2%25D0%25B5%25D1%2580%25D0%25BD%25D1%258B%25D0%25B9%2520%25D0%25B1%25D0%25B8%25D0%25B7%25D0%25BD%25D0%25B5%25D1%2581.html">софтверный бизнес</a> <a style="font-size: 110%" href="./tags/%25D1%2583%25D0%25B4%25D0%25B0%25D0%25BB%25D1%2591%25D0%25BD%25D0%25BD%25D0%25B0%25D1%258F%2520%25D1%2580%25D0%25B0%25D0%25B1%25D0%25BE%25D1%2582%25D0%25B0.html">удалённая работа</a> <a style="font-size: 151%" href="./tags/%25D1%2584%25D0%25B8%25D0%25BB%25D0%25BE%25D1%2581%25D0%25BE%25D1%2584%25D0%25B8%25D1%258F.html">философия</a> <a style="font-size: 110%" href="./tags/%25D1%258D%25D1%2584%25D1%2584%25D0%25B5%25D0%25BA%25D1%2582%25D0%25B8%25D0%25B2%25D0%25BD%25D0%25BE%25D1%2581%25D1%2582%25D1%258C.html">эффективность</a>
+<div id="tagsCloud">
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+
+        <div class="col-md-8 col-sm-10 col-xs-10">
+            <div class="alert alert-info" role="alert">
+                <a style="font-size: 110%" href="./tags/Apple.html">Apple<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/Buildbot.html">Buildbot<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 116%" href="./tags/C.html">C<span class="badge-for-tag-link">4</span></a>, <a style="font-size: 192%" href="./tags/C%252B%252B.html">C++<span class="badge-for-tag-link">37</span></a>, <a style="font-size: 139%" href="./tags/C%252B%252B11.html">C++11<span class="badge-for-tag-link">14</span></a>, <a style="font-size: 110%" href="./tags/CI.html">CI<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/CMake.html">CMake<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/Cocoa.html">Cocoa<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/Drupal.html">Drupal<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 119%" href="./tags/GUI.html">GUI<span class="badge-for-tag-link">5</span></a>, <a style="font-size: 114%" href="./tags/GitBook.html">GitBook<span class="badge-for-tag-link">3</span></a>, <a style="font-size: 112%" href="./tags/GitHub.html">GitHub<span class="badge-for-tag-link">2</span></a>, <a style="font-size: 112%" href="./tags/Hakyll.html">Hakyll<span class="badge-for-tag-link">2</span></a>, <a style="font-size: 217%" href="./tags/Haskell.html">Haskell<span class="badge-for-tag-link">48</span></a>, <a style="font-size: 142%" href="./tags/IT.html">IT<span class="badge-for-tag-link">15</span></a>, <a style="font-size: 112%" href="./tags/Jekyll.html">Jekyll<span class="badge-for-tag-link">2</span></a>, <a style="font-size: 114%" href="./tags/Linux.html">Linux<span class="badge-for-tag-link">3</span></a>, <a style="font-size: 121%" href="./tags/OS%2520X.html">OS X<span class="badge-for-tag-link">6</span></a>, <a style="font-size: 119%" href="./tags/Objective-C.html">Objective-C<span class="badge-for-tag-link">5</span></a>, <a style="font-size: 112%" href="./tags/Qt.html">Qt<span class="badge-for-tag-link">2</span></a>, <a style="font-size: 110%" href="./tags/Qt5.html">Qt5<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/Sparkle.html">Sparkle<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 112%" href="./tags/Vim.html">Vim<span class="badge-for-tag-link">2</span></a>, <a style="font-size: 110%" href="./tags/Xcode.html">Xcode<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 128%" href="./tags/Yesod.html">Yesod<span class="badge-for-tag-link">9</span></a>, <a style="font-size: 144%" href="./tags/boost.html">boost<span class="badge-for-tag-link">16</span></a>, <a style="font-size: 110%" href="./tags/cabal.html">cabal<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/clang.html">clang<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/disqus.html">disqus<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 119%" href="./tags/gcc.html">gcc<span class="badge-for-tag-link">5</span></a>, <a style="font-size: 110%" href="./tags/static_assert.html">static_assert<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/waffle.io.html">waffle.io<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 112%" href="./tags/%25D0%25A1%25D0%259F%25D0%259F%25D0%25A0.html">СППР<span class="badge-for-tag-link">2</span></a>, <a style="font-size: 110%" href="./tags/%25D0%25A5%25D0%25B0%25D0%25B1%25D1%2580%25D0%25B0%25D1%2585%25D0%25B0%25D0%25B1%25D1%2580.html">Хабрахабр<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 112%" href="./tags/%25D0%25B8%25D1%2582%25D0%25BE%25D0%25B3%25D0%25B8.html">итоги<span class="badge-for-tag-link">2</span></a>, <a style="font-size: 110%" href="./tags/%25D0%25BA%25D0%25BD%25D0%25B8%25D0%25B3%25D0%25B0.html">книга<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 116%" href="./tags/%25D0%25BA%25D0%25BD%25D0%25B8%25D0%25B3%25D0%25B8.html">книги<span class="badge-for-tag-link">4</span></a>, <a style="font-size: 110%" href="./tags/%25D0%25BA%25D1%2580%25D0%25B0%25D1%2583%25D0%25B4%25D1%2584%25D0%25B0%25D0%25BD%25D0%25B4%25D0%25B8%25D0%25BD%25D0%25B3.html">краудфандинг<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/%25D0%25BA%25D1%2580%25D0%25BE%25D1%2581%25D1%2581%25D0%25BA%25D0%25BE%25D0%25BC%25D0%25BF%25D0%25B8%25D0%25BB%25D1%258F%25D1%2586%25D0%25B8%25D1%258F.html">кросскомпиляция<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 110%" href="./tags/%25D0%25BF%25D1%2580%25D0%25B8%25D0%25BA%25D0%25BE%25D0%25BB.html">прикол<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 135%" href="./tags/%25D1%2581%25D0%25BE%25D1%2584%25D1%2582%25D0%25B2%25D0%25B5%25D1%2580%25D0%25BD%25D1%258B%25D0%25B9%2520%25D0%25B1%25D0%25B8%25D0%25B7%25D0%25BD%25D0%25B5%25D1%2581.html">софтверный бизнес<span class="badge-for-tag-link">12</span></a>, <a style="font-size: 110%" href="./tags/%25D1%2583%25D0%25B4%25D0%25B0%25D0%25BB%25D1%2591%25D0%25BD%25D0%25BD%25D0%25B0%25D1%258F%2520%25D1%2580%25D0%25B0%25D0%25B1%25D0%25BE%25D1%2582%25D0%25B0.html">удалённая работа<span class="badge-for-tag-link">1</span></a>, <a style="font-size: 130%" href="./tags/%25D1%2584%25D0%25B8%25D0%25BB%25D0%25BE%25D1%2581%25D0%25BE%25D1%2584%25D0%25B8%25D1%258F.html">философия<span class="badge-for-tag-link">10</span></a>, <a style="font-size: 110%" href="./tags/%25D1%258D%25D1%2584%25D1%2584%25D0%25B5%25D0%25BA%25D1%2582%25D0%25B8%25D0%25B2%25D0%25BD%25D0%25BE%25D1%2581%25D1%2582%25D1%258C.html">эффективность<span class="badge-for-tag-link">1</span></a>
+            </div>
+        </div>
+        
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
 </div>
 
-        </div>
-        
-        <div id="footer">
-            <div id="social">
-                <strong>let</strong> social = [<span id="twitter"><a href="https://twitter.com/dshevchenko_biz" title="Twitter">t</a></span>,&nbsp;<span id="googleplus"><a href="http://google.com/+DenisShevchenko" title="Google+">g+</a></span>,&nbsp;<span id="github"><a href="https://github.com/denisshevchenko" title="GitHub">g</a></span>,&nbsp;<span id="facebook"><a href="https://www.facebook.com/dshevchenko.biz" title="Facebook">f</a></span>,&nbsp;<span id="linkedin"><a href="https://www.linkedin.com/in/dshevchenkobiz" title="LinkedIn">in</a></span>]
-            </div>
-            <div id="hakyll_mark">
-                Сайт создан с помощью <a href="http://jaspervdj.be/hakyll">Hakyll</a> и живёт на <a href="https://github.com/denisshevchenko/blog">GitHub</a>
-            </div>
-        </div>
-        
-        <div id="search_form">
+        </div> 
+
+        <div id="searchForm">
             <script>
               (function() {
                 var cx = '007697214108744450483:ccjauglh7ao';
@@ -61,7 +108,14 @@
             </script>
             <gcse:search></gcse:search>
         </div>
-        </div>
-        </div>
-    </body>
+
+        <footer class="footer">
+            Сайт работает на <strong><a href="http://jaspervdj.be/hakyll/" target="_blank">Hakyll</a></strong> и живёт на <strong><a href="https://github.com/denisshevchenko/blog" target="_blank">GitHub</a></strong>.
+            <div class="copyright-note">
+                Исходный код данного сайта, а также все опубликованные на нём материалы распространяются на условиях <a href="https://github.com/denisshevchenko/blog/blob/master/LICENSE" target="_blank">свободной лицензии MIT</a>.
+            </div>
+        </footer>
+    </div>
+  </body>
 </html>
+
