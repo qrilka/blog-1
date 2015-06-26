@@ -6,8 +6,15 @@
         <description><![CDATA[Мысли и опыт]]></description>
         <atom:link href="http://blog.dshevchenko.biz/feed.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 21 Jun 2015 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Fri, 26 Jun 2015 00:00:00 UT</lastBuildDate>
         <item>
+    <title>О совершенстве: Haskell и иже с ним</title>
+    <link>http://blog.dshevchenko.biz/2015/06/26/haskell-and-perfection.html</link>
+    <description><![CDATA[Об идеальных мечтах и неидельных инструментах.]]></description>
+    <pubDate>Fri, 26 Jun 2015 00:00:00 UT</pubDate>
+    <guid>http://blog.dshevchenko.biz/2015/06/26/haskell-and-perfection.html</guid>
+</item>
+<item>
     <title>Первая встреча сообщества ruHaskell: итоги и мысли</title>
     <link>http://blog.dshevchenko.biz/2015/06/21/meetup-2015-my-thoughts.html</link>
     <description><![CDATA[Итак, наш первый митап завершился, и вот мои мысли по этому поводу.]]></description>
@@ -69,13 +76,6 @@
     <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Изучаем структуру нашего проекта. На очереди - обработчики запросов.]]></description>
     <pubDate>Sat, 20 Dec 2014 00:00:00 UT</pubDate>
     <guid>http://blog.dshevchenko.biz/2014/12/20/yesod-structure-handler.html</guid>
-</item>
-<item>
-    <title>Структура Yesod-проекта: базовая конфигурация</title>
-    <link>http://blog.dshevchenko.biz/2014/12/19/yesod-structure-config.html</link>
-    <description><![CDATA[Yesod - это мощный веб-фреймворк, написанный на языке Haskell. Пришла пора изучить структуру нашего проекта. И начнём мы с базовой конфигурации.]]></description>
-    <pubDate>Fri, 19 Dec 2014 00:00:00 UT</pubDate>
-    <guid>http://blog.dshevchenko.biz/2014/12/19/yesod-structure-config.html</guid>
 </item>
 
     </channel> 
